@@ -1,0 +1,2964 @@
+{
+    "lunch-buddies-master/setup.py": {},
+    "lunch-buddies-master/src/lunch_buddies/types.py": {},
+    "lunch-buddies-master/src/lunch_buddies/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/actions/bot.py": {
+        "bot": {
+            "name": "bot",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.BotMention"
+                ],
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ]
+            }
+        },
+        "_parse_message": {
+            "name": "_parse_message",
+            "location": 80,
+            "return": [
+                "Optional[Tuple[(str, str)]]"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.BotMention"
+                ]
+            }
+        },
+        "_split_text": {
+            "name": "_split_text",
+            "location": 93,
+            "return": [
+                "Tuple[(str, str)]"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "parse_raw_request": {
+            "name": "parse_raw_request",
+            "location": 101,
+            "return": [
+                "lunch_buddies.types.BotMention"
+            ],
+            "arguments": {
+                "raw_request_form": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/close_poll.py": {
+        "close_poll": {
+            "name": "close_poll",
+            "location": 17,
+            "return": [
+                "List[lunch_buddies.types.GroupsToNotifyMessage]"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.PollsToCloseMessage"
+                ],
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "polls_dao": [
+                    "lunch_buddies.dao.polls.PollsDao"
+                ],
+                "poll_responses_dao": [
+                    "lunch_buddies.dao.poll_responses.PollResponsesDao"
+                ],
+                "teams_dao": [
+                    "lunch_buddies.dao.teams.TeamsDao"
+                ]
+            }
+        },
+        "_guess_channel_id": {
+            "name": "_guess_channel_id",
+            "location": 80,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "team": [
+                    "lunch_buddies.models.teams.Team"
+                ]
+            }
+        },
+        "_group_by_answer": {
+            "name": "_group_by_answer",
+            "location": 90,
+            "return": [
+                "Dict[(lunch_buddies.models.polls.Choice, List[lunch_buddies.models.poll_responses.PollResponse])]"
+            ],
+            "arguments": {
+                "poll_responses": [
+                    "List[lunch_buddies.models.poll_responses.PollResponse]"
+                ],
+                "poll": [
+                    "lunch_buddies.models.polls.Poll"
+                ]
+            }
+        },
+        "_get_choice_from_response": {
+            "name": "_get_choice_from_response",
+            "location": 102,
+            "return": [
+                "lunch_buddies.models.polls.Choice"
+            ],
+            "arguments": {
+                "poll_response": [
+                    "lunch_buddies.models.poll_responses.PollResponse"
+                ],
+                "poll": [
+                    "lunch_buddies.models.polls.Poll"
+                ]
+            }
+        },
+        "_get_groups": {
+            "name": "_get_groups",
+            "location": 111,
+            "return": [
+                "List[List[T]]"
+            ],
+            "arguments": {
+                "elements": [
+                    "List[T]"
+                ],
+                "group_size": [
+                    "int"
+                ],
+                "min_group_size": [
+                    "int"
+                ],
+                "max_group_size": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/create_poll.py": {
+        "create_poll": {
+            "name": "create_poll",
+            "location": 30,
+            "return": [
+                "List[lunch_buddies.types.UsersToPollMessage]"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.PollsToStartMessage"
+                ],
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "polls_dao": [
+                    "lunch_buddies.dao.polls.PollsDao"
+                ],
+                "teams_dao": [
+                    "lunch_buddies.dao.teams.TeamsDao"
+                ]
+            }
+        },
+        "_get_default_channel_id": {
+            "name": "_get_default_channel_id",
+            "location": 94,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.PollsToStartMessage"
+                ],
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "team": [
+                    "lunch_buddies.models.teams.Team"
+                ]
+            }
+        },
+        "_get_uuid": {
+            "name": "_get_uuid",
+            "location": 130,
+            "return": [
+                "uuid.UUID"
+            ],
+            "arguments": {}
+        },
+        "_get_created_at": {
+            "name": "_get_created_at",
+            "location": 134,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {}
+        },
+        "parse_message_text": {
+            "name": "parse_message_text",
+            "location": 152,
+            "return": [
+                "Tuple[(List[lunch_buddies.models.polls.Choice], int)]"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "_get_group_size_from_text": {
+            "name": "_get_group_size_from_text",
+            "location": 173,
+            "return": [
+                "Tuple[(str, int)]"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "get_choice_from_raw_option": {
+            "name": "get_choice_from_raw_option",
+            "location": 190,
+            "return": [
+                "lunch_buddies.models.polls.Choice"
+            ],
+            "arguments": {
+                "option": [
+                    "str"
+                ]
+            }
+        },
+        "get_time_from_raw_option": {
+            "name": "get_time_from_raw_option",
+            "location": 206,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "raw_option": [
+                    "str"
+                ]
+            }
+        },
+        "InvalidPollOption.__init__": {
+            "name": "__init__",
+            "location": 139,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "option": [
+                    "str"
+                ]
+            }
+        },
+        "InvalidPollSize.__init__": {
+            "name": "__init__",
+            "location": 146,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "size": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/get_summary.py": {
+        "get_summary": {
+            "name": "get_summary",
+            "location": 17,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.BotMention"
+                ],
+                "rest_of_command": [
+                    "str"
+                ],
+                "team": [
+                    "lunch_buddies.models.teams.Team"
+                ],
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ]
+            }
+        },
+        "_get_lookback_days": {
+            "name": "_get_lookback_days",
+            "location": 48,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "rest_of_command": [
+                    "str"
+                ]
+            }
+        },
+        "_get_summary_for_poll": {
+            "name": "_get_summary_for_poll",
+            "location": 54,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "poll": [
+                    "lunch_buddies.models.polls.Poll"
+                ],
+                "groups_dao": [
+                    "lunch_buddies.dao.groups.GroupsDao"
+                ],
+                "user_tz": [
+                    "str"
+                ]
+            }
+        },
+        "_get_choice_from_key": {
+            "name": "_get_choice_from_key",
+            "location": 87,
+            "return": [
+                "lunch_buddies.models.polls.Choice"
+            ],
+            "arguments": {
+                "key": [
+                    "str"
+                ],
+                "choices": [
+                    "List[lunch_buddies.models.polls.Choice]"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/invoice.py": {
+        "invoice": {
+            "name": "invoice",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ],
+                "dry_run": [
+                    "bool"
+                ]
+            }
+        },
+        "_get_line_item": {
+            "name": "_get_line_item",
+            "location": 51,
+            "return": [
+                "lunch_buddies.clients.stripe.LineItem"
+            ],
+            "arguments": {
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ],
+                "team": [
+                    "lunch_buddies.models.teams.Team"
+                ],
+                "polls": [
+                    "List[lunch_buddies.models.polls.Poll]"
+                ]
+            }
+        },
+        "_find_teams_eligible_for_invoicing": {
+            "name": "_find_teams_eligible_for_invoicing",
+            "location": 71,
+            "return": [
+                "List[lunch_buddies.models.teams.Team]"
+            ],
+            "arguments": {
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ]
+            }
+        },
+        "_get_polls_needing_invoice": {
+            "name": "_get_polls_needing_invoice",
+            "location": 85,
+            "return": [
+                "List[lunch_buddies.models.polls.Poll]"
+            ],
+            "arguments": {
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ],
+                "team": [
+                    "lunch_buddies.models.teams.Team"
+                ]
+            }
+        },
+        "_get_unique_yes_users_from_polls": {
+            "name": "_get_unique_yes_users_from_polls",
+            "location": 97,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ],
+                "polls": [
+                    "List[lunch_buddies.models.polls.Poll]"
+                ]
+            }
+        },
+        "_get_now": {
+            "name": "_get_now",
+            "location": 114,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/listen_to_poll.py": {
+        "listen_to_poll": {
+            "name": "listen_to_poll",
+            "location": 13,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "request_form": [
+                    "lunch_buddies.types.ListenToPoll"
+                ],
+                "polls_dao": [
+                    "lunch_buddies.dao.polls.PollsDao"
+                ],
+                "poll_responses_dao": [
+                    "lunch_buddies.dao.poll_responses.PollResponsesDao"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/notify_group.py": {
+        "notify_group": {
+            "name": "notify_group",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.GroupsToNotifyMessage"
+                ],
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "polls_dao": [
+                    "lunch_buddies.dao.polls.PollsDao"
+                ],
+                "teams_dao": [
+                    "lunch_buddies.dao.teams.TeamsDao"
+                ],
+                "groups_dao": [
+                    "lunch_buddies.dao.groups.GroupsDao"
+                ]
+            }
+        },
+        "_notify_private_group": {
+            "name": "_notify_private_group",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.GroupsToNotifyMessage"
+                ],
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "team": [
+                    "lunch_buddies.models.teams.Team"
+                ],
+                "choice": [
+                    "lunch_buddies.models.polls.Choice"
+                ]
+            }
+        },
+        "_notify_in_channel": {
+            "name": "_notify_in_channel",
+            "location": 67,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.GroupsToNotifyMessage"
+                ],
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "team": [
+                    "lunch_buddies.models.teams.Team"
+                ],
+                "poll": [
+                    "lunch_buddies.models.polls.Poll"
+                ],
+                "choice": [
+                    "lunch_buddies.models.polls.Choice"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/oauth2.py": {
+        "oauth2": {
+            "name": "oauth2",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "request_form": [
+                    "lunch_buddies.types.Auth"
+                ],
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ]
+            }
+        },
+        "_get_created_at": {
+            "name": "_get_created_at",
+            "location": 123,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/poll_user.py": {
+        "poll_user": {
+            "name": "poll_user",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "lunch_buddies.types.UsersToPollMessage"
+                ],
+                "slack_client": [
+                    "lunch_buddies.clients.slack.SlackClient"
+                ],
+                "polls_dao": [
+                    "lunch_buddies.dao.polls.PollsDao"
+                ],
+                "teams_dao": [
+                    "lunch_buddies.dao.teams.TeamsDao"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/queue_close_poll.py": {
+        "queue_close_poll": {
+            "name": "queue_close_poll",
+            "location": 8,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "request_form": [
+                    "lunch_buddies.types.ClosePoll"
+                ],
+                "service_contect": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ]
+            }
+        },
+        "_is_help": {
+            "name": "_is_help",
+            "location": 26,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "request_form": [
+                    "lunch_buddies.types.ClosePoll"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/queue_create_poll.py": {
+        "queue_create_poll": {
+            "name": "queue_create_poll",
+            "location": 13,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "request_form": [
+                    "lunch_buddies.types.CreatePoll"
+                ],
+                "service_context": [
+                    "lunch_buddies.lib.service_context.ServiceContext"
+                ]
+            }
+        },
+        "_is_help": {
+            "name": "_is_help",
+            "location": 37,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "request_form": [
+                    "lunch_buddies.types.CreatePoll"
+                ]
+            }
+        },
+        "_validate": {
+            "name": "_validate",
+            "location": 41,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "request_form": [
+                    "lunch_buddies.types.CreatePoll"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/actions/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/app/handlers.py": {
+        "sqsHandler": {
+            "name": "sqsHandler",
+            "location": 26,
+            "return": [
+                "Callable[([Any], Any)]"
+            ],
+            "arguments": {
+                "func": [
+                    "Callable[([lunch_buddies.clients.sqs_v2.SqsMessage], None)]"
+                ]
+            }
+        },
+        "create_poll_from_queue": {
+            "name": "create_poll_from_queue",
+            "location": 43,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "dict",
+                    "dict[, ]",
+                    "MutableMapping[str, Any]",
+                    "typing.MutableMapping"
+                ]
+            }
+        },
+        "poll_users_from_queue": {
+            "name": "poll_users_from_queue",
+            "location": 59,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "Dict[str, Any]",
+                    "str",
+                    "dict[str, typing.Any]",
+                    "dict",
+                    "dict[, ]",
+                    "Mapping[str, Any]",
+                    "typing.Mapping"
+                ]
+            }
+        },
+        "close_poll_from_queue": {
+            "name": "close_poll_from_queue",
+            "location": 69,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "logging.LogRecord"
+                ]
+            }
+        },
+        "notify_groups_from_queue": {
+            "name": "notify_groups_from_queue",
+            "location": 86,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "logging.LogRecord"
+                ]
+            }
+        },
+        "error_queue": {
+            "name": "error_queue",
+            "location": 97,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [
+                    "str",
+                    "bool",
+                    "List[object]",
+                    "list[object]"
+                ]
+            }
+        },
+        "invoice": {
+            "name": "invoice",
+            "location": 101,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "sqsHandler.wrapper": {
+            "name": "wrapper",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "dict"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/app/http.py": {
+        "_validate_request_token": {
+            "name": "_validate_request_token",
+            "location": 34,
+            "return": [
+                "bool",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "token": [
+                    "str",
+                    "int",
+                    "raiden.utils.List[uuid.UUID]",
+                    "routemaster_sdk.types.LabelRef"
+                ]
+            }
+        },
+        "_validate_team": {
+            "name": "_validate_team",
+            "location": 44,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "team_id": [
+                    "str",
+                    "int",
+                    "lunch_buddies.dao.teams.TeamsDao"
+                ],
+                "teams_dao": [
+                    "str",
+                    "lunch_buddies.dao.teams.TeamsDao",
+                    "int"
+                ]
+            }
+        },
+        "create_poll_http": {
+            "name": "create_poll_http",
+            "location": 52,
+            "return": [
+                "bool",
+                "Dict[str, Any]",
+                "int",
+                "List[recidiviz.persistence.entity.state.entities.StateSupervisionViolation.Response]"
+            ],
+            "arguments": {}
+        },
+        "listen_to_poll_http": {
+            "name": "listen_to_poll_http",
+            "location": 76,
+            "return": [
+                "Optional[str]",
+                "str",
+                "Dict[str, Any]"
+            ],
+            "arguments": {}
+        },
+        "close_poll_http": {
+            "name": "close_poll_http",
+            "location": 103,
+            "return": [
+                "Optional[str]",
+                "Dict[str, Any]",
+                "str",
+                "Dict[str, dict]"
+            ],
+            "arguments": {}
+        },
+        "help_http": {
+            "name": "help_http",
+            "location": 126,
+            "return": [
+                "Optional[str]",
+                "Dict[str, Any]",
+                "str",
+                "Dict[str, dict]"
+            ],
+            "arguments": {}
+        },
+        "install_http": {
+            "name": "install_http",
+            "location": 140,
+            "return": [
+                "dict",
+                "bytes",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {}
+        },
+        "auth_http": {
+            "name": "auth_http",
+            "location": 149,
+            "return": [
+                "Union[str, IO]",
+                "Dict[str, Any]",
+                "Callable",
+                "IO[str]",
+                "bytes"
+            ],
+            "arguments": {}
+        },
+        "bot_http": {
+            "name": "bot_http",
+            "location": 165,
+            "return": [
+                "tuple[typing.Union[typing.Text,int]]",
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {}
+        },
+        "error_http": {
+            "name": "error_http",
+            "location": 185,
+            "return": [
+                "builtins.str",
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/app/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/clients/http.py": {
+        "HttpClient.get": {
+            "name": "get",
+            "location": 7,
+            "return": [
+                "Dict[str, Any]",
+                "int",
+                "str",
+                "bytes"
+            ],
+            "arguments": {
+                "self": [],
+                "url": [
+                    "str",
+                    "dict",
+                    "dict[, ]",
+                    "Dict[str, str]",
+                    "dict[str, str]"
+                ],
+                "params": [
+                    "str",
+                    "dict",
+                    "dict[, ]",
+                    "Dict[str, str]",
+                    "dict[str, str]"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/clients/slack.py": {
+        "ChannelDoesNotExist.__init__": {
+            "name": "__init__",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "channel_id": [
+                    "int",
+                    "str",
+                    "float",
+                    "List[Tuple[int, int]]",
+                    "list[tuple[typing.Union[int,int]]]"
+                ]
+            }
+        },
+        "SlackClient._get_base_client_for_token": {
+            "name": "_get_base_client_for_token",
+            "location": 41,
+            "return": [
+                "str",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "token": [
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Dict[str, str]",
+                    "dict[str, str]",
+                    "List[int]",
+                    "list[int]",
+                    "Dict[int, str]",
+                    "dict[int, str]"
+                ]
+            }
+        },
+        "SlackClient.open_conversation": {
+            "name": "open_conversation",
+            "location": 44,
+            "return": [
+                "OpenConversationResponse",
+                "str",
+                "Dict[str, Any]",
+                "Optional[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "bot_access_token": [
+                    "str"
+                ]
+            }
+        },
+        "SlackClient.post_message": {
+            "name": "post_message",
+            "location": 51,
+            "return": [
+                "PostMessageResponse",
+                "int",
+                "str",
+                "Dict[str, Any]",
+                "Optional[Dict]"
+            ],
+            "arguments": {
+                "self": [],
+                "bot_access_token": [
+                    "str",
+                    "bytes"
+                ],
+                "channel": [
+                    "str"
+                ],
+                "as_user": [
+                    "str"
+                ],
+                "text": [
+                    "str"
+                ],
+                "thread_ts": [
+                    "str",
+                    "None"
+                ],
+                "attachments": [
+                    "str",
+                    "None"
+                ]
+            }
+        },
+        "SlackClient.post_message_if_channel_exists": {
+            "name": "post_message_if_channel_exists",
+            "location": 75,
+            "return": [
+                "None",
+                "int",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "bot_access_token": [
+                    "str"
+                ],
+                "channel": [
+                    "str"
+                ],
+                "as_user": [
+                    "str"
+                ],
+                "text": [
+                    "str"
+                ],
+                "thread_ts": [
+                    "str",
+                    "None"
+                ],
+                "attachments": [
+                    "str",
+                    "None"
+                ]
+            }
+        },
+        "SlackClient._channels_list_internal": {
+            "name": "_channels_list_internal",
+            "location": 96,
+            "return": [
+                "list[Channel]",
+                "bool",
+                "Optional[str]",
+                "Optional[Union[Any, str]]",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "bot_access_token": [
+                    "str"
+                ]
+            }
+        },
+        "SlackClient.conversations_members": {
+            "name": "conversations_members",
+            "location": 104,
+            "return": [
+                "str",
+                "list[]"
+            ],
+            "arguments": {
+                "self": [],
+                "bot_access_token": [
+                    "str"
+                ],
+                "channel_id": [
+                    "str",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]",
+                    "dict",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "SlackClient.get_user_info": {
+            "name": "get_user_info",
+            "location": 114,
+            "return": [
+                "User",
+                "str",
+                "Optional[str]",
+                "dict",
+                "List[str]",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "bot_access_token": [
+                    "str"
+                ],
+                "user_id": [
+                    "str",
+                    "int",
+                    "Union[int, str]",
+                    "dict[str, str]",
+                    "Dict[str, str]"
+                ]
+            }
+        },
+        "SlackClient.get_channel": {
+            "name": "get_channel",
+            "location": 123,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "bot_access_token": [
+                    "str",
+                    "int",
+                    "list",
+                    "list[]",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]",
+                    "Dict[Any, Dict[str, Any]]",
+                    "dict[typing.Any, dict[str, typing.Any]]",
+                    "dict",
+                    "dict[, ]"
+                ],
+                "name": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/clients/sqs_v2.py": {
+        "RoundTripEncoder.default": {
+            "name": "default",
+            "location": 39,
+            "return": [
+                "dict[typing.Text, typing.Text]",
+                "bool",
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "obj": [
+                    "float",
+                    "str",
+                    "int",
+                    "dict[str, str]",
+                    "datetime.timedelta",
+                    "datetime.datetime",
+                    "Dict[str, str]"
+                ]
+            }
+        },
+        "RoundTripDecoder.__init__": {
+            "name": "__init__",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RoundTripDecoder.object_hook": {
+            "name": "object_hook",
+            "location": 52,
+            "return": [
+                "str",
+                "UUID",
+                "int",
+                "bool",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "obj": [
+                    "str",
+                    "float",
+                    "int",
+                    "datetime.timedelta",
+                    "Dict[str, str]"
+                ]
+            }
+        },
+        "SqsClient.__init__": {
+            "name": "__init__",
+            "location": 65,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SqsClient._name_for_queue_stage": {
+            "name": "_name_for_queue_stage",
+            "location": 72,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "queue_name": [
+                    "str"
+                ],
+                "stage": [
+                    "lunch_buddies.constants.stages.Stage"
+                ]
+            }
+        },
+        "SqsClient._url_for_queue": {
+            "name": "_url_for_queue",
+            "location": 78,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "queue_name": [
+                    "str"
+                ]
+            }
+        },
+        "SqsClient._url_from_arn": {
+            "name": "_url_from_arn",
+            "location": 86,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "arn": [
+                    "str"
+                ]
+            }
+        },
+        "SqsClient._parse_sqs_message": {
+            "name": "_parse_sqs_message",
+            "location": 97,
+            "return": [
+                "SqsMessage"
+            ],
+            "arguments": {
+                "self": [],
+                "raw": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "SqsClient.parse_sqs_messages": {
+            "name": "parse_sqs_messages",
+            "location": 121,
+            "return": [
+                "List[SqsMessage]"
+            ],
+            "arguments": {
+                "self": [],
+                "raw": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "SqsClient._send_message_internal": {
+            "name": "_send_message_internal",
+            "location": 124,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "queue_name": [
+                    "str"
+                ],
+                "message": [
+                    "NamedTuple"
+                ]
+            }
+        },
+        "SqsClient.send_messages": {
+            "name": "send_messages",
+            "location": 133,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "queue_name": [
+                    "str"
+                ],
+                "messages": [
+                    "List[NamedTuple]"
+                ]
+            }
+        },
+        "SqsClient.set_visibility_timeout_with_backoff": {
+            "name": "set_visibility_timeout_with_backoff",
+            "location": 137,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "sqs_message": [
+                    "SqsMessage"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/clients/stripe.py": {
+        "StripeClient.__init__": {
+            "name": "__init__",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "StripeClient.create_customer": {
+            "name": "create_customer",
+            "location": 31,
+            "return": [
+                "Optional[Customer]"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "email": [
+                    "str"
+                ],
+                "team_name": [
+                    "str"
+                ]
+            }
+        },
+        "StripeClient.update_customer": {
+            "name": "update_customer",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "customer_id": [
+                    "str"
+                ],
+                "name": [
+                    "str"
+                ],
+                "email": [
+                    "str"
+                ],
+                "team_name": [
+                    "str"
+                ]
+            }
+        },
+        "StripeClient.latest_invoice_for_customer": {
+            "name": "latest_invoice_for_customer",
+            "location": 55,
+            "return": [
+                "Optional[Invoice]"
+            ],
+            "arguments": {
+                "self": [],
+                "customer_id": [
+                    "str"
+                ]
+            }
+        },
+        "StripeClient.create_invoice": {
+            "name": "create_invoice",
+            "location": 69,
+            "return": [
+                "Optional[Invoice]"
+            ],
+            "arguments": {
+                "self": [],
+                "customer": [
+                    "Customer"
+                ],
+                "line_items": [
+                    "List[LineItem]"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/clients/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/constants/help.py": {},
+    "lunch-buddies-master/src/lunch_buddies/constants/polls.py": {},
+    "lunch-buddies-master/src/lunch_buddies/constants/slack.py": {},
+    "lunch-buddies-master/src/lunch_buddies/constants/stages.py": {},
+    "lunch-buddies-master/src/lunch_buddies/constants/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/dao/groups.py": {
+        "GroupsDao.convert_to_dynamo": {
+            "name": "convert_to_dynamo",
+            "location": 13,
+            "return": [
+                "bool",
+                "dict[typing.Text, str]"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "str",
+                    "dict[, ]",
+                    "dict",
+                    "zerver.models.Realm",
+                    "models.Name"
+                ]
+            }
+        },
+        "GroupsDao.convert_from_dynamo": {
+            "name": "convert_from_dynamo",
+            "location": 20,
+            "return": [
+                "Group",
+                "float",
+                "flask_appbuilder.security.sqla.models.User",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "list[deeplearning.ml4pl.models.log_database.Batch]",
+                    "str",
+                    "List[deeplearning.ml4pl.models.log_database.Batch]",
+                    "Dict[str, Any]",
+                    "Callable",
+                    "models.scenes.inventory_scene.InventoryScene",
+                    "dict"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/dao/polls.py": {
+        "choices_from_dynamo": {
+            "name": "choices_from_dynamo",
+            "location": 90,
+            "return": [
+                "list[Choice]",
+                "bool",
+                "Set[str]",
+                "Dict[str, Any]",
+                "str",
+                "Iterable[int]"
+            ],
+            "arguments": {
+                "value": [
+                    "str",
+                    "bool",
+                    "Tuple[str]",
+                    "tuple[str]",
+                    "dict",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "choices_to_dynamo": {
+            "name": "choices_to_dynamo",
+            "location": 129,
+            "return": [
+                "str",
+                "tuple",
+                "List[str]",
+                "int",
+                "list",
+                "float"
+            ],
+            "arguments": {
+                "value": [
+                    "list[lunch_buddies.models.polls.Choice]",
+                    "List[lunch_buddies.models.polls.Choice]",
+                    "list[]",
+                    "list[str]",
+                    "str",
+                    "Callable[[], Iterator[Any]]",
+                    "list",
+                    "List[str]"
+                ]
+            }
+        },
+        "PollsDao.find_by_callback_id_or_die": {
+            "name": "find_by_callback_id_or_die",
+            "location": 19,
+            "return": [
+                "str",
+                "int",
+                "Dict[str, Any]"
+            ],
+            "arguments": {
+                "self": [],
+                "team_id": [
+                    "int",
+                    "str"
+                ],
+                "callback_id": [
+                    "str",
+                    "dict[, ]",
+                    "transfer.models.SnippetID",
+                    "dict"
+                ]
+            }
+        },
+        "PollsDao.find_latest_by_team_channel": {
+            "name": "find_latest_by_team_channel",
+            "location": 38,
+            "return": [
+                "None",
+                "str",
+                "bool",
+                "Optional[float]",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "team_id": [
+                    "str",
+                    "float",
+                    "int"
+                ],
+                "channel_id": [
+                    "Optional[str]",
+                    "str",
+                    "int",
+                    "None",
+                    "uuid.UUID",
+                    "Iterable[str]",
+                    "typing.Iterable[str]"
+                ]
+            }
+        },
+        "PollsDao.mark_poll_closed": {
+            "name": "mark_poll_closed",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "poll": [
+                    "str"
+                ]
+            }
+        },
+        "PollsDao.mark_poll_invoiced": {
+            "name": "mark_poll_invoiced",
+            "location": 56,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "poll": [
+                    "str"
+                ],
+                "stripe_invoice_id": [
+                    "str"
+                ]
+            }
+        },
+        "PollsDao.convert_to_dynamo": {
+            "name": "convert_to_dynamo",
+            "location": 59,
+            "return": [
+                "dict[typing.Text, typing.Union[None,str]]",
+                "bool",
+                "models.seat_group.SeatGroup",
+                "ticketing.models.ticket_bundle.TicketBundle",
+                "Type"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "lunch_buddies.models.polls.Poll",
+                    "server.models.Reservation",
+                    "models.Membership",
+                    "lunch_buddies.models.poll_responses.PollResponse"
+                ]
+            }
+        },
+        "PollsDao.convert_from_dynamo": {
+            "name": "convert_from_dynamo",
+            "location": 72,
+            "return": [
+                "Poll",
+                "Dict[str, Any]",
+                "Tuple[str, str]",
+                "List[server.models.Rental]",
+                "bool",
+                "Dict[str, str]",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "dict",
+                    "Dict[str, Any]",
+                    "lunch_buddies.clients.dynamo.DynamoObject",
+                    "models.Work",
+                    "int"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/dao/poll_responses.py": {
+        "PollResponsesDao.convert_to_dynamo": {
+            "name": "convert_to_dynamo",
+            "location": 16,
+            "return": [
+                "bool",
+                "dict[typing.Text, str]"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "int",
+                    "float",
+                    "lunch_buddies.models.poll_responses.PollResponse",
+                    "models.Membership"
+                ]
+            }
+        },
+        "PollResponsesDao.convert_from_dynamo": {
+            "name": "convert_from_dynamo",
+            "location": 24,
+            "return": [
+                "PollResponse",
+                "Dict[str, str]",
+                "int",
+                "bool",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "lunch_buddies.clients.dynamo.DynamoObject",
+                    "bool",
+                    "int",
+                    "models.scenes.inventory_scene.InventoryScene"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/dao/teams.py": {
+        "TeamsDao.convert_to_dynamo": {
+            "name": "convert_to_dynamo",
+            "location": 14,
+            "return": [
+                "dict[typing.Text, typing.Union[int,None]]",
+                "bool",
+                "Dict[str, Any]",
+                "Union[int, float, complex]"
+            ],
+            "arguments": {
+                "self": [],
+                "var": [
+                    "bool",
+                    "str",
+                    "list[]",
+                    "list",
+                    "float",
+                    "paradigm.models.Plain",
+                    "Union[int, float]"
+                ]
+            }
+        },
+        "TeamsDao.convert_from_dynamo": {
+            "name": "convert_from_dynamo",
+            "location": 28,
+            "return": [
+                "Team",
+                "Dict[str, Any]",
+                "bool",
+                "List[server.models.Rental]",
+                "Tuple[str, str]",
+                "django.db.models.Q.uerySet",
+                "dict",
+                "Dict[str, str]"
+            ],
+            "arguments": {
+                "self": [],
+                "var": [
+                    "str",
+                    "list[]",
+                    "Optional[Dict]",
+                    "list",
+                    "Dict[str, Any]",
+                    "bool"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/dao/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/lib/conversion_helpers.py": {
+        "convert_datetime_to_decimal": {
+            "name": "convert_datetime_to_decimal",
+            "location": 7,
+            "return": [
+                "decimal.Decimal"
+            ],
+            "arguments": {
+                "var": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "convert_datetime_from_dynamo": {
+            "name": "convert_datetime_from_dynamo",
+            "location": 11,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {
+                "var": [
+                    "Optional[Union[(int, str, decimal.Decimal)]]"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/lib/service_context.py": {},
+    "lunch-buddies-master/src/lunch_buddies/lib/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/models/groups.py": {},
+    "lunch-buddies-master/src/lunch_buddies/models/polls.py": {},
+    "lunch-buddies-master/src/lunch_buddies/models/poll_responses.py": {},
+    "lunch-buddies-master/src/lunch_buddies/models/teams.py": {},
+    "lunch-buddies-master/src/lunch_buddies/models/__init__.py": {},
+    "lunch-buddies-master/src/lunch_buddies/scripts/analysis.py": {
+        "run": {
+            "name": "run",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "run.team_summary": {
+            "name": "team_summary",
+            "location": 18,
+            "return": [
+                "dict[typing.Text, typing.Union[int,None,int]]",
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "team": [
+                    "List[dict]",
+                    "Set[str]",
+                    "str",
+                    "list"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/scripts/close_all_polls_for_team.py": {
+        "run": {
+            "name": "run",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/src/lunch_buddies/scripts/generate_app_store_content.py": {},
+    "lunch-buddies-master/src/lunch_buddies/scripts/save_to_sql.py": {
+        "run": {
+            "name": "run",
+            "location": 6,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/tests/conftest.py": {
+        "mocked_sqs_v2": {
+            "name": "mocked_sqs_v2",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "str"
+                ]
+            }
+        },
+        "mocked_slack": {
+            "name": "mocked_slack",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "str"
+                ]
+            }
+        },
+        "mocked_team": {
+            "name": "mocked_team",
+            "location": 72,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "int",
+                    "site.transfer.models.SiteID",
+                    "transfer.models.User",
+                    "bob_emploi.frontend.api.user_pb2.User"
+                ]
+            }
+        },
+        "mocked_stripe": {
+            "name": "mocked_stripe",
+            "location": 94,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "str"
+                ]
+            }
+        },
+        "mocked_polls": {
+            "name": "mocked_polls",
+            "location": 104,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "int",
+                    "site.transfer.models.SiteID",
+                    "transfer.models.User",
+                    "users.models.JustfixUser"
+                ]
+            }
+        },
+        "mocked_poll_responses": {
+            "name": "mocked_poll_responses",
+            "location": 137,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "int",
+                    "users.models.JustfixUser",
+                    "bool",
+                    "salon.models.Stylist"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/fixtures.py": {},
+    "lunch-buddies-master/tests/__init__.py": {},
+    "lunch-buddies-master/tests/actions/test_bot.py": {
+        "test_parse_message": {
+            "name": "test_parse_message",
+            "location": 40,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "text": [
+                    "int",
+                    "str",
+                    "None",
+                    "itsim.types.Address",
+                    "Optional[str]"
+                ],
+                "message_type": [
+                    "int",
+                    "str",
+                    "None",
+                    "itsim.types.Address",
+                    "Optional[str]"
+                ],
+                "expected": [
+                    "str",
+                    "bool",
+                    "List[List[str]]",
+                    "list[list[str]]"
+                ]
+            }
+        },
+        "test_parse_raw_request": {
+            "name": "test_parse_raw_request",
+            "location": 126,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "raw_request": [
+                    "str",
+                    "Optional[Dict[str, Any]]",
+                    "dict[str, typing.Any]",
+                    "dict",
+                    "None",
+                    "dict[, ]"
+                ],
+                "expected": [
+                    "str",
+                    "tests.hints.RightFolderCall"
+                ]
+            }
+        },
+        "test_split_text": {
+            "name": "test_split_text",
+            "location": 141,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "text": [
+                    "str",
+                    "dict",
+                    "dict[, ]"
+                ],
+                "expected": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "test_bot_help": {
+            "name": "test_bot_help",
+            "location": 147,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_slack": [],
+                "mocked_team": []
+            }
+        },
+        "test_bot_create": {
+            "name": "test_bot_create",
+            "location": 169,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_slack": [
+                    "Generator[None, Any, None]",
+                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                ],
+                "mocked_team": [
+                    "Generator[None, Any, None]",
+                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                ]
+            }
+        },
+        "test_bot_close": {
+            "name": "test_bot_close",
+            "location": 208,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_slack": [],
+                "mocked_team": []
+            }
+        },
+        "test_bot_nothing": {
+            "name": "test_bot_nothing",
+            "location": 247,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_slack": [],
+                "mocked_team": []
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_close_poll.py": {
+        "test_close_poll": {
+            "name": "test_close_poll",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_poll_responses": []
+            }
+        },
+        "test_close_poll_null_channel": {
+            "name": "test_close_poll_null_channel",
+            "location": 50,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_poll_responses": [],
+                "mocked_slack": []
+            }
+        },
+        "test_close_poll_null_channel_no_default_channel": {
+            "name": "test_close_poll_null_channel_no_default_channel",
+            "location": 83,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_poll_responses": []
+            }
+        },
+        "test_close_poll_messages_creating_user_if_already_closed": {
+            "name": "test_close_poll_messages_creating_user_if_already_closed",
+            "location": 125,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_slack": []
+            }
+        },
+        "test_close_poll_messages_creating_user_if_no_responses": {
+            "name": "test_close_poll_messages_creating_user_if_no_responses",
+            "location": 161,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "str"
+                ],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_slack": []
+            }
+        },
+        "test_close_poll_messages_creating_user_if_does_not_exist": {
+            "name": "test_close_poll_messages_creating_user_if_does_not_exist",
+            "location": 200,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_slack": []
+            }
+        },
+        "test_get_groups": {
+            "name": "test_get_groups",
+            "location": 272,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "elements": [
+                    "int",
+                    "Sequence[Any]",
+                    "typing.Sequence[typing.Any]"
+                ],
+                "group_size": [
+                    "int",
+                    "Sequence[Any]",
+                    "typing.Sequence[typing.Any]"
+                ],
+                "min_group_size": [
+                    "int",
+                    "Sequence[Any]",
+                    "typing.Sequence[typing.Any]"
+                ],
+                "max_group_size": [
+                    "int",
+                    "Sequence[Any]",
+                    "typing.Sequence[typing.Any]"
+                ],
+                "expected": [
+                    "List[str]",
+                    "int",
+                    "list[str]",
+                    "Optional[str]",
+                    "str",
+                    "tests.conftesWorker",
+                    "None"
+                ]
+            }
+        },
+        "test_get_groups_large_input": {
+            "name": "test_get_groups_large_input",
+            "location": 286,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_get_groups_works_for_all_company_sizes": {
+            "name": "test_get_groups_works_for_all_company_sizes",
+            "location": 297,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "elements": [
+                    "typing.Callable[, ]",
+                    "Callable",
+                    "dict[, ]",
+                    "dict",
+                    "dict[str, typing.Any]",
+                    "Dict[str, Any]",
+                    "deeplearning.ml4pl.models.log_database.Database"
+                ]
+            }
+        },
+        "test_group_by_answer": {
+            "name": "test_group_by_answer",
+            "location": 306,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_create_poll.py": {
+        "mocked_module": {
+            "name": "mocked_module",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "int",
+                    "dict[, ]",
+                    "dict",
+                    "starlette.types.Message"
+                ]
+            }
+        },
+        "test_create_poll": {
+            "name": "test_create_poll",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_module": [],
+                "mocked_slack": [],
+                "mocked_polls": []
+            }
+        },
+        "test_create_poll_custom_times": {
+            "name": "test_create_poll_custom_times",
+            "location": 88,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_module": [],
+                "mocked_slack": [],
+                "mocked_polls": []
+            }
+        },
+        "test_create_poll_messages_creating_user_if_already_created": {
+            "name": "test_create_poll_messages_creating_user_if_already_created",
+            "location": 148,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "int",
+                    "raiden.tests.utils.factories.NettingChannelEndStateProperties",
+                    "zerver.models.UserProfile"
+                ],
+                "mocked_team": [],
+                "mocked_slack": [],
+                "mocked_polls": []
+            }
+        },
+        "test_create_poll_works_if_existing_is_old": {
+            "name": "test_create_poll_works_if_existing_is_old",
+            "location": 183,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_module": [],
+                "mocked_slack": [],
+                "mocked_polls": []
+            }
+        },
+        "test_create_poll_messages_creating_user_if_default_channel_not_found": {
+            "name": "test_create_poll_messages_creating_user_if_default_channel_not_found",
+            "location": 230,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "pytest_mock.MockFixture"
+                ],
+                "mocked_slack": [],
+                "mocked_team": []
+            }
+        },
+        "test_create_poll_messages_creating_user_if_not_member_of_default_channel": {
+            "name": "test_create_poll_messages_creating_user_if_not_member_of_default_channel",
+            "location": 269,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_slack": [
+                    "Generator[None, Any, None]",
+                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                ],
+                "mocked_team": [
+                    "Generator[None, Any, None]",
+                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                ]
+            }
+        },
+        "test_parse_message_text_two_options": {
+            "name": "test_parse_message_text_two_options",
+            "location": 309,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "test_parse_message_text": {
+            "name": "test_parse_message_text",
+            "location": 345,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "text": [
+                    "int",
+                    "str"
+                ],
+                "expected_group_size": [
+                    "int",
+                    "Iterable[int]",
+                    "typing.Iterable[int]"
+                ]
+            }
+        },
+        "test_parse_message_text_group_multiple_times": {
+            "name": "test_parse_message_text_group_multiple_times",
+            "location": 371,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "text": [
+                    "int",
+                    "str"
+                ],
+                "expected_group_size": [
+                    "int",
+                    "typing.Iterable[int]",
+                    "Iterable[int]",
+                    "bool"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_get_summary.py": {
+        "test_get_summary_for_poll": {
+            "name": "test_get_summary_for_poll",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_get_lookback_days": {
+            "name": "test_get_lookback_days",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "rest_of_command": [
+                    "str",
+                    "list",
+                    "list[]"
+                ],
+                "expected": [
+                    "bytes",
+                    "int",
+                    "str",
+                    "Optional[Dict[str, Any]]",
+                    "dict[str, typing.Any]",
+                    "None"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_invoice.py": {
+        "mocked_data": {
+            "name": "mocked_data",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_invoice": {
+            "name": "test_invoice",
+            "location": 68,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "List[T]",
+                    "list[T]"
+                ],
+                "mocked_data": [
+                    "List[T]",
+                    "list[T]"
+                ]
+            }
+        },
+        "test_invoice_dry_run": {
+            "name": "test_invoice_dry_run",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_data": []
+            }
+        },
+        "test_invoice_line_item_zero": {
+            "name": "test_invoice_line_item_zero",
+            "location": 97,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_data": [
+                    "List[T]",
+                    "list[T]"
+                ]
+            }
+        },
+        "test_invoice_when_not_first_invoice": {
+            "name": "test_invoice_when_not_first_invoice",
+            "location": 115,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "str"
+                ],
+                "mocked_data": [
+                    "List[T]",
+                    "list[T]"
+                ]
+            }
+        },
+        "test_find_teams_eligible_for_invoicing": {
+            "name": "test_find_teams_eligible_for_invoicing",
+            "location": 143,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "Optional[str]",
+                    "str",
+                    "tests.basilisp.helpers.CompileFn",
+                    "None"
+                ]
+            }
+        },
+        "test_find_teams_eligible_for_invoicing_created_at": {
+            "name": "test_find_teams_eligible_for_invoicing_created_at",
+            "location": 184,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "bool"
+                ],
+                "now": [
+                    "list",
+                    "list[]"
+                ],
+                "created_ats": [
+                    "str",
+                    "int"
+                ],
+                "expected": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "test_get_polls_needing_invoice": {
+            "name": "test_get_polls_needing_invoice",
+            "location": 207,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "tests.setup.SetupTest"
+                ]
+            }
+        },
+        "test_get_unique_yes_users_from_polls": {
+            "name": "test_get_unique_yes_users_from_polls",
+            "location": 253,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": []
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_listen_to_poll.py": {
+        "test_listen_to_poll": {
+            "name": "test_listen_to_poll",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_polls": [
+                    "Generator[None, Any, None]",
+                    "typing.Generator[typing.Union[None,typing.Any,None]]",
+                    "List[T]",
+                    "list[T]"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_notify_group.py": {
+        "test_notify_group": {
+            "name": "test_notify_group",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_polls": [],
+                "mocked_slack": []
+            }
+        },
+        "test_notify_group_feature_notify_in_channel": {
+            "name": "test_notify_group_feature_notify_in_channel",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_slack": []
+            }
+        },
+        "test_notify_group_feature_notify_in_channel_removes_users_that_left": {
+            "name": "test_notify_group_feature_notify_in_channel_removes_users_that_left",
+            "location": 133,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_slack": []
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_oauth2.py": {
+        "test_auth": {
+            "name": "test_auth",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "pytest_mock.MockFixture"
+                ],
+                "mocked_slack": []
+            }
+        },
+        "test_auth_team_exists_without_stripe_id": {
+            "name": "test_auth_team_exists_without_stripe_id",
+            "location": 82,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_slack": [
+                    "list[T]",
+                    "tests.test_util.aiohttp.AiohttpClientMocker",
+                    "typing.Generator[typing.Union[None,typing.Any,None]]",
+                    "List[T]",
+                    "Generator[None, Any, None]"
+                ]
+            }
+        },
+        "test_auth_team_exists_with_stripe_id": {
+            "name": "test_auth_team_exists_with_stripe_id",
+            "location": 161,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_slack": [
+                    "list[T]",
+                    "tests.test_util.aiohttp.AiohttpClientMocker",
+                    "typing.Generator[typing.Union[None,typing.Any,None]]",
+                    "List[T]",
+                    "Generator[None, Any, None]"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_poll_user.py": {
+        "test_poll_user": {
+            "name": "test_poll_user",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": [],
+                "mocked_polls": [],
+                "mocked_slack": []
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_queue_close_poll.py": {
+        "test_queue_close_poll": {
+            "name": "test_queue_close_poll",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        },
+        "test_queue_close_poll_help": {
+            "name": "test_queue_close_poll_help",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/test_queue_create_poll.py": {
+        "test_queue_create_poll": {
+            "name": "test_queue_create_poll",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        },
+        "test_queue_create_poll_with_text": {
+            "name": "test_queue_create_poll_with_text",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        },
+        "test_queue_create_poll_help": {
+            "name": "test_queue_create_poll_help",
+            "location": 57,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        },
+        "test_create_poll_fails_with_bad_text": {
+            "name": "test_create_poll_fails_with_bad_text",
+            "location": 73,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        },
+        "test_create_poll_fails_with_bad_text_size": {
+            "name": "test_create_poll_fails_with_bad_text_size",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        },
+        "test_create_poll_fails_with_bad_text_size_too_large": {
+            "name": "test_create_poll_fails_with_bad_text_size_too_large",
+            "location": 105,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocked_sqs_v2": []
+            }
+        }
+    },
+    "lunch-buddies-master/tests/actions/__init__.py": {},
+    "lunch-buddies-master/tests/app/test_handlers.py": {
+        "test_sqs_handler": {
+            "name": "test_sqs_handler",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "Optional[str]",
+                    "str",
+                    "tests.basilisp.helpers.CompileFn",
+                    "None",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "test_sqs_handler_failure": {
+            "name": "test_sqs_handler_failure",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": []
+            }
+        }
+    },
+    "lunch-buddies-master/tests/app/test_http.py": {
+        "test_validate_request_token": {
+            "name": "test_validate_request_token",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_validate_request_token_finds_dev_token": {
+            "name": "test_validate_request_token_finds_dev_token",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_validate_request_token_errors_if_does_not_match_either": {
+            "name": "test_validate_request_token_errors_if_does_not_match_either",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_validate_team": {
+            "name": "test_validate_team",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [],
+                "mocked_team": []
+            }
+        },
+        "test_validate_team_fails_if_invalid_team": {
+            "name": "test_validate_team_fails_if_invalid_team",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "client": {
+            "name": "client",
+            "location": 57,
+            "return": [
+                "typing.Any",
+                "typing.Generator[typing.Union[typing.Generator[typing.Union[typing.Any,None,None]],dict[str, dict[str, typing.Any]]]]"
+            ],
+            "arguments": {}
+        },
+        "test_create_poll_http": {
+            "name": "test_create_poll_http",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "pytest_mock.MockFixture"
+                ],
+                "client": [
+                    "str",
+                    "pybuses.types.Subscribable"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/app/__init__.py": {},
+    "lunch-buddies-master/tests/app/requests/sqs_message.py": {},
+    "lunch-buddies-master/tests/clients/test_slack.py": {
+        "test_post_message": {
+            "name": "test_post_message",
+            "location": 8,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_post_message_fake_channel": {
+            "name": "test_post_message_fake_channel",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_post_message_if_channel_exists": {
+            "name": "test_post_message_if_channel_exists",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_post_message_if_channel_exists_fake_channel": {
+            "name": "test_post_message_if_channel_exists_fake_channel",
+            "location": 44,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/tests/clients/test_sqs_v2.py": {
+        "test_json_round_trip_encoding": {
+            "name": "test_json_round_trip_encoding",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_parse_sqs_message": {
+            "name": "test_parse_sqs_message",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "lunch-buddies-master/tests/clients/__init__.py": {},
+    "lunch-buddies-master/tests/dao/test_groups_dao.py": {
+        "test_roundtrip_convert": {
+            "name": "test_roundtrip_convert",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "model": [
+                    "nanaimo.fixtures.Fixture",
+                    "models.cf_recommend_models.ICfRecommendationModel"
+                ],
+                "dynamo": [
+                    "typing.Type",
+                    "tests.basilisp.helpers.CompileFn",
+                    "dict[, ]",
+                    "Type",
+                    "dict"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/dao/test_polls_dao.py": {
+        "test_roundtrip_convert": {
+            "name": "test_roundtrip_convert",
+            "location": 106,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "model": [
+                    "tests.setup.SetupTest"
+                ],
+                "dynamo": [
+                    "typing.Type",
+                    "tests.basilisp.helpers.CompileFn",
+                    "dict[, ]",
+                    "Type",
+                    "dict"
+                ]
+            }
+        },
+        "test_convert_from_dynamo": {
+            "name": "test_convert_from_dynamo",
+            "location": 277,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dynamo": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ],
+                "expected": [
+                    "str",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "test_find_by_callback_id_or_die_no_polls": {
+            "name": "test_find_by_callback_id_or_die_no_polls",
+            "location": 283,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_find_by_callback_id_or_die_no_matching_poll": {
+            "name": "test_find_by_callback_id_or_die_no_matching_poll",
+            "location": 296,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "tests.setup.SetupTest"
+                ]
+            }
+        },
+        "test_find_by_callback_id_or_die_multiple_matching": {
+            "name": "test_find_by_callback_id_or_die_multiple_matching",
+            "location": 315,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "tests.setup.SetupTest"
+                ]
+            }
+        },
+        "test_mark_poll_closed": {
+            "name": "test_mark_poll_closed",
+            "location": 335,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": [
+                    "tests.setup.SetupTest"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/dao/test_poll_responses_dao.py": {
+        "test_roundtrip_convert": {
+            "name": "test_roundtrip_convert",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "model": [],
+                "dynamo": [
+                    "typing.Type",
+                    "tests.basilisp.helpers.CompileFn",
+                    "dict[, ]",
+                    "Type",
+                    "dict"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/dao/test_teams_dao.py": {
+        "test_roundtrip_convert": {
+            "name": "test_roundtrip_convert",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "model": [
+                    "tests.setup.SetupTest"
+                ],
+                "dynamo": [
+                    "typing.Type",
+                    "tests.basilisp.helpers.CompileFn",
+                    "dict[, ]",
+                    "Type",
+                    "dict"
+                ]
+            }
+        }
+    },
+    "lunch-buddies-master/tests/dao/__init__.py": {}
+}

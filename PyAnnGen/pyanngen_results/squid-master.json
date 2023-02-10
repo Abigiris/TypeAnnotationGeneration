@@ -1,0 +1,4116 @@
+{
+    "squid-master/test.py": {
+        "main": {
+            "name": "main",
+            "location": 4,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "squid-master/train.py": {
+        "initialize_model": {
+            "name": "initialize_model",
+            "location": 26,
+            "return": [
+                "model.predictor.PredictorModel"
+            ],
+            "arguments": {
+                "args": [
+                    "model.train_parser.TrainArgs"
+                ],
+                "train_dataset": [
+                    "model.corpus.TrainDataset"
+                ],
+                "vectors": [
+                    "model.wv.WordVectors"
+                ]
+            }
+        },
+        "get_datasets": {
+            "name": "get_datasets",
+            "location": 76,
+            "return": [
+                "Tuple[(model.corpus.TrainDataset, model.corpus.EvalDataset, model.wv.WordVectors)]"
+            ],
+            "arguments": {
+                "args": [
+                    "model.train_parser.TrainArgs"
+                ]
+            }
+        },
+        "get_training_config": {
+            "name": "get_training_config",
+            "location": 102,
+            "return": [
+                "model.trainer.Trainer.TrainingConfig"
+            ],
+            "arguments": {
+                "args": [
+                    "model.train_parser.TrainArgs"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 124,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "squid-master/model/batcher.py": {
+        "get_collator": {
+            "name": "get_collator",
+            "location": 103,
+            "return": [
+                "Callable[([List[model.qa.EncodedSample]], QABatch)]"
+            ],
+            "arguments": {
+                "max_question_size": [
+                    "int"
+                ],
+                "max_context_size": [
+                    "int"
+                ]
+            }
+        },
+        "collate_batch": {
+            "name": "collate_batch",
+            "location": 115,
+            "return": [
+                "QABatch"
+            ],
+            "arguments": {
+                "batch": [
+                    "List[model.qa.EncodedSample]"
+                ],
+                "max_question_size": [
+                    "int"
+                ],
+                "max_context_size": [
+                    "int"
+                ]
+            }
+        },
+        "pad_and_sort": {
+            "name": "pad_and_sort",
+            "location": 213,
+            "return": [
+                "Tuple[(Any, Any, Any, Any)]"
+            ],
+            "arguments": {
+                "seq": [
+                    "list"
+                ],
+                "max_sequence_size": [
+                    "int"
+                ]
+            }
+        },
+        "QABatch.__init__": {
+            "name": "__init__",
+            "location": 42,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "question_ids": [
+                    "List[model.qa.QuestionId]"
+                ],
+                "question_words": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "question_chars": [
+                    "int",
+                    "list[int]",
+                    "List[int]",
+                    "typing.Mapping",
+                    "numpy.ndarray",
+                    "dict[int, str]",
+                    "Mapping[str, Any]",
+                    "list[str]",
+                    "Dict[int, str]",
+                    "List[str]"
+                ],
+                "question_lens": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "question_len_idxs": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "question_orig_idxs": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "question_mask": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "context_words": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "context_chars": [
+                    "int",
+                    "list[int]",
+                    "List[int]",
+                    "typing.Mapping",
+                    "numpy.ndarray",
+                    "dict[int, str]",
+                    "Mapping[str, Any]",
+                    "list[str]",
+                    "Dict[int, str]",
+                    "List[str]"
+                ],
+                "context_lens": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "context_len_idxs": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "context_orig_idxs": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "context_mask": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ],
+                "answer_span_starts": [
+                    "int",
+                    "list[tuple[typing.Union[int,int]]]",
+                    "bytes",
+                    "List[Tuple[int, int]]",
+                    "tuple[typing.Union[int,int]]",
+                    "Tuple[int, int]",
+                    "Iterable[str]"
+                ],
+                "answer_span_ends": [
+                    "str",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]",
+                    "Sequence",
+                    "typing.Sequence[]",
+                    "list",
+                    "list[]"
+                ]
+            }
+        },
+        "QABatch.to": {
+            "name": "to",
+            "location": 76,
+            "return": [
+                "QABatch"
+            ],
+            "arguments": {
+                "self": [
+                    "_TQABatch"
+                ],
+                "device": [
+                    "int",
+                    "str",
+                    "float",
+                    "torch.Tensor"
+                ]
+            }
+        },
+        "QABatch.__len__": {
+            "name": "__len__",
+            "location": 99,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "squid-master/model/bidaf_predictor.py": {
+        "BidafConfig.__init__": {
+            "name": "__init__",
+            "location": 34,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "contextual_encoder_config": [
+                    "model.predictor.ContextualEncoderConfig"
+                ],
+                "modeling_layer_config": [
+                    "model.predictor.ContextualEncoderConfig"
+                ],
+                "output_config": [
+                    "model.predictor.ContextualEncoderConfig"
+                ]
+            }
+        },
+        "BidafConfig.get_default_bidaf_config": {
+            "name": "get_default_bidaf_config",
+            "location": 45,
+            "return": [
+                "BidafConfig"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TBidafConfig]"
+                ]
+            }
+        },
+        "BidafOutput.__init__": {
+            "name": "__init__",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "config": [
+                    "model.predictor.ContextualEncoderConfig"
+                ],
+                "attended_input_size": [
+                    "int"
+                ],
+                "modeled_input_size": [
+                    "int"
+                ]
+            }
+        },
+        "BidafOutput.forward": {
+            "name": "forward",
+            "location": 83,
+            "return": [
+                "model.predictor.ModelPredictions"
+            ],
+            "arguments": {
+                "self": [],
+                "attended_context": [
+                    "bool",
+                    "torch.Tensor",
+                    "str",
+                    "None",
+                    "Optional[bool]"
+                ],
+                "modeled_context": [
+                    "str",
+                    "torch.Tensor",
+                    "bytes",
+                    "typing.Sequence[int]",
+                    "int",
+                    "Sequence[int]",
+                    "None",
+                    "Optional[bool]"
+                ],
+                "context_mask": [
+                    "bool",
+                    "torch.Tensor",
+                    "str",
+                    "None",
+                    "Optional[bool]"
+                ],
+                "lengths": [
+                    "int",
+                    "str",
+                    "raiden.utils.TokenAmount",
+                    "raiden.utils.BlockNumber"
+                ],
+                "length_idxs": [
+                    "int",
+                    "str",
+                    "raiden.utils.TokenAmount",
+                    "raiden.utils.BlockNumber"
+                ],
+                "orig_idxs": [
+                    "int",
+                    "str",
+                    "raiden.utils.TokenAmount",
+                    "raiden.utils.BlockNumber"
+                ]
+            }
+        },
+        "BidafPredictor.__init__": {
+            "name": "__init__",
+            "location": 124,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "embeddor": [
+                    "model.modules.embeddor.Embeddor"
+                ],
+                "config": [
+                    "BidafConfig"
+                ]
+            }
+        },
+        "BidafPredictor.forward": {
+            "name": "forward",
+            "location": 143,
+            "return": [
+                "model.predictor.ModelPredictions"
+            ],
+            "arguments": {
+                "self": [],
+                "batch": [
+                    "model.batcher.QABatch"
+                ]
+            }
+        }
+    },
+    "squid-master/model/corpus.py": {
+        "Corpus.__init__": {
+            "name": "__init__",
+            "location": 54,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "context_qas": [
+                    "List[model.qa.ContextQuestionAnswer]"
+                ],
+                "token_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "char_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "stats": [
+                    "CorpusStats"
+                ],
+                "source_file": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "Corpus.from_disk": {
+            "name": "from_disk",
+            "location": 72,
+            "return": [
+                "Corpus"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TCorpus]"
+                ],
+                "serialized_file": [
+                    "str"
+                ]
+            }
+        },
+        "Corpus.from_raw": {
+            "name": "from_raw",
+            "location": 82,
+            "return": [
+                "Corpus"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TCorpus]"
+                ],
+                "data_file": [
+                    "str"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ],
+                "word_vectors": [
+                    "model.wv.WordVectors"
+                ],
+                "force_single_answer": [
+                    "bool"
+                ],
+                "char_mapping": [
+                    "Optional[Dict[(str, int)]]"
+                ]
+            }
+        },
+        "Corpus.read_context_qas": {
+            "name": "read_context_qas",
+            "location": 117,
+            "return": [
+                "List[model.qa.ContextQuestionAnswer]"
+            ],
+            "arguments": {
+                "data_file": [
+                    "str"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ],
+                "force_single_answer": [
+                    "bool"
+                ]
+            }
+        },
+        "Corpus.compute_char_indices": {
+            "name": "compute_char_indices",
+            "location": 162,
+            "return": [
+                "Dict[(str, int)]"
+            ],
+            "arguments": {
+                "context_qas": [
+                    "List[model.qa.ContextQuestionAnswer]"
+                ]
+            }
+        },
+        "Corpus.compute_stats": {
+            "name": "compute_stats",
+            "location": 183,
+            "return": [
+                "CorpusStats"
+            ],
+            "arguments": {
+                "context_qas": [
+                    "List[model.qa.ContextQuestionAnswer]"
+                ],
+                "token_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "char_mapping": [
+                    "Dict[(str, int)]"
+                ]
+            }
+        },
+        "Corpus.get_single_answer_text": {
+            "name": "get_single_answer_text",
+            "location": 231,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "qid": [
+                    "model.qa.QuestionId"
+                ],
+                "span_start": [
+                    "int"
+                ],
+                "span_end": [
+                    "int"
+                ]
+            }
+        },
+        "Corpus.get_answer_texts": {
+            "name": "get_answer_texts",
+            "location": 260,
+            "return": [
+                "Dict[(model.qa.QuestionId, str)]"
+            ],
+            "arguments": {
+                "self": [],
+                "answer_token_idxs": [
+                    "Dict[(model.qa.QuestionId, tuple)]"
+                ]
+            }
+        },
+        "Corpus.get_gold_answers": {
+            "name": "get_gold_answers",
+            "location": 277,
+            "return": [
+                "Dict[(model.qa.QuestionId, str)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Corpus.save": {
+            "name": "save",
+            "location": 284,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "file_name": [
+                    "str"
+                ]
+            }
+        },
+        "EncodedCorpus.__init__": {
+            "name": "__init__",
+            "location": 305,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "corpus": [
+                    "Corpus"
+                ]
+            }
+        },
+        "EncodedCorpus.encode": {
+            "name": "encode",
+            "location": 318,
+            "return": [
+                "List[model.qa.EncodedContextQuestionAnswer]"
+            ],
+            "arguments": {
+                "context_qas": [
+                    "List[model.qa.ContextQuestionAnswer]"
+                ],
+                "token_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "char_mapping": [
+                    "Dict[(str, int)]"
+                ]
+            }
+        },
+        "SampleCorpus.__init__": {
+            "name": "__init__",
+            "location": 347,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "corpus": [
+                    "Corpus"
+                ]
+            }
+        },
+        "SampleCorpus.make_samples": {
+            "name": "make_samples",
+            "location": 353,
+            "return": [
+                "List[model.qa.EncodedSample]"
+            ],
+            "arguments": {
+                "context_qas": [
+                    "List[model.qa.EncodedContextQuestionAnswer]"
+                ]
+            }
+        },
+        "QADataset.__init__": {
+            "name": "__init__",
+            "location": 379,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "corpus": [
+                    "Corpus"
+                ]
+            }
+        },
+        "QADataset.__len__": {
+            "name": "__len__",
+            "location": 383,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QADataset.__getitem__": {
+            "name": "__getitem__",
+            "location": 386,
+            "return": [
+                "model.qa.EncodedSample"
+            ],
+            "arguments": {
+                "self": [],
+                "idx": [
+                    "int"
+                ]
+            }
+        },
+        "QADataset.get_gold_answers": {
+            "name": "get_gold_answers",
+            "location": 389,
+            "return": [
+                "Dict[(model.qa.QuestionId, str)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QADataset.get_answer_texts": {
+            "name": "get_answer_texts",
+            "location": 392,
+            "return": [
+                "Dict[(model.qa.QuestionId, str)]"
+            ],
+            "arguments": {
+                "self": [],
+                "answer_token_idxs": [
+                    "Dict[(model.qa.QuestionId, tuple)]"
+                ]
+            }
+        },
+        "QADataset.stats": {
+            "name": "stats",
+            "location": 407,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QADataset.source_file": {
+            "name": "source_file",
+            "location": 411,
+            "return": [
+                "str",
+                "List[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrainDataset.__init__": {
+            "name": "__init__",
+            "location": 427,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "corpus": [
+                    "Corpus"
+                ]
+            }
+        },
+        "TrainDataset.load_dataset": {
+            "name": "load_dataset",
+            "location": 433,
+            "return": [
+                "QADataset"
+            ],
+            "arguments": {
+                "cls": [
+                    "dict[str, typing.Any]",
+                    "Dict[str, Any]",
+                    "list[str]",
+                    "int",
+                    "List[str]",
+                    "list[float]",
+                    "str",
+                    "List[float]",
+                    "typing.Type",
+                    "type",
+                    "bool"
+                ],
+                "filename": [
+                    "str"
+                ],
+                "vectors": [
+                    "model.wv.WordVectors"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ],
+                "force_single_answer": [
+                    "bool"
+                ]
+            }
+        },
+        "EvalDataset.__init__": {
+            "name": "__init__",
+            "location": 472,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "corpus": [
+                    "Corpus"
+                ]
+            }
+        },
+        "EvalDataset.load_dataset": {
+            "name": "load_dataset",
+            "location": 476,
+            "return": [
+                "QADataset"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "bool",
+                    "dict[str, L]",
+                    "int",
+                    "list[int]",
+                    "Dict[str, 'LabwareDefinition']",
+                    "List[int]"
+                ],
+                "filename": [
+                    "str"
+                ],
+                "vectors": [
+                    "model.wv.WordVectors"
+                ],
+                "char_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ],
+                "force_single_answer": [
+                    "bool"
+                ]
+            }
+        },
+        "Corpus.from_raw.return_one": {
+            "name": "return_one",
+            "location": 107,
+            "return": [
+                "int",
+                "float",
+                "Tuple[int, int]",
+                "str"
+            ],
+            "arguments": {}
+        }
+    },
+    "squid-master/model/docqa_predictor.py": {
+        "DocQAConfig.__init__": {
+            "name": "__init__",
+            "location": 37,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "contextual_encoder_config": [
+                    "model.predictor.ContextualEncoderConfig"
+                ],
+                "dropout_prob": [
+                    "float"
+                ],
+                "attention_linear_hidden_size": [
+                    "int"
+                ],
+                "use_self_attention": [
+                    "bool"
+                ],
+                "batch_size": [
+                    "int"
+                ]
+            }
+        },
+        "DocQAOutput.__init__": {
+            "name": "__init__",
+            "location": 66,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "config": [
+                    "model.predictor.ContextualEncoderConfig"
+                ],
+                "input_size": [
+                    "int"
+                ]
+            }
+        },
+        "DocQAOutput.forward": {
+            "name": "forward",
+            "location": 81,
+            "return": [
+                "model.predictor.ModelPredictions"
+            ],
+            "arguments": {
+                "self": [],
+                "context_encoding": [
+                    "str",
+                    "int",
+                    "Union[int, float]",
+                    "timeview.gui.model.View",
+                    "Sequence[int]"
+                ],
+                "context_mask": [
+                    "int",
+                    "float",
+                    "typing.OrderedDict",
+                    "OrderedDict",
+                    "torch.Tensor"
+                ],
+                "lengths": [
+                    "int",
+                    "float",
+                    "str",
+                    "Union[int, float]",
+                    "typing.Sequence[int]",
+                    "timeview.gui.model.View",
+                    "Sequence[int]"
+                ],
+                "length_idxs": [
+                    "int",
+                    "Union[int, float]",
+                    "timeview.gui.model.View",
+                    "Sequence[int]",
+                    "str"
+                ],
+                "orig_idxs": [
+                    "int",
+                    "float",
+                    "str",
+                    "Union[int, float]",
+                    "typing.Sequence[int]",
+                    "timeview.gui.model.View",
+                    "Sequence[int]"
+                ]
+            }
+        },
+        "DocQAPredictor.__init__": {
+            "name": "__init__",
+            "location": 141,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "embeddor": [
+                    "model.modules.embeddor.Embeddor"
+                ],
+                "config": [
+                    "DocQAConfig"
+                ]
+            }
+        },
+        "DocQAPredictor.forward": {
+            "name": "forward",
+            "location": 172,
+            "return": [
+                "model.predictor.ModelPredictions"
+            ],
+            "arguments": {
+                "self": [],
+                "batch": [
+                    "model.batcher.QABatch"
+                ]
+            }
+        }
+    },
+    "squid-master/model/evaluator.py": {
+        "get_answer_token_idxs": {
+            "name": "get_answer_token_idxs",
+            "location": 87,
+            "return": [
+                "Dict[(model.qa.QuestionId, tuple)]"
+            ],
+            "arguments": {
+                "batch": [
+                    "model.batcher.QABatch"
+                ],
+                "model_predictions": [
+                    "model.predictor.ModelPredictions"
+                ]
+            }
+        },
+        "Evaluator.__init__": {
+            "name": "__init__",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Evaluator.forward": {
+            "name": "forward",
+            "location": 26,
+            "return": [
+                "torch.Tensor",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "batch": [
+                    "model.batcher.QABatch"
+                ],
+                "model_predictions": [
+                    "model.predictor.ModelPredictions"
+                ]
+            }
+        },
+        "SingleClassLossEvaluator.__init__": {
+            "name": "__init__",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SingleClassLossEvaluator.forward": {
+            "name": "forward",
+            "location": 45,
+            "return": [
+                "Optional[str]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "batch": [
+                    "model.batcher.QABatch"
+                ],
+                "model_predictions": [
+                    "model.predictor.ModelPredictions"
+                ]
+            }
+        },
+        "MultiClassLossEvaluator.__init__": {
+            "name": "__init__",
+            "location": 67,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MultiClassLossEvaluator.forward": {
+            "name": "forward",
+            "location": 73,
+            "return": [
+                "Optional[str]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "batch": [
+                    "model.batcher.QABatch"
+                ],
+                "model_predictions": [
+                    "model.predictor.ModelPredictions"
+                ]
+            }
+        }
+    },
+    "squid-master/model/predictor.py": {
+        "PredictorModel.__init__": {
+            "name": "__init__",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PredictorModel.forward": {
+            "name": "forward",
+            "location": 33,
+            "return": [
+                "ModelPredictions"
+            ],
+            "arguments": {
+                "self": [],
+                "batch": [
+                    "model.batcher.QABatch"
+                ]
+            }
+        },
+        "ContextualEncoderConfig.__init__": {
+            "name": "__init__",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "hidden_size": [
+                    "int"
+                ],
+                "num_layers": [
+                    "int"
+                ],
+                "dropout_input": [
+                    "bool"
+                ],
+                "dropout_prob": [
+                    "float"
+                ]
+            }
+        },
+        "ContextualEncoder.__init__": {
+            "name": "__init__",
+            "location": 71,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "input_dim": [
+                    "int"
+                ],
+                "config": [
+                    "ContextualEncoderConfig"
+                ]
+            }
+        },
+        "ContextualEncoder.forward": {
+            "name": "forward",
+            "location": 88,
+            "return": [
+                "str",
+                "int",
+                "Optional[Union[str, Any]]",
+                "Set[str]",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "inpt": [
+                    "str"
+                ],
+                "lengths": [
+                    "list",
+                    "int",
+                    "list[]",
+                    "float"
+                ],
+                "length_idxs": [
+                    "int",
+                    "Callable",
+                    "str"
+                ],
+                "orig_idxs": [
+                    "bool",
+                    "str",
+                    "float",
+                    "int",
+                    "Sequence[int]"
+                ]
+            }
+        }
+    },
+    "squid-master/model/profiler.py": {
+        "mem_report": {
+            "name": "mem_report",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "print_all": [
+                    "bool"
+                ]
+            }
+        },
+        "memory_profiled": {
+            "name": "memory_profiled",
+            "location": 75,
+            "return": [
+                "Callable"
+            ],
+            "arguments": {
+                "op": [
+                    "Callable"
+                ]
+            }
+        },
+        "autograd_profiled": {
+            "name": "autograd_profiled",
+            "location": 88,
+            "return": [
+                "Callable"
+            ],
+            "arguments": {
+                "op": [
+                    "Callable"
+                ],
+                "use_cuda": [
+                    "bool"
+                ]
+            }
+        },
+        "mem_report._mem_report": {
+            "name": "_mem_report",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "tensors": [
+                    "bool",
+                    "List[torch.Tensor]",
+                    "str"
+                ],
+                "mem_type": [
+                    "str",
+                    "List[float]",
+                    "int",
+                    "Mapping[str, str]"
+                ]
+            }
+        },
+        "memory_profiled.profiled_function": {
+            "name": "profiled_function",
+            "location": 77,
+            "return": [],
+            "arguments": {}
+        },
+        "autograd_profiled.profiled_function": {
+            "name": "profiled_function",
+            "location": 90,
+            "return": [
+                "str",
+                "bool"
+            ],
+            "arguments": {}
+        }
+    },
+    "squid-master/model/qa.py": {
+        "Processed.__init__": {
+            "name": "__init__",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ]
+            }
+        },
+        "Processed.__eq__": {
+            "name": "__eq__",
+            "location": 34,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "typing.Iterable[typing.Any]",
+                    "Iterable[Any]",
+                    "typing.AbstractSet",
+                    "AbstractSet[\"TemplateObjectVariable\"]",
+                    "AbstractSet[\"TemplateActionTypeVariable\"]"
+                ]
+            }
+        },
+        "Answer.__init__": {
+            "name": "__init__",
+            "location": 52,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ],
+                "span_start": [
+                    "int"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ]
+            }
+        },
+        "Answer.__eq__": {
+            "name": "__eq__",
+            "location": 59,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "bool",
+                    "int"
+                ]
+            }
+        },
+        "Answer.__hash__": {
+            "name": "__hash__",
+            "location": 69,
+            "return": [
+                "int",
+                "str",
+                "numpy.array",
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QuestionAnswer.__init__": {
+            "name": "__init__",
+            "location": 85,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "question_id": [
+                    "str"
+                ],
+                "text": [
+                    "str"
+                ],
+                "answers": [
+                    "Set[Answer]"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ]
+            }
+        },
+        "QuestionAnswer.__eq__": {
+            "name": "__eq__",
+            "location": 97,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "Callable[[numpy.ndarray, numpy.ndarray], numpy.ndarray]",
+                    "typing.Callable[numpy.ndarray,numpy.ndarray, numpy.ndarray]",
+                    "Optional[Dict[str, str]]",
+                    "dict[str, str]",
+                    "dict",
+                    "None",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "ContextQuestionAnswer.__init__": {
+            "name": "__init__",
+            "location": 113,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ],
+                "qas": [
+                    "List[QuestionAnswer]"
+                ],
+                "tokenizer": [
+                    "model.tokenizer.Tokenizer"
+                ],
+                "processor": [
+                    "model.text_processor.TextProcessor"
+                ]
+            }
+        },
+        "ContextQuestionAnswer.__eq__": {
+            "name": "__eq__",
+            "location": 123,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "Tuple[float, float]",
+                    "tuple[typing.Union[float,float]]"
+                ]
+            }
+        },
+        "EncodedAnswer.__init__": {
+            "name": "__init__",
+            "location": 137,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "answer": [
+                    "Answer"
+                ],
+                "context_tokens": [
+                    "List[model.tokenizer.Token]"
+                ]
+            }
+        },
+        "EncodedAnswer.__eq__": {
+            "name": "__eq__",
+            "location": 147,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "Callable",
+                    "typing.Callable[, ]"
+                ]
+            }
+        },
+        "EncodedQuestionAnswer.__init__": {
+            "name": "__init__",
+            "location": 168,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "qa": [
+                    "QuestionAnswer"
+                ],
+                "token_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "char_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "context_tokens": [
+                    "List[model.tokenizer.Token]"
+                ]
+            }
+        },
+        "EncodedQuestionAnswer.__eq__": {
+            "name": "__eq__",
+            "location": 185,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "typing.Iterable[typing.Any]",
+                    "Iterable[Any]",
+                    "typing.AbstractSet",
+                    "AbstractSet[Any]",
+                    "AbstractSet[T]"
+                ]
+            }
+        },
+        "EncodedContextQuestionAnswer.__init__": {
+            "name": "__init__",
+            "location": 207,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "ctx": [
+                    "ContextQuestionAnswer"
+                ],
+                "token_mapping": [
+                    "Dict[(str, int)]"
+                ],
+                "char_mapping": [
+                    "Dict[(str, int)]"
+                ]
+            }
+        },
+        "EncodedContextQuestionAnswer.__eq__": {
+            "name": "__eq__",
+            "location": 225,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "EncodedSample.__init__": {
+            "name": "__init__",
+            "location": 252,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "ctx_word_encoding": [
+                    "str",
+                    "bool",
+                    "int"
+                ],
+                "ctx_char_encoding": [
+                    "str",
+                    "int",
+                    "bool"
+                ],
+                "qa": [
+                    "EncodedQuestionAnswer"
+                ]
+            }
+        },
+        "EncodedSample.__eq__": {
+            "name": "__eq__",
+            "location": 269,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "squid-master/model/text_processor.py": {
+        "TextProcessor.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "config": [
+                    "Dict[(str, bool)]"
+                ]
+            }
+        },
+        "TextProcessor.process": {
+            "name": "process",
+            "location": 18,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "squid-master/model/tokenizer.py": {
+        "Tokenizer.tokenize": {
+            "name": "tokenize",
+            "location": 17,
+            "return": [
+                "List[Token]"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "NltkTokenizer.__init__": {
+            "name": "__init__",
+            "location": 35,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NltkTokenizer.tokenize": {
+            "name": "tokenize",
+            "location": 38,
+            "return": [
+                "List[Token]"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "squid-master/model/trainer.py": {
+        "Trainer.one_train_iteration": {
+            "name": "one_train_iteration",
+            "location": 77,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "cls": [
+                    "typing.Callable[, ]",
+                    "str",
+                    "Callable",
+                    "bool",
+                    "None",
+                    "Callable[..., Awaitable]",
+                    "dict[, ]",
+                    "Optional[bool]",
+                    "Optional[str]",
+                    "Optional[Union[str, int]]",
+                    "dict"
+                ],
+                "batch": [
+                    "model.batcher.QABatch"
+                ],
+                "model": [
+                    "model.predictor.PredictorModel"
+                ],
+                "parameters": [
+                    "Iterable"
+                ],
+                "evaluator": [
+                    "model.evaluator.Evaluator"
+                ],
+                "optimizer": [
+                    "torch.optim.Optimizer",
+                    "int",
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "Union[int, float]"
+                ],
+                "ema": [
+                    "model.modules.ema.EMA"
+                ],
+                "max_grad_norm": [
+                    "Optional[float]"
+                ]
+            }
+        },
+        "Trainer.training_run": {
+            "name": "training_run",
+            "location": 115,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "int",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ],
+                "loader": [
+                    "torch.utils.data.DataLoader",
+                    "str",
+                    "bool"
+                ],
+                "model": [
+                    "model.predictor.PredictorModel"
+                ],
+                "parameters": [
+                    "Iterable"
+                ],
+                "evaluator": [
+                    "model.evaluator.Evaluator"
+                ],
+                "optimizer": [
+                    "str",
+                    "int",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ],
+                "ema": [
+                    "model.modules.ema.EMA"
+                ],
+                "dev_dataset": [
+                    "model.corpus.EvalDataset"
+                ],
+                "training_config": [
+                    "Trainer.TrainingConfig"
+                ]
+            }
+        },
+        "Trainer.train_model": {
+            "name": "train_model",
+            "location": 195,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "typing.Type",
+                    "type",
+                    "dict[, ]",
+                    "Type",
+                    "dict"
+                ],
+                "model": [
+                    "model.predictor.PredictorModel"
+                ],
+                "train_dataset": [
+                    "model.corpus.TrainDataset"
+                ],
+                "dev_dataset": [
+                    "model.corpus.EvalDataset"
+                ],
+                "training_config": [
+                    "Trainer.TrainingConfig"
+                ],
+                "debug": [
+                    "bool"
+                ]
+            }
+        },
+        "Trainer.validate": {
+            "name": "validate",
+            "location": 271,
+            "return": [
+                "Tuple[(float, float, float)]"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "int",
+                    "cmk.utils.type_defs.EventRule"
+                ],
+                "dataset": [
+                    "model.corpus.QADataset"
+                ],
+                "model": [
+                    "model.predictor.PredictorModel"
+                ],
+                "evaluator": [
+                    "model.evaluator.Evaluator"
+                ],
+                "training_config": [
+                    "Trainer.TrainingConfig"
+                ],
+                "epoch": [
+                    "int"
+                ]
+            }
+        },
+        "Trainer.get_dataset_loss": {
+            "name": "get_dataset_loss",
+            "location": 305,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "cls": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "dataset": [
+                    "model.corpus.QADataset"
+                ],
+                "model": [
+                    "model.predictor.PredictorModel"
+                ],
+                "evaluator": [
+                    "model.evaluator.Evaluator"
+                ],
+                "training_config": [
+                    "Trainer.TrainingConfig"
+                ]
+            }
+        },
+        "Trainer.answer_dataset": {
+            "name": "answer_dataset",
+            "location": 336,
+            "return": [
+                "Dict[(model.qa.QuestionId, str)]"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "bool",
+                    "float",
+                    "dict",
+                    "dict[, ]",
+                    "Optional[List[str]]",
+                    "list[str]",
+                    "None"
+                ],
+                "dataset": [
+                    "model.corpus.QADataset"
+                ],
+                "model": [
+                    "model.predictor.PredictorModel"
+                ],
+                "training_config": [
+                    "Trainer.TrainingConfig"
+                ]
+            }
+        },
+        "Trainer.evaluate_on_squad_dataset": {
+            "name": "evaluate_on_squad_dataset",
+            "location": 363,
+            "return": [
+                "Dict[(str, str)]"
+            ],
+            "arguments": {
+                "cls": [
+                    "bool",
+                    "asyncpg_migrate.model.Config",
+                    "int"
+                ],
+                "dataset": [
+                    "model.corpus.QADataset"
+                ],
+                "model": [
+                    "model.predictor.PredictorModel"
+                ],
+                "training_config": [
+                    "Trainer.TrainingConfig"
+                ]
+            }
+        }
+    },
+    "squid-master/model/train_parser.py": {
+        "TrainArgs.__init__": {
+            "name": "__init__",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "arg_dict": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "TrainArgs.parse_cli_args": {
+            "name": "parse_cli_args",
+            "location": 94,
+            "return": [
+                "argparse.Namespace"
+            ],
+            "arguments": {}
+        },
+        "TrainArgs.get_args": {
+            "name": "get_args",
+            "location": 127,
+            "return": [
+                "rainArgs"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TTrainArgs]"
+                ]
+            }
+        }
+    },
+    "squid-master/model/util.py": {
+        "get_last_hidden_states": {
+            "name": "get_last_hidden_states",
+            "location": 8,
+            "return": [
+                "str",
+                "int",
+                "Dict[str, Any]",
+                "Set[str]",
+                "bytes",
+                "List[str]",
+                "typing.Iterator"
+            ],
+            "arguments": {
+                "states": [
+                    "int",
+                    "Union[int, float]",
+                    "Optional[float]",
+                    "bytes"
+                ],
+                "n_directions": [
+                    "int"
+                ],
+                "total_hidden_size": [
+                    "int"
+                ]
+            }
+        },
+        "get_device": {
+            "name": "get_device",
+            "location": 40,
+            "return": [
+                "bool",
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "disable_cuda": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "squid-master/model/wv.py": {
+        "WordVectors.__init__": {
+            "name": "__init__",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "vectors": [
+                    "float",
+                    "int",
+                    "None",
+                    "typing.Type",
+                    "Optional[int]",
+                    "Type[T]",
+                    "bool",
+                    "Union[float, int]"
+                ],
+                "idx_to_word": [
+                    "Dict[(int, str)]"
+                ],
+                "word_to_idx": [
+                    "Dict[(str, int)]"
+                ]
+            }
+        },
+        "WordVectors.contains": {
+            "name": "contains",
+            "location": 33,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "token": [
+                    "str"
+                ]
+            }
+        },
+        "WordVectors.load_vectors": {
+            "name": "load_vectors",
+            "location": 42,
+            "return": [
+                "WordVectors"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TWordVectors]"
+                ],
+                "file_name": [
+                    "str"
+                ]
+            }
+        },
+        "WordVectors.from_disk": {
+            "name": "from_disk",
+            "location": 56,
+            "return": [
+                "WordVectors"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TWordVectors]"
+                ],
+                "file_name": [
+                    "str"
+                ]
+            }
+        },
+        "WordVectors.from_text_vectors": {
+            "name": "from_text_vectors",
+            "location": 72,
+            "return": [
+                "WordVectors"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TWordVectors]"
+                ],
+                "vector_file": [
+                    "str"
+                ],
+                "consume_first_line": [
+                    "bool"
+                ]
+            }
+        },
+        "WordVectors.read_vectors": {
+            "name": "read_vectors",
+            "location": 88,
+            "return": [
+                "Tuple[(Any, Dict[(str, int)], Dict[(int, str)])]"
+            ],
+            "arguments": {
+                "vector_file": [
+                    "str"
+                ],
+                "consume_first_line": [
+                    "bool"
+                ]
+            }
+        },
+        "WordVectors.save": {
+            "name": "save",
+            "location": 123,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "file_name": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "squid-master/model/__init__.py": {},
+    "squid-master/model/modules/attention.py": {
+        "BaseBidirectionalAttention.__init__": {
+            "name": "__init__",
+            "location": 34,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "input_size": [
+                    "int"
+                ],
+                "linear_layer": [
+                    "bool"
+                ],
+                "linear_hidden_size": [
+                    "int"
+                ],
+                "self_attention": [
+                    "bool"
+                ]
+            }
+        },
+        "BaseBidirectionalAttention.forward": {
+            "name": "forward",
+            "location": 66,
+            "return": [
+                "T",
+                "int",
+                "typing.Counter",
+                "bool",
+                "list[]",
+                "dict[typing.Any, int]",
+                "dict[str, str]"
+            ],
+            "arguments": {
+                "self": [],
+                "context": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "question": [
+                    "float",
+                    "str",
+                    "bool",
+                    "torch.Tensor"
+                ],
+                "context_mask": [
+                    "int",
+                    "str",
+                    "Callable",
+                    "typing.Callable[, ]"
+                ]
+            }
+        },
+        "BidafBidirectionalAttention.__init__": {
+            "name": "__init__",
+            "location": 143,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "input_size": [
+                    "int"
+                ]
+            }
+        },
+        "DocQABidirectionalAttention.__init__": {
+            "name": "__init__",
+            "location": 153,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "input_size": [
+                    "int"
+                ],
+                "linear_hidden_size": [
+                    "int"
+                ]
+            }
+        },
+        "SelfAttention.__init__": {
+            "name": "__init__",
+            "location": 164,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "input_size": [
+                    "int"
+                ],
+                "linear_hidden_size": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "squid-master/model/modules/ema.py": {
+        "EMA.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mu": [
+                    "float"
+                ]
+            }
+        },
+        "EMA.register": {
+            "name": "register",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "val": [
+                    "str",
+                    "List[str]",
+                    "Optional[List[str]]"
+                ]
+            }
+        },
+        "EMA.forward": {
+            "name": "forward",
+            "location": 19,
+            "return": [
+                "Iterable[str]",
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "x": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "squid-master/model/modules/embeddor.py": {
+        "make_embeddor": {
+            "name": "make_embeddor",
+            "location": 188,
+            "return": [
+                "Embeddor"
+            ],
+            "arguments": {
+                "config": [
+                    "EmbeddorConfig"
+                ],
+                "device": [
+                    "dict",
+                    "dict[, ]",
+                    "bool",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]",
+                    "List[Dict[str, Any]]",
+                    "list[dict[str, typing.Any]]"
+                ]
+            }
+        },
+        "Embeddor.__init__": {
+            "name": "__init__",
+            "location": 40,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "embedding_dim": [
+                    "int"
+                ]
+            }
+        },
+        "Embeddor.forward": {
+            "name": "forward",
+            "location": 44,
+            "return": [
+                "torch.Tensor",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "words": [
+                    "str",
+                    "torch.LongTensor",
+                    "typing.Callable[, ]",
+                    "Callable"
+                ],
+                "chars": [
+                    "str",
+                    "torch.LongTensor",
+                    "typing.Callable[, ]",
+                    "Callable"
+                ]
+            }
+        },
+        "WordEmbeddor.__init__": {
+            "name": "__init__",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "word_vectors": [
+                    "model.wv.WordVectors"
+                ],
+                "train_vecs": [
+                    "bool"
+                ],
+                "device": [
+                    "int",
+                    "Iterable[str]",
+                    "str",
+                    "Optional[Dict[str, str]]"
+                ]
+            }
+        },
+        "WordEmbeddor.forward": {
+            "name": "forward",
+            "location": 73,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "words": [
+                    "bool",
+                    "str",
+                    "int",
+                    "list[list[str]]",
+                    "List[List[str]]"
+                ],
+                "chars": [
+                    "str",
+                    "torch.LongTensor",
+                    "typing.Callable[, ]",
+                    "Callable"
+                ]
+            }
+        },
+        "PoolingCharEmbeddor.__init__": {
+            "name": "__init__",
+            "location": 91,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "char_vocab_size": [
+                    "int"
+                ],
+                "embedding_dimension": [
+                    "int"
+                ],
+                "device": [
+                    "int",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "float"
+                ]
+            }
+        },
+        "PoolingCharEmbeddor.forward": {
+            "name": "forward",
+            "location": 104,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "words": [
+                    "str",
+                    "torch.LongTensor",
+                    "typing.Callable[, ]",
+                    "Callable"
+                ],
+                "chars": [
+                    "int",
+                    "torch.LongTensor",
+                    "List[int]",
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "ConcatenatingEmbeddor.__init__": {
+            "name": "__init__",
+            "location": 130,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "embeddors": [
+                    "List[Embeddor]"
+                ]
+            }
+        },
+        "ConcatenatingEmbeddor.forward": {
+            "name": "forward",
+            "location": 134,
+            "return": [
+                "int",
+                "float",
+                "bool",
+                "Collection[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "words": [
+                    "str",
+                    "int",
+                    "torch.LongTensor",
+                    "bytes",
+                    "bool"
+                ],
+                "chars": [
+                    "str",
+                    "int",
+                    "torch.LongTensor",
+                    "bytes",
+                    "bool"
+                ]
+            }
+        },
+        "HighwayEmbeddor.__init__": {
+            "name": "__init__",
+            "location": 158,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "embeddors": [
+                    "List[Embeddor]"
+                ],
+                "n_layers": [
+                    "int"
+                ]
+            }
+        },
+        "HighwayEmbeddor.forward": {
+            "name": "forward",
+            "location": 170,
+            "return": [
+                "int",
+                "float",
+                "Callable",
+                "str",
+                "list[]"
+            ],
+            "arguments": {
+                "self": [],
+                "words": [
+                    "str",
+                    "torch.LongTensor",
+                    "dict[str, str]",
+                    "Dict[str, str]",
+                    "torch.Tensor"
+                ],
+                "chars": [
+                    "str",
+                    "torch.LongTensor",
+                    "dict[str, str]",
+                    "Dict[str, str]",
+                    "torch.Tensor"
+                ]
+            }
+        }
+    },
+    "squid-master/model/modules/masked.py": {
+        "mask_sequence": {
+            "name": "mask_sequence",
+            "location": 14,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "input_batch": [
+                    "int",
+                    "Callable",
+                    "str"
+                ],
+                "mask_index": [
+                    "float"
+                ]
+            }
+        },
+        "MaskedOp.__init__": {
+            "name": "__init__",
+            "location": 34,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "op": [
+                    "str",
+                    "int",
+                    "bool",
+                    "list"
+                ],
+                "mask_mode": [
+                    "enum.Enum"
+                ],
+                "mask_time": [
+                    "enum.Enum"
+                ],
+                "mask_value": [
+                    "float"
+                ]
+            }
+        },
+        "MaskedOp._apply_mask": {
+            "name": "_apply_mask",
+            "location": 47,
+            "return": [
+                "int",
+                "str",
+                "List[int]",
+                "Dict[str, Any]",
+                "tuple"
+            ],
+            "arguments": {
+                "self": [],
+                "inpt": [
+                    "int",
+                    "str"
+                ],
+                "mask": [
+                    "int"
+                ]
+            }
+        },
+        "MaskedOp.forward": {
+            "name": "forward",
+            "location": 70,
+            "return": [
+                "List[str]",
+                "bool",
+                "Dict[str, Any]"
+            ],
+            "arguments": {
+                "self": [],
+                "input_batch": [
+                    "bool"
+                ]
+            }
+        },
+        "MaskedSoftmax.__init__": {
+            "name": "__init__",
+            "location": 100,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "dim": [
+                    "int"
+                ]
+            }
+        },
+        "MaskedLogSoftmax.__init__": {
+            "name": "__init__",
+            "location": 112,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "dim": [
+                    "int"
+                ]
+            }
+        },
+        "MaskedLinear.__init__": {
+            "name": "__init__",
+            "location": 123,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "in_features": [
+                    "int"
+                ],
+                "out_features": [
+                    "int"
+                ],
+                "bias": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "squid-master/model/modules/__init__.py": {},
+    "squid-master/scripts/evaluate_v1_1.py": {
+        "normalize_answer": {
+            "name": "normalize_answer",
+            "location": 11,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "s": [
+                    "str"
+                ]
+            }
+        },
+        "f1_score": {
+            "name": "f1_score",
+            "location": 30,
+            "return": [
+                "Union[(float, int)]"
+            ],
+            "arguments": {
+                "prediction": [
+                    "str",
+                    "float",
+                    "Optional[str]",
+                    "None",
+                    "list",
+                    "list[]",
+                    "List[str]",
+                    "list[str]"
+                ],
+                "ground_truth": [
+                    "str",
+                    "float",
+                    "bytes",
+                    "list",
+                    "list[]"
+                ]
+            }
+        },
+        "exact_match_score": {
+            "name": "exact_match_score",
+            "location": 43,
+            "return": [
+                "bool",
+                "str",
+                "Callable[[str], bool]",
+                "re.Match[str]"
+            ],
+            "arguments": {
+                "prediction": [
+                    "Callable[[T], bool]",
+                    "typing.Callable[T, bool]",
+                    "Iterable[T]",
+                    "typing.Iterable[T]"
+                ],
+                "ground_truth": [
+                    "Callable[[T], bool]",
+                    "typing.Callable[T, bool]",
+                    "Iterable[T]",
+                    "typing.Iterable[T]"
+                ]
+            }
+        },
+        "metric_max_over_ground_truths": {
+            "name": "metric_max_over_ground_truths",
+            "location": 47,
+            "return": [
+                "list[list[]]",
+                "bool",
+                "str",
+                "Union[str, Pattern]",
+                "int",
+                "Optional[int]",
+                "List[str]"
+            ],
+            "arguments": {
+                "metric_fn": [
+                    "int",
+                    "str",
+                    "Callable",
+                    "typing.Callable[, ]"
+                ],
+                "prediction": [
+                    "int",
+                    "str",
+                    "Callable",
+                    "typing.Callable[, ]"
+                ],
+                "ground_truths": [
+                    "str",
+                    "int",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
+                ]
+            }
+        },
+        "evaluate": {
+            "name": "evaluate",
+            "location": 55,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "dataset": [
+                    "str",
+                    "int",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
+                ],
+                "predictions": [
+                    "str",
+                    "int",
+                    "Callable"
+                ]
+            }
+        },
+        "normalize_answer.remove_articles": {
+            "name": "remove_articles",
+            "location": 14,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "text": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "normalize_answer.white_space_fix": {
+            "name": "white_space_fix",
+            "location": 17,
+            "return": [
+                "str",
+                "bool",
+                "List[str]",
+                "Exception"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "normalize_answer.remove_punc": {
+            "name": "remove_punc",
+            "location": 20,
+            "return": [
+                "str",
+                "list",
+                "List[str]",
+                "Optional[dict]",
+                "int",
+                "List[Dict[str, Any]]",
+                "frozenset"
+            ],
+            "arguments": {
+                "text": [
+                    "str",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "normalize_answer.lower": {
+            "name": "lower",
+            "location": 24,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "squid-master/scripts/evaluate_v2_0.py": {
+        "parse_args": {
+            "name": "parse_args",
+            "location": 20,
+            "return": [
+                "argparse.Namespace"
+            ],
+            "arguments": {}
+        },
+        "make_qid_to_has_ans": {
+            "name": "make_qid_to_has_ans",
+            "location": 59,
+            "return": [
+                "Dict[(Any, bool)]"
+            ],
+            "arguments": {
+                "dataset": [
+                    "bool",
+                    "float",
+                    "Iterable[Any]"
+                ]
+            }
+        },
+        "normalize_answer": {
+            "name": "normalize_answer",
+            "location": 68,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "s": [
+                    "str"
+                ]
+            }
+        },
+        "get_tokens": {
+            "name": "get_tokens",
+            "location": 88,
+            "return": [
+                "list[]",
+                "str",
+                "dict"
+            ],
+            "arguments": {
+                "s": [
+                    "str",
+                    "bytes",
+                    "int"
+                ]
+            }
+        },
+        "compute_exact": {
+            "name": "compute_exact",
+            "location": 94,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "a_gold": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "a_pred": [
+                    "int",
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "compute_f1": {
+            "name": "compute_f1",
+            "location": 98,
+            "return": [
+                "Union[(float, int)]"
+            ],
+            "arguments": {
+                "a_gold": [
+                    "typing.Callable[T,T, T]",
+                    "int",
+                    "Callable[[T, T], T]",
+                    "T"
+                ],
+                "a_pred": [
+                    "typing.Callable[T,T, T]",
+                    "int",
+                    "Callable[[T, T], T]",
+                    "T"
+                ]
+            }
+        },
+        "get_raw_scores": {
+            "name": "get_raw_scores",
+            "location": 114,
+            "return": [
+                "Tuple[(dict, dict)]"
+            ],
+            "arguments": {
+                "dataset": [
+                    "str",
+                    "bool",
+                    "dict[, ]",
+                    "T",
+                    "dict"
+                ],
+                "preds": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "apply_no_ans_threshold": {
+            "name": "apply_no_ans_threshold",
+            "location": 137,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "scores": [
+                    "Union[AsyncIterable[Any], Iterable[Any]]",
+                    "Mapping[str, Mapping[str, Any]]",
+                    "Dict[str, Any]",
+                    "Dict[str, str]",
+                    "dict",
+                    "Optional[Dict[str, Any]]",
+                    "Dict[str, float]",
+                    "Dict[str, Dict[str, float]]",
+                    "Dict[str, Dict]"
+                ],
+                "na_probs": [
+                    "float",
+                    "int",
+                    "str",
+                    "Union[float, int]"
+                ],
+                "qid_to_has_ans": [
+                    "int",
+                    "numpy.ndarray",
+                    "float",
+                    "tuple[typing.Union[int,int]]",
+                    "Tuple[int, int]"
+                ],
+                "na_prob_thresh": [
+                    "str",
+                    "float",
+                    "Union[float, int]",
+                    "int"
+                ]
+            }
+        },
+        "make_eval_dict": {
+            "name": "make_eval_dict",
+            "location": 148,
+            "return": [
+                "collections.OrderedDict[(str, Any)]"
+            ],
+            "arguments": {
+                "exact_scores": [
+                    "bool",
+                    "int",
+                    "Dict[str, Any]",
+                    "Optional[int]",
+                    "Dict[str, str]",
+                    "Optional[Sequence[Any]]"
+                ],
+                "f1_scores": [
+                    "bool",
+                    "int",
+                    "OrderedDict",
+                    "List[Dict[str, Any]]",
+                    "Optional[str]",
+                    "list"
+                ],
+                "qid_list": [
+                    "List[int]",
+                    "int",
+                    "List[List[int]]",
+                    "numpy.array",
+                    "Dict[str, List[str]]",
+                    "str"
+                ]
+            }
+        },
+        "merge_eval": {
+            "name": "merge_eval",
+            "location": 169,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "main_eval": [
+                    "str",
+                    "Optional[str]",
+                    "Optional[Dict]"
+                ],
+                "new_eval": [
+                    "str",
+                    "Optional[str]",
+                    "Optional[Dict]"
+                ],
+                "prefix": [
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Dict]",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "plot_pr_curve": {
+            "name": "plot_pr_curve",
+            "location": 174,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "precisions": [
+                    "list[float]",
+                    "List[float]",
+                    "list[str]",
+                    "bool",
+                    "List[str]",
+                    "str",
+                    "None",
+                    "Optional[numpy.ndarray]",
+                    "numpy.ndarray"
+                ],
+                "recalls": [
+                    "list[float]",
+                    "List[float]",
+                    "list[str]",
+                    "bool",
+                    "List[str]",
+                    "str",
+                    "None",
+                    "Optional[numpy.ndarray]",
+                    "numpy.ndarray"
+                ],
+                "out_image": [
+                    "List[float]",
+                    "list[float]",
+                    "bytes",
+                    "Tuple[int, int, int]",
+                    "tuple[typing.Union[int,int,int]]",
+                    "list",
+                    "list[]"
+                ],
+                "title": [
+                    "List[float]",
+                    "list[float]",
+                    "bytes",
+                    "Tuple[int, int, int]",
+                    "tuple[typing.Union[int,int,int]]",
+                    "list",
+                    "list[]"
+                ]
+            }
+        },
+        "make_precision_recall_eval": {
+            "name": "make_precision_recall_eval",
+            "location": 186,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "scores": [
+                    "int",
+                    "str",
+                    "typing.Callable[..., None]",
+                    "bool",
+                    "Callable[..., None]",
+                    "list[list[int]]",
+                    "List[List[int]]"
+                ],
+                "na_probs": [
+                    "Callable[[], Any]",
+                    "Dict[str, str]",
+                    "numpy.ndarray"
+                ],
+                "num_true_pos": [
+                    "int",
+                    "Optional[float]",
+                    "float",
+                    "None"
+                ],
+                "qid_to_has_ans": [
+                    "int",
+                    "str",
+                    "typing.Callable[..., None]",
+                    "bool",
+                    "Callable[..., None]",
+                    "list[list[int]]",
+                    "List[List[int]]"
+                ],
+                "out_image": [
+                    "Tuple[int]",
+                    "None",
+                    "int",
+                    "str",
+                    "float",
+                    "tuple[int]",
+                    "list",
+                    "list[]"
+                ],
+                "title": [
+                    "Tuple[int]",
+                    "None",
+                    "int",
+                    "str",
+                    "float",
+                    "tuple[int]",
+                    "list",
+                    "list[]"
+                ]
+            }
+        },
+        "run_precision_recall_analysis": {
+            "name": "run_precision_recall_analysis",
+            "location": 211,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "main_eval": [
+                    "int",
+                    "str",
+                    "typing.Callable[..., None]",
+                    "Callable[..., None]",
+                    "Callable"
+                ],
+                "exact_raw": [
+                    "int",
+                    "float",
+                    "str",
+                    "typing.Iterable[typing.Union[int,str]]",
+                    "Iterable[str]",
+                    "Iterable[Union[int, str]]"
+                ],
+                "f1_raw": [
+                    "int",
+                    "float",
+                    "bool",
+                    "numpy.random.RandomState"
+                ],
+                "na_probs": [
+                    "int",
+                    "float",
+                    "str",
+                    "typing.Iterable[typing.Union[int,str]]",
+                    "Iterable[str]",
+                    "Iterable[Union[int, str]]"
+                ],
+                "qid_to_has_ans": [
+                    "int",
+                    "bool",
+                    "Tuple[float, float]",
+                    "float",
+                    "Optional[Tuple[int, int]]"
+                ],
+                "out_image_dir": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "histogram_na_prob": {
+            "name": "histogram_na_prob",
+            "location": 249,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "na_probs": [
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "bool"
+                ],
+                "qid_list": [
+                    "Optional[str]",
+                    "int",
+                    "bool",
+                    "str"
+                ],
+                "image_dir": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ],
+                "name": [
+                    "str",
+                    "Optional[List]",
+                    "list[]",
+                    "None"
+                ]
+            }
+        },
+        "find_best_thresh": {
+            "name": "find_best_thresh",
+            "location": 262,
+            "return": [
+                "Tuple[(Any, Any)]"
+            ],
+            "arguments": {
+                "preds": [
+                    "float",
+                    "bool",
+                    "str",
+                    "Union[float, int]",
+                    "int"
+                ],
+                "scores": [],
+                "na_probs": [
+                    "dict[str, typing.Any]",
+                    "str",
+                    "Optional[Dict[str, Any]]",
+                    "list[str]",
+                    "numpy.ndarray",
+                    "Iterator[Tuple[Any]]",
+                    "List[str]"
+                ],
+                "qid_to_has_ans": [
+                    "Union[str, int]",
+                    "str"
+                ]
+            }
+        },
+        "find_all_best_thresh": {
+            "name": "find_all_best_thresh",
+            "location": 285,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "main_eval": [
+                    "int"
+                ],
+                "preds": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "exact_raw": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "f1_raw": [
+                    "Callable[[float], float]",
+                    "float",
+                    "typing.Callable[float, float]",
+                    "bool",
+                    "Tuple[int]",
+                    "tuple[int]"
+                ],
+                "na_probs": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "qid_to_has_ans": [
+                    "bool",
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 296,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "normalize_answer.remove_articles": {
+            "name": "remove_articles",
+            "location": 71,
+            "return": [
+                "int",
+                "str",
+                "List[List[str]]"
+            ],
+            "arguments": {
+                "text": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "normalize_answer.white_space_fix": {
+            "name": "white_space_fix",
+            "location": 75,
+            "return": [
+                "str",
+                "bool",
+                "List[str]",
+                "Exception"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "normalize_answer.remove_punc": {
+            "name": "remove_punc",
+            "location": 78,
+            "return": [
+                "str",
+                "list",
+                "List[str]",
+                "Optional[dict]",
+                "int",
+                "List[Dict[str, Any]]",
+                "frozenset"
+            ],
+            "arguments": {
+                "text": [
+                    "str",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "normalize_answer.lower": {
+            "name": "lower",
+            "location": 82,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "squid-master/test/integration.py": {
+        "prepare_files": {
+            "name": "prepare_files",
+            "location": 115,
+            "return": [
+                "Tuple[(tempfile._TemporaryFileWrapper[bytes], tempfile._TemporaryFileWrapper[bytes], tempfile._TemporaryFileWrapper[bytes])]"
+            ],
+            "arguments": {}
+        },
+        "check_dataset": {
+            "name": "check_dataset",
+            "location": 128,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dataset_json": [
+                    "bool",
+                    "float",
+                    "Optional[int]",
+                    "None"
+                ],
+                "dataset_obj": [
+                    "bool",
+                    "float",
+                    "Optional[int]",
+                    "None"
+                ],
+                "loader": [
+                    "bool",
+                    "Optional[int]",
+                    "float"
+                ],
+                "tokenizer": [
+                    "bool",
+                    "float",
+                    "Optional[int]",
+                    "None"
+                ],
+                "processor": [
+                    "bool",
+                    "float",
+                    "Optional[int]",
+                    "None"
+                ],
+                "multi_answer": [
+                    "bool",
+                    "float",
+                    "Optional[int]",
+                    "None"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 150,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "squid-master/test/test_batcher.py": {
+        "BatcherTestCase.setUp": {
+            "name": "setUp",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.make_sample": {
+            "name": "make_sample",
+            "location": 51,
+            "return": [
+                "model.qa.EncodedSample"
+            ],
+            "arguments": {
+                "self": [],
+                "context_text": [
+                    "str"
+                ],
+                "answers": [
+                    "List[model.qa.Answer]"
+                ],
+                "question_id": [
+                    "str"
+                ],
+                "question_text": [
+                    "str"
+                ]
+            }
+        },
+        "BatcherTestCase.test_pad_and_sort_single_seq": {
+            "name": "test_pad_and_sort_single_seq",
+            "location": 79,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_pad_and_sort_regular": {
+            "name": "test_pad_and_sort_regular",
+            "location": 99,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_pad_and_sort_edge_case": {
+            "name": "test_pad_and_sort_edge_case",
+            "location": 135,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_simple_words": {
+            "name": "test_collate_batch_simple_words",
+            "location": 171,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_q_len_sorting": {
+            "name": "test_collate_batch_q_len_sorting",
+            "location": 191,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_ctx_len_sorting": {
+            "name": "test_collate_batch_ctx_len_sorting",
+            "location": 223,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_idxs": {
+            "name": "test_collate_batch_idxs",
+            "location": 238,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_question_chars": {
+            "name": "test_collate_batch_question_chars",
+            "location": 267,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_context_chars": {
+            "name": "test_collate_batch_context_chars",
+            "location": 280,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_different_question_word_lens": {
+            "name": "test_collate_batch_different_question_word_lens",
+            "location": 293,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_different_question_word_numbers_and_lens": {
+            "name": "test_collate_batch_different_question_word_numbers_and_lens",
+            "location": 306,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_different_context_word_lens": {
+            "name": "test_collate_batch_different_context_word_lens",
+            "location": 320,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_collate_batch_different_context_word_numbers_and_lens": {
+            "name": "test_collate_batch_different_context_word_numbers_and_lens",
+            "location": 333,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.check_collated_chars": {
+            "name": "check_collated_chars",
+            "location": 347,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "chars": [
+                    "str",
+                    "torch.Tensor",
+                    "list[str]",
+                    "int",
+                    "List[str]"
+                ],
+                "words": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "BatcherTestCase.setUp.split_tokenize": {
+            "name": "split_tokenize",
+            "location": 35,
+            "return": [
+                "list[Token]",
+                "str",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "txt": [
+                    "str",
+                    "Optional[str]",
+                    "Tuple[Tuple[int, ...]]"
+                ]
+            }
+        }
+    },
+    "squid-master/test/test_corpus.py": {
+        "RawCorpusTestCase.setUp": {
+            "name": "setUp",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.tearDown": {
+            "name": "tearDown",
+            "location": 44,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_simple_single_question_answer": {
+            "name": "test_simple_single_question_answer",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_no_answer": {
+            "name": "test_no_answer",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_multiple_questions": {
+            "name": "test_multiple_questions",
+            "location": 120,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_multiple_answers": {
+            "name": "test_multiple_answers",
+            "location": 123,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_multiple_docs": {
+            "name": "test_multiple_docs",
+            "location": 126,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_duplicate_answers": {
+            "name": "test_duplicate_answers",
+            "location": 129,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_compute_vocab": {
+            "name": "test_compute_vocab",
+            "location": 132,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_compute_stats": {
+            "name": "test_compute_stats",
+            "location": 135,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_get_single_answer_text": {
+            "name": "test_get_single_answer_text",
+            "location": 138,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.test_get_answer_texts": {
+            "name": "test_get_answer_texts",
+            "location": 141,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodedCorpusTestCase.setUp": {
+            "name": "setUp",
+            "location": 149,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodedCorpusTestCase.test_encode": {
+            "name": "test_encode",
+            "location": 152,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SampleCorpusTestCase.setUp": {
+            "name": "setUp",
+            "location": 157,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SampleCorpusTestCase.test_make_samples": {
+            "name": "test_make_samples",
+            "location": 160,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QADatasetTestCase.setUp": {
+            "name": "setUp",
+            "location": 165,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QADatasetTestCase.test_len": {
+            "name": "test_len",
+            "location": 168,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QADatasetTestCase.test_get_answer_texts": {
+            "name": "test_get_answer_texts",
+            "location": 174,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrainDatasetTestCase.setUp": {
+            "name": "setUp",
+            "location": 182,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EvalDatasetTestCase.setUp": {
+            "name": "setUp",
+            "location": 187,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RawCorpusTestCase.setUp.split_tokenize": {
+            "name": "split_tokenize",
+            "location": 30,
+            "return": [
+                "list[Token]",
+                "str",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "txt": [
+                    "str",
+                    "Optional[str]",
+                    "Tuple[Tuple[int, ...]]"
+                ]
+            }
+        }
+    },
+    "squid-master/test/test_predictor.py": {
+        "PredictorTestCase.setUp": {
+            "name": "setUp",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PredictorTestCase.get_input": {
+            "name": "get_input",
+            "location": 30,
+            "return": [
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PredictorTestCase.get_rnn": {
+            "name": "get_rnn",
+            "location": 38,
+            "return": [
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "num_layers": [
+                    "int"
+                ],
+                "bidirectional": [
+                    "bool"
+                ]
+            }
+        },
+        "PredictorTestCase.check_match": {
+            "name": "check_match",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "all_states": [
+                    "int",
+                    "list[list[int]]",
+                    "None",
+                    "torch.Tensor",
+                    "numpy.ndarray",
+                    "List[List[int]]",
+                    "Optional[torch.BoolTensor]"
+                ],
+                "last_hidden_state": [
+                    "raiden.utils.BlockNumber"
+                ],
+                "seq_lens": [
+                    "int",
+                    "list[list[int]]",
+                    "None",
+                    "torch.Tensor",
+                    "numpy.ndarray",
+                    "List[List[int]]",
+                    "Optional[torch.BoolTensor]"
+                ]
+            }
+        },
+        "PredictorTestCase.test_get_last_hidden_states_simple": {
+            "name": "test_get_last_hidden_states_simple",
+            "location": 73,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PredictorTestCase.test_get_last_hidden_states_two_layers": {
+            "name": "test_get_last_hidden_states_two_layers",
+            "location": 88,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PredictorTestCase.test_get_last_hidden_states_bidirectional": {
+            "name": "test_get_last_hidden_states_bidirectional",
+            "location": 103,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PredictorTestCase.test_get_last_hidden_states_bidirectional_two_layer": {
+            "name": "test_get_last_hidden_states_bidirectional_two_layer",
+            "location": 118,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "squid-master/test/test_qa.py": {
+        "EncodingTestCase.setUp": {
+            "name": "setUp",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.test_answer_init": {
+            "name": "test_answer_init",
+            "location": 42,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.test_qa_init": {
+            "name": "test_qa_init",
+            "location": 55,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.test_context_qa_init": {
+            "name": "test_context_qa_init",
+            "location": 76,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.test_answer_encoding": {
+            "name": "test_answer_encoding",
+            "location": 99,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.test_encoded_qa": {
+            "name": "test_encoded_qa",
+            "location": 111,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.test_encoded_cqa": {
+            "name": "test_encoded_cqa",
+            "location": 162,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.test_encoded_sample": {
+            "name": "test_encoded_sample",
+            "location": 212,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EncodingTestCase.setUp.split_tokenize": {
+            "name": "split_tokenize",
+            "location": 29,
+            "return": [
+                "list[Token]",
+                "str",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "txt": [
+                    "dict",
+                    "int"
+                ]
+            }
+        }
+    },
+    "squid-master/test/test_tokenizer.py": {
+        "BatcherTestCase.setUp": {
+            "name": "setUp",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BatcherTestCase.test_nltk_tokenize": {
+            "name": "test_nltk_tokenize",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "squid-master/test/test_wv.py": {
+        "WordVectorsTestCase.setUp": {
+            "name": "setUp",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "WordVectorsTestCase.test_reading_simple": {
+            "name": "test_reading_simple",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "WordVectorsTestCase.test_reading_add_unk": {
+            "name": "test_reading_add_unk",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "WordVectorsTestCase.test_reading_add_padd": {
+            "name": "test_reading_add_padd",
+            "location": 37,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "WordVectorsTestCase.test_reading_consume_first_line": {
+            "name": "test_reading_consume_first_line",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "WordVectorsTestCase.test_serialization": {
+            "name": "test_serialization",
+            "location": 52,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "squid-master/test/__init__.py": {},
+    "squid-master/test/modules/test_embeddor.py": {
+        "WordEmbeddorTestCase.setUp": {
+            "name": "setUp",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "WordEmbeddorTestCase.test_word_embeddor": {
+            "name": "test_word_embeddor",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PoolingCharEmbeddorTestCase.setUp": {
+            "name": "setUp",
+            "location": 55,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PoolingCharEmbeddorTestCase.test_pooling_char_embeddor": {
+            "name": "test_pooling_char_embeddor",
+            "location": 59,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ConcatenatingEmbeddorTestCase.setUp": {
+            "name": "setUp",
+            "location": 79,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ConcatenatingEmbeddorTestCase.test_word_and_char_pooling_concatenating_embeddor": {
+            "name": "test_word_and_char_pooling_concatenating_embeddor",
+            "location": 91,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "squid-master/test/modules/__init__.py": {}
+}

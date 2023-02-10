@@ -1,0 +1,1417 @@
+{
+    "AviationWeather-master/setup.py": {
+        "read": {
+            "name": "read",
+            "location": 42,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "find_meta": {
+            "name": "find_meta",
+            "location": 54,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "meta": [
+                    "str",
+                    "bool",
+                    "int"
+                ]
+            }
+        }
+    },
+    "AviationWeather-master/docs/source/conf.py": {},
+    "AviationWeather-master/src/AviationWeather/calculations.py": {
+        "test_equality": {
+            "name": "test_equality",
+            "location": 50,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "latlon1": [
+                    "str",
+                    "float"
+                ],
+                "latlon2": [
+                    "str",
+                    "float"
+                ]
+            }
+        },
+        "airport_latlon": {
+            "name": "airport_latlon",
+            "location": 63,
+            "return": [
+                "LatLon"
+            ],
+            "arguments": {
+                "airport": [
+                    "str"
+                ]
+            }
+        },
+        "get_db_session": {
+            "name": "get_db_session",
+            "location": 76,
+            "return": [
+                "sqlalchemy.orm.session.Session"
+            ],
+            "arguments": {
+                "config": [
+                    "configparser.ConfigParser"
+                ]
+            }
+        },
+        "tafs": {
+            "name": "tafs",
+            "location": 106,
+            "return": [
+                "List[AviationWeather.sql_classes.Taf]"
+            ],
+            "arguments": {
+                "session": [
+                    "sqlalchemy.orm.session.Session"
+                ],
+                "dep_apt": [
+                    "str"
+                ],
+                "dep_time": [
+                    "float"
+                ],
+                "arr_apt": [
+                    "str"
+                ],
+                "arr_time": [
+                    "float"
+                ]
+            }
+        },
+        "metars": {
+            "name": "metars",
+            "location": 138,
+            "return": [
+                "Tuple[(List[AviationWeather.sql_classes.Metar], List[AviationWeather.sql_classes.Metar])]"
+            ],
+            "arguments": {
+                "session": [
+                    "sqlalchemy.orm.session.Session"
+                ],
+                "dep_apt": [
+                    "str"
+                ],
+                "arr_apt": [
+                    "str"
+                ]
+            }
+        },
+        "airsigmets": {
+            "name": "airsigmets",
+            "location": 158,
+            "return": [
+                "List[AviationWeather.sql_classes.AirSigmet]"
+            ],
+            "arguments": {
+                "session": [
+                    "sqlalchemy.orm.session.Session"
+                ],
+                "arrival": [
+                    "float"
+                ],
+                "departure": [
+                    "float"
+                ]
+            }
+        },
+        "airsigmet_points": {
+            "name": "airsigmet_points",
+            "location": 174,
+            "return": [
+                "List[Tuple[(Any, Any)]]"
+            ],
+            "arguments": {
+                "airsig": [
+                    "AviationWeather.sql_classes.AirSigmet"
+                ]
+            }
+        },
+        "find_intersection": {
+            "name": "find_intersection",
+            "location": 195,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "start1": [],
+                "end1": [],
+                "airsig": [
+                    "AviationWeather.sql_classes.AirSigmet"
+                ]
+            }
+        },
+        "find_intersecting_airsigs": {
+            "name": "find_intersecting_airsigs",
+            "location": 216,
+            "return": [
+                "List[AviationWeather.sql_classes.AirSigmet]"
+            ],
+            "arguments": {
+                "airsigs": [
+                    "List[AviationWeather.sql_classes.AirSigmet]"
+                ],
+                "route": [
+                    "List[Tuple[(Any, Any)]]"
+                ]
+            }
+        },
+        "get_flightaware_client": {
+            "name": "get_flightaware_client",
+            "location": 234,
+            "return": [
+                "Client"
+            ],
+            "arguments": {
+                "config": [
+                    "list[tuple[typing.Union[str,str,str,str,str]]]"
+                ]
+            }
+        },
+        "get_flightinfostatus": {
+            "name": "get_flightinfostatus",
+            "location": 251,
+            "return": [
+                "Tuple[(str, float, str, str)]"
+            ],
+            "arguments": {
+                "flt_num": [
+                    "str"
+                ],
+                "departure_time": [
+                    "float"
+                ],
+                "client": [
+                    "int",
+                    "str",
+                    "dict[int, dict[, ]]",
+                    "list[str]",
+                    "tuple[typing.Union[str,...]]"
+                ]
+            }
+        },
+        "get_faflightid": {
+            "name": "get_faflightid",
+            "location": 277,
+            "return": [
+                "Tuple[(str, dict)]"
+            ],
+            "arguments": {
+                "client": [
+                    "str",
+                    "None"
+                ],
+                "flt_ident": [
+                    "str"
+                ],
+                "dep_apt": [
+                    "str"
+                ],
+                "arr_apt": [
+                    "str"
+                ],
+                "departure_epoch": [
+                    "float"
+                ]
+            }
+        },
+        "get_flight_route_data": {
+            "name": "get_flight_route_data",
+            "location": 310,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "client": [
+                    "str",
+                    "int"
+                ],
+                "flight_id": [
+                    "str",
+                    "bytes",
+                    "None",
+                    "int"
+                ]
+            }
+        },
+        "load_route": {
+            "name": "load_route",
+            "location": 333,
+            "return": [
+                "List[nothing]"
+            ],
+            "arguments": {}
+        },
+        "output": {
+            "name": "output",
+            "location": 356,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "wx_data": [
+                    "list"
+                ]
+            }
+        },
+        "metar_output": {
+            "name": "metar_output",
+            "location": 364,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "departure_metar": [
+                    "str",
+                    "tuple[int]",
+                    "list[bytes]",
+                    "int"
+                ],
+                "arrival_metar": [
+                    "str",
+                    "tuple[int]",
+                    "list[bytes]",
+                    "int"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 373,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "clean_args": {
+            "name": "clean_args",
+            "location": 423,
+            "return": [
+                "Tuple[(str, str, str, str, float)]"
+            ],
+            "arguments": {
+                "args": [
+                    "list"
+                ]
+            }
+        },
+        "Encoder.default": {
+            "name": "default",
+            "location": 348,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "obj": [
+                    "str",
+                    "tuple[typing.Union[int,int,int]]"
+                ]
+            }
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/converter.py": {
+        "get_data": {
+            "name": "get_data",
+            "location": 33,
+            "return": [
+                "bytes"
+            ],
+            "arguments": {
+                "weather_type": [
+                    "str"
+                ]
+            }
+        },
+        "bytes_to_xml": {
+            "name": "bytes_to_xml",
+            "location": 53,
+            "return": [],
+            "arguments": {
+                "xml_bytes": [
+                    "bytes"
+                ]
+            }
+        },
+        "convert_airsigmets": {
+            "name": "convert_airsigmets",
+            "location": 73,
+            "return": [
+                "List[AviationWeather.sql_classes.AirSigmet]"
+            ],
+            "arguments": {
+                "root": [
+                    "bytes",
+                    "str",
+                    "lxml.etree",
+                    "dict"
+                ]
+            }
+        },
+        "process_attrib": {
+            "name": "process_attrib",
+            "location": 118,
+            "return": [
+                "Union[(AviationWeather.xml_classes.IcingConditionXML, AviationWeather.xml_classes.SkyConditionXML, AviationWeather.xml_classes.TurbulenceConditionXML)]"
+            ],
+            "arguments": {
+                "attrib": [
+                    "dict[, ]",
+                    "int",
+                    "lxml.etree",
+                    "dict"
+                ]
+            }
+        },
+        "process_attrib_metar": {
+            "name": "process_attrib_metar",
+            "location": 135,
+            "return": [
+                "AviationWeather.xml_classes.MetarSkyConditionXML"
+            ],
+            "arguments": {
+                "attrib": [
+                    "dict[, ]",
+                    "int",
+                    "lxml.etree",
+                    "dict"
+                ]
+            }
+        },
+        "convert_tafs": {
+            "name": "convert_tafs",
+            "location": 150,
+            "return": [
+                "List[AviationWeather.sql_classes.Taf]"
+            ],
+            "arguments": {
+                "root": [
+                    "bytes",
+                    "str",
+                    "lxml.etree",
+                    "dict"
+                ]
+            }
+        },
+        "convert_metars": {
+            "name": "convert_metars",
+            "location": 190,
+            "return": [
+                "List[AviationWeather.sql_classes.Metar]"
+            ],
+            "arguments": {
+                "root": [
+                    "bytes",
+                    "str",
+                    "lxml.etree",
+                    "dict"
+                ]
+            }
+        },
+        "delete_old_data": {
+            "name": "delete_old_data",
+            "location": 226,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "weather_type": [
+                    "str"
+                ],
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "get_db_session": {
+            "name": "get_db_session",
+            "location": 246,
+            "return": [
+                "sqlalchemy.orm.session.Session"
+            ],
+            "arguments": {
+                "config": [
+                    "configparser.ConfigParser"
+                ]
+            }
+        },
+        "to_db": {
+            "name": "to_db",
+            "location": 274,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "maps": [
+                    "List[Union[(AviationWeather.sql_classes.AirSigmet, AviationWeather.sql_classes.Metar, AviationWeather.sql_classes.Taf)]]"
+                ],
+                "session": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 292,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": []
+            }
+        },
+        "convert_airsigmets.process": {
+            "name": "process",
+            "location": 81,
+            "return": [],
+            "arguments": {
+                "kids": [],
+                "asigx": []
+            }
+        },
+        "convert_tafs.process": {
+            "name": "process",
+            "location": 158,
+            "return": [],
+            "arguments": {
+                "kids": [],
+                "xml_class": []
+            }
+        },
+        "convert_metars.process": {
+            "name": "process",
+            "location": 197,
+            "return": [
+                "Callable[[lxml.etree._Element], T]",
+                "List[str]",
+                "Iterable[str]"
+            ],
+            "arguments": {
+                "kids": [
+                    "List[lxml.etree.Element]",
+                    "Optional[int]",
+                    "bool"
+                ],
+                "xml_class": [
+                    "dict"
+                ]
+            }
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/logging_setup.py": {
+        "configure_logging": {
+            "name": "configure_logging",
+            "location": 7,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "setup": {
+            "name": "setup",
+            "location": 34,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/sql_classes.py": {
+        "Base.__json__": {
+            "name": "__json__",
+            "location": 8,
+            "return": [
+                "dict[typing.Text, list[]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Points.__repr__": {
+            "name": "__repr__",
+            "location": 51,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AirSigmet.__repr__": {
+            "name": "__repr__",
+            "location": 76,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Forecast.__repr__": {
+            "name": "__repr__",
+            "location": 122,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Taf.__repr__": {
+            "name": "__repr__",
+            "location": 163,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SkyCondition.__repr__": {
+            "name": "__repr__",
+            "location": 190,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TurbulenceCondition.__repr__": {
+            "name": "__repr__",
+            "location": 209,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IcingCondition.__repr__": {
+            "name": "__repr__",
+            "location": 229,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Metar.__repr__": {
+            "name": "__repr__",
+            "location": 274,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MetarSkyCondition.__repr__": {
+            "name": "__repr__",
+            "location": 349,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/xml_classes.py": {
+        "XMLBaseClass.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "XMLBaseClass.attributes": {
+            "name": "attributes",
+            "location": 20,
+            "return": [
+                "List[int]",
+                "type",
+                "List[dict]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "XMLBaseClass.set": {
+            "name": "set",
+            "location": 23,
+            "return": [
+                "bool",
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "XMLBaseClass.complete": {
+            "name": "complete",
+            "location": 36,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "XMLBaseClass.add_child": {
+            "name": "add_child",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "child": [
+                    "float",
+                    "int"
+                ]
+            }
+        },
+        "XMLBaseClass.unset_fields": {
+            "name": "unset_fields",
+            "location": 42,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "XMLBaseClass.create_mapping": {
+            "name": "create_mapping",
+            "location": 46,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AirSigmetXML2.__init__": {
+            "name": "__init__",
+            "location": 55,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AirSigmetXML2.create_mapping": {
+            "name": "create_mapping",
+            "location": 71,
+            "return": [
+                "AviationWeather.sql_classes.AirSigmet"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PointsXML2.__init__": {
+            "name": "__init__",
+            "location": 83,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PointsXML2.create_mapping": {
+            "name": "create_mapping",
+            "location": 91,
+            "return": [
+                "AviationWeather.sql_classes.Points"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TafXML.__init__": {
+            "name": "__init__",
+            "location": 101,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TafXML.create_mapping": {
+            "name": "create_mapping",
+            "location": 116,
+            "return": [
+                "AviationWeather.sql_classes.Taf"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ForecastXML.__init__": {
+            "name": "__init__",
+            "location": 128,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ForecastXML.create_mapping": {
+            "name": "create_mapping",
+            "location": 149,
+            "return": [
+                "AviationWeather.sql_classes.Forecast"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SkyConditionXML.__init__": {
+            "name": "__init__",
+            "location": 163,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SkyConditionXML.create_mapping": {
+            "name": "create_mapping",
+            "location": 171,
+            "return": [
+                "AviationWeather.sql_classes.SkyCondition"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TurbulenceConditionXML.__init__": {
+            "name": "__init__",
+            "location": 182,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TurbulenceConditionXML.create_mapping": {
+            "name": "create_mapping",
+            "location": 190,
+            "return": [
+                "AviationWeather.sql_classes.TurbulenceCondition"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IcingConditionXML.__init__": {
+            "name": "__init__",
+            "location": 201,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IcingConditionXML.create_mapping": {
+            "name": "create_mapping",
+            "location": 209,
+            "return": [
+                "AviationWeather.sql_classes.IcingCondition"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MetarXML.__init__": {
+            "name": "__init__",
+            "location": 219,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MetarXML.create_mapping": {
+            "name": "create_mapping",
+            "location": 253,
+            "return": [
+                "AviationWeather.sql_classes.Metar"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MetarSkyConditionXML.__init__": {
+            "name": "__init__",
+            "location": 266,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MetarSkyConditionXML.create_mapping": {
+            "name": "create_mapping",
+            "location": 274,
+            "return": [
+                "AviationWeather.sql_classes.MetarSkyCondition"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/__init__.py": {},
+    "AviationWeather-master/src/AviationWeather/__main__.py": {
+        "calc": {
+            "name": "calc",
+            "location": 6,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "conv": {
+            "name": "conv",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/tests/conftest.py": {
+        "base_url": {
+            "name": "base_url",
+            "location": 13,
+            "return": [
+                "sqlalchemy.engine.url.URL"
+            ],
+            "arguments": {}
+        },
+        "verify_database": {
+            "name": "verify_database",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "url": [
+                    "sqlalchemy.engine.url.URL"
+                ]
+            }
+        },
+        "engine": {
+            "name": "engine",
+            "location": 39,
+            "return": [
+                "str",
+                "int",
+                "Optional[Union[Any, str]]"
+            ],
+            "arguments": {}
+        },
+        "sample_data_engine": {
+            "name": "sample_data_engine",
+            "location": 60,
+            "return": [
+                "str",
+                "int",
+                "Callable",
+                "bytes",
+                "Dict[str, int]"
+            ],
+            "arguments": {}
+        },
+        "tables": {
+            "name": "tables",
+            "location": 81,
+            "return": [
+                "",
+                "typing.Generator[]"
+            ],
+            "arguments": {
+                "engine": [
+                    "str",
+                    "bool",
+                    "Tuple[int, int]",
+                    "tuple[typing.Union[int,int]]"
+                ]
+            }
+        },
+        "dbsession": {
+            "name": "dbsession",
+            "location": 90,
+            "return": [
+                "",
+                "typing.Generator[Session]"
+            ],
+            "arguments": {
+                "engine": [
+                    "int",
+                    "str",
+                    "List[str]"
+                ],
+                "tables": [
+                    "str",
+                    "bool"
+                ]
+            }
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/tests/test_calculations.py": {
+        "test_test_equality": {
+            "name": "test_test_equality",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_airport_latlon": {
+            "name": "test_airport_latlon",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_get_db_session": {
+            "name": "test_get_db_session",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_airsigmets": {
+            "name": "test_airsigmets",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "test_airsigmet_points": {
+            "name": "test_airsigmet_points",
+            "location": 61,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_find_intersection": {
+            "name": "test_find_intersection",
+            "location": 71,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_find_intersecting_airsigs": {
+            "name": "test_find_intersecting_airsigs",
+            "location": 80,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "monkeypatch": []
+            }
+        },
+        "test_get_flightinfostatus": {
+            "name": "test_get_flightinfostatus",
+            "location": 149,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_get_flight_route_data": {
+            "name": "test_get_flight_route_data",
+            "location": 160,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_get_metar_data": {
+            "name": "test_get_metar_data",
+            "location": 171,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "test_output": {
+            "name": "test_output",
+            "location": 179,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_metar_output": {
+            "name": "test_metar_output",
+            "location": 193,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_tafs": {
+            "name": "test_tafs",
+            "location": 209,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "test_tafs2": {
+            "name": "test_tafs2",
+            "location": 233,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "test_get_faflightid": {
+            "name": "test_get_faflightid",
+            "location": 259,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_get_faflightid_with_epoch": {
+            "name": "test_get_faflightid_with_epoch",
+            "location": 272,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_clean_args": {
+            "name": "test_clean_args",
+            "location": 286,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_find_intersecting_airsigs.mockreturn": {
+            "name": "mockreturn",
+            "location": 81,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "s1": [
+                    "str",
+                    "Iterable[str]",
+                    "Set[str]",
+                    "bool",
+                    "set"
+                ],
+                "s2": [
+                    "str",
+                    "Iterable[str]",
+                    "Set[str]",
+                    "bool",
+                    "set"
+                ],
+                "airsig": [
+                    "str",
+                    "Iterable[str]",
+                    "Set[str]",
+                    "bool",
+                    "set"
+                ]
+            }
+        },
+        "Service.__init__": {
+            "name": "__init__",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "faflightid": [
+                    "int",
+                    "float",
+                    "Union[str, float]",
+                    "str"
+                ],
+                "ident": [
+                    "int",
+                    "float",
+                    "Union[str, float]",
+                    "str"
+                ],
+                "departure_time": [
+                    "int",
+                    "float",
+                    "Optional[float]",
+                    "None"
+                ],
+                "dep_apt": [
+                    "typing.Text",
+                    "int",
+                    "float",
+                    "Union[str, float]"
+                ],
+                "arr_apt": [
+                    "typing.Text",
+                    "int",
+                    "float",
+                    "Union[str, float]"
+                ]
+            }
+        },
+        "Service.FlightInfoStatus": {
+            "name": "FlightInfoStatus",
+            "location": 99,
+            "return": [
+                "Dict[(str, List[Dict[(str, Any)]])]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service.DecodeFlightRoute": {
+            "name": "DecodeFlightRoute",
+            "location": 113,
+            "return": [
+                "Dict[(str, List[Dict[(str, int)]])]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service2.__init__": {
+            "name": "__init__",
+            "location": 127,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service2.FlightInfoStatus": {
+            "name": "FlightInfoStatus",
+            "location": 131,
+            "return": [
+                "str",
+                "int",
+                "type",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "ident": [
+                    "str"
+                ],
+                "include_ex_data": [
+                    "bool"
+                ],
+                "filter": [
+                    "str"
+                ],
+                "howMany": [
+                    "int"
+                ],
+                "offset": [
+                    "int"
+                ]
+            }
+        },
+        "MockClient.__init__": {
+            "name": "__init__",
+            "location": 145,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "faflightid": [
+                    "dict[str, typing.Any]",
+                    "str",
+                    "datetime.datetime",
+                    "int",
+                    "Dict[str, Any]",
+                    "Union[str, int]"
+                ],
+                "ident": [
+                    "dict[str, typing.Any]",
+                    "str",
+                    "datetime.datetime",
+                    "int",
+                    "Dict[str, Any]",
+                    "Union[str, int]"
+                ],
+                "departure_time": [
+                    "dict[str, typing.Any]",
+                    "str",
+                    "datetime.datetime",
+                    "int",
+                    "Dict[str, Any]",
+                    "Union[str, int]"
+                ],
+                "dep_apt": [
+                    "typing.Text",
+                    "datetime.datetime",
+                    "Dict[str, Any]",
+                    "str",
+                    "Union[str, int]",
+                    "int"
+                ],
+                "arr_apt": [
+                    "typing.Text",
+                    "datetime.datetime",
+                    "Dict[str, Any]",
+                    "str",
+                    "Union[str, int]",
+                    "int"
+                ]
+            }
+        }
+    },
+    "AviationWeather-master/src/AviationWeather/tests/test_converter.py": {
+        "test_bytes_to_xml": {
+            "name": "test_bytes_to_xml",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_bytes_to_xml_metar_data": {
+            "name": "test_bytes_to_xml_metar_data",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_convert_airsigmets": {
+            "name": "test_convert_airsigmets",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_to_db": {
+            "name": "test_to_db",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "test_process_sky_condition": {
+            "name": "test_process_sky_condition",
+            "location": 42,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_process_turbulence_condition": {
+            "name": "test_process_turbulence_condition",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_convert_tafs": {
+            "name": "test_convert_tafs",
+            "location": 56,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {}
+        },
+        "test_convert_metars": {
+            "name": "test_convert_metars",
+            "location": 63,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {}
+        },
+        "test_metars_to_db": {
+            "name": "test_metars_to_db",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        },
+        "test_delete_old_data": {
+            "name": "test_delete_old_data",
+            "location": 82,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "dbsession": [
+                    "sqlalchemy.orm.session.Session"
+                ]
+            }
+        }
+    }
+}

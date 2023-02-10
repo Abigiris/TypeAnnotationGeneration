@@ -1,0 +1,959 @@
+{
+    "rlock-master/setup.py": {},
+    "rlock-master/rlock/channel_stats.py": {
+        "get_stats": {
+            "name": "get_stats",
+            "location": 52,
+            "return": [
+                "ChannelStats"
+            ],
+            "arguments": {
+                "channel_id": [
+                    "str"
+                ]
+            }
+        },
+        "print_stats": {
+            "name": "print_stats",
+            "location": 84,
+            "return": [
+                "Tuple[(bool, str)]"
+            ],
+            "arguments": {
+                "stats": [
+                    "ChannelStats"
+                ]
+            }
+        },
+        "remove_stats": {
+            "name": "remove_stats",
+            "location": 95,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "stats": [
+                    "ChannelStats"
+                ]
+            }
+        },
+        "save_stats": {
+            "name": "save_stats",
+            "location": 99,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "stats": [
+                    "ChannelStats"
+                ]
+            }
+        },
+        "ChannelStats.full_id": {
+            "name": "full_id",
+            "location": 33,
+            "return": [
+                "typing.Text",
+                "Dict[str, Any]",
+                "bool",
+                "str",
+                "int",
+                "src.config.user_config.UserConfig"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ChannelStats.mark_extend": {
+            "name": "mark_extend",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "save": [
+                    "bool",
+                    "str",
+                    "Set[str]"
+                ]
+            }
+        },
+        "ChannelStats.mark_lock": {
+            "name": "mark_lock",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "save": [
+                    "bool",
+                    "str",
+                    "Set[str]"
+                ]
+            }
+        },
+        "ChannelStats.is_today": {
+            "name": "is_today",
+            "location": 47,
+            "return": [
+                "bool",
+                "str",
+                "datetime.datetime",
+                "Optional[str]",
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "rlock-master/rlock/config.py": {
+        "get_redis": {
+            "name": "get_redis",
+            "location": 26,
+            "return": [
+                "redis.client.Redis[bytes]"
+            ],
+            "arguments": {}
+        },
+        "get_slackbot": {
+            "name": "get_slackbot",
+            "location": 30,
+            "return": [
+                "SlackClient"
+            ],
+            "arguments": {}
+        }
+    },
+    "rlock-master/rlock/lock.py": {
+        "get_lock": {
+            "name": "get_lock",
+            "location": 102,
+            "return": [
+                "Optional[Lock]"
+            ],
+            "arguments": {
+                "channel_id": [
+                    "str"
+                ],
+                "has_prefix": [
+                    "bool"
+                ]
+            }
+        },
+        "set_lock": {
+            "name": "set_lock",
+            "location": 130,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "lock": [
+                    "Lock"
+                ]
+            }
+        },
+        "remove_lock": {
+            "name": "remove_lock",
+            "location": 134,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "lock": [
+                    "Lock"
+                ]
+            }
+        },
+        "mark_user_notified": {
+            "name": "mark_user_notified",
+            "location": 138,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "lock": [
+                    "Lock"
+                ]
+            }
+        },
+        "Lock.remaining": {
+            "name": "remaining",
+            "location": 35,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Lock.is_expired": {
+            "name": "is_expired",
+            "location": 39,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Lock.is_expiring": {
+            "name": "is_expiring",
+            "location": 43,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Lock.full_id": {
+            "name": "full_id",
+            "location": 47,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Lock.ping_id": {
+            "name": "ping_id",
+            "location": 51,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Lock.duration": {
+            "name": "duration",
+            "location": 55,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Lock.set_message_id": {
+            "name": "set_message_id",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "message_id": [
+                    "str"
+                ]
+            }
+        },
+        "Lock.get_subscribers": {
+            "name": "get_subscribers",
+            "location": 62,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "destructive": [
+                    "bool"
+                ]
+            }
+        },
+        "Lock.get_unlock_message": {
+            "name": "get_unlock_message",
+            "location": 76,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "extra_msg": [
+                    "str"
+                ]
+            }
+        },
+        "Lock.get_lock_message": {
+            "name": "get_lock_message",
+            "location": 81,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Lock.update_lock_message": {
+            "name": "update_lock_message",
+            "location": 89,
+            "return": [
+                "Tuple[(bool, Optional[str])]"
+            ],
+            "arguments": {
+                "self": [],
+                "unlock": [
+                    "bool"
+                ]
+            }
+        },
+        "Lock.add_new_subscriber": {
+            "name": "add_new_subscriber",
+            "location": 94,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "ping_user": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "rlock-master/rlock/slackbot.py": {
+        "user_message": {
+            "name": "user_message",
+            "location": 9,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "lock": [
+                    "rlock.lock.Lock"
+                ]
+            }
+        },
+        "react_message": {
+            "name": "react_message",
+            "location": 21,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "lock": [
+                    "rlock.lock.Lock"
+                ],
+                "message_id": [
+                    "str"
+                ],
+                "reaction": [
+                    "str"
+                ]
+            }
+        },
+        "channel_message": {
+            "name": "channel_message",
+            "location": 35,
+            "return": [
+                "Tuple[(bool, str)]"
+            ],
+            "arguments": {
+                "channel_id": [
+                    "str"
+                ],
+                "message": [
+                    "str"
+                ],
+                "init_lock": [
+                    "bool"
+                ],
+                "user": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "update_channel_message": {
+            "name": "update_channel_message",
+            "location": 89,
+            "return": [
+                "Tuple[(bool, Optional[str])]"
+            ],
+            "arguments": {
+                "lock": [
+                    "rlock.lock.Lock"
+                ],
+                "message": [
+                    "str"
+                ],
+                "unlock": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "rlock-master/rlock/tasker.py": {
+        "check_daily_stats": {
+            "name": "check_daily_stats",
+            "location": 13,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {}
+        },
+        "check_expirations": {
+            "name": "check_expirations",
+            "location": 20,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {}
+        },
+        "check_channel_expiration": {
+            "name": "check_channel_expiration",
+            "location": 27,
+            "return": [
+                "None",
+                "Union[tuple, list]",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {
+                "lock": [
+                    "lock.Lock",
+                    "Dict[str, float]"
+                ]
+            }
+        },
+        "check_channel_stats": {
+            "name": "check_channel_stats",
+            "location": 44,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "channel_key": [
+                    "str",
+                    "tuple[typing.Union[list[str],list[str]]]",
+                    "Tuple[List[str], List[str]]",
+                    "Awaitable[T]"
+                ]
+            }
+        }
+    },
+    "rlock-master/rlock/webserver.py": {
+        "get_request_duration": {
+            "name": "get_request_duration",
+            "location": 20,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "params": [
+                    "list"
+                ]
+            }
+        },
+        "get_request_message": {
+            "name": "get_request_message",
+            "location": 32,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "params": [
+                    "list"
+                ]
+            }
+        },
+        "try_respond": {
+            "name": "try_respond",
+            "location": 49,
+            "return": [
+                "Tuple[(Any, str)]"
+            ],
+            "arguments": {
+                "lock": [
+                    "rlock.lock.Lock"
+                ],
+                "message": [
+                    "str"
+                ],
+                "init_lock": [
+                    "bool"
+                ]
+            }
+        },
+        "extract_request": {
+            "name": "extract_request",
+            "location": 69,
+            "return": [
+                "Tuple[(rlock.lock.Lock, list)]"
+            ],
+            "arguments": {
+                "data": [
+                    "dict"
+                ]
+            }
+        },
+        "do_lock": {
+            "name": "do_lock",
+            "location": 104,
+            "return": [
+                "PlainTextResponse"
+            ],
+            "arguments": {
+                "new_lock": [
+                    "rlock.lock.Lock"
+                ],
+                "lock_time": [
+                    "Optional[int]"
+                ]
+            }
+        },
+        "do_unlock": {
+            "name": "do_unlock",
+            "location": 149,
+            "return": [
+                "PlainTextResponse"
+            ],
+            "arguments": {
+                "lock": [
+                    "rlock.lock.Lock"
+                ]
+            }
+        },
+        "get_extension_timestamp": {
+            "name": "get_extension_timestamp",
+            "location": 222,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "current_lock": [
+                    "rlock.lock.Lock"
+                ],
+                "lock_time": [
+                    "Optional[int]"
+                ]
+            }
+        }
+    },
+    "rlock-master/rlock/__init__.py": {},
+    "rlock-master/rlock/test/conftest.py": {
+        "test_client": {
+            "name": "test_client",
+            "location": 16,
+            "return": [
+                "Callable",
+                "TestClient"
+            ],
+            "arguments": {}
+        },
+        "req_data": {
+            "name": "req_data",
+            "location": 21,
+            "return": [
+                "dict[typing.Text, list[typing.Text]]",
+                "str",
+                "Optional[str]",
+                "int"
+            ],
+            "arguments": {}
+        },
+        "dialock_data": {
+            "name": "dialock_data",
+            "location": 37,
+            "return": [
+                "dict[typing.Text, typing.Union[typing.Text,list[dict[typing.Text, typing.Text]],bool,dict[typing.Text, typing.Union[typing.Text,list[dict[typing.Text, typing.Union[typing.Text,int,list[dict[typing.Text, typing.Text]]]]]]]]]",
+                "Mapping[str, Any]",
+                "Dict[str, Any]",
+                "dict",
+                "int"
+            ],
+            "arguments": {}
+        },
+        "owned_lock": {
+            "name": "owned_lock",
+            "location": 89,
+            "return": [
+                "",
+                "typing.Generator[]"
+            ],
+            "arguments": {}
+        },
+        "nonowned_lock": {
+            "name": "nonowned_lock",
+            "location": 94,
+            "return": [
+                "",
+                "typing.Generator[]"
+            ],
+            "arguments": {}
+        },
+        "clean_redis": {
+            "name": "clean_redis",
+            "location": 99,
+            "return": [
+                "",
+                "typing.Generator[]"
+            ],
+            "arguments": {}
+        },
+        "owned_redis": {
+            "name": "owned_redis",
+            "location": 106,
+            "return": [
+                "",
+                "typing.Generator[typing.Union[int,dict[, ]]]"
+            ],
+            "arguments": {
+                "clean_redis": [
+                    "int",
+                    "Lock",
+                    "dict[, ]",
+                    "dict"
+                ],
+                "owned_lock": [
+                    "int",
+                    "Lock",
+                    "dict[, ]",
+                    "dict"
+                ]
+            }
+        },
+        "nonowned_redis": {
+            "name": "nonowned_redis",
+            "location": 112,
+            "return": [
+                "",
+                "typing.Generator[typing.Union[list[str],dict[, ],str]]"
+            ],
+            "arguments": {
+                "clean_redis": [
+                    "list[str]",
+                    "List[str]",
+                    "str",
+                    "dict[, ]",
+                    "Lock",
+                    "dict"
+                ],
+                "nonowned_lock": [
+                    "list[str]",
+                    "List[str]",
+                    "str",
+                    "dict[, ]",
+                    "Lock",
+                    "dict"
+                ]
+            }
+        }
+    },
+    "rlock-master/rlock/test/test_lock.py": {
+        "no_requests": {
+            "name": "no_requests",
+            "location": 12,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "monkeypatch": [
+                    "Sequence[str]",
+                    "typing.Sequence[str]",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "test_obtain_lock": {
+            "name": "test_obtain_lock",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "req_data": [
+                    "str"
+                ],
+                "clean_redis": [
+                    "int"
+                ]
+            }
+        },
+        "test_extend_lock": {
+            "name": "test_extend_lock",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "owned_redis": [],
+                "req_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_unlock": {
+            "name": "test_unlock",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "owned_redis": [],
+                "req_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_lock_nonowned": {
+            "name": "test_lock_nonowned",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "nonowned_redis": [],
+                "req_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_unlock_nonowned": {
+            "name": "test_unlock_nonowned",
+            "location": 56,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "nonowned_redis": [],
+                "req_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_overwrite_expired_lock": {
+            "name": "test_overwrite_expired_lock",
+            "location": 61,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "clean_redis": [
+                    "bool",
+                    "Iterable[Any]",
+                    "str"
+                ],
+                "req_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_dialock_unlock": {
+            "name": "test_dialock_unlock",
+            "location": 75,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "owned_redis": [],
+                "dialock_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_dialock_extend": {
+            "name": "test_dialock_extend",
+            "location": 83,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "owned_redis": [],
+                "dialock_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_dialock_nonowned_unlock": {
+            "name": "test_dialock_nonowned_unlock",
+            "location": 100,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_client": [
+                    "str"
+                ],
+                "nonowned_redis": [],
+                "dialock_data": [
+                    "str"
+                ]
+            }
+        },
+        "test_get_unlock_message": {
+            "name": "test_get_unlock_message",
+            "location": 109,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_redis": [
+                    "str",
+                    "bool"
+                ],
+                "owned_lock": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "rlock-master/rlock/test/test_slackbot.py": {
+        "test_basic_user_message": {
+            "name": "test_basic_user_message",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_lock": []
+            }
+        },
+        "test_basic_channel_message": {
+            "name": "test_basic_channel_message",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_lock": []
+            }
+        },
+        "test_notify_upcoming_expiration": {
+            "name": "test_notify_upcoming_expiration",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_redis": [],
+                "owned_lock": []
+            }
+        },
+        "test_update_message_on_subscribe": {
+            "name": "test_update_message_on_subscribe",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_lock": []
+            }
+        }
+    },
+    "rlock-master/rlock/test/test_stats.py": {
+        "test_marking": {
+            "name": "test_marking",
+            "location": 6,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {}
+        },
+        "test_date_match": {
+            "name": "test_date_match",
+            "location": 22,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {}
+        }
+    },
+    "rlock-master/rlock/test/test_tasker.py": {
+        "no_requests": {
+            "name": "no_requests",
+            "location": 7,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "monkeypatch": [
+                    "Sequence[str]",
+                    "typing.Sequence[str]",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "test_notify_upcoming_expiration": {
+            "name": "test_notify_upcoming_expiration",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_redis": [
+                    "str",
+                    "Mapping[str, Any]",
+                    "typing.Mapping"
+                ],
+                "owned_lock": [],
+                "mocker": [
+                    "str"
+                ]
+            }
+        },
+        "test_notify_expired": {
+            "name": "test_notify_expired",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_redis": [],
+                "owned_lock": [],
+                "mocker": []
+            }
+        },
+        "test_valid_dont_notify": {
+            "name": "test_valid_dont_notify",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "owned_redis": [
+                    "str"
+                ],
+                "owned_lock": [
+                    "int"
+                ],
+                "mocker": []
+            }
+        }
+    },
+    "rlock-master/rlock/test/__init__.py": {}
+}

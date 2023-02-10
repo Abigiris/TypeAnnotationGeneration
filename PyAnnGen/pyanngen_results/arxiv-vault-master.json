@@ -1,0 +1,699 @@
+{
+    "arxiv-vault-master/setup.py": {},
+    "arxiv-vault-master/arxiv/vault/adapter.py": {
+        "HostnameLiberalAdapter.__init__": {
+            "name": "__init__",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "HostnameLiberalHTTPAdapter.init_poolmanager": {
+            "name": "init_poolmanager",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "connections": [],
+                "maxsize": [],
+                "block": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/core.py": {
+        "Secret.__init__": {
+            "name": "__init__",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "None"
+                ],
+                "issued": [
+                    "_datetime.datetime"
+                ],
+                "lease_id": [
+                    "str"
+                ],
+                "lease_duration": [
+                    "int"
+                ],
+                "renewable": [
+                    "bool"
+                ]
+            }
+        },
+        "Secret.expires": {
+            "name": "expires",
+            "location": 50,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Secret.is_expired": {
+            "name": "is_expired",
+            "location": 54,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "as_of": [
+                    "Optional[_datetime.datetime]"
+                ]
+            }
+        },
+        "Vault.__init__": {
+            "name": "__init__",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "host": [
+                    "str"
+                ],
+                "port": [
+                    "str"
+                ],
+                "scheme": [
+                    "str"
+                ],
+                "verify": [
+                    "Union[(bool, str)]"
+                ]
+            }
+        },
+        "Vault.client": {
+            "name": "client",
+            "location": 94,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Vault.authenticated": {
+            "name": "authenticated",
+            "location": 101,
+            "return": [
+                "bool",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Vault.authenticate": {
+            "name": "authenticate",
+            "location": 105,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "kube_token": [
+                    "str"
+                ],
+                "role": [
+                    "str"
+                ]
+            }
+        },
+        "Vault.renew": {
+            "name": "renew",
+            "location": 122,
+            "return": [
+                "Secret"
+            ],
+            "arguments": {
+                "self": [],
+                "secret": [
+                    "Secret"
+                ],
+                "increment": [
+                    "int"
+                ]
+            }
+        },
+        "Vault.generic": {
+            "name": "generic",
+            "location": 135,
+            "return": [
+                "Secret"
+            ],
+            "arguments": {
+                "self": [],
+                "path": [
+                    "str"
+                ],
+                "key": [
+                    "str"
+                ],
+                "mount_point": [
+                    "str"
+                ]
+            }
+        },
+        "Vault.mysql": {
+            "name": "mysql",
+            "location": 162,
+            "return": [
+                "Secret"
+            ],
+            "arguments": {
+                "self": [],
+                "role": [
+                    "str"
+                ],
+                "mount_point": [
+                    "str"
+                ]
+            }
+        },
+        "Vault.aws": {
+            "name": "aws",
+            "location": 187,
+            "return": [
+                "Secret"
+            ],
+            "arguments": {
+                "self": [],
+                "role": [
+                    "str"
+                ],
+                "mount_point": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/manager.py": {
+        "SecretRequest.factory": {
+            "name": "factory",
+            "location": 27,
+            "return": [
+                "SecretRequest"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TSecretRequest]"
+                ],
+                "request_type": [
+                    "str"
+                ]
+            }
+        },
+        "SecretsManager.__init__": {
+            "name": "__init__",
+            "location": 124,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "vault": [
+                    "vault.core.Vault"
+                ],
+                "requests": [
+                    "List[SecretRequest]"
+                ],
+                "expiry_margin": [
+                    "int"
+                ]
+            }
+        },
+        "SecretsManager._about_to_expire": {
+            "name": "_about_to_expire",
+            "location": 132,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "secret": [
+                    "vault.core.Secret"
+                ]
+            }
+        },
+        "SecretsManager._format_database": {
+            "name": "_format_database",
+            "location": 136,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "request": [
+                    "DatabaseSecretRequest"
+                ],
+                "secret": [
+                    "vault.core.Secret"
+                ]
+            }
+        },
+        "SecretsManager._fresh_secret": {
+            "name": "_fresh_secret",
+            "location": 144,
+            "return": [
+                "vault.core.Secret"
+            ],
+            "arguments": {
+                "self": [],
+                "request": [
+                    "SecretRequest"
+                ]
+            }
+        },
+        "SecretsManager._can_freshen": {
+            "name": "_can_freshen",
+            "location": 158,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "request": [
+                    "SecretRequest"
+                ],
+                "secret": [
+                    "vault.core.Secret"
+                ]
+            }
+        },
+        "SecretsManager._is_stale": {
+            "name": "_is_stale",
+            "location": 165,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "request": [
+                    "SecretRequest"
+                ],
+                "secret": [
+                    "Optional[vault.core.Secret]"
+                ]
+            }
+        },
+        "SecretsManager._get_secret": {
+            "name": "_get_secret",
+            "location": 171,
+            "return": [
+                "vault.core.Secret"
+            ],
+            "arguments": {
+                "self": [],
+                "request": [
+                    "SecretRequest"
+                ]
+            }
+        },
+        "SecretsManager.yield_secrets": {
+            "name": "yield_secrets",
+            "location": 184,
+            "return": [
+                "Iterable[Tuple[(str, str)]]"
+            ],
+            "arguments": {
+                "self": [],
+                "tok": [
+                    "str"
+                ],
+                "role": [
+                    "str"
+                ]
+            }
+        },
+        "ConfigManager.__init__": {
+            "name": "__init__",
+            "location": 230,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "config": [
+                    "Mapping"
+                ]
+            }
+        },
+        "ConfigManager.token": {
+            "name": "token",
+            "location": 252,
+            "return": [
+                "str",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ConfigManager.role": {
+            "name": "role",
+            "location": 261,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ConfigManager._get_requests": {
+            "name": "_get_requests",
+            "location": 265,
+            "return": [
+                "List[SecretRequest]"
+            ],
+            "arguments": {
+                "self": [],
+                "config": [
+                    "Mapping"
+                ]
+            }
+        },
+        "ConfigManager.yield_secrets": {
+            "name": "yield_secrets",
+            "location": 273,
+            "return": [
+                "Iterable[Tuple[(str, str)]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/middleware.py": {
+        "formatwarning": {
+            "name": "formatwarning",
+            "location": 17,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "message": [
+                    "bool",
+                    "str",
+                    "List[Tuple[str, str]]",
+                    "list[tuple[typing.Union[str,str]]]"
+                ],
+                "category": [
+                    "bool",
+                    "str",
+                    "List[Tuple[str, str]]",
+                    "list[tuple[typing.Union[str,str]]]"
+                ],
+                "filepath": [
+                    "str",
+                    "int",
+                    "Optional[float]",
+                    "float",
+                    "list",
+                    "None",
+                    "list[]"
+                ],
+                "lineno": [
+                    "bool",
+                    "str",
+                    "List[Tuple[str, str]]",
+                    "list[tuple[typing.Union[str,str]]]"
+                ],
+                "line": [
+                    "bool",
+                    "str",
+                    "None",
+                    "List[Tuple[str, str]]",
+                    "list[tuple[typing.Union[str,str]]]"
+                ]
+            }
+        },
+        "VaultMiddleware.__init__": {
+            "name": "__init__",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "wsgi_app": [
+                    "Callable"
+                ],
+                "config": [
+                    "Mapping"
+                ]
+            }
+        },
+        "VaultMiddleware.__call__": {
+            "name": "__call__",
+            "location": 66,
+            "return": [
+                "Iterable"
+            ],
+            "arguments": {
+                "self": [],
+                "environ": [
+                    "dict"
+                ],
+                "start_response": [
+                    "Callable"
+                ]
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/__init__.py": {},
+    "arxiv-vault-master/arxiv/vault/hvac_extensions/v1.py": {
+        "Client.__init__": {
+            "name": "__init__",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "url": [
+                    "Optional[str]"
+                ],
+                "token": [
+                    "Optional[str]"
+                ],
+                "cert": [
+                    "Optional[str]"
+                ],
+                "verify": [
+                    "Union[(bool, str)]"
+                ],
+                "timeout": [
+                    "int"
+                ],
+                "proxies": [
+                    "Optional[dict]"
+                ],
+                "allow_redirects": [
+                    "bool"
+                ],
+                "session": [
+                    "Optional[requests.sessions.Session]"
+                ],
+                "adapter": [
+                    "None",
+                    "Optional[str]",
+                    "bool",
+                    "str",
+                    "dict[, ]",
+                    "Optional[dict]",
+                    "Optional[Union[bool, str]]",
+                    "int",
+                    "Optional[requests.Session]"
+                ],
+                "namespace": [
+                    "Optional[str]"
+                ]
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/hvac_extensions/__init__.py": {},
+    "arxiv-vault-master/arxiv/vault/hvac_extensions/api/__init__.py": {},
+    "arxiv-vault-master/arxiv/vault/hvac_extensions/api/secrets_engines/mysql.py": {
+        "MySql.generate_credentials": {
+            "name": "generate_credentials",
+            "location": 17,
+            "return": [
+                "Mapping"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "endpoint": [
+                    "str"
+                ],
+                "mount_point": [
+                    "str"
+                ]
+            }
+        },
+        "MySql.read_role": {
+            "name": "read_role",
+            "location": 25,
+            "return": [
+                "Mapping"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "endpoint": [
+                    "str"
+                ],
+                "mount_point": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/hvac_extensions/api/secrets_engines/__init__.py": {},
+    "arxiv-vault-master/arxiv/vault/tests/test_manager.py": {
+        "TestGetSecretsNotAuthenticated.setUp": {
+            "name": "setUp",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetSecretsNotAuthenticated.test_generic_request": {
+            "name": "test_generic_request",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetSecrets.setUp": {
+            "name": "setUp",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetSecrets.test_generic_request": {
+            "name": "test_generic_request",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetSecrets.test_generic_request_with_minimum_ttl": {
+            "name": "test_generic_request_with_minimum_ttl",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetSecrets.test_generic_request_nonrenewable": {
+            "name": "test_generic_request_nonrenewable",
+            "location": 122,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetSecrets.test_aws_request": {
+            "name": "test_aws_request",
+            "location": 152,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetSecrets.test_mysql_credentials": {
+            "name": "test_mysql_credentials",
+            "location": 189,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/tests/test_middleware.py": {
+        "TestMiddlewareMisconfigured.test_init": {
+            "name": "test_init",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestMiddleware.setUp": {
+            "name": "setUp",
+            "location": 25,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_SecretsManager": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "TestMiddleware.test_request": {
+            "name": "test_request",
+            "location": 46,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "arxiv-vault-master/arxiv/vault/tests/__init__.py": {},
+    "arxiv-vault-master/docs/source/conf.py": {}
+}

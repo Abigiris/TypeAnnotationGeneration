@@ -1,0 +1,768 @@
+{
+    "issue-sync-master/app.py": {},
+    "issue-sync-master/wsgi.py": {
+        "application": {
+            "name": "application",
+            "location": 10,
+            "return": [
+                "str",
+                "bytes",
+                "int"
+            ],
+            "arguments": {
+                "environ": [
+                    "dict[str, typing.Any]",
+                    "Dict[str, Any]",
+                    "dict[str, str]",
+                    "Dict[str, str]",
+                    "Callable",
+                    "bytes"
+                ],
+                "start_response": [
+                    "Callable",
+                    "bytes",
+                    "typing.Callable[, ]"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/config.py": {},
+    "issue-sync-master/sync/controllers.py": {
+        "handle_issuesevent": {
+            "name": "handle_issuesevent",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "raw": [
+                    "Optional[dict]"
+                ]
+            }
+        },
+        "handle_issuecommentevent": {
+            "name": "handle_issuecommentevent",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "raw": [
+                    "dict"
+                ]
+            }
+        },
+        "_handle_event": {
+            "name": "_handle_event",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event_type": [
+                    "domain.GithubEventType"
+                ],
+                "raw": [
+                    "dict"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/domain.py": {
+        "is_comment_event": {
+            "name": "is_comment_event",
+            "location": 139,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "jira_event": [
+                    "JiraEvent"
+                ]
+            }
+        },
+        "is_gh_comment_event": {
+            "name": "is_gh_comment_event",
+            "location": 143,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "GithubEvent"
+                ]
+            }
+        },
+        "is_gh_update_event": {
+            "name": "is_gh_update_event",
+            "location": 147,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "GithubEvent"
+                ]
+            }
+        },
+        "is_creation_event": {
+            "name": "is_creation_event",
+            "location": 152,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "jira_event": [
+                    "str"
+                ]
+            }
+        },
+        "is_gh_creation_event": {
+            "name": "is_gh_creation_event",
+            "location": 156,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "Dict[str, Any]",
+                    "str",
+                    "dict[str, typing.Any]",
+                    "dict",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "is_update_event": {
+            "name": "is_update_event",
+            "location": 161,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "jira_event": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/factory.py": {
+        "create_app": {
+            "name": "create_app",
+            "location": 13,
+            "return": [
+                "flask.Flask",
+                "Flask"
+            ],
+            "arguments": {}
+        },
+        "register_error_handlers": {
+            "name": "register_error_handlers",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "app": [
+                    "flask.Flask"
+                ]
+            }
+        },
+        "jsonify_exception": {
+            "name": "jsonify_exception",
+            "location": 39,
+            "return": [
+                "bytes",
+                "Dict[str, Any]",
+                "dict",
+                "str",
+                "Optional[Dict[str, Any]]"
+            ],
+            "arguments": {
+                "error": [
+                    "str",
+                    "bytes",
+                    "werkzeug.Request",
+                    "dict"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/parse.py": {
+        "_parse_time": {
+            "name": "_parse_time",
+            "location": 12,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "parse_github_event": {
+            "name": "parse_github_event",
+            "location": 16,
+            "return": [
+                "domain.GithubEvent"
+            ],
+            "arguments": {
+                "event_type": [
+                    "domain.GithubEventType"
+                ],
+                "event": [
+                    "dict"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/process.py": {
+        "translate": {
+            "name": "translate",
+            "location": 20,
+            "return": [
+                "Optional[sync.domain.JiraEvent]"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ],
+                "issue_key": [
+                    "Optional[str]"
+                ],
+                "comment_id": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "_make_description": {
+            "name": "_make_description",
+            "location": 36,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "_make_comment_body": {
+            "name": "_make_comment_body",
+            "location": 42,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "_mark_edited": {
+            "name": "_mark_edited",
+            "location": 47,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ],
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "_get_components": {
+            "name": "_get_components",
+            "location": 53,
+            "return": [
+                "List[Dict[(str, int)]]"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_issue_opened": {
+            "name": "translate_issue_opened",
+            "location": 61,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_issue_edited": {
+            "name": "translate_issue_edited",
+            "location": 76,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_issue_closed": {
+            "name": "translate_issue_closed",
+            "location": 90,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_issue_reopened": {
+            "name": "translate_issue_reopened",
+            "location": 100,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_issue_deleted": {
+            "name": "translate_issue_deleted",
+            "location": 110,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_comment_created": {
+            "name": "translate_comment_created",
+            "location": 119,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_comment_deleted": {
+            "name": "translate_comment_deleted",
+            "location": 127,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "translate_comment_edited": {
+            "name": "translate_comment_edited",
+            "location": 134,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/routes.py": {
+        "status": {
+            "name": "status",
+            "location": 10,
+            "return": [
+                "int",
+                "Optional[str]",
+                "List[str]",
+                "bool",
+                "Dict[str, str]",
+                "Dict[str, Any]",
+                "float"
+            ],
+            "arguments": {}
+        },
+        "issuesevent": {
+            "name": "issuesevent",
+            "location": 15,
+            "return": [
+                "str",
+                "Optional[str]",
+                "Dict[str, dict]",
+                "Dict[str, Any]",
+                "Tuple[str, Optional[int]]"
+            ],
+            "arguments": {}
+        },
+        "issuecommentevent": {
+            "name": "issuecommentevent",
+            "location": 24,
+            "return": [
+                "str",
+                "Optional[str]",
+                "Dict[str, dict]",
+                "Dict[str, Any]",
+                "Tuple[str, Optional[int]]"
+            ],
+            "arguments": {}
+        }
+    },
+    "issue-sync-master/sync/serialize.py": {
+        "EnumJSONEncoder.default": {
+            "name": "default",
+            "location": 10,
+            "return": [
+                "Union[(list, str)]"
+            ],
+            "arguments": {
+                "self": [],
+                "obj": [
+                    "dict[, ]",
+                    "dict",
+                    "str",
+                    "list[util.Block]",
+                    "List[util.Block]",
+                    "util.XYZ"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/__init__.py": {},
+    "issue-sync-master/sync/services/database.py": {
+        "init_app": {
+            "name": "init_app",
+            "location": 77,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "app": [
+                    "flask.Flask"
+                ]
+            }
+        },
+        "create_all": {
+            "name": "create_all",
+            "location": 81,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "get_jira_issue_key": {
+            "name": "get_jira_issue_key",
+            "location": 85,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "github_issue_id": [
+                    "str"
+                ]
+            }
+        },
+        "get_jira_comment_id": {
+            "name": "get_jira_comment_id",
+            "location": 94,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "github_comment_id": [
+                    "str"
+                ]
+            }
+        },
+        "store_github_event": {
+            "name": "store_github_event",
+            "location": 103,
+            "return": [
+                "sync.domain.GithubEvent"
+            ],
+            "arguments": {
+                "gh_event": [
+                    "sync.domain.GithubEvent"
+                ]
+            }
+        },
+        "store_comment_mapping": {
+            "name": "store_comment_mapping",
+            "location": 114,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "gh_comment_id": [
+                    "str"
+                ],
+                "jira_comment_id": [
+                    "str"
+                ]
+            }
+        },
+        "store_issue_mapping": {
+            "name": "store_issue_mapping",
+            "location": 120,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "gh_issue_id": [
+                    "int"
+                ],
+                "jira_issue_key": [
+                    "str"
+                ]
+            }
+        },
+        "FriendlyJSONType.process_bind_param": {
+            "name": "process_bind_param",
+            "location": 28,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "obj": [
+                    "Optional[dict]"
+                ],
+                "dialect": [
+                    "str"
+                ]
+            }
+        },
+        "FriendlyJSONType.process_result_value": {
+            "name": "process_result_value",
+            "location": 36,
+            "return": [
+                "Optional[dict]"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "str"
+                ],
+                "dialect": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/services/jira.py": {
+        "propagate": {
+            "name": "propagate",
+            "location": 77,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "jira_event": [
+                    "sync.domain.JiraEvent"
+                ]
+            }
+        },
+        "init_app": {
+            "name": "init_app",
+            "location": 94,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "app": [
+                    "bool",
+                    "flask.Flask",
+                    "flask.app.Flask"
+                ]
+            }
+        },
+        "JiraService.__init__": {
+            "name": "__init__",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "endpoint": [
+                    "str"
+                ],
+                "username": [
+                    "str"
+                ],
+                "token": [
+                    "str"
+                ]
+            }
+        },
+        "JiraService._new_connection": {
+            "name": "_new_connection",
+            "location": 21,
+            "return": [
+                "str",
+                "dict",
+                "Iterable",
+                "IO[str]"
+            ],
+            "arguments": {
+                "endpoint": [
+                    "str"
+                ],
+                "username": [
+                    "str"
+                ],
+                "token": [
+                    "str"
+                ]
+            }
+        },
+        "JiraService.create_ticket": {
+            "name": "create_ticket",
+            "location": 24,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "sync.domain.JiraEvent"
+                ]
+            }
+        },
+        "JiraService.update_ticket": {
+            "name": "update_ticket",
+            "location": 29,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "sync.domain.JiraEvent"
+                ]
+            }
+        },
+        "JiraService.transition_ticket": {
+            "name": "transition_ticket",
+            "location": 37,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "sync.domain.JiraEvent"
+                ]
+            }
+        },
+        "JiraService.create_comment": {
+            "name": "create_comment",
+            "location": 45,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "sync.domain.JiraEvent"
+                ]
+            }
+        },
+        "JiraService.update_comment": {
+            "name": "update_comment",
+            "location": 53,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "sync.domain.JiraEvent"
+                ]
+            }
+        },
+        "JiraService.delete_comment": {
+            "name": "delete_comment",
+            "location": 64,
+            "return": [
+                "sync.domain.JiraEvent"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "sync.domain.JiraEvent"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/sync/services/__init__.py": {},
+    "issue-sync-master/tests/test_controllers.py": {
+        "TestIssuesEventEdited.setUp": {
+            "name": "setUp",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIssuesEventEdited.test_handle_event": {
+            "name": "test_handle_event",
+            "location": 23,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_jira": [
+                    "mock.MagicMock"
+                ],
+                "mock_database": [
+                    "Tuple[str, mock.Mock]",
+                    "tuple[typing.Union[str,mock.Mock]]"
+                ]
+            }
+        }
+    },
+    "issue-sync-master/tests/test_process.py": {
+        "TestIssuesEventEdited.setUp": {
+            "name": "setUp",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIssuesEventEdited.test_translate": {
+            "name": "test_translate",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "issue-sync-master/tests/__init__.py": {}
+}

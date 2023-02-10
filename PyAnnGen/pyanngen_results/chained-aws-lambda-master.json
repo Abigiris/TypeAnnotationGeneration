@@ -1,0 +1,1858 @@
+{
+    "chained-aws-lambda-master/setup.py": {},
+    "chained-aws-lambda-master/daemons/chained-aws-lambda/app.py": {
+        "process_work": {
+            "name": "process_work",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "Dict[str, Any]",
+                    "dict"
+                ],
+                "context": []
+            }
+        }
+    },
+    "chained-aws-lambda-master/scripts/chained_aws_lambda.py": {
+        "parse_args": {
+            "name": "parse_args",
+            "location": 51,
+            "return": [
+                "argparse.Namespace"
+            ],
+            "arguments": {}
+        },
+        "write_jinja_file": {
+            "name": "write_jinja_file",
+            "location": 126,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "template_file": [
+                    "str",
+                    "bool"
+                ],
+                "template_vars": [
+                    "str",
+                    "Union[str, IO[bytes]]"
+                ],
+                "file_path": [
+                    "str"
+                ],
+                "overwrite": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 158,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "chained-aws-lambda-master/scripts/get_all_chained_aws_lambda_clients.py": {},
+    "chained-aws-lambda-master/src/chainedawslambda/aws.py": {
+        "get_clients": {
+            "name": "get_clients",
+            "location": 22,
+            "return": [
+                "MutableMapping[(str, Type[chainedawslambda.base.Task])]"
+            ],
+            "arguments": {}
+        },
+        "add_client": {
+            "name": "add_client",
+            "location": 26,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client_name": [
+                    "str"
+                ],
+                "client_class": [
+                    "Type[chainedawslambda.base.Task]"
+                ]
+            }
+        },
+        "resolve_class": {
+            "name": "resolve_class",
+            "location": 30,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "task_class": [
+                    "Type[chainedawslambda.base.Task]"
+                ]
+            }
+        },
+        "schedule_task": {
+            "name": "schedule_task",
+            "location": 41,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "task_class": [
+                    "Type[chainedawslambda.base.Task[(dict, Any)]]"
+                ],
+                "state": [
+                    "dict"
+                ],
+                "task_id": [
+                    "str"
+                ]
+            }
+        },
+        "parse_payload": {
+            "name": "parse_payload",
+            "location": 84,
+            "return": [
+                "Optional[Tuple[(Any, Any, Type[chainedawslambda.base.Task], Any)]]"
+            ],
+            "arguments": {
+                "payload": [
+                    "dict"
+                ],
+                "expected_client_name": [
+                    "str"
+                ]
+            }
+        },
+        "dispatch": {
+            "name": "dispatch",
+            "location": 150,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "context": [
+                    "str"
+                ],
+                "payload": [
+                    "str"
+                ],
+                "expected_client_name": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/awsconstants.py": {},
+    "chained-aws-lambda-master/src/chainedawslambda/base.py": {
+        "Task.run_one_unit": {
+            "name": "run_one_unit",
+            "location": 10,
+            "return": [
+                "Optional[TaskResultType]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.expected_max_one_unit_runtime_millis": {
+            "name": "expected_max_one_unit_runtime_millis",
+            "location": 18,
+            "return": [
+                "builtins.int",
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.get_state": {
+            "name": "get_state",
+            "location": 22,
+            "return": [
+                "TaskStateType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Runtime.get_remaining_time_in_millis": {
+            "name": "get_remaining_time_in_millis",
+            "location": 34,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Runtime.schedule_work": {
+            "name": "schedule_work",
+            "location": 42,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "task_class": [
+                    "Type[Task]"
+                ],
+                "state": [
+                    "bool",
+                    "List[int]",
+                    "list[int]",
+                    "Dict[str, str]",
+                    "dict[str, str]",
+                    "Optional[bool]",
+                    "None"
+                ],
+                "new_task": [
+                    "bool"
+                ]
+            }
+        },
+        "Runtime.work_complete_callback": {
+            "name": "work_complete_callback",
+            "location": 52,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "result": [
+                    "RuntimeResultType"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/constants.py": {},
+    "chained-aws-lambda-master/src/chainedawslambda/runner.py": {
+        "Runner.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "chainedawslambda": [
+                    "chainedawslambda.base.Task[(RunnerStateType, RunnerResultType)]"
+                ],
+                "runtime": [
+                    "chainedawslambda.base.Runtime[(RunnerStateType, RunnerResultType)]"
+                ]
+            }
+        },
+        "Runner.run": {
+            "name": "run",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/s3copyclient.py": {
+        "S3CopyTask.__init__": {
+            "name": "__init__",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "dict"
+                ],
+                "fetch_size": [
+                    "int"
+                ]
+            }
+        },
+        "S3CopyTask.setup_copy_task": {
+            "name": "setup_copy_task",
+            "location": 50,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "source_bucket": [
+                    "str"
+                ],
+                "source_key": [
+                    "str"
+                ],
+                "destination_bucket": [
+                    "str"
+                ],
+                "destination_key": [
+                    "str"
+                ],
+                "part_size_calculator": [
+                    "Callable[([int], int)]"
+                ]
+            }
+        },
+        "S3CopyTask.get_state": {
+            "name": "get_state",
+            "location": 86,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3CopyTask.expected_max_one_unit_runtime_millis": {
+            "name": "expected_max_one_unit_runtime_millis",
+            "location": 101,
+            "return": [
+                "int",
+                "str",
+                "Dict[str, str]",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3CopyTask.run_one_unit": {
+            "name": "run_one_unit",
+            "location": 105,
+            "return": [
+                "bool",
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3CopyTask.calculate_range_for_part": {
+            "name": "calculate_range_for_part",
+            "location": 171,
+            "return": [
+                "Tuple[(int, int)]"
+            ],
+            "arguments": {
+                "self": [],
+                "part_id": [
+                    "int",
+                    "List[int]"
+                ]
+            }
+        },
+        "S3ParallelCopySupervisorTask.__init__": {
+            "name": "__init__",
+            "location": 208,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "dict"
+                ],
+                "runtime": [
+                    "chainedawslambda.base.Runtime"
+                ],
+                "fetch_size": [
+                    "int"
+                ]
+            }
+        },
+        "S3ParallelCopySupervisorTask.setup_copy_task": {
+            "name": "setup_copy_task",
+            "location": 232,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "source_bucket": [
+                    "str"
+                ],
+                "source_key": [
+                    "str"
+                ],
+                "destination_bucket": [
+                    "str"
+                ],
+                "destination_key": [
+                    "str"
+                ],
+                "part_size_calculator": [
+                    "Callable[([int], int)]"
+                ],
+                "timeout_seconds": [
+                    "int"
+                ],
+                "batch_size": [
+                    "int"
+                ]
+            }
+        },
+        "S3ParallelCopySupervisorTask.get_state": {
+            "name": "get_state",
+            "location": 275,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3ParallelCopySupervisorTask.expected_max_one_unit_runtime_millis": {
+            "name": "expected_max_one_unit_runtime_millis",
+            "location": 293,
+            "return": [
+                "int",
+                "str",
+                "Dict[str, str]",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3ParallelCopySupervisorTask.run_one_unit": {
+            "name": "run_one_unit",
+            "location": 297,
+            "return": [
+                "typing.Text",
+                "bool",
+                "float",
+                "None",
+                "int",
+                "IO[str]",
+                "str",
+                "bytes"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3ParallelCopyWorkerTask.__init__": {
+            "name": "__init__",
+            "location": 394,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "dict"
+                ]
+            }
+        },
+        "S3ParallelCopyWorkerTask.setup_copy_task": {
+            "name": "setup_copy_task",
+            "location": 419,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "source_bucket": [
+                    "str"
+                ],
+                "source_key": [
+                    "str"
+                ],
+                "source_etag": [
+                    "str"
+                ],
+                "destination_bucket": [
+                    "str"
+                ],
+                "destination_key": [
+                    "str"
+                ],
+                "upload_id": [
+                    "str"
+                ],
+                "size": [
+                    "int"
+                ],
+                "part_size": [
+                    "int"
+                ],
+                "next_part": [
+                    "int"
+                ],
+                "last_part": [
+                    "int"
+                ],
+                "concurrent_requests": [
+                    "int"
+                ]
+            }
+        },
+        "S3ParallelCopyWorkerTask.get_state": {
+            "name": "get_state",
+            "location": 456,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3ParallelCopyWorkerTask.expected_max_one_unit_runtime_millis": {
+            "name": "expected_max_one_unit_runtime_millis",
+            "location": 472,
+            "return": [
+                "int",
+                "str",
+                "Dict[str, str]",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3ParallelCopyWorkerTask.run_one_unit": {
+            "name": "run_one_unit",
+            "location": 476,
+            "return": [
+                "Optional[bool]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3ParallelCopyWorkerTask.calculate_range_for_part": {
+            "name": "calculate_range_for_part",
+            "location": 513,
+            "return": [
+                "Tuple[(int, int)]"
+            ],
+            "arguments": {
+                "self": [],
+                "part_id": [
+                    "int",
+                    "List[int]"
+                ]
+            }
+        },
+        "S3ParallelCopyWorkerTask.run_one_unit.copy_one_part": {
+            "name": "copy_one_part",
+            "location": 477,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "part_id": [
+                    "str",
+                    "int"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/_awsimpl.py": {
+        "AWSRuntime.__init__": {
+            "name": "__init__",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "context": [
+                    "bool",
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "int"
+                ],
+                "client_name": [
+                    "str"
+                ],
+                "task_id": [
+                    "str"
+                ]
+            }
+        },
+        "AWSRuntime.get_remaining_time_in_millis": {
+            "name": "get_remaining_time_in_millis",
+            "location": 19,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AWSRuntime.schedule_work": {
+            "name": "schedule_work",
+            "location": 22,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "task_class": [
+                    "Type[chainedawslambda.base.Task[(dict, Any)]]"
+                ],
+                "state": [
+                    "dict"
+                ],
+                "new_task": [
+                    "bool"
+                ]
+            }
+        },
+        "AWSRuntime.work_complete_callback": {
+            "name": "work_complete_callback",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "result": [
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]",
+                    "List[\"DictDataLoader\"]",
+                    "list[\"DictDataLoader\"]"
+                ]
+            }
+        },
+        "AWSRuntime.log": {
+            "name": "log",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client_key": [
+                    "str"
+                ],
+                "task_id": [
+                    "str"
+                ],
+                "message": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/_awstest.py": {
+        "is_task_complete": {
+            "name": "is_task_complete",
+            "location": 16,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "client_name": [
+                    "str"
+                ],
+                "task_id": [
+                    "str"
+                ]
+            }
+        },
+        "AWSFastTestRuntime.__init__": {
+            "name": "__init__",
+            "location": 54,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "context": [
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Dict[str, Any]]",
+                    "dict[str, typing.Any]"
+                ],
+                "client_name": [
+                    "str"
+                ],
+                "task_id": [
+                    "str"
+                ]
+            }
+        },
+        "AWSFastTestRuntime.get_remaining_time_in_millis": {
+            "name": "get_remaining_time_in_millis",
+            "location": 61,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AWSFastTestTask.__init__": {
+            "name": "__init__",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "MutableSequence"
+                ]
+            }
+        },
+        "AWSFastTestTask.get_state": {
+            "name": "get_state",
+            "location": 73,
+            "return": [
+                "MutableSequence"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AWSFastTestTask.expected_max_one_unit_runtime_millis": {
+            "name": "expected_max_one_unit_runtime_millis",
+            "location": 77,
+            "return": [
+                "int",
+                "bool",
+                "Dict[str, str]",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AWSFastTestTask.run_one_unit": {
+            "name": "run_one_unit",
+            "location": 80,
+            "return": [
+                "Optional[bool]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SupervisorTask.__init__": {
+            "name": "__init__",
+            "location": 93,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "dict"
+                ],
+                "runtime": [
+                    "chainedawslambda.base.Runtime"
+                ]
+            }
+        },
+        "SupervisorTask.expected_max_one_unit_runtime_millis": {
+            "name": "expected_max_one_unit_runtime_millis",
+            "location": 98,
+            "return": [
+                "int",
+                "str",
+                "Dict[str, str]",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SupervisorTask.get_state": {
+            "name": "get_state",
+            "location": 101,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SupervisorTask.run_one_unit": {
+            "name": "run_one_unit",
+            "location": 104,
+            "return": [
+                "Optional[bool]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SupervisorTask.check_success_marker": {
+            "name": "check_success_marker",
+            "location": 122,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AWSSupervisorTask.__init__": {
+            "name": "__init__",
+            "location": 127,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "dict"
+                ],
+                "runtime": [
+                    "chainedawslambda._awsimpl.AWSRuntime"
+                ]
+            }
+        },
+        "AWSSupervisorTask.check_success_marker": {
+            "name": "check_success_marker",
+            "location": 131,
+            "return": [
+                "Optional[bool]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/__init__.py": {},
+    "chained-aws-lambda-master/src/chainedawslambda/blobstore/s3.py": {
+        "S3BlobStore.__init__": {
+            "name": "__init__",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "S3BlobStore.list": {
+            "name": "list",
+            "location": 29,
+            "return": [
+                "Iterator[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "prefix": [
+                    "str"
+                ],
+                "delimiter": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.generate_presigned_GET_url": {
+            "name": "generate_presigned_GET_url",
+            "location": 50,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore._generate_presigned_url": {
+            "name": "_generate_presigned_url",
+            "location": 61,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ],
+                "method": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.upload_file_handle": {
+            "name": "upload_file_handle",
+            "location": 75,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ],
+                "src_file_handle": [
+                    "BinaryIO"
+                ]
+            }
+        },
+        "S3BlobStore.delete": {
+            "name": "delete",
+            "location": 86,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.get": {
+            "name": "get",
+            "location": 92,
+            "return": [
+                "bytes"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.get_all_metadata": {
+            "name": "get_all_metadata",
+            "location": 111,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.get_cloud_checksum": {
+            "name": "get_cloud_checksum",
+            "location": 133,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.get_user_metadata": {
+            "name": "get_user_metadata",
+            "location": 148,
+            "return": [
+                "Dict[(str, str)]"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.copy": {
+            "name": "copy",
+            "location": 180,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "src_bucket": [
+                    "str"
+                ],
+                "src_object_name": [
+                    "str"
+                ],
+                "dst_bucket": [
+                    "str"
+                ],
+                "dst_object_name": [
+                    "str"
+                ]
+            }
+        },
+        "S3BlobStore.find_next_missing_parts": {
+            "name": "find_next_missing_parts",
+            "location": 200,
+            "return": [
+                "Sequence[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "key": [
+                    "str"
+                ],
+                "upload_id": [
+                    "str"
+                ],
+                "part_count": [
+                    "int"
+                ],
+                "search_start": [
+                    "int"
+                ],
+                "return_count": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/blobstore/__init__.py": {
+        "BlobStore.__init__": {
+            "name": "__init__",
+            "location": 6,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BlobStore.list": {
+            "name": "list",
+            "location": 9,
+            "return": [
+                "typing.Iterator[builtins.str]",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "prefix": [
+                    "str",
+                    "None"
+                ],
+                "delimiter": [
+                    "str",
+                    "None"
+                ]
+            }
+        },
+        "BlobStore.generate_presigned_GET_url": {
+            "name": "generate_presigned_GET_url",
+            "location": 21,
+            "return": [
+                "builtins.str",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str",
+                    "bytes"
+                ],
+                "object_name": [
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "BlobStore.upload_file_handle": {
+            "name": "upload_file_handle",
+            "location": 35,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str",
+                    "BinaryIO",
+                    "typing.BinaryIO"
+                ],
+                "object_name": [
+                    "str",
+                    "BinaryIO",
+                    "typing.BinaryIO"
+                ],
+                "src_file_handle": [
+                    "str",
+                    "BinaryIO",
+                    "typing.BinaryIO"
+                ]
+            }
+        },
+        "BlobStore.delete": {
+            "name": "delete",
+            "location": 45,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "BlobStore.get": {
+            "name": "get",
+            "location": 52,
+            "return": [
+                "builtins.bytes",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "BlobStore.get_cloud_checksum": {
+            "name": "get_cloud_checksum",
+            "location": 62,
+            "return": [
+                "builtins.str",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str"
+                ],
+                "object_name": [
+                    "str"
+                ]
+            }
+        },
+        "BlobStore.get_user_metadata": {
+            "name": "get_user_metadata",
+            "location": 75,
+            "return": [
+                "typing.Dict[builtins.str, builtins.str]",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "bucket": [
+                    "str",
+                    "bytes"
+                ],
+                "object_name": [
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "BlobStore.copy": {
+            "name": "copy",
+            "location": 90,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "src_bucket": [
+                    "str",
+                    "int"
+                ],
+                "src_object_name": [
+                    "str",
+                    "int"
+                ],
+                "dst_bucket": [
+                    "str",
+                    "int"
+                ],
+                "dst_object_name": [
+                    "str",
+                    "int"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/util/__init__.py": {
+        "UrlBuilder.__init__": {
+            "name": "__init__",
+            "location": 4,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UrlBuilder.set": {
+            "name": "set",
+            "location": 8,
+            "return": [
+                "UrlBuilder",
+                "bool",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "scheme": [
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "int"
+                ],
+                "netloc": [
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "int"
+                ],
+                "path": [
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "typing.IO",
+                    "Optional[IO[bytes]]",
+                    "Optional['Directory']"
+                ],
+                "fragment": [
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "int"
+                ]
+            }
+        },
+        "UrlBuilder.add_query": {
+            "name": "add_query",
+            "location": 22,
+            "return": [
+                "UrlBuilder",
+                "Tuple[bytes]",
+                "int",
+                "bool",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "query_name": [
+                    "str",
+                    "int",
+                    "bool"
+                ],
+                "query_value": [
+                    "str",
+                    "int",
+                    "bool"
+                ]
+            }
+        },
+        "UrlBuilder.__str__": {
+            "name": "__str__",
+            "location": 27,
+            "return": [
+                "bool",
+                "int",
+                "type",
+                "str",
+                "Optional[Callable[[dict], None]]",
+                "Optional[Set[str]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/util/aws/clients.py": {},
+    "chained-aws-lambda-master/src/chainedawslambda/util/aws/logging.py": {
+        "log_message": {
+            "name": "log_message",
+            "location": 6,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "log_group_name": [
+                    "str"
+                ],
+                "log_stream_name": [
+                    "str"
+                ],
+                "message": [
+                    "str"
+                ]
+            }
+        },
+        "log_message.get_sequence_token": {
+            "name": "get_sequence_token",
+            "location": 11,
+            "return": [
+                "None",
+                "bool",
+                "Optional[Dict[str, Any]]",
+                "Optional[List[str]]"
+            ],
+            "arguments": {}
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/util/aws/resources.py": {},
+    "chained-aws-lambda-master/src/chainedawslambda/util/aws/_boto3_loader.py": {
+        "Loader.__init__": {
+            "name": "__init__",
+            "location": 5,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "factory": [
+                    "int",
+                    "float",
+                    "bool"
+                ]
+            }
+        },
+        "Loader.__getattr__": {
+            "name": "__getattr__",
+            "location": 8,
+            "return": [
+                "list[]",
+                "None",
+                "List[int]",
+                "List[Dict]",
+                "str",
+                "list",
+                "List[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "attr": [
+                    "str",
+                    "T"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/src/chainedawslambda/util/aws/__init__.py": {
+        "send_sns_msg": {
+            "name": "send_sns_msg",
+            "location": 33,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "topic_arn": [
+                    "int"
+                ],
+                "message": [
+                    "str",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]",
+                    "dict",
+                    "dict[, ]",
+                    "Optional[float]",
+                    "float",
+                    "None"
+                ]
+            }
+        },
+        "ARN.__init__": {
+            "name": "__init__",
+            "location": 10,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "arn": [
+                    "typing.Text",
+                    "dict",
+                    "Dict[str, bool]",
+                    "Callable"
+                ]
+            }
+        },
+        "ARN.get_region": {
+            "name": "get_region",
+            "location": 18,
+            "return": [
+                "bool",
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "int",
+                    "dict",
+                    "dict[, ]",
+                    "Optional[dict]",
+                    "None",
+                    "Optional[Any]",
+                    "typing.Any"
+                ]
+            }
+        },
+        "ARN.get_account_id": {
+            "name": "get_account_id",
+            "location": 24,
+            "return": [
+                "Optional[str]",
+                "str",
+                "Optional[List[str]]",
+                "Type[T]"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "Optional[str]",
+                    "dict",
+                    "int",
+                    "None",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "ARN.__str__": {
+            "name": "__str__",
+            "location": 29,
+            "return": [
+                "str",
+                "List[str]",
+                "Optional[dict]",
+                "int",
+                "Iterable",
+                "Tuple[int]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "chained-aws-lambda-master/tests/chained_lambda_utils.py": {
+        "run_task_to_completion": {
+            "name": "run_task_to_completion",
+            "location": 43,
+            "return": [
+                "Tuple[(int, Any)]"
+            ],
+            "arguments": {
+                "initial_task": [
+                    "Type[chainedawslambda.base.Task]"
+                ],
+                "initial_state": [
+                    "dict",
+                    "dict[, ]",
+                    "Callable",
+                    "typing.Callable[, ]",
+                    "Dict[str, bool]",
+                    "dict[str, bool]",
+                    "list",
+                    "list[]",
+                    "List[List[Any]]",
+                    "list[list[typing.Any]]"
+                ],
+                "runtime_builder": [
+                    "Callable[([Mapping[(str, Any)]], chainedawslambda.base.Runtime)]"
+                ],
+                "task_builder": [
+                    "Callable[([Type[chainedawslambda.base.Task], Any, chainedawslambda.base.Runtime], chainedawslambda.base.Task)]"
+                ],
+                "runtime_result_getter": [
+                    "Callable[([chainedawslambda.base.Runtime], Any)]"
+                ],
+                "runtime_scheduled_getter": [
+                    "Callable[([chainedawslambda.base.Runtime], List[Tuple[(Type[chainedawslambda.base.Task], Any, Optional[str])]])]"
+                ]
+            }
+        },
+        "TestStingyRuntime.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "global_results": [
+                    "Mapping[(str, Any)]"
+                ],
+                "seq": [
+                    "Optional[Iterable[int]]"
+                ]
+            }
+        },
+        "TestStingyRuntime.get_remaining_time_in_millis": {
+            "name": "get_remaining_time_in_millis",
+            "location": 23,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestStingyRuntime.schedule_work": {
+            "name": "schedule_work",
+            "location": 26,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "task_class": [
+                    "Type[chainedawslambda.base.Task]"
+                ],
+                "state": [
+                    "Optional[List[Any]]",
+                    "list[typing.Any]",
+                    "Optional[List[str]]",
+                    "None",
+                    "List[str]",
+                    "list[str]",
+                    "Dict[str, str]",
+                    "dict[str, str]"
+                ],
+                "new_task": [
+                    "bool"
+                ]
+            }
+        },
+        "TestStingyRuntime.work_complete_callback": {
+            "name": "work_complete_callback",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "result": [
+                    "Union[int, float]",
+                    "int",
+                    "float"
+                ]
+            }
+        }
+    },
+    "chained-aws-lambda-master/tests/infra.py": {
+        "get_env": {
+            "name": "get_env",
+            "location": 6,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "varname": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "generate_test_key": {
+            "name": "generate_test_key",
+            "location": 13,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        }
+    },
+    "chained-aws-lambda-master/tests/test_chunkedtask.py": {
+        "setUpModule": {
+            "name": "setUpModule",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestChainedAWSLambda.__init__": {
+            "name": "__init__",
+            "location": 26,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "Tuple[(int, int, int)]"
+                ],
+                "expected_max_one_unit_runtime_millis": [
+                    "int"
+                ]
+            }
+        },
+        "TestChainedAWSLambda.expected_max_one_unit_runtime_millis": {
+            "name": "expected_max_one_unit_runtime_millis",
+            "location": 34,
+            "return": [
+                "str",
+                "List[int]",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestChainedAWSLambda.get_state": {
+            "name": "get_state",
+            "location": 37,
+            "return": [
+                "tuple[]",
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestChainedAWSLambda.run_one_unit": {
+            "name": "run_one_unit",
+            "location": 40,
+            "return": [
+                "Optional[Tuple[(int, int)]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestChainedAWSLambdaRunner.test_workload_resumes": {
+            "name": "test_workload_resumes",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestForkedTask.test_forked_task_locally": {
+            "name": "test_forked_task_locally",
+            "location": 71,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestForkedTask.test_forked_task_AWS": {
+            "name": "test_forked_task_AWS",
+            "location": 111,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "timeout_seconds": [
+                    "int"
+                ]
+            }
+        },
+        "TestAWSChainedAWSLambda.test_fast": {
+            "name": "test_fast",
+            "location": 133,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestForkedTask.test_forked_task_locally.task_creator": {
+            "name": "task_creator",
+            "location": 90,
+            "return": [
+                "LocalSupervisorTask",
+                "Optional[str]",
+                "int"
+            ],
+            "arguments": {
+                "task_class": [
+                    "dict"
+                ],
+                "task_state": [
+                    "Optional[str]",
+                    "str"
+                ],
+                "runtime": [
+                    "Optional[str]",
+                    "int",
+                    "bool"
+                ]
+            }
+        },
+        "TestForkedTask.test_forked_task_locally.LocalSupervisorTask.__init__": {
+            "name": "__init__",
+            "location": 80,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "Tuple[(int, int, int)]"
+                ],
+                "runtime": [
+                    "dict",
+                    "bool"
+                ]
+            }
+        },
+        "TestForkedTask.test_forked_task_locally.LocalSupervisorTask.check_success_marker": {
+            "name": "check_success_marker",
+            "location": 83,
+            "return": [
+                "bool",
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "chained-aws-lambda-master/tests/test_s3copyclient.py": {
+        "setUpModule": {
+            "name": "setUpModule",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestAWSCopy.setUp": {
+            "name": "setUp",
+            "location": 31,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAWSCopy.test_simple_copy": {
+            "name": "test_simple_copy",
+            "location": 55,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAWSCopy.test_off_by_one": {
+            "name": "test_off_by_one",
+            "location": 76,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAWSCopy.test_parallel_copy_locally_many_workers": {
+            "name": "test_parallel_copy_locally_many_workers",
+            "location": 97,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "timeout_seconds": [
+                    "Iterable[Tuple[int, int]]"
+                ]
+            }
+        },
+        "TestAWSCopy.test_parallel_copy_locally_parallel_worker": {
+            "name": "test_parallel_copy_locally_parallel_worker",
+            "location": 127,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "timeout_seconds": [
+                    "Iterable[Tuple[int, int]]"
+                ]
+            }
+        },
+        "TestAWSCopy.test_parallel_copy_aws": {
+            "name": "test_parallel_copy_aws",
+            "location": 157,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "timeout_seconds": [
+                    "Iterable[Tuple[int, int]]"
+                ]
+            }
+        },
+        "TestAWSCopyNonMultipart.setUp": {
+            "name": "setUp",
+            "location": 186,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAWSCopyNonMultipart.test_simple_copy": {
+            "name": "test_simple_copy",
+            "location": 197,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "chained-aws-lambda-master/tests/__init__.py": {}
+}

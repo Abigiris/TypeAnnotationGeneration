@@ -1,0 +1,373 @@
+{
+    "reminders-service-master/settings.py": {},
+    "reminders-service-master/setup.py": {},
+    "reminders-service-master/reminders/airtable_client.py": {
+        "AirtableClient.__init__": {
+            "name": "__init__",
+            "location": 6,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "sheet_url": [
+                    "str"
+                ],
+                "api_key": [
+                    "str"
+                ]
+            }
+        },
+        "AirtableClient.update_record": {
+            "name": "update_record",
+            "location": 13,
+            "return": [
+                "requests.models.Response"
+            ],
+            "arguments": {
+                "self": [],
+                "airtable_record_id": [
+                    "str"
+                ],
+                "attributes": [
+                    "dict"
+                ]
+            }
+        },
+        "AirtableClient.get_records": {
+            "name": "get_records",
+            "location": 18,
+            "return": [
+                "requests.models.Response"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "reminders-service-master/reminders/lambda_functions.py": {
+        "reminders_handler": {
+            "name": "reminders_handler",
+            "location": 15,
+            "return": [
+                "Optional[Union[(bool, Dict[(str, Union[(int, str, Dict[(str, str)])])])]]"
+            ],
+            "arguments": {
+                "event": [
+                    "str",
+                    "Optional[Callable]",
+                    "dict",
+                    "Set[str]"
+                ],
+                "context": [
+                    "str"
+                ]
+            }
+        },
+        "daily_task": {
+            "name": "daily_task",
+            "location": 29,
+            "return": [
+                "bool"
+            ],
+            "arguments": {}
+        },
+        "weekly_task": {
+            "name": "weekly_task",
+            "location": 41,
+            "return": [
+                "bool"
+            ],
+            "arguments": {}
+        },
+        "mark_task_as_done": {
+            "name": "mark_task_as_done",
+            "location": 55,
+            "return": [
+                "Dict[(str, Union[(int, str, Dict[(str, str)])])]"
+            ],
+            "arguments": {
+                "task_id": [
+                    "str",
+                    "golem.task.TaskId",
+                    "golem.task.SubtaskId",
+                    "Optional[int]"
+                ]
+            }
+        },
+        "get_sheet": {
+            "name": "get_sheet",
+            "location": 65,
+            "return": [
+                "reminders.reminders_sheet.RemindersSheet"
+            ],
+            "arguments": {}
+        }
+    },
+    "reminders-service-master/reminders/reminders_sheet.py": {
+        "RemindersSheet.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "airtable": [
+                    "reminders.airtable_client.AirtableClient"
+                ]
+            }
+        },
+        "RemindersSheet.get_tasks": {
+            "name": "get_tasks",
+            "location": 15,
+            "return": [
+                "List[reminders.task.Task]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RemindersSheet.write_task": {
+            "name": "write_task",
+            "location": 19,
+            "return": [
+                "reminders.task.Task"
+            ],
+            "arguments": {
+                "self": [],
+                "task": [
+                    "reminders.task.Task"
+                ],
+                "values": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "RemindersSheet.tasks_due": {
+            "name": "tasks_due",
+            "location": 23,
+            "return": [
+                "List[reminders.task.Task]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RemindersSheet.mark_task_as_done": {
+            "name": "mark_task_as_done",
+            "location": 26,
+            "return": [
+                "None",
+                "bool",
+                "Optional[str]",
+                "Optional[Tuple]",
+                "Type"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "RemindersSheet.mark_new_tasks": {
+            "name": "mark_new_tasks",
+            "location": 41,
+            "return": [
+                "List[reminders.task.Task]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RemindersSheet.__record_to_task": {
+            "name": "__record_to_task",
+            "location": 48,
+            "return": [
+                "Task",
+                "bool",
+                "Type",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "record": [
+                    "list[dict[str, typing.Any]]",
+                    "tuple[typing.Union[int,int,int]]",
+                    "dict",
+                    "List[Dict[str, Any]]",
+                    "Type[T]",
+                    "Tuple[int, int, int]",
+                    "Callable"
+                ]
+            }
+        }
+    },
+    "reminders-service-master/reminders/ses_mailer.py": {
+        "send_email": {
+            "name": "send_email",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "subject": [
+                    "str"
+                ],
+                "html": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "reminders-service-master/reminders/task.py": {
+        "Task.__init__": {
+            "name": "__init__",
+            "location": 8,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "str"
+                ],
+                "name": [
+                    "str"
+                ],
+                "date_done": [
+                    "datetime.date"
+                ],
+                "num_days": [
+                    "int"
+                ]
+            }
+        },
+        "Task.subject": {
+            "name": "subject",
+            "location": 19,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.current_task_name": {
+            "name": "current_task_name",
+            "location": 22,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.date_due": {
+            "name": "date_due",
+            "location": 28,
+            "return": [
+                "datetime.date"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.due": {
+            "name": "due",
+            "location": 31,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.num_tasks": {
+            "name": "num_tasks",
+            "location": 34,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.__repr__": {
+            "name": "__repr__",
+            "location": 37,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.completion_url": {
+            "name": "completion_url",
+            "location": 40,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Task.email_subject": {
+            "name": "email_subject",
+            "location": 43,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "reminders-service-master/reminders/__init__.py": {},
+    "reminders-service-master/tests/test_task.py": {
+        "TestTask.test_constructor": {
+            "name": "test_constructor",
+            "location": 7,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestTask.test_subject": {
+            "name": "test_subject",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestTask.test_date_due": {
+            "name": "test_date_due",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestTask.test_due": {
+            "name": "test_due",
+            "location": 23,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    }
+}

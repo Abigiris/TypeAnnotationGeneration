@@ -1,0 +1,5784 @@
+{
+    "correios-master/setup.py": {
+        "load_requirements": {
+            "name": "load_requirements",
+            "location": 19,
+            "return": [
+                "Dict[(str, List[str])]"
+            ],
+            "arguments": {
+                "filename": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "correios-master/correios/client.py": {
+        "Correios.__init__": {
+            "name": "__init__",
+            "location": 73,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "username": [
+                    "str"
+                ],
+                "password": [
+                    "str"
+                ],
+                "timeout": [
+                    "int"
+                ],
+                "environment": [
+                    "str"
+                ],
+                "local_wsdl_path": [
+                    "Optional[pathlib.Path]"
+                ]
+            }
+        },
+        "Correios._handle_exception": {
+            "name": "_handle_exception",
+            "location": 115,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {
+                "self": [],
+                "exception": []
+            }
+        },
+        "Correios._auth_call": {
+            "name": "_auth_call",
+            "location": 125,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "method_name": []
+            }
+        },
+        "Correios._call": {
+            "name": "_call",
+            "location": 129,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "method_name": []
+            }
+        },
+        "Correios.get_user": {
+            "name": "get_user",
+            "location": 140,
+            "return": [
+                "correios.models.user.User"
+            ],
+            "arguments": {
+                "self": [],
+                "contract_number": [
+                    "Union[(int, str)]"
+                ],
+                "posting_card_number": [
+                    "Union[(int, str)]"
+                ]
+            }
+        },
+        "Correios.find_zipcode": {
+            "name": "find_zipcode",
+            "location": 146,
+            "return": [
+                "correios.models.address.ZipAddress"
+            ],
+            "arguments": {
+                "self": [],
+                "zip_code": [
+                    "Union[(str, correios.models.address.ZipCode)]"
+                ]
+            }
+        },
+        "Correios.verify_service_availability": {
+            "name": "verify_service_availability",
+            "location": 150,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_card": [
+                    "correios.models.user.PostingCard"
+                ],
+                "service": [
+                    "correios.models.user.Service"
+                ],
+                "from_zip_code": [
+                    "Union[(str, correios.models.address.ZipCode)]"
+                ],
+                "to_zip_code": [
+                    "Union[(str, correios.models.address.ZipCode)]"
+                ]
+            }
+        },
+        "Correios.get_posting_card_status": {
+            "name": "get_posting_card_status",
+            "location": 168,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_card": [
+                    "correios.models.user.PostingCard"
+                ]
+            }
+        },
+        "Correios.request_tracking_codes": {
+            "name": "request_tracking_codes",
+            "location": 172,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "user": [
+                    "correios.models.user.User"
+                ],
+                "service": [
+                    "correios.models.user.Service"
+                ],
+                "quantity": [
+                    "int"
+                ],
+                "receiver_type": [
+                    "typing.Text"
+                ]
+            }
+        },
+        "Correios.generate_verification_digit": {
+            "name": "generate_verification_digit",
+            "location": 176,
+            "return": [
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "tracking_codes": [
+                    "Sequence[str]"
+                ]
+            }
+        },
+        "Correios.get_post_info": {
+            "name": "get_post_info",
+            "location": 182,
+            "return": [
+                "correios.models.posting.PostInfo"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "int"
+                ]
+            }
+        },
+        "Correios._generate_xml_string": {
+            "name": "_generate_xml_string",
+            "location": 193,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_list": [
+                    "correios.models.posting.PostingList"
+                ]
+            }
+        },
+        "Correios.close_posting_list": {
+            "name": "close_posting_list",
+            "location": 198,
+            "return": [
+                "correios.models.posting.PostingList"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_list": [
+                    "correios.models.posting.PostingList"
+                ],
+                "posting_card": [
+                    "correios.models.user.PostingCard"
+                ]
+            }
+        },
+        "Correios.get_tracking_code_events": {
+            "name": "get_tracking_code_events",
+            "location": 216,
+            "return": [
+                "List[correios.models.posting.TrackingCode]"
+            ],
+            "arguments": {
+                "self": [],
+                "tracking_list": []
+            }
+        },
+        "Correios.calculate_freights": {
+            "name": "calculate_freights",
+            "location": 235,
+            "return": [
+                "List[correios.models.posting.FreightResponse]"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_card": [
+                    "correios.models.user.PostingCard"
+                ],
+                "services": [
+                    "List[Union[(int, correios.models.user.Service)]]"
+                ],
+                "from_zip": [
+                    "Union[(int, str, correios.models.address.ZipCode)]"
+                ],
+                "to_zip": [
+                    "Union[(int, str, correios.models.address.ZipCode)]"
+                ],
+                "package": [
+                    "correios.models.posting.Package"
+                ],
+                "value": [
+                    "Union[(float, decimal.Decimal)]"
+                ],
+                "extra_services": [
+                    "Optional[Sequence[Union[(int, correios.models.user.ExtraService)]]]"
+                ]
+            }
+        },
+        "Correios.calculate_delivery_time": {
+            "name": "calculate_delivery_time",
+            "location": 274,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "service": [
+                    "Union[(int, correios.models.user.Service)]"
+                ],
+                "from_zip": [
+                    "Union[(int, str, correios.models.address.ZipCode)]"
+                ],
+                "to_zip": [
+                    "Union[(int, str, correios.models.address.ZipCode)]"
+                ]
+            }
+        }
+    },
+    "correios-master/correios/exceptions.py": {},
+    "correios-master/correios/serializers.py": {
+        "PostingListSerializer.__init__": {
+            "name": "__init__",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "xsd_path": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "PostingListSerializer._get_posting_list_element": {
+            "name": "_get_posting_list_element",
+            "location": 30,
+            "return": [
+                "List[str]",
+                "Dict[str, Any]",
+                "object",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_list": [
+                    "str",
+                    "dict[str, str]",
+                    "int",
+                    "app.models.dto.ClientInfo",
+                    "None",
+                    "Optional[Dict[str, str]]",
+                    "typing.TextIO",
+                    "TextIO",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "PostingListSerializer._get_sender_info_element": {
+            "name": "_get_sender_info_element",
+            "location": 39,
+            "return": [
+                "str",
+                "zerver.models.Realm",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_list": [
+                    "list[aw_core.models.Event]",
+                    "List[aw_core.models.Event]",
+                    "raiden.utils.List[raiden.transfer.architecture.Event]",
+                    "django.db.models.QuerySet"
+                ]
+            }
+        },
+        "PostingListSerializer._get_shipping_label_element": {
+            "name": "_get_shipping_label_element",
+            "location": 61,
+            "return": [
+                "str",
+                "list",
+                "Iterable[str]",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "shipping_label": [
+                    "correios.models.posting.ShippingLabel"
+                ]
+            }
+        },
+        "PostingListSerializer.get_document": {
+            "name": "get_document",
+            "location": 117,
+            "return": [
+                "list[]",
+                "str",
+                "bytes",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_list": [
+                    "correios.models.posting.PostingList"
+                ]
+            }
+        },
+        "PostingListSerializer.validate": {
+            "name": "validate",
+            "location": 136,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "document": [
+                    "str",
+                    "Union[slice, List[slice], List[int]]",
+                    "list[slice]",
+                    "List[Dict]",
+                    "list[int]",
+                    "list",
+                    "list[dict[, ]]",
+                    "List[str]",
+                    "list[]",
+                    "list[str]"
+                ]
+            }
+        },
+        "PostingListSerializer.get_xml": {
+            "name": "get_xml",
+            "location": 142,
+            "return": [
+                "bytes"
+            ],
+            "arguments": {
+                "self": [],
+                "document": [
+                    "str",
+                    "float"
+                ]
+            }
+        },
+        "PostingListSerializer.serialize": {
+            "name": "serialize",
+            "location": 147,
+            "return": [
+                "bytes"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_list": [
+                    "correios.models.posting.PostingList"
+                ]
+            }
+        }
+    },
+    "correios-master/correios/soap.py": {
+        "SoapClient.__init__": {
+            "name": "__init__",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "wsdl": [
+                    "str",
+                    "int"
+                ],
+                "cert": [
+                    "str",
+                    "None",
+                    "int",
+                    "List[int]",
+                    "tuple",
+                    "list[int]",
+                    "tuple[]"
+                ],
+                "verify": [
+                    "bool",
+                    "str",
+                    "int",
+                    "List[int]",
+                    "tuple"
+                ],
+                "timeout": [
+                    "int",
+                    "float",
+                    "bool",
+                    "str"
+                ]
+            }
+        }
+    },
+    "correios-master/correios/update_wsdl.py": {
+        "cli": {
+            "name": "cli",
+            "location": 74,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "WSDLUpdater.__init__": {
+            "name": "__init__",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "wsdl_path": [
+                    "str"
+                ],
+                "session": [
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "dict",
+                    "dict[, ]"
+                ],
+                "output": [
+                    "None",
+                    "Optional[io.BytesIO]",
+                    "int",
+                    "bytes",
+                    "str",
+                    "Optional[bytes]",
+                    "os.PathLike"
+                ]
+            }
+        },
+        "WSDLUpdater.out": {
+            "name": "out",
+            "location": 43,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "msg": [
+                    "str"
+                ]
+            }
+        },
+        "WSDLUpdater.save": {
+            "name": "save",
+            "location": 46,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "path": [
+                    "str"
+                ],
+                "content": [
+                    "str"
+                ]
+            }
+        },
+        "WSDLUpdater.download_wsdl": {
+            "name": "download_wsdl",
+            "location": 51,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "url": [
+                    "str"
+                ],
+                "filename": [
+                    "str"
+                ]
+            }
+        },
+        "WSDLUpdater.update_all": {
+            "name": "update_all",
+            "location": 62,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "correios-master/correios/utils.py": {
+        "capitalize_phrase": {
+            "name": "capitalize_phrase",
+            "location": 26,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "phrase": [
+                    "str"
+                ]
+            }
+        },
+        "rreplace": {
+            "name": "rreplace",
+            "location": 30,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "string": [
+                    "str"
+                ],
+                "old": [
+                    "str"
+                ],
+                "new": [
+                    "str"
+                ],
+                "count": [
+                    "int"
+                ]
+            }
+        },
+        "to_integer": {
+            "name": "to_integer",
+            "location": 77,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "number": [
+                    "Union[(int, str)]"
+                ]
+            }
+        },
+        "to_datetime": {
+            "name": "to_datetime",
+            "location": 81,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {
+                "date": [
+                    "Union[(str, _datetime.datetime)]"
+                ],
+                "fmt": [
+                    "str",
+                    "typing.Text"
+                ]
+            }
+        },
+        "to_decimal": {
+            "name": "to_decimal",
+            "location": 89,
+            "return": [
+                "decimal.Decimal"
+            ],
+            "arguments": {
+                "value": [
+                    "Union[(float, str, decimal.Decimal)]"
+                ],
+                "precision": [
+                    "int",
+                    "float",
+                    "str"
+                ]
+            }
+        },
+        "get_resource_path": {
+            "name": "get_resource_path",
+            "location": 103,
+            "return": [
+                "pathlib.Path"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "RangeSet.__init__": {
+            "name": "__init__",
+            "location": 46,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RangeSet.__iter__": {
+            "name": "__iter__",
+            "location": 67,
+            "return": [
+                "itertools.chain"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RangeSet.__contains__": {
+            "name": "__contains__",
+            "location": 70,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "elem": [
+                    "str",
+                    "float",
+                    "List[int]",
+                    "list[int]"
+                ]
+            }
+        },
+        "RangeSet.__len__": {
+            "name": "__len__",
+            "location": 73,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "correios-master/correios/xml_utils.py": {
+        "add_text_argument": {
+            "name": "add_text_argument",
+            "location": 20,
+            "return": [
+                "Callable"
+            ],
+            "arguments": {
+                "f": [
+                    "bytes",
+                    "bool",
+                    "Iterable[str]",
+                    "typing.Iterable[str]",
+                    "Callable",
+                    "typing.Callable[, ]"
+                ]
+            }
+        },
+        "add_text_argument.wrapper": {
+            "name": "wrapper",
+            "location": 22,
+            "return": [
+                "str",
+                "Iterable[str]",
+                "Dict[str, Any]",
+                "dict",
+                "List[str]"
+            ],
+            "arguments": {}
+        }
+    },
+    "correios-master/correios/__init__.py": {},
+    "correios-master/correios/models/address.py": {
+        "ZipCode.__init__": {
+            "name": "__init__",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "code": [
+                    "str"
+                ]
+            }
+        },
+        "ZipCode.code": {
+            "name": "code",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode._validate": {
+            "name": "_validate",
+            "location": 45,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "code": []
+            }
+        },
+        "ZipCode.display": {
+            "name": "display",
+            "location": 56,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode.__eq__": {
+            "name": "__eq__",
+            "location": 59,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "ZipCode.__str__": {
+            "name": "__str__",
+            "location": 65,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode.__repr__": {
+            "name": "__repr__",
+            "location": 68,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode._next_multiple": {
+            "name": "_next_multiple",
+            "location": 71,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "n": [
+                    "int"
+                ]
+            }
+        },
+        "ZipCode.digit": {
+            "name": "digit",
+            "location": 75,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode.prefix": {
+            "name": "prefix",
+            "location": 80,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode.sufix": {
+            "name": "sufix",
+            "location": 84,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode.state": {
+            "name": "state",
+            "location": 88,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode.region": {
+            "name": "region",
+            "location": 94,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipCode.create": {
+            "name": "create",
+            "location": 101,
+            "return": [
+                "ZipCode"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TZipCode]"
+                ],
+                "code": [
+                    "Union[(int, str, _TZipCode)]"
+                ]
+            }
+        },
+        "State.__init__": {
+            "name": "__init__",
+            "location": 143,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "code": [
+                    "str"
+                ]
+            }
+        },
+        "State.code": {
+            "name": "code",
+            "location": 147,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "State._validate": {
+            "name": "_validate",
+            "location": 150,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "raw_state": []
+            }
+        },
+        "State.display": {
+            "name": "display",
+            "location": 159,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "State.__eq__": {
+            "name": "__eq__",
+            "location": 162,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "State.__str__": {
+            "name": "__str__",
+            "location": 165,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "State.__repr__": {
+            "name": "__repr__",
+            "location": 168,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ZipAddress.__init__": {
+            "name": "__init__",
+            "location": 174,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "int"
+                ],
+                "zip_code": [
+                    "Union[(ZipCode, str)]"
+                ],
+                "state": [
+                    "Union[(State, str)]"
+                ],
+                "city": [
+                    "str"
+                ],
+                "district": [
+                    "str"
+                ],
+                "address": [
+                    "str"
+                ],
+                "complements": [
+                    "List[str]"
+                ]
+            }
+        },
+        "Phone.__init__": {
+            "name": "__init__",
+            "location": 194,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "str"
+                ],
+                "country": [
+                    "typing.Text"
+                ]
+            }
+        },
+        "Phone._parse": {
+            "name": "_parse",
+            "location": 202,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "str"
+                ],
+                "country": [
+                    "str"
+                ]
+            }
+        },
+        "Phone.display": {
+            "name": "display",
+            "location": 207,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Phone.short": {
+            "name": "short",
+            "location": 214,
+            "return": [
+                "typing.Text",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Phone.__eq__": {
+            "name": "__eq__",
+            "location": 219,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "Phone.__str__": {
+            "name": "__str__",
+            "location": 224,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Phone.__repr__": {
+            "name": "__repr__",
+            "location": 229,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.__init__": {
+            "name": "__init__",
+            "location": 234,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "street": [
+                    "str"
+                ],
+                "number": [
+                    "Union[(int, str)]"
+                ],
+                "city": [
+                    "str"
+                ],
+                "state": [
+                    "Union[(State, str)]"
+                ],
+                "zip_code": [
+                    "Union[(ZipCode, str)]"
+                ],
+                "complement": [
+                    "str"
+                ],
+                "neighborhood": [
+                    "str"
+                ],
+                "phone": [
+                    "Union[(Phone, str)]"
+                ],
+                "cellphone": [
+                    "Union[(Phone, str)]"
+                ],
+                "email": [
+                    "str"
+                ],
+                "latitude": [
+                    "Union[(str, decimal.Decimal)]"
+                ],
+                "longitude": [
+                    "Union[(str, decimal.Decimal)]"
+                ]
+            }
+        },
+        "Address.complement_safe_display": {
+            "name": "complement_safe_display",
+            "location": 283,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.zip_code_display": {
+            "name": "zip_code_display",
+            "location": 288,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.basic_address": {
+            "name": "basic_address",
+            "location": 292,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.label_address": {
+            "name": "label_address",
+            "location": 302,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.label_name": {
+            "name": "label_name",
+            "location": 313,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.display_address": {
+            "name": "display_address",
+            "location": 317,
+            "return": [
+                "tuple[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.filtered_number": {
+            "name": "filtered_number",
+            "location": 323,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.number": {
+            "name": "number",
+            "location": 327,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Address.zip_complement": {
+            "name": "zip_complement",
+            "location": 331,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ReceiverAddress.label_address": {
+            "name": "label_address",
+            "location": 337,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SenderAddress.label_address": {
+            "name": "label_address",
+            "location": 348,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "correios-master/correios/models/builders.py": {
+        "ModelBuilder.build_service": {
+            "name": "build_service",
+            "location": 38,
+            "return": [
+                "correios.models.user.Service"
+            ],
+            "arguments": {
+                "self": [],
+                "service_data": [
+                    "dict[, ]",
+                    "dict",
+                    "str",
+                    "raiden.utils.Dict[str, raiden.utils.Any]",
+                    "typing.OrderedDict",
+                    "OrderedDict"
+                ]
+            }
+        },
+        "ModelBuilder.build_posting_card": {
+            "name": "build_posting_card",
+            "location": 47,
+            "return": [
+                "correios.models.user.PostingCard"
+            ],
+            "arguments": {
+                "self": [],
+                "contract": [
+                    "correios.models.user.Contract"
+                ],
+                "posting_card_data": [
+                    "int",
+                    "bytes",
+                    "Optional[Any]",
+                    "typing.Any",
+                    "Dict[int, Dict]",
+                    "None",
+                    "Dict[str, Any]",
+                    "dict[int, dict[, ]]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "ModelBuilder.build_contract": {
+            "name": "build_contract",
+            "location": 66,
+            "return": [
+                "correios.models.user.Contract"
+            ],
+            "arguments": {
+                "self": [],
+                "user": [
+                    "correios.models.user.User"
+                ],
+                "contract_data": [
+                    "bool"
+                ]
+            }
+        },
+        "ModelBuilder.build_user": {
+            "name": "build_user",
+            "location": 81,
+            "return": [
+                "correios.models.user.User"
+            ],
+            "arguments": {
+                "self": [],
+                "user_data": [
+                    "dict[, ]",
+                    "dict",
+                    "dict[str, dict[str, typing.Any]]",
+                    "Dict[str, Dict[str, Any]]",
+                    "raiden.utils.Dict[str, raiden.utils.Any]",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "ModelBuilder.build_zip_address": {
+            "name": "build_zip_address",
+            "location": 94,
+            "return": [
+                "correios.models.address.ZipAddress"
+            ],
+            "arguments": {
+                "self": [],
+                "zip_address_data": [
+                    "Callable",
+                    "typing.Callable[, ]",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]",
+                    "List[str]",
+                    "list[str]"
+                ]
+            }
+        },
+        "ModelBuilder.build_post_info": {
+            "name": "build_post_info",
+            "location": 106,
+            "return": [
+                "correios.models.posting.PostInfo"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "Tuple[str, Optional[str], str]",
+                    "tuple[typing.Union[str,str,None,str]]",
+                    "Dict[str, Any]",
+                    "bool",
+                    "dict[str, typing.Any]",
+                    "dict",
+                    "dict[, ]"
+                ],
+                "user": [
+                    "correios.models.user.User"
+                ]
+            }
+        },
+        "ModelBuilder.build_receipt": {
+            "name": "build_receipt",
+            "location": 114,
+            "return": [
+                "Optional[correios.models.posting.Receipt]"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "dict",
+                    "dict[, ]",
+                    "Mapping[str, Any]",
+                    "bytes",
+                    "typing.Mapping",
+                    "List[List[Any]]",
+                    "list[list[typing.Any]]",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "ModelBuilder.build_postal_unit": {
+            "name": "build_postal_unit",
+            "location": 125,
+            "return": [
+                "correios.models.posting.PostalUnit"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "bytes",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "ModelBuilder._load_posting_list": {
+            "name": "_load_posting_list",
+            "location": 129,
+            "return": [
+                "correios.models.posting.PostingList"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "dict",
+                    "dict[, ]",
+                    "List[int]",
+                    "str",
+                    "list[int]",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ],
+                "user": [
+                    "correios.models.user.User"
+                ]
+            }
+        },
+        "ModelBuilder._load_shipping_label": {
+            "name": "_load_shipping_label",
+            "location": 154,
+            "return": [
+                "correios.models.posting.ShippingLabel"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "bool",
+                    "float",
+                    "str",
+                    "Optional[str]",
+                    "Dict[str, Any]",
+                    "None",
+                    "dict[str, typing.Any]"
+                ],
+                "posting_card": [
+                    "correios.models.user.PostingCard"
+                ],
+                "sender_address": [
+                    "correios.models.address.SenderAddress"
+                ]
+            }
+        },
+        "ModelBuilder._load_sender_address": {
+            "name": "_load_sender_address",
+            "location": 185,
+            "return": [
+                "correios.models.address.SenderAddress"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "str",
+                    "bytes",
+                    "dict",
+                    "dict[, ]",
+                    "type",
+                    "typing.Type",
+                    "List[str]",
+                    "list[str]"
+                ]
+            }
+        },
+        "ModelBuilder._load_receiver_address": {
+            "name": "_load_receiver_address",
+            "location": 201,
+            "return": [
+                "correios.models.address.ReceiverAddress"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "bytes",
+                    "bool",
+                    "dict",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "ModelBuilder._build_package_data": {
+            "name": "_build_package_data",
+            "location": 221,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "str",
+                    "bytes",
+                    "bytearray"
+                ]
+            }
+        },
+        "ModelBuilder._load_package": {
+            "name": "_load_package",
+            "location": 244,
+            "return": [
+                "correios.models.posting.Package"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "dict",
+                    "dict[, ]",
+                    "bytes",
+                    "Union[str, Dict[str, Any]]",
+                    "str",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "ModelBuilder.build_posting_card_status": {
+            "name": "build_posting_card_status",
+            "location": 249,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "response": [
+                    "List[Dict[str, Any]]"
+                ]
+            }
+        },
+        "ModelBuilder.build_tracking_codes_list": {
+            "name": "build_tracking_codes_list",
+            "location": 254,
+            "return": [
+                "List[correios.models.posting.TrackingCode]"
+            ],
+            "arguments": {
+                "self": [],
+                "response": [
+                    "Dict[str, Any]",
+                    "Iterator"
+                ]
+            }
+        },
+        "ModelBuilder._load_invalid_event": {
+            "name": "_load_invalid_event",
+            "location": 258,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tracking_code": [
+                    "correios.models.posting.TrackingCode"
+                ],
+                "tracked_object": [
+                    "str",
+                    "int",
+                    "Optional[datetime.datetime]",
+                    "None"
+                ]
+            }
+        },
+        "ModelBuilder._load_events": {
+            "name": "_load_events",
+            "location": 262,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tracking_code": [
+                    "correios.models.posting.TrackingCode"
+                ],
+                "events": [
+                    "frozenset",
+                    "bool",
+                    "FrozenSet[int]"
+                ]
+            }
+        },
+        "ModelBuilder.load_tracking_events": {
+            "name": "load_tracking_events",
+            "location": 281,
+            "return": [
+                "List[correios.models.posting.TrackingCode]"
+            ],
+            "arguments": {
+                "self": [],
+                "tracking_codes": [
+                    "Dict[(str, correios.models.posting.TrackingCode)]"
+                ],
+                "response": [
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Tuple[str]",
+                    "tuple[str]"
+                ]
+            }
+        },
+        "ModelBuilder.build_freights_list": {
+            "name": "build_freights_list",
+            "location": 298,
+            "return": [
+                "List[correios.models.posting.FreightResponse]"
+            ],
+            "arguments": {
+                "self": [],
+                "response": [
+                    "int",
+                    "bytes",
+                    "AnyStr",
+                    "typing.AnyStr",
+                    "Optional[Callable]",
+                    "typing.Callable[, ]",
+                    "datetime.datetime",
+                    "None"
+                ]
+            }
+        },
+        "ModelBuilder.build_freight": {
+            "name": "build_freight",
+            "location": 305,
+            "return": [
+                "correios.models.posting.FreightResponse"
+            ],
+            "arguments": {
+                "self": [],
+                "service_data": [
+                    "bytes",
+                    "dict",
+                    "bool",
+                    "dict[, ]",
+                    "str",
+                    "Dict[str, Any]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        }
+    },
+    "correios-master/correios/models/data.py": {},
+    "correios-master/correios/models/posting.py": {
+        "EventStatus.__init__": {
+            "name": "__init__",
+            "location": 76,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event_type": [
+                    "str"
+                ],
+                "status_code": [
+                    "Union[(int, str)]"
+                ]
+            }
+        },
+        "EventStatus._get_event_status_data": {
+            "name": "_get_event_status_data",
+            "location": 88,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "event_type": [],
+                "status_code": []
+            }
+        },
+        "EventStatus.display_event_type": {
+            "name": "display_event_type",
+            "location": 98,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EventStatus.__str__": {
+            "name": "__str__",
+            "location": 101,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EventStatus.__repr__": {
+            "name": "__repr__",
+            "location": 104,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ErrorEventStatus.__init__": {
+            "name": "__init__",
+            "location": 109,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingEvent.__init__": {
+            "name": "__init__",
+            "location": 116,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "timestamp": [
+                    "_datetime.datetime"
+                ],
+                "status": [
+                    "Union[(EventStatus, Tuple[(str, Union[(int, str)])])]"
+                ],
+                "location_zip_code": [
+                    "Union[(str, correios.models.address.ZipCode)]"
+                ],
+                "location": [
+                    "str"
+                ],
+                "receiver": [
+                    "str"
+                ],
+                "city": [
+                    "str"
+                ],
+                "state": [
+                    "str"
+                ],
+                "document": [
+                    "str"
+                ],
+                "comment": [
+                    "str"
+                ],
+                "description": [
+                    "str"
+                ],
+                "details": [
+                    "str"
+                ]
+            }
+        },
+        "TrackingEvent.__str__": {
+            "name": "__str__",
+            "location": 148,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingEvent.__repr__": {
+            "name": "__repr__",
+            "location": 151,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NotFoundTrackingEvent.__init__": {
+            "name": "__init__",
+            "location": 157,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "timestamp": [
+                    "_datetime.datetime"
+                ],
+                "comment": []
+            }
+        },
+        "TrackingCode.__init__": {
+            "name": "__init__",
+            "location": 162,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "code": [
+                    "str"
+                ]
+            }
+        },
+        "TrackingCode._validate": {
+            "name": "_validate",
+            "location": 179,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingCode.create": {
+            "name": "create",
+            "location": 197,
+            "return": [
+                "rackingCode"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TTrackingCode]"
+                ],
+                "tracking_code": [
+                    "Union[(str, _TTrackingCode)]"
+                ]
+            }
+        },
+        "TrackingCode.calculate_digit": {
+            "name": "calculate_digit",
+            "location": 204,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "cls": [],
+                "number": [
+                    "str"
+                ]
+            }
+        },
+        "TrackingCode.create_range": {
+            "name": "create_range",
+            "location": 219,
+            "return": [
+                "List[TrackingCode]"
+            ],
+            "arguments": {
+                "cls": [],
+                "start": [
+                    "Union[(TrackingCode, str)]"
+                ],
+                "end": [
+                    "Union[(TrackingCode, str)]"
+                ]
+            }
+        },
+        "TrackingCode.digit": {
+            "name": "digit",
+            "location": 246,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingCode.code": {
+            "name": "code",
+            "location": 252,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingCode.nodigit": {
+            "name": "nodigit",
+            "location": 256,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingCode.short": {
+            "name": "short",
+            "location": 260,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingCode.splitted": {
+            "name": "splitted",
+            "location": 264,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingCode.add_event": {
+            "name": "add_event",
+            "location": 268,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "TrackingEvent"
+                ]
+            }
+        },
+        "TrackingCode.__str__": {
+            "name": "__str__",
+            "location": 271,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrackingCode.__repr__": {
+            "name": "__repr__",
+            "location": 274,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Package.__init__": {
+            "name": "__init__",
+            "location": 285,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "package_type": [
+                    "int"
+                ],
+                "width": [
+                    "float"
+                ],
+                "height": [
+                    "float"
+                ],
+                "length": [
+                    "float"
+                ],
+                "diameter": [
+                    "float"
+                ],
+                "weight": [
+                    "float"
+                ],
+                "sequence": [],
+                "service": [
+                    "Optional[Union[(int, str, correios.models.user.Service)]]"
+                ]
+            }
+        },
+        "Package.width": {
+            "name": "width",
+            "location": 320,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "width": []
+            }
+        },
+        "Package.height": {
+            "name": "height",
+            "location": 329,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "height": []
+            }
+        },
+        "Package.length": {
+            "name": "length",
+            "location": 338,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "length": []
+            }
+        },
+        "Package.diameter": {
+            "name": "diameter",
+            "location": 349,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "diameter": []
+            }
+        },
+        "Package.weight": {
+            "name": "weight",
+            "location": 358,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "weight": []
+            }
+        },
+        "Package.volumetric_weight": {
+            "name": "volumetric_weight",
+            "location": 363,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Package.posting_list_volumetric_weight": {
+            "name": "posting_list_volumetric_weight",
+            "location": 367,
+            "return": [
+                "Decimal"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Package.posting_weight": {
+            "name": "posting_weight",
+            "location": 371,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Package.freight_package_type": {
+            "name": "freight_package_type",
+            "location": 375,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Package.is_mechanizable": {
+            "name": "is_mechanizable",
+            "location": 388,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Package.non_mechanizable_cost": {
+            "name": "non_mechanizable_cost",
+            "location": 394,
+            "return": [
+                "Decimal"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Package.calculate_volumetric_weight": {
+            "name": "calculate_volumetric_weight",
+            "location": 398,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "cls": [],
+                "width": [],
+                "height": [],
+                "length": []
+            }
+        },
+        "Package.calculate_posting_weight": {
+            "name": "calculate_posting_weight",
+            "location": 402,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "cls": [],
+                "weight": [],
+                "volumetric_weight": []
+            }
+        },
+        "Package.calculate_insurance": {
+            "name": "calculate_insurance",
+            "location": 408,
+            "return": [
+                "decimal.Decimal"
+            ],
+            "arguments": {
+                "cls": [],
+                "per_unit_value": [
+                    "Union[(float, decimal.Decimal)]"
+                ],
+                "service": [
+                    "Union[(int, str, correios.models.user.Service)]"
+                ],
+                "quantity": [
+                    "int"
+                ]
+            }
+        },
+        "Package.validate": {
+            "name": "validate",
+            "location": 422,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [],
+                "package_type": [
+                    "int"
+                ],
+                "width": [
+                    "float"
+                ],
+                "height": [
+                    "float"
+                ],
+                "length": [
+                    "float"
+                ],
+                "diameter": [
+                    "float"
+                ],
+                "service": [
+                    "Optional[Union[(int, str, correios.models.user.Service)]]"
+                ],
+                "weight": [
+                    "float"
+                ]
+            }
+        },
+        "Package._validate_dimension": {
+            "name": "_validate_dimension",
+            "location": 472,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [],
+                "name": [],
+                "value": [],
+                "maximum": []
+            }
+        },
+        "Package._validate_weight": {
+            "name": "_validate_weight",
+            "location": 481,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [],
+                "weight": [],
+                "service": [
+                    "Optional[Union[(int, str, correios.models.user.Service)]]"
+                ]
+            }
+        },
+        "Receipt.__init__": {
+            "name": "__init__",
+            "location": 504,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "Union[(int, str)]"
+                ],
+                "post_date": [
+                    "Union[(str, _datetime.date)]"
+                ],
+                "value": [
+                    "Union[(str, decimal.Decimal)]"
+                ]
+            }
+        },
+        "Receipt.__eq__": {
+            "name": "__eq__",
+            "location": 521,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "Receipt.__repr__": {
+            "name": "__repr__",
+            "location": 531,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.__init__": {
+            "name": "__init__",
+            "location": 567,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_card": [
+                    "correios.models.user.PostingCard"
+                ],
+                "sender": [
+                    "correios.models.address.Address"
+                ],
+                "receiver": [
+                    "correios.models.address.Address"
+                ],
+                "service": [
+                    "Union[(int, correios.models.user.Service)]"
+                ],
+                "tracking_code": [
+                    "Union[(TrackingCode, str)]"
+                ],
+                "package": [
+                    "Package"
+                ],
+                "extra_services": [
+                    "Optional[List[Union[(int, correios.models.user.ExtraService)]]]"
+                ],
+                "logo": [
+                    "Optional[Union[(Image.Image, str)]]"
+                ],
+                "order": [
+                    "Optional[str]"
+                ],
+                "invoice_number": [
+                    "Optional[str]"
+                ],
+                "invoice_series": [
+                    "Optional[str]"
+                ],
+                "invoice_type": [
+                    "Optional[str]"
+                ],
+                "value": [
+                    "Optional[decimal.Decimal]"
+                ],
+                "billing": [
+                    "Optional[decimal.Decimal]"
+                ],
+                "text": [
+                    "Optional[str]"
+                ],
+                "latitude": [
+                    "Optional[float]"
+                ],
+                "longitude": [
+                    "Optional[float]"
+                ],
+                "receipt": [
+                    "Optional[Receipt]"
+                ]
+            }
+        },
+        "ShippingLabel.__repr__": {
+            "name": "__repr__",
+            "location": 623,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.add_extra_services": {
+            "name": "add_extra_services",
+            "location": 626,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "extra_services": [
+                    "List[Union[(int, correios.models.user.ExtraService)]]"
+                ]
+            }
+        },
+        "ShippingLabel.add_extra_service": {
+            "name": "add_extra_service",
+            "location": 630,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "extra_service": [
+                    "Union[(int, correios.models.user.ExtraService)]"
+                ]
+            }
+        },
+        "ShippingLabel.posted": {
+            "name": "posted",
+            "location": 637,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.value": {
+            "name": "value",
+            "location": 641,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.symbol": {
+            "name": "symbol",
+            "location": 645,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.contract": {
+            "name": "contract",
+            "location": 649,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.posting_weight": {
+            "name": "posting_weight",
+            "location": 653,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.has_declared_value": {
+            "name": "has_declared_value",
+            "location": 656,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_order": {
+            "name": "get_order",
+            "location": 659,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_invoice": {
+            "name": "get_invoice",
+            "location": 662,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_contract_number": {
+            "name": "get_contract_number",
+            "location": 665,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_service_name": {
+            "name": "get_service_name",
+            "location": 668,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_package_sequence": {
+            "name": "get_package_sequence",
+            "location": 671,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_weight": {
+            "name": "get_weight",
+            "location": 674,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_symbol_filename": {
+            "name": "get_symbol_filename",
+            "location": 677,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "extension": [
+                    "typing.Text"
+                ]
+            }
+        },
+        "ShippingLabel.get_tracking_code": {
+            "name": "get_tracking_code",
+            "location": 680,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_receiver_data": {
+            "name": "get_receiver_data",
+            "location": 683,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_sender_data": {
+            "name": "get_sender_data",
+            "location": 686,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel._get_extra_service_info": {
+            "name": "_get_extra_service_info",
+            "location": 689,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.get_datamatrix_info": {
+            "name": "get_datamatrix_info",
+            "location": 695,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabel.__contains__": {
+            "name": "__contains__",
+            "location": 725,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "extra_service": [
+                    "correios.models.user.ExtraService"
+                ]
+            }
+        },
+        "PostingList.__init__": {
+            "name": "__init__",
+            "location": 730,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "custom_id": [
+                    "int"
+                ],
+                "logo": [
+                    "Optional[Union[(Image.Image, str)]]"
+                ]
+            }
+        },
+        "PostingList.add_shipping_label": {
+            "name": "add_shipping_label",
+            "location": 750,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "shipping_label": [
+                    "ShippingLabel"
+                ]
+            }
+        },
+        "PostingList.get_tracking_codes": {
+            "name": "get_tracking_codes",
+            "location": 767,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostingList.close_with_id": {
+            "name": "close_with_id",
+            "location": 770,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "int"
+                ]
+            }
+        },
+        "PostingList.closed": {
+            "name": "closed",
+            "location": 774,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostalUnit.__init__": {
+            "name": "__init__",
+            "location": 779,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "code": [
+                    "str"
+                ],
+                "description": [
+                    "str"
+                ]
+            }
+        },
+        "PostInfo.__init__": {
+            "name": "__init__",
+            "location": 785,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "postal_unit": [
+                    "PostalUnit"
+                ],
+                "posting_list": [
+                    "PostingList"
+                ],
+                "value": [
+                    "Union[(float, str, decimal.Decimal)]"
+                ]
+            }
+        },
+        "PostInfo.__repr__": {
+            "name": "__repr__",
+            "location": 793,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FreightResponse.__init__": {
+            "name": "__init__",
+            "location": 810,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "service": [
+                    "Union[(int, correios.models.user.Service)]"
+                ],
+                "delivery_time": [
+                    "Union[(int, _datetime.timedelta)]"
+                ],
+                "value": [
+                    "Union[(float, str, decimal.Decimal)]"
+                ],
+                "declared_value": [
+                    "Union[(float, str, decimal.Decimal)]"
+                ],
+                "mp_value": [
+                    "Union[(float, str, decimal.Decimal)]"
+                ],
+                "ar_value": [
+                    "Union[(float, str, decimal.Decimal)]"
+                ],
+                "saturday": [
+                    "bool"
+                ],
+                "home": [
+                    "bool"
+                ],
+                "error_code": [
+                    "int"
+                ],
+                "error_message": [
+                    "str"
+                ]
+            }
+        },
+        "FreightResponse.total": {
+            "name": "total",
+            "location": 858,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FreightResponse.is_error": {
+            "name": "is_error",
+            "location": 861,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FreightResponse.is_restricted_address": {
+            "name": "is_restricted_address",
+            "location": 864,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "correios-master/correios/models/user.py": {
+        "_to_federal_tax_number": {
+            "name": "_to_federal_tax_number",
+            "location": 45,
+            "return": [
+                "FederalTaxNumber"
+            ],
+            "arguments": {
+                "federal_tax_number": [
+                    "float",
+                    "str",
+                    "dict[, ]",
+                    "int",
+                    "dict",
+                    "decimal.Decimal"
+                ]
+            }
+        },
+        "_to_state_tax_number": {
+            "name": "_to_state_tax_number",
+            "location": 52,
+            "return": [
+                "StateTaxNumber"
+            ],
+            "arguments": {
+                "state_tax_number": [
+                    "str",
+                    "dict",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "AbstractTaxNumber.__init__": {
+            "name": "__init__",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "str"
+                ]
+            }
+        },
+        "AbstractTaxNumber.number": {
+            "name": "number",
+            "location": 64,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractTaxNumber._sanitize": {
+            "name": "_sanitize",
+            "location": 67,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "raw_number": [
+                    "str"
+                ]
+            }
+        },
+        "AbstractTaxNumber._validate": {
+            "name": "_validate",
+            "location": 70,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {
+                "self": [],
+                "raw_number": [
+                    "str"
+                ]
+            }
+        },
+        "AbstractTaxNumber.display": {
+            "name": "display",
+            "location": 73,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractTaxNumber.__str__": {
+            "name": "__str__",
+            "location": 76,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractTaxNumber.__repr__": {
+            "name": "__repr__",
+            "location": 79,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractTaxNumber.__eq__": {
+            "name": "__eq__",
+            "location": 82,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "Collection",
+                    "typing.Collection"
+                ]
+            }
+        },
+        "FederalTaxNumber._check_verification_digits": {
+            "name": "_check_verification_digits",
+            "location": 89,
+            "return": [
+                "bool",
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "raw_number": [
+                    "str",
+                    "float",
+                    "bool"
+                ]
+            }
+        },
+        "FederalTaxNumber._validate": {
+            "name": "_validate",
+            "location": 103,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "raw_number": [
+                    "str"
+                ]
+            }
+        },
+        "FederalTaxNumber.display": {
+            "name": "display",
+            "location": 114,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "StateTaxNumber._validate": {
+            "name": "_validate",
+            "location": 121,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "raw_number": [
+                    "str"
+                ]
+            }
+        },
+        "StateTaxNumber.display": {
+            "name": "display",
+            "location": 124,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service.__init__": {
+            "name": "__init__",
+            "location": 130,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "code": [
+                    "Union[(int, str)]"
+                ],
+                "id": [
+                    "int"
+                ],
+                "description": [
+                    "str"
+                ],
+                "category": [
+                    "str"
+                ],
+                "display_name": [
+                    "Optional[str]"
+                ],
+                "symbol": [
+                    "Optional[str]"
+                ],
+                "max_weight": [
+                    "Optional[int]"
+                ],
+                "min_declared_value": [
+                    "decimal.Decimal"
+                ],
+                "max_declared_value": [
+                    "decimal.Decimal"
+                ],
+                "default_extra_services": [
+                    "Optional[Sequence[Union[(ExtraService, int)]]]"
+                ]
+            }
+        },
+        "Service.__str__": {
+            "name": "__str__",
+            "location": 159,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service.__repr__": {
+            "name": "__repr__",
+            "location": 162,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service.__eq__": {
+            "name": "__eq__",
+            "location": 165,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "dict",
+                    "str",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "Service.validate_insurance_declared_value": {
+            "name": "validate_insurance_declared_value",
+            "location": 169,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "Union[(float, decimal.Decimal)]"
+                ],
+                "insurance_code": [
+                    "int"
+                ]
+            }
+        },
+        "Service.validate_declared_value": {
+            "name": "validate_declared_value",
+            "location": 179,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "Union[(float, decimal.Decimal)]"
+                ]
+            }
+        },
+        "Service.get_symbol_filename": {
+            "name": "get_symbol_filename",
+            "location": 192,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "extension": [
+                    "typing.Text",
+                    "str",
+                    "Container[\"Taxon\"]",
+                    "Optional[str]",
+                    "Set[str]",
+                    "dict"
+                ]
+            }
+        },
+        "Service.symbol_image": {
+            "name": "symbol_image",
+            "location": 197,
+            "return": [
+                "Callable",
+                "str",
+                "int",
+                "dict[str, str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service.sanitize_code": {
+            "name": "sanitize_code",
+            "location": 203,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "Optional[list]",
+                    "list[]",
+                    "None"
+                ],
+                "code": [
+                    "Union[(int, str)]"
+                ]
+            }
+        },
+        "Service.get": {
+            "name": "get",
+            "location": 208,
+            "return": [
+                "Service"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TService]"
+                ],
+                "service": [
+                    "Union[(int, str, _TService)]"
+                ]
+            }
+        },
+        "ExtraService.__init__": {
+            "name": "__init__",
+            "location": 217,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "int"
+                ],
+                "code": [
+                    "str"
+                ],
+                "name": [
+                    "str"
+                ],
+                "display_on_label": [
+                    "bool"
+                ]
+            }
+        },
+        "ExtraService.__repr__": {
+            "name": "__repr__",
+            "location": 232,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ExtraService.__eq__": {
+            "name": "__eq__",
+            "location": 235,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "str",
+                    "int",
+                    "Union[decimal.Decimal, int]"
+                ]
+            }
+        },
+        "ExtraService.is_declared_value": {
+            "name": "is_declared_value",
+            "location": 240,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ExtraService.get": {
+            "name": "get",
+            "location": 244,
+            "return": [
+                "ExtraService"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TExtraService]"
+                ],
+                "number": [
+                    "Union[(int, _TExtraService)]"
+                ]
+            }
+        },
+        "User.__init__": {
+            "name": "__init__",
+            "location": 253,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "federal_tax_number": [
+                    "Union[(FederalTaxNumber, str)]"
+                ],
+                "state_tax_number": [
+                    "Optional[Union[(StateTaxNumber, str)]]"
+                ],
+                "status_number": [
+                    "Optional[Union[(int, str)]]"
+                ]
+            }
+        },
+        "User.add_contract": {
+            "name": "add_contract",
+            "location": 273,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "contract": [
+                    "Contract"
+                ]
+            }
+        },
+        "Contract.__init__": {
+            "name": "__init__",
+            "location": 280,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "user": [
+                    "User"
+                ],
+                "number": [
+                    "Union[(int, str)]"
+                ],
+                "regional_direction": [
+                    "Union[(RegionalDirection, int, str)]"
+                ]
+            }
+        },
+        "Contract.customer_code": {
+            "name": "customer_code",
+            "location": 308,
+            "return": [
+                "",
+                "int",
+                "str",
+                "typing.Type"
+            ],
+            "arguments": {
+                "self": [],
+                "code": [
+                    "str",
+                    "bool",
+                    "Set[str]",
+                    "int"
+                ]
+            }
+        },
+        "Contract.start_date": {
+            "name": "start_date",
+            "location": 316,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "date": [
+                    "datetime.datetime",
+                    "int",
+                    "str"
+                ]
+            }
+        },
+        "Contract.end_date": {
+            "name": "end_date",
+            "location": 324,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "date": [
+                    "datetime.datetime",
+                    "int",
+                    "datetime.date",
+                    "str"
+                ]
+            }
+        },
+        "Contract.add_posting_card": {
+            "name": "add_posting_card",
+            "location": 327,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_card": [
+                    "PostingCard"
+                ]
+            }
+        },
+        "Contract.regional_direction_number": {
+            "name": "regional_direction_number",
+            "location": 332,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Contract.customer_name": {
+            "name": "customer_name",
+            "location": 336,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Contract.__str__": {
+            "name": "__str__",
+            "location": 339,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Contract.__repr__": {
+            "name": "__repr__",
+            "location": 342,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostingCard.__init__": {
+            "name": "__init__",
+            "location": 350,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "contract": [
+                    "Contract"
+                ],
+                "number": [
+                    "Union[(int, str)]"
+                ],
+                "administrative_code": [
+                    "Union[(int, str)]"
+                ]
+            }
+        },
+        "PostingCard.status": {
+            "name": "status",
+            "location": 371,
+            "return": [
+                "",
+                "str",
+                "int",
+                "bytes",
+                "set[str]",
+                "list[]"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "int"
+                ]
+            }
+        },
+        "PostingCard.unit": {
+            "name": "unit",
+            "location": 379,
+            "return": [
+                "",
+                "str",
+                "dict[str, typing.Any]",
+                "dict[, ]",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "float",
+                    "List[PIL.Image.Image]"
+                ]
+            }
+        },
+        "PostingCard.number": {
+            "name": "number",
+            "location": 383,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostingCard.administrative_code": {
+            "name": "administrative_code",
+            "location": 387,
+            "return": [
+                "str",
+                "Optional[str]",
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostingCard.start_date": {
+            "name": "start_date",
+            "location": 395,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "date": [
+                    "datetime.datetime",
+                    "int",
+                    "str"
+                ]
+            }
+        },
+        "PostingCard.end_date": {
+            "name": "end_date",
+            "location": 403,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "date": [
+                    "datetime.datetime",
+                    "int",
+                    "datetime.date",
+                    "str"
+                ]
+            }
+        },
+        "PostingCard.add_service": {
+            "name": "add_service",
+            "location": 406,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "service": [
+                    "Service"
+                ]
+            }
+        },
+        "PostingCard.get_contract_number": {
+            "name": "get_contract_number",
+            "location": 409,
+            "return": [
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostingCard.__repr__": {
+            "name": "__repr__",
+            "location": 412,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostingCard.__str__": {
+            "name": "__str__",
+            "location": 415,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RegionalDirection.__init__": {
+            "name": "__init__",
+            "location": 420,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "number": [
+                    "int"
+                ],
+                "code": [
+                    "str"
+                ],
+                "name": [
+                    "str"
+                ]
+            }
+        },
+        "RegionalDirection.get": {
+            "name": "get",
+            "location": 435,
+            "return": [
+                "RegionalDirection"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TRegionalDirection]"
+                ],
+                "number": [
+                    "Union[(int, _TRegionalDirection)]"
+                ]
+            }
+        },
+        "RegionalDirection.__repr__": {
+            "name": "__repr__",
+            "location": 441,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "correios-master/correios/models/__init__.py": {},
+    "correios-master/correios/renderers/pdf.py": {
+        "PDF.__init__": {
+            "name": "__init__",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "page_size": []
+            }
+        },
+        "PDF.file": {
+            "name": "file",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PDF.save": {
+            "name": "save",
+            "location": 52,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "filename": []
+            }
+        },
+        "PDF.__bytes__": {
+            "name": "__bytes__",
+            "location": 56,
+            "return": [
+                "bytes"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabelFlowable.__init__": {
+            "name": "__init__",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "shipping_label": [
+                    "correios.models.posting.ShippingLabel"
+                ],
+                "label_width": [],
+                "label_height": [],
+                "hmargin": [],
+                "vmargin": []
+            }
+        },
+        "ShippingLabelFlowable.wrap": {
+            "name": "wrap",
+            "location": 82,
+            "return": [
+                "Tuple[(Any, Any)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ShippingLabelFlowable.draw": {
+            "name": "draw",
+            "location": 85,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PostingReportPDFRenderer.__init__": {
+            "name": "__init__",
+            "location": 263,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "page_size": [],
+                "shipping_labels_margin": [
+                    "tuple[int]"
+                ],
+                "posting_list_margin": [
+                    "tuple[]"
+                ]
+            }
+        },
+        "PostingReportPDFRenderer.set_posting_list": {
+            "name": "set_posting_list",
+            "location": 287,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "posting_list": [
+                    "correios.models.posting.PostingList"
+                ]
+            }
+        },
+        "PostingReportPDFRenderer.add_shipping_label": {
+            "name": "add_shipping_label",
+            "location": 295,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "shipping_label": [
+                    "correios.models.posting.ShippingLabel"
+                ]
+            }
+        },
+        "PostingReportPDFRenderer.draw_grid": {
+            "name": "draw_grid",
+            "location": 300,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "canvas": []
+            }
+        },
+        "PostingReportPDFRenderer._posting_list_header": {
+            "name": "_posting_list_header",
+            "location": 317,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "pdf": [],
+                "width": [],
+                "x1": [],
+                "y1": [],
+                "x2": [],
+                "y2": []
+            }
+        },
+        "PostingReportPDFRenderer._posting_list_footer": {
+            "name": "_posting_list_footer",
+            "location": 366,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "pdf": [],
+                "width": [],
+                "x1": [],
+                "y1": [],
+                "x2": [],
+                "y2": []
+            }
+        },
+        "PostingReportPDFRenderer._posting_list_table": {
+            "name": "_posting_list_table",
+            "location": 381,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "canvas": [],
+                "x1": [],
+                "y1": [],
+                "x2": [],
+                "y2": [],
+                "shipping_labels": []
+            }
+        },
+        "PostingReportPDFRenderer.render_posting_list": {
+            "name": "render_posting_list",
+            "location": 408,
+            "return": [
+                "PDF"
+            ],
+            "arguments": {
+                "self": [],
+                "pdf": [
+                    "None"
+                ]
+            }
+        },
+        "PostingReportPDFRenderer.render_labels": {
+            "name": "render_labels",
+            "location": 429,
+            "return": [
+                "PDF"
+            ],
+            "arguments": {
+                "self": [],
+                "pdf": [
+                    "None"
+                ]
+            }
+        },
+        "PostingReportPDFRenderer.render_label": {
+            "name": "render_label",
+            "location": 449,
+            "return": [
+                "PDF"
+            ],
+            "arguments": {
+                "self": [],
+                "shipping_label": [
+                    "correios.models.posting.ShippingLabel"
+                ],
+                "position": [
+                    "int"
+                ],
+                "pdf": [
+                    "None"
+                ]
+            }
+        },
+        "PostingReportPDFRenderer.render": {
+            "name": "render",
+            "location": 464,
+            "return": [
+                "PDF"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "correios-master/correios/renderers/__init__.py": {},
+    "correios-master/docs/conf.py": {},
+    "correios-master/documentation/gen_data_module.py": {},
+    "correios-master/documentation/process_correios_status.py": {},
+    "correios-master/samples/request_tracking_codes.py": {
+        "get_tracking_codes": {
+            "name": "get_tracking_codes",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "service": [
+                    "dict[str, bool]",
+                    "int",
+                    "Dict[str, bool]",
+                    "dict[, ]",
+                    "str",
+                    "Dict[str, Any]",
+                    "dict",
+                    "djmoney.contrib.exchange.models.Rate",
+                    "zerver.models.Realm"
+                ],
+                "quantity": [
+                    "dict[str, bool]",
+                    "int",
+                    "Dict[str, bool]",
+                    "dict[, ]",
+                    "str",
+                    "Dict[str, Any]",
+                    "dict",
+                    "djmoney.contrib.exchange.models.Rate",
+                    "zerver.models.Realm"
+                ]
+            }
+        }
+    },
+    "correios-master/samples/__init__.py": {},
+    "correios-master/tests/conftest.py": {
+        "valid_federal_tax_number": {
+            "name": "valid_federal_tax_number",
+            "location": 45,
+            "return": [
+                "FederalTaxNumber",
+                "Callable[[str], bool]",
+                "List[object]",
+                "Optional[str]",
+                "dict",
+                "int"
+            ],
+            "arguments": {}
+        },
+        "valid_state_tax_number": {
+            "name": "valid_state_tax_number",
+            "location": 50,
+            "return": [
+                "StateTaxNumber",
+                "str",
+                "dict",
+                "app.models.Tweet",
+                "app.models.Position",
+                "bool"
+            ],
+            "arguments": {}
+        },
+        "_random_tracking_code": {
+            "name": "_random_tracking_code",
+            "location": 107,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "client": {
+            "name": "client",
+            "location": 255,
+            "return": [
+                "Correios",
+                "dict",
+                "str",
+                "int"
+            ],
+            "arguments": {}
+        }
+    },
+    "correios-master/tests/test_address_models.py": {
+        "test_basic_zip": {
+            "name": "test_basic_zip",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_sanitize_zip": {
+            "name": "test_sanitize_zip",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_invalid_zipcode_format": {
+            "name": "test_fail_invalid_zipcode_format",
+            "location": 40,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "zipcode": []
+            }
+        },
+        "test_fail_invalid_zipcode_range": {
+            "name": "test_fail_invalid_zipcode_range",
+            "location": 46,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "zipcode": []
+            }
+        },
+        "test_zip_code_state": {
+            "name": "test_zip_code_state",
+            "location": 111,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "zip_code": [],
+                "state": []
+            }
+        },
+        "test_zip_code_region": {
+            "name": "test_zip_code_region",
+            "location": 176,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "zip_code": [],
+                "region": []
+            }
+        },
+        "test_convert_zip_to_str": {
+            "name": "test_convert_zip_to_str",
+            "location": 181,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_zip_repr": {
+            "name": "test_zip_repr",
+            "location": 185,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_zip_display": {
+            "name": "test_zip_display",
+            "location": 189,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_zip_code_check_digit": {
+            "name": "test_zip_code_check_digit",
+            "location": 194,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "zip_code": [],
+                "digit": []
+            }
+        },
+        "test_zip_code_creation": {
+            "name": "test_zip_code_creation",
+            "location": 200,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "zip_code": []
+            }
+        },
+        "test_basic_phone": {
+            "name": "test_basic_phone",
+            "location": 204,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_empty_phone": {
+            "name": "test_empty_phone",
+            "location": 214,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_states": {
+            "name": "test_states",
+            "location": 256,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "code": [],
+                "name": []
+            }
+        },
+        "test_lowercase_state_name": {
+            "name": "test_lowercase_state_name",
+            "location": 267,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "state": []
+            }
+        },
+        "test_fail_invalid_state": {
+            "name": "test_fail_invalid_state",
+            "location": 273,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_convert_state": {
+            "name": "test_convert_state",
+            "location": 281,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_state_repr": {
+            "name": "test_state_repr",
+            "location": 285,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_address": {
+            "name": "test_basic_address",
+            "location": 289,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_address_only_mandatory_args": {
+            "name": "test_basic_address_only_mandatory_args",
+            "location": 321,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_address_with_neighborhood": {
+            "name": "test_basic_address_with_neighborhood",
+            "location": 343,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_address_with_neighborhood_without_complement": {
+            "name": "test_basic_address_with_neighborhood_without_complement",
+            "location": 358,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_address_number_handling": {
+            "name": "test_address_number_handling",
+            "location": 382,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "raw": [],
+                "filtered": [],
+                "number": [],
+                "zip_complement": []
+            }
+        },
+        "test_address_label_address": {
+            "name": "test_address_label_address",
+            "location": 391,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_custom_address_label_address": {
+            "name": "test_custom_address_label_address",
+            "location": 417,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "address_class": []
+            }
+        },
+        "test_custom_address_label_address_long_street_name": {
+            "name": "test_custom_address_label_address_long_street_name",
+            "location": 437,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "address_class": []
+            }
+        }
+    },
+    "correios-master/tests/test_builders.py": {
+        "post_info_data": {
+            "name": "post_info_data",
+            "location": 9,
+            "return": [
+                "typing.Text",
+                "Mapping[str, Any]",
+                "List[Dict]",
+                "str",
+                "Dict[str, Any]",
+                "bool",
+                "Dict[int, Dict[str, Any]]"
+            ],
+            "arguments": {}
+        },
+        "model_builder": {
+            "name": "model_builder",
+            "location": 40,
+            "return": [
+                "ModelBuilder",
+                "Optional[str]",
+                "list",
+                "str",
+                "Optional[Iterable[Any]]",
+                "bool"
+            ],
+            "arguments": {}
+        },
+        "test_load_package_fields": {
+            "name": "test_load_package_fields",
+            "location": 52,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "model_builder": [
+                    "dict",
+                    "app.models.dto.ClientInfo"
+                ],
+                "post_info_data": [
+                    "str",
+                    "None",
+                    "tracim.models.data.Content",
+                    "Optional[str]"
+                ],
+                "expected_fields": [
+                    "dict[str, str]",
+                    "Dict[str, str]",
+                    "list[mtg_ssm.scryfall.models.ScrySet]",
+                    "List[mtg_ssm.scryfall.models.ScrySet]",
+                    "list[mtg_ssm.scryfall.models.ScryCard]",
+                    "List[mtg_ssm.scryfall.models.ScryCard]",
+                    "dict[, ]",
+                    "dict",
+                    "salon.models.Stylist"
+                ],
+                "package_type": [
+                    "dict[, ]",
+                    "dict",
+                    "dict[str, typing.Any]",
+                    "Dict[str, Any]",
+                    "derex.builder.builders.buildah.BuildahBuilder"
+                ]
+            }
+        },
+        "test_build_receipt_when_status_processed": {
+            "name": "test_build_receipt_when_status_processed",
+            "location": 61,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "model_builder": [
+                    "Callable",
+                    "str",
+                    "Optional[str]",
+                    "Mapping[str, Any]"
+                ],
+                "post_info_data": [
+                    "str",
+                    "dict",
+                    "dict[, ]",
+                    "Optional[Dict[str, Any]]",
+                    "dict[str, typing.Any]",
+                    "List[Dict[str, Any]]",
+                    "None",
+                    "Optional[Dict[str, bytes]]",
+                    "list[dict[str, typing.Any]]",
+                    "dict[str, bytes]"
+                ]
+            }
+        },
+        "test_build_receipt_when_status_unprocessed": {
+            "name": "test_build_receipt_when_status_unprocessed",
+            "location": 72,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "status": [
+                    "str",
+                    "int"
+                ],
+                "model_builder": [
+                    "str",
+                    "bytes",
+                    "bool",
+                    "list"
+                ],
+                "post_info_data": [
+                    "str",
+                    "bytes",
+                    "bool",
+                    "List[Dict[str, Any]]",
+                    "list[dict[str, typing.Any]]"
+                ]
+            }
+        }
+    },
+    "correios-master/tests/test_client.py": {
+        "test_basic_client": {
+            "name": "test_basic_client",
+            "location": 71,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_client_timeout_error": {
+            "name": "test_client_timeout_error",
+            "location": 81,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mock_soap_client": [],
+                "client": []
+            }
+        },
+        "test_client_authentication_error": {
+            "name": "test_client_authentication_error",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_client_canceled_posting_card_error": {
+            "name": "test_client_canceled_posting_card_error",
+            "location": 96,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_client_nonexistent_posting_card_error": {
+            "name": "test_client_nonexistent_posting_card_error",
+            "location": 103,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_get_user": {
+            "name": "test_get_user",
+            "location": 110,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_find_zip_code": {
+            "name": "test_find_zip_code",
+            "location": 125,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_verify_service_availability": {
+            "name": "test_verify_service_availability",
+            "location": 139,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": []
+            }
+        },
+        "test_get_posting_card_status": {
+            "name": "test_get_posting_card_status",
+            "location": 146,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": []
+            }
+        },
+        "test_request_tracking_codes": {
+            "name": "test_request_tracking_codes",
+            "location": 153,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "user": []
+            }
+        },
+        "test_generate_verification_digit": {
+            "name": "test_generate_verification_digit",
+            "location": 161,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_get_post_info": {
+            "name": "test_get_post_info",
+            "location": 167,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_close_posting_list": {
+            "name": "test_close_posting_list",
+            "location": 273,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": [],
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_client_close_posting_list_error": {
+            "name": "test_client_close_posting_list_error",
+            "location": 283,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mock_soap_client": [],
+                "client": [],
+                "posting_card": [],
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_get_tracking_codes_events": {
+            "name": "test_get_tracking_codes_events",
+            "location": 300,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_get_tracking_code_events": {
+            "name": "test_get_tracking_code_events",
+            "location": 316,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_get_tracking_code_events_without_city_field": {
+            "name": "test_get_tracking_code_events_without_city_field",
+            "location": 325,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_get_tracking_code_with_no_verification_digitevents": {
+            "name": "test_get_tracking_code_with_no_verification_digitevents",
+            "location": 335,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_get_tracking_code_object_not_found_by_correios": {
+            "name": "test_get_tracking_code_object_not_found_by_correios",
+            "location": 344,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_get_tracking_codes_events_over_limit": {
+            "name": "test_get_tracking_codes_events_over_limit",
+            "location": 356,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_builder_posting_card_status": {
+            "name": "test_builder_posting_card_status",
+            "location": 363,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_posting_list_serialization": {
+            "name": "test_posting_list_serialization",
+            "location": 370,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_posting_list_serialization_with_crazy_utf8_character": {
+            "name": "test_posting_list_serialization_with_crazy_utf8_character",
+            "location": 382,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_posting_list_serialization_max_length": {
+            "name": "test_posting_list_serialization_max_length",
+            "location": 400,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "field": [],
+                "value": [],
+                "max_length": [],
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_declared_value": {
+            "name": "test_declared_value",
+            "location": 420,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "extra_service_vd": [],
+                "code": [],
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_declared_value_without_insurance_extra_service": {
+            "name": "test_declared_value_without_insurance_extra_service",
+            "location": 435,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_fail_empty_posting_list_serialization": {
+            "name": "test_fail_empty_posting_list_serialization",
+            "location": 450,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_list": []
+            }
+        },
+        "test_fail_closed_posting_list_serialization": {
+            "name": "test_fail_closed_posting_list_serialization",
+            "location": 457,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_limit_size_city_name": {
+            "name": "test_limit_size_city_name",
+            "location": 467,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_list": [],
+                "shipping_label": []
+            }
+        },
+        "test_calculate_freights": {
+            "name": "test_calculate_freights",
+            "location": 482,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": [],
+                "package": []
+            }
+        },
+        "test_calculate_freights_with_extra_services": {
+            "name": "test_calculate_freights_with_extra_services",
+            "location": 507,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": [],
+                "package": []
+            }
+        },
+        "test_calculate_freight_with_error": {
+            "name": "test_calculate_freight_with_error",
+            "location": 530,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": [],
+                "package": []
+            }
+        },
+        "test_calculate_delivery_time": {
+            "name": "test_calculate_delivery_time",
+            "location": 540,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_calculate_delivery_time_service_not_allowed_for_path": {
+            "name": "test_calculate_delivery_time_service_not_allowed_for_path",
+            "location": 548,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "test_calculate_freight_with_error_code_10_restricted": {
+            "name": "test_calculate_freight_with_error_code_10_restricted",
+            "location": 556,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": [],
+                "package": []
+            }
+        },
+        "test_calculate_freight_with_error_code_11_restricted": {
+            "name": "test_calculate_freight_with_error_code_11_restricted",
+            "location": 580,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": [],
+                "package": []
+            }
+        },
+        "test_calculate_freight_with_error_code_9_restricted": {
+            "name": "test_calculate_freight_with_error_code_9_restricted",
+            "location": 605,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "client": [],
+                "posting_card": [],
+                "package": []
+            }
+        }
+    },
+    "correios-master/tests/test_pdf_renderer.py": {
+        "test_render_basic_shipping_label": {
+            "name": "test_render_basic_shipping_label",
+            "location": 35,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_render_basic_posting_list": {
+            "name": "test_render_basic_posting_list",
+            "location": 53,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "posting_list": [
+                    "correios.models.posting.PostingList"
+                ],
+                "posting_card": [
+                    "salon.models.Stylist"
+                ]
+            }
+        },
+        "test_render_all_posting_docs": {
+            "name": "test_render_all_posting_docs",
+            "location": 65,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "posting_list": [
+                    "correios.models.posting.PostingList"
+                ],
+                "posting_card": [
+                    "salon.models.Stylist"
+                ]
+            }
+        },
+        "test_display_on_label_render_condition": {
+            "name": "test_display_on_label_render_condition",
+            "location": 79,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "mock_drawstring": [
+                    "mock.Mock",
+                    "core_lib.core.models.Venue"
+                ],
+                "display": [],
+                "count": [
+                    "mock.Mock",
+                    "core_lib.core.models.Venue"
+                ]
+            }
+        }
+    },
+    "correios-master/tests/test_posting_models.py": {
+        "test_tracking_code_constructor": {
+            "name": "test_tracking_code_constructor",
+            "location": 44,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "tracking_code": []
+            }
+        },
+        "test_fail_invalid_tracking_code": {
+            "name": "test_fail_invalid_tracking_code",
+            "location": 68,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "tracking_code": []
+            }
+        },
+        "test_tracking_code_digit_calculator": {
+            "name": "test_tracking_code_digit_calculator",
+            "location": 74,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "tracking_code": [],
+                "digit": []
+            }
+        },
+        "test_tracking_code_creator": {
+            "name": "test_tracking_code_creator",
+            "location": 79,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_tracking_code_range_generator": {
+            "name": "test_tracking_code_range_generator",
+            "location": 87,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_tracking_code_invalid_range_generator": {
+            "name": "test_fail_tracking_code_invalid_range_generator",
+            "location": 93,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_receipt_basic": {
+            "name": "test_receipt_basic",
+            "location": 104,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_receipt_representation": {
+            "name": "test_receipt_representation",
+            "location": 118,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "receipt": []
+            }
+        },
+        "test_receipt_should_equals": {
+            "name": "test_receipt_should_equals",
+            "location": 129,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_receipt_should_different": {
+            "name": "test_receipt_should_different",
+            "location": 134,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_postal_unit_basic": {
+            "name": "test_postal_unit_basic",
+            "location": 141,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "postal_unit": []
+            }
+        },
+        "test_post_info_basic": {
+            "name": "test_post_info_basic",
+            "location": 146,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "postal_unit": [],
+                "posting_list": []
+            }
+        },
+        "test_post_info_representation": {
+            "name": "test_post_info_representation",
+            "location": 154,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "post_info": []
+            }
+        },
+        "test_basic_shipping_label": {
+            "name": "test_basic_shipping_label",
+            "location": 165,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "tracking_code": [],
+                "package": []
+            }
+        },
+        "test_basic_default_shipping_label": {
+            "name": "test_basic_default_shipping_label",
+            "location": 229,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "package": []
+            }
+        },
+        "test_shipping_label_get_datamatrix_info_with_complement_display": {
+            "name": "test_shipping_label_get_datamatrix_info_with_complement_display",
+            "location": 248,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "package": [],
+                "complement": [],
+                "expected": []
+            }
+        },
+        "test_shipping_label_with_declared_value": {
+            "name": "test_shipping_label_with_declared_value",
+            "location": 265,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "extra_service_vd": [],
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "package": []
+            }
+        },
+        "test_shipping_label_with_min_declared_value_pac": {
+            "name": "test_shipping_label_with_min_declared_value_pac",
+            "location": 280,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "package": []
+            }
+        },
+        "test_shipping_label_with_min_declared_value_sedex": {
+            "name": "test_shipping_label_with_min_declared_value_sedex",
+            "location": 295,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "package": []
+            }
+        },
+        "test_posted_shipping_label": {
+            "name": "test_posted_shipping_label",
+            "location": 310,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "package": [],
+                "receipt": []
+            }
+        },
+        "test_fail_shipping_label_with_invalid_declared_value": {
+            "name": "test_fail_shipping_label_with_invalid_declared_value",
+            "location": 325,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "receiver_address": [],
+                "package": []
+            }
+        },
+        "test_fail_shipping_label_same_addresses": {
+            "name": "test_fail_shipping_label_same_addresses",
+            "location": 341,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "posting_card": [],
+                "sender_address": [],
+                "tracking_code": [],
+                "package": []
+            }
+        },
+        "test_package_basic": {
+            "name": "test_package_basic",
+            "location": 348,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_freight_package_type": {
+            "name": "test_freight_package_type",
+            "location": 364,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package": [],
+                "freight_package_type": []
+            }
+        },
+        "test_package_basic_envelop_dimensions_validation": {
+            "name": "test_package_basic_envelop_dimensions_validation",
+            "location": 368,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_package_posting_weight_calculation": {
+            "name": "test_package_posting_weight_calculation",
+            "location": 381,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "weight": [],
+                "width": [],
+                "height": [],
+                "length": [],
+                "posting_weight": []
+            }
+        },
+        "test_fail_package_dimensions_validation": {
+            "name": "test_fail_package_dimensions_validation",
+            "location": 413,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package_type": [],
+                "width": [],
+                "height": [],
+                "length": [],
+                "diameter": [],
+                "exc": []
+            }
+        },
+        "test_package_weight_validation": {
+            "name": "test_package_weight_validation",
+            "location": 418,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_package_weight_validation": {
+            "name": "test_fail_package_weight_validation",
+            "location": 431,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fix_bug_of_weight_using_diameter_information": {
+            "name": "test_fix_bug_of_weight_using_diameter_information",
+            "location": 436,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_package_diameter": {
+            "name": "test_package_diameter",
+            "location": 453,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package": [],
+                "package_type": [],
+                "diameter": [],
+                "result": []
+            }
+        },
+        "test_fail_package_invalid_sequence": {
+            "name": "test_fail_package_invalid_sequence",
+            "location": 460,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "sequence": []
+            }
+        },
+        "test_box_package_change_dimensions_below_minimum": {
+            "name": "test_box_package_change_dimensions_below_minimum",
+            "location": 481,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package": [],
+                "dimension": [],
+                "value": [],
+                "minimum": []
+            }
+        },
+        "test_cylinder_package_change_dimensions_below_minimum": {
+            "name": "test_cylinder_package_change_dimensions_below_minimum",
+            "location": 490,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package": [],
+                "dimension": [],
+                "value": [],
+                "minimum": []
+            }
+        },
+        "test_fail_box_package_change_invalid_dimensions": {
+            "name": "test_fail_box_package_change_invalid_dimensions",
+            "location": 509,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package": [],
+                "dimension": [],
+                "value": [],
+                "exc": []
+            }
+        },
+        "test_fail_cylinder_package_change_invalid_dimensions": {
+            "name": "test_fail_cylinder_package_change_invalid_dimensions",
+            "location": 523,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package": [],
+                "dimension": [],
+                "value": [],
+                "exc": []
+            }
+        },
+        "test_basic_posting_list": {
+            "name": "test_basic_posting_list",
+            "location": 529,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "shipping_label": []
+            }
+        },
+        "test_fail_add_different_sender_in_posting_list": {
+            "name": "test_fail_add_different_sender_in_posting_list",
+            "location": 539,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_add_same_shipping_label_twice_in_posting_list": {
+            "name": "test_fail_add_same_shipping_label_twice_in_posting_list",
+            "location": 547,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "shipping_label": []
+            }
+        },
+        "test_calculate_insurance_when_not_applicable": {
+            "name": "test_calculate_insurance_when_not_applicable",
+            "location": 555,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_calculate_insurance_pac_and_sedex": {
+            "name": "test_calculate_insurance_pac_and_sedex",
+            "location": 572,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "service": [],
+                "per_unit_value": [],
+                "quantity": []
+            }
+        },
+        "test_event_status": {
+            "name": "test_event_status",
+            "location": 580,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_tracking_event": {
+            "name": "test_basic_tracking_event",
+            "location": 586,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "status": []
+            }
+        },
+        "test_tracking_event_timestamp_format": {
+            "name": "test_tracking_event_timestamp_format",
+            "location": 618,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "tracking_event": []
+            }
+        },
+        "test_basic_not_found_tracking_event": {
+            "name": "test_basic_not_found_tracking_event",
+            "location": 623,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_event_status": {
+            "name": "test_basic_event_status",
+            "location": 663,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "status_type": [],
+                "status_number": []
+            }
+        },
+        "test_invalid_event_status": {
+            "name": "test_invalid_event_status",
+            "location": 675,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event_type": []
+            }
+        },
+        "test_basic_freight": {
+            "name": "test_basic_freight",
+            "location": 680,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_freight_conversion": {
+            "name": "test_basic_freight_conversion",
+            "location": 689,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_package_is_mechanizable": {
+            "name": "test_package_is_mechanizable",
+            "location": 708,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package_type": [],
+                "width": [],
+                "height": [],
+                "length": [],
+                "diameter": [],
+                "result": []
+            }
+        },
+        "test_package_non_mechanizable_cost": {
+            "name": "test_package_non_mechanizable_cost",
+            "location": 726,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "package_type": [],
+                "width": [],
+                "height": [],
+                "length": [],
+                "diameter": [],
+                "cost": []
+            }
+        },
+        "test_shipping_label_has_declared_value": {
+            "name": "test_shipping_label_has_declared_value",
+            "location": 739,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "extra_services": [],
+                "result": []
+            }
+        }
+    },
+    "correios-master/tests/test_update_wsdl.py": {
+        "get_wsdl_updater": {
+            "name": "get_wsdl_updater",
+            "location": 27,
+            "return": [
+                "correios.update_wsdl.WSDLUpdater"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "test_basic_update": {
+            "name": "test_basic_update",
+            "location": 37,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_wsdl_updater_download": {
+            "name": "test_wsdl_updater_download",
+            "location": 43,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_wsdl_update_all": {
+            "name": "test_wsdl_update_all",
+            "location": 56,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_wsdl_download_error": {
+            "name": "test_wsdl_download_error",
+            "location": 71,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "correios-master/tests/test_user_models.py": {
+        "test_basic_federal_tax_number_tax_number": {
+            "name": "test_basic_federal_tax_number_tax_number",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_sanitize_federal_tax_number_tax_number": {
+            "name": "test_sanitize_federal_tax_number_tax_number",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_compare_federal_tax_number_with_string": {
+            "name": "test_compare_federal_tax_number_with_string",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_invalid_federal_tax_number": {
+            "name": "test_fail_invalid_federal_tax_number",
+            "location": 69,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_convert_federal_tax_number_to_str": {
+            "name": "test_convert_federal_tax_number_to_str",
+            "location": 80,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_federal_tax_number_repr": {
+            "name": "test_federal_tax_number_repr",
+            "location": 84,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_federal_tax_number_display": {
+            "name": "test_federal_tax_number_display",
+            "location": 88,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_state_tax_number_tax_number": {
+            "name": "test_basic_state_tax_number_tax_number",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_sanitize_state_tax_number_tax_number": {
+            "name": "test_sanitize_state_tax_number_tax_number",
+            "location": 97,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_convert_state_tax_number_to_str": {
+            "name": "test_convert_state_tax_number_to_str",
+            "location": 102,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_convert_state_tax_number_display": {
+            "name": "test_convert_state_tax_number_display",
+            "location": 106,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_state_tax_number_repr": {
+            "name": "test_state_tax_number_repr",
+            "location": 110,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_user": {
+            "name": "test_basic_user",
+            "location": 114,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "valid_federal_tax_number": [],
+                "valid_state_tax_number": []
+            }
+        },
+        "test_sanitize_user_data": {
+            "name": "test_sanitize_user_data",
+            "location": 128,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "valid_federal_tax_number": [],
+                "valid_state_tax_number": []
+            }
+        },
+        "test_fail_add_contract_twice": {
+            "name": "test_fail_add_contract_twice",
+            "location": 140,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "contract": [],
+                "valid_federal_tax_number": [],
+                "valid_state_tax_number": []
+            }
+        },
+        "test_basic_contract": {
+            "name": "test_basic_contract",
+            "location": 153,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": []
+            }
+        },
+        "test_sanitize_contract_data": {
+            "name": "test_sanitize_contract_data",
+            "location": 163,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": []
+            }
+        },
+        "test_basic_posting_card": {
+            "name": "test_basic_posting_card",
+            "location": 178,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "contract": []
+            }
+        },
+        "test_sanitize_posting_card_data": {
+            "name": "test_sanitize_posting_card_data",
+            "location": 188,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "contract": []
+            }
+        },
+        "test_basic_service": {
+            "name": "test_basic_service",
+            "location": 205,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_sanitize_service": {
+            "name": "test_sanitize_service",
+            "location": 226,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_service_getter": {
+            "name": "test_service_getter",
+            "location": 240,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_invalid_declared_value_in_sedex": {
+            "name": "test_fail_invalid_declared_value_in_sedex",
+            "location": 249,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_invalid_insurance_declared_value": {
+            "name": "test_fail_invalid_insurance_declared_value",
+            "location": 259,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "insurance_code": []
+            }
+        },
+        "test_valid_insurance_declared_value": {
+            "name": "test_valid_insurance_declared_value",
+            "location": 266,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "insurance_code": []
+            }
+        },
+        "test_fail_invalid_insurance_code": {
+            "name": "test_fail_invalid_insurance_code",
+            "location": 272,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "insurance_code": []
+            }
+        },
+        "test_valid_insurance_code": {
+            "name": "test_valid_insurance_code",
+            "location": 279,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "insurance_code": []
+            }
+        },
+        "test_fail_invalid_declared_value_in_pac": {
+            "name": "test_fail_invalid_declared_value_in_pac",
+            "location": 284,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_basic_extra_service": {
+            "name": "test_basic_extra_service",
+            "location": 293,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_extra_service_sanitize_code": {
+            "name": "test_extra_service_sanitize_code",
+            "location": 303,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_extra_service_invalid_data": {
+            "name": "test_fail_extra_service_invalid_data",
+            "location": 312,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "number": [],
+                "code": [],
+                "name": []
+            }
+        },
+        "test_fail_get_unknown_service": {
+            "name": "test_fail_get_unknown_service",
+            "location": 317,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_extra_service_getter": {
+            "name": "test_extra_service_getter",
+            "location": 326,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "number": [],
+                "extra_service_code": []
+            }
+        },
+        "test_extra_service_is_declared_value": {
+            "name": "test_extra_service_is_declared_value",
+            "location": 340,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "number": [],
+                "code": [],
+                "description": [],
+                "is_declared_value": []
+            }
+        },
+        "test_basic_regional_direction": {
+            "name": "test_basic_regional_direction",
+            "location": 345,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_regional_direction_sanitize_code": {
+            "name": "test_regional_direction_sanitize_code",
+            "location": 353,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_fail_regional_direction_invalid_data": {
+            "name": "test_fail_regional_direction_invalid_data",
+            "location": 361,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "number": [],
+                "code": [],
+                "name": []
+            }
+        },
+        "test_fail_get_unknown_regional_direction": {
+            "name": "test_fail_get_unknown_regional_direction",
+            "location": 366,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_regional_direction_getter": {
+            "name": "test_regional_direction_getter",
+            "location": 371,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "correios-master/tests/test_utils.py": {
+        "rangeset": {
+            "name": "rangeset",
+            "location": 27,
+            "return": [
+                "RangeSet",
+                "Mapping",
+                "dict",
+                "Dict[str, str]",
+                "str",
+                "int"
+            ],
+            "arguments": {}
+        },
+        "test_rangeset": {
+            "name": "test_rangeset",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_rangeset_len": {
+            "name": "test_rangeset_len",
+            "location": 43,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "ranges_len": [
+                    "int"
+                ],
+                "elements_len": [
+                    "dict",
+                    "dict[, ]"
+                ],
+                "ranges": [
+                    "int",
+                    "bool"
+                ]
+            }
+        },
+        "test_rangeset_contain": {
+            "name": "test_rangeset_contain",
+            "location": 50,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "element": [
+                    "str",
+                    "int"
+                ],
+                "rangeset": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "test_rangeset_does_not_contain": {
+            "name": "test_rangeset_does_not_contain",
+            "location": 55,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "element": [],
+                "rangeset": []
+            }
+        },
+        "test_rangeset_iter": {
+            "name": "test_rangeset_iter",
+            "location": 59,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "rangeset": [
+                    "Dict[str, float]",
+                    "dict[str, float]"
+                ]
+            }
+        },
+        "test_capitalize_phrase": {
+            "name": "test_capitalize_phrase",
+            "location": 64,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "phrase": [
+                    "str",
+                    "float"
+                ]
+            }
+        },
+        "test_rreplace": {
+            "name": "test_rreplace",
+            "location": 68,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_to_decimal": {
+            "name": "test_to_decimal",
+            "location": 93,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "s": [
+                    "str"
+                ],
+                "d": [
+                    "str"
+                ]
+            }
+        },
+        "test_to_decimal_precision": {
+            "name": "test_to_decimal_precision",
+            "location": 107,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "v": [
+                    "int"
+                ],
+                "p": [
+                    "int"
+                ],
+                "r": [
+                    "int"
+                ]
+            }
+        },
+        "test_to_integer": {
+            "name": "test_to_integer",
+            "location": 112,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "v": [
+                    "typing.Callable[, ]",
+                    "Callable",
+                    "cmk.utils.type_defs.HostName",
+                    "cmk.utils.type_defs.ServiceName"
+                ],
+                "r": [
+                    "typing.Callable[, ]",
+                    "Callable",
+                    "cmk.utils.type_defs.HostName",
+                    "cmk.utils.type_defs.ServiceName"
+                ]
+            }
+        },
+        "test_get_wsdl_file_path": {
+            "name": "test_get_wsdl_file_path",
+            "location": 116,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_should_use_pkg_resources_to_get_wsdl_files": {
+            "name": "test_should_use_pkg_resources_to_get_wsdl_files",
+            "location": 122,
+            "return": [
+                "",
+                "None"
+            ],
+            "arguments": {
+                "mock_resource": []
+            }
+        }
+    },
+    "correios-master/tests/test_vcr.py": {
+        "username": {
+            "name": "username",
+            "location": 9,
+            "return": [
+                "typing.Text",
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {}
+        },
+        "password": {
+            "name": "password",
+            "location": 14,
+            "return": [
+                "typing.Text",
+                "int",
+                "str",
+                "List[str]",
+                "Callable"
+            ],
+            "arguments": {}
+        },
+        "request_body": {
+            "name": "request_body",
+            "location": 19,
+            "return": [
+                "bytes",
+                "dict",
+                "str",
+                "Dict[str, Any]"
+            ],
+            "arguments": {
+                "username": [
+                    "str"
+                ],
+                "password": [
+                    "str"
+                ]
+            }
+        },
+        "test_replace_auth": {
+            "name": "test_replace_auth",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "request_body": [
+                    "str"
+                ],
+                "username": [
+                    "str"
+                ],
+                "password": [
+                    "str"
+                ]
+            }
+        },
+        "test_vcr_uses_replace_auth": {
+            "name": "test_vcr_uses_replace_auth",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "correios-master/tests/test_xml_utils.py": {
+        "test_cdata_special_chars_handling": {
+            "name": "test_cdata_special_chars_handling",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "correios-master/tests/vcr.py": {
+        "replace_auth": {
+            "name": "replace_auth",
+            "location": 25,
+            "return": [
+                "_T0"
+            ],
+            "arguments": {
+                "request": [
+                    "_T0"
+                ]
+            }
+        }
+    },
+    "correios-master/tests/__init__.py": {}
+}

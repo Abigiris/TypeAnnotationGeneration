@@ -1,0 +1,824 @@
+{
+    "BMRBdep-master/BackEnd/get_orcid_token.py": {},
+    "BMRBdep-master/BackEnd/bmrbdep/common.py": {
+        "get_schema": {
+            "name": "get_schema",
+            "location": 32,
+            "return": [
+                "Union[(dict, TextIO)]"
+            ],
+            "arguments": {
+                "version": [
+                    "str"
+                ],
+                "schema_format": [
+                    "str"
+                ]
+            }
+        },
+        "get_release": {
+            "name": "get_release",
+            "location": 56,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "secure_filename": {
+            "name": "secure_filename",
+            "location": 62,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "filename": [
+                    "str"
+                ]
+            }
+        },
+        "secure_full_path": {
+            "name": "secure_full_path",
+            "location": 71,
+            "return": [
+                "Tuple[(str, str)]"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "list_all_depositions": {
+            "name": "list_all_depositions",
+            "location": 86,
+            "return": [
+                "Iterable[str]"
+            ],
+            "arguments": {}
+        }
+    },
+    "BMRBdep-master/BackEnd/bmrbdep/depositions.py": {
+        "DepositionRepo.__init__": {
+            "name": "__init__",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "uuid": [
+                    "int",
+                    "str"
+                ],
+                "initialize": [
+                    "bool"
+                ],
+                "read_only": [
+                    "bool"
+                ]
+            }
+        },
+        "DepositionRepo.__enter__": {
+            "name": "__enter__",
+            "location": 88,
+            "return": [
+                "DepositionRepo"
+            ],
+            "arguments": {
+                "self": [
+                    "_TDepositionRepo"
+                ]
+            }
+        },
+        "DepositionRepo.__exit__": {
+            "name": "__exit__",
+            "location": 100,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "exc_type": [
+                    "Optional[Type[BaseException]]"
+                ],
+                "exc_value": [
+                    "Optional[BaseException]"
+                ],
+                "traceback": [
+                    "typing.Type",
+                    "None",
+                    "BaseException"
+                ]
+            }
+        },
+        "DepositionRepo.metadata": {
+            "name": "metadata",
+            "location": 120,
+            "return": [
+                "int",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DepositionRepo.last_commit": {
+            "name": "last_commit",
+            "location": 129,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DepositionRepo.deposit": {
+            "name": "deposit",
+            "location": 134,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "final_entry": []
+            }
+        },
+        "DepositionRepo.get_entry": {
+            "name": "get_entry",
+            "location": 405,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DepositionRepo.write_entry": {
+            "name": "write_entry",
+            "location": 415,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "entry": [
+                    "str"
+                ]
+            }
+        },
+        "DepositionRepo.get_file": {
+            "name": "get_file",
+            "location": 421,
+            "return": [
+                "BinaryIO"
+            ],
+            "arguments": {
+                "self": [],
+                "path": [
+                    "str"
+                ],
+                "root": [
+                    "bool"
+                ]
+            }
+        },
+        "DepositionRepo.get_data_file_list": {
+            "name": "get_data_file_list",
+            "location": 435,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DepositionRepo.delete_data_file": {
+            "name": "delete_data_file",
+            "location": 440,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "DepositionRepo.raise_write_errors": {
+            "name": "raise_write_errors",
+            "location": 460,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DepositionRepo.write_file": {
+            "name": "write_file",
+            "location": 470,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "filename": [
+                    "str"
+                ],
+                "data": [
+                    "Optional[bytes]"
+                ],
+                "source_path": [
+                    "Optional[str]"
+                ],
+                "root": [
+                    "bool"
+                ]
+            }
+        },
+        "DepositionRepo.commit": {
+            "name": "commit",
+            "location": 515,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "message": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "BMRBdep-master/BackEnd/bmrbdep/exceptions.py": {
+        "ServerError.__init__": {
+            "name": "__init__",
+            "location": 5,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "message": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "status_code": [
+                    "int",
+                    "None",
+                    "float",
+                    "Optional[int]"
+                ],
+                "payload": [
+                    "int",
+                    "None",
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "ServerError.__repr__": {
+            "name": "__repr__",
+            "location": 12,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ServerError.__str__": {
+            "name": "__str__",
+            "location": 15,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ServerError.to_dict": {
+            "name": "to_dict",
+            "location": 18,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RequestError.__init__": {
+            "name": "__init__",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "message": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "status_code": [
+                    "int",
+                    "None",
+                    "float",
+                    "Optional[int]"
+                ],
+                "payload": [
+                    "int",
+                    "None",
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "RequestError.__repr__": {
+            "name": "__repr__",
+            "location": 36,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RequestError.__str__": {
+            "name": "__str__",
+            "location": 39,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RequestError.to_dict": {
+            "name": "to_dict",
+            "location": 42,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "BMRBdep-master/BackEnd/bmrbdep/__init__.py": {
+        "handle_our_errors": {
+            "name": "handle_our_errors",
+            "location": 87,
+            "return": [],
+            "arguments": {
+                "exception": []
+            }
+        },
+        "handle_wrong_method": {
+            "name": "handle_wrong_method",
+            "location": 105,
+            "return": [
+                "Response"
+            ],
+            "arguments": {
+                "exception": []
+            }
+        },
+        "handle_other_errors": {
+            "name": "handle_other_errors",
+            "location": 112,
+            "return": [
+                "Response"
+            ],
+            "arguments": {
+                "exception": []
+            }
+        },
+        "send_local_file": {
+            "name": "send_local_file",
+            "location": 149,
+            "return": [
+                "Response"
+            ],
+            "arguments": {
+                "filename": [
+                    "None"
+                ]
+            }
+        },
+        "send_validation_status": {
+            "name": "send_validation_status",
+            "location": 166,
+            "return": [],
+            "arguments": {
+                "uuid": []
+            }
+        },
+        "send_validation_email": {
+            "name": "send_validation_email",
+            "location": 175,
+            "return": [],
+            "arguments": {
+                "uuid": [],
+                "repo_object": [
+                    "None"
+                ]
+            }
+        },
+        "validate_user": {
+            "name": "validate_user",
+            "location": 254,
+            "return": [],
+            "arguments": {
+                "token": []
+            }
+        },
+        "duplicate_deposition": {
+            "name": "duplicate_deposition",
+            "location": 273,
+            "return": [],
+            "arguments": {
+                "uuid": []
+            }
+        },
+        "new_deposition": {
+            "name": "new_deposition",
+            "location": 326,
+            "return": [],
+            "arguments": {}
+        },
+        "deposit_entry": {
+            "name": "deposit_entry",
+            "location": 573,
+            "return": [],
+            "arguments": {
+                "uuid": []
+            }
+        },
+        "file_operations": {
+            "name": "file_operations",
+            "location": 621,
+            "return": [],
+            "arguments": {
+                "uuid": [],
+                "path": []
+            }
+        },
+        "store_file": {
+            "name": "store_file",
+            "location": 637,
+            "return": [],
+            "arguments": {
+                "uuid": []
+            }
+        },
+        "fetch_or_store_deposition": {
+            "name": "fetch_or_store_deposition",
+            "location": 665,
+            "return": [],
+            "arguments": {
+                "uuid": []
+            }
+        },
+        "handle_other_errors.check_local_ip": {
+            "name": "check_local_ip",
+            "location": 119,
+            "return": [
+                "bool"
+            ],
+            "arguments": {}
+        },
+        "MockMail.send": {
+            "name": "send",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": []
+            }
+        },
+        "store_file.custom_stream_factory": {
+            "name": "custom_stream_factory",
+            "location": 645,
+            "return": [],
+            "arguments": {
+                "total_content_length": [],
+                "filename": [],
+                "content_type": [],
+                "content_length": [
+                    "None"
+                ]
+            }
+        }
+    },
+    "BMRBdep-master/BackEnd/bmrbdep/helpers/pubmed.py": {
+        "_safe_unidecode": {
+            "name": "_safe_unidecode",
+            "location": 11,
+            "return": [
+                "None",
+                "Optional[int]",
+                "list",
+                "type"
+            ],
+            "arguments": {
+                "item": [
+                    "Optional[int]",
+                    "int",
+                    "Optional[str]",
+                    "None",
+                    "Optional[dict]",
+                    "str",
+                    "Dict[str, str]",
+                    "dict[, ]",
+                    "Optional[Dict[str, str]]",
+                    "dict[str, str]",
+                    "Callable",
+                    "typing.Callable[, ]",
+                    "Optional[Tuple[int, int]]",
+                    "tuple[typing.Union[int,int]]",
+                    "Type[T]",
+                    "typing.Type"
+                ]
+            }
+        },
+        "_get_tag_value": {
+            "name": "_get_tag_value",
+            "location": 17,
+            "return": [
+                "typing.Text",
+                "str",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "tag_name": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ],
+                "root": [
+                    "str",
+                    "Optional[str]",
+                    "Sequence[str]",
+                    "Dict[str, Any]",
+                    "List[str]",
+                    "Callable"
+                ]
+            }
+        },
+        "update_citation_with_pubmed": {
+            "name": "update_citation_with_pubmed",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "citation_saveframe": [
+                    "str",
+                    "Callable[[Mapping], Awaitable]",
+                    "Callable[[], Awaitable[Mapping]]",
+                    "Dict[str, Any]"
+                ],
+                "schema": [
+                    "bool",
+                    "None",
+                    "dict",
+                    "dict[, ]"
+                ]
+            }
+        }
+    },
+    "BMRBdep-master/BackEnd/bmrbdep/helpers/star_tools.py": {
+        "_sort_saveframes": {
+            "name": "_sort_saveframes",
+            "location": 5,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "sort_list": [
+                    "list"
+                ]
+            }
+        },
+        "merge_entries": {
+            "name": "merge_entries",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "template_entry": [
+                    "bool",
+                    "str",
+                    "Optional[int]",
+                    "None"
+                ],
+                "existing_entry": [
+                    "pynmrstar.Entry"
+                ],
+                "new_schema": [
+                    "bytes",
+                    "str",
+                    "List[\"DictDataLoader\"]",
+                    "list[\"DictDataLoader\"]"
+                ],
+                "preserve_entry_information": [
+                    "bool"
+                ]
+            }
+        },
+        "create_entity_for_saveframe_and_attach": {
+            "name": "create_entity_for_saveframe_and_attach",
+            "location": 102,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "parent_entry": [
+                    "pynmrstar.Entry",
+                    "list",
+                    "str",
+                    "int",
+                    "float"
+                ],
+                "saveframe": [
+                    "str",
+                    "pynmrstar.Saveframe",
+                    "bool"
+                ],
+                "schema": [
+                    "str",
+                    "dict",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "upgrade_chemcomps_and_create_entities_where_needed": {
+            "name": "upgrade_chemcomps_and_create_entities_where_needed",
+            "location": 131,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "entry": [
+                    "dict",
+                    "Optional[BaseException]"
+                ],
+                "schema": [
+                    "bool",
+                    "pynmrstar.Schema",
+                    "typing.Callable[typing.Mapping, collections.abc.Awaitable[]]",
+                    "dict[str, str]",
+                    "dict[, ]",
+                    "Callable[[Mapping], Awaitable]",
+                    "Callable[[], Awaitable[Mapping]]",
+                    "Dict[str, str]",
+                    "dict"
+                ]
+            }
+        },
+        "_sort_saveframes.convert": {
+            "name": "convert",
+            "location": 10,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "_sort_saveframes.alphanum_key": {
+            "name": "alphanum_key",
+            "location": 13,
+            "return": [
+                "list[]",
+                "List[str]",
+                "Optional[bool]",
+                "Set[str]",
+                "str",
+                "dict",
+                "list",
+                "Union[int, None]"
+            ],
+            "arguments": {
+                "key": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "BMRBdep-master/BackEnd/bmrbdep/helpers/__init__.py": {},
+    "BMRBdep-master/BackEnd/bmrbdep/stats/__init__.py": {},
+    "BMRBdep-master/BackEnd/bmrbdep/stats/__main__.py": {},
+    "BMRBdep-master/BackEnd/schema/schema_loader.py": {
+        "schema_emitter": {
+            "name": "schema_emitter",
+            "location": 65,
+            "return": [
+                "Generator[(Tuple[(Any, Any, Any)], Any, None)]"
+            ],
+            "arguments": {
+                "small_molecule": [
+                    "bool"
+                ]
+            }
+        },
+        "get_file": {
+            "name": "get_file",
+            "location": 79,
+            "return": [
+                "Optional[io.StringIO]"
+            ],
+            "arguments": {
+                "file_name": [
+                    "str"
+                ],
+                "commit": [
+                    "str",
+                    "int",
+                    "None"
+                ]
+            }
+        },
+        "get_main_schema": {
+            "name": "get_main_schema",
+            "location": 98,
+            "return": [
+                "Tuple[(Optional[Dict[(str, Any)]], Optional[List[List[str]]])]"
+            ],
+            "arguments": {
+                "commit": [
+                    "str",
+                    "None"
+                ],
+                "small_molecule": [
+                    "bool"
+                ]
+            }
+        },
+        "get_data_file_types": {
+            "name": "get_data_file_types",
+            "location": 140,
+            "return": [
+                "Optional[List[list]]"
+            ],
+            "arguments": {
+                "rev": [
+                    "str",
+                    "dict[str, float]"
+                ]
+            }
+        },
+        "get_dict": {
+            "name": "get_dict",
+            "location": 188,
+            "return": [
+                "Dict[(str, Union[(list, _T1)])]"
+            ],
+            "arguments": {
+                "fob": [
+                    "None"
+                ],
+                "headers": [
+                    "_T1"
+                ],
+                "number_fields": [
+                    "list[dict[str, typing.Any]]",
+                    "str",
+                    "list[dict[, ]]",
+                    "list[str]"
+                ],
+                "skip": [
+                    "None"
+                ]
+            }
+        },
+        "load_schemas": {
+            "name": "load_schemas",
+            "location": 219,
+            "return": [
+                "Optional[Tuple[(Any, Any, Any)]]"
+            ],
+            "arguments": {
+                "rev": [
+                    "str",
+                    "None",
+                    "bool"
+                ],
+                "small_molecule": [
+                    "bool"
+                ]
+            }
+        },
+        "get_dict.skip_end_and_comments": {
+            "name": "skip_end_and_comments",
+            "location": 197,
+            "return": [
+                "typing.Generator[]"
+            ],
+            "arguments": {}
+        }
+    }
+}

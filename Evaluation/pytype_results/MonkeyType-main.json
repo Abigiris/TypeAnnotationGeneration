@@ -1,0 +1,5683 @@
+{
+    "MonkeyType-main/setup.py": {},
+    "MonkeyType-main/demo/inbox.py": {
+        "CommentsAggregator.__init__": {
+            "name": "__init__",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "repo": [
+                    "models.RepoInterface"
+                ]
+            }
+        },
+        "CommentsAggregator.add": {
+            "name": "add",
+            "location": 34,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event": []
+            }
+        },
+        "CommentsAggregator.aggregate": {
+            "name": "aggregate",
+            "location": 38,
+            "return": [
+                "List[models.AggregatedItem]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "LikesAggregator.__init__": {
+            "name": "__init__",
+            "location": 54,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "repo": [
+                    "models.RepoInterface"
+                ]
+            }
+        },
+        "LikesAggregator.add": {
+            "name": "add",
+            "location": 59,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event": []
+            }
+        },
+        "LikesAggregator.aggregate": {
+            "name": "aggregate",
+            "location": 63,
+            "return": [
+                "List[models.AggregatedItem]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "LikesAggregator._describe": {
+            "name": "_describe",
+            "location": 78,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "events": [],
+                "feedentry": [],
+                "users_by_id": [
+                    "Dict[(models.UserId, models.User)]"
+                ]
+            }
+        },
+        "FollowersAggregator.__init__": {
+            "name": "__init__",
+            "location": 97,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "repo": [
+                    "models.RepoInterface"
+                ]
+            }
+        },
+        "FollowersAggregator.add": {
+            "name": "add",
+            "location": 102,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event": []
+            }
+        },
+        "FollowersAggregator.aggregate": {
+            "name": "aggregate",
+            "location": 106,
+            "return": [
+                "List[models.AggregatedItem]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Inbox.__init__": {
+            "name": "__init__",
+            "location": 121,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "user": [
+                    "models.User"
+                ],
+                "repo": [
+                    "models.RepoInterface"
+                ]
+            }
+        },
+        "Inbox.aggregate": {
+            "name": "aggregate",
+            "location": 126,
+            "return": [
+                "List[models.AggregatedItem]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Inbox.summarize": {
+            "name": "summarize",
+            "location": 146,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Inbox._pluralize": {
+            "name": "_pluralize",
+            "location": 167,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "count": []
+            }
+        }
+    },
+    "MonkeyType-main/demo/models.py": {
+        "FeedEntry.__init__": {
+            "name": "__init__",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "FeedEntryId"
+                ],
+                "user_id": [
+                    "UserId"
+                ],
+                "caption": [
+                    "str"
+                ],
+                "published": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "User.__init__": {
+            "name": "__init__",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "UserId"
+                ],
+                "name": [
+                    "str"
+                ],
+                "following": [
+                    "List[UserId]"
+                ]
+            }
+        },
+        "InboxEvent.__init__": {
+            "name": "__init__",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "InboxEventId"
+                ],
+                "user_id": [
+                    "UserId"
+                ],
+                "published": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "CommentedEvent.__init__": {
+            "name": "__init__",
+            "location": 56,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "InboxEventId"
+                ],
+                "user_id": [
+                    "UserId"
+                ],
+                "published": [
+                    "_datetime.datetime"
+                ],
+                "feedentry_id": [
+                    "FeedEntryId"
+                ],
+                "commenter_id": [
+                    "UserId"
+                ],
+                "comment_text": [
+                    "str"
+                ]
+            }
+        },
+        "LikedEvent.__init__": {
+            "name": "__init__",
+            "location": 74,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "InboxEventId"
+                ],
+                "user_id": [
+                    "UserId"
+                ],
+                "published": [
+                    "_datetime.datetime"
+                ],
+                "feedentry_id": [
+                    "FeedEntryId"
+                ],
+                "liker_id": [
+                    "UserId"
+                ]
+            }
+        },
+        "FollowedEvent.__init__": {
+            "name": "__init__",
+            "location": 90,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "InboxEventId"
+                ],
+                "user_id": [
+                    "UserId"
+                ],
+                "published": [
+                    "_datetime.datetime"
+                ],
+                "follower_id": [
+                    "UserId"
+                ]
+            }
+        },
+        "RepoInterface.get_feed_entries_by_ids": {
+            "name": "get_feed_entries_by_ids",
+            "location": 103,
+            "return": [
+                "Dict[(FeedEntryId, Optional[FeedEntry])]"
+            ],
+            "arguments": {
+                "self": [],
+                "ids": [
+                    "Collection[FeedEntryId]"
+                ]
+            }
+        },
+        "RepoInterface.get_feed_entries_for_user_id": {
+            "name": "get_feed_entries_for_user_id",
+            "location": 108,
+            "return": [
+                "List[FeedEntry]"
+            ],
+            "arguments": {
+                "self": [],
+                "user_id": [
+                    "UserId"
+                ]
+            }
+        },
+        "RepoInterface.get_users_by_ids": {
+            "name": "get_users_by_ids",
+            "location": 111,
+            "return": [
+                "Dict[(UserId, Optional[User])]"
+            ],
+            "arguments": {
+                "self": [],
+                "ids": [
+                    "Collection[UserId]"
+                ]
+            }
+        },
+        "RepoInterface.get_inbox_events_for_user_id": {
+            "name": "get_inbox_events_for_user_id",
+            "location": 114,
+            "return": [
+                "List[InboxEvent]"
+            ],
+            "arguments": {
+                "self": [],
+                "user_id": [
+                    "UserId"
+                ]
+            }
+        },
+        "AggregatorInterface.__init__": {
+            "name": "__init__",
+            "location": 130,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "repo": [
+                    "RepoInterface"
+                ]
+            }
+        },
+        "AggregatorInterface.add": {
+            "name": "add",
+            "location": 133,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "T"
+                ]
+            }
+        },
+        "AggregatorInterface.aggregate": {
+            "name": "aggregate",
+            "location": 136,
+            "return": [
+                "List[AggregatedItem]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "MonkeyType-main/demo/test_inbox.py": {
+        "make_user": {
+            "name": "make_user",
+            "location": 60,
+            "return": [
+                "models.User"
+            ],
+            "arguments": {}
+        },
+        "now": {
+            "name": "now",
+            "location": 68,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {}
+        },
+        "make_feedentry": {
+            "name": "make_feedentry",
+            "location": 77,
+            "return": [
+                "models.FeedEntry"
+            ],
+            "arguments": {}
+        },
+        "make_commented": {
+            "name": "make_commented",
+            "location": 89,
+            "return": [
+                "models.CommentedEvent"
+            ],
+            "arguments": {}
+        },
+        "make_liked": {
+            "name": "make_liked",
+            "location": 101,
+            "return": [
+                "models.LikedEvent"
+            ],
+            "arguments": {}
+        },
+        "make_followed": {
+            "name": "make_followed",
+            "location": 109,
+            "return": [
+                "models.FollowedEvent"
+            ],
+            "arguments": {}
+        },
+        "test_empty_inbox": {
+            "name": "test_empty_inbox",
+            "location": 117,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_commented": {
+            "name": "test_commented",
+            "location": 126,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_followed": {
+            "name": "test_followed",
+            "location": 149,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_one_like": {
+            "name": "test_one_like",
+            "location": 169,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_two_likes": {
+            "name": "test_two_likes",
+            "location": 190,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_three_likes": {
+            "name": "test_three_likes",
+            "location": 213,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_everything": {
+            "name": "test_everything",
+            "location": 238,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_aggregator_interface": {
+            "name": "test_aggregator_interface",
+            "location": 279,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "FakeRepo.__init__": {
+            "name": "__init__",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FakeRepo.get_feed_entries_by_ids": {
+            "name": "get_feed_entries_by_ids",
+            "location": 20,
+            "return": [
+                "Dict[(models.FeedEntryId, Optional[models.FeedEntry])]"
+            ],
+            "arguments": {
+                "self": [],
+                "ids": [
+                    "Collection[models.FeedEntryId]"
+                ]
+            }
+        },
+        "FakeRepo.get_feed_entries_for_user_id": {
+            "name": "get_feed_entries_for_user_id",
+            "location": 30,
+            "return": [
+                "List[models.FeedEntry]"
+            ],
+            "arguments": {
+                "self": [],
+                "user_id": [
+                    "models.UserId"
+                ]
+            }
+        },
+        "FakeRepo.get_users_by_ids": {
+            "name": "get_users_by_ids",
+            "location": 39,
+            "return": [
+                "Dict[(models.UserId, Optional[models.User])]"
+            ],
+            "arguments": {
+                "self": [],
+                "ids": [
+                    "Collection[models.UserId]"
+                ]
+            }
+        },
+        "FakeRepo.get_inbox_events_for_user_id": {
+            "name": "get_inbox_events_for_user_id",
+            "location": 47,
+            "return": [
+                "List[models.InboxEvent]"
+            ],
+            "arguments": {
+                "self": [],
+                "user_id": [
+                    "models.UserId"
+                ]
+            }
+        }
+    },
+    "MonkeyType-main/doc/conf.py": {},
+    "MonkeyType-main/monkeytype/cli.py": {
+        "module_path": {
+            "name": "module_path",
+            "location": 39,
+            "return": [
+                "Tuple[(str, Optional[str])]"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "module_path_with_qualname": {
+            "name": "module_path_with_qualname",
+            "location": 52,
+            "return": [
+                "Tuple[(str, str)]"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "complain_about_no_traces": {
+            "name": "complain_about_no_traces",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "get_monkeytype_config": {
+            "name": "get_monkeytype_config",
+            "location": 76,
+            "return": [
+                "monkeytype.config.Config"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "display_sample_count": {
+            "name": "display_sample_count",
+            "location": 96,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "traces": [
+                    "List[monkeytype.tracing.CallTrace]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "get_stub": {
+            "name": "get_stub",
+            "location": 103,
+            "return": [
+                "Optional[monkeytype.stubs.Stub]"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ],
+                "stdout": [
+                    "IO[str]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "apply_stub_using_libcst": {
+            "name": "apply_stub_using_libcst",
+            "location": 142,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "stub": [
+                    "str"
+                ],
+                "source": [
+                    "str"
+                ],
+                "overwrite_existing_annotations": [
+                    "bool"
+                ]
+            }
+        },
+        "apply_stub_handler": {
+            "name": "apply_stub_handler",
+            "location": 161,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ],
+                "stdout": [
+                    "IO[str]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "get_diff": {
+            "name": "get_diff",
+            "location": 181,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ],
+                "stdout": [
+                    "IO[str]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "print_stub_handler": {
+            "name": "print_stub_handler",
+            "location": 204,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ],
+                "stdout": [
+                    "IO[str]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "list_modules_handler": {
+            "name": "list_modules_handler",
+            "location": 220,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ],
+                "stdout": [
+                    "IO[str]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "run_handler": {
+            "name": "run_handler",
+            "location": 229,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ],
+                "stdout": [
+                    "IO[str]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "update_args_from_config": {
+            "name": "update_args_from_config",
+            "location": 243,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "argparse.Namespace"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 249,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "argv": [
+                    "List[str]"
+                ],
+                "stdout": [
+                    "IO[str]"
+                ],
+                "stderr": [
+                    "IO[str]"
+                ]
+            }
+        },
+        "entry_point_main": {
+            "name": "entry_point_main",
+            "location": 412,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {}
+        }
+    },
+    "MonkeyType-main/monkeytype/compat.py": {
+        "is_typed_dict": {
+            "name": "is_typed_dict",
+            "location": 11,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "is_any": {
+            "name": "is_any",
+            "location": 16,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "typing.Any"
+                ]
+            }
+        },
+        "is_union": {
+            "name": "is_union",
+            "location": 20,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "typing.Any"
+                ]
+            }
+        },
+        "is_generic_of": {
+            "name": "is_generic_of",
+            "location": 41,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "typing.Any"
+                ],
+                "gen": [
+                    "typing.Any"
+                ]
+            }
+        },
+        "qualname_of_generic": {
+            "name": "qualname_of_generic",
+            "location": 45,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "typ": [
+                    "typing.Any"
+                ]
+            }
+        },
+        "name_of_generic": {
+            "name": "name_of_generic",
+            "location": 53,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "typ": [
+                    "typing.Any"
+                ]
+            }
+        },
+        "is_forward_ref": {
+            "name": "is_forward_ref",
+            "location": 61,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "typing.Any"
+                ]
+            }
+        },
+        "make_forward_ref": {
+            "name": "make_forward_ref",
+            "location": 65,
+            "return": [
+                "typing.Any"
+            ],
+            "arguments": {
+                "s": [
+                    "str"
+                ]
+            }
+        },
+        "repr_forward_ref": {
+            "name": "repr_forward_ref",
+            "location": 69,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "__are_typed_dict_types_equal": {
+            "name": "__are_typed_dict_types_equal",
+            "location": 74,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "type1": [
+                    "type"
+                ],
+                "type2": [
+                    "type"
+                ]
+            }
+        },
+        "types_equal": {
+            "name": "types_equal",
+            "location": 90,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ],
+                "other_type": [
+                    "type"
+                ]
+            }
+        },
+        "is_generic": {
+            "name": "is_generic",
+            "location": 37,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "typing.Any"
+                ]
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/config.py": {
+        "_startswith": {
+            "name": "_startswith",
+            "location": 90,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "a": [
+                    "pathlib.Path"
+                ],
+                "b": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "default_code_filter": {
+            "name": "default_code_filter",
+            "location": 98,
+            "return": [],
+            "arguments": {
+                "code": []
+            }
+        },
+        "get_default_config": {
+            "name": "get_default_config",
+            "location": 141,
+            "return": [
+                "Config"
+            ],
+            "arguments": {}
+        },
+        "Config.trace_store": {
+            "name": "trace_store",
+            "location": 28,
+            "return": [
+                "monkeytype.db.base.CallTraceStore"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Config.cli_context": {
+            "name": "cli_context",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "command": []
+            }
+        },
+        "Config.trace_logger": {
+            "name": "trace_logger",
+            "location": 42,
+            "return": [
+                "monkeytype.tracing.CallTraceLogger"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Config.code_filter": {
+            "name": "code_filter",
+            "location": 50,
+            "return": [
+                "Optional[Callable[([types.CodeType], bool)]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Config.sample_rate": {
+            "name": "sample_rate",
+            "location": 59,
+            "return": [
+                "Optional[int]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Config.type_rewriter": {
+            "name": "type_rewriter",
+            "location": 67,
+            "return": [
+                "monkeytype.typing.TypeRewriter"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Config.query_limit": {
+            "name": "query_limit",
+            "location": 71,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Config.max_typed_dict_size": {
+            "name": "max_typed_dict_size",
+            "location": 75,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DefaultConfig.type_rewriter": {
+            "name": "type_rewriter",
+            "location": 124,
+            "return": [
+                "monkeytype.typing.TypeRewriter"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DefaultConfig.trace_store": {
+            "name": "trace_store",
+            "location": 127,
+            "return": [
+                "monkeytype.db.base.CallTraceStore"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DefaultConfig.code_filter": {
+            "name": "code_filter",
+            "location": 136,
+            "return": [
+                "Callable[([types.CodeType], bool)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/encoding.py": {
+        "typed_dict_to_dict": {
+            "name": "typed_dict_to_dict",
+            "location": 40,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "type_to_dict": {
+            "name": "type_to_dict",
+            "location": 52,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "typed_dict_from_dict": {
+            "name": "typed_dict_from_dict",
+            "location": 93,
+            "return": [
+                "type"
+            ],
+            "arguments": {
+                "d": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "type_from_dict": {
+            "name": "type_from_dict",
+            "location": 99,
+            "return": [
+                "type"
+            ],
+            "arguments": {
+                "d": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "type_to_json": {
+            "name": "type_to_json",
+            "location": 128,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "type_from_json": {
+            "name": "type_from_json",
+            "location": 134,
+            "return": [
+                "type"
+            ],
+            "arguments": {
+                "typ_json": [
+                    "str"
+                ]
+            }
+        },
+        "arg_types_to_json": {
+            "name": "arg_types_to_json",
+            "location": 140,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "arg_types": [
+                    "Dict[(str, type)]"
+                ]
+            }
+        },
+        "arg_types_from_json": {
+            "name": "arg_types_from_json",
+            "location": 146,
+            "return": [
+                "Dict[(str, type)]"
+            ],
+            "arguments": {
+                "arg_types_json": [
+                    "str"
+                ]
+            }
+        },
+        "maybe_encode_type": {
+            "name": "maybe_encode_type",
+            "location": 155,
+            "return": [
+                "Union[(builtins.NoneType, str)]"
+            ],
+            "arguments": {
+                "encode": [
+                    "Callable[([type], str)]"
+                ],
+                "typ": [
+                    "Union[(builtins.NoneType, type)]"
+                ]
+            }
+        },
+        "maybe_decode_type": {
+            "name": "maybe_decode_type",
+            "location": 164,
+            "return": [
+                "Union[(builtins.NoneType, type)]"
+            ],
+            "arguments": {
+                "decode": [
+                    "Callable[([str], type)]"
+                ],
+                "encoded": [
+                    "Union[(builtins.NoneType, str)]"
+                ]
+            }
+        },
+        "serialize_traces": {
+            "name": "serialize_traces",
+            "location": 224,
+            "return": [
+                "Iterable[CallTraceRow]"
+            ],
+            "arguments": {
+                "traces": [
+                    "Iterable[monkeytype.tracing.CallTrace]"
+                ]
+            }
+        },
+        "CallTraceRow.__init__": {
+            "name": "__init__",
+            "location": 176,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "module": [
+                    "str"
+                ],
+                "qualname": [
+                    "str"
+                ],
+                "arg_types": [
+                    "str"
+                ],
+                "return_type": [
+                    "Union[(builtins.NoneType, str)]"
+                ],
+                "yield_type": [
+                    "Union[(builtins.NoneType, str)]"
+                ]
+            }
+        },
+        "CallTraceRow.from_trace": {
+            "name": "from_trace",
+            "location": 191,
+            "return": [
+                "CallTraceRowT"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[CallTraceRowT]"
+                ],
+                "trace": [
+                    "monkeytype.tracing.CallTrace"
+                ]
+            }
+        },
+        "CallTraceRow.to_trace": {
+            "name": "to_trace",
+            "location": 199,
+            "return": [
+                "monkeytype.tracing.CallTrace"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CallTraceRow.__eq__": {
+            "name": "__eq__",
+            "location": 206,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "object"
+                ]
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/exceptions.py": {},
+    "MonkeyType-main/monkeytype/stubs.py": {
+        "_get_import_for_qualname": {
+            "name": "_get_import_for_qualname",
+            "location": 105,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "qualname": [
+                    "str"
+                ]
+            }
+        },
+        "get_imports_for_annotation": {
+            "name": "get_imports_for_annotation",
+            "location": 111,
+            "return": [
+                "ImportMap"
+            ],
+            "arguments": {
+                "anno": []
+            }
+        },
+        "get_imports_for_signature": {
+            "name": "get_imports_for_signature",
+            "location": 147,
+            "return": [
+                "ImportMap"
+            ],
+            "arguments": {
+                "sig": [
+                    "inspect.Signature"
+                ]
+            }
+        },
+        "update_signature_args": {
+            "name": "update_signature_args",
+            "location": 160,
+            "return": [
+                "inspect.Signature"
+            ],
+            "arguments": {
+                "sig": [
+                    "inspect.Signature"
+                ],
+                "arg_types": [
+                    "Dict[(str, type)]"
+                ],
+                "has_self": [
+                    "bool"
+                ],
+                "existing_annotation_strategy": [
+                    "ExistingAnnotationStrategy"
+                ]
+            }
+        },
+        "update_signature_return": {
+            "name": "update_signature_return",
+            "location": 192,
+            "return": [
+                "inspect.Signature"
+            ],
+            "arguments": {
+                "sig": [
+                    "inspect.Signature"
+                ],
+                "return_type": [
+                    "Union[(builtins.NoneType, type)]"
+                ],
+                "yield_type": [
+                    "Union[(builtins.NoneType, type)]"
+                ],
+                "existing_annotation_strategy": [
+                    "ExistingAnnotationStrategy"
+                ]
+            }
+        },
+        "shrink_traced_types": {
+            "name": "shrink_traced_types",
+            "location": 223,
+            "return": [
+                "Tuple[(Dict[(str, type)], Union[(builtins.NoneType, type)], Union[(builtins.NoneType, type)])]"
+            ],
+            "arguments": {
+                "traces": [
+                    "Iterable[monkeytype.tracing.CallTrace]"
+                ],
+                "max_typed_dict_size": [
+                    "int"
+                ]
+            }
+        },
+        "get_typed_dict_class_name": {
+            "name": "get_typed_dict_class_name",
+            "location": 248,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "parameter_name": [
+                    "str"
+                ]
+            }
+        },
+        "_is_optional": {
+            "name": "_is_optional",
+            "location": 287,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "anno": []
+            }
+        },
+        "_get_optional_elem": {
+            "name": "_get_optional_elem",
+            "location": 295,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "anno": []
+            }
+        },
+        "render_annotation": {
+            "name": "render_annotation",
+            "location": 380,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "anno": []
+            }
+        },
+        "render_parameter": {
+            "name": "render_parameter",
+            "location": 385,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "param": [
+                    "inspect.Parameter"
+                ]
+            }
+        },
+        "render_signature": {
+            "name": "render_signature",
+            "location": 415,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "sig": [
+                    "inspect.Signature"
+                ],
+                "max_line_len": [
+                    "Union[(builtins.NoneType, int)]"
+                ],
+                "prefix": [
+                    "str"
+                ]
+            }
+        },
+        "get_updated_definition": {
+            "name": "get_updated_definition",
+            "location": 818,
+            "return": [
+                "FunctionDefinition"
+            ],
+            "arguments": {
+                "func": [
+                    "Callable"
+                ],
+                "traces": [
+                    "Iterable[monkeytype.tracing.CallTrace]"
+                ],
+                "max_typed_dict_size": [
+                    "int"
+                ],
+                "rewriter": [
+                    "Union[(builtins.NoneType, monkeytype.typing.TypeRewriter)]"
+                ],
+                "existing_annotation_strategy": [
+                    "ExistingAnnotationStrategy"
+                ]
+            }
+        },
+        "build_module_stubs": {
+            "name": "build_module_stubs",
+            "location": 841,
+            "return": [
+                "Dict[(str, ModuleStub)]"
+            ],
+            "arguments": {
+                "entries": [
+                    "Iterable[FunctionDefinition]"
+                ]
+            }
+        },
+        "build_module_stubs_from_traces": {
+            "name": "build_module_stubs_from_traces",
+            "location": 878,
+            "return": [
+                "Dict[(str, ModuleStub)]"
+            ],
+            "arguments": {
+                "traces": [
+                    "Iterable[monkeytype.tracing.CallTrace]"
+                ],
+                "max_typed_dict_size": [
+                    "int"
+                ],
+                "existing_annotation_strategy": [
+                    "ExistingAnnotationStrategy"
+                ],
+                "rewriter": [
+                    "Union[(builtins.NoneType, monkeytype.typing.TypeRewriter)]"
+                ]
+            }
+        },
+        "FunctionKind.from_callable": {
+            "name": "from_callable",
+            "location": 63,
+            "return": [
+                "_TFunctionKind"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TFunctionKind]"
+                ],
+                "func": [
+                    "Callable"
+                ]
+            }
+        },
+        "ImportMap.__init__": {
+            "name": "__init__",
+            "location": 97,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportMap.merge": {
+            "name": "merge",
+            "location": 100,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "ImportMap"
+                ]
+            }
+        },
+        "Stub.__eq__": {
+            "name": "__eq__",
+            "location": 254,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "Stub.render": {
+            "name": "render",
+            "location": 260,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportBlockStub.__init__": {
+            "name": "__init__",
+            "location": 265,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "imports": [
+                    "Union[(ImportMap, builtins.NoneType)]"
+                ]
+            }
+        },
+        "ImportBlockStub.render": {
+            "name": "render",
+            "location": 268,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportBlockStub.__repr__": {
+            "name": "__repr__",
+            "location": 283,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RenderAnnotation.make_anonymous_typed_dict": {
+            "name": "make_anonymous_typed_dict",
+            "location": 308,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "required_fields": [
+                    "Dict[(str, str)]"
+                ],
+                "optional_fields": [
+                    "Dict[(str, str)]"
+                ]
+            }
+        },
+        "RenderAnnotation.make_builtin_typed_dict": {
+            "name": "make_builtin_typed_dict",
+            "location": 316,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "annotations": [
+                    "Dict[(str, str)]"
+                ],
+                "total": [
+                    "Union[(builtins.NoneType, bool)]"
+                ]
+            }
+        },
+        "RenderAnnotation.generic_rewrite": {
+            "name": "generic_rewrite",
+            "location": 324,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": []
+            }
+        },
+        "RenderAnnotation.rewrite_container_type": {
+            "name": "rewrite_container_type",
+            "location": 344,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "container_type": []
+            }
+        },
+        "RenderAnnotation.rewrite_malformed_container": {
+            "name": "rewrite_malformed_container",
+            "location": 347,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "container": []
+            }
+        },
+        "RenderAnnotation.rewrite_type_variable": {
+            "name": "rewrite_type_variable",
+            "location": 350,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "type_variable": []
+            }
+        },
+        "RenderAnnotation.make_builtin_tuple": {
+            "name": "make_builtin_tuple",
+            "location": 359,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "elements": [
+                    "Iterable[str]"
+                ]
+            }
+        },
+        "RenderAnnotation.make_container_type": {
+            "name": "make_container_type",
+            "location": 362,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "container_type": [
+                    "str"
+                ],
+                "elements": [
+                    "str"
+                ]
+            }
+        },
+        "RenderAnnotation.rewrite_Union": {
+            "name": "rewrite_Union",
+            "location": 365,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "union": [
+                    "type"
+                ]
+            }
+        },
+        "RenderAnnotation.rewrite": {
+            "name": "rewrite",
+            "location": 371,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "AttributeStub.__init__": {
+            "name": "__init__",
+            "location": 483,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "AttributeStub.render": {
+            "name": "render",
+            "location": 491,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "prefix": [
+                    "str"
+                ]
+            }
+        },
+        "AttributeStub.__repr__": {
+            "name": "__repr__",
+            "location": 494,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FunctionStub.__init__": {
+            "name": "__init__",
+            "location": 499,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "signature": [
+                    "inspect.Signature"
+                ],
+                "kind": [
+                    "FunctionKind"
+                ],
+                "strip_modules": [
+                    "Union[(builtins.NoneType, Iterable[str])]"
+                ],
+                "is_async": [
+                    "Union[(builtins.NoneType, bool)]"
+                ]
+            }
+        },
+        "FunctionStub.render": {
+            "name": "render",
+            "location": 513,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "prefix": [
+                    "str"
+                ]
+            }
+        },
+        "FunctionStub.__repr__": {
+            "name": "__repr__",
+            "location": 533,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ClassStub.__init__": {
+            "name": "__init__",
+            "location": 544,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [
+                    "str"
+                ],
+                "function_stubs": [
+                    "Union[(builtins.NoneType, Iterable[FunctionStub])]"
+                ],
+                "attribute_stubs": [
+                    "Union[(builtins.NoneType, Iterable[AttributeStub])]"
+                ]
+            }
+        },
+        "ClassStub.render": {
+            "name": "render",
+            "location": 556,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ClassStub.__repr__": {
+            "name": "__repr__",
+            "location": 570,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ReplaceTypedDictsWithStubs.__init__": {
+            "name": "__init__",
+            "location": 581,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "class_name_hint": [
+                    "str"
+                ]
+            }
+        },
+        "ReplaceTypedDictsWithStubs._rewrite_container": {
+            "name": "_rewrite_container",
+            "location": 585,
+            "return": [
+                "type"
+            ],
+            "arguments": {
+                "self": [],
+                "cls": [
+                    "type"
+                ],
+                "container": [
+                    "type"
+                ]
+            }
+        },
+        "ReplaceTypedDictsWithStubs._add_typed_dict_class_stub": {
+            "name": "_add_typed_dict_class_stub",
+            "location": 615,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "fields": [
+                    "Dict[(str, type)]"
+                ],
+                "class_name": [
+                    "str"
+                ],
+                "base_class_name": [
+                    "str"
+                ],
+                "total": [
+                    "Union[(builtins.NoneType, bool)]"
+                ]
+            }
+        },
+        "ReplaceTypedDictsWithStubs.rewrite_anonymous_TypedDict": {
+            "name": "rewrite_anonymous_TypedDict",
+            "location": 638,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "typed_dict": [
+                    "type"
+                ]
+            }
+        },
+        "ReplaceTypedDictsWithStubs.rewrite_and_get_stubs": {
+            "name": "rewrite_and_get_stubs",
+            "location": 662,
+            "return": [
+                "Tuple[(type, List[ClassStub])]"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ],
+                "class_name_hint": [
+                    "str"
+                ]
+            }
+        },
+        "ModuleStub.__init__": {
+            "name": "__init__",
+            "location": 671,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "function_stubs": [
+                    "Union[(builtins.NoneType, Iterable[FunctionStub])]"
+                ],
+                "class_stubs": [
+                    "Union[(builtins.NoneType, Iterable[ClassStub])]"
+                ],
+                "imports_stub": [
+                    "Union[(ImportBlockStub, builtins.NoneType)]"
+                ],
+                "typed_dict_class_stubs": [
+                    "Union[(builtins.NoneType, Iterable[ClassStub])]"
+                ]
+            }
+        },
+        "ModuleStub.render": {
+            "name": "render",
+            "location": 689,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ModuleStub.__repr__": {
+            "name": "__repr__",
+            "location": 703,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FunctionDefinition.__init__": {
+            "name": "__init__",
+            "location": 720,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "module": [
+                    "str"
+                ],
+                "qualname": [
+                    "str"
+                ],
+                "kind": [
+                    "FunctionKind"
+                ],
+                "sig": [
+                    "inspect.Signature"
+                ],
+                "is_async": [
+                    "Union[(builtins.NoneType, bool)]"
+                ],
+                "typed_dict_class_stubs": [
+                    "Union[(builtins.NoneType, Iterable[ClassStub])]"
+                ]
+            }
+        },
+        "FunctionDefinition.from_callable": {
+            "name": "from_callable",
+            "location": 737,
+            "return": [
+                "_TFunctionDefinition"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TFunctionDefinition]"
+                ],
+                "func": [
+                    "Callable"
+                ],
+                "kind": [
+                    "Union[(FunctionKind, builtins.NoneType)]"
+                ]
+            }
+        },
+        "FunctionDefinition.from_callable_and_traced_types": {
+            "name": "from_callable_and_traced_types",
+            "location": 748,
+            "return": [
+                "_TFunctionDefinition"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TFunctionDefinition]"
+                ],
+                "func": [
+                    "Callable"
+                ],
+                "arg_types": [
+                    "Dict[(str, type)]"
+                ],
+                "return_type": [
+                    "Union[(builtins.NoneType, type)]"
+                ],
+                "yield_type": [
+                    "Union[(builtins.NoneType, type)]"
+                ],
+                "existing_annotation_strategy": [
+                    "ExistingAnnotationStrategy"
+                ]
+            }
+        },
+        "FunctionDefinition.has_self": {
+            "name": "has_self",
+            "location": 799,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FunctionDefinition.__eq__": {
+            "name": "__eq__",
+            "location": 802,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "FunctionDefinition.__repr__": {
+            "name": "__repr__",
+            "location": 807,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "StubIndexBuilder.__init__": {
+            "name": "__init__",
+            "location": 902,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "module_re": [
+                    "str"
+                ],
+                "max_typed_dict_size": [
+                    "int"
+                ]
+            }
+        },
+        "StubIndexBuilder.log": {
+            "name": "log",
+            "location": 909,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "trace": [
+                    "monkeytype.tracing.CallTrace"
+                ]
+            }
+        },
+        "StubIndexBuilder.get_stubs": {
+            "name": "get_stubs",
+            "location": 914,
+            "return": [
+                "Dict[(str, ModuleStub)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/tracing.py": {
+        "get_func_in_mro": {
+            "name": "get_func_in_mro",
+            "location": 100,
+            "return": [
+                "Optional[Callable]"
+            ],
+            "arguments": {
+                "obj": [],
+                "code": [
+                    "types.CodeType"
+                ]
+            }
+        },
+        "_has_code": {
+            "name": "_has_code",
+            "location": 121,
+            "return": [
+                "Optional[Callable]"
+            ],
+            "arguments": {
+                "func": [
+                    "Optional[Callable]"
+                ],
+                "code": [
+                    "types.CodeType"
+                ]
+            }
+        },
+        "get_func": {
+            "name": "get_func",
+            "location": 133,
+            "return": [
+                "Optional[Callable]"
+            ],
+            "arguments": {
+                "frame": [
+                    "types.FrameType"
+                ]
+            }
+        },
+        "trace_calls": {
+            "name": "trace_calls",
+            "location": 268,
+            "return": [],
+            "arguments": {
+                "logger": [],
+                "max_typed_dict_size": [],
+                "code_filter": [],
+                "sample_rate": []
+            }
+        },
+        "CallTrace.__init__": {
+            "name": "__init__",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "func": [
+                    "Callable"
+                ],
+                "arg_types": [
+                    "Dict[(str, type)]"
+                ],
+                "return_type": [
+                    "Optional[type]"
+                ],
+                "yield_type": [
+                    "Optional[type]"
+                ]
+            }
+        },
+        "CallTrace.__eq__": {
+            "name": "__eq__",
+            "location": 48,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "object"
+                ]
+            }
+        },
+        "CallTrace.__repr__": {
+            "name": "__repr__",
+            "location": 53,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CallTrace.__hash__": {
+            "name": "__hash__",
+            "location": 61,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CallTrace.add_yield_type": {
+            "name": "add_yield_type",
+            "location": 71,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "CallTrace.funcname": {
+            "name": "funcname",
+            "location": 78,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CallTraceLogger.log": {
+            "name": "log",
+            "location": 86,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "trace": [
+                    "CallTrace"
+                ]
+            }
+        },
+        "CallTraceLogger.flush": {
+            "name": "flush",
+            "location": 90,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CallTracer.__init__": {
+            "name": "__init__",
+            "location": 186,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "logger": [
+                    "CallTraceLogger"
+                ],
+                "max_typed_dict_size": [
+                    "int"
+                ],
+                "code_filter": [
+                    "Optional[Callable[([types.CodeType], bool)]]"
+                ],
+                "sample_rate": [
+                    "Optional[int]"
+                ]
+            }
+        },
+        "CallTracer._get_func": {
+            "name": "_get_func",
+            "location": 200,
+            "return": [
+                "Optional[Callable]"
+            ],
+            "arguments": {
+                "self": [],
+                "frame": [
+                    "types.FrameType"
+                ]
+            }
+        },
+        "CallTracer.handle_call": {
+            "name": "handle_call",
+            "location": 206,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "frame": [
+                    "types.FrameType"
+                ]
+            }
+        },
+        "CallTracer.handle_return": {
+            "name": "handle_return",
+            "location": 226,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "frame": [
+                    "types.FrameType"
+                ],
+                "arg": []
+            }
+        },
+        "CallTracer.__call__": {
+            "name": "__call__",
+            "location": 246,
+            "return": [
+                "_TCallTracer"
+            ],
+            "arguments": {
+                "self": [
+                    "_TCallTracer"
+                ],
+                "frame": [
+                    "types.FrameType"
+                ],
+                "event": [
+                    "str"
+                ],
+                "arg": []
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/typing.py": {
+        "is_list": {
+            "name": "is_list",
+            "location": 50,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "make_typed_dict": {
+            "name": "make_typed_dict",
+            "location": 54,
+            "return": [
+                "type"
+            ],
+            "arguments": {}
+        },
+        "field_annotations": {
+            "name": "field_annotations",
+            "location": 71,
+            "return": [
+                "Tuple[(Dict[(str, type)], Dict[(str, type)])]"
+            ],
+            "arguments": {
+                "typed_dict": []
+            }
+        },
+        "is_anonymous_typed_dict": {
+            "name": "is_anonymous_typed_dict",
+            "location": 79,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "typ": [
+                    "type"
+                ]
+            }
+        },
+        "shrink_typed_dict_types": {
+            "name": "shrink_typed_dict_types",
+            "location": 84,
+            "return": [
+                "type"
+            ],
+            "arguments": {
+                "typed_dicts": [
+                    "List[type]"
+                ],
+                "max_typed_dict_size": [
+                    "int"
+                ]
+            }
+        },
+        "shrink_types": {
+            "name": "shrink_types",
+            "location": 134,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "types": [],
+                "max_typed_dict_size": []
+            }
+        },
+        "make_iterator": {
+            "name": "make_iterator",
+            "location": 163,
+            "return": [
+                "Type[Iterator]"
+            ],
+            "arguments": {
+                "typ": []
+            }
+        },
+        "make_generator": {
+            "name": "make_generator",
+            "location": 167,
+            "return": [
+                "Type[generator]"
+            ],
+            "arguments": {
+                "yield_typ": [],
+                "send_typ": [],
+                "return_typ": []
+            }
+        },
+        "get_dict_type": {
+            "name": "get_dict_type",
+            "location": 180,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "dct": [],
+                "max_typed_dict_size": []
+            }
+        },
+        "get_type": {
+            "name": "get_type",
+            "location": 207,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "obj": [],
+                "max_typed_dict_size": []
+            }
+        },
+        "GenericTypeRewriter.make_builtin_tuple": {
+            "name": "make_builtin_tuple",
+            "location": 252,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "elements": []
+            }
+        },
+        "GenericTypeRewriter.make_container_type": {
+            "name": "make_container_type",
+            "location": 256,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "container_type": [],
+                "element": []
+            }
+        },
+        "GenericTypeRewriter.make_anonymous_typed_dict": {
+            "name": "make_anonymous_typed_dict",
+            "location": 260,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "required_fields": [],
+                "optional_fields": []
+            }
+        },
+        "GenericTypeRewriter.make_builtin_typed_dict": {
+            "name": "make_builtin_typed_dict",
+            "location": 264,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [],
+                "annotations": [],
+                "total": []
+            }
+        },
+        "GenericTypeRewriter.generic_rewrite": {
+            "name": "generic_rewrite",
+            "location": 268,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_container_type": {
+            "name": "rewrite_container_type",
+            "location": 272,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "container_type": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_malformed_container": {
+            "name": "rewrite_malformed_container",
+            "location": 276,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "container": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_type_variable": {
+            "name": "rewrite_type_variable",
+            "location": 280,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "type_variable": []
+            }
+        },
+        "GenericTypeRewriter._rewrite_container": {
+            "name": "_rewrite_container",
+            "location": 283,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "cls": [],
+                "container": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_Dict": {
+            "name": "rewrite_Dict",
+            "location": 297,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "dct": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_List": {
+            "name": "rewrite_List",
+            "location": 300,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "lst": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_Set": {
+            "name": "rewrite_Set",
+            "location": 303,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "st": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_Tuple": {
+            "name": "rewrite_Tuple",
+            "location": 306,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "tup": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_Generator": {
+            "name": "rewrite_Generator",
+            "location": 309,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "generator": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_anonymous_TypedDict": {
+            "name": "rewrite_anonymous_TypedDict",
+            "location": 312,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "typed_dict": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_TypedDict": {
+            "name": "rewrite_TypedDict",
+            "location": 324,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "typed_dict": []
+            }
+        },
+        "GenericTypeRewriter.rewrite_Union": {
+            "name": "rewrite_Union",
+            "location": 336,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "union": []
+            }
+        },
+        "GenericTypeRewriter.rewrite": {
+            "name": "rewrite",
+            "location": 339,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": []
+            }
+        },
+        "TypeRewriter.make_anonymous_typed_dict": {
+            "name": "make_anonymous_typed_dict",
+            "location": 361,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "required_fields": [],
+                "optional_fields": []
+            }
+        },
+        "TypeRewriter.make_builtin_typed_dict": {
+            "name": "make_builtin_typed_dict",
+            "location": 366,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "name": [],
+                "annotations": [],
+                "total": []
+            }
+        },
+        "TypeRewriter.generic_rewrite": {
+            "name": "generic_rewrite",
+            "location": 369,
+            "return": [
+                "_T0"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": [
+                    "_T0"
+                ]
+            }
+        },
+        "TypeRewriter.rewrite_container_type": {
+            "name": "rewrite_container_type",
+            "location": 372,
+            "return": [
+                "_T0"
+            ],
+            "arguments": {
+                "self": [],
+                "container_type": [
+                    "_T0"
+                ]
+            }
+        },
+        "TypeRewriter.rewrite_malformed_container": {
+            "name": "rewrite_malformed_container",
+            "location": 375,
+            "return": [
+                "_T0"
+            ],
+            "arguments": {
+                "self": [],
+                "container": [
+                    "_T0"
+                ]
+            }
+        },
+        "TypeRewriter.rewrite_type_variable": {
+            "name": "rewrite_type_variable",
+            "location": 378,
+            "return": [
+                "_T0"
+            ],
+            "arguments": {
+                "self": [],
+                "type_variable": [
+                    "_T0"
+                ]
+            }
+        },
+        "TypeRewriter.make_builtin_tuple": {
+            "name": "make_builtin_tuple",
+            "location": 381,
+            "return": [
+                "tuple"
+            ],
+            "arguments": {
+                "self": [],
+                "elements": []
+            }
+        },
+        "TypeRewriter.make_container_type": {
+            "name": "make_container_type",
+            "location": 384,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "container_type": [],
+                "element": []
+            }
+        },
+        "RemoveEmptyContainers._is_empty": {
+            "name": "_is_empty",
+            "location": 400,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": []
+            }
+        },
+        "RemoveEmptyContainers.rewrite_Union": {
+            "name": "rewrite_Union",
+            "location": 404,
+            "return": [
+                "Union[(tuple, _T0)]"
+            ],
+            "arguments": {
+                "self": [],
+                "union": [
+                    "_T0"
+                ]
+            }
+        },
+        "RewriteConfigDict.rewrite_Union": {
+            "name": "rewrite_Union",
+            "location": 414,
+            "return": [
+                "Union[(Type[dict], _T0)]"
+            ],
+            "arguments": {
+                "self": [],
+                "union": [
+                    "_T0"
+                ]
+            }
+        },
+        "RewriteLargeUnion.__init__": {
+            "name": "__init__",
+            "location": 430,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "max_union_len": [
+                    "int"
+                ]
+            }
+        },
+        "RewriteLargeUnion._rewrite_to_tuple": {
+            "name": "_rewrite_to_tuple",
+            "location": 434,
+            "return": [
+                "Union[(builtins.NoneType, Type[tuple])]"
+            ],
+            "arguments": {
+                "self": [],
+                "union": []
+            }
+        },
+        "RewriteLargeUnion.rewrite_Union": {
+            "name": "rewrite_Union",
+            "location": 445,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "union": []
+            }
+        },
+        "RewriteAnonymousTypedDictToDict.rewrite_anonymous_TypedDict": {
+            "name": "rewrite_anonymous_TypedDict",
+            "location": 467,
+            "return": [
+                "Type[dict]"
+            ],
+            "arguments": {
+                "self": [],
+                "typed_dict": []
+            }
+        },
+        "ChainedRewriter.__init__": {
+            "name": "__init__",
+            "location": 478,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "rewriters": [
+                    "Iterable[TypeRewriter]"
+                ]
+            }
+        },
+        "ChainedRewriter.rewrite": {
+            "name": "rewrite",
+            "location": 481,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": []
+            }
+        },
+        "NoOpRewriter.rewrite": {
+            "name": "rewrite",
+            "location": 488,
+            "return": [
+                "_T0"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": [
+                    "_T0"
+                ]
+            }
+        },
+        "RewriteGenerator.rewrite_Generator": {
+            "name": "rewrite_Generator",
+            "location": 495,
+            "return": [
+                "Union[(Type[Iterator], _T0)]"
+            ],
+            "arguments": {
+                "self": [],
+                "typ": [
+                    "_T0"
+                ]
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/util.py": {
+        "get_func_fqname": {
+            "name": "get_func_fqname",
+            "location": 17,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "func": [
+                    "Callable"
+                ]
+            }
+        },
+        "get_func_in_module": {
+            "name": "get_func_in_module",
+            "location": 22,
+            "return": [
+                "Callable"
+            ],
+            "arguments": {
+                "module": [
+                    "str"
+                ],
+                "qualname": [
+                    "str"
+                ]
+            }
+        },
+        "get_name_in_module": {
+            "name": "get_name_in_module",
+            "location": 52,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "module": [
+                    "str"
+                ],
+                "qualname": [
+                    "str"
+                ],
+                "attr_getter": [
+                    "Optional[Callable[([Any, str], Any)]]"
+                ]
+            }
+        },
+        "pascal_case": {
+            "name": "pascal_case",
+            "location": 80,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "s": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/__init__.py": {
+        "trace": {
+            "name": "trace",
+            "location": 12,
+            "return": [
+                "ContextManager[None]"
+            ],
+            "arguments": {
+                "config": [
+                    "Optional[monkeytype.config.Config]"
+                ]
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/__main__.py": {},
+    "MonkeyType-main/monkeytype/db/base.py": {
+        "CallTraceThunk.to_trace": {
+            "name": "to_trace",
+            "location": 16,
+            "return": [
+                "monkeytype.tracing.CallTrace"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CallTraceStore.add": {
+            "name": "add",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "traces": [
+                    "Iterable[monkeytype.tracing.CallTrace]"
+                ]
+            }
+        },
+        "CallTraceStore.filter": {
+            "name": "filter",
+            "location": 30,
+            "return": [
+                "List[CallTraceThunk]"
+            ],
+            "arguments": {
+                "self": [],
+                "module": [
+                    "str"
+                ],
+                "qualname_prefix": [
+                    "Optional[str]"
+                ],
+                "limit": [
+                    "int"
+                ]
+            }
+        },
+        "CallTraceStore.make_store": {
+            "name": "make_store",
+            "location": 41,
+            "return": [
+                "_TCallTraceStore"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TCallTraceStore]"
+                ],
+                "connection_string": [
+                    "str"
+                ]
+            }
+        },
+        "CallTraceStore.list_modules": {
+            "name": "list_modules",
+            "location": 48,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CallTraceStoreLogger.__init__": {
+            "name": "__init__",
+            "location": 59,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "store": [
+                    "CallTraceStore"
+                ]
+            }
+        },
+        "CallTraceStoreLogger.log": {
+            "name": "log",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "trace": [
+                    "monkeytype.tracing.CallTrace"
+                ]
+            }
+        },
+        "CallTraceStoreLogger.flush": {
+            "name": "flush",
+            "location": 67,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/db/sqlite.py": {
+        "create_call_trace_table": {
+            "name": "create_call_trace_table",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "conn": [
+                    "sqlite3.dbapi2.Connection"
+                ],
+                "table": [
+                    "str"
+                ]
+            }
+        },
+        "make_query": {
+            "name": "make_query",
+            "location": 43,
+            "return": [
+                "Tuple[(str, List[Union[(int, str)]])]"
+            ],
+            "arguments": {
+                "table": [
+                    "str"
+                ],
+                "module": [
+                    "str"
+                ],
+                "qualname": [
+                    "Optional[str]"
+                ],
+                "limit": [
+                    "int"
+                ]
+            }
+        },
+        "SQLiteStore.__init__": {
+            "name": "__init__",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "conn": [
+                    "sqlite3.dbapi2.Connection"
+                ],
+                "table": [
+                    "str"
+                ]
+            }
+        },
+        "SQLiteStore.make_store": {
+            "name": "make_store",
+            "location": 75,
+            "return": [
+                "monkeytype.db.base.CallTraceStore"
+            ],
+            "arguments": {
+                "cls": [],
+                "connection_string": [
+                    "str"
+                ]
+            }
+        },
+        "SQLiteStore.add": {
+            "name": "add",
+            "location": 80,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "traces": [
+                    "Iterable[monkeytype.tracing.CallTrace]"
+                ]
+            }
+        },
+        "SQLiteStore.filter": {
+            "name": "filter",
+            "location": 101,
+            "return": [
+                "List[monkeytype.db.base.CallTraceThunk]"
+            ],
+            "arguments": {
+                "self": [],
+                "module": [
+                    "str"
+                ],
+                "qualname_prefix": [
+                    "Optional[str]"
+                ],
+                "limit": [
+                    "int"
+                ]
+            }
+        },
+        "SQLiteStore.list_modules": {
+            "name": "list_modules",
+            "location": 110,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "MonkeyType-main/monkeytype/db/__init__.py": {},
+    "MonkeyType-main/tests/conftest.py": {},
+    "MonkeyType-main/tests/test_cli.py": {
+        "func_foo": {
+            "name": "func_foo",
+            "location": 34,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {}
+        },
+        "func": {
+            "name": "func",
+            "location": 38,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "func2": {
+            "name": "func2",
+            "location": 42,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "func_anno": {
+            "name": "func_anno",
+            "location": 46,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "a": [
+                    "int"
+                ],
+                "b": [
+                    "str"
+                ]
+            }
+        },
+        "func_anno2": {
+            "name": "func_anno2",
+            "location": 50,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "a": [
+                    "str"
+                ],
+                "b": [
+                    "str"
+                ]
+            }
+        },
+        "super_long_function_with_long_params": {
+            "name": "super_long_function_with_long_params",
+            "location": 54,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "long_param1": [
+                    "str"
+                ],
+                "long_param2": [
+                    "str"
+                ],
+                "long_param3": [
+                    "str"
+                ],
+                "long_param4": [
+                    "str"
+                ],
+                "long_param5": [
+                    "str"
+                ]
+            }
+        },
+        "store_data": {
+            "name": "store_data",
+            "location": 73,
+            "return": [],
+            "arguments": {}
+        },
+        "store": {
+            "name": "store",
+            "location": 82,
+            "return": [],
+            "arguments": {
+                "store_data": []
+            }
+        },
+        "db_file": {
+            "name": "db_file",
+            "location": 88,
+            "return": [],
+            "arguments": {
+                "store_data": []
+            }
+        },
+        "stdout": {
+            "name": "stdout",
+            "location": 94,
+            "return": [],
+            "arguments": {}
+        },
+        "stderr": {
+            "name": "stderr",
+            "location": 99,
+            "return": [],
+            "arguments": {}
+        },
+        "test_generate_stub": {
+            "name": "test_generate_stub",
+            "location": 103,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_print_stub_ignore_existing_annotations": {
+            "name": "test_print_stub_ignore_existing_annotations",
+            "location": 120,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_get_diff": {
+            "name": "test_get_diff",
+            "location": 135,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_get_diff2": {
+            "name": "test_get_diff2",
+            "location": 153,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_no_traces": {
+            "name": "test_no_traces",
+            "location": 196,
+            "return": [],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": [],
+                "arg": [],
+                "error": []
+            }
+        },
+        "test_display_list_of_modules": {
+            "name": "test_display_list_of_modules",
+            "location": 204,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_display_list_of_modules_no_modules": {
+            "name": "test_display_list_of_modules_no_modules",
+            "location": 219,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_display_sample_count": {
+            "name": "test_display_sample_count",
+            "location": 229,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "stderr": []
+            }
+        },
+        "test_display_sample_count_from_cli": {
+            "name": "test_display_sample_count_from_cli",
+            "location": 244,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_quiet_failed_traces": {
+            "name": "test_quiet_failed_traces",
+            "location": 259,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_verbose_failed_traces": {
+            "name": "test_verbose_failed_traces",
+            "location": 271,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_cli_context_manager_activated": {
+            "name": "test_cli_context_manager_activated",
+            "location": 283,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "capsys": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_pathlike_parameter": {
+            "name": "test_pathlike_parameter",
+            "location": 291,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "capsys": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_toplevel_filename_parameter": {
+            "name": "test_toplevel_filename_parameter",
+            "location": 299,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_apply_stub_init": {
+            "name": "test_apply_stub_init",
+            "location": 317,
+            "return": [],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": [],
+                "collector": []
+            }
+        },
+        "test_apply_stub_file_with_spaces": {
+            "name": "test_apply_stub_file_with_spaces",
+            "location": 331,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "store": [],
+                "db_file": [],
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_apply_stub_using_libcst": {
+            "name": "test_apply_stub_using_libcst",
+            "location": 352,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {}
+        },
+        "test_apply_stub_using_libcst__exception": {
+            "name": "test_apply_stub_using_libcst__exception",
+            "location": 418,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "stdout": [],
+                "stderr": []
+            }
+        },
+        "test_apply_stub_using_libcst__overwrite_existing_annotations": {
+            "name": "test_apply_stub_using_libcst__overwrite_existing_annotations",
+            "location": 433,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {}
+        },
+        "LoudContextConfig.cli_context": {
+            "name": "cli_context",
+            "location": 66,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "command": []
+            }
+        },
+        "test_toplevel_filename_parameter.side_effect": {
+            "name": "side_effect",
+            "location": 304,
+            "return": [],
+            "arguments": {
+                "x": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/test_compat.py": {
+        "test_name_of_union": {
+            "name": "test_name_of_union",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "MonkeyType-main/tests/test_config.py": {
+        "TestDefaultCodeFilter.test_excludes_stdlib": {
+            "name": "test_excludes_stdlib",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestDefaultCodeFilter.test_excludes_site_packages": {
+            "name": "test_excludes_site_packages",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestDefaultCodeFilter.test_includes_otherwise": {
+            "name": "test_includes_otherwise",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestDefaultCodeFilter.test_excludes_frozen_importlib": {
+            "name": "test_excludes_frozen_importlib",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestDefaultCodeFilter.test_includes_stdlib_in_MONKEYTYPE_TRACE_MODULES": {
+            "name": "test_includes_stdlib_in_MONKEYTYPE_TRACE_MODULES",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "monkeypatch": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/test_encoding.py": {
+        "dummy_func": {
+            "name": "dummy_func",
+            "location": 38,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "TestTypeConversion.test_type_round_trip": {
+            "name": "test_type_round_trip",
+            "location": 79,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": []
+            }
+        },
+        "TestTypeConversion.test_type_to_dict": {
+            "name": "test_type_to_dict",
+            "location": 130,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestTypeConversion.test_type_from_dict": {
+            "name": "test_type_from_dict",
+            "location": 150,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "type_dict": [],
+                "expected": []
+            }
+        },
+        "TestTypeConversion.test_type_from_dict_nested": {
+            "name": "test_type_from_dict_nested",
+            "location": 177,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "type_dict": [],
+                "expected": []
+            }
+        },
+        "TestTypeConversion.test_type_to_json": {
+            "name": "test_type_to_json",
+            "location": 191,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "type_dict": [],
+                "expected": []
+            }
+        },
+        "TestTypeConversion.test_type_from_json": {
+            "name": "test_type_from_json",
+            "location": 205,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "type_dict_string": [],
+                "expected": []
+            }
+        },
+        "TestTypeConversion.test_type_round_trip_typed_dict": {
+            "name": "test_type_round_trip_typed_dict",
+            "location": 214,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "type_dict": []
+            }
+        },
+        "TestTypeConversion.test_trace_round_trip": {
+            "name": "test_trace_round_trip",
+            "location": 218,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestTypeConversion.test_convert_non_type": {
+            "name": "test_convert_non_type",
+            "location": 222,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestTypeConversion.test_maybe_encode_type": {
+            "name": "test_maybe_encode_type",
+            "location": 236,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "encoder": [],
+                "typ": [],
+                "expected": [],
+                "should_call_encoder": []
+            }
+        },
+        "TestTypeConversion.test_maybe_decode_type": {
+            "name": "test_maybe_decode_type",
+            "location": 252,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "encoder": [],
+                "typ": [],
+                "expected": [],
+                "should_call_encoder": []
+            }
+        },
+        "TestSerializeTraces.test_log_failure_and_continue": {
+            "name": "test_log_failure_and_continue",
+            "location": 263,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "caplog": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/test_stubs.py": {
+        "simple_add": {
+            "name": "simple_add",
+            "location": 128,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "a": [
+                    "int"
+                ],
+                "b": [
+                    "int"
+                ]
+            }
+        },
+        "strip_modules_helper": {
+            "name": "strip_modules_helper",
+            "location": 132,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "d1": [
+                    "tests.util.Dummy"
+                ],
+                "d2": [
+                    "tests.util.Dummy"
+                ]
+            }
+        },
+        "has_optional_param": {
+            "name": "has_optional_param",
+            "location": 136,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "x": [
+                    "Union[(builtins.NoneType, int)]"
+                ]
+            }
+        },
+        "has_optional_union_param": {
+            "name": "has_optional_union_param",
+            "location": 140,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "x": [
+                    "Union[(builtins.NoneType, float)]"
+                ]
+            }
+        },
+        "has_optional_return": {
+            "name": "has_optional_return",
+            "location": 144,
+            "return": [
+                "Union[(builtins.NoneType, int)]"
+            ],
+            "arguments": {}
+        },
+        "default_none_parameter": {
+            "name": "default_none_parameter",
+            "location": 148,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "x": [
+                    "int"
+                ]
+            }
+        },
+        "has_length_exceeds_120_chars": {
+            "name": "has_length_exceeds_120_chars",
+            "location": 152,
+            "return": [
+                "Union[(builtins.NoneType, float)]"
+            ],
+            "arguments": {
+                "very_long_name_parameter_1": [
+                    "float"
+                ],
+                "very_long_name_parameter_2": [
+                    "float"
+                ]
+            }
+        },
+        "has_newtype_param": {
+            "name": "has_newtype_param",
+            "location": 159,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "user_id": [
+                    "UserId"
+                ]
+            }
+        },
+        "has_forward_ref": {
+            "name": "has_forward_ref",
+            "location": 163,
+            "return": [
+                "Union[(TestFunctionStub, builtins.NoneType)]"
+            ],
+            "arguments": {}
+        },
+        "has_forward_ref_within_generator": {
+            "name": "has_forward_ref_within_generator",
+            "location": 167,
+            "return": [
+                "Generator[(TestFunctionStub, builtins.NoneType, int)]"
+            ],
+            "arguments": {}
+        },
+        "_func_stub_from_callable": {
+            "name": "_func_stub_from_callable",
+            "location": 344,
+            "return": [
+                "monkeytype.stubs.FunctionStub"
+            ],
+            "arguments": {
+                "func": [
+                    "Callable"
+                ],
+                "strip_modules": [
+                    "List[str]"
+                ]
+            }
+        },
+        "untyped_helper": {
+            "name": "untyped_helper",
+            "location": 824,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "x": [],
+                "y": []
+            }
+        },
+        "a_module_func": {
+            "name": "a_module_func",
+            "location": 1015,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {}
+        },
+        "tie_helper": {
+            "name": "tie_helper",
+            "location": 1165,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "TestImportMap.test_merge": {
+            "name": "test_merge",
+            "location": 63,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestImportBlockStub.test_single_import": {
+            "name": "test_single_import",
+            "location": 78,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestImportBlockStub.test_io_import_single": {
+            "name": "test_io_import_single",
+            "location": 90,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestImportBlockStub.test_multiple_imports": {
+            "name": "test_multiple_imports",
+            "location": 100,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestImportBlockStub.test_multiple_io_imports": {
+            "name": "test_multiple_io_imports",
+            "location": 114,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAttributeStub.test_simple_attribute": {
+            "name": "test_simple_attribute",
+            "location": 179,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "stub": [],
+                "expected": []
+            }
+        },
+        "TestRenderAnnotation.test_render_annotation": {
+            "name": "test_render_annotation",
+            "location": 211,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "annotation": [],
+                "expected": []
+            }
+        },
+        "TestFunctionStub.test_classmethod": {
+            "name": "test_classmethod",
+            "location": 216,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_staticmethod": {
+            "name": "test_staticmethod",
+            "location": 224,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_property": {
+            "name": "test_property",
+            "location": 232,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_cached_property": {
+            "name": "test_cached_property",
+            "location": 240,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_simple": {
+            "name": "test_simple",
+            "location": 249,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_with_prefix": {
+            "name": "test_with_prefix",
+            "location": 255,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_strip_modules": {
+            "name": "test_strip_modules",
+            "location": 260,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_async_function": {
+            "name": "test_async_function",
+            "location": 268,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_optional_parameter_annotation": {
+            "name": "test_optional_parameter_annotation",
+            "location": 273,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_optional_union_parameter_annotation": {
+            "name": "test_optional_union_parameter_annotation",
+            "location": 279,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_optional_return_annotation": {
+            "name": "test_optional_return_annotation",
+            "location": 285,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_split_parameters_across_multiple_lines": {
+            "name": "test_split_parameters_across_multiple_lines",
+            "location": 291,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_default_none_parameter_annotation": {
+            "name": "test_default_none_parameter_annotation",
+            "location": 310,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_newtype_parameter_annotation": {
+            "name": "test_newtype_parameter_annotation",
+            "location": 315,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_nonetype_annotation": {
+            "name": "test_nonetype_annotation",
+            "location": 320,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_forward_ref_annotation": {
+            "name": "test_forward_ref_annotation",
+            "location": 329,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionStub.test_forward_ref_annotation_within_generator": {
+            "name": "test_forward_ref_annotation_within_generator",
+            "location": 336,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestClassStub.test_render": {
+            "name": "test_render",
+            "location": 351,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestReplaceTypedDictsWithStubs.test_replace_typed_dict_with_stubs": {
+            "name": "test_replace_typed_dict_with_stubs",
+            "location": 495,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestModuleStub.test_render": {
+            "name": "test_render",
+            "location": 558,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestModuleStub.test_render_nested_typed_dict": {
+            "name": "test_render_nested_typed_dict",
+            "location": 608,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestModuleStub.test_render_return_typed_dict": {
+            "name": "test_render_return_typed_dict",
+            "location": 645,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestModuleStub.test_render_yield_typed_dict": {
+            "name": "test_render_yield_typed_dict",
+            "location": 673,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestModuleStub.test_render_typed_dict_in_list": {
+            "name": "test_render_typed_dict_in_list",
+            "location": 705,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestModuleStub.test_render_typed_dict_base_and_subclass": {
+            "name": "test_render_typed_dict_base_and_subclass",
+            "location": 731,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestModuleStub.test_render_return_empty_tuple": {
+            "name": "test_render_return_empty_tuple",
+            "location": 759,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestBuildModuleStubs.test_build_module_stubs": {
+            "name": "test_build_module_stubs",
+            "location": 785,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestBuildModuleStubs.test_build_module_stubs_typed_dict_parameter": {
+            "name": "test_build_module_stubs_typed_dict_parameter",
+            "location": 807,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestStubIndexBuilder.test_ignore_non_matching_functions": {
+            "name": "test_ignore_non_matching_functions",
+            "location": 829,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestStubIndexBuilder.test_build_index": {
+            "name": "test_build_index",
+            "location": 834,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UpdateSignatureHelper.has_annos": {
+            "name": "has_annos",
+            "location": 854,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "a": [
+                    "int"
+                ],
+                "b": []
+            }
+        },
+        "UpdateSignatureHelper.a_class_method": {
+            "name": "a_class_method",
+            "location": 858,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "UpdateSignatureHelper.an_instance_method": {
+            "name": "an_instance_method",
+            "location": 861,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_arg": {
+            "name": "test_update_arg",
+            "location": 866,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_arg_with_anno": {
+            "name": "test_update_arg_with_anno",
+            "location": 876,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_self": {
+            "name": "test_update_self",
+            "location": 889,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_class": {
+            "name": "test_update_class",
+            "location": 896,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_arg_ignore_existing_anno": {
+            "name": "test_update_arg_ignore_existing_anno",
+            "location": 903,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_self_ignore_existing_anno": {
+            "name": "test_update_self_ignore_existing_anno",
+            "location": 914,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_arg_ignore_existing_anno_None": {
+            "name": "test_update_arg_ignore_existing_anno_None",
+            "location": 922,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureArgs.test_update_arg_avoid_incompatible_anno": {
+            "name": "test_update_arg_avoid_incompatible_anno",
+            "location": 933,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_update_return": {
+            "name": "test_update_return",
+            "location": 946,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_update_return_with_anno": {
+            "name": "test_update_return_with_anno",
+            "location": 952,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_avoid_incompatible_return": {
+            "name": "test_avoid_incompatible_return",
+            "location": 965,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_update_return_with_anno_ignored": {
+            "name": "test_update_return_with_anno_ignored",
+            "location": 978,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_update_yield": {
+            "name": "test_update_yield",
+            "location": 992,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_update_yield_and_return": {
+            "name": "test_update_yield_and_return",
+            "location": 999,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_update_yield_none_and_return": {
+            "name": "test_update_yield_none_and_return",
+            "location": 1004,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUpdateSignatureReturn.test_update_yield_and_return_none": {
+            "name": "test_update_yield_and_return_none",
+            "location": 1009,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestFunctionKind.test_from_callable": {
+            "name": "test_from_callable",
+            "location": 1035,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "func": [],
+                "expected": []
+            }
+        },
+        "TestFunctionDefinition.test_has_self": {
+            "name": "test_has_self",
+            "location": 1051,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "func": [],
+                "expected": []
+            }
+        },
+        "TestFunctionDefinition.test_from_callable": {
+            "name": "test_from_callable",
+            "location": 1081,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "func": [],
+                "expected": []
+            }
+        },
+        "TestFunctionDefinition.test_from_callable_and_traced_types": {
+            "name": "test_from_callable_and_traced_types",
+            "location": 1155,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "func": [],
+                "arg_types": [],
+                "return_type": [],
+                "yield_type": [],
+                "expected": []
+            }
+        },
+        "TestShrinkTracedTypes.test_shrink_args": {
+            "name": "test_shrink_args",
+            "location": 1170,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestShrinkTracedTypes.test_shrink_return": {
+            "name": "test_shrink_return",
+            "location": 1177,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestShrinkTracedTypes.test_shrink_yield": {
+            "name": "test_shrink_yield",
+            "location": 1184,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetImportsForAnnotation.test_no_imports": {
+            "name": "test_no_imports",
+            "location": 1207,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "anno": []
+            }
+        },
+        "TestGetImportsForAnnotation.test_special_case_types": {
+            "name": "test_special_case_types",
+            "location": 1218,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "anno": [],
+                "expected": []
+            }
+        },
+        "TestGetImportsForAnnotation.test_callable": {
+            "name": "test_callable",
+            "location": 1222,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetImportsForAnnotation.test_user_defined_class": {
+            "name": "test_user_defined_class",
+            "location": 1225,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetImportsForAnnotation.test_container_types": {
+            "name": "test_container_types",
+            "location": 1239,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "anno": [],
+                "expected": []
+            }
+        },
+        "TestGetImportsForAnnotation.test_nested_class": {
+            "name": "test_nested_class",
+            "location": 1243,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetImportsForSignature.test_default_none_parameter_imports": {
+            "name": "test_default_none_parameter_imports",
+            "location": 1248,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/test_tracing.py": {
+        "simple_add": {
+            "name": "simple_add",
+            "location": 38,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "a": [
+                    "int"
+                ],
+                "b": [
+                    "int"
+                ]
+            }
+        },
+        "has_optional_kwarg": {
+            "name": "has_optional_kwarg",
+            "location": 42,
+            "return": [
+                "Union[(builtins.NoneType, types.FrameType)]"
+            ],
+            "arguments": {
+                "a": [
+                    "int"
+                ],
+                "b": [
+                    "str"
+                ]
+            }
+        },
+        "has_locals": {
+            "name": "has_locals",
+            "location": 46,
+            "return": [
+                "Union[(builtins.NoneType, types.FrameType)]"
+            ],
+            "arguments": {
+                "foo": [
+                    "str"
+                ]
+            }
+        },
+        "a_module_function": {
+            "name": "a_module_function",
+            "location": 72,
+            "return": [
+                "Union[(builtins.NoneType, types.FrameType)]"
+            ],
+            "arguments": {}
+        },
+        "throw": {
+            "name": "throw",
+            "location": 92,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "should_recover": [
+                    "bool"
+                ]
+            }
+        },
+        "nested_throw": {
+            "name": "nested_throw",
+            "location": 101,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "should_recover": [
+                    "bool"
+                ]
+            }
+        },
+        "recover_from_nested_throw": {
+            "name": "recover_from_nested_throw",
+            "location": 106,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "squares": {
+            "name": "squares",
+            "location": 114,
+            "return": [
+                "Iterator[int]"
+            ],
+            "arguments": {
+                "n": [
+                    "int"
+                ]
+            }
+        },
+        "implicit_return_none": {
+            "name": "implicit_return_none",
+            "location": 130,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {}
+        },
+        "explicit_return_none": {
+            "name": "explicit_return_none",
+            "location": 134,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {}
+        },
+        "collector": {
+            "name": "collector",
+            "location": 145,
+            "return": [],
+            "arguments": {}
+        },
+        "TraceCollector.__init__": {
+            "name": "__init__",
+            "location": 26,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TraceCollector.log": {
+            "name": "log",
+            "location": 31,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "trace": [
+                    "monkeytype.tracing.CallTrace"
+                ]
+            }
+        },
+        "TraceCollector.flush": {
+            "name": "flush",
+            "location": 34,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GetFuncHelper.a_static_method": {
+            "name": "a_static_method",
+            "location": 53,
+            "return": [
+                "Union[(builtins.NoneType, types.FrameType)]"
+            ],
+            "arguments": {}
+        },
+        "GetFuncHelper.a_class_method": {
+            "name": "a_class_method",
+            "location": 57,
+            "return": [
+                "Union[(builtins.NoneType, types.FrameType)]"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "GetFuncHelper.an_instance_method": {
+            "name": "an_instance_method",
+            "location": 60,
+            "return": [
+                "Union[(builtins.NoneType, types.FrameType)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GetFuncHelper.a_property": {
+            "name": "a_property",
+            "location": 64,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GetFuncHelper.a_cached_property": {
+            "name": "a_cached_property",
+            "location": 68,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetFunc.test_get_func": {
+            "name": "test_get_func",
+            "location": 88,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "frame": [],
+                "expected_func": []
+            }
+        },
+        "Oracle.meaning_of_life": {
+            "name": "meaning_of_life",
+            "location": 140,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "lazy_property.__init__": {
+            "name": "__init__",
+            "location": 150,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "fget": [],
+                "doc": []
+            }
+        },
+        "lazy_property.get_target_obj": {
+            "name": "get_target_obj",
+            "location": 155,
+            "return": [
+                "_T0"
+            ],
+            "arguments": {
+                "self": [],
+                "obj": [
+                    "_T0"
+                ],
+                "cls": []
+            }
+        },
+        "lazy_property.__get__": {
+            "name": "__get__",
+            "location": 158,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "obj": [],
+                "cls": []
+            }
+        },
+        "LazyValue.__init__": {
+            "name": "__init__",
+            "location": 168,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "func": []
+            }
+        },
+        "LazyValue.value": {
+            "name": "value",
+            "location": 174,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestTraceCalls.test_simple_call": {
+            "name": "test_simple_call",
+            "location": 184,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_flushes": {
+            "name": "test_flushes",
+            "location": 189,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_callee_throws": {
+            "name": "test_callee_throws",
+            "location": 195,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_nested_callee_throws_caller_doesnt_recover": {
+            "name": "test_nested_callee_throws_caller_doesnt_recover",
+            "location": 203,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_callee_throws_recovers": {
+            "name": "test_callee_throws_recovers",
+            "location": 215,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_nested_callee_throws_recovers": {
+            "name": "test_nested_callee_throws_recovers",
+            "location": 220,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_caller_handles_callee_exception": {
+            "name": "test_caller_handles_callee_exception",
+            "location": 229,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_generator_trace": {
+            "name": "test_generator_trace",
+            "location": 238,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_return_none": {
+            "name": "test_return_none",
+            "location": 244,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_access_property": {
+            "name": "test_access_property",
+            "location": 255,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_filtering": {
+            "name": "test_filtering",
+            "location": 262,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        },
+        "TestTraceCalls.test_lazy_value": {
+            "name": "test_lazy_value",
+            "location": 269,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": [],
+                "collector": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/test_typing.py": {
+        "helper": {
+            "name": "helper",
+            "location": 496,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {}
+        },
+        "generator": {
+            "name": "generator",
+            "location": 500,
+            "return": [
+                "Iterator[int]"
+            ],
+            "arguments": {}
+        },
+        "get_default_dict": {
+            "name": "get_default_dict",
+            "location": 504,
+            "return": [
+                "collections.defaultdict[(_T0, Any)]"
+            ],
+            "arguments": {
+                "key": [
+                    "_T0"
+                ],
+                "value": []
+            }
+        },
+        "get_nested_default_dict": {
+            "name": "get_nested_default_dict",
+            "location": 510,
+            "return": [
+                "collections.defaultdict[(_T0, Any)]"
+            ],
+            "arguments": {
+                "key": [
+                    "_T0"
+                ],
+                "value": []
+            }
+        },
+        "get_default_dict_with_dict": {
+            "name": "get_default_dict_with_dict",
+            "location": 516,
+            "return": [
+                "collections.defaultdict[(_T0, Any)]"
+            ],
+            "arguments": {
+                "key": [
+                    "_T0"
+                ],
+                "value": []
+            }
+        },
+        "TestTypesEqual.test_types_equal": {
+            "name": "test_types_equal",
+            "location": 102,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "other_type": [],
+                "expected_output": []
+            }
+        },
+        "TestTypesEqual.test_is_list": {
+            "name": "test_is_list",
+            "location": 113,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestMakeTypedDict.test_make_typed_dict": {
+            "name": "test_make_typed_dict",
+            "location": 130,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "required_fields": [],
+                "optional_fields": [],
+                "expected_type": []
+            }
+        },
+        "TestMakeTypedDict.test_field_annotations": {
+            "name": "test_field_annotations",
+            "location": 141,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "required_fields": [],
+                "optional_fields": []
+            }
+        },
+        "TestShrinkType.test_shrink_non_uniform_typed_dict_types": {
+            "name": "test_shrink_non_uniform_typed_dict_types",
+            "location": 296,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "types": [],
+                "expected_type": []
+            }
+        },
+        "TestShrinkType.test_shrink_types_non_typed_dict": {
+            "name": "test_shrink_types_non_typed_dict",
+            "location": 387,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "types": [],
+                "expected_type": []
+            }
+        },
+        "TestShrinkType.test_shrink_types": {
+            "name": "test_shrink_types",
+            "location": 402,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "types": [],
+                "expected_type": []
+            }
+        },
+        "TestShrinkType.test_shrink_types_mixed_dicts": {
+            "name": "test_shrink_types_mixed_dicts",
+            "location": 434,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "types": [],
+                "expected_type": []
+            }
+        },
+        "TestTypedDictHelpers.test_is_typed_dict": {
+            "name": "test_is_typed_dict",
+            "location": 448,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestTypedDictHelpers.test_are_dict_types_equal": {
+            "name": "test_are_dict_types_equal",
+            "location": 492,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "type1": [],
+                "type2": [],
+                "expected_value": []
+            }
+        },
+        "TestGetType.test_builtin_types": {
+            "name": "test_builtin_types",
+            "location": 547,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "value": [],
+                "expected_type": []
+            }
+        },
+        "TestGetType.test_dict_type": {
+            "name": "test_dict_type",
+            "location": 578,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "value": [],
+                "expected_when_max_size_is_zero": [],
+                "expected_when_max_size_is_none": []
+            }
+        },
+        "TestGetType.test_dict_nested_within_generic": {
+            "name": "test_dict_nested_within_generic",
+            "location": 598,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "value": [],
+                "expected_when_max_size_is_zero": [],
+                "expected_when_max_size_is_none": []
+            }
+        },
+        "TestGetType.test_dict_type_with_other_max_sizes": {
+            "name": "test_dict_type_with_other_max_sizes",
+            "location": 619,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "value": [],
+                "max_typed_dict_size": [],
+                "expected": []
+            }
+        },
+        "TestGetType.test_instance_type": {
+            "name": "test_instance_type",
+            "location": 622,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetType.test_class_type": {
+            "name": "test_class_type",
+            "location": 626,
+            "return": [
+                "builtins.NoneType"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RewriteListToInt.rewrite_List": {
+            "name": "rewrite_List",
+            "location": 641,
+            "return": [
+                "Type[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "lst": []
+            }
+        },
+        "RewriteListToInt.rewrite_type_variable": {
+            "name": "rewrite_type_variable",
+            "location": 644,
+            "return": [
+                "Type[Dict[(str, Any)]]"
+            ],
+            "arguments": {
+                "self": [],
+                "type_variable": []
+            }
+        },
+        "TestTypeRewriter.test_rewrite_TypedDict": {
+            "name": "test_rewrite_TypedDict",
+            "location": 666,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestRemoveEmptyContainers.test_rewrite": {
+            "name": "test_rewrite",
+            "location": 688,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestRewriteConfigDict.test_rewrite": {
+            "name": "test_rewrite",
+            "location": 718,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestRewriteLargeUnion.test_rewrite": {
+            "name": "test_rewrite",
+            "location": 787,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestRewriteGenerator.test_rewrite": {
+            "name": "test_rewrite",
+            "location": 806,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        },
+        "TestRewriteAnonymousTypedDictToDict.test_rewrite": {
+            "name": "test_rewrite",
+            "location": 823,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "typ": [],
+                "expected": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/test_util.py": {
+        "a_module_func": {
+            "name": "a_module_func",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestGetNameInModule.test_get_existing_name": {
+            "name": "test_get_existing_name",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetNameInModule.test_get_nonexistent_module": {
+            "name": "test_get_nonexistent_module",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetNameInModule.test_get_nonexistent_qualname": {
+            "name": "test_get_nonexistent_qualname",
+            "location": 40,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetFuncInModule.test_get_method": {
+            "name": "test_get_method",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetFuncInModule.test_get_property": {
+            "name": "test_get_property",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetFuncInModule.test_get_settable_property": {
+            "name": "test_get_settable_property",
+            "location": 59,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetFuncInModule.test_get_cached_property": {
+            "name": "test_get_cached_property",
+            "location": 65,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestGetFuncInModule.test_get_non_function": {
+            "name": "test_get_non_function",
+            "location": 72,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Derived.an_instance_method": {
+            "name": "an_instance_method",
+            "location": 79,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestPascalCase.test_pascal_case": {
+            "name": "test_pascal_case",
+            "location": 94,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "input_string": [],
+                "expected": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/util.py": {
+        "transform_path": {
+            "name": "transform_path",
+            "location": 52,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "smartcov_paths_hook": {
+            "name": "smartcov_paths_hook",
+            "location": 60,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "paths": [
+                    "List[str]"
+                ]
+            }
+        },
+        "Dummy.a_static_method": {
+            "name": "a_static_method",
+            "location": 19,
+            "return": [
+                "Optional[types.FrameType]"
+            ],
+            "arguments": {
+                "foo": []
+            }
+        },
+        "Dummy.a_class_method": {
+            "name": "a_class_method",
+            "location": 23,
+            "return": [
+                "Optional[types.FrameType]"
+            ],
+            "arguments": {
+                "cls": [],
+                "foo": []
+            }
+        },
+        "Dummy.an_instance_method": {
+            "name": "an_instance_method",
+            "location": 26,
+            "return": [
+                "Optional[types.FrameType]"
+            ],
+            "arguments": {
+                "self": [],
+                "foo": [],
+                "bar": []
+            }
+        },
+        "Dummy.a_property": {
+            "name": "a_property",
+            "location": 30,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Dummy.a_settable_property": {
+            "name": "a_settable_property",
+            "location": 38,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "unused": []
+            }
+        },
+        "Dummy.a_cached_property": {
+            "name": "a_cached_property",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Outer.Inner.f": {
+            "name": "f",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/__init__.py": {},
+    "MonkeyType-main/tests/db/test_base.py": {
+        "normal_func": {
+            "name": "normal_func",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "main_func": {
+            "name": "main_func",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "logger": {
+            "name": "logger",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        },
+        "test_round_trip": {
+            "name": "test_round_trip",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "logger": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/db/test_sqlite.py": {
+        "func": {
+            "name": "func",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "func2": {
+            "name": "func2",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "a": [],
+                "b": []
+            }
+        },
+        "store": {
+            "name": "store",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        },
+        "test_round_trip": {
+            "name": "test_round_trip",
+            "location": 31,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "store": []
+            }
+        },
+        "test_dedup": {
+            "name": "test_dedup",
+            "location": 40,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "store": []
+            }
+        },
+        "test_qualname_filtering": {
+            "name": "test_qualname_filtering",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "store": []
+            }
+        },
+        "test_limit_resultset": {
+            "name": "test_limit_resultset",
+            "location": 61,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "store": []
+            }
+        }
+    },
+    "MonkeyType-main/tests/testmodule/__init__.py": {
+        "Foo.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "arg1": [
+                    "str"
+                ],
+                "arg2": [
+                    "int"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,1433 @@
+{
+    "Backpropagation-master/main.py": {
+        "main": {
+            "name": "main",
+            "location": 17,
+            "return": [
+                ""
+            ],
+            "arguments": {}
+        },
+        "train": {
+            "name": "train",
+            "location": 30,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "neurons_dist_filepath": [
+                    "str",
+                    "Union[int, float]",
+                    "int"
+                ],
+                "epochs": [
+                    "int",
+                    "bool"
+                ],
+                "output": [
+                    "str",
+                    "bytes",
+                    "IO[str]"
+                ],
+                "visualize_loss": [
+                    "bool",
+                    "int",
+                    "str"
+                ]
+            }
+        },
+        "test": {
+            "name": "test",
+            "location": 105,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "model_path": [
+                    "str",
+                    "bool"
+                ],
+                "per_class_errors": [
+                    "bool"
+                ],
+                "misclassified": [
+                    "bool"
+                ],
+                "roc_curves": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/setup.py": {},
+    "Backpropagation-master/backpropagation/__init__.py": {},
+    "Backpropagation-master/backpropagation/data/utils.py": {
+        "read_idx": {
+            "name": "read_idx",
+            "location": 6,
+            "return": [
+                "str",
+                "bool",
+                "Mapping[str, Any]",
+                "dict"
+            ],
+            "arguments": {
+                "filename": [
+                    "str"
+                ]
+            }
+        },
+        "image2vector": {
+            "name": "image2vector",
+            "location": 17,
+            "return": [
+                "str",
+                "int",
+                "bool",
+                "List[int]"
+            ],
+            "arguments": {
+                "image": [
+                    "int",
+                    "float",
+                    "Sized",
+                    "numpy.ndarray"
+                ]
+            }
+        },
+        "convert_images_to_training_samples": {
+            "name": "convert_images_to_training_samples",
+            "location": 21,
+            "return": [
+                "str",
+                "Optional[str]",
+                "Dict[str, Any]",
+                "Optional[\"CustomerReference\"]"
+            ],
+            "arguments": {
+                "images": [
+                    "numpy.ndarray",
+                    "List[numpy.ndarray]",
+                    "int"
+                ]
+            }
+        },
+        "label2vector": {
+            "name": "label2vector",
+            "location": 28,
+            "return": [
+                "str",
+                "Dict[str, Dict[str, int]]",
+                "int",
+                "bool",
+                "Dict[str, Any]"
+            ],
+            "arguments": {
+                "label": [
+                    "str",
+                    "int",
+                    "Optional[Callable]",
+                    "Set[str]"
+                ]
+            }
+        },
+        "convert_image_labels_to_training_labels": {
+            "name": "convert_image_labels_to_training_labels",
+            "location": 34,
+            "return": [
+                "bool",
+                "Tuple[float, float]",
+                "str",
+                "Optional[str]",
+                "Optional[bool]",
+                "List[str]"
+            ],
+            "arguments": {
+                "labels": [
+                    "str",
+                    "List[int]",
+                    "List[str]",
+                    "float"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/backpropagation/data/__init__.py": {},
+    "Backpropagation-master/backpropagation/network/activation_function.py": {
+        "IActivationFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 9,
+            "return": [
+                "numpy.array"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "str",
+                    "int",
+                    "numpy.ndarray",
+                    "bool",
+                    "Exception"
+                ]
+            }
+        },
+        "IActivationFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 14,
+            "return": [
+                "numpy.array"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "int",
+                    "str",
+                    "numpy.ndarray",
+                    "bool",
+                    "Exception"
+                ]
+            }
+        },
+        "IdentityActivationFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 22,
+            "return": [
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "str",
+                    "int",
+                    "numpy.ndarray",
+                    "bool",
+                    "Exception"
+                ]
+            }
+        },
+        "IdentityActivationFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 25,
+            "return": [
+                "int",
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "float",
+                    "int",
+                    "numpy.ndarray",
+                    "bytes"
+                ]
+            }
+        },
+        "SigmoidActivationFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 31,
+            "return": [
+                "int",
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "numpy.ndarray",
+                    "float",
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "SigmoidActivationFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 34,
+            "return": [
+                "int",
+                "str",
+                "bool",
+                "float",
+                "tuple"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "numpy.ndarray",
+                    "int",
+                    "Union[numpy.ndarray, pandas.DataFrame]",
+                    "List[int]",
+                    "nevergrad.common.Callable[[numpy.ndarray], numpy.ndarray]"
+                ]
+            }
+        },
+        "ReLUActivationFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 40,
+            "return": [
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "numpy.ndarray",
+                    "float",
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "ReLUActivationFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 43,
+            "return": [
+                "int",
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "float",
+                    "str",
+                    "numpy.ndarray"
+                ]
+            }
+        },
+        "SoftmaxActivationFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 49,
+            "return": [
+                "int",
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "bool",
+                    "int"
+                ]
+            }
+        },
+        "SoftmaxActivationFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 53,
+            "return": [
+                "str",
+                "bool",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "numpy.ndarray",
+                    "List[int]",
+                    "str"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/backpropagation/network/cost_function.py": {
+        "ICostFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 7,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array"
+                ],
+                "a": [
+                    "numpy.array"
+                ]
+            }
+        },
+        "ICostFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 10,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array",
+                    "Iterable[T]",
+                    "bool"
+                ],
+                "a": [
+                    "numpy.array",
+                    "Iterable[T]",
+                    "bool"
+                ]
+            }
+        },
+        "MSECostFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 15,
+            "return": [
+                "int",
+                "str",
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array",
+                    "numpy.ndarray",
+                    "bool",
+                    "Union[int, float]"
+                ],
+                "a": [
+                    "numpy.array",
+                    "list",
+                    "Union[numbers.Real, numpy.ndarray]"
+                ]
+            }
+        },
+        "MSECostFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 21,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array",
+                    "Callable[[None], bool]"
+                ],
+                "a": [
+                    "numpy.array",
+                    "Callable[[None], bool]"
+                ]
+            }
+        },
+        "SECostFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 26,
+            "return": [
+                "int",
+                "str",
+                "Tuple[int, int]",
+                "numpy.ndarray",
+                "Tuple[str, int]",
+                "T",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array",
+                    "Union[int, float]",
+                    "Callable[[T], T]",
+                    "float"
+                ],
+                "a": [
+                    "numpy.array",
+                    "Union[int, float]",
+                    "Callable[[T], T]",
+                    "float"
+                ]
+            }
+        },
+        "SECostFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 30,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array",
+                    "Callable[[None], bool]"
+                ],
+                "a": [
+                    "numpy.array",
+                    "Callable[[None], bool]"
+                ]
+            }
+        },
+        "CrossEntropyCostFunction.calculate_value": {
+            "name": "calculate_value",
+            "location": 35,
+            "return": [
+                "Callable",
+                "Tuple[numpy.ndarray]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array",
+                    "numpy.ndarray",
+                    "Optional[Dict[str, Any]]",
+                    "str"
+                ],
+                "a": [
+                    "numpy.array",
+                    "numpy.ndarray",
+                    "Optional[Dict[str, Any]]",
+                    "str"
+                ]
+            }
+        },
+        "CrossEntropyCostFunction.calculate_derivative_value": {
+            "name": "calculate_derivative_value",
+            "location": 38,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "y": [
+                    "numpy.array",
+                    "Callable[[None], bool]"
+                ],
+                "a": [
+                    "numpy.array",
+                    "Callable[[None], bool]"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/backpropagation/network/neural_network.py": {
+        "NeuralNetwork.__init__": {
+            "name": "__init__",
+            "location": 35,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "neurons_count_per_layer": [
+                    "int",
+                    "Optional[int]",
+                    "Callable[[str], int]",
+                    "bool"
+                ],
+                "activation_functions": [
+                    "bool",
+                    "int",
+                    "str",
+                    "Optional[bool]",
+                    "Optional[float]"
+                ],
+                "cost_function": [
+                    "bool",
+                    "int",
+                    "str",
+                    "Optional[bool]",
+                    "Optional[float]"
+                ],
+                "regularizator": [
+                    "bool",
+                    "int",
+                    "str",
+                    "Optional[bool]",
+                    "Optional[float]"
+                ],
+                "random_seed": [
+                    "int",
+                    "Optional[int]",
+                    "Optional[bool]",
+                    "bytes",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "NeuralNetwork._create_weight_matrix": {
+            "name": "_create_weight_matrix",
+            "location": 60,
+            "return": [
+                "bool",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "size": [
+                    "int",
+                    "dict"
+                ]
+            }
+        },
+        "NeuralNetwork._feedforward": {
+            "name": "_feedforward",
+            "location": 79,
+            "return": [
+                "str",
+                "int",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "X": [
+                    "numpy.ndarray",
+                    "int",
+                    "float",
+                    "str",
+                    "T"
+                ]
+            }
+        },
+        "NeuralNetwork.get_cost_function_value": {
+            "name": "get_cost_function_value",
+            "location": 95,
+            "return": [
+                "Optional[Dict[str, Any]]",
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "bool"
+                ],
+                "y": [
+                    "numpy.array",
+                    "bool"
+                ]
+            }
+        },
+        "NeuralNetwork._collect_activation_function_arguments_and_values": {
+            "name": "_collect_activation_function_arguments_and_values",
+            "location": 108,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "int",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "NeuralNetwork._backpropagation": {
+            "name": "_backpropagation",
+            "location": 133,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "bool",
+                    "float",
+                    "numpy.ndarray",
+                    "Iterable[Iterable[float]]",
+                    "list",
+                    "str",
+                    "T",
+                    "bytes"
+                ],
+                "y": [
+                    "bool",
+                    "float",
+                    "numpy.ndarray",
+                    "Iterable[Iterable[float]]",
+                    "list",
+                    "str",
+                    "T",
+                    "bytes"
+                ]
+            }
+        },
+        "NeuralNetwork._update_weights": {
+            "name": "_update_weights",
+            "location": 185,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "gradient": [
+                    "numpy.ndarray",
+                    "Optional[Any]",
+                    "str"
+                ],
+                "learning_rate": [
+                    "numpy.ndarray",
+                    "Optional[Any]",
+                    "str"
+                ],
+                "regularization_param": [
+                    "str",
+                    "TextIO",
+                    "bool"
+                ],
+                "samples_count": [
+                    "str",
+                    "TextIO",
+                    "bool"
+                ]
+            }
+        },
+        "NeuralNetwork._stochastic_gradient_descent": {
+            "name": "_stochastic_gradient_descent",
+            "location": 204,
+            "return": [
+                "bool",
+                "int",
+                "Optional[float]",
+                "str",
+                "numpy.dtype"
+            ],
+            "arguments": {
+                "self": [],
+                "samples": [
+                    "numpy.ndarray",
+                    "int",
+                    "List[list]",
+                    "Union[int, str]",
+                    "bytes",
+                    "List[int]",
+                    "list"
+                ],
+                "labels": [
+                    "numpy.array",
+                    "int",
+                    "dict",
+                    "str"
+                ],
+                "learning_rate": [
+                    "int",
+                    "Dict[str, Any]",
+                    "List[List[str]]",
+                    "List[int]",
+                    "List[List[int]]",
+                    "list"
+                ],
+                "regularization_param": [
+                    "int",
+                    "Dict[str, Any]",
+                    "List[List[str]]",
+                    "List[int]",
+                    "List[List[int]]",
+                    "list"
+                ],
+                "mini_batch_size": [
+                    "list",
+                    "Union[int, numpy.ndarray]",
+                    "List[list]",
+                    "Sequence[T]",
+                    "int",
+                    "numpy.ndarray",
+                    "List[int]",
+                    "List[str]",
+                    "tuple"
+                ],
+                "epochs_count": [
+                    "int",
+                    "Dict[str, Any]",
+                    "List[List[str]]",
+                    "List[int]",
+                    "List[List[int]]",
+                    "list"
+                ],
+                "test_samples": [
+                    "Optional[Any]",
+                    "List[List[str]]",
+                    "Dict[str, int]"
+                ],
+                "test_labels": [
+                    "Optional[Any]",
+                    "List[List[str]]",
+                    "Dict[str, int]"
+                ]
+            }
+        },
+        "NeuralNetwork._backpropagation.propagate_backwards": {
+            "name": "propagate_backwards",
+            "location": 151,
+            "return": [
+                "str",
+                "int",
+                "Set[str]"
+            ],
+            "arguments": {
+                "errors": [
+                    "Tuple[numpy.array, numpy.array]",
+                    "str",
+                    "int",
+                    "Type[object]"
+                ],
+                "layer": [
+                    "Dict[str, str]"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/backpropagation/network/regularizator.py": {
+        "IRegulatizator.get_term": {
+            "name": "get_term",
+            "location": 8,
+            "return": [
+                "builtins.float"
+            ],
+            "arguments": {
+                "self": [],
+                "regularization_param": [
+                    "int",
+                    "float",
+                    "List[numpy.array]",
+                    "bool"
+                ],
+                "weights": [
+                    "int",
+                    "float",
+                    "List[numpy.array]",
+                    "bool"
+                ],
+                "n": [
+                    "int",
+                    "float",
+                    "List[numpy.array]",
+                    "bool"
+                ]
+            }
+        },
+        "IRegulatizator.get_derivative_terms": {
+            "name": "get_derivative_terms",
+            "location": 11,
+            "return": [
+                "typing.List[numpy.array]"
+            ],
+            "arguments": {
+                "self": [],
+                "regularization_param": [
+                    "int",
+                    "float",
+                    "List[numpy.array]",
+                    "bool"
+                ],
+                "weights": [
+                    "int",
+                    "float",
+                    "List[numpy.array]",
+                    "bool"
+                ],
+                "n": [
+                    "int",
+                    "float",
+                    "List[numpy.array]",
+                    "bool"
+                ]
+            }
+        },
+        "L1Regularizator.get_term": {
+            "name": "get_term",
+            "location": 21,
+            "return": [
+                "str",
+                "int",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "regularization_param": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "weights": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "n": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ]
+            }
+        },
+        "L1Regularizator.get_derivative_terms": {
+            "name": "get_derivative_terms",
+            "location": 24,
+            "return": [
+                "int",
+                "Optional[int]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "regularization_param": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "weights": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "n": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ]
+            }
+        },
+        "L2Regularizator.get_term": {
+            "name": "get_term",
+            "location": 34,
+            "return": [
+                "str",
+                "int",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "regularization_param": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "weights": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "n": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ]
+            }
+        },
+        "L2Regularizator.get_derivative_terms": {
+            "name": "get_derivative_terms",
+            "location": 37,
+            "return": [
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "regularization_param": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "weights": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ],
+                "n": [
+                    "float",
+                    "List[numpy.array]",
+                    "int"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/backpropagation/network/test_neural_network.py": {
+        "test_multiple": {
+            "name": "test_multiple",
+            "location": 5,
+            "return": [
+                "str",
+                "List[str]",
+                "Sequence[str]"
+            ],
+            "arguments": {
+                "nn": [
+                    "List[numpy.array]",
+                    "List[int]",
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "samples": [
+                    "List[numpy.array]",
+                    "List[int]",
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "labels": [
+                    "List[numpy.array]",
+                    "List[int]",
+                    "bool",
+                    "str",
+                    "int"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/backpropagation/network/__init__.py": {},
+    "Backpropagation-master/docs/conf.py": {},
+    "Backpropagation-master/tests/test-network/test_activation_function.py": {
+        "test_sigmoid_function_value": {
+            "name": "test_sigmoid_function_value",
+            "location": 17,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "test_input": [
+                    "str"
+                ],
+                "expected": [
+                    "bool",
+                    "List[str]",
+                    "list",
+                    "str",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "test_sigmoid_function_derivative_value": {
+            "name": "test_sigmoid_function_derivative_value",
+            "location": 30,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "test_input": [
+                    "raiden.network.proxies.proxy_manager.ProxyManager"
+                ],
+                "expected": [
+                    "str",
+                    "Union[int, str]",
+                    "int",
+                    "Optional[str]",
+                    "list"
+                ]
+            }
+        },
+        "test_identity_function_value": {
+            "name": "test_identity_function_value",
+            "location": 42,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "test_input": [
+                    "str"
+                ],
+                "expected": [
+                    "bool",
+                    "List[str]",
+                    "list",
+                    "str",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "test_identity_function_derivative_value": {
+            "name": "test_identity_function_derivative_value",
+            "location": 54,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "test_input": [
+                    "raiden.network.proxies.proxy_manager.ProxyManager"
+                ],
+                "expected": [
+                    "str",
+                    "Union[int, str]",
+                    "int",
+                    "Optional[str]",
+                    "list"
+                ]
+            }
+        },
+        "test_relu_function_value": {
+            "name": "test_relu_function_value",
+            "location": 67,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "test_input": [
+                    "str"
+                ],
+                "expected": [
+                    "bool",
+                    "List[str]",
+                    "list",
+                    "str",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "test_relu_function_derivative_value": {
+            "name": "test_relu_function_derivative_value",
+            "location": 79,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "test_input": [
+                    "raiden.network.proxies.proxy_manager.ProxyManager"
+                ],
+                "expected": [
+                    "str",
+                    "Union[int, str]",
+                    "int",
+                    "Optional[str]",
+                    "list"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/tests/test-network/test_cost_function.py": {
+        "test_mse_function_value": {
+            "name": "test_mse_function_value",
+            "location": 17,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "y": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "int"
+                ],
+                "a": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "int"
+                ],
+                "expected": [
+                    "list",
+                    "int",
+                    "List[List[Any]]"
+                ]
+            }
+        },
+        "test_mse_function_derivative_value": {
+            "name": "test_mse_function_derivative_value",
+            "location": 28,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "y": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "str"
+                ],
+                "a": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "str"
+                ],
+                "expected": [
+                    "list",
+                    "int",
+                    "List[List[Any]]",
+                    "numpy.ndarray"
+                ]
+            }
+        },
+        "test_se_function_value": {
+            "name": "test_se_function_value",
+            "location": 40,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "y": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "int"
+                ],
+                "a": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "int"
+                ],
+                "expected": [
+                    "list",
+                    "int",
+                    "List[List[Any]]"
+                ]
+            }
+        },
+        "test_se_function_derivative_value": {
+            "name": "test_se_function_derivative_value",
+            "location": 51,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "y": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "str"
+                ],
+                "a": [
+                    "List[float]",
+                    "Tuple[float, float, float]",
+                    "str"
+                ],
+                "expected": [
+                    "list",
+                    "int",
+                    "List[List[Any]]",
+                    "numpy.ndarray"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/tests/test-network/test_neural_network.py": {
+        "test_neural_network_feedforward": {
+            "name": "test_neural_network_feedforward",
+            "location": 44,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "neurons_count_per_layer": [
+                    "float",
+                    "int",
+                    "bytes",
+                    "numpy.ndarray"
+                ],
+                "weights": [
+                    "str",
+                    "click.testing.CliRunner",
+                    "Union[str, float]",
+                    "int"
+                ],
+                "activation": [
+                    "float",
+                    "int",
+                    "bytes",
+                    "numpy.ndarray"
+                ],
+                "test_input": [],
+                "expected": []
+            }
+        },
+        "test_neural_network_cost_value": {
+            "name": "test_neural_network_cost_value",
+            "location": 58,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "neurons_count_per_layer": [
+                    "bool",
+                    "Dict[str, Any]"
+                ],
+                "weights": [
+                    "bool",
+                    "str",
+                    "List[numpy.array]",
+                    "List[int]"
+                ],
+                "X_input": [
+                    "Callable"
+                ],
+                "y_input": [
+                    "Callable"
+                ],
+                "expected": [
+                    "BinaryIO",
+                    "numpy.ndarray",
+                    "bool",
+                    "Iterable[Any]",
+                    "list",
+                    "Sequence[numpy.ndarray]"
+                ]
+            }
+        },
+        "test_neural_network_backpropagation": {
+            "name": "test_neural_network_backpropagation",
+            "location": 96,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "neurons_count_per_layer": [],
+                "weights": [
+                    "str",
+                    "bool",
+                    "List[numpy.array]",
+                    "List[int]",
+                    "int"
+                ],
+                "X": [
+                    "int",
+                    "Optional[float]",
+                    "Optional[int]"
+                ],
+                "y": [
+                    "List[float]",
+                    "float",
+                    "int",
+                    "Optional[int]"
+                ],
+                "expected": [
+                    "str",
+                    "bool",
+                    "List[numpy.array]",
+                    "List[int]",
+                    "int"
+                ]
+            }
+        },
+        "test_neural_network_gradient_descent": {
+            "name": "test_neural_network_gradient_descent",
+            "location": 165,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "neurons_count_per_layer": [
+                    "numpy.ndarray",
+                    "int"
+                ],
+                "weights": [
+                    "str",
+                    "int",
+                    "List[numpy.array]",
+                    "List[int]",
+                    "bool"
+                ],
+                "X": [
+                    "int",
+                    "float",
+                    "List[float]",
+                    "Tuple[int]"
+                ],
+                "y": [
+                    "int",
+                    "float",
+                    "numpy.ndarray",
+                    "Tuple[int]"
+                ],
+                "regularizator": [
+                    "numpy.ndarray",
+                    "int"
+                ],
+                "expected": [
+                    "str",
+                    "int",
+                    "List[numpy.array]",
+                    "List[int]",
+                    "bool"
+                ]
+            }
+        }
+    },
+    "Backpropagation-master/tests/test-network/test_regularizator.py": {
+        "test_l2_regularizator_term": {
+            "name": "test_l2_regularizator_term",
+            "location": 15,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "regularization_term": [
+                    "bool",
+                    "BaseException"
+                ],
+                "weights": [
+                    "bool",
+                    "BaseException"
+                ],
+                "n": [
+                    "bool",
+                    "BaseException"
+                ],
+                "expected": [
+                    "float",
+                    "int",
+                    "Sequence[Union[str, Any]]",
+                    "Dict[str, Any]",
+                    "bool"
+                ]
+            }
+        },
+        "test_l2_regularizator_derivative_terms": {
+            "name": "test_l2_regularizator_derivative_terms",
+            "location": 28,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "regularization_term": [
+                    "bool",
+                    "BaseException"
+                ],
+                "weights": [
+                    "bool",
+                    "BaseException"
+                ],
+                "n": [
+                    "bool",
+                    "BaseException"
+                ],
+                "expected": [
+                    "int",
+                    "float",
+                    "Callable[[str, str], float]"
+                ]
+            }
+        },
+        "test_l1_regularizator_term": {
+            "name": "test_l1_regularizator_term",
+            "location": 40,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "regularization_term": [
+                    "bool",
+                    "BaseException"
+                ],
+                "weights": [
+                    "bool",
+                    "BaseException"
+                ],
+                "n": [
+                    "bool",
+                    "BaseException"
+                ],
+                "expected": [
+                    "float",
+                    "int",
+                    "Sequence[Union[str, Any]]",
+                    "Dict[str, Any]",
+                    "bool"
+                ]
+            }
+        },
+        "test_l1_regularizator_derivative_terms": {
+            "name": "test_l1_regularizator_derivative_terms",
+            "location": 53,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "regularization_term": [
+                    "bool",
+                    "BaseException"
+                ],
+                "weights": [
+                    "bool",
+                    "BaseException"
+                ],
+                "n": [
+                    "bool",
+                    "BaseException"
+                ],
+                "expected": [
+                    "int",
+                    "float",
+                    "Callable[[str, str], float]"
+                ]
+            }
+        }
+    }
+}

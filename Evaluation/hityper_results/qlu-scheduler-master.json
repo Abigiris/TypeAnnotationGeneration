@@ -1,0 +1,773 @@
+{
+    "qlu-scheduler-master/schedule_github_projects.py": {
+        "schedule_projects": {
+            "name": "schedule_projects",
+            "location": 32,
+            "return": [
+                "tuple[]"
+            ],
+            "arguments": {
+                "org": [
+                    "int",
+                    "None"
+                ],
+                "projects": [
+                    "int",
+                    "None"
+                ],
+                "milestone_start_dates": [
+                    "int",
+                    "None"
+                ],
+                "phantom_user_count": [
+                    "int",
+                    "None"
+                ]
+            }
+        },
+        "perform_montecarlo": {
+            "name": "perform_montecarlo",
+            "location": 43,
+            "return": [
+                "tuple[]"
+            ],
+            "arguments": {
+                "org": [
+                    "int",
+                    "None"
+                ],
+                "projects": [
+                    "int",
+                    "None"
+                ],
+                "milestone_start_dates": [
+                    "int",
+                    "None"
+                ],
+                "phantom_user_count": [
+                    "int",
+                    "None"
+                ],
+                "montecarlo_trials": [
+                    "int"
+                ],
+                "percentile": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "qlu-scheduler-master/setup.py": {},
+    "qlu-scheduler-master/qlu/core.py": {
+        "AssigneeWorkDateIterator.__init__": {
+            "name": "__init__",
+            "location": 74,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "username": [
+                    "str",
+                    "list[]",
+                    "bool",
+                    "list[str]",
+                    "None"
+                ],
+                "holiday_calendar": [
+                    "None",
+                    "bool",
+                    "str",
+                    "typing.Callable[, ]",
+                    "dict[str, str]"
+                ],
+                "workdays": [
+                    "list[str]",
+                    "str"
+                ],
+                "personal_holidays": [
+                    "None",
+                    "bool",
+                    "str",
+                    "typing.Callable[, ]",
+                    "dict[str, str]"
+                ],
+                "start_date": [
+                    "None",
+                    "int",
+                    "float",
+                    "str"
+                ]
+            }
+        },
+        "AssigneeWorkDateIterator.__iter__": {
+            "name": "__iter__",
+            "location": 111,
+            "return": [
+                "AssigneeWorkDateIterator"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AssigneeWorkDateIterator.__next__": {
+            "name": "__next__",
+            "location": 114,
+            "return": [
+                "int",
+                "dict[str, list[str]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.__init__": {
+            "name": "__init__",
+            "location": 125,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id": [
+                    "str",
+                    "None"
+                ],
+                "absolute_priority": [
+                    "str",
+                    "None",
+                    "list[typing.Any]",
+                    "bool"
+                ],
+                "estimates": [
+                    "str",
+                    "bool",
+                    "dict[str, typing.Any]"
+                ],
+                "assignee": [
+                    "str",
+                    "None",
+                    "list[typing.Any]",
+                    "bool"
+                ],
+                "project_id": [
+                    "int",
+                    "None",
+                    "str"
+                ],
+                "milestone_id": [
+                    "str",
+                    "None",
+                    "int",
+                    "dict[Q, str]"
+                ],
+                "depends_on": [
+                    "None",
+                    "str",
+                    "list[typing.Any]",
+                    "bool"
+                ]
+            }
+        },
+        "QluTask.start_date": {
+            "name": "start_date",
+            "location": 150,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.end_date": {
+            "name": "end_date",
+            "location": 157,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.is_scheduled": {
+            "name": "is_scheduled",
+            "location": 164,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.get_scheduled_dates": {
+            "name": "get_scheduled_dates",
+            "location": 170,
+            "return": [
+                "typing.Generator[]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.__iter__": {
+            "name": "__iter__",
+            "location": 176,
+            "return": [
+                "QluTask"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.__next__": {
+            "name": "__next__",
+            "location": 180,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.__getitem__": {
+            "name": "__getitem__",
+            "location": 188,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "index": [
+                    "int",
+                    "typing.Callable[, ]",
+                    "str"
+                ]
+            }
+        },
+        "QluTask.__str__": {
+            "name": "__str__",
+            "location": 192,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluTask.__repr__": {
+            "name": "__repr__",
+            "location": 197,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluSchedule.__init__": {
+            "name": "__init__",
+            "location": 206,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "scheduled_tasks": [
+                    "int"
+                ],
+                "assignee_tasks": [
+                    "bool",
+                    "dict[str, typing.Any]",
+                    "float",
+                    "str"
+                ]
+            }
+        },
+        "QluSchedule.milestone_tasks": {
+            "name": "milestone_tasks",
+            "location": 215,
+            "return": [
+                "typing.Generator[tuple[list[]]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluSchedule.tasks": {
+            "name": "tasks",
+            "location": 229,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "self": [],
+                "assignee": [
+                    "None",
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "QluSchedule.assignees": {
+            "name": "assignees",
+            "location": 242,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "QluSchedule.final_task": {
+            "name": "final_task",
+            "location": 249,
+            "return": [
+                "list[]",
+                "dict[, ]",
+                "int",
+                "typing.DefaultDict",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "assignee": [
+                    "None",
+                    "str",
+                    "dict[, ]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "QluSchedule.final_date": {
+            "name": "final_date",
+            "location": 258,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "assignee": [
+                    "None",
+                    "int"
+                ]
+            }
+        },
+        "QluTaskScheduler.__init__": {
+            "name": "__init__",
+            "location": 271,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "milestones": [
+                    "str",
+                    "tuple[typing.Union[int,int]]"
+                ],
+                "holiday_calendar": [
+                    "None",
+                    "str",
+                    "int",
+                    "list[]"
+                ],
+                "assignee_workdays": [
+                    "None",
+                    "str",
+                    "int",
+                    "list[]"
+                ],
+                "assignee_personal_holidays": [
+                    "None",
+                    "str",
+                    "int",
+                    "list[]"
+                ],
+                "start_date": [
+                    "None",
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "QluTaskScheduler.montecarlo": {
+            "name": "montecarlo",
+            "location": 299,
+            "return": [
+                "tuple[typing.Union[int,dict[, ]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "tasks": [
+                    "int",
+                    "dict[str, typing.Any]"
+                ],
+                "trials": [
+                    "int"
+                ],
+                "q": [
+                    "int"
+                ]
+            }
+        },
+        "QluTaskScheduler._check_milestones": {
+            "name": "_check_milestones",
+            "location": 323,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id_keyed_tasks": []
+            }
+        },
+        "QluTaskScheduler._prepare_assignee_workday_iterators": {
+            "name": "_prepare_assignee_workday_iterators",
+            "location": 337,
+            "return": [
+                "dict[str, AssigneeWorkDateIterator]"
+            ],
+            "arguments": {
+                "self": [],
+                "unique_assignees": [
+                    "set[str]",
+                    "dict[str, typing.Any]",
+                    "str"
+                ]
+            }
+        },
+        "QluTaskScheduler._prepare_task_dependency_graph": {
+            "name": "_prepare_task_dependency_graph",
+            "location": 380,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "self": [],
+                "dependant_tasks": []
+            }
+        },
+        "QluTaskScheduler._schedule_tasks": {
+            "name": "_schedule_tasks",
+            "location": 402,
+            "return": [
+                "tuple[typing.Union[bool,None,list[],list[typing.Match]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "id_keyed_tasks": [
+                    "bool",
+                    "None"
+                ],
+                "dependency_graph": [
+                    "dict[, ]"
+                ],
+                "unique_assignees": [
+                    "bool",
+                    "None",
+                    "list[str]",
+                    "str"
+                ],
+                "is_montecarlo": [
+                    "bool"
+                ]
+            }
+        },
+        "QluTaskScheduler.schedule": {
+            "name": "schedule",
+            "location": 486,
+            "return": [
+                "QluSchedule"
+            ],
+            "arguments": {
+                "self": [],
+                "tasks": [
+                    "str",
+                    "bytes"
+                ],
+                "is_montecarlo": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "qlu-scheduler-master/qlu/utilities.py": {
+        "AssigneeChooser.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "assignees": [],
+                "distribution": [],
+                "dargs": [
+                    "None",
+                    "typing.Iterable[str]",
+                    "int",
+                    "str",
+                    "typing.Sequence[Q]"
+                ],
+                "dkwargs": [
+                    "None",
+                    "list[]",
+                    "list[float]",
+                    "str",
+                    "dict[, ]"
+                ]
+            }
+        },
+        "AssigneeChooser.choice": {
+            "name": "choice",
+            "location": 38,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PhantomUserAssignmentManager.__init__": {
+            "name": "__init__",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "phantom_user_count": [
+                    "float"
+                ]
+            }
+        },
+        "PhantomUserAssignmentManager.get_phantom_usernames": {
+            "name": "get_phantom_usernames",
+            "location": 58,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {
+                "self": [],
+                "user_count": [
+                    "str",
+                    "int"
+                ],
+                "usesrname_prefix": [
+                    "typing.Text"
+                ]
+            }
+        },
+        "PhantomUserAssignmentManager.assign": {
+            "name": "assign",
+            "location": 75,
+            "return": [
+                "typing.Generator[]"
+            ],
+            "arguments": {
+                "self": [],
+                "tasks": [],
+                "distribution_func": [],
+                "dargs": [
+                    "None",
+                    "bool"
+                ],
+                "dkwargs": [
+                    "None",
+                    "bool"
+                ]
+            }
+        }
+    },
+    "qlu-scheduler-master/qlu/__init__.py": {},
+    "qlu-scheduler-master/qlu/adapters/github.py": {
+        "GithubOrganizationProjectsAdaptor.__init__": {
+            "name": "__init__",
+            "location": 54,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "organization": [
+                    "str",
+                    "None",
+                    "list[str]",
+                    "tuple[]",
+                    "bytes",
+                    "set[str]",
+                    "int",
+                    "typing.IO"
+                ],
+                "projects": [
+                    "int",
+                    "list[list[str]]",
+                    "typing.Mapping",
+                    "None",
+                    "str"
+                ],
+                "milestone_start_dates": [
+                    "None"
+                ],
+                "holiday_calendar": [
+                    "None",
+                    "int",
+                    "list[list[str]]",
+                    "typing.Mapping",
+                    "str"
+                ],
+                "personal_holidays": [
+                    "None",
+                    "int",
+                    "list[list[str]]",
+                    "typing.Mapping",
+                    "str"
+                ],
+                "phantom_user_count": [
+                    "int"
+                ],
+                "start_date": [
+                    "None",
+                    "int",
+                    "str"
+                ],
+                "milestone_start_date_now": [
+                    "bool"
+                ]
+            }
+        },
+        "GithubOrganizationProjectsAdaptor._collect_tasks": {
+            "name": "_collect_tasks",
+            "location": 78,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GithubOrganizationProjectsAdaptor._collect_milestones": {
+            "name": "_collect_milestones",
+            "location": 174,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GithubOrganizationProjectsAdaptor.generate_task_scheduler": {
+            "name": "generate_task_scheduler",
+            "location": 182,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "qlu-scheduler-master/qlu/adapters/__init__.py": {},
+    "qlu-scheduler-master/tests/test_assigneeworkdateiterator.py": {
+        "test_assigneeworkdateiterator_default": {
+            "name": "test_assigneeworkdateiterator_default",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_assigneeworkdateiterator_singleworkday": {
+            "name": "test_assigneeworkdateiterator_singleworkday",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_assigneeworkdateiterator_invalid_workday_value": {
+            "name": "test_assigneeworkdateiterator_invalid_workday_value",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_assigneeworkdateiterator_with_personal_holidays": {
+            "name": "test_assigneeworkdateiterator_with_personal_holidays",
+            "location": 62,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_assigneeworkdateiterator_with_personal_holidays_workday_overlap": {
+            "name": "test_assigneeworkdateiterator_with_personal_holidays_workday_overlap",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "qlu-scheduler-master/tests/test_core_qlutask.py": {
+        "QluTaskTestCase.test_get_scheduled_dates": {
+            "name": "test_get_scheduled_dates",
+            "location": 8,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "qlu-scheduler-master/tests/test_scheduler.py": {
+        "test_qlutask_instantiation": {
+            "name": "test_qlutask_instantiation",
+            "location": 75,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_scheduler": {
+            "name": "test_scheduler",
+            "location": 88,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_multiproject_scheduler": {
+            "name": "test_multiproject_scheduler",
+            "location": 120,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_scheduler_montecarlo": {
+            "name": "test_scheduler_montecarlo",
+            "location": 150,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_phantomuserassignementmanager_assignee_generation": {
+            "name": "test_phantomuserassignementmanager_assignee_generation",
+            "location": 169,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_phantomuserassignmentmanager_task_assignment": {
+            "name": "test_phantomuserassignmentmanager_task_assignment",
+            "location": 176,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_assigneechooser_default": {
+            "name": "test_assigneechooser_default",
+            "location": 192,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_phantom_user_assignment": {
+            "name": "test_phantom_user_assignment",
+            "location": 205,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "qlu-scheduler-master/tests/__init__.py": {}
+}

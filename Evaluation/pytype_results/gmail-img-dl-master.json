@@ -1,0 +1,519 @@
+{
+    "gmail-img-dl-master/setup.py": {},
+    "gmail-img-dl-master/gmail_img_dl/gmail.py": {
+        "get_mail_attachments": {
+            "name": "get_mail_attachments",
+            "location": 77,
+            "return": [
+                "List[gmail_img_dl.model.Attachment]"
+            ],
+            "arguments": {
+                "mail": [
+                    "email.message.EmailMessage"
+                ]
+            }
+        },
+        "_build_email_msg": {
+            "name": "_build_email_msg",
+            "location": 89,
+            "return": [
+                "gmail_img_dl.model.Email"
+            ],
+            "arguments": {
+                "raw_email": [
+                    "email.message.EmailMessage"
+                ]
+            }
+        },
+        "_build_list_email_criteria": {
+            "name": "_build_list_email_criteria",
+            "location": 101,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "since": [
+                    "datetime.date"
+                ],
+                "before": [
+                    "datetime.date"
+                ]
+            }
+        },
+        "ImapSession.__init__": {
+            "name": "__init__",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "username": [
+                    "str"
+                ],
+                "password": [
+                    "str"
+                ]
+            }
+        },
+        "ImapSession.open": {
+            "name": "open",
+            "location": 27,
+            "return": [
+                "imaplib.IMAP4_SSL"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImapSession.close": {
+            "name": "close",
+            "location": 35,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImapSession.__enter__": {
+            "name": "__enter__",
+            "location": 39,
+            "return": [
+                "imaplib.IMAP4_SSL"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImapSession.__exit__": {
+            "name": "__exit__",
+            "location": 42,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GmailClient.__init__": {
+            "name": "__init__",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "imap_session": [
+                    "imaplib.IMAP4_SSL"
+                ]
+            }
+        },
+        "GmailClient.select_email_ids": {
+            "name": "select_email_ids",
+            "location": 50,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "mailbox": [
+                    "str"
+                ],
+                "since": [
+                    "datetime.date"
+                ],
+                "before": [
+                    "datetime.date"
+                ],
+                "for_delete": [
+                    "bool"
+                ]
+            }
+        },
+        "GmailClient.fetch": {
+            "name": "fetch",
+            "location": 62,
+            "return": [
+                "Tuple[(gmail_img_dl.model.Email, List[gmail_img_dl.model.Attachment])]"
+            ],
+            "arguments": {
+                "self": [],
+                "email_id": [
+                    "str"
+                ]
+            }
+        },
+        "GmailClient.trash": {
+            "name": "trash",
+            "location": 72,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "email_id": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "gmail-img-dl-master/gmail_img_dl/main.py": {
+        "_start": {
+            "name": "_start",
+            "location": 23,
+            "return": [
+                "Result"
+            ],
+            "arguments": {
+                "user": [
+                    "str"
+                ],
+                "password": [
+                    "str"
+                ],
+                "since": [
+                    "_datetime.date"
+                ],
+                "till": [
+                    "_datetime.date"
+                ],
+                "out_dir": [
+                    "str"
+                ],
+                "remove": [
+                    "bool"
+                ],
+                "dl_meta": [
+                    "bool"
+                ],
+                "retry_limit": [
+                    "int"
+                ]
+            }
+        },
+        "_initialize": {
+            "name": "_initialize",
+            "location": 68,
+            "return": [
+                "Tuple[(gmail_img_dl.gmail.GmailClient, gmail_img_dl.store.ImageStore)]"
+            ],
+            "arguments": {
+                "session_wrapper": [
+                    "gmail_img_dl.gmail.ImapSession"
+                ],
+                "out_dir": [
+                    "str"
+                ]
+            }
+        },
+        "parse_args": {
+            "name": "parse_args",
+            "location": 76,
+            "return": [
+                "argparse.Namespace"
+            ],
+            "arguments": {}
+        },
+        "main": {
+            "name": "main",
+            "location": 94,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": [
+                    "Optional[str]"
+                ],
+                "password": [
+                    "Optional[str]"
+                ],
+                "mailbox": [
+                    "str"
+                ],
+                "since": [
+                    "_datetime.date"
+                ],
+                "till": [
+                    "_datetime.date"
+                ],
+                "out_dir": [
+                    "str"
+                ],
+                "remove": [
+                    "bool"
+                ],
+                "dl_meta": [
+                    "bool"
+                ],
+                "log": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "cli_main": {
+            "name": "cli_main",
+            "location": 126,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "gmail-img-dl-master/gmail_img_dl/model.py": {
+        "Model.to_serializable": {
+            "name": "to_serializable",
+            "location": 9,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Model.from_serializable": {
+            "name": "from_serializable",
+            "location": 12,
+            "return": [
+                "_TModel"
+            ],
+            "arguments": {
+                "self": [
+                    "_TModel"
+                ],
+                "json_dict": []
+            }
+        },
+        "Attachment.__init__": {
+            "name": "__init__",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mime": [
+                    "str"
+                ],
+                "file_name": [
+                    "str"
+                ],
+                "data": [
+                    "bytes"
+                ]
+            }
+        },
+        "Email.__init__": {
+            "name": "__init__",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "message_id": [
+                    "str"
+                ],
+                "date_sent": [
+                    "_datetime.datetime"
+                ],
+                "sender_name": [
+                    "str"
+                ],
+                "sender_mail": [
+                    "str"
+                ],
+                "recipient_mail": [
+                    "str"
+                ],
+                "subject": [
+                    "str"
+                ]
+            }
+        },
+        "Email.to_serializable": {
+            "name": "to_serializable",
+            "location": 33,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Email.from_serializable": {
+            "name": "from_serializable",
+            "location": 38,
+            "return": [
+                "_TEmail"
+            ],
+            "arguments": {
+                "self": [
+                    "_TEmail"
+                ],
+                "json_dict": []
+            }
+        }
+    },
+    "gmail-img-dl-master/gmail_img_dl/store.py": {
+        "write_time_taken_exif_if_needed": {
+            "name": "write_time_taken_exif_if_needed",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "image_file_path": [
+                    "str"
+                ],
+                "time_taken": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "ImageStore.__init__": {
+            "name": "__init__",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "dir_path": [
+                    "str"
+                ]
+            }
+        },
+        "ImageStore.save_attach": {
+            "name": "save_attach",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mail": [
+                    "gmail_img_dl.model.Email"
+                ],
+                "attachments": [
+                    "List[gmail_img_dl.model.Attachment]"
+                ]
+            }
+        },
+        "ImageStore.save_meta": {
+            "name": "save_meta",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mail": [
+                    "gmail_img_dl.model.Email"
+                ]
+            }
+        },
+        "ImageStore._store_image_attach": {
+            "name": "_store_image_attach",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "attachments": [
+                    "List[gmail_img_dl.model.Attachment]"
+                ],
+                "prefix": [],
+                "mail": []
+            }
+        },
+        "ImageStore._store_email_meta": {
+            "name": "_store_email_meta",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "prefix": [
+                    "str"
+                ],
+                "mail": [
+                    "gmail_img_dl.model.Email"
+                ]
+            }
+        },
+        "ImageStore._gen_prefix": {
+            "name": "_gen_prefix",
+            "location": 39,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "mail": []
+            }
+        }
+    },
+    "gmail-img-dl-master/gmail_img_dl/utils.py": {
+        "setup_logger": {
+            "name": "setup_logger",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "level": [
+                    "int"
+                ],
+                "log_file": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "utc_datetime_to_iso_format": {
+            "name": "utc_datetime_to_iso_format",
+            "location": 23,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "dt": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "utc_iso_format_to_datetime": {
+            "name": "utc_iso_format_to_datetime",
+            "location": 27,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {
+                "iso_dt": [
+                    "str"
+                ]
+            }
+        },
+        "seconds_between": {
+            "name": "seconds_between",
+            "location": 31,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "start_time_point": [
+                    "_datetime.datetime"
+                ],
+                "end_time_point": [
+                    "_datetime.datetime"
+                ],
+                "precision": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "gmail-img-dl-master/gmail_img_dl/__init__.py": {}
+}

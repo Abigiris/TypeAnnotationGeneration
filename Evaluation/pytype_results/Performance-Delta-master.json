@@ -1,0 +1,654 @@
+{
+    "Performance-Delta-master/analyzer.py": {
+        "analyze": {
+            "name": "analyze",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_log_dir": [
+                    "str"
+                ],
+                "path_to_jmh_reports": [
+                    "str"
+                ]
+            }
+        },
+        "analyze_junit_reports": {
+            "name": "analyze_junit_reports",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_log_dir": [
+                    "str"
+                ]
+            }
+        },
+        "analyze_jmh_reports": {
+            "name": "analyze_jmh_reports",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_reports": [
+                    "str"
+                ]
+            }
+        },
+        "find_salient_commits": {
+            "name": "find_salient_commits",
+            "location": 65,
+            "return": [
+                "Dict[(str, List[str])]"
+            ],
+            "arguments": {
+                "benchmark_statistics_list": [
+                    "List[objects.BenchmarkStatistics]"
+                ]
+            }
+        },
+        "is_salient": {
+            "name": "is_salient",
+            "location": 91,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "commit_statistics": [
+                    "objects.JUnitStatistics"
+                ]
+            }
+        },
+        "get_log_file_names": {
+            "name": "get_log_file_names",
+            "location": 97,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "path_to_log_dir": [
+                    "str"
+                ]
+            }
+        },
+        "analyze_report_list": {
+            "name": "analyze_report_list",
+            "location": 103,
+            "return": [
+                "objects.BenchmarkStatistics"
+            ],
+            "arguments": {
+                "reports": [
+                    "List[objects.JUnitCommitReport]"
+                ]
+            }
+        },
+        "compute_std_deviation": {
+            "name": "compute_std_deviation",
+            "location": 144,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "reports": [
+                    "List[objects.JUnitCommitReport]"
+                ]
+            }
+        }
+    },
+    "Performance-Delta-master/const.py": {},
+    "Performance-Delta-master/logger.py": {
+        "log_benchmark_statistics": {
+            "name": "log_benchmark_statistics",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "statistics": [
+                    "model.objects.BenchmarkStatistics"
+                ],
+                "dest_dir": [
+                    "str"
+                ]
+            }
+        },
+        "log_jmh_statistics": {
+            "name": "log_jmh_statistics",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "statistics": [
+                    "List[model.objects.JmhStatistics]"
+                ],
+                "dest_dir": [
+                    "str"
+                ]
+            }
+        },
+        "log_salient_commits": {
+            "name": "log_salient_commits",
+            "location": 34,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "salient_commits": [
+                    "Dict[(str, list)]"
+                ],
+                "dest_dir": [
+                    "str"
+                ]
+            }
+        },
+        "format_benchmark_statistics": {
+            "name": "format_benchmark_statistics",
+            "location": 46,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "statistics": [
+                    "model.objects.BenchmarkStatistics"
+                ]
+            }
+        },
+        "format_salient_commits": {
+            "name": "format_salient_commits",
+            "location": 58,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "salient_commits": [
+                    "Dict[(str, list)]"
+                ]
+            }
+        }
+    },
+    "Performance-Delta-master/main.py": {
+        "main": {
+            "name": "main",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "Performance-Delta-master/runner.py": {
+        "run": {
+            "name": "run",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_repo": [
+                    "str"
+                ],
+                "path_to_log": [
+                    "str"
+                ],
+                "commit_ids": [
+                    "List[str]"
+                ],
+                "is_interval": [
+                    "bool"
+                ],
+                "branch": [
+                    "str"
+                ],
+                "invocation_count": [
+                    "int"
+                ],
+                "test_classes": [
+                    "List[str]"
+                ]
+            }
+        },
+        "generate_test_suite_metrics": {
+            "name": "generate_test_suite_metrics",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "commit_report_list": [
+                    "List[objects.JUnitCommitReport]"
+                ],
+                "path_to_parent_pom": [
+                    "str"
+                ],
+                "commit_id": [
+                    "str"
+                ],
+                "invocation_count": [
+                    "int"
+                ],
+                "test_classes": [
+                    "List[str]"
+                ]
+            }
+        },
+        "generate_pipeline_metrics": {
+            "name": "generate_pipeline_metrics",
+            "location": 85,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "jmh_report_list": [
+                    "List[objects.JmhCommitReport]"
+                ],
+                "path_to_pom": [
+                    "str"
+                ],
+                "path_to_pipeline": [
+                    "str"
+                ],
+                "commit_id": [
+                    "str"
+                ]
+            }
+        },
+        "collect_submodules": {
+            "name": "collect_submodules",
+            "location": 114,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "path_to_pom": [
+                    "str"
+                ]
+            }
+        },
+        "filter_target_modules": {
+            "name": "filter_target_modules",
+            "location": 129,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "submodules": [
+                    "List[str]"
+                ]
+            }
+        },
+        "has_target_dir": {
+            "name": "has_target_dir",
+            "location": 134,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "collect_surefire_reports": {
+            "name": "collect_surefire_reports",
+            "location": 141,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "project_root": [
+                    "str"
+                ]
+            }
+        },
+        "group_commit_reports_by_test_name": {
+            "name": "group_commit_reports_by_test_name",
+            "location": 156,
+            "return": [
+                "List[List[objects.JUnitCommitReport]]"
+            ],
+            "arguments": {
+                "commit_reports": [
+                    "List[objects.JUnitCommitReport]"
+                ]
+            }
+        },
+        "write_grouped_commit_reports": {
+            "name": "write_grouped_commit_reports",
+            "location": 179,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "commit_reports": [
+                    "List[objects.JUnitCommitReport]"
+                ],
+                "path_to_log": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "Performance-Delta-master/utils.py": {
+        "get_parent_dir": {
+            "name": "get_parent_dir",
+            "location": 8,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "child_dir": [
+                    "str"
+                ]
+            }
+        },
+        "get_default_log_dir": {
+            "name": "get_default_log_dir",
+            "location": 13,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "path_to_repo": [
+                    "str"
+                ]
+            }
+        },
+        "get_filenames_by_type": {
+            "name": "get_filenames_by_type",
+            "location": 19,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ],
+                "filetype": [
+                    "str"
+                ]
+            }
+        },
+        "create_dir": {
+            "name": "create_dir",
+            "location": 24,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "is_named_tuple": {
+            "name": "is_named_tuple",
+            "location": 38,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "x": []
+            }
+        },
+        "unpack": {
+            "name": "unpack",
+            "location": 53,
+            "return": [
+                "Union[(dict, list, tuple, _T0)]"
+            ],
+            "arguments": {
+                "obj": [
+                    "_T0"
+                ]
+            }
+        },
+        "compute_speedup": {
+            "name": "compute_speedup",
+            "location": 70,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "gradoop_benchmark_report": [
+                    "List[Dict[(str, Any)]]"
+                ]
+            }
+        }
+    },
+    "Performance-Delta-master/model/objects.py": {
+        "build_junit_commit_report": {
+            "name": "build_junit_commit_report",
+            "location": 82,
+            "return": [
+                "JUnitCommitReport"
+            ],
+            "arguments": {
+                "report_data": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "build_jmh_report": {
+            "name": "build_jmh_report",
+            "location": 88,
+            "return": [
+                "JmhReport"
+            ],
+            "arguments": {
+                "report_data": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "build_jmh_commit_report": {
+            "name": "build_jmh_commit_report",
+            "location": 107,
+            "return": [
+                "JmhCommitReport"
+            ],
+            "arguments": {
+                "commit_report_data": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "create_junit_commit_report": {
+            "name": "create_junit_commit_report",
+            "location": 112,
+            "return": [
+                "JUnitCommitReport"
+            ],
+            "arguments": {
+                "commit": [
+                    "str"
+                ],
+                "report": [
+                    "JUnitReport"
+                ]
+            }
+        },
+        "create_junit_report": {
+            "name": "create_junit_report",
+            "location": 117,
+            "return": [
+                "JUnitReport"
+            ],
+            "arguments": {
+                "report_xml": []
+            }
+        }
+    },
+    "Performance-Delta-master/model/__init__.py": {},
+    "Performance-Delta-master/parse/parse_gradoop.py": {
+        "parse_gradoop_benchmark_report": {
+            "name": "parse_gradoop_benchmark_report",
+            "location": 9,
+            "return": [
+                "List[model.objects.BenchmarkReportRow]"
+            ],
+            "arguments": {
+                "path_to_csv": [
+                    "str"
+                ]
+            }
+        },
+        "group_benchmark_report_by_parallelism": {
+            "name": "group_benchmark_report_by_parallelism",
+            "location": 24,
+            "return": [
+                "Dict[(int, Dict[(str, Any)])]"
+            ],
+            "arguments": {
+                "rows": [
+                    "List[model.objects.BenchmarkReportRow]"
+                ]
+            }
+        },
+        "compute_mean_runtime": {
+            "name": "compute_mean_runtime",
+            "location": 35,
+            "return": [
+                "Dict[(int, Dict[(str, Any)])]"
+            ],
+            "arguments": {
+                "report": [
+                    "Dict[(int, Dict[(str, Any)])]"
+                ]
+            }
+        },
+        "compute_speedup": {
+            "name": "compute_speedup",
+            "location": 44,
+            "return": [
+                "Dict[(int, Dict[(str, Any)])]"
+            ],
+            "arguments": {
+                "report": [
+                    "Dict[(int, Dict[(str, Any)])]"
+                ]
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "Performance-Delta-master/parse/__init__.py": {},
+    "Performance-Delta-master/run/flink.py": {
+        "submit_to_flink": {
+            "name": "submit_to_flink",
+            "location": 4,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_flink": [
+                    "str"
+                ],
+                "path_to_jar": [],
+                "classname": [
+                    "str"
+                ],
+                "args": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "Performance-Delta-master/run/java.py": {
+        "run_jar": {
+            "name": "run_jar",
+            "location": 4,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_jar": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "Performance-Delta-master/run/maven.py": {
+        "run_mvn_test": {
+            "name": "run_mvn_test",
+            "location": 5,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_pom": [
+                    "str"
+                ],
+                "test_classes": [
+                    "List[str]"
+                ]
+            }
+        },
+        "run_mvn_install": {
+            "name": "run_mvn_install",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_pom": [
+                    "str"
+                ]
+            }
+        },
+        "mvn_package": {
+            "name": "mvn_package",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_pom": [
+                    "str"
+                ]
+            }
+        },
+        "mvn_set_dep_version": {
+            "name": "mvn_set_dep_version",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path_to_pom": [
+                    "str"
+                ],
+                "group_id": [
+                    "str"
+                ],
+                "version_nr": [
+                    "str"
+                ]
+            }
+        },
+        "fetch_maven_project_version": {
+            "name": "fetch_maven_project_version",
+            "location": 63,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "path_to_pom": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "Performance-Delta-master/run/__init__.py": {}
+}

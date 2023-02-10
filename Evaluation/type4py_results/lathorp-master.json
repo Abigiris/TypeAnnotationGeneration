@@ -1,0 +1,330 @@
+{
+    "lathorp-master/setup.py": {},
+    "lathorp-master/lathorp/fixtures.py": {
+        "pg": {
+            "name": "pg",
+            "location": 18,
+            "return": [
+                "typing.Generator[testing.postgresql.Postgresql, None, None]"
+            ],
+            "arguments": {}
+        },
+        "pg_connect": {
+            "name": "pg_connect",
+            "location": 45,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "request": [
+                    "bool"
+                ],
+                "pg": [
+                    "bool"
+                ]
+            }
+        },
+        "pg_connect.connector": {
+            "name": "connector",
+            "location": 67,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "data_path": [
+                    "str",
+                    "bool",
+                    "BinaryIO",
+                    "List[str]"
+                ],
+                "cursor_factory": [
+                    "str",
+                    "bool",
+                    "BinaryIO",
+                    "List[str]"
+                ]
+            }
+        },
+        "pg_connect.connector.finalize": {
+            "name": "finalize",
+            "location": 74,
+            "return": [
+                ""
+            ],
+            "arguments": {}
+        }
+    },
+    "lathorp-master/lathorp/__init__.py": {
+        "load_schema_definitions": {
+            "name": "load_schema_definitions",
+            "location": 18,
+            "return": [],
+            "arguments": {
+                "dsn": [],
+                "def_path": []
+            }
+        },
+        "copy_data": {
+            "name": "copy_data",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "conn": [],
+                "data_path": []
+            }
+        },
+        "delete_data": {
+            "name": "delete_data",
+            "location": 104,
+            "return": [],
+            "arguments": {
+                "conn": [],
+                "tables": []
+            }
+        },
+        "copy_data.parse_name": {
+            "name": "parse_name",
+            "location": 73,
+            "return": [],
+            "arguments": {
+                "path": []
+            }
+        }
+    },
+    "lathorp-master/tests/conftest.py": {
+        "init_schema": {
+            "name": "init_schema",
+            "location": 12,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "pathlib.Path",
+                    "bool",
+                    "str",
+                    "list"
+                ]
+            }
+        }
+    },
+    "lathorp-master/tests/test_fixtures.py": {
+        "test_pg_is_connectable": {
+            "name": "test_pg_is_connectable",
+            "location": 7,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": []
+            }
+        },
+        "test_pg_connect_is_usable": {
+            "name": "test_pg_connect_is_usable",
+            "location": 13,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg_connect": []
+            }
+        },
+        "test_pg_connect_sets_cursor_factory": {
+            "name": "test_pg_connect_sets_cursor_factory",
+            "location": 21,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg_connect": []
+            }
+        },
+        "test_pg_connect_loads_data_file": {
+            "name": "test_pg_connect_loads_data_file",
+            "location": 36,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "init_schema": [
+                    "pathlib.Path",
+                    "Generator"
+                ],
+                "pg_connect": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "test_pg_connect_loads_data_dir": {
+            "name": "test_pg_connect_loads_data_dir",
+            "location": 49,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "init_schema": [],
+                "pg_connect": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "test_pg_connect_raises_on_invalid_path": {
+            "name": "test_pg_connect_raises_on_invalid_path",
+            "location": 63,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg_connect": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "test_pg_connect_deletes_data": {
+            "name": "test_pg_connect_deletes_data",
+            "location": 80,
+            "return": [
+                "Dict[str, Sequence[str]]",
+                "str"
+            ],
+            "arguments": {
+                "init_schema": [
+                    "bool"
+                ],
+                "pg_connect": [
+                    "str",
+                    "Optional[Callable[[Any], None]]",
+                    "pathlib.Path"
+                ],
+                "data_file": [
+                    "pathlib.Path"
+                ]
+            }
+        }
+    },
+    "lathorp-master/tests/test_utilities.py": {
+        "clear_schema": {
+            "name": "clear_schema",
+            "location": 10,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "int",
+                    "Callable",
+                    "str"
+                ]
+            }
+        },
+        "test_load_schema_definitions_file": {
+            "name": "test_load_schema_definitions_file",
+            "location": 18,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "pathlib.Path",
+                    "str"
+                ],
+                "clear_schema": [
+                    "pathlib.Path",
+                    "Generator"
+                ]
+            }
+        },
+        "test_load_schema_definitions_dir": {
+            "name": "test_load_schema_definitions_dir",
+            "location": 37,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "pathlib.Path",
+                    "bool",
+                    "Dict[str, Sequence[str]]"
+                ],
+                "clear_schema": []
+            }
+        },
+        "test_load_schema_definitions_raises_on_invalid_def_path": {
+            "name": "test_load_schema_definitions_raises_on_invalid_def_path",
+            "location": 56,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "test_copy_data_file": {
+            "name": "test_copy_data_file",
+            "location": 67,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "pathlib.Path",
+                    "Callable"
+                ],
+                "init_schema": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "test_copy_data_dir": {
+            "name": "test_copy_data_dir",
+            "location": 80,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "pathlib.Path",
+                    "str"
+                ],
+                "init_schema": []
+            }
+        },
+        "test_copy_data_raises_on_invalid_path": {
+            "name": "test_copy_data_raises_on_invalid_path",
+            "location": 95,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "pathlib.Path",
+                    "Callable"
+                ]
+            }
+        },
+        "test_delete_data": {
+            "name": "test_delete_data",
+            "location": 112,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "pg": [
+                    "int",
+                    "str",
+                    "pathlib.Path"
+                ],
+                "init_schema": [
+                    "str",
+                    "bool"
+                ]
+            }
+        }
+    }
+}

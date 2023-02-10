@@ -1,0 +1,841 @@
+{
+    "BookingBot-master/booking.py": {
+        "update_user_data": {
+            "name": "update_user_data",
+            "location": 16,
+            "return": [
+                "models.User"
+            ],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ],
+                "chat_id": [
+                    "int"
+                ],
+                "username": [
+                    "str"
+                ]
+            }
+        },
+        "get_user": {
+            "name": "get_user",
+            "location": 34,
+            "return": [
+                "Optional[models.User]"
+            ],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ]
+            }
+        },
+        "get_user_by_chat_id": {
+            "name": "get_user_by_chat_id",
+            "location": 47,
+            "return": [
+                "Optional[models.User]"
+            ],
+            "arguments": {
+                "chat_id": [
+                    "int"
+                ]
+            }
+        },
+        "is_free_time": {
+            "name": "is_free_time",
+            "location": 60,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "time_data": [
+                    "_datetime.datetime"
+                ],
+                "duration": [
+                    "_datetime.timedelta"
+                ]
+            }
+        },
+        "book": {
+            "name": "book",
+            "location": 80,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": [
+                    "models.User"
+                ],
+                "time_data": [
+                    "_datetime.datetime"
+                ],
+                "duration": [
+                    "_datetime.timedelta"
+                ],
+                "description": [
+                    "str"
+                ]
+            }
+        },
+        "get_booking": {
+            "name": "get_booking",
+            "location": 111,
+            "return": [
+                "Optional[models.BookingItem]"
+            ],
+            "arguments": {
+                "time_data": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "unbook": {
+            "name": "unbook",
+            "location": 129,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": [
+                    "models.User"
+                ],
+                "time_data": [
+                    "_datetime.datetime"
+                ],
+                "force": [
+                    "bool"
+                ]
+            }
+        },
+        "unbook_item": {
+            "name": "unbook_item",
+            "location": 170,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": [
+                    "models.User"
+                ],
+                "item": [
+                    "models.BookingItem"
+                ],
+                "force": [
+                    "bool"
+                ]
+            }
+        },
+        "get_timetable": {
+            "name": "get_timetable",
+            "location": 205,
+            "return": [
+                "List[models.BookingItem]"
+            ],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ],
+                "start_time_data": [
+                    "_datetime.datetime"
+                ],
+                "end_time_data": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "get_whitelist": {
+            "name": "get_whitelist",
+            "location": 230,
+            "return": [
+                "List[Tuple[(int, str)]]"
+            ],
+            "arguments": {
+                "user": [
+                    "models.User"
+                ]
+            }
+        },
+        "add_user_to_whitelist": {
+            "name": "add_user_to_whitelist",
+            "location": 256,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": [
+                    "models.User"
+                ],
+                "target_username": [
+                    "str"
+                ]
+            }
+        },
+        "remove_user_from_whitelist": {
+            "name": "remove_user_from_whitelist",
+            "location": 278,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user": [
+                    "models.User"
+                ],
+                "target_username": [
+                    "str"
+                ]
+            }
+        },
+        "process_date": {
+            "name": "process_date",
+            "location": 301,
+            "return": [
+                "_datetime.date"
+            ],
+            "arguments": {
+                "date_str": [
+                    "str"
+                ]
+            }
+        },
+        "process_time": {
+            "name": "process_time",
+            "location": 330,
+            "return": [
+                "_datetime.time"
+            ],
+            "arguments": {
+                "time_str": [
+                    "str"
+                ]
+            }
+        },
+        "process_date_time": {
+            "name": "process_date_time",
+            "location": 348,
+            "return": [
+                "_datetime.datetime"
+            ],
+            "arguments": {
+                "date_str": [
+                    "str"
+                ],
+                "time_str": [
+                    "str"
+                ]
+            }
+        },
+        "process_timedelta": {
+            "name": "process_timedelta",
+            "location": 388,
+            "return": [
+                "_datetime.timedelta"
+            ],
+            "arguments": {
+                "time_str": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "BookingBot-master/bot.py": {
+        "get_help": {
+            "name": "get_help",
+            "location": 38,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "help_filename": [
+                    "str"
+                ]
+            }
+        },
+        "get_contactlist": {
+            "name": "get_contactlist",
+            "location": 49,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "contactlist_filename": [
+                    "str"
+                ]
+            }
+        },
+        "get_error_message": {
+            "name": "get_error_message",
+            "location": 85,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "exception": [],
+                "if_ok": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "format_timetable": {
+            "name": "format_timetable",
+            "location": 117,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "timetable_data": [
+                    "List[models.BookingItem]"
+                ]
+            }
+        },
+        "split_message": {
+            "name": "split_message",
+            "location": 144,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "message": [
+                    "str"
+                ],
+                "max_length": [
+                    "int"
+                ]
+            }
+        },
+        "send_message": {
+            "name": "send_message",
+            "location": 165,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "chat_id": [
+                    "int"
+                ],
+                "message_text": [
+                    "str"
+                ],
+                "reply_markup": []
+            }
+        },
+        "bot_command_handler": {
+            "name": "bot_command_handler",
+            "location": 178,
+            "return": [
+                "Callable[([Callable[([Any, models.User, List[str]], Optional[Dict[(str, Any)]])]], Callable[([Any], None)])]"
+            ],
+            "arguments": {
+                "name": [
+                    "str"
+                ],
+                "param_num_min": [
+                    "int"
+                ],
+                "param_maxsplit": [
+                    "int"
+                ],
+                "need_transaction": [
+                    "bool"
+                ]
+            }
+        },
+        "bot_button_handler": {
+            "name": "bot_button_handler",
+            "location": 244,
+            "return": [
+                "Callable[([Callable[([Any, models.User], Optional[Dict[(str, Any)]])]], Callable[([Any], None)])]"
+            ],
+            "arguments": {
+                "name": [
+                    "str"
+                ],
+                "need_transaction": [
+                    "bool"
+                ]
+            }
+        },
+        "format_whitelist": {
+            "name": "format_whitelist",
+            "location": 332,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "whitelist": [
+                    "List[Tuple[(int, str)]]"
+                ]
+            }
+        },
+        "process_message_sender": {
+            "name": "process_message_sender",
+            "location": 348,
+            "return": [
+                "models.User"
+            ],
+            "arguments": {
+                "message": []
+            }
+        },
+        "process_button_help": {
+            "name": "process_button_help",
+            "location": 365,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "_sender": []
+            }
+        },
+        "process_cmd_help": {
+            "name": "process_cmd_help",
+            "location": 381,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "_sender": [],
+                "_params": []
+            }
+        },
+        "get_calendar_keyboard": {
+            "name": "get_calendar_keyboard",
+            "location": 400,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "year": [
+                    "int"
+                ],
+                "month": [
+                    "int"
+                ]
+            }
+        },
+        "get_date_booking_selection_keyboard": {
+            "name": "get_date_booking_selection_keyboard",
+            "location": 459,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "date": [
+                    "datetime.date"
+                ]
+            }
+        },
+        "get_cmd_keyboard": {
+            "name": "get_cmd_keyboard",
+            "location": 486,
+            "return": [
+                "Any"
+            ],
+            "arguments": {}
+        },
+        "process_button_book": {
+            "name": "process_button_book",
+            "location": 522,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "sender": []
+            }
+        },
+        "process_cmd_book": {
+            "name": "process_cmd_book",
+            "location": 542,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "sender": [],
+                "params": []
+            }
+        },
+        "process_button_unbook": {
+            "name": "process_button_unbook",
+            "location": 576,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "sender": []
+            }
+        },
+        "execute_cmd_unbook": {
+            "name": "execute_cmd_unbook",
+            "location": 594,
+            "return": [
+                "Optional[Dict[(str, Any)]]"
+            ],
+            "arguments": {
+                "message": [],
+                "sender": [
+                    "models.User"
+                ],
+                "params": [
+                    "List[str]"
+                ],
+                "force": [
+                    "bool"
+                ]
+            }
+        },
+        "process_cmd_unbook": {
+            "name": "process_cmd_unbook",
+            "location": 614,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "sender": [],
+                "params": []
+            }
+        },
+        "process_cmd_unbook_force": {
+            "name": "process_cmd_unbook_force",
+            "location": 632,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "sender": [],
+                "params": []
+            }
+        },
+        "process_button_timetable": {
+            "name": "process_button_timetable",
+            "location": 650,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "sender": []
+            }
+        },
+        "process_button_timetable_today": {
+            "name": "process_button_timetable_today",
+            "location": 670,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "sender": []
+            }
+        },
+        "process_button_timetable_date": {
+            "name": "process_button_timetable_date",
+            "location": 690,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "sender": []
+            }
+        },
+        "process_cmd_timetable": {
+            "name": "process_cmd_timetable",
+            "location": 708,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "sender": [],
+                "params": []
+            }
+        },
+        "process_cmd_logmyinfo": {
+            "name": "process_cmd_logmyinfo",
+            "location": 749,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "_sender": [],
+                "_params": []
+            }
+        },
+        "process_button_contactlist": {
+            "name": "process_button_contactlist",
+            "location": 764,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "_sender": []
+            }
+        },
+        "process_cmd_contactlist": {
+            "name": "process_cmd_contactlist",
+            "location": 780,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "_sender": [],
+                "_params": []
+            }
+        },
+        "process_cmd_whitelist": {
+            "name": "process_cmd_whitelist",
+            "location": 797,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "sender": [],
+                "params": []
+            }
+        },
+        "process_button_next_month": {
+            "name": "process_button_next_month",
+            "location": 835,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "sender": []
+            }
+        },
+        "process_button_previous_month": {
+            "name": "process_button_previous_month",
+            "location": 856,
+            "return": [],
+            "arguments": {
+                "_call": [],
+                "sender": []
+            }
+        },
+        "process_button_ignore": {
+            "name": "process_button_ignore",
+            "location": 880,
+            "return": [],
+            "arguments": {
+                "call": []
+            }
+        },
+        "process_button_calendar_day": {
+            "name": "process_button_calendar_day",
+            "location": 892,
+            "return": [],
+            "arguments": {
+                "call": [],
+                "sender": []
+            }
+        },
+        "process_button_booking_item": {
+            "name": "process_button_booking_item",
+            "location": 967,
+            "return": [],
+            "arguments": {
+                "call": [],
+                "sender": []
+            }
+        },
+        "process_text": {
+            "name": "process_text",
+            "location": 996,
+            "return": [],
+            "arguments": {
+                "message": []
+            }
+        },
+        "bot_command_handler.wrapper": {
+            "name": "wrapper",
+            "location": 192,
+            "return": [],
+            "arguments": {
+                "func": []
+            }
+        },
+        "bot_button_handler.wrapper": {
+            "name": "wrapper",
+            "location": 257,
+            "return": [],
+            "arguments": {
+                "func": []
+            }
+        },
+        "bot_command_handler.wrapper.wrapper_func": {
+            "name": "wrapper_func",
+            "location": 196,
+            "return": [],
+            "arguments": {
+                "message": []
+            }
+        },
+        "bot_button_handler.wrapper.wrapper_func": {
+            "name": "wrapper_func",
+            "location": 261,
+            "return": [],
+            "arguments": {
+                "call": []
+            }
+        }
+    },
+    "BookingBot-master/botsettings.py": {},
+    "BookingBot-master/exceptions.py": {},
+    "BookingBot-master/manage.py": {
+        "cli": {
+            "name": "cli",
+            "location": 17,
+            "return": [],
+            "arguments": {}
+        },
+        "load_admins": {
+            "name": "load_admins",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "admins_file": []
+            }
+        },
+        "load_whitelist": {
+            "name": "load_whitelist",
+            "location": 57,
+            "return": [],
+            "arguments": {
+                "whitelist_file": []
+            }
+        },
+        "op_username": {
+            "name": "op_username",
+            "location": 90,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "deop_username": {
+            "name": "deop_username",
+            "location": 106,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        }
+    },
+    "BookingBot-master/models.py": {
+        "db_init": {
+            "name": "db_init",
+            "location": 216,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "database_url": [
+                    "str"
+                ]
+            }
+        },
+        "InputCalendar.next_month": {
+            "name": "next_month",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "InputCalendar.previous_month": {
+            "name": "previous_month",
+            "location": 55,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.get_is_admin": {
+            "name": "get_is_admin",
+            "location": 107,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.get_is_in_whitelist": {
+            "name": "get_is_in_whitelist",
+            "location": 117,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.create_input_calendar": {
+            "name": "create_input_calendar",
+            "location": 125,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "date_data": [
+                    "datetime.date"
+                ]
+            }
+        },
+        "User.start_input_line_book": {
+            "name": "start_input_line_book",
+            "location": 135,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.start_input_line_unbook": {
+            "name": "start_input_line_unbook",
+            "location": 145,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.start_input_line_timetable_date": {
+            "name": "start_input_line_timetable_date",
+            "location": 155,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.clear_input_line": {
+            "name": "clear_input_line",
+            "location": 162,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.input_date_next_month": {
+            "name": "input_date_next_month",
+            "location": 179,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "User.input_date_previous_month": {
+            "name": "input_date_previous_month",
+            "location": 186,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "BookingBot-master/pstats_write.py": {
+        "main": {
+            "name": "main",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    }
+}

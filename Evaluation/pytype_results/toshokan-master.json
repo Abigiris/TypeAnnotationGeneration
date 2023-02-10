@@ -1,0 +1,895 @@
+{
+    "toshokan-master/src/run.py": {},
+    "toshokan-master/src/__init__.py": {},
+    "toshokan-master/src/domain/constants.py": {},
+    "toshokan-master/src/domain/interfaces.py": {
+        "ILinkSource.get_links": {
+            "name": "get_links",
+            "location": 16,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "since": [
+                    "Optional[datetime.datetime]"
+                ]
+            }
+        },
+        "ILinkSource.get_source": {
+            "name": "get_source",
+            "location": 20,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ILinksDAO.insert_many": {
+            "name": "insert_many",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links": [
+                    "list"
+                ]
+            }
+        },
+        "ILinksDAO.find_by_tag": {
+            "name": "find_by_tag",
+            "location": 31,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "tag": [
+                    "str"
+                ]
+            }
+        },
+        "IImportStatisticsDAO.insert": {
+            "name": "insert",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "statistics": []
+            }
+        },
+        "IImportStatisticsDAO.get_last_by_source": {
+            "name": "get_last_by_source",
+            "location": 42,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "source": []
+            }
+        },
+        "IUserNotificationService.send_import_result_notification": {
+            "name": "send_import_result_notification",
+            "location": 49,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "statistics": []
+            }
+        },
+        "IResponse.get_type": {
+            "name": "get_type",
+            "location": 56,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IAddLinksUseCase.execute": {
+            "name": "execute",
+            "location": 63,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "req": []
+            }
+        },
+        "IImportLinksUseCase.execute": {
+            "name": "execute",
+            "location": 70,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "req": []
+            }
+        },
+        "IFindByTagUseCase.execute": {
+            "name": "execute",
+            "location": 77,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "req": []
+            }
+        }
+    },
+    "toshokan-master/src/domain/requests.py": {
+        "ImportLinksRequest.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "send_results": [
+                    "bool"
+                ]
+            }
+        },
+        "AddLinksRequest.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links": [
+                    "list"
+                ]
+            }
+        },
+        "FindByTagRequest.__init__": {
+            "name": "__init__",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tag": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/domain/responses.py": {
+        "SuccessResponse.get_type": {
+            "name": "get_type",
+            "location": 10,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AddLinksResponse.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "count_of_added": [
+                    "int"
+                ]
+            }
+        },
+        "FindByTagResponse.__init__": {
+            "name": "__init__",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links": [
+                    "list"
+                ]
+            }
+        },
+        "ImportLinksResponse.__init__": {
+            "name": "__init__",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "count": [
+                    "int"
+                ],
+                "source": []
+            }
+        }
+    },
+    "toshokan-master/src/domain/__init__.py": {},
+    "toshokan-master/src/domain/entities/link.py": {
+        "Link.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "internal_id": [
+                    "Optional[str]"
+                ],
+                "url": [
+                    "str"
+                ],
+                "name": [
+                    "str"
+                ],
+                "image_url": [
+                    "str"
+                ],
+                "tags": [
+                    "List[str]"
+                ],
+                "source": []
+            }
+        },
+        "Link.generate_id": {
+            "name": "generate_id",
+            "location": 22,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "source": [],
+                "_id": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/domain/entities/statistics.py": {
+        "ImportStatistics.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "source": [],
+                "count": [
+                    "int"
+                ],
+                "dt": [
+                    "datetime.datetime"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/domain/entities/__init__.py": {},
+    "toshokan-master/src/domain/usecases/add_links.py": {
+        "AddLinksUseCase.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links_dao": []
+            }
+        },
+        "AddLinksUseCase.execute": {
+            "name": "execute",
+            "location": 18,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "req": []
+            }
+        },
+        "AddLinksUseCase.generate_identifier": {
+            "name": "generate_identifier",
+            "location": 25,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AddLinksUseCase.mark_links_as_internal": {
+            "name": "mark_links_as_internal",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links": [
+                    "list"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/domain/usecases/find_by_tag.py": {
+        "FindByTagUseCase.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links_dao": []
+            }
+        },
+        "FindByTagUseCase.execute": {
+            "name": "execute",
+            "location": 12,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "req": []
+            }
+        }
+    },
+    "toshokan-master/src/domain/usecases/import_links.py": {
+        "ImportLinksUseCase.__init__": {
+            "name": "__init__",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "link_source": [],
+                "links_dao": [],
+                "statistics_dao": [],
+                "user_notification_service": []
+            }
+        },
+        "ImportLinksUseCase.execute": {
+            "name": "execute",
+            "location": 31,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "req": []
+            }
+        },
+        "ImportLinksUseCase.prepare_statistics": {
+            "name": "prepare_statistics",
+            "location": 49,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "links": [
+                    "list"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/domain/usecases/__init__.py": {},
+    "toshokan-master/src/infrastructure/application.py": {
+        "Toshokan.__init__": {
+            "name": "__init__",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Toshokan.run_cli": {
+            "name": "run_cli",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/__init__.py": {},
+    "toshokan-master/src/infrastructure/cli/cli_app.py": {
+        "CLI.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "import_pocket_use_case": [],
+                "find_by_tag_use_case": []
+            }
+        },
+        "CLI.import_from_pocket": {
+            "name": "import_from_pocket",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CLI.find_by_tag": {
+            "name": "find_by_tag",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tag": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/cli/__init__.py": {},
+    "toshokan-master/src/infrastructure/cli/commands/find_by_tag.py": {
+        "FindByTagCommand.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "usecase": []
+            }
+        },
+        "FindByTagCommand.execute": {
+            "name": "execute",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tag": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/cli/commands/import_command.py": {
+        "ImportCommand.__init__": {
+            "name": "__init__",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "usecase": []
+            }
+        },
+        "ImportCommand.execute": {
+            "name": "execute",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/cli/commands/__init__.py": {},
+    "toshokan-master/src/infrastructure/config/base.py": {},
+    "toshokan-master/src/infrastructure/config/__init__.py": {},
+    "toshokan-master/src/infrastructure/db/__init__.py": {},
+    "toshokan-master/src/infrastructure/db/mock/daos.py": {
+        "MockLinksDAO.insert_many": {
+            "name": "insert_many",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links": [
+                    "list"
+                ]
+            }
+        },
+        "MockLinksDAO.find_by_tag": {
+            "name": "find_by_tag",
+            "location": 14,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "tag": [
+                    "str"
+                ]
+            }
+        },
+        "MockImportStatisticsDAO.insert": {
+            "name": "insert",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "statistics": []
+            }
+        },
+        "MockImportStatisticsDAO.get_last_by_source": {
+            "name": "get_last_by_source",
+            "location": 23,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "source": []
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/db/mock/__init__.py": {},
+    "toshokan-master/src/infrastructure/db/mongoengine/dao.py": {
+        "MongoengineLinkDAO.find_by_tag": {
+            "name": "find_by_tag",
+            "location": 13,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "tag": [
+                    "str"
+                ]
+            }
+        },
+        "MongoengineLinkDAO.insert_many": {
+            "name": "insert_many",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "links": [
+                    "list"
+                ]
+            }
+        },
+        "MongoengineImportStatisticsDAO.insert": {
+            "name": "insert",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "entity": []
+            }
+        },
+        "MongoengineImportStatisticsDAO.get_last_by_source": {
+            "name": "get_last_by_source",
+            "location": 37,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "source": []
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/db/mongoengine/models.py": {
+        "LinkModel.to_entity": {
+            "name": "to_entity",
+            "location": 19,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "LinkModel.from_entity": {
+            "name": "from_entity",
+            "location": 30,
+            "return": [
+                "_TLinkModel"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TLinkModel]"
+                ],
+                "entity": []
+            }
+        },
+        "ImportStatisticsModel.to_entity": {
+            "name": "to_entity",
+            "location": 46,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportStatisticsModel.from_entity": {
+            "name": "from_entity",
+            "location": 54,
+            "return": [
+                "_TImportStatisticsModel"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TImportStatisticsModel]"
+                ],
+                "entity": []
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/db/mongoengine/storage.py": {
+        "Storage.__init__": {
+            "name": "__init__",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "db_name": [
+                    "str"
+                ],
+                "mongo_uri": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/db/mongoengine/__init__.py": {},
+    "toshokan-master/src/infrastructure/external/__init__.py": {},
+    "toshokan-master/src/infrastructure/external/pocket/service.py": {
+        "PocketLinkSource.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "consumer_key": [
+                    "str"
+                ],
+                "access_token": [
+                    "str"
+                ]
+            }
+        },
+        "PocketLinkSource.get_source": {
+            "name": "get_source",
+            "location": 18,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PocketLinkSource.get_links": {
+            "name": "get_links",
+            "location": 21,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "since": [
+                    "Optional[datetime.datetime]"
+                ]
+            }
+        },
+        "PocketLinkSource._get_raw_data": {
+            "name": "_get_raw_data",
+            "location": 33,
+            "return": [
+                "List[Dict[(str, Any)]]"
+            ],
+            "arguments": {
+                "self": [],
+                "last_import_dt": [
+                    "Optional[datetime.datetime]"
+                ]
+            }
+        },
+        "PocketLinkSource._convert_raw_to_entity": {
+            "name": "_convert_raw_to_entity",
+            "location": 38,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "data": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/external/pocket/__init__.py": {},
+    "toshokan-master/src/infrastructure/services/notification.py": {
+        "MockNotificationService.send_import_result_notification": {
+            "name": "send_import_result_notification",
+            "location": 8,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "statistics": []
+            }
+        }
+    },
+    "toshokan-master/src/infrastructure/services/__init__.py": {},
+    "toshokan-master/src/tests/__init__.py": {},
+    "toshokan-master/src/tests/domain/__init__.py": {},
+    "toshokan-master/src/tests/domain/usecases/test_add.py": {
+        "AddLinksTestCase.setUp": {
+            "name": "setUp",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AddLinksTestCase.test__execute__links_ids_updated": {
+            "name": "test__execute__links_ids_updated",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AddLinksTestCase.test__execute__links_inserted": {
+            "name": "test__execute__links_inserted",
+            "location": 31,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "toshokan-master/src/tests/domain/usecases/test_import.py": {
+        "ImportTestCase.setUp": {
+            "name": "setUp",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportTestCase.prepare__all_mocks": {
+            "name": "prepare__all_mocks",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "last_statistics": [],
+                "links": []
+            }
+        },
+        "ImportTestCase.prepare__statistics": {
+            "name": "prepare__statistics",
+            "location": 33,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportTestCase.prepare_links": {
+            "name": "prepare_links",
+            "location": 36,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportTestCase.test__execute__last_statistics_loaded": {
+            "name": "test__execute__last_statistics_loaded",
+            "location": 40,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportTestCase.test__execute__last_import_stat_exists__links_service_get_links_called": {
+            "name": "test__execute__last_import_stat_exists__links_service_get_links_called",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportTestCase.test__execute__last_import_stat_not_exists__links_service_get_links_called": {
+            "name": "test__execute__last_import_stat_not_exists__links_service_get_links_called",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportTestCase.test__execute__new_statistics_stored": {
+            "name": "test__execute__new_statistics_stored",
+            "location": 74,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ImportTestCase.test__execute__send_results__notification_sended": {
+            "name": "test__execute__send_results__notification_sended",
+            "location": 87,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "toshokan-master/src/tests/domain/usecases/__init__.py": {},
+    "toshokan-master/src/tests/utils/factories.py": {},
+    "toshokan-master/src/tests/utils/__init__.py": {}
+}

@@ -1,0 +1,362 @@
+{
+    "kube-deployment-auto-committer-master/setup.py": {},
+    "kube-deployment-auto-committer-master/src/deployversioner/deployversioner.py": {
+        "get_file_contents": {
+            "name": "get_file_contents",
+            "location": 29,
+            "return": [],
+            "arguments": {
+                "gitlab_request": [
+                    "str",
+                    "dict[, ]",
+                    "None",
+                    "dict[str, typing.Any]"
+                ],
+                "filename": [
+                    "str"
+                ]
+            }
+        },
+        "get_project_number": {
+            "name": "get_project_number",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "gitlab_get_projects_url": [
+                    "str"
+                ],
+                "project_name": [
+                    "str"
+                ],
+                "token": [
+                    "str",
+                    "dict[str, list[bytes]]"
+                ]
+            }
+        },
+        "set_image_tag": {
+            "name": "set_image_tag",
+            "location": 56,
+            "return": [
+                "tuple[set[]]"
+            ],
+            "arguments": {
+                "gitlab_request": [
+                    "str"
+                ],
+                "filename": [
+                    "str"
+                ],
+                "new_image_tag": [
+                    "str"
+                ]
+            }
+        },
+        "parse_image": {
+            "name": "parse_image",
+            "location": 87,
+            "return": [],
+            "arguments": {
+                "image": [
+                    "str"
+                ]
+            }
+        },
+        "get_content": {
+            "name": "get_content",
+            "location": 94,
+            "return": [
+                "dict[typing.Text, typing.Union[dict[, ],set[]]]",
+                "dict[typing.Text, typing.Union[dict[typing.Text, typing.Text],str,list[str]]]"
+            ],
+            "arguments": {
+                "gitlab_request": [
+                    "str",
+                    "list[]",
+                    "typing.Sequence[str]",
+                    "None",
+                    "list[str]",
+                    "dict[, ]",
+                    "dict[str, dict[, ]]"
+                ],
+                "file": [
+                    "str"
+                ],
+                "image_tag": [
+                    "str",
+                    "list[]",
+                    "typing.Sequence[str]",
+                    "None",
+                    "list[str]",
+                    "dict[, ]",
+                    "dict[str, dict[, ]]"
+                ],
+                "dir": [
+                    "str",
+                    "dict[str, str]",
+                    "None"
+                ]
+            }
+        },
+        "change_image_tag": {
+            "name": "change_image_tag",
+            "location": 109,
+            "return": [
+                "tuple[typing.Union[list[str],dict[, ]]]"
+            ],
+            "arguments": {
+                "gitlab_request": [
+                    "str",
+                    "list[str]",
+                    "dict[str, object]"
+                ],
+                "file_object": [
+                    "str"
+                ],
+                "image_tag": [
+                    "dict[, ]",
+                    "str"
+                ]
+            }
+        },
+        "format_commit_message": {
+            "name": "format_commit_message",
+            "location": 135,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "tag": [
+                    "str"
+                ],
+                "changed_image_tags": [
+                    "str"
+                ]
+            }
+        },
+        "commit_changes": {
+            "name": "commit_changes",
+            "location": 140,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "gitlab_request": [
+                    "list[str]",
+                    "str",
+                    "bytes"
+                ],
+                "proposed_commits": [],
+                "tag": [
+                    "list[str]",
+                    "str",
+                    "None"
+                ],
+                "changed_image_tags": [
+                    "str",
+                    "None",
+                    "list[str]"
+                ]
+            }
+        },
+        "setup_args": {
+            "name": "setup_args",
+            "location": 170,
+            "return": [],
+            "arguments": {}
+        },
+        "main": {
+            "name": "main",
+            "location": 190,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "kube-deployment-auto-committer-master/tests/test_deployversioner.py": {
+        "get_tests_path": {
+            "name": "get_tests_path",
+            "location": 355,
+            "return": [
+                "str",
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "TestDeployVersioner.setUp": {
+            "name": "setUp",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestDeployVersioner.test_set_image_tag": {
+            "name": "test_set_image_tag",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_that_set_image_tag_sets_all_tags_in_a_yaml_doc": {
+            "name": "test_that_set_image_tag_sets_all_tags_in_a_yaml_doc",
+            "location": 37,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_that_set_image_tag_sets_all_tags_in_a_cronjob_yaml_doc": {
+            "name": "test_that_set_image_tag_sets_all_tags_in_a_cronjob_yaml_doc",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_that_change_image_tag_makes_a_commit_message_covering_all_bumped_tags": {
+            "name": "test_that_change_image_tag_makes_a_commit_message_covering_all_bumped_tags",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_session": [],
+                "mock_requests_get": [
+                    "dict[, ]"
+                ]
+            }
+        },
+        "TestDeployVersioner.test_multiple_yaml_files": {
+            "name": "test_multiple_yaml_files",
+            "location": 129,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_set_image_tag_identical_new_tag": {
+            "name": "test_set_image_tag_identical_new_tag",
+            "location": 182,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_parse_image": {
+            "name": "test_parse_image",
+            "location": 192,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestDeployVersioner.test_commit_changes": {
+            "name": "test_commit_changes",
+            "location": 200,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_session": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_commit_changes_error_400": {
+            "name": "test_commit_changes_error_400",
+            "location": 257,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_session": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_get_file_contents": {
+            "name": "test_get_file_contents",
+            "location": 311,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.test_file_does_not_exist": {
+            "name": "test_file_does_not_exist",
+            "location": 327,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_post": [
+                    "bool"
+                ],
+                "mock_requests_get": [
+                    "bool"
+                ]
+            }
+        },
+        "TestDeployVersioner.test_get_project_number": {
+            "name": "test_get_project_number",
+            "location": 336,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mock_requests_get": []
+            }
+        },
+        "TestDeployVersioner.get_mock_response": {
+            "name": "get_mock_response",
+            "location": 344,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "content": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "TestDeployVersioner.get_mock_response_from_file": {
+            "name": "get_mock_response_from_file",
+            "location": 351,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "response_filename": [
+                    "str"
+                ]
+            }
+        }
+    }
+}

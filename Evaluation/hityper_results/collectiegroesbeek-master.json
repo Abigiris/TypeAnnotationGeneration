@@ -1,0 +1,1363 @@
+{
+    "collectiegroesbeek-master/wsgi.py": {},
+    "collectiegroesbeek-master/collectiegroesbeek/controller.py": {
+        "get_page_range": {
+            "name": "get_page_range",
+            "location": 140,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "hits_total": [],
+                "page": [
+                    "bool",
+                    "float"
+                ],
+                "cards_per_page": [
+                    "int"
+                ]
+            }
+        },
+        "get_names_list": {
+            "name": "get_names_list",
+            "location": 152,
+            "return": [],
+            "arguments": {
+                "q": [
+                    "str"
+                ]
+            }
+        },
+        "is_elasticsearch_reachable": {
+            "name": "is_elasticsearch_reachable",
+            "location": 166,
+            "return": [],
+            "arguments": {}
+        },
+        "get_suggestions": {
+            "name": "get_suggestions",
+            "location": 171,
+            "return": [
+                "dict[, list[]]"
+            ],
+            "arguments": {
+                "keywords": [
+                    "dict[, ]",
+                    "str"
+                ]
+            }
+        },
+        "get_doc": {
+            "name": "get_doc",
+            "location": 191,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "doc_id": [
+                    "list[str]",
+                    "str"
+                ]
+            }
+        },
+        "Searcher.__init__": {
+            "name": "__init__",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "str",
+                    "bool",
+                    "None",
+                    "float"
+                ],
+                "start": [
+                    "int"
+                ],
+                "size": [
+                    "int"
+                ],
+                "doctypes": [
+                    "dict[tuple[typing.Union[str,str]], Exception]",
+                    "int",
+                    "None",
+                    "str"
+                ]
+            }
+        },
+        "Searcher.get_query": {
+            "name": "get_query",
+            "location": 47,
+            "return": [
+                "Q"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "str"
+                ]
+            }
+        },
+        "Searcher.handle_specific_field_request": {
+            "name": "handle_specific_field_request",
+            "location": 65,
+            "return": [
+                "tuple[list[]]"
+            ],
+            "arguments": {
+                "self": [],
+                "q": [
+                    "str"
+                ]
+            }
+        },
+        "Searcher.get_specific_field_query": {
+            "name": "get_specific_field_query",
+            "location": 91,
+            "return": [
+                "Q"
+            ],
+            "arguments": {
+                "field": [
+                    "str",
+                    "typing.Sequence[typing.MutableMapping]"
+                ],
+                "keywords": [
+                    "str",
+                    "typing.Sequence[typing.MutableMapping]"
+                ]
+            }
+        },
+        "Searcher.get_regular_query": {
+            "name": "get_regular_query",
+            "location": 95,
+            "return": [
+                "MultiMatch"
+            ],
+            "arguments": {
+                "self": [],
+                "keywords": [
+                    "str",
+                    "typing.Mapping",
+                    "bool",
+                    "list[]",
+                    "dict[str, typing.Any]"
+                ]
+            }
+        },
+        "Searcher.get_partial_phrase_match_query": {
+            "name": "get_partial_phrase_match_query",
+            "location": 102,
+            "return": [
+                "Q"
+            ],
+            "arguments": {
+                "self": [],
+                "keywords": [
+                    "str"
+                ]
+            }
+        },
+        "Searcher.parse_year_range": {
+            "name": "parse_year_range",
+            "location": 118,
+            "return": [
+                "None",
+                "tuple[int]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Searcher.count": {
+            "name": "count",
+            "location": 128,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Searcher.get_results": {
+            "name": "get_results",
+            "location": 131,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "collectiegroesbeek-master/collectiegroesbeek/model.py": {
+        "create_name_keyword": {
+            "name": "create_name_keyword",
+            "location": 105,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "naam": [
+                    "str"
+                ]
+            }
+        },
+        "create_year": {
+            "name": "create_year",
+            "location": 118,
+            "return": [
+                "None",
+                "int"
+            ],
+            "arguments": {
+                "datum": []
+            }
+        },
+        "parse_entry": {
+            "name": "parse_entry",
+            "location": 671,
+            "return": [
+                "str",
+                "None"
+            ],
+            "arguments": {
+                "entry": [
+                    "str"
+                ]
+            }
+        },
+        "list_doctypes": {
+            "name": "list_doctypes",
+            "location": 675,
+            "return": [
+                "list[typing.Union[CardNameDoc,VoornamenDoc,JaartallenDoc,MaatboekHeemskerkDoc,MaatboekHeemstedeDoc,MaatboekBroekInWaterlandDoc,MaatboekSuderwoude,EigendomsaktenHeemskerk,TransportRegisterEgmondDoc,TransportRegisterBloemendaalDoc]]"
+            ],
+            "arguments": {}
+        },
+        "BaseDocument._matches": {
+            "name": "_matches",
+            "location": 13,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "bool",
+                    "dict[, ]",
+                    "dict[str, typing.Any]"
+                ],
+                "hit": [
+                    "str"
+                ]
+            }
+        },
+        "BaseDocument.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "list[str]",
+                    "str",
+                    "bool",
+                    "None"
+                ],
+                "line": [
+                    "list[str]",
+                    "str",
+                    "bool",
+                    "None"
+                ]
+            }
+        },
+        "BaseDocument.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "BaseDocument.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "BaseDocument.get_title": {
+            "name": "get_title",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseDocument.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseDocument.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CardNameDoc.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "int",
+                    "float",
+                    "list[]"
+                ],
+                "line": [
+                    "list[str]",
+                    "str"
+                ]
+            }
+        },
+        "CardNameDoc.is_valid": {
+            "name": "is_valid",
+            "location": 77,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CardNameDoc.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 87,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "CardNameDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 91,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "CardNameDoc.get_title": {
+            "name": "get_title",
+            "location": 94,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CardNameDoc.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 97,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CardNameDoc.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 100,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "VoornamenDoc.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 146,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "int",
+                    "float",
+                    "list[]"
+                ],
+                "line": [
+                    "list[str]",
+                    "str"
+                ]
+            }
+        },
+        "VoornamenDoc.is_valid": {
+            "name": "is_valid",
+            "location": 164,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "VoornamenDoc.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 174,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "VoornamenDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 178,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "VoornamenDoc.get_title": {
+            "name": "get_title",
+            "location": 181,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "VoornamenDoc.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 184,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "VoornamenDoc.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 187,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JaartallenDoc.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 209,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "int",
+                    "float",
+                    "list[]"
+                ],
+                "line": [
+                    "list[str]",
+                    "str"
+                ]
+            }
+        },
+        "JaartallenDoc.is_valid": {
+            "name": "is_valid",
+            "location": 226,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JaartallenDoc.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 236,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "JaartallenDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 240,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "JaartallenDoc.get_title": {
+            "name": "get_title",
+            "location": 243,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JaartallenDoc.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 246,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JaartallenDoc.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 249,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekHeemskerkDoc.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 277,
+            "return": [
+                "None",
+                "typing.Iterator",
+                "tuple[typing.Union[int,int]]",
+                "typing.Type",
+                "bytes",
+                "dict[, ]",
+                "str",
+                "float"
+            ],
+            "arguments": {
+                "cls": [
+                    "int",
+                    "str",
+                    "typing.Callable[, ]",
+                    "tuple[]"
+                ],
+                "line": [
+                    "list[str]",
+                    "str",
+                    "list[]"
+                ]
+            }
+        },
+        "MaatboekHeemskerkDoc.parse_year": {
+            "name": "parse_year",
+            "location": 296,
+            "return": [
+                "int",
+                "None"
+            ],
+            "arguments": {
+                "datum": [
+                    "str",
+                    "list[str]"
+                ]
+            }
+        },
+        "MaatboekHeemskerkDoc.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 301,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "MaatboekHeemskerkDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 305,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "MaatboekHeemskerkDoc.get_title": {
+            "name": "get_title",
+            "location": 308,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekHeemskerkDoc.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 314,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekHeemskerkDoc.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 317,
+            "return": [
+                "list[None]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekHeemstedeDoc.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 347,
+            "return": [
+                "None",
+                "typing.Iterator",
+                "tuple[typing.Union[int,int]]",
+                "typing.Type",
+                "bytes",
+                "dict[, ]",
+                "str",
+                "float"
+            ],
+            "arguments": {
+                "cls": [
+                    "int",
+                    "str",
+                    "typing.Callable[, ]",
+                    "tuple[]"
+                ],
+                "line": [
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "MaatboekHeemstedeDoc.parse_year": {
+            "name": "parse_year",
+            "location": 364,
+            "return": [
+                "int",
+                "None"
+            ],
+            "arguments": {
+                "datum": [
+                    "str",
+                    "list[str]"
+                ]
+            }
+        },
+        "MaatboekHeemstedeDoc.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 369,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "MaatboekHeemstedeDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 373,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "MaatboekHeemstedeDoc.get_title": {
+            "name": "get_title",
+            "location": 376,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekHeemstedeDoc.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 382,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekHeemstedeDoc.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 385,
+            "return": [
+                "list[None]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekBroekInWaterlandDoc.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 413,
+            "return": [
+                "None",
+                "typing.Iterator",
+                "tuple[typing.Union[int,int]]",
+                "typing.Type",
+                "bytes",
+                "dict[, ]",
+                "str",
+                "float"
+            ],
+            "arguments": {
+                "cls": [
+                    "int",
+                    "str",
+                    "typing.Callable[, ]",
+                    "tuple[]"
+                ],
+                "line": [
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "MaatboekBroekInWaterlandDoc.parse_year": {
+            "name": "parse_year",
+            "location": 430,
+            "return": [
+                "int",
+                "None"
+            ],
+            "arguments": {
+                "datum": [
+                    "str",
+                    "list[str]"
+                ]
+            }
+        },
+        "MaatboekBroekInWaterlandDoc.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 435,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "MaatboekBroekInWaterlandDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 439,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "MaatboekBroekInWaterlandDoc.get_title": {
+            "name": "get_title",
+            "location": 442,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekBroekInWaterlandDoc.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 448,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekBroekInWaterlandDoc.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 451,
+            "return": [
+                "list[None]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekSuderwoude.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 479,
+            "return": [
+                "None",
+                "typing.Iterator",
+                "tuple[typing.Union[int,int]]",
+                "typing.Type",
+                "bytes",
+                "dict[, ]",
+                "str",
+                "float"
+            ],
+            "arguments": {
+                "cls": [
+                    "int",
+                    "str",
+                    "typing.Callable[, ]",
+                    "tuple[]"
+                ],
+                "line": [
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "MaatboekSuderwoude.parse_year": {
+            "name": "parse_year",
+            "location": 496,
+            "return": [
+                "int",
+                "None"
+            ],
+            "arguments": {
+                "datum": [
+                    "str",
+                    "list[str]"
+                ]
+            }
+        },
+        "MaatboekSuderwoude.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 501,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "MaatboekSuderwoude.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 505,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "MaatboekSuderwoude.get_title": {
+            "name": "get_title",
+            "location": 508,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekSuderwoude.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 514,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MaatboekSuderwoude.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 517,
+            "return": [
+                "list[None]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EigendomsaktenHeemskerk.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 547,
+            "return": [
+                "None",
+                "typing.Iterator",
+                "tuple[typing.Union[int,int]]",
+                "typing.Type",
+                "bytes",
+                "dict[, ]",
+                "str",
+                "float"
+            ],
+            "arguments": {
+                "cls": [
+                    "int",
+                    "str",
+                    "typing.Callable[, ]",
+                    "tuple[]"
+                ],
+                "line": [
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "EigendomsaktenHeemskerk.parse_year": {
+            "name": "parse_year",
+            "location": 565,
+            "return": [
+                "int",
+                "None"
+            ],
+            "arguments": {
+                "datum": [
+                    "str",
+                    "list[str]"
+                ]
+            }
+        },
+        "EigendomsaktenHeemskerk.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 570,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "EigendomsaktenHeemskerk.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 574,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "EigendomsaktenHeemskerk.get_title": {
+            "name": "get_title",
+            "location": 577,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EigendomsaktenHeemskerk.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 581,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EigendomsaktenHeemskerk.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 584,
+            "return": [
+                "list[None]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseTransportregisterDoc.from_csv_line": {
+            "name": "from_csv_line",
+            "location": 605,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "str",
+                    "int",
+                    "float",
+                    "list[]"
+                ],
+                "line": [
+                    "list[str]",
+                    "str"
+                ]
+            }
+        },
+        "BaseTransportregisterDoc.is_valid": {
+            "name": "is_valid",
+            "location": 621,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseTransportregisterDoc.get_multimatch_fields": {
+            "name": "get_multimatch_fields",
+            "location": 631,
+            "return": [
+                "list[typing.Text]"
+            ],
+            "arguments": {}
+        },
+        "BaseTransportregisterDoc.get_title": {
+            "name": "get_title",
+            "location": 634,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseTransportregisterDoc.get_subtitle": {
+            "name": "get_subtitle",
+            "location": 637,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseTransportregisterDoc.get_body_lines": {
+            "name": "get_body_lines",
+            "location": 640,
+            "return": [
+                "list[]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TransportRegisterEgmondDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 654,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "TransportRegisterBloemendaalDoc.get_index_name_pretty": {
+            "name": "get_index_name_pretty",
+            "location": 667,
+            "return": [
+                "typing.Text"
+            ],
+            "arguments": {}
+        },
+        "CardNameDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 54,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "VoornamenDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 142,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "JaartallenDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 205,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "MaatboekHeemskerkDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 273,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "MaatboekHeemstedeDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 343,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "MaatboekBroekInWaterlandDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 409,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "MaatboekSuderwoude.Index.__new__": {
+            "name": "__new__",
+            "location": 475,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "EigendomsaktenHeemskerk.Index.__new__": {
+            "name": "__new__",
+            "location": 543,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "TransportRegisterEgmondDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 650,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "TransportRegisterBloemendaalDoc.Index.__new__": {
+            "name": "__new__",
+            "location": 663,
+            "return": [
+                "Index"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        }
+    },
+    "collectiegroesbeek-master/collectiegroesbeek/view.py": {
+        "home": {
+            "name": "home",
+            "location": 15,
+            "return": [],
+            "arguments": {}
+        },
+        "index": {
+            "name": "index",
+            "location": 20,
+            "return": [],
+            "arguments": {}
+        },
+        "search": {
+            "name": "search",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        },
+        "add_selected_doctypes_to_query_string": {
+            "name": "add_selected_doctypes_to_query_string",
+            "location": 85,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "query_string": [
+                    "str"
+                ],
+                "doctypes_selection": [
+                    "str"
+                ]
+            }
+        },
+        "show_names_list": {
+            "name": "show_names_list",
+            "location": 96,
+            "return": [],
+            "arguments": {
+                "q": [
+                    "typing.Text"
+                ]
+            }
+        },
+        "format_hit": {
+            "name": "format_hit",
+            "location": 107,
+            "return": [
+                "dict[typing.Text, ]"
+            ],
+            "arguments": {
+                "doc": []
+            }
+        },
+        "get_product": {
+            "name": "get_product",
+            "location": 119,
+            "return": [],
+            "arguments": {
+                "doc_id": [
+                    "int",
+                    "str",
+                    "None"
+                ]
+            }
+        }
+    },
+    "collectiegroesbeek-master/collectiegroesbeek/__init__.py": {},
+    "collectiegroesbeek-master/elasticsearch/add_documents.py": {
+        "logging_setup": {
+            "name": "logging_setup",
+            "location": 34,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "filename_to_doctype": {
+            "name": "filename_to_doctype",
+            "location": 97,
+            "return": [],
+            "arguments": {
+                "filename": [
+                    "str"
+                ]
+            }
+        },
+        "run": {
+            "name": "run",
+            "location": 123,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ],
+                "doctype_name": [
+                    "str",
+                    "set[str]",
+                    "None"
+                ]
+            }
+        },
+        "CardProcessor.__init__": {
+            "name": "__init__",
+            "location": 44,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "batch_size": [
+                    "int"
+                ]
+            }
+        },
+        "CardProcessor.register_index": {
+            "name": "register_index",
+            "location": 50,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "doctype": [
+                    "dict[str, typing.Any]",
+                    "tuple[typing.Union[str,...]]",
+                    "None",
+                    "typing.Mapping",
+                    "dict[, ]",
+                    "dict[str, float]"
+                ]
+            }
+        },
+        "CardProcessor.add": {
+            "name": "add",
+            "location": 57,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "card": []
+            }
+        },
+        "CardProcessor.flush": {
+            "name": "flush",
+            "location": 64,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CardProcessor.finalize": {
+            "name": "finalize",
+            "location": 69,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IndexMover.__init__": {
+            "name": "__init__",
+            "location": 77,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "doctype": []
+            }
+        },
+        "IndexMover.move_alias_to_new": {
+            "name": "move_alias_to_new",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "collectiegroesbeek-master/tests/conftest.py": {},
+    "collectiegroesbeek-master/tests/test_model.py": {
+        "TestCardNameIndex.test_create_year": {
+            "name": "test_create_year",
+            "location": 7,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    }
+}

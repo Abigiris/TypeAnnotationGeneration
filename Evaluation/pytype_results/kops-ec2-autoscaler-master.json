@@ -1,0 +1,2323 @@
+{
+    "kops-ec2-autoscaler-master/main.py": {
+        "main": {
+            "name": "main",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "cluster_name": [],
+                "aws_regions": [],
+                "azure_resource_groups": [],
+                "azure_slow_scale_classes": [],
+                "sleep": [],
+                "kubeconfig": [],
+                "azure_client_id": [],
+                "azure_client_secret": [],
+                "azure_subscription_id": [],
+                "azure_tenant_id": [],
+                "aws_access_key": [],
+                "aws_secret_key": [],
+                "datadog_api_key": [],
+                "idle_threshold": [],
+                "type_idle_threshold": [],
+                "max_scale_in_fraction": [],
+                "over_provision": [],
+                "instance_init_time": [],
+                "no_scale": [],
+                "no_maintenance": [],
+                "slack_hook": [],
+                "slack_bot_token": [],
+                "dry_run": [],
+                "verbose": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/setup.py": {},
+    "kops-ec2-autoscaler-master/autoscaler/autoscaling_groups.py": {
+        "AutoScalingGroups.__init__": {
+            "name": "__init__",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "session": [],
+                "regions": [],
+                "cluster_name": []
+            }
+        },
+        "AutoScalingGroups.get_all_raw_groups_and_launch_configs": {
+            "name": "get_all_raw_groups_and_launch_configs",
+            "location": 32,
+            "return": [
+                "Tuple[(Any, dict)]"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "AutoScalingGroups.get_all_groups": {
+            "name": "get_all_groups",
+            "location": 49,
+            "return": [
+                "List[AutoScalingGroup]"
+            ],
+            "arguments": {
+                "self": [],
+                "kube_nodes": []
+            }
+        },
+        "AutoScalingTimeouts.__init__": {
+            "name": "__init__",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "session": []
+            }
+        },
+        "AutoScalingTimeouts.refresh_timeouts": {
+            "name": "refresh_timeouts",
+            "location": 104,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "asgs": [],
+                "dry_run": []
+            }
+        },
+        "AutoScalingTimeouts.iter_activities": {
+            "name": "iter_activities",
+            "location": 138,
+            "return": [
+                "Generator[(Any, Any, None)]"
+            ],
+            "arguments": {
+                "self": [],
+                "client": []
+            }
+        },
+        "AutoScalingTimeouts.revert_capacity": {
+            "name": "revert_capacity",
+            "location": 151,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [],
+                "entry": [],
+                "dry_run": []
+            }
+        },
+        "AutoScalingTimeouts.time_out_asg": {
+            "name": "time_out_asg",
+            "location": 170,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [],
+                "entry": []
+            }
+        },
+        "AutoScalingTimeouts.reconcile_limits": {
+            "name": "reconcile_limits",
+            "location": 176,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [],
+                "activities": [],
+                "dry_run": []
+            }
+        },
+        "AutoScalingTimeouts.is_timed_out": {
+            "name": "is_timed_out",
+            "location": 270,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": []
+            }
+        },
+        "AutoScalingTimeouts.cancel_spot_request": {
+            "name": "cancel_spot_request",
+            "location": 282,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "region": [],
+                "request_id": []
+            }
+        },
+        "AutoScalingTimeouts.time_out_spot_asgs": {
+            "name": "time_out_spot_asgs",
+            "location": 301,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "asgs": []
+            }
+        },
+        "AutoScalingGroup.__init__": {
+            "name": "__init__",
+            "location": 369,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "client": [],
+                "region": [],
+                "kube_nodes": [],
+                "raw_group": [],
+                "launch_config": []
+            }
+        },
+        "AutoScalingGroup._extract_selectors": {
+            "name": "_extract_selectors",
+            "location": 398,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "region": [],
+                "launch_config": [],
+                "tags_data": []
+            }
+        },
+        "AutoScalingGroup.is_timed_out": {
+            "name": "is_timed_out",
+            "location": 415,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.global_priority": {
+            "name": "global_priority",
+            "location": 419,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.actual_capacity": {
+            "name": "actual_capacity",
+            "location": 423,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.set_desired_capacity": {
+            "name": "set_desired_capacity",
+            "location": 426,
+            "return": [
+                "utils.CompletedFuture"
+            ],
+            "arguments": {
+                "self": [],
+                "new_desired_capacity": []
+            }
+        },
+        "AutoScalingGroup.scale": {
+            "name": "scale",
+            "location": 440,
+            "return": [
+                "utils.CompletedFuture"
+            ],
+            "arguments": {
+                "self": [],
+                "new_desired_capacity": []
+            }
+        },
+        "AutoScalingGroup.scale_nodes_in": {
+            "name": "scale_nodes_in",
+            "location": 485,
+            "return": [
+                "utils.CompletedFuture"
+            ],
+            "arguments": {
+                "self": [],
+                "nodes": []
+            }
+        },
+        "AutoScalingGroup.contains": {
+            "name": "contains",
+            "location": 511,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "node": []
+            }
+        },
+        "AutoScalingGroup.is_match_for_selectors": {
+            "name": "is_match_for_selectors",
+            "location": 514,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "selectors": []
+            }
+        },
+        "AutoScalingGroup.is_taints_tolerated": {
+            "name": "is_taints_tolerated",
+            "location": 520,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": []
+            }
+        },
+        "AutoScalingGroup.__str__": {
+            "name": "__str__",
+            "location": 529,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.__repr__": {
+            "name": "__repr__",
+            "location": 532,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/aws_utils.py": {
+        "fetch_all": {
+            "name": "fetch_all",
+            "location": 1,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "aws_paged_func": [],
+                "kwargs": [],
+                "list_field": [],
+                "next_token": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/azure.py": {
+        "_get_azure_class": {
+            "name": "_get_azure_class",
+            "location": 89,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "type_": []
+            }
+        },
+        "AzureBoundedRetry.__init__": {
+            "name": "__init__",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureBoundedRetry.from_retry": {
+            "name": "from_retry",
+            "location": 29,
+            "return": [
+                "AzureBoundedRetry"
+            ],
+            "arguments": {
+                "retry": []
+            }
+        },
+        "AzureBoundedRetry.get_retry_after": {
+            "name": "get_retry_after",
+            "location": 41,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "response": []
+            }
+        },
+        "AzureGroups.__init__": {
+            "name": "__init__",
+            "location": 65,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_groups": [],
+                "slow_scale_classes": [],
+                "client": [
+                    "autoscaler.azure_api.AzureApi"
+                ]
+            }
+        },
+        "AzureGroups.get_all_groups": {
+            "name": "get_all_groups",
+            "location": 70,
+            "return": [
+                "List[AzureVirtualScaleSet]"
+            ],
+            "arguments": {
+                "self": [],
+                "kube_nodes": []
+            }
+        },
+        "AzureVirtualScaleSet.__init__": {
+            "name": "__init__",
+            "location": 101,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "region": [],
+                "resource_group": [],
+                "client": [
+                    "autoscaler.azure_api.AzureApi"
+                ],
+                "instance_type": [],
+                "slow_scale": [
+                    "bool"
+                ],
+                "scale_sets": [
+                    "List[autoscaler.azure_api.AzureScaleSet]"
+                ],
+                "kube_nodes": []
+            }
+        },
+        "AzureVirtualScaleSet.is_timed_out": {
+            "name": "is_timed_out",
+            "location": 152,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.global_priority": {
+            "name": "global_priority",
+            "location": 159,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.get_azure_instances": {
+            "name": "get_azure_instances",
+            "location": 164,
+            "return": [
+                "dict_values[AzureInstance]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.instance_ids": {
+            "name": "instance_ids",
+            "location": 168,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.set_desired_capacity": {
+            "name": "set_desired_capacity",
+            "location": 171,
+            "return": [
+                "Union[(utils.CompletedFuture, utils.TransformingFuture)]"
+            ],
+            "arguments": {
+                "self": [],
+                "new_desired_capacity": []
+            }
+        },
+        "AzureVirtualScaleSet.terminate_instances": {
+            "name": "terminate_instances",
+            "location": 211,
+            "return": [
+                "utils.AllCompletedFuture"
+            ],
+            "arguments": {
+                "self": [],
+                "vm_ids": []
+            }
+        },
+        "AzureVirtualScaleSet.scale_nodes_in": {
+            "name": "scale_nodes_in",
+            "location": 226,
+            "return": [
+                "utils.AllCompletedFuture"
+            ],
+            "arguments": {
+                "self": [],
+                "nodes": []
+            }
+        },
+        "AzureVirtualScaleSet.__str__": {
+            "name": "__str__",
+            "location": 235,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.__repr__": {
+            "name": "__repr__",
+            "location": 238,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureInstance.__init__": {
+            "name": "__init__",
+            "location": 245,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "instance_id": [],
+                "instance_type": [],
+                "launch_time": [],
+                "tags": []
+            }
+        },
+        "AzureInstance.__str__": {
+            "name": "__str__",
+            "location": 251,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureInstance.__repr__": {
+            "name": "__repr__",
+            "location": 254,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/azure_api.py": {
+        "AzureScaleSet.__init__": {
+            "name": "__init__",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "location": [
+                    "str"
+                ],
+                "resource_group": [
+                    "str"
+                ],
+                "name": [
+                    "str"
+                ],
+                "instance_type": [
+                    "str"
+                ],
+                "capacity": [
+                    "int"
+                ],
+                "provisioning_state": [
+                    "str"
+                ],
+                "timeout_until": [
+                    "_datetime.datetime"
+                ],
+                "timeout_reason": [
+                    "str"
+                ],
+                "priority": [
+                    "int"
+                ],
+                "no_schedule_taints": [
+                    "Mapping[(str, str)]"
+                ]
+            }
+        },
+        "AzureScaleSet.__str__": {
+            "name": "__str__",
+            "location": 41,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSet.__repr__": {
+            "name": "__repr__",
+            "location": 44,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSet._key": {
+            "name": "_key",
+            "location": 47,
+            "return": [
+                "Tuple[(str, str, int, str, str, str, _datetime.datetime, str, int, Tuple[(Tuple[(str, str)], ...)])]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSet.__eq__": {
+            "name": "__eq__",
+            "location": 51,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "object"
+                ]
+            }
+        },
+        "AzureScaleSet.__hash__": {
+            "name": "__hash__",
+            "location": 56,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance.__init__": {
+            "name": "__init__",
+            "location": 61,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "instance_id": [
+                    "str"
+                ],
+                "vm_id": [
+                    "str"
+                ],
+                "launch_time": [
+                    "_datetime.datetime"
+                ]
+            }
+        },
+        "AzureScaleSetInstance.__str__": {
+            "name": "__str__",
+            "location": 66,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance.__repr__": {
+            "name": "__repr__",
+            "location": 69,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance._key": {
+            "name": "_key",
+            "location": 72,
+            "return": [
+                "Tuple[(str, str, _datetime.datetime)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance.__eq__": {
+            "name": "__eq__",
+            "location": 75,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "object"
+                ]
+            }
+        },
+        "AzureScaleSetInstance.__hash__": {
+            "name": "__hash__",
+            "location": 80,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureApi.list_scale_sets": {
+            "name": "list_scale_sets",
+            "location": 85,
+            "return": [
+                "List[AzureScaleSet]"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str"
+                ]
+            }
+        },
+        "AzureApi.list_scale_set_instances": {
+            "name": "list_scale_set_instances",
+            "location": 88,
+            "return": [
+                "List[AzureScaleSetInstance]"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ]
+            }
+        },
+        "AzureApi.update_scale_set": {
+            "name": "update_scale_set",
+            "location": 91,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ],
+                "new_capacity": [
+                    "int"
+                ]
+            }
+        },
+        "AzureApi.terminate_scale_set_instances": {
+            "name": "terminate_scale_set_instances",
+            "location": 94,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ],
+                "instances": [
+                    "List[AzureScaleSetInstance]"
+                ]
+            }
+        },
+        "AzureWrapper.__init__": {
+            "name": "__init__",
+            "location": 102,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "compute_client": [],
+                "monitor_client": []
+            }
+        },
+        "AzureWrapper.list_scale_sets": {
+            "name": "list_scale_sets",
+            "location": 106,
+            "return": [
+                "List[AzureScaleSet]"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str"
+                ]
+            }
+        },
+        "AzureWrapper.list_scale_set_instances": {
+            "name": "list_scale_set_instances",
+            "location": 143,
+            "return": [
+                "List[AzureScaleSetInstance]"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ]
+            }
+        },
+        "AzureWrapper.update_scale_set": {
+            "name": "update_scale_set",
+            "location": 154,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ],
+                "new_capacity": [
+                    "int"
+                ]
+            }
+        },
+        "AzureWrapper.terminate_scale_set_instances": {
+            "name": "terminate_scale_set_instances",
+            "location": 160,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ],
+                "instances": [
+                    "List[AzureScaleSetInstance]"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.__init__": {
+            "name": "__init__",
+            "location": 166,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "delegate": [
+                    "AzureApi"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.list_scale_sets": {
+            "name": "list_scale_sets",
+            "location": 172,
+            "return": [
+                "List[AzureScaleSet]"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str"
+                ],
+                "force_refresh": []
+            }
+        },
+        "AzureWriteThroughCachedApi.list_scale_set_instances": {
+            "name": "list_scale_set_instances",
+            "location": 194,
+            "return": [
+                "List[AzureScaleSetInstance]"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.update_scale_set": {
+            "name": "update_scale_set",
+            "location": 207,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ],
+                "new_capacity": [
+                    "int"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.terminate_scale_set_instances": {
+            "name": "terminate_scale_set_instances",
+            "location": 212,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "AzureScaleSet"
+                ],
+                "instances": [
+                    "List[AzureScaleSetInstance]"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi._invalidate": {
+            "name": "_invalidate",
+            "location": 217,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str"
+                ],
+                "scale_set_name": [
+                    "str"
+                ]
+            }
+        },
+        "AzureOperationPollerFutureAdapter.__init__": {
+            "name": "__init__",
+            "location": 231,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "azure_operation": []
+            }
+        },
+        "AzureOperationPollerFutureAdapter._handle_completion": {
+            "name": "_handle_completion",
+            "location": 242,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "result": []
+            }
+        },
+        "AzureOperationPollerFutureAdapter.result": {
+            "name": "result",
+            "location": 256,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureOperationPollerFutureAdapter.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 275,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "fn": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/capacity.py": {
+        "is_possible": {
+            "name": "is_possible",
+            "location": 28,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "pod": []
+            }
+        },
+        "max_capacity_for_selectors": {
+            "name": "max_capacity_for_selectors",
+            "location": 38,
+            "return": [
+                "Optional[autoscaler.kube.KubeResource]"
+            ],
+            "arguments": {
+                "selectors": [],
+                "resource_requests": []
+            }
+        },
+        "get_unit_capacity": {
+            "name": "get_unit_capacity",
+            "location": 76,
+            "return": [
+                "autoscaler.kube.KubeResource"
+            ],
+            "arguments": {
+                "group": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/cluster.py": {
+        "Cluster.__init__": {
+            "name": "__init__",
+            "location": 84,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "aws_regions": [],
+                "aws_access_key": [],
+                "aws_secret_key": [],
+                "azure_client_id": [],
+                "azure_client_secret": [],
+                "azure_subscription_id": [],
+                "azure_tenant_id": [],
+                "azure_resource_group_names": [],
+                "azure_slow_scale_classes": [],
+                "kubeconfig": [],
+                "idle_threshold": [],
+                "type_idle_threshold": [],
+                "instance_init_time": [],
+                "cluster_name": [],
+                "notifier": [],
+                "max_scale_in_fraction": [],
+                "scale_up": [],
+                "maintainance": [],
+                "datadog_api_key": [],
+                "over_provision": [],
+                "dry_run": []
+            }
+        },
+        "Cluster.scale_loop": {
+            "name": "scale_loop",
+            "location": 177,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Cluster.scale": {
+            "name": "scale",
+            "location": 260,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "pods_to_schedule": [],
+                "all_nodes": [],
+                "asgs": [],
+                "running_insts_map": []
+            }
+        },
+        "Cluster.maintain": {
+            "name": "maintain",
+            "location": 312,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "cached_managed_nodes": [],
+                "running_insts_map": [],
+                "pods_to_schedule": [],
+                "running_or_pending_assigned_pods": [],
+                "asgs": []
+            }
+        },
+        "Cluster.fulfill_pending": {
+            "name": "fulfill_pending",
+            "location": 475,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "asgs": [],
+                "selectors_hash": [],
+                "pods": []
+            }
+        },
+        "Cluster.get_running_instances_in_region": {
+            "name": "get_running_instances_in_region",
+            "location": 579,
+            "return": [
+                "Generator[(Any, Any, None)]"
+            ],
+            "arguments": {
+                "self": [],
+                "region": [],
+                "instance_ids": []
+            }
+        },
+        "Cluster.get_running_instances_map": {
+            "name": "get_running_instances_map",
+            "location": 622,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "self": [],
+                "nodes": [],
+                "azure_groups": []
+            }
+        },
+        "Cluster._get_required_capacity": {
+            "name": "_get_required_capacity",
+            "location": 653,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "requested": [],
+                "group": []
+            }
+        },
+        "Cluster._prioritize_groups": {
+            "name": "_prioritize_groups",
+            "location": 670,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "groups": []
+            }
+        },
+        "Cluster.get_node_state": {
+            "name": "get_node_state",
+            "location": 694,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [],
+                "asg": [],
+                "node_pods": [],
+                "pods_to_schedule": [],
+                "running_insts_map": [],
+                "idle_selector_hash": []
+            }
+        },
+        "Cluster.get_pods_to_schedule": {
+            "name": "get_pods_to_schedule",
+            "location": 794,
+            "return": [
+                "Dict[(str, list)]"
+            ],
+            "arguments": {
+                "self": [],
+                "pods": []
+            }
+        },
+        "Cluster._prioritize_groups.sort_key": {
+            "name": "sort_key",
+            "location": 680,
+            "return": [],
+            "arguments": {
+                "group": []
+            }
+        },
+        "Cluster.fulfill_pending.notify_if_scaled": {
+            "name": "notify_if_scaled",
+            "location": 545,
+            "return": [],
+            "arguments": {
+                "future": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/config.py": {},
+    "kops-ec2-autoscaler-master/autoscaler/kube.py": {
+        "reverse_bytes": {
+            "name": "reverse_bytes",
+            "location": 125,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "value": []
+            }
+        },
+        "KubePod.__init__": {
+            "name": "__init__",
+            "location": 26,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": []
+            }
+        },
+        "KubePod.is_mirrored": {
+            "name": "is_mirrored",
+            "location": 78,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_replicated": {
+            "name": "is_replicated",
+            "location": 83,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_critical": {
+            "name": "is_critical",
+            "location": 87,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_in_drain_grace_period": {
+            "name": "is_in_drain_grace_period",
+            "location": 90,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_drainable": {
+            "name": "is_drainable",
+            "location": 98,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.delete": {
+            "name": "delete",
+            "location": 107,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.__hash__": {
+            "name": "__hash__",
+            "location": 111,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.__eq__": {
+            "name": "__eq__",
+            "location": 114,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "KubePod.__str__": {
+            "name": "__str__",
+            "location": 117,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.__repr__": {
+            "name": "__repr__",
+            "location": 121,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.__init__": {
+            "name": "__init__",
+            "location": 136,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "node": []
+            }
+        },
+        "KubeNode._get_instance_data": {
+            "name": "_get_instance_data",
+            "location": 163,
+            "return": [
+                "Tuple[(Any, Any, Any, str)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.selectors": {
+            "name": "selectors",
+            "location": 194,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.unschedulable": {
+            "name": "unschedulable",
+            "location": 198,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.can_uncordon": {
+            "name": "can_uncordon",
+            "location": 202,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.drain": {
+            "name": "drain",
+            "location": 205,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "pods": [],
+                "notifier": []
+            }
+        },
+        "KubeNode.uncordon": {
+            "name": "uncordon",
+            "location": 214,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.cordon": {
+            "name": "cordon",
+            "location": 229,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.delete": {
+            "name": "delete",
+            "location": 241,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.count_pod": {
+            "name": "count_pod",
+            "location": 250,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": []
+            }
+        },
+        "KubeNode.can_fit": {
+            "name": "can_fit",
+            "location": 254,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "resources": []
+            }
+        },
+        "KubeNode.is_match": {
+            "name": "is_match",
+            "location": 259,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": [
+                    "KubePod"
+                ]
+            }
+        },
+        "KubeNode.is_managed": {
+            "name": "is_managed",
+            "location": 274,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.is_detached": {
+            "name": "is_detached",
+            "location": 280,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.is_dead": {
+            "name": "is_dead",
+            "location": 283,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.__hash__": {
+            "name": "__hash__",
+            "location": 286,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.__eq__": {
+            "name": "__eq__",
+            "location": 289,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "KubeNode.__str__": {
+            "name": "__str__",
+            "location": 292,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeResource.__init__": {
+            "name": "__init__",
+            "location": 299,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeResource.__add__": {
+            "name": "__add__",
+            "location": 303,
+            "return": [
+                "_TKubeResource"
+            ],
+            "arguments": {
+                "self": [
+                    "_TKubeResource"
+                ],
+                "other": []
+            }
+        },
+        "KubeResource.__sub__": {
+            "name": "__sub__",
+            "location": 309,
+            "return": [
+                "_TKubeResource"
+            ],
+            "arguments": {
+                "self": [
+                    "_TKubeResource"
+                ],
+                "other": []
+            }
+        },
+        "KubeResource.__mul__": {
+            "name": "__mul__",
+            "location": 315,
+            "return": [
+                "_TKubeResource"
+            ],
+            "arguments": {
+                "self": [
+                    "_TKubeResource"
+                ],
+                "multiplier": []
+            }
+        },
+        "KubeResource.__rmul__": {
+            "name": "__rmul__",
+            "location": 319,
+            "return": [
+                "_TKubeResource"
+            ],
+            "arguments": {
+                "self": [
+                    "_TKubeResource"
+                ],
+                "multiplier": []
+            }
+        },
+        "KubeResource.__cmp__": {
+            "name": "__cmp__",
+            "location": 322,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "KubeResource.__str__": {
+            "name": "__str__",
+            "location": 341,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeResource.get": {
+            "name": "get",
+            "location": 344,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [],
+                "default": []
+            }
+        },
+        "KubeResource.possible": {
+            "name": "possible",
+            "location": 348,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/notification.py": {
+        "_cache_key": {
+            "name": "_cache_key",
+            "location": 21,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "notifier": [],
+                "owner": [],
+                "message": [],
+                "pods": []
+            }
+        },
+        "_generate_pod_string": {
+            "name": "_generate_pod_string",
+            "location": 33,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "pods": []
+            }
+        },
+        "struct_log": {
+            "name": "struct_log",
+            "location": 43,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "message": [],
+                "pods": [],
+                "extra": []
+            }
+        },
+        "Notifier.__init__": {
+            "name": "__init__",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "hook": [],
+                "bot_token": []
+            }
+        },
+        "Notifier.notify_scale": {
+            "name": "notify_scale",
+            "location": 64,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [],
+                "units_requested": [],
+                "pods": []
+            }
+        },
+        "Notifier.notify_failed_to_scale": {
+            "name": "notify_failed_to_scale",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "selectors_hash": [],
+                "pods": []
+            }
+        },
+        "Notifier.notify_invalid_pod_capacity": {
+            "name": "notify_invalid_pod_capacity",
+            "location": 119,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": [],
+                "recommended_capacity": []
+            }
+        },
+        "Notifier.notify_drained_node": {
+            "name": "notify_drained_node",
+            "location": 144,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [],
+                "pods": []
+            }
+        },
+        "Notifier.message_owners": {
+            "name": "message_owners",
+            "location": 167,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "message": [],
+                "pods": []
+            }
+        },
+        "Notifier.message_owner": {
+            "name": "message_owner",
+            "location": 181,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "owner": [],
+                "message": [],
+                "pods": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/utils.py": {
+        "selectors_to_hash": {
+            "name": "selectors_to_hash",
+            "location": 68,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "selectors": []
+            }
+        },
+        "get_groups_for_hash": {
+            "name": "get_groups_for_hash",
+            "location": 72,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "asgs": [],
+                "selectors_hash": []
+            }
+        },
+        "get_group_for_node": {
+            "name": "get_group_for_node",
+            "location": 84,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "asgs": [],
+                "node": []
+            }
+        },
+        "parse_SI": {
+            "name": "parse_SI",
+            "location": 121,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "s": []
+            }
+        },
+        "parse_resource": {
+            "name": "parse_resource",
+            "location": 130,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "resource": []
+            }
+        },
+        "parse_bool_label": {
+            "name": "parse_bool_label",
+            "location": 137,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "value": []
+            }
+        },
+        "get_relevant_selectors": {
+            "name": "get_relevant_selectors",
+            "location": 141,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "node_selectors": []
+            }
+        },
+        "CountDownCallback.__init__": {
+            "name": "__init__",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "count": [],
+                "delegate": []
+            }
+        },
+        "CountDownCallback.__call__": {
+            "name": "__call__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Future.result": {
+            "name": "result",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Future.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "fn": []
+            }
+        },
+        "CompletedFuture.__init__": {
+            "name": "__init__",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "value": []
+            }
+        },
+        "CompletedFuture.result": {
+            "name": "result",
+            "location": 35,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CompletedFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "fn": []
+            }
+        },
+        "TransformingFuture.__init__": {
+            "name": "__init__",
+            "location": 43,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [],
+                "delegate": []
+            }
+        },
+        "TransformingFuture.result": {
+            "name": "result",
+            "location": 47,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TransformingFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 51,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "fn": []
+            }
+        },
+        "AllCompletedFuture.__init__": {
+            "name": "__init__",
+            "location": 56,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "futures": []
+            }
+        },
+        "AllCompletedFuture.result": {
+            "name": "result",
+            "location": 59,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AllCompletedFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 62,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "fn": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/__init__.py": {},
+    "kops-ec2-autoscaler-master/test/test_azure.py": {
+        "TestCluster.test_scale_up": {
+            "name": "test_scale_up",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_priority": {
+            "name": "test_priority",
+            "location": 42,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_slow_scale_up": {
+            "name": "test_slow_scale_up",
+            "location": 69,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_tainted_scale_set": {
+            "name": "test_tainted_scale_set",
+            "location": 94,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_out_of_quota": {
+            "name": "test_out_of_quota",
+            "location": 123,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_in": {
+            "name": "test_scale_in",
+            "location": 142,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/test/test_azure_api.py": {
+        "TestingFuture.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestingFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "fn": []
+            }
+        },
+        "TestingFuture.complete": {
+            "name": "complete",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_caching": {
+            "name": "test_caching",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_copied": {
+            "name": "test_copied",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_refresh": {
+            "name": "test_refresh",
+            "location": 67,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_update": {
+            "name": "test_update",
+            "location": 91,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_inconsistent_delegate": {
+            "name": "test_inconsistent_delegate",
+            "location": 118,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_terminate": {
+            "name": "test_terminate",
+            "location": 151,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_terminate_with_concurrent_read": {
+            "name": "test_terminate_with_concurrent_read",
+            "location": 178,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWrapper.test_basic": {
+            "name": "test_basic",
+            "location": 214,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWrapper.test_out_of_quota": {
+            "name": "test_out_of_quota",
+            "location": 238,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/test/test_capacity.py": {
+        "TestCapacity.setUp": {
+            "name": "setUp",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCapacity.test_possible": {
+            "name": "test_possible",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCapacity.test_impossible": {
+            "name": "test_impossible",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/test/test_cluster.py": {
+        "TestCluster.setUp": {
+            "name": "setUp",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.tearDown": {
+            "name": "tearDown",
+            "location": 103,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster._spin_up_node": {
+            "name": "_spin_up_node",
+            "location": 107,
+            "return": [
+                "autoscaler.kube.KubeNode"
+            ],
+            "arguments": {
+                "self": [],
+                "launch_time": []
+            }
+        },
+        "TestCluster._spin_up_nodes": {
+            "name": "_spin_up_nodes",
+            "location": 110,
+            "return": [
+                "List[autoscaler.kube.KubeNode]"
+            ],
+            "arguments": {
+                "self": [],
+                "count": [],
+                "launch_time": []
+            }
+        },
+        "TestCluster.test_reap_dead_node": {
+            "name": "test_reap_dead_node",
+            "location": 131,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_max_scale_in": {
+            "name": "test_max_scale_in",
+            "location": 155,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_up_selector": {
+            "name": "test_scale_up_selector",
+            "location": 177,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_up": {
+            "name": "test_scale_up",
+            "location": 190,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_up_notification": {
+            "name": "test_scale_up_notification",
+            "location": 200,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_timed_out_group": {
+            "name": "test_timed_out_group",
+            "location": 211,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down": {
+            "name": "test_scale_down",
+            "location": 228,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_launch_grace_period": {
+            "name": "test_scale_down_launch_grace_period",
+            "location": 255,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_grace_period": {
+            "name": "test_scale_down_grace_period",
+            "location": 281,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_busy": {
+            "name": "test_scale_down_busy",
+            "location": 305,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_under_utilized_undrainable": {
+            "name": "test_scale_down_under_utilized_undrainable",
+            "location": 347,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_under_utilized_drainable": {
+            "name": "test_scale_down_under_utilized_drainable",
+            "location": 395,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_prioritization": {
+            "name": "test_prioritization",
+            "location": 433,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    }
+}

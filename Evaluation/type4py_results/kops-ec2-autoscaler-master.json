@@ -1,0 +1,3480 @@
+{
+    "kops-ec2-autoscaler-master/main.py": {
+        "main": {
+            "name": "main",
+            "location": 55,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "cluster_name": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "aws_regions": [
+                    "str",
+                    "List[str]",
+                    "bytes"
+                ],
+                "azure_resource_groups": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "azure_slow_scale_classes": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "sleep": [
+                    "str",
+                    "int"
+                ],
+                "kubeconfig": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "azure_client_id": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "azure_client_secret": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "azure_subscription_id": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "azure_tenant_id": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "aws_access_key": [
+                    "str",
+                    "Optional[str]",
+                    "bytes"
+                ],
+                "aws_secret_key": [
+                    "str",
+                    "Optional[str]",
+                    "bytes"
+                ],
+                "datadog_api_key": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "idle_threshold": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "type_idle_threshold": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "max_scale_in_fraction": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "over_provision": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "instance_init_time": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "no_scale": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "no_maintenance": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "slack_hook": [
+                    "str",
+                    "int",
+                    "bytes"
+                ],
+                "slack_bot_token": [
+                    "str",
+                    "int",
+                    "bytes"
+                ],
+                "dry_run": [
+                    "str",
+                    "bytes",
+                    "Optional[str]"
+                ],
+                "verbose": [
+                    "int",
+                    "str",
+                    "bool",
+                    "bytes",
+                    "Optional[str]"
+                ]
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/setup.py": {},
+    "kops-ec2-autoscaler-master/autoscaler/autoscaling_groups.py": {
+        "AutoScalingGroups.__init__": {
+            "name": "__init__",
+            "location": 22,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "session": [
+                    "bool",
+                    "Optional[str]",
+                    "Dict[str, str]"
+                ],
+                "regions": [
+                    "bool",
+                    "Optional[str]",
+                    "Dict[str, str]"
+                ],
+                "cluster_name": [
+                    "str",
+                    "List[str]",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "AutoScalingGroups.get_all_raw_groups_and_launch_configs": {
+            "name": "get_all_raw_groups_and_launch_configs",
+            "location": 32,
+            "return": [
+                "int",
+                "str",
+                "List[int]",
+                "utils.Node",
+                "trezor.utils.Writer",
+                "float"
+            ],
+            "arguments": {
+                "client": []
+            }
+        },
+        "AutoScalingGroups.get_all_groups": {
+            "name": "get_all_groups",
+            "location": 49,
+            "return": [
+                "str",
+                "int",
+                "Tuple[bytes]",
+                "Dict[str, Any]"
+            ],
+            "arguments": {
+                "self": [],
+                "kube_nodes": [
+                    "Callable",
+                    "Dict[str, Any]",
+                    "str"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.__init__": {
+            "name": "__init__",
+            "location": 89,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "session": [
+                    "str",
+                    "List[str]",
+                    "Sequence[str]",
+                    "bool"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.refresh_timeouts": {
+            "name": "refresh_timeouts",
+            "location": 104,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "asgs": [
+                    "bool",
+                    "str",
+                    "dict",
+                    "int"
+                ],
+                "dry_run": [
+                    "bool",
+                    "Dict[str, str]",
+                    "Dict[str, dict]"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.iter_activities": {
+            "name": "iter_activities",
+            "location": 138,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "client": [
+                    "bool"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.revert_capacity": {
+            "name": "revert_capacity",
+            "location": 151,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [
+                    "bytes",
+                    "str",
+                    "float"
+                ],
+                "entry": [
+                    "List[str]",
+                    "Sequence[str]",
+                    "str",
+                    "Dict[str, Any]",
+                    "Dict[str, List[Any]]",
+                    "bool",
+                    "Dict[str, str]"
+                ],
+                "dry_run": [
+                    "bool",
+                    "int",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.time_out_asg": {
+            "name": "time_out_asg",
+            "location": 170,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [
+                    "str",
+                    "Dict[str, str]",
+                    "datetime.date",
+                    "Optional[str]"
+                ],
+                "entry": [
+                    "str",
+                    "Dict[str, str]",
+                    "datetime.date",
+                    "Optional[str]",
+                    "datetime.timedelta",
+                    "int"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.reconcile_limits": {
+            "name": "reconcile_limits",
+            "location": 176,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "asg": [
+                    "str",
+                    "Optional[float]"
+                ],
+                "activities": [
+                    "bool",
+                    "int",
+                    "Optional[str]"
+                ],
+                "dry_run": [
+                    "Tuple[int, int, int]",
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.is_timed_out": {
+            "name": "is_timed_out",
+            "location": 270,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [
+                    "int",
+                    "Type[T]",
+                    "Optional['models.LTI1p3Provider']",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.cancel_spot_request": {
+            "name": "cancel_spot_request",
+            "location": 282,
+            "return": [
+                "bool",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "region": [
+                    "str",
+                    "int",
+                    "Mapping[str, Any]"
+                ],
+                "request_id": [
+                    "str",
+                    "int",
+                    "dict",
+                    "bool",
+                    "Dict[str, str]"
+                ]
+            }
+        },
+        "AutoScalingTimeouts.time_out_spot_asgs": {
+            "name": "time_out_spot_asgs",
+            "location": 301,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "asgs": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "AutoScalingGroup.__init__": {
+            "name": "__init__",
+            "location": 369,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "client": [
+                    "str",
+                    "bool",
+                    "float",
+                    "Union[str, Dict[str, Any]]"
+                ],
+                "region": [
+                    "dict",
+                    "List[Dict]",
+                    "Optional[str]"
+                ],
+                "kube_nodes": [
+                    "bytes",
+                    "int",
+                    "IO[str]",
+                    "bool"
+                ],
+                "raw_group": [
+                    "cmk.utils.type_defs.HostName",
+                    "Dict[str, Any]",
+                    "Tuple[Optional[float], Optional[float]]",
+                    "Callable",
+                    "Dict[str, Union[int, bool]]",
+                    "dict",
+                    "Mapping",
+                    "Optional[str]"
+                ],
+                "launch_config": [
+                    "Dict[str, str]",
+                    "Sequence",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "AutoScalingGroup._extract_selectors": {
+            "name": "_extract_selectors",
+            "location": 398,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "region": [
+                    "raiden.utils.Address",
+                    "str",
+                    "Optional[bool]"
+                ],
+                "launch_config": [
+                    "raiden.utils.Address",
+                    "str",
+                    "Optional[bool]"
+                ],
+                "tags_data": [
+                    "str",
+                    "bool",
+                    "Union[str, bytes]",
+                    "list"
+                ]
+            }
+        },
+        "AutoScalingGroup.is_timed_out": {
+            "name": "is_timed_out",
+            "location": 415,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.global_priority": {
+            "name": "global_priority",
+            "location": 419,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.actual_capacity": {
+            "name": "actual_capacity",
+            "location": 423,
+            "return": [
+                "float",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.set_desired_capacity": {
+            "name": "set_desired_capacity",
+            "location": 426,
+            "return": [
+                "bool",
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "new_desired_capacity": [
+                    "dict",
+                    "Exception",
+                    "str",
+                    "bool",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "AutoScalingGroup.scale": {
+            "name": "scale",
+            "location": 440,
+            "return": [
+                "Optional[int]",
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "new_desired_capacity": [
+                    "int"
+                ]
+            }
+        },
+        "AutoScalingGroup.scale_nodes_in": {
+            "name": "scale_nodes_in",
+            "location": 485,
+            "return": [
+                "Optional[int]",
+                "Optional[str]",
+                "Optional[float]"
+            ],
+            "arguments": {
+                "self": [],
+                "nodes": [
+                    "bool",
+                    "int",
+                    "str"
+                ]
+            }
+        },
+        "AutoScalingGroup.contains": {
+            "name": "contains",
+            "location": 511,
+            "return": [
+                "bool",
+                "Optional[str]",
+                "Dict[str, Any]",
+                "datetime",
+                "str",
+                "\"Pipeline\""
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "list",
+                    "bytes",
+                    "int",
+                    "str",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "AutoScalingGroup.is_match_for_selectors": {
+            "name": "is_match_for_selectors",
+            "location": 514,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "selectors": [
+                    "dict",
+                    "str",
+                    "Dict[str, float]",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "AutoScalingGroup.is_taints_tolerated": {
+            "name": "is_taints_tolerated",
+            "location": 520,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": [
+                    "Dict[str, Any]",
+                    "int",
+                    "list",
+                    "Callable[[T], bool]",
+                    "dict"
+                ]
+            }
+        },
+        "AutoScalingGroup.__str__": {
+            "name": "__str__",
+            "location": 529,
+            "return": [
+                "str",
+                "Tuple[Tuple[int, ...]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AutoScalingGroup.__repr__": {
+            "name": "__repr__",
+            "location": 532,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/aws_utils.py": {
+        "fetch_all": {
+            "name": "fetch_all",
+            "location": 1,
+            "return": [
+                "str",
+                "bytes"
+            ],
+            "arguments": {
+                "aws_paged_func": [
+                    "str"
+                ],
+                "kwargs": [],
+                "list_field": [
+                    "Sequence[int]",
+                    "Optional[bool]",
+                    "bool"
+                ],
+                "next_token": [
+                    "Union[float, int]",
+                    "Dict[int, Dict[str, str]]",
+                    "Optional[bytes]",
+                    "Type[\"SerializationDialect\"]",
+                    "Optional[Union[bool, Any]]"
+                ]
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/azure.py": {
+        "_get_azure_class": {
+            "name": "_get_azure_class",
+            "location": 89,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "type_": [
+                    "str"
+                ]
+            }
+        },
+        "AzureBoundedRetry.__init__": {
+            "name": "__init__",
+            "location": 25,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureBoundedRetry.from_retry": {
+            "name": "from_retry",
+            "location": 29,
+            "return": [
+                "set",
+                "Iterable",
+                "Callable",
+                "Sequence[str]"
+            ],
+            "arguments": {
+                "retry": [
+                    "Dict[str, Any]",
+                    "bool"
+                ]
+            }
+        },
+        "AzureBoundedRetry.get_retry_after": {
+            "name": "get_retry_after",
+            "location": 41,
+            "return": [
+                "str",
+                "int",
+                "List[str]",
+                "datetime.datetime"
+            ],
+            "arguments": {
+                "self": [],
+                "response": [
+                    "Dict[str, Any]",
+                    "requests.Response"
+                ]
+            }
+        },
+        "AzureGroups.__init__": {
+            "name": "__init__",
+            "location": 65,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "resource_groups": [
+                    "bool",
+                    "list",
+                    "str",
+                    "cmk.utils.type_defs.HostName"
+                ],
+                "slow_scale_classes": [
+                    "bool",
+                    "int",
+                    "Optional[str]",
+                    "str"
+                ],
+                "client": [
+                    "str",
+                    "int",
+                    "float",
+                    "bool"
+                ]
+            }
+        },
+        "AzureGroups.get_all_groups": {
+            "name": "get_all_groups",
+            "location": 70,
+            "return": [
+                "str",
+                "int",
+                "Tuple[bytes]",
+                "Dict[str, Any]"
+            ],
+            "arguments": {
+                "self": [],
+                "kube_nodes": [
+                    "list",
+                    "Callable"
+                ]
+            }
+        },
+        "AzureVirtualScaleSet.__init__": {
+            "name": "__init__",
+            "location": 101,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "region": [
+                    "bool",
+                    "Union[int, float]",
+                    "Optional[int]",
+                    "Optional[float]"
+                ],
+                "resource_group": [
+                    "str",
+                    "bool",
+                    "Optional[int]"
+                ],
+                "client": [
+                    "str",
+                    "Optional[str]",
+                    "Dict[str, Any]",
+                    "bool"
+                ],
+                "instance_type": [
+                    "bool",
+                    "str",
+                    "Dict[str, Any]",
+                    "Optional[str]"
+                ],
+                "slow_scale": [
+                    "str",
+                    "Optional[int]",
+                    "int"
+                ],
+                "scale_sets": [
+                    "bool",
+                    "list",
+                    "Sequence[Tuple[Any, Any]]",
+                    "Dict[int, int]"
+                ],
+                "kube_nodes": [
+                    "int",
+                    "Optional[List[str]]",
+                    "Optional[int]",
+                    "bool"
+                ]
+            }
+        },
+        "AzureVirtualScaleSet.is_timed_out": {
+            "name": "is_timed_out",
+            "location": 152,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.global_priority": {
+            "name": "global_priority",
+            "location": 159,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.get_azure_instances": {
+            "name": "get_azure_instances",
+            "location": 164,
+            "return": [
+                "str",
+                "Type[T]",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.instance_ids": {
+            "name": "instance_ids",
+            "location": 168,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.set_desired_capacity": {
+            "name": "set_desired_capacity",
+            "location": 171,
+            "return": [
+                "bool",
+                "str",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "new_desired_capacity": [
+                    "str",
+                    "T"
+                ]
+            }
+        },
+        "AzureVirtualScaleSet.terminate_instances": {
+            "name": "terminate_instances",
+            "location": 211,
+            "return": [
+                "Dict[str, Dict[str, int]]",
+                "Dict[str, Any]",
+                "set",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "vm_ids": [
+                    "str",
+                    "int",
+                    "dict",
+                    "bool"
+                ]
+            }
+        },
+        "AzureVirtualScaleSet.scale_nodes_in": {
+            "name": "scale_nodes_in",
+            "location": 226,
+            "return": [
+                "bool",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "nodes": []
+            }
+        },
+        "AzureVirtualScaleSet.__str__": {
+            "name": "__str__",
+            "location": 235,
+            "return": [
+                "str",
+                "Callable",
+                "int",
+                "type"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureVirtualScaleSet.__repr__": {
+            "name": "__repr__",
+            "location": 238,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureInstance.__init__": {
+            "name": "__init__",
+            "location": 245,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "instance_id": [
+                    "str",
+                    "MutableSequence[str]"
+                ],
+                "instance_type": [
+                    "bool",
+                    "Tuple[int, int]",
+                    "Iterable[Iterable[str]]",
+                    "Optional[str]"
+                ],
+                "launch_time": [
+                    "bool",
+                    "int",
+                    "Optional[float]",
+                    "Optional[int]",
+                    "float",
+                    "T"
+                ],
+                "tags": [
+                    "Optional[str]",
+                    "Optional[Sequence]",
+                    "Type",
+                    "str",
+                    "Optional[int]"
+                ]
+            }
+        },
+        "AzureInstance.__str__": {
+            "name": "__str__",
+            "location": 251,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureInstance.__repr__": {
+            "name": "__repr__",
+            "location": 254,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/azure_api.py": {
+        "AzureScaleSet.__init__": {
+            "name": "__init__",
+            "location": 27,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "location": [
+                    "bool",
+                    "str",
+                    "Optional[str]"
+                ],
+                "resource_group": [
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Optional[Union[Any, str]]",
+                    "Optional[int]"
+                ],
+                "name": [
+                    "str",
+                    "Optional[str]",
+                    "Optional[Sequence[Any]]",
+                    "bool"
+                ],
+                "instance_type": [
+                    "str",
+                    "bool",
+                    "int"
+                ],
+                "capacity": [
+                    "bool",
+                    "int",
+                    "Optional[str]"
+                ],
+                "provisioning_state": [
+                    "float",
+                    "Optional[\"ShipmentState\"]",
+                    "Optional[\"PaymentState\"]",
+                    "Optional[\"OrderState\"]",
+                    "int",
+                    "str"
+                ],
+                "timeout_until": [
+                    "bool",
+                    "int",
+                    "Optional[str]"
+                ],
+                "timeout_reason": [
+                    "bool",
+                    "int",
+                    "Optional[str]"
+                ],
+                "priority": [
+                    "bool",
+                    "int",
+                    "Optional[str]"
+                ],
+                "no_schedule_taints": [
+                    "bool",
+                    "int",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "AzureScaleSet.__str__": {
+            "name": "__str__",
+            "location": 41,
+            "return": [
+                "str",
+                "Tuple[Tuple[int, ...]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSet.__repr__": {
+            "name": "__repr__",
+            "location": 44,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSet._key": {
+            "name": "_key",
+            "location": 47,
+            "return": [
+                "int",
+                "Dict[str, Union[str, Any]]",
+                "List[str]",
+                "type",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSet.__eq__": {
+            "name": "__eq__",
+            "location": 51,
+            "return": [
+                "str",
+                "bool",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "dict",
+                    "Union[int, float]"
+                ]
+            }
+        },
+        "AzureScaleSet.__hash__": {
+            "name": "__hash__",
+            "location": 56,
+            "return": [
+                "int",
+                "dict",
+                "bytes",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance.__init__": {
+            "name": "__init__",
+            "location": 61,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "instance_id": [
+                    "str",
+                    "int",
+                    "Optional[int]"
+                ],
+                "vm_id": [
+                    "str",
+                    "int",
+                    "Optional[int]"
+                ],
+                "launch_time": [
+                    "int",
+                    "str",
+                    "float",
+                    "datetime.datetime"
+                ]
+            }
+        },
+        "AzureScaleSetInstance.__str__": {
+            "name": "__str__",
+            "location": 66,
+            "return": [
+                "str",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance.__repr__": {
+            "name": "__repr__",
+            "location": 69,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance._key": {
+            "name": "_key",
+            "location": 72,
+            "return": [
+                "dict",
+                "cmk.utils.type_defs.UserId",
+                "bool",
+                "Union[float, str]",
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureScaleSetInstance.__eq__": {
+            "name": "__eq__",
+            "location": 75,
+            "return": [
+                "str",
+                "bool",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "Optional[Exception]",
+                    "T",
+                    "Exception",
+                    "Mapping",
+                    "dict",
+                    "jumeaux.models.DumpAddOnPayload"
+                ]
+            }
+        },
+        "AzureScaleSetInstance.__hash__": {
+            "name": "__hash__",
+            "location": 80,
+            "return": [
+                "int",
+                "dict",
+                "bytes",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureApi.list_scale_sets": {
+            "name": "list_scale_sets",
+            "location": 85,
+            "return": [
+                "typing.List[AzureScaleSet]"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "AzureApi.list_scale_set_instances": {
+            "name": "list_scale_set_instances",
+            "location": 88,
+            "return": [
+                "typing.List[AzureScaleSetInstance]"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "str",
+                    "List[str]",
+                    "bool"
+                ]
+            }
+        },
+        "AzureApi.update_scale_set": {
+            "name": "update_scale_set",
+            "location": 91,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "int",
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Type[T]",
+                    "list"
+                ],
+                "new_capacity": [
+                    "int",
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Type[T]",
+                    "list"
+                ]
+            }
+        },
+        "AzureApi.terminate_scale_set_instances": {
+            "name": "terminate_scale_set_instances",
+            "location": 94,
+            "return": [
+                "autoscaler.utils.Future"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "str",
+                    "bool"
+                ],
+                "instances": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "AzureWrapper.__init__": {
+            "name": "__init__",
+            "location": 102,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "compute_client": [
+                    "Callable"
+                ],
+                "monitor_client": [
+                    "Callable"
+                ]
+            }
+        },
+        "AzureWrapper.list_scale_sets": {
+            "name": "list_scale_sets",
+            "location": 106,
+            "return": [
+                "list",
+                "set",
+                "List[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str",
+                    "Optional[str]",
+                    "Dict[str, str]",
+                    "list"
+                ]
+            }
+        },
+        "AzureWrapper.list_scale_set_instances": {
+            "name": "list_scale_set_instances",
+            "location": 143,
+            "return": [
+                "list",
+                "set",
+                "List[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "str",
+                    "dict"
+                ]
+            }
+        },
+        "AzureWrapper.update_scale_set": {
+            "name": "update_scale_set",
+            "location": 154,
+            "return": [
+                "Optional[int]",
+                "Optional[bool]",
+                "int",
+                "raiden.utils.Dict[str, raiden.utils.Any]",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "int",
+                    "str",
+                    "bytes"
+                ],
+                "new_capacity": [
+                    "int",
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "AzureWrapper.terminate_scale_set_instances": {
+            "name": "terminate_scale_set_instances",
+            "location": 160,
+            "return": [
+                "bool",
+                "str",
+                "int",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "nativecards.models.Settings",
+                    "str",
+                    "dict",
+                    "Optional[str]",
+                    "bool"
+                ],
+                "instances": [
+                    "nativecards.models.Settings",
+                    "str",
+                    "dict",
+                    "Optional[str]",
+                    "bool"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.__init__": {
+            "name": "__init__",
+            "location": 166,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "delegate": [
+                    "int",
+                    "bool",
+                    "float"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.list_scale_sets": {
+            "name": "list_scale_sets",
+            "location": 172,
+            "return": [
+                "str",
+                "Dict[str, Any]",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str",
+                    "int"
+                ],
+                "force_refresh": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.list_scale_set_instances": {
+            "name": "list_scale_set_instances",
+            "location": 194,
+            "return": [
+                "str",
+                "bytes",
+                "int",
+                "Callable"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "str",
+                    "List[str]",
+                    "Dict[str, str]"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.update_scale_set": {
+            "name": "update_scale_set",
+            "location": 207,
+            "return": [
+                "int",
+                "dict",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "cmk.utils.structured_data.StructuredDataTree",
+                    "NamedTuple",
+                    "dict",
+                    "Callable"
+                ],
+                "new_capacity": [
+                    "int",
+                    "Dict[str, Any]",
+                    "List[Callable]",
+                    "bool",
+                    "hippocrates.questionnaires.models.QuestionAnswerSet"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi.terminate_scale_set_instances": {
+            "name": "terminate_scale_set_instances",
+            "location": 212,
+            "return": [
+                "bool",
+                "str",
+                "int",
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "scale_set": [
+                    "taxonomy.db.models.Taxon",
+                    "str",
+                    "server.models.Bike",
+                    "int"
+                ],
+                "instances": [
+                    "bool",
+                    "raiden.utils.PrivateKey",
+                    "raiden.utils.TokenNetworkAddress",
+                    "raiden.utils.Address",
+                    "raiden.utils.OneToNAddress",
+                    "raiden.utils.BlockNumber",
+                    "raiden.utils.ChainID"
+                ]
+            }
+        },
+        "AzureWriteThroughCachedApi._invalidate": {
+            "name": "_invalidate",
+            "location": 217,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "resource_group_name": [
+                    "str",
+                    "Optional[str]"
+                ],
+                "scale_set_name": [
+                    "str",
+                    "List[str]"
+                ]
+            }
+        },
+        "AzureOperationPollerFutureAdapter.__init__": {
+            "name": "__init__",
+            "location": 231,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "azure_operation": [
+                    "Dict[str, Any]",
+                    "Optional[Iterable[T]]",
+                    "bool",
+                    "zam_repondeur.models.Lecture"
+                ]
+            }
+        },
+        "AzureOperationPollerFutureAdapter._handle_completion": {
+            "name": "_handle_completion",
+            "location": 242,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "result": [
+                    "Union[int, float]"
+                ]
+            }
+        },
+        "AzureOperationPollerFutureAdapter.result": {
+            "name": "result",
+            "location": 256,
+            "return": [
+                "bool",
+                "zerver.models.Realm",
+                "int",
+                "str",
+                "Union[server.models.User, int]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AzureOperationPollerFutureAdapter.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 275,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "fn": [
+                    "Callable[[], None]",
+                    "str",
+                    "list",
+                    "tuple"
+                ]
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/capacity.py": {
+        "is_possible": {
+            "name": "is_possible",
+            "location": 28,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "pod": [
+                    "int",
+                    "str"
+                ]
+            }
+        },
+        "max_capacity_for_selectors": {
+            "name": "max_capacity_for_selectors",
+            "location": 38,
+            "return": [
+                "float",
+                "str",
+                "List[str]",
+                "int"
+            ],
+            "arguments": {
+                "selectors": [
+                    "Mapping[str, Any]",
+                    "Dict[str, Any]",
+                    "Dict[str, List[Any]]",
+                    "dict"
+                ],
+                "resource_requests": [
+                    "int",
+                    "float",
+                    "bytes",
+                    "List[List[int]]"
+                ]
+            }
+        },
+        "get_unit_capacity": {
+            "name": "get_unit_capacity",
+            "location": 76,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "group": [
+                    "int",
+                    "str"
+                ]
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/cluster.py": {
+        "Cluster.__init__": {
+            "name": "__init__",
+            "location": 84,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "aws_regions": [
+                    "str",
+                    "dict",
+                    "Dict[str, Any]"
+                ],
+                "aws_access_key": [
+                    "str",
+                    "dict"
+                ],
+                "aws_secret_key": [
+                    "str",
+                    "dict"
+                ],
+                "azure_client_id": [
+                    "str",
+                    "Optional[str]"
+                ],
+                "azure_client_secret": [
+                    "str",
+                    "Optional[str]"
+                ],
+                "azure_subscription_id": [
+                    "str",
+                    "Dict[str, str]",
+                    "Optional[List[str]]"
+                ],
+                "azure_tenant_id": [
+                    "str",
+                    "Optional[str]"
+                ],
+                "azure_resource_group_names": [
+                    "str"
+                ],
+                "azure_slow_scale_classes": [
+                    "str",
+                    "Union[str, TextIO]",
+                    "int"
+                ],
+                "kubeconfig": [
+                    "str"
+                ],
+                "idle_threshold": [
+                    "str",
+                    "Dict[str, Any]",
+                    "bool",
+                    "List[str]"
+                ],
+                "type_idle_threshold": [
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "Tuple[int, int]"
+                ],
+                "instance_init_time": [
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "mode.utils.times.Seconds",
+                    "datetime.datetime",
+                    "datetime.timedelta"
+                ],
+                "cluster_name": [
+                    "str"
+                ],
+                "notifier": [
+                    "str",
+                    "Dict[str, Any]",
+                    "bool",
+                    "List[str]"
+                ],
+                "max_scale_in_fraction": [
+                    "int",
+                    "str"
+                ],
+                "scale_up": [
+                    "str",
+                    "Dict[str, Any]",
+                    "bool",
+                    "List[str]"
+                ],
+                "maintainance": [
+                    "str",
+                    "Dict[str, Any]",
+                    "bool",
+                    "List[str]"
+                ],
+                "datadog_api_key": [
+                    "str",
+                    "float",
+                    "int"
+                ],
+                "over_provision": [
+                    "str",
+                    "Dict[str, Any]",
+                    "bool",
+                    "List[str]"
+                ],
+                "dry_run": [
+                    "str",
+                    "Dict[str, Any]",
+                    "bool",
+                    "List[str]"
+                ]
+            }
+        },
+        "Cluster.scale_loop": {
+            "name": "scale_loop",
+            "location": 177,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Cluster.scale": {
+            "name": "scale",
+            "location": 260,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "pods_to_schedule": [
+                    "dict",
+                    "Dict[str, Dict[str, Any]]",
+                    "Dict[str, Dict[str, float]]",
+                    "Dict[str, List[str]]"
+                ],
+                "all_nodes": [
+                    "bool",
+                    "Callable[..., None]",
+                    "Optional[int]"
+                ],
+                "asgs": [
+                    "int",
+                    "str",
+                    "tuple"
+                ],
+                "running_insts_map": [
+                    "Dict[str, Any]",
+                    "Type"
+                ]
+            }
+        },
+        "Cluster.maintain": {
+            "name": "maintain",
+            "location": 312,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "cached_managed_nodes": [
+                    "list",
+                    "List[List]",
+                    "float",
+                    "bool",
+                    "Callable[[], bool]",
+                    "int"
+                ],
+                "running_insts_map": [
+                    "Dict[str, Any]",
+                    "bool",
+                    "Dict[str, str]",
+                    "dict",
+                    "list",
+                    "Optional[List[str]]"
+                ],
+                "pods_to_schedule": [
+                    "Dict[str, Any]",
+                    "bool",
+                    "Dict[str, str]",
+                    "dict",
+                    "list",
+                    "Optional[List[str]]"
+                ],
+                "running_or_pending_assigned_pods": [
+                    "bool",
+                    "List[int]",
+                    "list",
+                    "int"
+                ],
+                "asgs": [
+                    "int",
+                    "list",
+                    "Optional[List[str]]",
+                    "Union[int, float]"
+                ]
+            }
+        },
+        "Cluster.fulfill_pending": {
+            "name": "fulfill_pending",
+            "location": 475,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "asgs": [
+                    "Callable",
+                    "str",
+                    "List[str]",
+                    "Sequence[str]",
+                    "list",
+                    "bool"
+                ],
+                "selectors_hash": [
+                    "bool",
+                    "str",
+                    "Sequence[Any]",
+                    "Iterable[T]"
+                ],
+                "pods": [
+                    "bool",
+                    "str",
+                    "Sequence[Any]",
+                    "Iterable[T]"
+                ]
+            }
+        },
+        "Cluster.get_running_instances_in_region": {
+            "name": "get_running_instances_in_region",
+            "location": 579,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "region": [
+                    "str",
+                    "Optional[str]"
+                ],
+                "instance_ids": [
+                    "str",
+                    "int",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "Cluster.get_running_instances_map": {
+            "name": "get_running_instances_map",
+            "location": 622,
+            "return": [
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "nodes": [
+                    "bool"
+                ],
+                "azure_groups": [
+                    "bool"
+                ]
+            }
+        },
+        "Cluster._get_required_capacity": {
+            "name": "_get_required_capacity",
+            "location": 653,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "requested": [
+                    "Exception"
+                ],
+                "group": [
+                    "str",
+                    "zam_repondeur.resources.LectureResource",
+                    "int",
+                    "List[Dict[str, Any]]"
+                ]
+            }
+        },
+        "Cluster._prioritize_groups": {
+            "name": "_prioritize_groups",
+            "location": 670,
+            "return": [
+                "str",
+                "Dict[str, Any]",
+                "int",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "groups": [
+                    "Optional[Tuple[str, ...]]",
+                    "Dict[str, Any]",
+                    "str",
+                    "Dict[str, float]",
+                    "float"
+                ]
+            }
+        },
+        "Cluster.get_node_state": {
+            "name": "get_node_state",
+            "location": 694,
+            "return": [
+                "str",
+                "Dict[str, Any]",
+                "Exception"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "dict",
+                    "Dict[str, str]",
+                    "List[str]"
+                ],
+                "asg": [
+                    "float",
+                    "int",
+                    "List[int]",
+                    "list"
+                ],
+                "node_pods": [
+                    "Union[float, int]",
+                    "int",
+                    "str",
+                    "Tuple[float, float]"
+                ],
+                "pods_to_schedule": [
+                    "dict",
+                    "bool",
+                    "int",
+                    "str"
+                ],
+                "running_insts_map": [
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "Callable",
+                    "dict"
+                ],
+                "idle_selector_hash": [
+                    "bool",
+                    "List[str]",
+                    "int",
+                    "str"
+                ]
+            }
+        },
+        "Cluster.get_pods_to_schedule": {
+            "name": "get_pods_to_schedule",
+            "location": 794,
+            "return": [
+                "int",
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "pods": [
+                    "str",
+                    "Optional[str]"
+                ]
+            }
+        },
+        "Cluster._prioritize_groups.sort_key": {
+            "name": "sort_key",
+            "location": 680,
+            "return": [
+                "Optional[int]",
+                "Optional[str]",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "group": [
+                    "bool",
+                    "Dict[str, Any]",
+                    "cmk.utils.type_defs.HostName",
+                    "int"
+                ]
+            }
+        },
+        "Cluster.fulfill_pending.notify_if_scaled": {
+            "name": "notify_if_scaled",
+            "location": 545,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "future": [
+                    "int",
+                    "Callable",
+                    "str"
+                ]
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/config.py": {},
+    "kops-ec2-autoscaler-master/autoscaler/kube.py": {
+        "reverse_bytes": {
+            "name": "reverse_bytes",
+            "location": 125,
+            "return": [
+                "bool",
+                "List[object]"
+            ],
+            "arguments": {
+                "value": [
+                    "int",
+                    "bool",
+                    "Sequence[Any]",
+                    "tests.utils.Strategy[paradigm.hints.Domain]",
+                    "str",
+                    "float",
+                    "list"
+                ]
+            }
+        },
+        "KubePod.__init__": {
+            "name": "__init__",
+            "location": 26,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "pod": [
+                    "int",
+                    "hackathon.utils.utils.DataMessage"
+                ]
+            }
+        },
+        "KubePod.is_mirrored": {
+            "name": "is_mirrored",
+            "location": 78,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_replicated": {
+            "name": "is_replicated",
+            "location": 83,
+            "return": [
+                "int",
+                "Tuple[int, int]",
+                "Type",
+                "logging.LogRecord",
+                "Optional[Any]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_critical": {
+            "name": "is_critical",
+            "location": 87,
+            "return": [
+                "mode.utils.Counter[faustypes.TP]",
+                "Callable"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_in_drain_grace_period": {
+            "name": "is_in_drain_grace_period",
+            "location": 90,
+            "return": [
+                "float",
+                "str",
+                "Optional[str]",
+                "datetime.timedelta",
+                "datetime.datetime"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.is_drainable": {
+            "name": "is_drainable",
+            "location": 98,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.delete": {
+            "name": "delete",
+            "location": 107,
+            "return": [
+                "int",
+                "str",
+                "bool",
+                "Dict[str, Any]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.__hash__": {
+            "name": "__hash__",
+            "location": 111,
+            "return": [
+                "int",
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.__eq__": {
+            "name": "__eq__",
+            "location": 114,
+            "return": [
+                "int",
+                "bool",
+                "List[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "T",
+                    "dict",
+                    "str"
+                ]
+            }
+        },
+        "KubePod.__str__": {
+            "name": "__str__",
+            "location": 117,
+            "return": [
+                "str",
+                "Optional[str]",
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubePod.__repr__": {
+            "name": "__repr__",
+            "location": 121,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.__init__": {
+            "name": "__init__",
+            "location": 136,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "node": []
+            }
+        },
+        "KubeNode._get_instance_data": {
+            "name": "_get_instance_data",
+            "location": 163,
+            "return": [
+                "Dict[str, Any]",
+                "Optional[str]",
+                "dict"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.selectors": {
+            "name": "selectors",
+            "location": 194,
+            "return": [
+                "str",
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.unschedulable": {
+            "name": "unschedulable",
+            "location": 198,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.can_uncordon": {
+            "name": "can_uncordon",
+            "location": 202,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.drain": {
+            "name": "drain",
+            "location": 205,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "pods": [
+                    "int",
+                    "Callable",
+                    "str"
+                ],
+                "notifier": [
+                    "int",
+                    "Callable",
+                    "str"
+                ]
+            }
+        },
+        "KubeNode.uncordon": {
+            "name": "uncordon",
+            "location": 214,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.cordon": {
+            "name": "cordon",
+            "location": 229,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.delete": {
+            "name": "delete",
+            "location": 241,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.count_pod": {
+            "name": "count_pod",
+            "location": 250,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "pod": [
+                    "bool",
+                    "int",
+                    "Optional[int]",
+                    "Optional[bool]"
+                ]
+            }
+        },
+        "KubeNode.can_fit": {
+            "name": "can_fit",
+            "location": 254,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "resources": [
+                    "float",
+                    "Tuple[float, float]",
+                    "Dict[str, Any]",
+                    "utils.diskstaSection"
+                ]
+            }
+        },
+        "KubeNode.is_match": {
+            "name": "is_match",
+            "location": 259,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": [
+                    "utils.mssql_counters.Section",
+                    "dict",
+                    "int",
+                    "Optional[Dict[str, str]]"
+                ]
+            }
+        },
+        "KubeNode.is_managed": {
+            "name": "is_managed",
+            "location": 274,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.is_detached": {
+            "name": "is_detached",
+            "location": 280,
+            "return": [
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.is_dead": {
+            "name": "is_dead",
+            "location": 283,
+            "return": [
+                "datetime.date",
+                "Optional[str]",
+                "datetime.datetime"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.__hash__": {
+            "name": "__hash__",
+            "location": 286,
+            "return": [
+                "str",
+                "Tuple[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeNode.__eq__": {
+            "name": "__eq__",
+            "location": 289,
+            "return": [
+                "str",
+                "list",
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "T",
+                    "str"
+                ]
+            }
+        },
+        "KubeNode.__str__": {
+            "name": "__str__",
+            "location": 292,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeResource.__init__": {
+            "name": "__init__",
+            "location": 299,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeResource.__add__": {
+            "name": "__add__",
+            "location": 303,
+            "return": [
+                "int",
+                "Optional[str]",
+                "datetime.datetime"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "dict",
+                    "Mapping[str, Any]",
+                    "Dict[str, Any]",
+                    "object"
+                ]
+            }
+        },
+        "KubeResource.__sub__": {
+            "name": "__sub__",
+            "location": 309,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "dict",
+                    "Mapping[str, Any]",
+                    "List[Tuple[Any, ...]]",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "KubeResource.__mul__": {
+            "name": "__mul__",
+            "location": 315,
+            "return": [
+                "str",
+                "int",
+                "List[str]",
+                "OrderedDict"
+            ],
+            "arguments": {
+                "self": [],
+                "multiplier": [
+                    "dict",
+                    "str",
+                    "list",
+                    "Callable[[str], T]",
+                    "Callable"
+                ]
+            }
+        },
+        "KubeResource.__rmul__": {
+            "name": "__rmul__",
+            "location": 319,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "multiplier": [
+                    "int",
+                    "Callable",
+                    "str"
+                ]
+            }
+        },
+        "KubeResource.__cmp__": {
+            "name": "__cmp__",
+            "location": 322,
+            "return": [
+                "int",
+                "List[int]",
+                "List[dict]"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "Union[str, \"Date\"]",
+                    "Tuple[float, float]"
+                ]
+            }
+        },
+        "KubeResource.__str__": {
+            "name": "__str__",
+            "location": 341,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KubeResource.get": {
+            "name": "get",
+            "location": 344,
+            "return": [
+                "Optional[bool]",
+                "Optional[Dict[str, Any]]",
+                "Optional[str]",
+                "str",
+                "Iterable[Sequence[str]]",
+                "Optional[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "str",
+                    "Optional[int]",
+                    "bool"
+                ],
+                "default": [
+                    "str",
+                    "Optional[int]",
+                    "bool"
+                ]
+            }
+        },
+        "KubeResource.possible": {
+            "name": "possible",
+            "location": 348,
+            "return": [
+                "List[str]",
+                "List[\"Variable\"]",
+                "Tuple[List[Any], List[int]]",
+                "Generator"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/notification.py": {
+        "_cache_key": {
+            "name": "_cache_key",
+            "location": 21,
+            "return": [
+                "str",
+                "List[str]"
+            ],
+            "arguments": {
+                "notifier": [
+                    "Type['Signature']",
+                    "Type[Any]"
+                ],
+                "owner": [
+                    "dict",
+                    "str",
+                    "int",
+                    "Dict[str, Dict[str, Any]]",
+                    "Dict[str, str]"
+                ],
+                "message": [
+                    "str",
+                    "dict",
+                    "Dict[str, Any]"
+                ],
+                "pods": [
+                    "Dict[str, Any]",
+                    "dict",
+                    "Dict[str, str]",
+                    "List[str]",
+                    "str"
+                ]
+            }
+        },
+        "_generate_pod_string": {
+            "name": "_generate_pod_string",
+            "location": 33,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "pods": [
+                    "str"
+                ]
+            }
+        },
+        "struct_log": {
+            "name": "struct_log",
+            "location": 43,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "message": [
+                    "str"
+                ],
+                "pods": [
+                    "int",
+                    "bool",
+                    "Match[Any]",
+                    "List[dict]",
+                    "List[str]",
+                    "str"
+                ],
+                "extra": [
+                    "str",
+                    "List[str]",
+                    "dict"
+                ]
+            }
+        },
+        "Notifier.__init__": {
+            "name": "__init__",
+            "location": 58,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "hook": [
+                    "str",
+                    "List[str]",
+                    "Sequence"
+                ],
+                "bot_token": [
+                    "str",
+                    "List[str]",
+                    "Sequence"
+                ]
+            }
+        },
+        "Notifier.notify_scale": {
+            "name": "notify_scale",
+            "location": 64,
+            "return": [
+                "Union[tuple, list]",
+                "List[int]",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "asg": [
+                    "str",
+                    "dict"
+                ],
+                "units_requested": [
+                    "str",
+                    "dict"
+                ],
+                "pods": [
+                    "str",
+                    "dict"
+                ]
+            }
+        },
+        "Notifier.notify_failed_to_scale": {
+            "name": "notify_failed_to_scale",
+            "location": 92,
+            "return": [
+                "str",
+                "dict",
+                "Iterable[Hashable]",
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "selectors_hash": [
+                    "dict",
+                    "Dict[str, Any]",
+                    "type"
+                ],
+                "pods": [
+                    "str",
+                    "List[int]",
+                    "OrderedDict",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "Notifier.notify_invalid_pod_capacity": {
+            "name": "notify_invalid_pod_capacity",
+            "location": 119,
+            "return": [
+                "Union[tuple, list]",
+                "List[int]",
+                "Dict[str, Any]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "pod": [
+                    "str",
+                    "bool"
+                ],
+                "recommended_capacity": [
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "Notifier.notify_drained_node": {
+            "name": "notify_drained_node",
+            "location": 144,
+            "return": [
+                "set"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "str"
+                ],
+                "pods": [
+                    "str"
+                ]
+            }
+        },
+        "Notifier.message_owners": {
+            "name": "message_owners",
+            "location": 167,
+            "return": [
+                "int",
+                "dict",
+                "Set[str]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "message": [
+                    "str",
+                    "Dict[str, Any]"
+                ],
+                "pods": [
+                    "str",
+                    "Dict[str, Any]"
+                ]
+            }
+        },
+        "Notifier.message_owner": {
+            "name": "message_owner",
+            "location": 181,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "owner": [
+                    "str"
+                ],
+                "message": [
+                    "str"
+                ],
+                "pods": [
+                    "List[str]",
+                    "List[Union[int, Any]]",
+                    "str",
+                    "bool",
+                    "List[Tuple]",
+                    "Tuple[int, int, int]"
+                ]
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/utils.py": {
+        "selectors_to_hash": {
+            "name": "selectors_to_hash",
+            "location": 68,
+            "return": [
+                "str",
+                "bool",
+                "Iterable[int]"
+            ],
+            "arguments": {
+                "selectors": [
+                    "int",
+                    "str",
+                    "bool"
+                ]
+            }
+        },
+        "get_groups_for_hash": {
+            "name": "get_groups_for_hash",
+            "location": 72,
+            "return": [
+                "dict",
+                "str",
+                "float",
+                "int",
+                "Callable"
+            ],
+            "arguments": {
+                "asgs": [
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "List[str]",
+                    "List[Dict[str, int]]"
+                ],
+                "selectors_hash": [
+                    "str",
+                    "Dict[str, type]",
+                    "Dict[str, str]"
+                ]
+            }
+        },
+        "get_group_for_node": {
+            "name": "get_group_for_node",
+            "location": 84,
+            "return": [
+                "Optional[str]",
+                "Optional[float]"
+            ],
+            "arguments": {
+                "asgs": [
+                    "str",
+                    "list",
+                    "List[str]",
+                    "Optional[int]",
+                    "bool"
+                ],
+                "node": []
+            }
+        },
+        "parse_SI": {
+            "name": "parse_SI",
+            "location": 121,
+            "return": [
+                "str",
+                "List[Dict[str, Any]]",
+                "Dict[str, int]",
+                "bool"
+            ],
+            "arguments": {
+                "s": [
+                    "str",
+                    "Optional[str]",
+                    "bytes"
+                ]
+            }
+        },
+        "parse_resource": {
+            "name": "parse_resource",
+            "location": 130,
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
+            "arguments": {
+                "resource": [
+                    "str",
+                    "int",
+                    "AbstractSet[str]",
+                    "bytes",
+                    "bool"
+                ]
+            }
+        },
+        "parse_bool_label": {
+            "name": "parse_bool_label",
+            "location": 137,
+            "return": [
+                "str",
+                "List[str]",
+                "Optional[str]"
+            ],
+            "arguments": {
+                "value": [
+                    "str",
+                    "int"
+                ]
+            }
+        },
+        "get_relevant_selectors": {
+            "name": "get_relevant_selectors",
+            "location": 141,
+            "return": [
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "node_selectors": [
+                    "Mapping[str, str]",
+                    "str",
+                    "dict"
+                ]
+            }
+        },
+        "CountDownCallback.__init__": {
+            "name": "__init__",
+            "location": 10,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "count": [
+                    "int",
+                    "bool",
+                    "float"
+                ],
+                "delegate": [
+                    "int",
+                    "bool",
+                    "float"
+                ]
+            }
+        },
+        "CountDownCallback.__call__": {
+            "name": "__call__",
+            "location": 15,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Future.result": {
+            "name": "result",
+            "location": 24,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Future.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 27,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "fn": [
+                    "str",
+                    "List[Dict[str, Any]]",
+                    "dict"
+                ]
+            }
+        },
+        "CompletedFuture.__init__": {
+            "name": "__init__",
+            "location": 32,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "float",
+                    "str",
+                    "int",
+                    "T"
+                ]
+            }
+        },
+        "CompletedFuture.result": {
+            "name": "result",
+            "location": 35,
+            "return": [
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CompletedFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 38,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "fn": [
+                    "float",
+                    "str",
+                    "bool",
+                    "Callable[[T], bool]"
+                ]
+            }
+        },
+        "TransformingFuture.__init__": {
+            "name": "__init__",
+            "location": 43,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "float",
+                    "str",
+                    "int",
+                    "T"
+                ],
+                "delegate": [
+                    "int",
+                    "List[Tuple[int, float]]",
+                    "Tuple[str]",
+                    "str",
+                    "float"
+                ]
+            }
+        },
+        "TransformingFuture.result": {
+            "name": "result",
+            "location": 47,
+            "return": [
+                "str",
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TransformingFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 51,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "fn": [
+                    "Union[bytes, bytearray]",
+                    "bool"
+                ]
+            }
+        },
+        "AllCompletedFuture.__init__": {
+            "name": "__init__",
+            "location": 56,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "futures": [
+                    "int",
+                    "bool",
+                    "float"
+                ]
+            }
+        },
+        "AllCompletedFuture.result": {
+            "name": "result",
+            "location": 59,
+            "return": [
+                "List[List[int]]",
+                "Optional[dict]",
+                "Tuple[int]",
+                "str",
+                "int",
+                "List[List[float]]",
+                "List[Tuple[int, str, str]]",
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AllCompletedFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 62,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "fn": [
+                    "int",
+                    "float",
+                    "Sequence[int]",
+                    "Tuple[int]"
+                ]
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/autoscaler/__init__.py": {},
+    "kops-ec2-autoscaler-master/test/test_azure.py": {
+        "TestCluster.test_scale_up": {
+            "name": "test_scale_up",
+            "location": 19,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_priority": {
+            "name": "test_priority",
+            "location": 42,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_slow_scale_up": {
+            "name": "test_slow_scale_up",
+            "location": 69,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_tainted_scale_set": {
+            "name": "test_tainted_scale_set",
+            "location": 94,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_out_of_quota": {
+            "name": "test_out_of_quota",
+            "location": 123,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_in": {
+            "name": "test_scale_in",
+            "location": 142,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/test/test_azure_api.py": {
+        "TestingFuture.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestingFuture.add_done_callback": {
+            "name": "add_done_callback",
+            "location": 19,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": [],
+                "fn": [
+                    "float",
+                    "int"
+                ]
+            }
+        },
+        "TestingFuture.complete": {
+            "name": "complete",
+            "location": 22,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_caching": {
+            "name": "test_caching",
+            "location": 28,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_copied": {
+            "name": "test_copied",
+            "location": 47,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_refresh": {
+            "name": "test_refresh",
+            "location": 67,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_update": {
+            "name": "test_update",
+            "location": 91,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_inconsistent_delegate": {
+            "name": "test_inconsistent_delegate",
+            "location": 118,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_terminate": {
+            "name": "test_terminate",
+            "location": 151,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWriteThroughCache.test_terminate_with_concurrent_read": {
+            "name": "test_terminate_with_concurrent_read",
+            "location": 178,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWrapper.test_basic": {
+            "name": "test_basic",
+            "location": 214,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWrapper.test_out_of_quota": {
+            "name": "test_out_of_quota",
+            "location": 238,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/test/test_capacity.py": {
+        "TestCapacity.setUp": {
+            "name": "setUp",
+            "location": 12,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCapacity.test_possible": {
+            "name": "test_possible",
+            "location": 23,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCapacity.test_impossible": {
+            "name": "test_impossible",
+            "location": 27,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "kops-ec2-autoscaler-master/test/test_cluster.py": {
+        "TestCluster.setUp": {
+            "name": "setUp",
+            "location": 21,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.tearDown": {
+            "name": "tearDown",
+            "location": 103,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster._spin_up_node": {
+            "name": "_spin_up_node",
+            "location": 107,
+            "return": [
+                "int",
+                "cmk.utils.type_defs.ServiceName",
+                "cmk.utils.type_defs.HostName",
+                "utils.Node",
+                "List[int]",
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "launch_time": [
+                    "int",
+                    "Optional[bool]",
+                    "float",
+                    "Callable"
+                ]
+            }
+        },
+        "TestCluster._spin_up_nodes": {
+            "name": "_spin_up_nodes",
+            "location": 110,
+            "return": [
+                "int",
+                "Union",
+                "Union[Sequence, 'SweepFixedValues']"
+            ],
+            "arguments": {
+                "self": [],
+                "count": [
+                    "int",
+                    "str",
+                    "bytes",
+                    "List[Dict[str, Any]]"
+                ],
+                "launch_time": [
+                    "int",
+                    "bool",
+                    "float"
+                ]
+            }
+        },
+        "TestCluster.test_reap_dead_node": {
+            "name": "test_reap_dead_node",
+            "location": 131,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_max_scale_in": {
+            "name": "test_max_scale_in",
+            "location": 155,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_up_selector": {
+            "name": "test_scale_up_selector",
+            "location": 177,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_up": {
+            "name": "test_scale_up",
+            "location": 190,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_up_notification": {
+            "name": "test_scale_up_notification",
+            "location": 200,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_timed_out_group": {
+            "name": "test_timed_out_group",
+            "location": 211,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down": {
+            "name": "test_scale_down",
+            "location": 228,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_launch_grace_period": {
+            "name": "test_scale_down_launch_grace_period",
+            "location": 255,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_grace_period": {
+            "name": "test_scale_down_grace_period",
+            "location": 281,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_busy": {
+            "name": "test_scale_down_busy",
+            "location": 305,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_under_utilized_undrainable": {
+            "name": "test_scale_down_under_utilized_undrainable",
+            "location": 347,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_scale_down_under_utilized_drainable": {
+            "name": "test_scale_down_under_utilized_drainable",
+            "location": 395,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestCluster.test_prioritization": {
+            "name": "test_prioritization",
+            "location": 433,
+            "return": [
+                ""
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    }
+}

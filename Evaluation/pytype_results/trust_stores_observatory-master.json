@@ -1,0 +1,887 @@
+{
+    "trust_stores_observatory-master/main.py": {
+        "import_certificates": {
+            "name": "import_certificates",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "folder_with_certs_to_import": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "refresh_trust_stores": {
+            "name": "refresh_trust_stores",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "export_trust_stores": {
+            "name": "export_trust_stores",
+            "location": 82,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "trust_stores_observatory-master/tasks.py": {
+        "test": {
+            "name": "test",
+            "location": 8,
+            "return": [],
+            "arguments": {
+                "ctx": []
+            }
+        }
+    },
+    "trust_stores_observatory-master/tests/test_certificates_repository.py": {
+        "TestRootCertificatesRepository.test_default_repository_integrity": {
+            "name": "test_default_repository_integrity",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "trust_stores_observatory-master/tests/test_store_fetcher.py": {
+        "TestMozillaTrustStoreFetcher.test_scraping": {
+            "name": "test_scraping",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestMozillaTrustStoreFetcher.test_online": {
+            "name": "test_online",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAppleTrustStoreFetcher.test_scraping": {
+            "name": "test_scraping",
+            "location": 68,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAppleTrustStoreFetcher.test_online": {
+            "name": "test_online",
+            "location": 82,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestMicrosoftStoreFetcher.test_scraping": {
+            "name": "test_scraping",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestMicrosoftStoreFetcher.test_online": {
+            "name": "test_online",
+            "location": 104,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAospTrustStoreFetcher.test_scraping": {
+            "name": "test_scraping",
+            "location": 114,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAospTrustStoreFetcher.test_online": {
+            "name": "test_online",
+            "location": 118,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestJavaTrustStoreFetcher.test_online": {
+            "name": "test_online",
+            "location": 129,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestOpenJdkTrustStoreFetcher.test_online": {
+            "name": "test_online",
+            "location": 139,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "trust_stores_observatory-master/tests/__init__.py": {},
+    "trust_stores_observatory-master/trust_stores_observatory/certificates_repository.py": {
+        "RootCertificatesRepository.__init__": {
+            "name": "__init__",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "local_root_path": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "RootCertificatesRepository.get_default": {
+            "name": "get_default",
+            "location": 36,
+            "return": [
+                "_TRootCertificatesRepository"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TRootCertificatesRepository]"
+                ]
+            }
+        },
+        "RootCertificatesRepository.get_all_certificates": {
+            "name": "get_all_certificates",
+            "location": 40,
+            "return": [
+                "List[cryptography.x509.Certificate]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RootCertificatesRepository.lookup_certificate_with_fingerprint": {
+            "name": "lookup_certificate_with_fingerprint",
+            "location": 43,
+            "return": [
+                "cryptography.x509.Certificate"
+            ],
+            "arguments": {
+                "self": [],
+                "fingerprint": [
+                    "bytes"
+                ],
+                "hash_algorithm": [
+                    "Union[(hashes.SHA1, hashes.SHA256)]"
+                ]
+            }
+        },
+        "RootCertificatesRepository._lookup_certificate_with_sha256_fingerprint": {
+            "name": "_lookup_certificate_with_sha256_fingerprint",
+            "location": 62,
+            "return": [
+                "cryptography.x509.Certificate"
+            ],
+            "arguments": {
+                "self": [],
+                "fingerprint": [
+                    "bytes"
+                ]
+            }
+        },
+        "RootCertificatesRepository.store_certificate": {
+            "name": "store_certificate",
+            "location": 76,
+            "return": [
+                "pathlib.Path"
+            ],
+            "arguments": {
+                "self": [],
+                "certificate": [
+                    "cryptography.x509.Certificate"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/certificate_utils.py": {
+        "CertificateUtils._get_names_with_oid": {
+            "name": "_get_names_with_oid",
+            "location": 8,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "name_field": [
+                    "cryptography.x509.Name"
+                ],
+                "name_oid": [
+                    "cryptography.x509.ObjectIdentifier"
+                ]
+            }
+        },
+        "CertificateUtils._get_name_as_text": {
+            "name": "_get_name_as_text",
+            "location": 12,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cls": [],
+                "name_field": [
+                    "cryptography.x509.Name"
+                ]
+            }
+        },
+        "CertificateUtils.get_canonical_subject_name": {
+            "name": "get_canonical_subject_name",
+            "location": 16,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cls": [],
+                "certificate": [
+                    "cryptography.x509.Certificate"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/root_record.py": {
+        "RootCertificateRecord.__init__": {
+            "name": "__init__",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "canonical_subject_name": [
+                    "str"
+                ],
+                "sha256_fingerprint": [
+                    "bytes"
+                ]
+            }
+        },
+        "RootCertificateRecord.__eq__": {
+            "name": "__eq__",
+            "location": 26,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "object"
+                ]
+            }
+        },
+        "RootCertificateRecord.__hash__": {
+            "name": "__hash__",
+            "location": 31,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RootCertificateRecord.from_certificate": {
+            "name": "from_certificate",
+            "location": 36,
+            "return": [
+                "_TRootCertificateRecord"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TRootCertificateRecord]"
+                ],
+                "certificate": [
+                    "cryptography.x509.Certificate"
+                ]
+            }
+        },
+        "RootCertificateRecord.from_unknown_record": {
+            "name": "from_unknown_record",
+            "location": 42,
+            "return": [
+                "_TRootCertificateRecord"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TRootCertificateRecord]"
+                ],
+                "record": [
+                    "trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord"
+                ]
+            }
+        },
+        "RootCertificateRecord.hex_fingerprint": {
+            "name": "hex_fingerprint",
+            "location": 52,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/trust_store.py": {
+        "_represent_trust_store": {
+            "name": "_represent_trust_store",
+            "location": 121,
+            "return": [
+                "yaml.nodes.Node"
+            ],
+            "arguments": {
+                "dumper": [
+                    "yaml.dumper.Dumper"
+                ],
+                "store": [
+                    "TrustStore"
+                ]
+            }
+        },
+        "_represent_root_certificate_entry": {
+            "name": "_represent_root_certificate_entry",
+            "location": 145,
+            "return": [
+                "yaml.nodes.Node"
+            ],
+            "arguments": {
+                "dumper": [
+                    "yaml.dumper.Dumper"
+                ],
+                "entry": [
+                    "trust_stores_observatory.root_record.RootCertificateRecord"
+                ]
+            }
+        },
+        "TrustStore.__init__": {
+            "name": "__init__",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "platform": [
+                    "PlatformEnum"
+                ],
+                "version": [
+                    "Optional[str]"
+                ],
+                "url": [
+                    "str"
+                ],
+                "date_fetched": [
+                    "datetime.date"
+                ],
+                "trusted_certificates": [
+                    "Set[trust_stores_observatory.root_record.RootCertificateRecord]"
+                ],
+                "blocked_certificates": [
+                    "Set[trust_stores_observatory.root_record.RootCertificateRecord]"
+                ]
+            }
+        },
+        "TrustStore.__eq__": {
+            "name": "__eq__",
+            "location": 61,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "object"
+                ]
+            }
+        },
+        "TrustStore.trusted_certificates_count": {
+            "name": "trusted_certificates_count",
+            "location": 72,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrustStore.blocked_certificates_count": {
+            "name": "blocked_certificates_count",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrustStore.get_default_for_platform": {
+            "name": "get_default_for_platform",
+            "location": 80,
+            "return": [
+                "_TTrustStore"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TTrustStore]"
+                ],
+                "platform": [
+                    "PlatformEnum"
+                ]
+            }
+        },
+        "TrustStore.from_yaml": {
+            "name": "from_yaml",
+            "location": 86,
+            "return": [
+                "_TTrustStore"
+            ],
+            "arguments": {
+                "cls": [
+                    "Type[_TTrustStore]"
+                ],
+                "yaml_file_path": [
+                    "pathlib.Path"
+                ]
+            }
+        },
+        "TrustStore.export_trusted_certificates_as_pem": {
+            "name": "export_trusted_certificates_as_pem",
+            "location": 109,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "certs_repository": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/__init__.py": {},
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/apple_store_fetcher.py": {
+        "AppleTrustStoreFetcher.fetch": {
+            "name": "fetch",
+            "location": 25,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "certs_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        },
+        "AppleTrustStoreFetcher._parse_root_records_in_div": {
+            "name": "_parse_root_records_in_div",
+            "location": 56,
+            "return": [
+                "List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord]"
+            ],
+            "arguments": {
+                "parsed_page": [
+                    "bs4.BeautifulSoup"
+                ],
+                "section_id": [
+                    "str"
+                ]
+            }
+        },
+        "AppleTrustStoreFetcher._find_latest_root_certificates_page": {
+            "name": "_find_latest_root_certificates_page",
+            "location": 75,
+            "return": [
+                "Tuple[(str, str)]"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/google_aosp_fetcher.py": {
+        "AospTrustStoreFetcher.fetch": {
+            "name": "fetch",
+            "location": 30,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "certs_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/java_fetcher.py": {
+        "JavaTrustStoreFetcher.fetch": {
+            "name": "fetch",
+            "location": 24,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "cert_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        },
+        "JavaTrustStoreFetcher._get_latest_download_url": {
+            "name": "_get_latest_download_url",
+            "location": 63,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/jdk_helper.py": {
+        "JdkPackage.__init__": {
+            "name": "__init__",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tar_gz_path": [
+                    "str"
+                ]
+            }
+        },
+        "JdkPackage.__enter__": {
+            "name": "__enter__",
+            "location": 28,
+            "return": [
+                "_TJdkPackage"
+            ],
+            "arguments": {
+                "self": [
+                    "_TJdkPackage"
+                ]
+            }
+        },
+        "JdkPackage.__exit__": {
+            "name": "__exit__",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "exc_type": [
+                    "Optional[Type[BaseException]]"
+                ],
+                "exc_value": [
+                    "Optional[BaseException]"
+                ],
+                "traceback": []
+            }
+        },
+        "JdkPackage.get_version": {
+            "name": "get_version",
+            "location": 39,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JdkPackage.get_blacklisted_certs": {
+            "name": "get_blacklisted_certs",
+            "location": 43,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JdkPackage.get_cacerts": {
+            "name": "get_cacerts",
+            "location": 53,
+            "return": [
+                "bytes"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JdkPackage.get_cacerts_password": {
+            "name": "get_cacerts_password",
+            "location": 62,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "JdkPackage.extract_trusted_root_records": {
+            "name": "extract_trusted_root_records",
+            "location": 68,
+            "return": [
+                "List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord]"
+            ],
+            "arguments": {
+                "key_store": [],
+                "should_update_repo": [
+                    "bool"
+                ],
+                "cert_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ]
+            }
+        },
+        "JdkPackage.extract_blacklisted_root_records": {
+            "name": "extract_blacklisted_root_records",
+            "location": 88,
+            "return": [
+                "List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord]"
+            ],
+            "arguments": {
+                "blacklisted_certs_content": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/microsoft_fetcher.py": {
+        "MicrosoftTrustStoreFetcher.fetch": {
+            "name": "fetch",
+            "location": 24,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "certs_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        },
+        "MicrosoftTrustStoreFetcher._parse_spreadsheet": {
+            "name": "_parse_spreadsheet",
+            "location": 46,
+            "return": [
+                "Tuple[(List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord], List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord])]"
+            ],
+            "arguments": {
+                "csv_content": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/mozilla_fetcher.py": {
+        "_CertdataCertificateEntry.__init__": {
+            "name": "__init__",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "certificate": [
+                    "cryptography.x509.Certificate"
+                ]
+            }
+        },
+        "_CertdataTrustEntry.__init__": {
+            "name": "__init__",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "scraped_subject_name": [
+                    "str"
+                ],
+                "trust_enum": [
+                    "_CerdataEntryServerAuthTrustEnum"
+                ],
+                "sha_fingerprint": [
+                    "bytes"
+                ]
+            }
+        },
+        "MozillaTrustStoreFetcher.fetch": {
+            "name": "fetch",
+            "location": 53,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "certs_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        },
+        "MozillaTrustStoreFetcher._scrape_certdata": {
+            "name": "_scrape_certdata",
+            "location": 98,
+            "return": [
+                "List[_CertdataEntry]"
+            ],
+            "arguments": {
+                "certdata_content": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/openjdk_fetcher.py": {
+        "OpenJDKTrustStoreFetcher.fetch": {
+            "name": "fetch",
+            "location": 25,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "cert_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        },
+        "OpenJDKTrustStoreFetcher._get_latest_download_url": {
+            "name": "_get_latest_download_url",
+            "location": 60,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/root_records_validator.py": {
+        "RootRecordsValidator.validate_with_repository": {
+            "name": "validate_with_repository",
+            "location": 16,
+            "return": [
+                "Set[trust_stores_observatory.root_record.RootCertificateRecord]"
+            ],
+            "arguments": {
+                "certs_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "scraped_records": [
+                    "List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord]"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/scraped_root_record.py": {
+        "ScrapedRootCertificateRecord.__init__": {
+            "name": "__init__",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "subject_name": [
+                    "str"
+                ],
+                "fingerprint": [
+                    "bytes"
+                ],
+                "fingerprint_hash_algorithm": [
+                    "Union[(hashes.SHA1, hashes.SHA256)]"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/store_fetcher_interface.py": {
+        "StoreFetcherInterface.fetch": {
+            "name": "fetch",
+            "location": 9,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "certs_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "trust_stores_observatory-master/trust_stores_observatory/store_fetcher/__init__.py": {
+        "TrustStoreFetcher.fetch": {
+            "name": "fetch",
+            "location": 27,
+            "return": [
+                "trust_stores_observatory.trust_store.TrustStore"
+            ],
+            "arguments": {
+                "self": [],
+                "platform": [
+                    "trust_stores_observatory.trust_store.PlatformEnum"
+                ],
+                "certs_repo": [
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                ],
+                "should_update_repo": [
+                    "bool"
+                ]
+            }
+        }
+    }
+}

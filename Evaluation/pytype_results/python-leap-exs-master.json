@@ -1,0 +1,1292 @@
+{
+    "python-leap-exs-master/src/setup.py": {},
+    "python-leap-exs-master/src/allocation/commands.py": {},
+    "python-leap-exs-master/src/allocation/config.py": {
+        "get_postgres_uri": {
+            "name": "get_postgres_uri",
+            "location": 4,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "get_api_url": {
+            "name": "get_api_url",
+            "location": 12,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "get_redis_host_and_port": {
+            "name": "get_redis_host_and_port",
+            "location": 17,
+            "return": [
+                "dict"
+            ],
+            "arguments": {}
+        }
+    },
+    "python-leap-exs-master/src/allocation/email.py": {
+        "send": {
+            "name": "send",
+            "location": 1,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "python-leap-exs-master/src/allocation/events.py": {},
+    "python-leap-exs-master/src/allocation/exceptions.py": {},
+    "python-leap-exs-master/src/allocation/flask_app.py": {
+        "add_batch": {
+            "name": "add_batch",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "allocate_endpoint": {
+            "name": "allocate_endpoint",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        },
+        "allocations_view_endpoint": {
+            "name": "allocations_view_endpoint",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "orderid": []
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/handlers.py": {
+        "add_batch": {
+            "name": "add_batch",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "commands.CreateBatch"
+                ],
+                "uow": [
+                    "unit_of_work.AbstractUnitOfWork"
+                ]
+            }
+        },
+        "allocate": {
+            "name": "allocate",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "commands.Allocate"
+                ],
+                "uow": [
+                    "unit_of_work.AbstractUnitOfWork"
+                ]
+            }
+        },
+        "change_batch_quantity": {
+            "name": "change_batch_quantity",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "commands.ChangeBatchQuantity"
+                ],
+                "uow": [
+                    "unit_of_work.AbstractUnitOfWork"
+                ]
+            }
+        },
+        "send_out_of_stock_notification": {
+            "name": "send_out_of_stock_notification",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.OutOfStock"
+                ],
+                "send_mail": [
+                    "Callable"
+                ]
+            }
+        },
+        "publish_allocated_event": {
+            "name": "publish_allocated_event",
+            "location": 54,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.Allocated"
+                ],
+                "publish": [
+                    "Callable"
+                ]
+            }
+        },
+        "add_allocation_to_read_model": {
+            "name": "add_allocation_to_read_model",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.Allocated"
+                ],
+                "uow": [
+                    "unit_of_work.SqlAlchemyUnitOfWork"
+                ]
+            }
+        },
+        "remove_allocation_from_read_model": {
+            "name": "remove_allocation_from_read_model",
+            "location": 71,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.Deallocated"
+                ],
+                "uow": [
+                    "unit_of_work.SqlAlchemyUnitOfWork"
+                ]
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/messagebus.py": {
+        "MessageBus.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "uow": [
+                    "unit_of_work.AbstractUnitOfWork"
+                ],
+                "send_mail": [
+                    "Callable"
+                ],
+                "publish": [
+                    "Callable"
+                ]
+            }
+        },
+        "MessageBus.handle": {
+            "name": "handle",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "message_queue": [
+                    "List[Union[(commands.Command, events.Event)]]"
+                ]
+            }
+        },
+        "MessageBus.handle_event": {
+            "name": "handle_event",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "event": [
+                    "events.Event"
+                ]
+            }
+        },
+        "MessageBus.handle_command": {
+            "name": "handle_command",
+            "location": 47,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "command": [
+                    "commands.Command"
+                ]
+            }
+        },
+        "MessageBus.call_handler_with_dependencies": {
+            "name": "call_handler_with_dependencies",
+            "location": 56,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "handler": [
+                    "Callable"
+                ],
+                "message": [
+                    "Union[(commands.Command, events.Event)]"
+                ]
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/model.py": {
+        "Product.__init__": {
+            "name": "__init__",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "sku": [
+                    "str"
+                ],
+                "batches": [
+                    "List[Batch]"
+                ],
+                "version_number": [
+                    "int"
+                ]
+            }
+        },
+        "Product.allocate": {
+            "name": "allocate",
+            "location": 16,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "line": [
+                    "OrderLine"
+                ]
+            }
+        },
+        "Product.change_batch_quantity": {
+            "name": "change_batch_quantity",
+            "location": 31,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "ref": [
+                    "str"
+                ],
+                "qty": [
+                    "int"
+                ]
+            }
+        },
+        "Batch.__init__": {
+            "name": "__init__",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "ref": [
+                    "str"
+                ],
+                "sku": [
+                    "str"
+                ],
+                "qty": [
+                    "int"
+                ],
+                "eta": [
+                    "Optional[datetime.date]"
+                ]
+            }
+        },
+        "Batch.__repr__": {
+            "name": "__repr__",
+            "location": 57,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Batch.__eq__": {
+            "name": "__eq__",
+            "location": 60,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "Batch.__hash__": {
+            "name": "__hash__",
+            "location": 65,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Batch.__gt__": {
+            "name": "__gt__",
+            "location": 68,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "Batch.allocate": {
+            "name": "allocate",
+            "location": 75,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "line": [
+                    "OrderLine"
+                ]
+            }
+        },
+        "Batch.deallocate_one": {
+            "name": "deallocate_one",
+            "location": 79,
+            "return": [
+                "OrderLine"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Batch.allocated_quantity": {
+            "name": "allocated_quantity",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Batch.available_quantity": {
+            "name": "available_quantity",
+            "location": 87,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Batch.can_allocate": {
+            "name": "can_allocate",
+            "location": 90,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "line": [
+                    "OrderLine"
+                ]
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/orm.py": {
+        "start_mappers": {
+            "name": "start_mappers",
+            "location": 50,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "receive_load": {
+            "name": "receive_load",
+            "location": 64,
+            "return": [],
+            "arguments": {
+                "product": [],
+                "_": []
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/redis_pubsub.py": {
+        "get_bus": {
+            "name": "get_bus",
+            "location": 11,
+            "return": [],
+            "arguments": {}
+        },
+        "main": {
+            "name": "main",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "handle_change_batch_quantity": {
+            "name": "handle_change_batch_quantity",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "m": [],
+                "bus": []
+            }
+        },
+        "publish": {
+            "name": "publish",
+            "location": 35,
+            "return": [],
+            "arguments": {
+                "channel": [],
+                "event": []
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/repository.py": {
+        "AbstractRepository.__init__": {
+            "name": "__init__",
+            "location": 8,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractRepository.add": {
+            "name": "add",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "product": []
+            }
+        },
+        "AbstractRepository.get": {
+            "name": "get",
+            "location": 15,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "sku": []
+            }
+        },
+        "AbstractRepository.get_by_batchid": {
+            "name": "get_by_batchid",
+            "location": 21,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "batchid": []
+            }
+        },
+        "AbstractRepository._add": {
+            "name": "_add",
+            "location": 28,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "product": []
+            }
+        },
+        "AbstractRepository._get": {
+            "name": "_get",
+            "location": 32,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "sku": []
+            }
+        },
+        "AbstractRepository._get_by_batchid": {
+            "name": "_get_by_batchid",
+            "location": 36,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "batchid": []
+            }
+        },
+        "SqlAlchemyRepository.__init__": {
+            "name": "__init__",
+            "location": 44,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "session": []
+            }
+        },
+        "SqlAlchemyRepository._add": {
+            "name": "_add",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "product": []
+            }
+        },
+        "SqlAlchemyRepository._get": {
+            "name": "_get",
+            "location": 51,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "sku": []
+            }
+        },
+        "SqlAlchemyRepository._get_by_batchid": {
+            "name": "_get_by_batchid",
+            "location": 54,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "batchid": []
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/unit_of_work.py": {
+        "AbstractUnitOfWork.__enter__": {
+            "name": "__enter__",
+            "location": 14,
+            "return": [
+                "_TAbstractUnitOfWork"
+            ],
+            "arguments": {
+                "self": [
+                    "_TAbstractUnitOfWork"
+                ]
+            }
+        },
+        "AbstractUnitOfWork.__exit__": {
+            "name": "__exit__",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractUnitOfWork.commit": {
+            "name": "commit",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractUnitOfWork._commit": {
+            "name": "_commit",
+            "location": 25,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractUnitOfWork.rollback": {
+            "name": "rollback",
+            "location": 29,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractUnitOfWork.collect_events": {
+            "name": "collect_events",
+            "location": 32,
+            "return": [
+                "Generator[(allocation.events.Event, Any, None)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AbstractUnitOfWork.init_repositories": {
+            "name": "init_repositories",
+            "location": 37,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "products": [
+                    "repository.AbstractRepository"
+                ]
+            }
+        },
+        "AbstractUnitOfWork.products": {
+            "name": "products",
+            "location": 41,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SqlAlchemyUnitOfWork.__init__": {
+            "name": "__init__",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "session_factory": []
+            }
+        },
+        "SqlAlchemyUnitOfWork._commit": {
+            "name": "_commit",
+            "location": 57,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SqlAlchemyUnitOfWork.rollback": {
+            "name": "rollback",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "python-leap-exs-master/src/allocation/views.py": {
+        "allocations": {
+            "name": "allocations",
+            "location": 3,
+            "return": [
+                "List[dict]"
+            ],
+            "arguments": {
+                "orderid": [
+                    "str"
+                ],
+                "uow": [
+                    "unit_of_work.SqlAlchemyUnitOfWork"
+                ]
+            }
+        }
+    },
+    "python-leap-exs-master/tests/conftest.py": {
+        "in_memory_sqlite_db": {
+            "name": "in_memory_sqlite_db",
+            "location": 21,
+            "return": [],
+            "arguments": {}
+        },
+        "sqlite_session_factory": {
+            "name": "sqlite_session_factory",
+            "location": 27,
+            "return": [],
+            "arguments": {
+                "in_memory_sqlite_db": []
+            }
+        },
+        "wait_for_postgres_to_come_up": {
+            "name": "wait_for_postgres_to_come_up",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "engine": []
+            }
+        },
+        "wait_for_webapp_to_come_up": {
+            "name": "wait_for_webapp_to_come_up",
+            "location": 43,
+            "return": [],
+            "arguments": {}
+        },
+        "wait_for_redis_to_come_up": {
+            "name": "wait_for_redis_to_come_up",
+            "location": 54,
+            "return": [],
+            "arguments": {}
+        },
+        "postgres_db": {
+            "name": "postgres_db",
+            "location": 66,
+            "return": [],
+            "arguments": {}
+        },
+        "postgres_session_factory": {
+            "name": "postgres_session_factory",
+            "location": 73,
+            "return": [],
+            "arguments": {
+                "postgres_db": []
+            }
+        },
+        "postgres_session": {
+            "name": "postgres_session",
+            "location": 79,
+            "return": [],
+            "arguments": {
+                "postgres_session_factory": []
+            }
+        },
+        "restart_api": {
+            "name": "restart_api",
+            "location": 84,
+            "return": [],
+            "arguments": {}
+        },
+        "restart_redis_pubsub": {
+            "name": "restart_redis_pubsub",
+            "location": 90,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "python-leap-exs-master/tests/e2e/test_api.py": {
+        "random_ref": {
+            "name": "random_ref",
+            "location": 7,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "prefix": []
+            }
+        },
+        "post_to_add_batch": {
+            "name": "post_to_add_batch",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "ref": [],
+                "sku": [],
+                "qty": [],
+                "eta": []
+            }
+        },
+        "get_allocation": {
+            "name": "get_allocation",
+            "location": 18,
+            "return": [
+                "requests.models.Response"
+            ],
+            "arguments": {
+                "orderid": []
+            }
+        },
+        "test_happy_path_returns_202_and_batch_is_allocated": {
+            "name": "test_happy_path_returns_202_and_batch_is_allocated",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        },
+        "test_unhappy_path_returns_400_and_error_message": {
+            "name": "test_unhappy_path_returns_400_and_error_message",
+            "location": 49,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "python-leap-exs-master/tests/e2e/test_external_events.py": {
+        "random_ref": {
+            "name": "random_ref",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "prefix": []
+            }
+        },
+        "post_to_add_batch": {
+            "name": "post_to_add_batch",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "ref": [],
+                "sku": [],
+                "qty": [],
+                "eta": []
+            }
+        },
+        "post_to_allocate": {
+            "name": "post_to_allocate",
+            "location": 21,
+            "return": [],
+            "arguments": {
+                "orderid": [],
+                "sku": [],
+                "qty": [],
+                "expected_batch": []
+            }
+        },
+        "wait_for": {
+            "name": "wait_for",
+            "location": 29,
+            "return": [],
+            "arguments": {
+                "fn": []
+            }
+        },
+        "wait_for_assertion": {
+            "name": "wait_for_assertion",
+            "location": 38,
+            "return": [],
+            "arguments": {
+                "fn": []
+            }
+        },
+        "subscribe_to_allocated_events": {
+            "name": "subscribe_to_allocated_events",
+            "location": 50,
+            "return": [],
+            "arguments": {
+                "r": []
+            }
+        },
+        "test_change_batch_quantity_leading_to_reallocation": {
+            "name": "test_change_batch_quantity_leading_to_reallocation",
+            "location": 62,
+            "return": [],
+            "arguments": {}
+        },
+        "test_change_batch_quantity_leading_to_reallocation.check_messages": {
+            "name": "check_messages",
+            "location": 79,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "python-leap-exs-master/tests/integration/test_repository.py": {
+        "test_get_by_batchid": {
+            "name": "test_get_by_batchid",
+            "location": 3,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "sqlite_session_factory": []
+            }
+        }
+    },
+    "python-leap-exs-master/tests/integration/test_uow.py": {
+        "random_ref": {
+            "name": "random_ref",
+            "location": 11,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "prefix": []
+            }
+        },
+        "insert_batch": {
+            "name": "insert_batch",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "session": [],
+                "ref": [],
+                "sku": [],
+                "qty": [],
+                "eta": [],
+                "product_version": []
+            }
+        },
+        "get_allocated_batch_id": {
+            "name": "get_allocated_batch_id",
+            "location": 25,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "session": [],
+                "orderid": [],
+                "sku": []
+            }
+        },
+        "test_uow_can_retrieve_a_batch_and_allocate_to_it": {
+            "name": "test_uow_can_retrieve_a_batch_and_allocate_to_it",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "sqlite_session_factory": []
+            }
+        },
+        "test_rolls_back_uncommitted_work_by_default": {
+            "name": "test_rolls_back_uncommitted_work_by_default",
+            "location": 54,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "sqlite_session_factory": []
+            }
+        },
+        "test_rolls_back_on_error": {
+            "name": "test_rolls_back_on_error",
+            "location": 64,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {
+                "sqlite_session_factory": []
+            }
+        },
+        "try_to_allocate": {
+            "name": "try_to_allocate",
+            "location": 79,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "orderid": [],
+                "sku": [],
+                "exceptions": [],
+                "session_factory": []
+            }
+        },
+        "test_concurrent_updates_to_version_are_not_allowed": {
+            "name": "test_concurrent_updates_to_version_are_not_allowed",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "postgres_session_factory": []
+            }
+        }
+    },
+    "python-leap-exs-master/tests/integration/test_views.py": {
+        "sqlite_bus": {
+            "name": "sqlite_bus",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "sqlite_session_factory": []
+            }
+        },
+        "test_allocations_view": {
+            "name": "test_allocations_view",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "sqlite_bus": []
+            }
+        },
+        "test_deallocation": {
+            "name": "test_deallocation",
+            "location": 31,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "sqlite_bus": []
+            }
+        }
+    },
+    "python-leap-exs-master/tests/unit/test_batches.py": {
+        "test_allocating_to_a_batch_reduces_the_available_quantity": {
+            "name": "test_allocating_to_a_batch_reduces_the_available_quantity",
+            "location": 5,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "make_batch_and_line": {
+            "name": "make_batch_and_line",
+            "location": 13,
+            "return": [
+                "Tuple[(allocation.model.Batch, allocation.model.OrderLine)]"
+            ],
+            "arguments": {
+                "sku": [],
+                "batch_qty": [],
+                "line_qty": []
+            }
+        },
+        "test_can_allocate_if_available_greater_than_required": {
+            "name": "test_can_allocate_if_available_greater_than_required",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_cannot_allocate_if_available_smaller_than_required": {
+            "name": "test_cannot_allocate_if_available_smaller_than_required",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_can_allocate_if_available_equal_to_required": {
+            "name": "test_can_allocate_if_available_equal_to_required",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_cannot_allocate_if_skus_do_not_match": {
+            "name": "test_cannot_allocate_if_skus_do_not_match",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_allocation_is_idempotent": {
+            "name": "test_allocation_is_idempotent",
+            "location": 37,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "python-leap-exs-master/tests/unit/test_handlers.py": {
+        "FakeRepository.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "products": []
+            }
+        },
+        "FakeRepository._add": {
+            "name": "_add",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "product": []
+            }
+        },
+        "FakeRepository._get": {
+            "name": "_get",
+            "location": 16,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "sku": []
+            }
+        },
+        "FakeRepository._get_by_batchid": {
+            "name": "_get_by_batchid",
+            "location": 19,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "batchid": []
+            }
+        },
+        "FakeUnitOfWork.__init__": {
+            "name": "__init__",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FakeUnitOfWork._commit": {
+            "name": "_commit",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FakeUnitOfWork.rollback": {
+            "name": "rollback",
+            "location": 35,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "FakeBus.__init__": {
+            "name": "__init__",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestAddBatch.test_for_new_product": {
+            "name": "test_for_new_product",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestAddBatch.test_for_existing_product": {
+            "name": "test_for_existing_product",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestAllocate.test_allocates": {
+            "name": "test_allocates",
+            "location": 72,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestAllocate.test_errors_for_invalid_sku": {
+            "name": "test_errors_for_invalid_sku",
+            "location": 82,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestAllocate.test_commits": {
+            "name": "test_commits",
+            "location": 93,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestAllocate.test_sends_email_on_out_of_stock_error": {
+            "name": "test_sends_email_on_out_of_stock_error",
+            "location": 102,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestChangeBatchQuantity.test_changes_available_quantity": {
+            "name": "test_changes_available_quantity",
+            "location": 117,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "TestChangeBatchQuantity.test_reallocates_if_necessary": {
+            "name": "test_reallocates_if_necessary",
+            "location": 128,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "python-leap-exs-master/tests/unit/test_product.py": {
+        "test_prefers_warehouse_batches_to_shipments": {
+            "name": "test_prefers_warehouse_batches_to_shipments",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_prefers_earlier_batches": {
+            "name": "test_prefers_earlier_batches",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_returns_allocated_batch_id": {
+            "name": "test_returns_allocated_batch_id",
+            "location": 37,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_records_out_of_stock_event_if_cannot_allocate": {
+            "name": "test_records_out_of_stock_event_if_cannot_allocate",
+            "location": 46,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {}
+        },
+        "test_increments_version_number": {
+            "name": "test_increments_version_number",
+            "location": 56,
+            "return": [
+                "NoReturn"
+            ],
+            "arguments": {}
+        }
+    }
+}

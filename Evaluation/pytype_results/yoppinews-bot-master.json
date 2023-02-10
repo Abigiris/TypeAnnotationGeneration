@@ -1,0 +1,1916 @@
+{
+    "yoppinews-bot-master/src/__init__.py": {},
+    "yoppinews-bot-master/src/collect_tweets/app.py": {
+        "lambda_handler": {
+            "name": "lambda_handler",
+            "location": 42,
+            "return": [
+                "Dict[(nothing, nothing)]"
+            ],
+            "arguments": {
+                "_": [],
+                "__": []
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "location": 48,
+            "return": [
+                "Dict[(nothing, nothing)]"
+            ],
+            "arguments": {
+                "config": [
+                    "news_bot_config.NewsBotConfig"
+                ],
+                "twitter": [],
+                "cached_ddb_table": [
+                    "key_value_store.DDBTableWithLocalCache"
+                ],
+                "sns": []
+            }
+        },
+        "handle_list": {
+            "name": "handle_list",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "api": [],
+                "list_config": [
+                    "news_bot_config.CollectTweetsListConfig"
+                ],
+                "cached_ddb_table": [
+                    "key_value_store.DDBTableWithLocalCache"
+                ],
+                "sns": [],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        },
+        "collect_tweets": {
+            "name": "collect_tweets",
+            "location": 71,
+            "return": [
+                "List[twitter.Tweet]"
+            ],
+            "arguments": {
+                "api": [],
+                "twitter_list": [
+                    "twitter.TwitterList"
+                ],
+                "count": [
+                    "int"
+                ]
+            }
+        },
+        "handle_tweets": {
+            "name": "handle_tweets",
+            "location": 81,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "tweet_list": [
+                    "List[twitter.Tweet]"
+                ],
+                "list_config": [
+                    "news_bot_config.CollectTweetsListConfig"
+                ],
+                "cached_ddb_table": [
+                    "key_value_store.DDBTableWithLocalCache"
+                ],
+                "sns": [],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        },
+        "notify_message": {
+            "name": "notify_message",
+            "location": 108,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "sns": [],
+                "topic": [
+                    "str"
+                ],
+                "message": [
+                    "message.CollectTweetsMessage"
+                ],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/collect_tweets/__init__.py": {},
+    "yoppinews-bot-master/src/detect_related_image/app.py": {
+        "lambda_handler": {
+            "name": "lambda_handler",
+            "location": 22,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "event": [],
+                "_": []
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "location": 41,
+            "return": [
+                "Dict[(str, int)]"
+            ],
+            "arguments": {
+                "event": [
+                    "dict"
+                ],
+                "source_image": [
+                    "bytes"
+                ],
+                "similarity_threshold": [
+                    "int"
+                ],
+                "rekognition": [],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        },
+        "detect_related_image": {
+            "name": "detect_related_image",
+            "location": 47,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "message": [
+                    "message.DetectRelatedImageMessage"
+                ],
+                "source_image": [
+                    "bytes"
+                ],
+                "similarity_threshold": [
+                    "int"
+                ],
+                "rekognition": [],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/detect_related_image/__init__.py": {},
+    "yoppinews-bot-master/src/detect_related_tweet/app.py": {
+        "lambda_handler": {
+            "name": "lambda_handler",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "event": [],
+                "_": []
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "event": [],
+                "config": [],
+                "handlers": []
+            }
+        },
+        "handle_message": {
+            "name": "handle_message",
+            "location": 52,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "detector": [],
+                "handlers": [],
+                "logger": []
+            }
+        },
+        "retweet_handler": {
+            "name": "retweet_handler",
+            "location": 74,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "detected_text": [],
+                "logger": []
+            }
+        },
+        "image_handler": {
+            "name": "image_handler",
+            "location": 82,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "config": []
+            }
+        },
+        "url_handler": {
+            "name": "url_handler",
+            "location": 130,
+            "return": [],
+            "arguments": {
+                "message": [],
+                "config": []
+            }
+        },
+        "tweet": {
+            "name": "tweet",
+            "location": 174,
+            "return": [],
+            "arguments": {
+                "m": [],
+                "logger": []
+            }
+        },
+        "retweet": {
+            "name": "retweet",
+            "location": 190,
+            "return": [],
+            "arguments": {
+                "m": [],
+                "logger": []
+            }
+        }
+    },
+    "yoppinews-bot-master/src/detect_related_tweet/related_tweet_detector.py": {
+        "RelatedTweetDetectionResult.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "matched_keyword": [
+                    "Optional[str]"
+                ],
+                "retweet_needed": [
+                    "bool"
+                ],
+                "image_detection_needed": [
+                    "bool"
+                ],
+                "url_detection_needed": [
+                    "bool"
+                ]
+            }
+        },
+        "RelatedTweetDetectionResult.__eq__": {
+            "name": "__eq__",
+            "location": 23,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": []
+            }
+        },
+        "RelatedTweetDetectionResult.__repr__": {
+            "name": "__repr__",
+            "location": 28,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RelatedTweetDetectionResult.matched_keyword": {
+            "name": "matched_keyword",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RelatedTweetDetectionResult.retweet_needed": {
+            "name": "retweet_needed",
+            "location": 36,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RelatedTweetDetectionResult.image_detection_needed": {
+            "name": "image_detection_needed",
+            "location": 40,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RelatedTweetDetectionResult.url_detection_needed": {
+            "name": "url_detection_needed",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RelatedTweetDetectionResult.dictionary": {
+            "name": "dictionary",
+            "location": 48,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RelatedTweetDetector.__init__": {
+            "name": "__init__",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "keyword_detector": [
+                    "keyword_detector.KeywordDetector"
+                ]
+            }
+        },
+        "RelatedTweetDetector._meet_precondition": {
+            "name": "_meet_precondition",
+            "location": 61,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "tweet": [
+                    "twitter.Tweet"
+                ],
+                "options": [
+                    "twitter.TweetHandleOptions"
+                ]
+            }
+        },
+        "RelatedTweetDetector._image_detection_needed": {
+            "name": "_image_detection_needed",
+            "location": 73,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "tweet": [
+                    "twitter.Tweet"
+                ],
+                "has_related_keyword": [
+                    "bool"
+                ],
+                "evaluate_image": [
+                    "twitter.TweetEvaluateOption"
+                ]
+            }
+        },
+        "RelatedTweetDetector._url_detection_needed": {
+            "name": "_url_detection_needed",
+            "location": 79,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "tweet": [
+                    "twitter.Tweet"
+                ],
+                "has_related_keyword": [
+                    "bool"
+                ],
+                "evaluate_image": [
+                    "twitter.TweetEvaluateOption"
+                ]
+            }
+        },
+        "RelatedTweetDetector._related_keyword": {
+            "name": "_related_keyword",
+            "location": 84,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "tweet": [
+                    "twitter.Tweet"
+                ],
+                "options": [
+                    "twitter.TweetHandleOptions"
+                ]
+            }
+        },
+        "RelatedTweetDetector.detect": {
+            "name": "detect",
+            "location": 92,
+            "return": [
+                "RelatedTweetDetectionResult"
+            ],
+            "arguments": {
+                "self": [],
+                "tweet": [
+                    "twitter.Tweet"
+                ],
+                "options": [
+                    "twitter.TweetHandleOptions"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/detect_related_tweet/tweet_handlers.py": {
+        "TweetHandlers.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "retweet_handler": [
+                    "Callable[([message.CollectTweetsMessage, str], None)]"
+                ],
+                "image_handler": [
+                    "Callable[([message.CollectTweetsMessage], None)]"
+                ],
+                "url_handler": [
+                    "Callable[([message.CollectTweetsMessage], None)]"
+                ]
+            }
+        },
+        "TweetHandlers.retweet_handler": {
+            "name": "retweet_handler",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandlers.image_handler": {
+            "name": "image_handler",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandlers.url_handler": {
+            "name": "url_handler",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "yoppinews-bot-master/src/detect_related_url/app.py": {
+        "lambda_handler": {
+            "name": "lambda_handler",
+            "location": 26,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "event": [],
+                "_": []
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "location": 50,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "message": [
+                    "message.DetectRelatedURLMessage"
+                ],
+                "selectors": [],
+                "driver": [
+                    "selenium.webdriver.chrome.webdriver.WebDriver"
+                ],
+                "config": [
+                    "news_bot_config.NewsBotConfig"
+                ]
+            }
+        },
+        "get_selected_text": {
+            "name": "get_selected_text",
+            "location": 68,
+            "return": [
+                "Optional[dict]"
+            ],
+            "arguments": {
+                "url": [
+                    "str"
+                ],
+                "selectors": [],
+                "driver": [
+                    "selenium.webdriver.chrome.webdriver.WebDriver"
+                ],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/detect_related_url/css_selectors.py": {
+        "Selectors.__init__": {
+            "name": "__init__",
+            "location": 8,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "selectors": [
+                    "Dict[(str, str)]"
+                ],
+                "ignored_urls": [
+                    "List[str]"
+                ]
+            }
+        },
+        "Selectors.get_selector": {
+            "name": "get_selector",
+            "location": 12,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "url": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/detect_related_url/__init__.py": {},
+    "yoppinews-bot-master/src/layers/shared_files/python/keyword_detector.py": {
+        "KeywordDetector.__init__": {
+            "name": "__init__",
+            "location": 7,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "global_keywords": [
+                    "List[str]"
+                ],
+                "user_specific_keywords": [
+                    "Dict[(str, List[str])]"
+                ],
+                "ignored_keywords": [
+                    "List[str]"
+                ],
+                "ignored_users": [
+                    "List[str]"
+                ]
+            }
+        },
+        "KeywordDetector.global_keywords": {
+            "name": "global_keywords",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KeywordDetector.user_specific_keywords": {
+            "name": "user_specific_keywords",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KeywordDetector.ignored_keywords": {
+            "name": "ignored_keywords",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KeywordDetector.ignored_users": {
+            "name": "ignored_users",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "KeywordDetector.matched_ignore_condition": {
+            "name": "matched_ignore_condition",
+            "location": 35,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ],
+                "user_id": [
+                    "str"
+                ]
+            }
+        },
+        "KeywordDetector.find_related_keyword": {
+            "name": "find_related_keyword",
+            "location": 39,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ],
+                "user_id": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/layers/shared_files/python/key_value_store.py": {
+        "InMemoryKeyValueStore.__init__": {
+            "name": "__init__",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "dic": [
+                    "Optional[dict]"
+                ]
+            }
+        },
+        "InMemoryKeyValueStore.get": {
+            "name": "get",
+            "location": 15,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "object"
+                ]
+            }
+        },
+        "InMemoryKeyValueStore.put": {
+            "name": "put",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "object"
+                ],
+                "item": [
+                    "object"
+                ]
+            }
+        },
+        "DDBTableWithLocalCache.__init__": {
+            "name": "__init__",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "hash_key_name": [
+                    "str"
+                ],
+                "ddb_table": [],
+                "in_memory_cache": [
+                    "InMemoryKeyValueStore"
+                ]
+            }
+        },
+        "DDBTableWithLocalCache.set_logger": {
+            "name": "set_logger",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        },
+        "DDBTableWithLocalCache._has_logger": {
+            "name": "_has_logger",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DDBTableWithLocalCache.get": {
+            "name": "get",
+            "location": 36,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "object"
+                ]
+            }
+        },
+        "DDBTableWithLocalCache.put": {
+            "name": "put",
+            "location": 74,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "item": [
+                    "dict"
+                ],
+                "ttl": [
+                    "int"
+                ]
+            }
+        },
+        "DDBTableWithLocalCache._to_storable": {
+            "name": "_to_storable",
+            "location": 89,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "item": [
+                    "object"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/layers/shared_files/python/message.py": {
+        "CollectTweetsMessage.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tweet": [
+                    "twitter.Tweet"
+                ],
+                "options": [
+                    "twitter.TweetHandleOptions"
+                ]
+            }
+        },
+        "CollectTweetsMessage.of": {
+            "name": "of",
+            "location": 14,
+            "return": [
+                "Optional[CollectTweetsMessage]"
+            ],
+            "arguments": {
+                "d": [
+                    "dict"
+                ]
+            }
+        },
+        "CollectTweetsMessage.dictionary": {
+            "name": "dictionary",
+            "location": 23,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CollectTweetsMessage.tweet": {
+            "name": "tweet",
+            "location": 30,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CollectTweetsMessage.options": {
+            "name": "options",
+            "location": 34,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RetweetMessage.__init__": {
+            "name": "__init__",
+            "location": 39,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "id_str": [
+                    "str"
+                ],
+                "cause": [
+                    "Optional[dict]"
+                ]
+            }
+        },
+        "RetweetMessage.of": {
+            "name": "of",
+            "location": 44,
+            "return": [
+                "Optional[RetweetMessage]"
+            ],
+            "arguments": {
+                "d": [
+                    "dict"
+                ]
+            }
+        },
+        "RetweetMessage.id_str": {
+            "name": "id_str",
+            "location": 51,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RetweetMessage.cause": {
+            "name": "cause",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RetweetMessage.dictionary": {
+            "name": "dictionary",
+            "location": 59,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetMessage.__init__": {
+            "name": "__init__",
+            "location": 67,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "status": [
+                    "str"
+                ]
+            }
+        },
+        "TweetMessage.of": {
+            "name": "of",
+            "location": 71,
+            "return": [
+                "Optional[TweetMessage]"
+            ],
+            "arguments": {
+                "d": [
+                    "dict"
+                ]
+            }
+        },
+        "TweetMessage.status": {
+            "name": "status",
+            "location": 78,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetMessage.dictionary": {
+            "name": "dictionary",
+            "location": 82,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DetectRelatedImageMessage.__init__": {
+            "name": "__init__",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "image_url": [
+                    "str"
+                ]
+            }
+        },
+        "DetectRelatedImageMessage.of": {
+            "name": "of",
+            "location": 93,
+            "return": [
+                "Optional[DetectRelatedImageMessage]"
+            ],
+            "arguments": {
+                "d": [
+                    "dict"
+                ]
+            }
+        },
+        "DetectRelatedImageMessage.image_url": {
+            "name": "image_url",
+            "location": 100,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DetectRelatedImageMessage.dictionary": {
+            "name": "dictionary",
+            "location": 104,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DetectRelatedURLMessage.__init__": {
+            "name": "__init__",
+            "location": 111,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "url": [
+                    "str"
+                ]
+            }
+        },
+        "DetectRelatedURLMessage.of": {
+            "name": "of",
+            "location": 115,
+            "return": [
+                "Optional[DetectRelatedURLMessage]"
+            ],
+            "arguments": {
+                "d": [
+                    "dict"
+                ]
+            }
+        },
+        "DetectRelatedURLMessage.url": {
+            "name": "url",
+            "location": 122,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DetectRelatedURLMessage.dictionary": {
+            "name": "dictionary",
+            "location": 126,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "yoppinews-bot-master/src/layers/shared_files/python/news_bot_config.py": {
+        "NewsBotConfig.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "dic": [
+                    "dict"
+                ]
+            }
+        },
+        "NewsBotConfig.initialize": {
+            "name": "initialize",
+            "location": 20,
+            "return": [
+                "NewsBotConfig"
+            ],
+            "arguments": {
+                "stage": [
+                    "str"
+                ],
+                "config_bucket": [
+                    "str"
+                ],
+                "config_key_name": [
+                    "str"
+                ]
+            }
+        },
+        "NewsBotConfig.log_level": {
+            "name": "log_level",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig._get_logger": {
+            "name": "_get_logger",
+            "location": 36,
+            "return": [
+                "logging.Logger"
+            ],
+            "arguments": {
+                "log_level": []
+            }
+        },
+        "NewsBotConfig.logger": {
+            "name": "logger",
+            "location": 47,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.detect_face_similarity_threshold": {
+            "name": "detect_face_similarity_threshold",
+            "location": 51,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.detect_face_source_image_url": {
+            "name": "detect_face_source_image_url",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.image_detection_message_template": {
+            "name": "image_detection_message_template",
+            "location": 60,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.url_detection_message_template": {
+            "name": "url_detection_message_template",
+            "location": 64,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.detect_url_selectors": {
+            "name": "detect_url_selectors",
+            "location": 68,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.detect_url_ignored_urls": {
+            "name": "detect_url_ignored_urls",
+            "location": 73,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.twitter_target_lists": {
+            "name": "twitter_target_lists",
+            "location": 78,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsBotConfig.keyword_detector": {
+            "name": "keyword_detector",
+            "location": 92,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CollectTweetsListConfig.__init__": {
+            "name": "__init__",
+            "location": 103,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "twitter_list": [
+                    "twitter.TwitterList"
+                ],
+                "options": [
+                    "twitter.TweetHandleOptions"
+                ],
+                "count": [
+                    "int"
+                ]
+            }
+        },
+        "CollectTweetsListConfig.twitter_list": {
+            "name": "twitter_list",
+            "location": 109,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CollectTweetsListConfig.options": {
+            "name": "options",
+            "location": 113,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CollectTweetsListConfig.count": {
+            "name": "count",
+            "location": 117,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "yoppinews-bot-master/src/layers/shared_files/python/twitter.py": {
+        "TwitterList.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "slug": [
+                    "str"
+                ],
+                "owner_screen_name": [
+                    "str"
+                ]
+            }
+        },
+        "TwitterList.slug": {
+            "name": "slug",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TwitterList.owner_screen_name": {
+            "name": "owner_screen_name",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.__init__": {
+            "name": "__init__",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "status": [
+                    "dict"
+                ]
+            }
+        },
+        "Tweet.id": {
+            "name": "id",
+            "location": 30,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.full_text": {
+            "name": "full_text",
+            "location": 34,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.screen_name": {
+            "name": "screen_name",
+            "location": 38,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.original_id": {
+            "name": "original_id",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.original_screen_name": {
+            "name": "original_screen_name",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.is_reply": {
+            "name": "is_reply",
+            "location": 56,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.is_retweet": {
+            "name": "is_retweet",
+            "location": 60,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.is_quoted": {
+            "name": "is_quoted",
+            "location": 64,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.quoted_full_text": {
+            "name": "quoted_full_text",
+            "location": 68,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.is_retweeted_by_me": {
+            "name": "is_retweeted_by_me",
+            "location": 72,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.has_media": {
+            "name": "has_media",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.media_https_urls": {
+            "name": "media_https_urls",
+            "location": 84,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.status_url": {
+            "name": "status_url",
+            "location": 91,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.dictionary": {
+            "name": "dictionary",
+            "location": 97,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Tweet.has_urls": {
+            "name": "has_urls",
+            "location": 100,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "include_quoted_tweet": []
+            }
+        },
+        "Tweet.get_urls": {
+            "name": "get_urls",
+            "location": 103,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "self": [],
+                "include_quoted_tweet": []
+            }
+        },
+        "TweetHandleOptions.__init__": {
+            "name": "__init__",
+            "location": 122,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "always_retweet": [
+                    "bool"
+                ],
+                "include_retweet": [
+                    "bool"
+                ],
+                "include_reply": [
+                    "bool"
+                ],
+                "include_quoted_text": [
+                    "bool"
+                ],
+                "evaluate_image": [
+                    "TweetEvaluateOption"
+                ],
+                "evaluate_url": [
+                    "TweetEvaluateOption"
+                ]
+            }
+        },
+        "TweetHandleOptions.__repr__": {
+            "name": "__repr__",
+            "location": 138,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandleOptions.of": {
+            "name": "of",
+            "location": 149,
+            "return": [
+                "Optional[TweetHandleOptions]"
+            ],
+            "arguments": {
+                "d": [
+                    "dict"
+                ]
+            }
+        },
+        "TweetHandleOptions.always_retweet": {
+            "name": "always_retweet",
+            "location": 161,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandleOptions.include_retweet": {
+            "name": "include_retweet",
+            "location": 165,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandleOptions.include_reply": {
+            "name": "include_reply",
+            "location": 169,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandleOptions.include_quoted_text": {
+            "name": "include_quoted_text",
+            "location": 173,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandleOptions.evaluate_image": {
+            "name": "evaluate_image",
+            "location": 177,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandleOptions.evaluate_url": {
+            "name": "evaluate_url",
+            "location": 181,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TweetHandleOptions.dictionary": {
+            "name": "dictionary",
+            "location": 185,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "yoppinews-bot-master/src/retweet/app.py": {
+        "lambda_handler": {
+            "name": "lambda_handler",
+            "location": 25,
+            "return": [
+                "Dict[(str, list)]"
+            ],
+            "arguments": {
+                "event": [],
+                "_": []
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "location": 30,
+            "return": [
+                "Dict[(str, list)]"
+            ],
+            "arguments": {
+                "event": [
+                    "dict"
+                ],
+                "config": [
+                    "news_bot_config.NewsBotConfig"
+                ]
+            }
+        },
+        "retweet": {
+            "name": "retweet",
+            "location": 48,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "message": [
+                    "message.RetweetMessage"
+                ],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/retweet/__init__.py": {},
+    "yoppinews-bot-master/src/tweet/app.py": {
+        "lambda_handler": {
+            "name": "lambda_handler",
+            "location": 26,
+            "return": [
+                "Dict[(str, dict)]"
+            ],
+            "arguments": {
+                "event": [],
+                "_": []
+            }
+        },
+        "handle": {
+            "name": "handle",
+            "location": 31,
+            "return": [
+                "Dict[(str, Dict[(Any, Optional[str])])]"
+            ],
+            "arguments": {
+                "event": [
+                    "dict"
+                ],
+                "config": [
+                    "news_bot_config.NewsBotConfig"
+                ]
+            }
+        },
+        "tweet": {
+            "name": "tweet",
+            "location": 49,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "message": [
+                    "message.TweetMessage"
+                ],
+                "logger": [
+                    "logging.Logger"
+                ]
+            }
+        }
+    },
+    "yoppinews-bot-master/src/tweet/__init__.py": {},
+    "yoppinews-bot-master/tests/__init__.py": {},
+    "yoppinews-bot-master/tests/collect_tweets/test_app.py": {
+        "test_collect_tweets": {
+            "name": "test_collect_tweets",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_notify_message": {
+            "name": "test_notify_message",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "yoppinews-bot-master/tests/collect_tweets/__init__.py": {},
+    "yoppinews-bot-master/tests/detect_related_image/test_detect_related_image_app.py": {
+        "event": {
+            "name": "event",
+            "location": 11,
+            "return": [],
+            "arguments": {}
+        },
+        "test_app_normal": {
+            "name": "test_app_normal",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        }
+    },
+    "yoppinews-bot-master/tests/detect_related_tweet/test_related_tweet_detector.py": {
+        "test_tweet_keyword_unmatched": {
+            "name": "test_tweet_keyword_unmatched",
+            "location": 25,
+            "return": [],
+            "arguments": {
+                "options": [],
+                "expected": []
+            }
+        },
+        "test_tweet_keyword_matched": {
+            "name": "test_tweet_keyword_matched",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_reply_tweet_keyword_unmatched": {
+            "name": "test_reply_tweet_keyword_unmatched",
+            "location": 91,
+            "return": [],
+            "arguments": {
+                "options": [],
+                "expected": []
+            }
+        },
+        "test_reply_tweet_keyword_matched": {
+            "name": "test_reply_tweet_keyword_matched",
+            "location": 112,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_retweet_keyword_unmatched": {
+            "name": "test_retweet_keyword_unmatched",
+            "location": 158,
+            "return": [],
+            "arguments": {
+                "options": [],
+                "expected": []
+            }
+        },
+        "test_retweet_keyword_matched": {
+            "name": "test_retweet_keyword_matched",
+            "location": 180,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_retweeted_tweet_keyword_unmatched": {
+            "name": "test_retweeted_tweet_keyword_unmatched",
+            "location": 225,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_retweeted_tweet_keyword_matched": {
+            "name": "test_retweeted_tweet_keyword_matched",
+            "location": 247,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_tweet_with_image_keyword_unmatched": {
+            "name": "test_tweet_with_image_keyword_unmatched",
+            "location": 298,
+            "return": [],
+            "arguments": {
+                "options": [],
+                "expected": []
+            }
+        },
+        "test_tweet_with_image_keyword_matched": {
+            "name": "test_tweet_with_image_keyword_matched",
+            "location": 320,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_tweet_with_quoted_text_keyword_unmatched": {
+            "name": "test_tweet_with_quoted_text_keyword_unmatched",
+            "location": 366,
+            "return": [],
+            "arguments": {
+                "options": [],
+                "expected": []
+            }
+        },
+        "test_tweet_with_quoted_text_keyword_matched": {
+            "name": "test_tweet_with_quoted_text_keyword_matched",
+            "location": 387,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_tweet_with_url_keyword_unmatched": {
+            "name": "test_tweet_with_url_keyword_unmatched",
+            "location": 444,
+            "return": [],
+            "arguments": {
+                "options": [],
+                "expected": []
+            }
+        },
+        "test_tweet_with_url_keyword_matched": {
+            "name": "test_tweet_with_url_keyword_matched",
+            "location": 466,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        },
+        "test_tweet_with_image_and_url_keyword_unmatched": {
+            "name": "test_tweet_with_image_and_url_keyword_unmatched",
+            "location": 539,
+            "return": [],
+            "arguments": {
+                "options": [],
+                "expected": []
+            }
+        },
+        "test_tweet_with_image_and_url_keyword_matched": {
+            "name": "test_tweet_with_image_and_url_keyword_matched",
+            "location": 561,
+            "return": [],
+            "arguments": {
+                "options": []
+            }
+        }
+    },
+    "yoppinews-bot-master/tests/detect_related_url/conftest.py": {},
+    "yoppinews-bot-master/tests/detect_related_url/test_css_selector.py": {
+        "test_get_selector": {
+            "name": "test_get_selector",
+            "location": 4,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "yoppinews-bot-master/tests/detect_related_url/test_detect_related_url_app.py": {
+        "event": {
+            "name": "event",
+            "location": 24,
+            "return": [],
+            "arguments": {}
+        },
+        "test_app_normal": {
+            "name": "test_app_normal",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        }
+    },
+    "yoppinews-bot-master/tests/layers/shared_files/test_keyword_detector.py": {
+        "test_keyword_detector_global_keyword": {
+            "name": "test_keyword_detector_global_keyword",
+            "location": 4,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_keyword_detector_user_related_keyword": {
+            "name": "test_keyword_detector_user_related_keyword",
+            "location": 10,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_keyword_detector_ignored_keywords": {
+            "name": "test_keyword_detector_ignored_keywords",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_keyword_detector_ignored_users": {
+            "name": "test_keyword_detector_ignored_users",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "yoppinews-bot-master/tests/layers/shared_files/test_key_value_store.py": {
+        "test_in_memory_key_value_store_get_put": {
+            "name": "test_in_memory_key_value_store_get_put",
+            "location": 6,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_ddb_table_with_local_cache_get_put": {
+            "name": "test_ddb_table_with_local_cache_get_put",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "yoppinews-bot-master/tests/layers/shared_files/test_message.py": {
+        "test_collect_tweets_message_init": {
+            "name": "test_collect_tweets_message_init",
+            "location": 5,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_collect_tweets_message_of": {
+            "name": "test_collect_tweets_message_of",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "yoppinews-bot-master/tests/layers/shared_files/test_news_bot_config.py": {
+        "test_config_default": {
+            "name": "test_config_default",
+            "location": 4,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "test_image_detection_message_template": {
+            "name": "test_image_detection_message_template",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "yoppinews-bot-master/tests/retweet/test_retweet_app.py": {
+        "event": {
+            "name": "event",
+            "location": 13,
+            "return": [],
+            "arguments": {}
+        },
+        "test_app_normal": {
+            "name": "test_app_normal",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        },
+        "test_app_already_retweeted": {
+            "name": "test_app_already_retweeted",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        },
+        "test_app_abnormal": {
+            "name": "test_app_abnormal",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        }
+    },
+    "yoppinews-bot-master/tests/tweet/test_tweet_app.py": {
+        "event": {
+            "name": "event",
+            "location": 13,
+            "return": [],
+            "arguments": {}
+        },
+        "test_app_normal": {
+            "name": "test_app_normal",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        },
+        "test_app_already_retweeted": {
+            "name": "test_app_already_retweeted",
+            "location": 29,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        },
+        "test_app_abnormal": {
+            "name": "test_app_abnormal",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [],
+                "mocker": []
+            }
+        }
+    }
+}

@@ -1,0 +1,459 @@
+{
+    "luigi-demo-master/luigi/demo/advanced.py": {
+        "CompanyEngineerSalary.output": {
+            "name": "output",
+            "location": 22,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CompanyEngineerSalary.requires": {
+            "name": "requires",
+            "location": 25,
+            "return": [
+                "AggregatePositions"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CompanyEngineerSalary.run": {
+            "name": "run",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PandasDFDemo.requires": {
+            "name": "requires",
+            "location": 58,
+            "return": [
+                "GenerateCustomers"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PandasDFDemo.output": {
+            "name": "output",
+            "location": 61,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "PandasDFDemo.run": {
+            "name": "run",
+            "location": 64,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CustomerSalaries.output": {
+            "name": "output",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CustomerSalaries.requires": {
+            "name": "requires",
+            "location": 86,
+            "return": [
+                "dict[typing.Text, typing.Union[GenerateCustomers,CompanyEngineerSalary]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CustomerSalaries.run": {
+            "name": "run",
+            "location": 92,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "luigi-demo-master/luigi/demo/news.py": {
+        "NewsTopicTask._key": {
+            "name": "_key",
+            "location": 25,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NewsTopicTask.params": {
+            "name": "params",
+            "location": 29,
+            "return": [
+                "dict[typing.Text, ]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DownloadArticles.output": {
+            "name": "output",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DownloadArticles.run": {
+            "name": "run",
+            "location": 45,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "LoadArticles.table": {
+            "name": "table",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "LoadArticles.requires": {
+            "name": "requires",
+            "location": 86,
+            "return": [
+                "DownloadArticles"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "LoadArticles.rows": {
+            "name": "rows",
+            "location": 91,
+            "return": [
+                "typing.Generator[tuple[]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ParseArticles.output": {
+            "name": "output",
+            "location": 109,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ParseArticles.requires": {
+            "name": "requires",
+            "location": 112,
+            "return": [
+                "DownloadArticles"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ParseArticles.run": {
+            "name": "run",
+            "location": 115,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CountTopicSources.output": {
+            "name": "output",
+            "location": 135,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CountTopicSources.requires": {
+            "name": "requires",
+            "location": 138,
+            "return": [
+                "ParseArticles"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CountTopicSources.mapper": {
+            "name": "mapper",
+            "location": 141,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,int]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "row": [
+                    "str"
+                ]
+            }
+        },
+        "CountTopicSources.reducer": {
+            "name": "reducer",
+            "location": 145,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,typing.Callable[, ],None,typing.Iterator,bool]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "str",
+                    "typing.Callable[, ]",
+                    "None",
+                    "typing.Iterator"
+                ],
+                "values": [
+                    "str"
+                ]
+            }
+        },
+        "CountMultiTopicSources.output": {
+            "name": "output",
+            "location": 155,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CountMultiTopicSources.requires": {
+            "name": "requires",
+            "location": 160,
+            "return": [
+                "list[CountTopicSources]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CountMultiTopicSources.mapper": {
+            "name": "mapper",
+            "location": 169,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,set[],int]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "row": [
+                    "str",
+                    "typing.IO",
+                    "typing.Type",
+                    "dict[, ]",
+                    "bytes"
+                ]
+            }
+        },
+        "CountMultiTopicSources.reducer": {
+            "name": "reducer",
+            "location": 173,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,typing.Callable[, ],None,typing.Iterator,bool]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "str",
+                    "typing.Callable[, ]",
+                    "None",
+                    "typing.Iterator"
+                ],
+                "values": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "luigi-demo-master/luigi/demo/simple.py": {
+        "GenerateCustomers.output": {
+            "name": "output",
+            "location": 17,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GenerateCustomers.run": {
+            "name": "run",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AggregatePositions.output": {
+            "name": "output",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AggregatePositions.requires": {
+            "name": "requires",
+            "location": 49,
+            "return": [
+                "GenerateCustomers"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AggregatePositions.mapper": {
+            "name": "mapper",
+            "location": 52,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,int]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "row": [
+                    "int",
+                    "dict[str, str]",
+                    "list[str]",
+                    "typing.Sequence[typing.MutableMapping]"
+                ]
+            }
+        },
+        "AggregatePositions.reducer": {
+            "name": "reducer",
+            "location": 57,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,typing.Callable[, ],None,typing.Iterator,bool]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "str",
+                    "typing.Callable[, ]",
+                    "None",
+                    "typing.Iterator"
+                ],
+                "values": [
+                    "str"
+                ]
+            }
+        },
+        "ProfessionEmployers.output": {
+            "name": "output",
+            "location": 67,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ProfessionEmployers.requires": {
+            "name": "requires",
+            "location": 70,
+            "return": [
+                "GenerateCustomers"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ProfessionEmployers.mapper": {
+            "name": "mapper",
+            "location": 73,
+            "return": [
+                "typing.Generator[tuple[typing.Union[int,dict[, ],list[int],list[list[int]],str,int]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "row": [
+                    "int",
+                    "dict[str, str]",
+                    "list[str]",
+                    "typing.Sequence[typing.MutableMapping]"
+                ]
+            }
+        },
+        "ProfessionEmployers.reducer": {
+            "name": "reducer",
+            "location": 81,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,typing.Callable[, ],None,typing.Iterator,bool]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "str",
+                    "typing.Callable[, ]",
+                    "None",
+                    "typing.Iterator"
+                ],
+                "values": [
+                    "str"
+                ]
+            }
+        },
+        "ScientistEmployers.output": {
+            "name": "output",
+            "location": 93,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ScientistEmployers.requires": {
+            "name": "requires",
+            "location": 96,
+            "return": [
+                "list[ProfessionEmployers]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ScientistEmployers.mapper": {
+            "name": "mapper",
+            "location": 99,
+            "return": [
+                "typing.Generator[tuple[int]]"
+            ],
+            "arguments": {
+                "self": [],
+                "row": []
+            }
+        },
+        "ScientistEmployers.reducer": {
+            "name": "reducer",
+            "location": 103,
+            "return": [
+                "typing.Generator[tuple[typing.Union[str,typing.Callable[, ],None,typing.Iterator,bool]]]"
+            ],
+            "arguments": {
+                "self": [],
+                "key": [
+                    "str",
+                    "typing.Callable[, ]",
+                    "None",
+                    "typing.Iterator"
+                ],
+                "values": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "luigi-demo-master/luigi/demo/__init__.py": {}
+}

@@ -1,0 +1,940 @@
+{
+    "spam-filter-master/run.py": {},
+    "spam-filter-master/app/routes.py": {
+        "classify_spam": {
+            "name": "classify_spam",
+            "location": 18,
+            "return": [
+                "flask.Response"
+            ],
+            "arguments": {}
+        },
+        "add_training_data": {
+            "name": "add_training_data",
+            "location": 25,
+            "return": [
+                "flask.Response"
+            ],
+            "arguments": {}
+        },
+        "check_health": {
+            "name": "check_health",
+            "location": 31,
+            "return": [
+                "flask.Response"
+            ],
+            "arguments": {}
+        },
+        "_create_response": {
+            "name": "_create_response",
+            "location": 36,
+            "return": [
+                "flask.Response"
+            ],
+            "arguments": {
+                "result": [
+                    "Dict[(str, Any)]"
+                ],
+                "status": [
+                    "int"
+                ]
+            }
+        },
+        "_create_ok_response": {
+            "name": "_create_ok_response",
+            "location": 46,
+            "return": [
+                "flask.Response"
+            ],
+            "arguments": {}
+        }
+    },
+    "spam-filter-master/app/__init__.py": {
+        "add_request_id": {
+            "name": "add_request_id",
+            "location": 33,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "add_request_id_to_response": {
+            "name": "add_request_id_to_response",
+            "location": 41,
+            "return": [
+                "flask.Response"
+            ],
+            "arguments": {
+                "response": [
+                    "flask.Response"
+                ]
+            }
+        },
+        "handle_request_error": {
+            "name": "handle_request_error",
+            "location": 54,
+            "return": [
+                "flask.Response"
+            ],
+            "arguments": {
+                "error": [
+                    "errors.RequestError"
+                ]
+            }
+        }
+    },
+    "spam-filter-master/app/config/logging.py": {},
+    "spam-filter-master/app/config/util.py": {
+        "getenv": {
+            "name": "getenv",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "key": []
+            }
+        },
+        "get_database_uri": {
+            "name": "get_database_uri",
+            "location": 23,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        }
+    },
+    "spam-filter-master/app/config/__init__.py": {},
+    "spam-filter-master/app/controllers/classification.py": {
+        "is_spam": {
+            "name": "is_spam",
+            "location": 19,
+            "return": [
+                "Dict[(str, str)]"
+            ],
+            "arguments": {}
+        },
+        "_get_spam_body": {
+            "name": "_get_spam_body",
+            "location": 32,
+            "return": [
+                "SpamCandidate"
+            ],
+            "arguments": {}
+        },
+        "_get_model_type": {
+            "name": "_get_model_type",
+            "location": 41,
+            "return": [
+                "ModelType"
+            ],
+            "arguments": {}
+        },
+        "_log_request": {
+            "name": "_log_request",
+            "location": 53,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "res": [
+                    "SpamResult"
+                ]
+            }
+        }
+    },
+    "spam-filter-master/app/controllers/errors.py": {
+        "RequestError.__init__": {
+            "name": "__init__",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "message": [
+                    "str"
+                ]
+            }
+        },
+        "RequestError.__str__": {
+            "name": "__str__",
+            "location": 23,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RequestError.asdict": {
+            "name": "asdict",
+            "location": 26,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RequestError.status": {
+            "name": "status",
+            "location": 35,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BadRequestError.status": {
+            "name": "status",
+            "location": 45,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ConflictError.status": {
+            "name": "status",
+            "location": 55,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NotFoundError.status": {
+            "name": "status",
+            "location": 65,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "InternalServerError.__init__": {
+            "name": "__init__",
+            "location": 75,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "message": []
+            }
+        },
+        "NotImplementedError.__init__": {
+            "name": "__init__",
+            "location": 86,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NotImplementedError.status": {
+            "name": "status",
+            "location": 89,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "spam-filter-master/app/controllers/health_check.py": {
+        "check_health": {
+            "name": "check_health",
+            "location": 18,
+            "return": [
+                "Tuple[(Dict[(str, str)], int)]"
+            ],
+            "arguments": {}
+        },
+        "_check_model_status": {
+            "name": "_check_model_status",
+            "location": 35,
+            "return": [
+                "Tuple[(str, bool)]"
+            ],
+            "arguments": {}
+        },
+        "_check_db_status": {
+            "name": "_check_db_status",
+            "location": 46,
+            "return": [
+                "Tuple[(str, bool)]"
+            ],
+            "arguments": {}
+        },
+        "_determine_overall_status": {
+            "name": "_determine_overall_status",
+            "location": 60,
+            "return": [
+                "Tuple[(str, int)]"
+            ],
+            "arguments": {}
+        }
+    },
+    "spam-filter-master/app/controllers/status.py": {},
+    "spam-filter-master/app/controllers/training_data.py": {
+        "add_training_data": {
+            "name": "add_training_data",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "_parse_training_data": {
+            "name": "_parse_training_data",
+            "location": 24,
+            "return": [
+                "TrainingData"
+            ],
+            "arguments": {
+                "body": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "_parse_spam_label": {
+            "name": "_parse_spam_label",
+            "location": 35,
+            "return": [
+                "Label"
+            ],
+            "arguments": {
+                "label": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "spam-filter-master/app/controllers/util.py": {
+        "get_param": {
+            "name": "get_param",
+            "location": 11,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "param_name": [
+                    "str"
+                ]
+            }
+        },
+        "get_optional_param": {
+            "name": "get_optional_param",
+            "location": 23,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "param_name": [
+                    "str"
+                ],
+                "default": [
+                    "str"
+                ]
+            }
+        },
+        "get_json_body": {
+            "name": "get_json_body",
+            "location": 35,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {}
+        },
+        "is_string": {
+            "name": "is_string",
+            "location": 53,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "obj": [
+                    "Any"
+                ]
+            }
+        }
+    },
+    "spam-filter-master/app/controllers/__init__.py": {},
+    "spam-filter-master/app/models/classifier.py": {
+        "Classifier.__repr__": {
+            "name": "__repr__",
+            "location": 22,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "spam-filter-master/app/models/spam.py": {
+        "format_text": {
+            "name": "format_text",
+            "location": 96,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "original": [
+                    "str"
+                ]
+            }
+        },
+        "SpamLabel.__repr__": {
+            "name": "__repr__",
+            "location": 23,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrainingData.__repr__": {
+            "name": "__repr__",
+            "location": 35,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SpamCandidate.__init__": {
+            "name": "__init__",
+            "location": 42,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ],
+                "label": [
+                    "str"
+                ]
+            }
+        },
+        "SpamCandidate.todict": {
+            "name": "todict",
+            "location": 46,
+            "return": [
+                "Dict[(str, Optional[str])]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SpamCandidate.fromdict": {
+            "name": "fromdict",
+            "location": 50,
+            "return": [
+                "'SpamCandidate'"
+            ],
+            "arguments": {
+                "cls": [],
+                "raw": []
+            }
+        },
+        "SpamResult.todict": {
+            "name": "todict",
+            "location": 59,
+            "return": [
+                "Dict[(str, str)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ResultSample.from_candidate": {
+            "name": "from_candidate",
+            "location": 74,
+            "return": [
+                "'ResultSample'"
+            ],
+            "arguments": {
+                "cls": [],
+                "candidate": [
+                    "SpamCandidate"
+                ]
+            }
+        },
+        "ResultSample.from_result": {
+            "name": "from_result",
+            "location": 78,
+            "return": [
+                "'ResultSample'"
+            ],
+            "arguments": {
+                "cls": [],
+                "res": [
+                    "SpamResult"
+                ],
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "ResultSample.__repr__": {
+            "name": "__repr__",
+            "location": 81,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "spam-filter-master/app/models/__init__.py": {},
+    "spam-filter-master/app/repository/model_repo.py": {
+        "ModelRepo.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "svm_model": [
+                    "Pipeline"
+                ],
+                "nb_model": [
+                    "Pipeline"
+                ]
+            }
+        },
+        "ModelRepo.get_spam_classifier": {
+            "name": "get_spam_classifier",
+            "location": 22,
+            "return": [
+                "Pipeline"
+            ],
+            "arguments": {
+                "self": [],
+                "type": [
+                    "ModelType"
+                ]
+            }
+        },
+        "ModelRepo.save_classifier": {
+            "name": "save_classifier",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "classifier": [
+                    "Classifier"
+                ]
+            }
+        },
+        "ModelRepo.__classifier_exists": {
+            "name": "__classifier_exists",
+            "location": 41,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "classifier": [
+                    "Classifier"
+                ]
+            }
+        }
+    },
+    "spam-filter-master/app/repository/sample_repo.py": {
+        "SampleRepo.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SampleRepo.save": {
+            "name": "save",
+            "location": 22,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "res": [
+                    "SpamResult"
+                ],
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "SampleRepo._should_sample": {
+            "name": "_should_sample",
+            "location": 33,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "spam-filter-master/app/repository/training_data_repo.py": {
+        "TrainingDataRepo.save": {
+            "name": "save",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "training_data": [
+                    "TrainingData"
+                ]
+            }
+        },
+        "TrainingDataRepo.get_all": {
+            "name": "get_all",
+            "location": 23,
+            "return": [
+                "List[TrainingData]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "spam-filter-master/app/repository/__init__.py": {},
+    "spam-filter-master/app/service/classification_service.py": {
+        "ClassifcationService.__init__": {
+            "name": "__init__",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "model_repo": [
+                    "Optional[ModelRepo]"
+                ]
+            }
+        },
+        "ClassifcationService.classify": {
+            "name": "classify",
+            "location": 21,
+            "return": [
+                "SpamResult"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ],
+                "model_type": [
+                    "ModelType"
+                ]
+            }
+        },
+        "ClassifcationService.has_model": {
+            "name": "has_model",
+            "location": 36,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "ClassifcationService._to_many_cashtags": {
+            "name": "_to_many_cashtags",
+            "location": 45,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "text": [
+                    "str"
+                ]
+            }
+        },
+        "ClassifcationService._get_model_repo": {
+            "name": "_get_model_repo",
+            "location": 58,
+            "return": [
+                "ModelRepo"
+            ],
+            "arguments": {
+                "self": [],
+                "model_repo": [
+                    "Optional[ModelRepo]"
+                ]
+            }
+        }
+    },
+    "spam-filter-master/app/service/training_service.py": {
+        "format_text": {
+            "name": "format_text",
+            "location": 155,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "original": [
+                    "str"
+                ]
+            }
+        },
+        "dummy_pipeline": {
+            "name": "dummy_pipeline",
+            "location": 164,
+            "return": [
+                "Pipeline"
+            ],
+            "arguments": {}
+        },
+        "TrainingService.__init__": {
+            "name": "__init__",
+            "location": 30,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "sample_repo": [
+                    "TrainingDataRepo"
+                ]
+            }
+        },
+        "TrainingService.train_model": {
+            "name": "train_model",
+            "location": 33,
+            "return": [
+                "Tuple[(Pipeline, Classifier)]"
+            ],
+            "arguments": {
+                "self": [],
+                "type": [
+                    "ModelType"
+                ]
+            }
+        },
+        "TrainingService.__init_svm_model": {
+            "name": "__init_svm_model",
+            "location": 46,
+            "return": [
+                "Pipeline"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrainingService.__init_naive_bayes_model": {
+            "name": "__init_naive_bayes_model",
+            "location": 57,
+            "return": [
+                "Pipeline"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrainingService.__init_logistic_regression_model": {
+            "name": "__init_logistic_regression_model",
+            "location": 68,
+            "return": [
+                "Pipeline"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrainingService.__init_model": {
+            "name": "__init_model",
+            "location": 79,
+            "return": [
+                "Pipeline"
+            ],
+            "arguments": {
+                "self": [],
+                "type": [
+                    "ModelType"
+                ]
+            }
+        },
+        "TrainingService.__create_metadata": {
+            "name": "__create_metadata",
+            "location": 89,
+            "return": [
+                "Classifier"
+            ],
+            "arguments": {
+                "self": [],
+                "model": [
+                    "Pipeline"
+                ],
+                "type": [
+                    "ModelType"
+                ],
+                "training_data": [
+                    "DataList"
+                ],
+                "test_data": [
+                    "DataList"
+                ]
+            }
+        },
+        "TrainingService.__check_model_accuracy": {
+            "name": "__check_model_accuracy",
+            "location": 104,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "model": [
+                    "Pipeline"
+                ],
+                "test_data": [
+                    "DataList"
+                ]
+            }
+        },
+        "TrainingService.__get_and_split_data": {
+            "name": "__get_and_split_data",
+            "location": 114,
+            "return": [
+                "Tuple[(DataList, DataList)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TrainingService.__samples_to_datalist": {
+            "name": "__samples_to_datalist",
+            "location": 127,
+            "return": [
+                "DataList"
+            ],
+            "arguments": {
+                "self": [],
+                "training_data": [
+                    "Iterable[TrainingData]"
+                ]
+            }
+        },
+        "TrainingService.__calc_model_hash": {
+            "name": "__calc_model_hash",
+            "location": 138,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "type": [],
+                "training_data": []
+            }
+        }
+    },
+    "spam-filter-master/app/service/__init__.py": {
+        "__setup_classification_svc": {
+            "name": "__setup_classification_svc",
+            "location": 10,
+            "return": [
+                "ClassifcationService"
+            ],
+            "arguments": {}
+        },
+        "__setup_model_repo": {
+            "name": "__setup_model_repo",
+            "location": 18,
+            "return": [
+                "ModelRepo"
+            ],
+            "arguments": {}
+        }
+    },
+    "spam-filter-master/migrations/env.py": {
+        "run_migrations_offline": {
+            "name": "run_migrations_offline",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        },
+        "run_migrations_online": {
+            "name": "run_migrations_online",
+            "location": 50,
+            "return": [],
+            "arguments": {}
+        },
+        "run_migrations_online.process_revision_directives": {
+            "name": "process_revision_directives",
+            "location": 61,
+            "return": [],
+            "arguments": {
+                "context": [],
+                "revision": [],
+                "directives": []
+            }
+        }
+    },
+    "spam-filter-master/migrations/versions/80b647f2fe93_inital_tables.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 21,
+            "return": [],
+            "arguments": {}
+        },
+        "data_upgrades": {
+            "name": "data_upgrades",
+            "location": 50,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 116,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "spam-filter-master/migrations/versions/86dfc99a7189_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "spam-filter-master/migrations/versions/ab2c390515e8_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    }
+}

@@ -1,0 +1,845 @@
+{
+    "talepy-master/setup.py": {},
+    "talepy-master/talepy/async_transactions.py": {
+        "has_async_execute": {
+            "name": "has_async_execute",
+            "location": 50,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "step": [
+                    "Step"
+                ]
+            }
+        },
+        "has_async_compensate": {
+            "name": "has_async_compensate",
+            "location": 54,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "step": [
+                    "Step"
+                ]
+            }
+        },
+        "_WrappedAsyncStep.__init__": {
+            "name": "__init__",
+            "location": 14,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "wrapped_step": [
+                    "Step"
+                ]
+            }
+        }
+    },
+    "talepy-master/talepy/exceptions.py": {
+        "InvalidStepDefinition.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "invalid_definition": [
+                    "Any"
+                ]
+            }
+        },
+        "CompensationFailure.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "failures": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "FailuresAfterRetrying.__init__": {
+            "name": "__init__",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "failures": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "AsyncStepFailures.__init__": {
+            "name": "__init__",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "exceptions": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "AsyncStepUsedInSyncTransaction.__init__": {
+            "name": "__init__",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RetriesCannotBeUsedInConcurrent.__init__": {
+            "name": "__init__",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "talepy-master/talepy/functional.py": {
+        "arity": {
+            "name": "arity",
+            "location": 9,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "func": [
+                    "Callable"
+                ]
+            }
+        },
+        "is_arity_one_pair": {
+            "name": "is_arity_one_pair",
+            "location": 13,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "thing": [
+                    "Any"
+                ]
+            }
+        },
+        "partition": {
+            "name": "partition",
+            "location": 27,
+            "return": [
+                "Tuple[(List[T], List[T])]"
+            ],
+            "arguments": {
+                "seq": [
+                    "Iterable[T]"
+                ],
+                "condition": [
+                    "Callable[([T], bool)]"
+                ]
+            }
+        }
+    },
+    "talepy-master/talepy/retries.py": {
+        "attempt_retries": {
+            "name": "attempt_retries",
+            "location": 17,
+            "return": [
+                "StepWithRetries"
+            ],
+            "arguments": {
+                "step": [
+                    "Step"
+                ],
+                "times": [
+                    "int"
+                ]
+            }
+        },
+        "execute_step_retry": {
+            "name": "execute_step_retry",
+            "location": 39,
+            "return": [],
+            "arguments": {
+                "state": [],
+                "step": [
+                    "StepWithRetries"
+                ],
+                "previous_errors": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "StepWithRetries.retry": {
+            "name": "retry",
+            "location": 13,
+            "return": [
+                "OutputState"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "InputState"
+                ],
+                "failures": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "attempt_retries.AutoRetryStep.__init__": {
+            "name": "__init__",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "wrapped_step": [
+                    "Step"
+                ],
+                "max_tries": [
+                    "int"
+                ]
+            }
+        },
+        "attempt_retries.AutoRetryStep.compensate": {
+            "name": "compensate",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": []
+            }
+        },
+        "attempt_retries.AutoRetryStep.execute": {
+            "name": "execute",
+            "location": 27,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "state": []
+            }
+        },
+        "attempt_retries.AutoRetryStep.retry": {
+            "name": "retry",
+            "location": 31,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "state": [],
+                "_failures": []
+            }
+        }
+    },
+    "talepy-master/talepy/steps.py": {
+        "build_step": {
+            "name": "build_step",
+            "location": 56,
+            "return": [
+                "Step"
+            ],
+            "arguments": {
+                "definition": [
+                    "StepLike"
+                ]
+            }
+        },
+        "build_step_list": {
+            "name": "build_step_list",
+            "location": 67,
+            "return": [
+                "Iterable[Step]"
+            ],
+            "arguments": {
+                "step_definitions": [
+                    "Iterable[StepLike]"
+                ]
+            }
+        },
+        "Step.execute": {
+            "name": "execute",
+            "location": 26,
+            "return": [
+                "Union[(OutputState, Awaitable[OutputState])]"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "InputState"
+                ]
+            }
+        },
+        "Step.compensate": {
+            "name": "compensate",
+            "location": 29,
+            "return": [
+                "Union[(None, Awaitable[Any])]"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "OutputState"
+                ]
+            }
+        },
+        "LambdaStep.__init__": {
+            "name": "__init__",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "execute_lambda": [
+                    "Callable[([X], Y)]"
+                ],
+                "compensate_lambda": [
+                    "Callable[([Y], Any)]"
+                ]
+            }
+        },
+        "LambdaStep.execute": {
+            "name": "execute",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "state": []
+            }
+        },
+        "LambdaStep.compensate": {
+            "name": "compensate",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": []
+            }
+        }
+    },
+    "talepy-master/talepy/__init__.py": {
+        "_compensate_completed_steps": {
+            "name": "_compensate_completed_steps",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "completed_steps": [
+                    "List[Tuple[(Step, Any)]]"
+                ]
+            }
+        },
+        "_execute_step": {
+            "name": "_execute_step",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "state": [],
+                "step": [
+                    "Step"
+                ]
+            }
+        },
+        "run_transaction": {
+            "name": "run_transaction",
+            "location": 29,
+            "return": [],
+            "arguments": {
+                "steps": [
+                    "Iterable[StepLike]"
+                ],
+                "starting_state": []
+            }
+        }
+    },
+    "talepy-master/tests/mocks.py": {
+        "MockCountingStep.__init__": {
+            "name": "__init__",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MockCountingStep.compensate": {
+            "name": "compensate",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockCountingStep.execute": {
+            "name": "execute",
+            "location": 19,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockAsyncExecuteStep.__init__": {
+            "name": "__init__",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MockAsyncExecuteStep.compensate": {
+            "name": "compensate",
+            "location": 31,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockAsyncExecuteAndCompensateStep.__init__": {
+            "name": "__init__",
+            "location": 43,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MockAsyncCompensateStep.__init__": {
+            "name": "__init__",
+            "location": 58,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MockAsyncCompensateStep.execute": {
+            "name": "execute",
+            "location": 64,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "AlwaysFailsStep.__init__": {
+            "name": "__init__",
+            "location": 77,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AlwaysFailsStep.compensate": {
+            "name": "compensate",
+            "location": 81,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "AlwaysFailsStep.execute": {
+            "name": "execute",
+            "location": 84,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockRetryStep.__init__": {
+            "name": "__init__",
+            "location": 91,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MockRetryStep.compensate": {
+            "name": "compensate",
+            "location": 94,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockRetryStep.execute": {
+            "name": "execute",
+            "location": 97,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockRetryStep.retry": {
+            "name": "retry",
+            "location": 100,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "int"
+                ],
+                "failures": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "MockRetryStepThatRetriesTwice.__init__": {
+            "name": "__init__",
+            "location": 110,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MockRetryStepThatRetriesTwice.compensate": {
+            "name": "compensate",
+            "location": 113,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockRetryStepThatRetriesTwice.execute": {
+            "name": "execute",
+            "location": 116,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockRetryStepThatRetriesTwice.retry": {
+            "name": "retry",
+            "location": 119,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "int"
+                ],
+                "failures": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "MockRetryStepThatRetriesTwiceThenGivesUp.__init__": {
+            "name": "__init__",
+            "location": 131,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "MockRetryStepThatRetriesTwiceThenGivesUp.compensate": {
+            "name": "compensate",
+            "location": 134,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockRetryStepThatRetriesTwiceThenGivesUp.execute": {
+            "name": "execute",
+            "location": 137,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "MockRetryStepThatRetriesTwiceThenGivesUp.retry": {
+            "name": "retry",
+            "location": 140,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "int"
+                ],
+                "failures": [
+                    "List[Exception]"
+                ]
+            }
+        },
+        "RegularMockStep.__init__": {
+            "name": "__init__",
+            "location": 153,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "RegularMockStep.compensate": {
+            "name": "compensate",
+            "location": 156,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "RegularMockStep.execute": {
+            "name": "execute",
+            "location": 159,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "counter_state": []
+            }
+        },
+        "SlowMoStep.compensate": {
+            "name": "compensate",
+            "location": 173,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "state": []
+            }
+        }
+    },
+    "talepy-master/tests/test_async_transactions.py": {},
+    "talepy-master/tests/test_build_step.py": {
+        "arity_one_function": {
+            "name": "arity_one_function",
+            "location": 15,
+            "return": [],
+            "arguments": {
+                "state": []
+            }
+        },
+        "arity_two_function": {
+            "name": "arity_two_function",
+            "location": 19,
+            "return": [],
+            "arguments": {
+                "state": [],
+                "what": []
+            }
+        },
+        "test_things_that_should_turn_into_steps": {
+            "name": "test_things_that_should_turn_into_steps",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "step_like_object": []
+            }
+        },
+        "test_things_that_should_not_turn_into_steps": {
+            "name": "test_things_that_should_not_turn_into_steps",
+            "location": 48,
+            "return": [],
+            "arguments": {
+                "non_step_like_object": []
+            }
+        },
+        "StubStep.execute": {
+            "name": "execute",
+            "location": 8,
+            "return": [
+                "OutputState"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "InputState"
+                ]
+            }
+        },
+        "StubStep.compensate": {
+            "name": "compensate",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "OutputState"
+                ]
+            }
+        }
+    },
+    "talepy-master/tests/test_concurrent_transactions.py": {},
+    "talepy-master/tests/test_functional.py": {
+        "test_we_can_get_arity_from_functions": {
+            "name": "test_we_can_get_arity_from_functions",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "test_func": [],
+                "expected_arity": [
+                    "int"
+                ]
+            }
+        },
+        "test_we_can_tell_if_something_is_a_pair_of_functions": {
+            "name": "test_we_can_tell_if_something_is_a_pair_of_functions",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "thing": [],
+                "expected_result": []
+            }
+        },
+        "test_partition_splits_a_list": {
+            "name": "test_partition_splits_a_list",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "talepy-master/tests/test_lambda_steps.py": {
+        "test_execute_calls_the_first_lambda": {
+            "name": "test_execute_calls_the_first_lambda",
+            "location": 4,
+            "return": [],
+            "arguments": {}
+        },
+        "test_compensate_calls_the_second_lambda_with_the_supplied_state": {
+            "name": "test_compensate_calls_the_second_lambda_with_the_supplied_state",
+            "location": 9,
+            "return": [],
+            "arguments": {}
+        },
+        "test_compensate_step_is_optional": {
+            "name": "test_compensate_step_is_optional",
+            "location": 21,
+            "return": [],
+            "arguments": {}
+        },
+        "test_compensate_calls_the_second_lambda_with_the_supplied_state.Reverter.lambda_func": {
+            "name": "lambda_func",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "state_given": []
+            }
+        }
+    },
+    "talepy-master/tests/test_retries.py": {
+        "test_the_retry_is_run": {
+            "name": "test_the_retry_is_run",
+            "location": 14,
+            "return": [],
+            "arguments": {}
+        },
+        "test_a_second_retry_can_be_run": {
+            "name": "test_a_second_retry_can_be_run",
+            "location": 21,
+            "return": [],
+            "arguments": {}
+        },
+        "test_retries_can_be_stopped_by_raising_abort_retries": {
+            "name": "test_retries_can_be_stopped_by_raising_abort_retries",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        },
+        "test_helper_method_runs_the_step_the_expected_number_of_times": {
+            "name": "test_helper_method_runs_the_step_the_expected_number_of_times",
+            "location": 45,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "talepy-master/tests/test_transactions.py": {
+        "test_a_transaction_runs_a_step_it_wraps": {
+            "name": "test_a_transaction_runs_a_step_it_wraps",
+            "location": 8,
+            "return": [],
+            "arguments": {}
+        },
+        "test_a_transaction_runs_many_steps_it_wraps_and_passes_state": {
+            "name": "test_a_transaction_runs_many_steps_it_wraps_and_passes_state",
+            "location": 15,
+            "return": [],
+            "arguments": {}
+        },
+        "test_final_state_is_returned": {
+            "name": "test_final_state_is_returned",
+            "location": 24,
+            "return": [],
+            "arguments": {}
+        },
+        "test_if_a_transaction_fails_all_compensations_are_applied": {
+            "name": "test_if_a_transaction_fails_all_compensations_are_applied",
+            "location": 33,
+            "return": [],
+            "arguments": {}
+        },
+        "test_if_a_transaction_fails_later_steps_are_ignored": {
+            "name": "test_if_a_transaction_fails_later_steps_are_ignored",
+            "location": 45,
+            "return": [],
+            "arguments": {}
+        },
+        "test_exceptions_are_raised_eventually": {
+            "name": "test_exceptions_are_raised_eventually",
+            "location": 60,
+            "return": [],
+            "arguments": {}
+        },
+        "test_single_lambdas_are_turned_into_steps": {
+            "name": "test_single_lambdas_are_turned_into_steps",
+            "location": 65,
+            "return": [],
+            "arguments": {}
+        },
+        "test_pairs_of_lambdas_are_turned_into_a_step": {
+            "name": "test_pairs_of_lambdas_are_turned_into_a_step",
+            "location": 71,
+            "return": [],
+            "arguments": {}
+        },
+        "test_failures_in_compensations_are_caught_and_bundled": {
+            "name": "test_failures_in_compensations_are_caught_and_bundled",
+            "location": 80,
+            "return": [],
+            "arguments": {}
+        },
+        "test_failures_in_compensations_are_caught_and_bundled.create_failure": {
+            "name": "create_failure",
+            "location": 81,
+            "return": [],
+            "arguments": {
+                "message": []
+            }
+        },
+        "test_failures_in_compensations_are_caught_and_bundled.create_failure.fail": {
+            "name": "fail",
+            "location": 82,
+            "return": [],
+            "arguments": {
+                "s": []
+            }
+        }
+    }
+}

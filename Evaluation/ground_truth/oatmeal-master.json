@@ -1,0 +1,569 @@
+{
+    "oatmeal-master/setup.py": {},
+    "oatmeal-master/oatmeal/models.py": {
+        "get_bert_binary_model": {
+            "name": "get_bert_binary_model",
+            "location": 69,
+            "return": [
+                "BertForSequenceClassification"
+            ],
+            "arguments": {}
+        },
+        "get_bert_multiclass_model": {
+            "name": "get_bert_multiclass_model",
+            "location": 79,
+            "return": [
+                "BertForSequenceClassification"
+            ],
+            "arguments": {
+                "num_labels": [
+                    "int"
+                ]
+            }
+        },
+        "get_bert_multilabel_model": {
+            "name": "get_bert_multilabel_model",
+            "location": 89,
+            "return": [
+                "BertForMultiLabelSequenceClassification"
+            ],
+            "arguments": {
+                "num_labels": [
+                    "int"
+                ]
+            }
+        },
+        "get_bert_opt": {
+            "name": "get_bert_opt",
+            "location": 105,
+            "return": [
+                "BertAdam"
+            ],
+            "arguments": {
+                "model": [
+                    "bert_model_types"
+                ],
+                "n_train_examples": [
+                    "int"
+                ],
+                "train_batch_size": [
+                    "int"
+                ],
+                "num_train_epochs": [
+                    "int"
+                ]
+            }
+        },
+        "run_model_training": {
+            "name": "run_model_training",
+            "location": 135,
+            "return": [
+                "bert_model_types"
+            ],
+            "arguments": {
+                "model": [
+                    "bert_model_types"
+                ],
+                "opt": [
+                    "BertAdam"
+                ],
+                "dataloader": [
+                    "DataLoader"
+                ],
+                "epochs": [
+                    "int"
+                ],
+                "pos_weight": [
+                    "Optional[List[float]]"
+                ]
+            }
+        },
+        "run_prediction_softmax": {
+            "name": "run_prediction_softmax",
+            "location": 163,
+            "return": [
+                "array"
+            ],
+            "arguments": {
+                "model": [
+                    "bert_model_types"
+                ],
+                "dataloader": [
+                    "DataLoader"
+                ]
+            }
+        },
+        "run_prediction_sigmoid": {
+            "name": "run_prediction_sigmoid",
+            "location": 183,
+            "return": [
+                "array"
+            ],
+            "arguments": {
+                "model": [
+                    "bert_model_types"
+                ],
+                "dataloader": [
+                    "DataLoader"
+                ]
+            }
+        },
+        "BertForMultiLabelSequenceClassification.__init__": {
+            "name": "__init__",
+            "location": 26,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "config": [
+                    "BertConfig"
+                ],
+                "num_labels": [
+                    "int"
+                ]
+            }
+        },
+        "BertForMultiLabelSequenceClassification.forward": {
+            "name": "forward",
+            "location": 34,
+            "return": [
+                "Tensor"
+            ],
+            "arguments": {
+                "self": [],
+                "input_ids": [
+                    "Tensor"
+                ],
+                "token_type_ids": [
+                    "Tensor"
+                ],
+                "attention_mask": [
+                    "Tensor"
+                ],
+                "labels": [
+                    "Tensor"
+                ],
+                "pos_weight": [
+                    "Tensor"
+                ]
+            }
+        },
+        "BertForMultiLabelSequenceClassification.freeze_bert_encoder": {
+            "name": "freeze_bert_encoder",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BertForMultiLabelSequenceClassification.unfreeze_bert_encoder": {
+            "name": "unfreeze_bert_encoder",
+            "location": 64,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "oatmeal-master/oatmeal/oatmeal.py": {
+        "cli": {
+            "name": "cli",
+            "location": 47,
+            "return": [],
+            "arguments": {}
+        },
+        "train": {
+            "name": "train",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "ctx": [],
+                "input_data": [],
+                "eval_data": [],
+                "export_path": [],
+                "model_name": [],
+                "batch_size": [],
+                "epochs": [],
+                "max_seq_len": []
+            }
+        },
+        "multiclass": {
+            "name": "multiclass",
+            "location": 94,
+            "return": [],
+            "arguments": {
+                "ctx": [],
+                "text_column": [],
+                "label_column": [],
+                "label_names": []
+            }
+        },
+        "multilabel": {
+            "name": "multilabel",
+            "location": 152,
+            "return": [],
+            "arguments": {
+                "ctx": [],
+                "text_column": [],
+                "label_names": [],
+                "balance": []
+            }
+        },
+        "predict": {
+            "name": "predict",
+            "location": 251,
+            "return": [],
+            "arguments": {
+                "input_text": [],
+                "model_path": [],
+                "model_name": []
+            }
+        }
+    },
+    "oatmeal-master/oatmeal/persistance.py": {
+        "save_model": {
+            "name": "save_model",
+            "location": 21,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "model": [
+                    "bert_model_types"
+                ],
+                "training_parameters": [
+                    "Dict[(str, str)]"
+                ],
+                "export_dir": [
+                    "Optional[str]"
+                ],
+                "model_name": [
+                    "str"
+                ]
+            }
+        },
+        "load_model_classification": {
+            "name": "load_model_classification",
+            "location": 42,
+            "return": [
+                "BertForSequenceClassification"
+            ],
+            "arguments": {
+                "model_path": [
+                    "Path"
+                ],
+                "model_name": [
+                    "str"
+                ],
+                "num_labels": [
+                    "int"
+                ]
+            }
+        },
+        "load_model_multilabel": {
+            "name": "load_model_multilabel",
+            "location": 54,
+            "return": [
+                "BertForMultiLabelSequenceClassification"
+            ],
+            "arguments": {
+                "model_path": [
+                    "Path"
+                ],
+                "model_name": [
+                    "str"
+                ],
+                "num_labels": [
+                    "int"
+                ]
+            }
+        },
+        "load_classification_data": {
+            "name": "load_classification_data",
+            "location": 66,
+            "return": [
+                "Tuple[(array, array, Optional[Dict[(str, int)]])]"
+            ],
+            "arguments": {
+                "input_csv": [
+                    "str"
+                ],
+                "text_column": [
+                    "str"
+                ],
+                "label_column": [
+                    "str"
+                ]
+            }
+        },
+        "load_multilabel_data": {
+            "name": "load_multilabel_data",
+            "location": 80,
+            "return": [
+                "Tuple[(array, array)]"
+            ],
+            "arguments": {
+                "input_csv": [
+                    "str"
+                ],
+                "text_column": [
+                    "str"
+                ],
+                "label_names": [
+                    "List[str]"
+                ]
+            }
+        },
+        "load_evaluation_data": {
+            "name": "load_evaluation_data",
+            "location": 89,
+            "return": [
+                "Tuple[(array, DataFrame)]"
+            ],
+            "arguments": {
+                "input_csv": [
+                    "str"
+                ],
+                "text_column": []
+            }
+        },
+        "create_training_parameters": {
+            "name": "create_training_parameters",
+            "location": 95,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "num_labels": [
+                    "int"
+                ],
+                "problem_type": [
+                    "str"
+                ],
+                "max_seq_len": [
+                    "int"
+                ],
+                "epochs": [
+                    "int"
+                ],
+                "label_names": [
+                    "List[str]"
+                ]
+            }
+        },
+        "load_training_config": {
+            "name": "load_training_config",
+            "location": 111,
+            "return": [
+                "Dict[(str, Any)]"
+            ],
+            "arguments": {
+                "json_path": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "oatmeal-master/oatmeal/processing.py": {
+        "text_to_token_ids": {
+            "name": "text_to_token_ids",
+            "location": 15,
+            "return": [
+                "Tuple[(List[int], List[int], List[int])]"
+            ],
+            "arguments": {
+                "text": [
+                    "str"
+                ],
+                "max_seq_len": [
+                    "int"
+                ]
+            }
+        },
+        "tensorize_texts": {
+            "name": "tensorize_texts",
+            "location": 40,
+            "return": [
+                "Tuple[(Tensor, Tensor, Tensor)]"
+            ],
+            "arguments": {
+                "raw_texts": [
+                    "List[str]"
+                ],
+                "max_seq_len": [
+                    "int"
+                ]
+            }
+        },
+        "labels_to_tensor": {
+            "name": "labels_to_tensor",
+            "location": 50,
+            "return": [
+                "Tensor"
+            ],
+            "arguments": {
+                "labels": [
+                    "array"
+                ],
+                "dtype": []
+            }
+        },
+        "build_train_dataloader": {
+            "name": "build_train_dataloader",
+            "location": 55,
+            "return": [
+                "DataLoader"
+            ],
+            "arguments": {
+                "all_input_ids": [
+                    "Tensor"
+                ],
+                "all_input_mask": [
+                    "Tensor"
+                ],
+                "all_segment_ids": [
+                    "Tensor"
+                ],
+                "all_label_ids": [
+                    "Tensor"
+                ],
+                "batch_size": [
+                    "int"
+                ]
+            }
+        },
+        "build_predict_dataloader": {
+            "name": "build_predict_dataloader",
+            "location": 70,
+            "return": [
+                "DataLoader"
+            ],
+            "arguments": {
+                "all_input_ids": [
+                    "Tensor"
+                ],
+                "all_input_mask": [
+                    "Tensor"
+                ],
+                "all_segment_ids": [
+                    "Tensor"
+                ],
+                "batch_size": [
+                    "int"
+                ]
+            }
+        },
+        "create_training_dataloader": {
+            "name": "create_training_dataloader",
+            "location": 82,
+            "return": [
+                "DataLoader"
+            ],
+            "arguments": {
+                "texts": [
+                    "array"
+                ],
+                "labels": [
+                    "array"
+                ],
+                "max_seq_len": [
+                    "int"
+                ],
+                "batch_size": [
+                    "int"
+                ],
+                "multilabel": [
+                    "bool"
+                ]
+            }
+        },
+        "create_prediction_dataloader": {
+            "name": "create_prediction_dataloader",
+            "location": 100,
+            "return": [
+                "DataLoader"
+            ],
+            "arguments": {
+                "texts": [
+                    "array"
+                ],
+                "max_seq_len": [
+                    "int"
+                ],
+                "batch_size": [
+                    "int"
+                ]
+            }
+        },
+        "build_binary_predictions_df": {
+            "name": "build_binary_predictions_df",
+            "location": 110,
+            "return": [
+                "DataFrame"
+            ],
+            "arguments": {
+                "input_df": [
+                    "DataFrame"
+                ],
+                "predictions": [
+                    "array"
+                ]
+            }
+        },
+        "build_multi_predictions_df": {
+            "name": "build_multi_predictions_df",
+            "location": 117,
+            "return": [
+                "DataFrame"
+            ],
+            "arguments": {
+                "input_df": [
+                    "DataFrame"
+                ],
+                "predictions": [
+                    "array"
+                ],
+                "label_names": [
+                    "List[str]"
+                ]
+            }
+        }
+    },
+    "oatmeal-master/oatmeal/__init__.py": {},
+    "oatmeal-master/tests/test_processing.py": {
+        "test_tokenization": {
+            "name": "test_tokenization",
+            "location": 12,
+            "return": [],
+            "arguments": {}
+        },
+        "test_tensorize": {
+            "name": "test_tensorize",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        },
+        "test_labels_to_tensor": {
+            "name": "test_labels_to_tensor",
+            "location": 42,
+            "return": [],
+            "arguments": {}
+        },
+        "test_create_train_dataloader": {
+            "name": "test_create_train_dataloader",
+            "location": 50,
+            "return": [],
+            "arguments": {}
+        },
+        "test_create_predict_dataloader": {
+            "name": "test_create_predict_dataloader",
+            "location": 66,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "oatmeal-master/tests/__init__.py": {}
+}

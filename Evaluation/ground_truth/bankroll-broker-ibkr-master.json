@@ -1,0 +1,968 @@
+{
+    "bankroll-broker-ibkr-master/setup.py": {},
+    "bankroll-broker-ibkr-master/bankroll/brokers/ibkr/account.py": {
+        "_parseFiniteDecimal": {
+            "name": "_parseFiniteDecimal",
+            "location": 88,
+            "return": [
+                "Decimal"
+            ],
+            "arguments": {
+                "input": [
+                    "str"
+                ]
+            }
+        },
+        "_parseOption": {
+            "name": "_parseOption",
+            "location": 97,
+            "return": [
+                "Option"
+            ],
+            "arguments": {
+                "symbol": [
+                    "str"
+                ],
+                "currency": [
+                    "Currency"
+                ],
+                "multiplier": [
+                    "Decimal"
+                ],
+                "exchange": [
+                    "Optional[str]"
+                ],
+                "cls": [
+                    "Type[Option]"
+                ]
+            }
+        },
+        "_parseForex": {
+            "name": "_parseForex",
+            "location": 127,
+            "return": [
+                "Forex"
+            ],
+            "arguments": {
+                "symbol": [
+                    "str"
+                ],
+                "currency": [
+                    "Currency"
+                ],
+                "exchange": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "_parseFutureOptionContract": {
+            "name": "_parseFutureOptionContract",
+            "location": 144,
+            "return": [
+                "Instrument"
+            ],
+            "arguments": {
+                "contract": [
+                    "IB.Contract"
+                ],
+                "currency": [
+                    "Currency"
+                ],
+                "exchange": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "_extractPosition": {
+            "name": "_extractPosition",
+            "location": 166,
+            "return": [
+                "Position"
+            ],
+            "arguments": {
+                "p": [
+                    "IB.Position"
+                ]
+            }
+        },
+        "_downloadPositions": {
+            "name": "_downloadPositions",
+            "location": 227,
+            "return": [
+                "List[Position]"
+            ],
+            "arguments": {
+                "ib": [
+                    "IB.IB"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_parseIBDate": {
+            "name": "_parseIBDate",
+            "location": 398,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "datestr": [
+                    "str"
+                ]
+            }
+        },
+        "_parseFutureOption": {
+            "name": "_parseFutureOption",
+            "location": 405,
+            "return": [
+                "Instrument"
+            ],
+            "arguments": {
+                "entry": [
+                    "_instrumentEntryTypes"
+                ],
+                "exchange": [
+                    "Optional[str]"
+                ]
+            }
+        },
+        "_parseInstrument": {
+            "name": "_parseInstrument",
+            "location": 427,
+            "return": [
+                "Instrument"
+            ],
+            "arguments": {
+                "entry": [
+                    "_instrumentEntryTypes"
+                ]
+            }
+        },
+        "_parseTradeConfirm": {
+            "name": "_parseTradeConfirm",
+            "location": 474,
+            "return": [
+                "Trade"
+            ],
+            "arguments": {
+                "trade": [
+                    "_IBTradeConfirm"
+                ]
+            }
+        },
+        "_tradesFromReport": {
+            "name": "_tradesFromReport",
+            "location": 549,
+            "return": [
+                "List[Trade]"
+            ],
+            "arguments": {
+                "report": [
+                    "IB.FlexReport"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_parseTrades": {
+            "name": "_parseTrades",
+            "location": 562,
+            "return": [
+                "List[Trade]"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_parseChangeInDividendAccrual": {
+            "name": "_parseChangeInDividendAccrual",
+            "location": 566,
+            "return": [
+                "Optional[Activity]"
+            ],
+            "arguments": {
+                "entry": [
+                    "_IBChangeInDividendAccrual"
+                ]
+            }
+        },
+        "_parseCurrencyInterestAccrual": {
+            "name": "_parseCurrencyInterestAccrual",
+            "location": 585,
+            "return": [
+                "Optional[Activity]"
+            ],
+            "arguments": {
+                "entry": [
+                    "_IBInterestAccrualsCurrency"
+                ]
+            }
+        },
+        "_parseStockLoanFee": {
+            "name": "_parseStockLoanFee",
+            "location": 607,
+            "return": [
+                "Optional[Activity]"
+            ],
+            "arguments": {
+                "entry": [
+                    "_IBSLBFee"
+                ]
+            }
+        },
+        "_parseActivityType": {
+            "name": "_parseActivityType",
+            "location": 627,
+            "return": [
+                "Iterable[Activity]"
+            ],
+            "arguments": {
+                "report": [
+                    "IB.FlexReport"
+                ],
+                "name": [
+                    "str"
+                ],
+                "t": [
+                    "Type[_NT]"
+                ],
+                "transform": [
+                    "Callable[([_NT], Optional[Activity])]"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_activityFromReport": {
+            "name": "_activityFromReport",
+            "location": 644,
+            "return": [
+                "List[Activity]"
+            ],
+            "arguments": {
+                "report": [
+                    "IB.FlexReport"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_parseNonTradeActivity": {
+            "name": "_parseNonTradeActivity",
+            "location": 674,
+            "return": [
+                "List[Activity]"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_backoffFlexReport": {
+            "name": "_backoffFlexReport",
+            "location": 687,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "details": [
+                    "Dict[(str, Any)]"
+                ]
+            }
+        },
+        "_flexErrorIsFatal": {
+            "name": "_flexErrorIsFatal",
+            "location": 692,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "exception": [
+                    "IB.FlexError"
+                ]
+            }
+        },
+        "_downloadFlexReport": {
+            "name": "_downloadFlexReport",
+            "location": 706,
+            "return": [
+                "IB.FlexReport"
+            ],
+            "arguments": {
+                "name": [
+                    "str"
+                ],
+                "token": [
+                    "str"
+                ],
+                "queryID": [
+                    "int"
+                ]
+            }
+        },
+        "_downloadTrades": {
+            "name": "_downloadTrades",
+            "location": 720,
+            "return": [
+                "List[Trade]"
+            ],
+            "arguments": {
+                "token": [
+                    "str"
+                ],
+                "queryID": [
+                    "int"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_downloadNonTradeActivity": {
+            "name": "_downloadNonTradeActivity",
+            "location": 729,
+            "return": [
+                "List[Activity]"
+            ],
+            "arguments": {
+                "token": [
+                    "str"
+                ],
+                "queryID": [
+                    "int"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_extractCash": {
+            "name": "_extractCash",
+            "location": 738,
+            "return": [
+                "Cash"
+            ],
+            "arguments": {
+                "val": [
+                    "IB.AccountValue"
+                ]
+            }
+        },
+        "_downloadBalance": {
+            "name": "_downloadBalance",
+            "location": 747,
+            "return": [
+                "AccountBalance"
+            ],
+            "arguments": {
+                "ib": [
+                    "IB.IB"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "_stockContract": {
+            "name": "_stockContract",
+            "location": 771,
+            "return": [
+                "IB.Contract"
+            ],
+            "arguments": {
+                "stock": [
+                    "Stock"
+                ]
+            }
+        },
+        "_bondContract": {
+            "name": "_bondContract",
+            "location": 779,
+            "return": [
+                "IB.Contract"
+            ],
+            "arguments": {
+                "bond": [
+                    "Bond"
+                ]
+            }
+        },
+        "_optionContract": {
+            "name": "_optionContract",
+            "location": 787,
+            "return": [
+                "IB.Contract"
+            ],
+            "arguments": {
+                "option": [
+                    "Option"
+                ],
+                "cls": [
+                    "Type[IB.Contract]"
+                ]
+            }
+        },
+        "_futuresContract": {
+            "name": "_futuresContract",
+            "location": 802,
+            "return": [
+                "IB.Contract"
+            ],
+            "arguments": {
+                "future": [
+                    "Future"
+                ]
+            }
+        },
+        "_forexContract": {
+            "name": "_forexContract",
+            "location": 814,
+            "return": [
+                "IB.Contract"
+            ],
+            "arguments": {
+                "forex": [
+                    "Forex"
+                ]
+            }
+        },
+        "contract": {
+            "name": "contract",
+            "location": 822,
+            "return": [
+                "IB.Contract"
+            ],
+            "arguments": {
+                "instrument": [
+                    "Instrument"
+                ]
+            }
+        },
+        "Settings.help": {
+            "name": "help",
+            "location": 71,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Settings.sectionName": {
+            "name": "sectionName",
+            "location": 84,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "_SpinnerOnLogHandler.__init__": {
+            "name": "__init__",
+            "location": 679,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "spinner": [
+                    "Spinner"
+                ]
+            }
+        },
+        "_SpinnerOnLogHandler.handle": {
+            "name": "handle",
+            "location": 683,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "record": [
+                    "logging.LogRecord"
+                ]
+            }
+        },
+        "IBDataProvider.__init__": {
+            "name": "__init__",
+            "location": 848,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "client": [
+                    "IB.IB"
+                ]
+            }
+        },
+        "IBDataProvider.qualifyContracts": {
+            "name": "qualifyContracts",
+            "location": 852,
+            "return": [
+                "Dict[(Instrument, IB.Contract)]"
+            ],
+            "arguments": {
+                "self": [],
+                "instruments": [
+                    "Iterable[Instrument]"
+                ]
+            }
+        },
+        "IBDataProvider.fetchHistoricalData": {
+            "name": "fetchHistoricalData",
+            "location": 865,
+            "return": [
+                "pd.DataFrame"
+            ],
+            "arguments": {
+                "self": [],
+                "instrument": [
+                    "Instrument"
+                ]
+            }
+        },
+        "IBDataProvider.fetchQuotes": {
+            "name": "fetchQuotes",
+            "location": 878,
+            "return": [
+                "Iterable[Tuple[(Instrument, Quote)]]"
+            ],
+            "arguments": {
+                "self": [],
+                "instruments": [
+                    "Iterable[Instrument]"
+                ],
+                "dataType": [
+                    "_MarketDataType"
+                ]
+            }
+        },
+        "IBAccount.fromSettings": {
+            "name": "fromSettings",
+            "location": 935,
+            "return": [
+                "'IBAccount'"
+            ],
+            "arguments": {
+                "cls": [],
+                "settings": [
+                    "Mapping[(configuration.Settings, str)]"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "IBAccount.__init__": {
+            "name": "__init__",
+            "location": 966,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "twsPort": [
+                    "Optional[int]"
+                ],
+                "flexToken": [
+                    "Optional[str]"
+                ],
+                "trades": [
+                    "Union[(Path, int, None)]"
+                ],
+                "activity": [
+                    "Union[(Path, int, None)]"
+                ],
+                "lenient": [
+                    "bool"
+                ]
+            }
+        },
+        "IBAccount.client": {
+            "name": "client",
+            "location": 982,
+            "return": [
+                "Optional[IB.IB]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IBAccount.positions": {
+            "name": "positions",
+            "location": 998,
+            "return": [
+                "Iterable[Position]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IBAccount.activity": {
+            "name": "activity",
+            "location": 1004,
+            "return": [
+                "Iterable[Activity]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IBAccount.balance": {
+            "name": "balance",
+            "location": 1038,
+            "return": [
+                "AccountBalance"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "IBAccount.marketDataProvider": {
+            "name": "marketDataProvider",
+            "location": 1045,
+            "return": [
+                "MarketDataProvider"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "bankroll-broker-ibkr-master/bankroll/brokers/ibkr/__init__.py": {},
+    "bankroll-broker-ibkr-master/tests/helpers.py": {
+        "cashAmounts": {
+            "name": "cashAmounts",
+            "location": 53,
+            "return": [
+                "SearchStrategy[Decimal]"
+            ],
+            "arguments": {
+                "min_value": [
+                    "Decimal"
+                ],
+                "max_value": [
+                    "Decimal"
+                ]
+            }
+        },
+        "positionQuantities": {
+            "name": "positionQuantities",
+            "location": 62,
+            "return": [
+                "SearchStrategy[Decimal]"
+            ],
+            "arguments": {
+                "min_value": [
+                    "Decimal"
+                ],
+                "max_value": [
+                    "Decimal"
+                ],
+                "allow_zero": [
+                    "bool"
+                ]
+            }
+        },
+        "multipliers": {
+            "name": "multipliers",
+            "location": 77,
+            "return": [
+                "SearchStrategy[Decimal]"
+            ],
+            "arguments": {
+                "min_value": [
+                    "Decimal"
+                ],
+                "max_value": [
+                    "Decimal"
+                ]
+            }
+        },
+        "strikes": {
+            "name": "strikes",
+            "location": 85,
+            "return": [
+                "SearchStrategy[Decimal]"
+            ],
+            "arguments": {
+                "min_value": [
+                    "Decimal"
+                ],
+                "max_value": [
+                    "Decimal"
+                ]
+            }
+        },
+        "exchanges": {
+            "name": "exchanges",
+            "location": 93,
+            "return": [
+                "SearchStrategy[str]"
+            ],
+            "arguments": {}
+        },
+        "cashUSD": {
+            "name": "cashUSD",
+            "location": 97,
+            "return": [
+                "Cash"
+            ],
+            "arguments": {
+                "amount": [
+                    "Decimal"
+                ]
+            }
+        }
+    },
+    "bankroll-broker-ibkr-master/tests/test_ibkr.py": {
+        "TestIBKRTrades.setUp": {
+            "name": "setUp",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_tradeValidity": {
+            "name": "test_tradeValidity",
+            "location": 62,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyGBPStock": {
+            "name": "test_buyGBPStock",
+            "location": 65,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyUSDStock": {
+            "name": "test_buyUSDStock",
+            "location": 80,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyBond": {
+            "name": "test_buyBond",
+            "location": 95,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyOption": {
+            "name": "test_buyOption",
+            "location": 112,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_sellOption": {
+            "name": "test_sellOption",
+            "location": 140,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyForex": {
+            "name": "test_buyForex",
+            "location": 168,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyForexCross": {
+            "name": "test_buyForexCross",
+            "location": 202,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyFuture": {
+            "name": "test_buyFuture",
+            "location": 222,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRTrades.test_buyFutureOption": {
+            "name": "test_buyFutureOption",
+            "location": 245,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRActivity.setUp": {
+            "name": "setUp",
+            "location": 273,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRActivity.test_activityValidity": {
+            "name": "test_activityValidity",
+            "location": 283,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRActivity.test_postedAndPaid": {
+            "name": "test_postedAndPaid",
+            "location": 286,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRActivity.test_postedUnpaid": {
+            "name": "test_postedUnpaid",
+            "location": 301,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRActivity.test_bondInterest": {
+            "name": "test_bondInterest",
+            "location": 306,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRActivity.test_currencyInterest": {
+            "name": "test_currencyInterest",
+            "location": 323,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRActivity.test_stockLoanInterest": {
+            "name": "test_stockLoanInterest",
+            "location": 349,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestIBKRParsing.validateTradeContract": {
+            "name": "validateTradeContract",
+            "location": 478,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tradeConfirm": [
+                    "_IBTradeConfirm"
+                ],
+                "instrument": [
+                    "Instrument"
+                ]
+            }
+        },
+        "TestIBKRParsing.test_fuzzTradeConfirm": {
+            "name": "test_fuzzTradeConfirm",
+            "location": 503,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "tradeConfirm": [
+                    "_IBTradeConfirm"
+                ]
+            }
+        },
+        "TestIBKRParsing.validatePositionContract": {
+            "name": "validatePositionContract",
+            "location": 511,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "position": [
+                    "IB.Position"
+                ],
+                "instrument": [
+                    "Instrument"
+                ]
+            }
+        },
+        "TestIBKRParsing.test_fuzzPosition": {
+            "name": "test_fuzzPosition",
+            "location": 539,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "position": [
+                    "IB.Position"
+                ]
+            }
+        }
+    },
+    "bankroll-broker-ibkr-master/tests/__init__.py": {}
+}

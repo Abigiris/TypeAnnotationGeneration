@@ -1,0 +1,821 @@
+{
+    "deck-chores-main/deck_chores/config.py": {
+        "_check_docker_api": {
+            "name": "_check_docker_api",
+            "location": 32,
+            "return": [
+                "docker.DockerClient"
+            ],
+            "arguments": {
+                "client": [
+                    "docker.DockerClient"
+                ]
+            }
+        },
+        "_resolve_tls_version": {
+            "name": "_resolve_tls_version",
+            "location": 46,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "version": [
+                    "str"
+                ]
+            }
+        },
+        "_test_daemon_socket": {
+            "name": "_test_daemon_socket",
+            "location": 50,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "url": [
+                    "str"
+                ]
+            }
+        },
+        "generate_config": {
+            "name": "generate_config",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "deck-chores-main/deck_chores/indexes.py": {
+        "container_name": {
+            "name": "container_name",
+            "location": 12,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ]
+            }
+        },
+        "lock_service": {
+            "name": "lock_service",
+            "location": 25,
+            "return": [],
+            "arguments": {
+                "service_id": [
+                    "tuple[(str, ...)]"
+                ],
+                "container_id": [
+                    "str"
+                ]
+            }
+        },
+        "reassign_service_lock": {
+            "name": "reassign_service_lock",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "old_container_id": [
+                    "str"
+                ],
+                "new_container_id": [
+                    "str"
+                ]
+            }
+        },
+        "unlock_service": {
+            "name": "unlock_service",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "deck-chores-main/deck_chores/jobs.py": {
+        "start_scheduler": {
+            "name": "start_scheduler",
+            "location": 21,
+            "return": [],
+            "arguments": {}
+        },
+        "on_max_instances": {
+            "name": "on_max_instances",
+            "location": 35,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.JobSubmissionEvent"
+                ]
+            }
+        },
+        "on_executed": {
+            "name": "on_executed",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.JobExecutionEvent"
+                ]
+            }
+        },
+        "on_error": {
+            "name": "on_error",
+            "location": 66,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.JobExecutionEvent"
+                ]
+            }
+        },
+        "on_missed": {
+            "name": "on_missed",
+            "location": 75,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "event": [
+                    "events.JobExecutionEvent"
+                ]
+            }
+        },
+        "exec_job": {
+            "name": "exec_job",
+            "location": 86,
+            "return": [
+                "tuple[(int, bytes)]"
+            ],
+            "arguments": {}
+        },
+        "add": {
+            "name": "add",
+            "location": 114,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ],
+                "definitions": [
+                    "Mapping[(str, dict)]"
+                ],
+                "paused": [
+                    "bool"
+                ]
+            }
+        },
+        "get_jobs_for_container": {
+            "name": "get_jobs_for_container",
+            "location": 154,
+            "return": [
+                "Iterator[Job]"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "deck-chores-main/deck_chores/main.py": {
+        "there_is_another_deck_chores_container": {
+            "name": "there_is_another_deck_chores_container",
+            "location": 37,
+            "return": [
+                "bool"
+            ],
+            "arguments": {}
+        },
+        "sigint_handler": {
+            "name": "sigint_handler",
+            "location": 51,
+            "return": [],
+            "arguments": {
+                "signum": [],
+                "frame": []
+            }
+        },
+        "sigterm_handler": {
+            "name": "sigterm_handler",
+            "location": 56,
+            "return": [],
+            "arguments": {
+                "signum": [],
+                "frame": []
+            }
+        },
+        "sigusr1_handler": {
+            "name": "sigusr1_handler",
+            "location": 61,
+            "return": [],
+            "arguments": {
+                "signum": [],
+                "frame": []
+            }
+        },
+        "process_started_container_labels": {
+            "name": "process_started_container_labels",
+            "location": 76,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ],
+                "paused": [
+                    "bool"
+                ]
+            }
+        },
+        "inspect_running_containers": {
+            "name": "inspect_running_containers",
+            "location": 97,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {}
+        },
+        "reassign_jobs": {
+            "name": "reassign_jobs",
+            "location": 122,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ],
+                "consider_paused": [
+                    "bool"
+                ]
+            }
+        },
+        "find_other_container_for_service": {
+            "name": "find_other_container_for_service",
+            "location": 152,
+            "return": [
+                "Optional[Container]"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ],
+                "consider_paused": [
+                    "bool"
+                ]
+            }
+        },
+        "listen": {
+            "name": "listen",
+            "location": 185,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "since": [
+                    "datetime"
+                ]
+            }
+        },
+        "handle_start": {
+            "name": "handle_start",
+            "location": 210,
+            "return": [],
+            "arguments": {
+                "event": [
+                    "dict"
+                ]
+            }
+        },
+        "handle_die": {
+            "name": "handle_die",
+            "location": 216,
+            "return": [],
+            "arguments": {
+                "event": [
+                    "dict"
+                ]
+            }
+        },
+        "handle_pause": {
+            "name": "handle_pause",
+            "location": 232,
+            "return": [],
+            "arguments": {
+                "event": [
+                    "dict"
+                ]
+            }
+        },
+        "handle_unpause": {
+            "name": "handle_unpause",
+            "location": 247,
+            "return": [],
+            "arguments": {
+                "event": [
+                    "dict"
+                ]
+            }
+        },
+        "shutdown": {
+            "name": "shutdown",
+            "location": 269,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "main": {
+            "name": "main",
+            "location": 282,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "deck-chores-main/deck_chores/parsers.py": {
+        "parse_labels": {
+            "name": "parse_labels",
+            "location": 143,
+            "return": [
+                "tuple[(tuple[(str, ...)], str, dict[(str, dict)])]"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ]
+            }
+        },
+        "parse_options": {
+            "name": "parse_options",
+            "location": 167,
+            "return": [
+                "tuple[(str, str)]"
+            ],
+            "arguments": {
+                "labels": [
+                    "dict[(str, str)]"
+                ]
+            }
+        },
+        "parse_flags": {
+            "name": "parse_flags",
+            "location": 174,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "options": [
+                    "str"
+                ]
+            }
+        },
+        "parse_service_id": {
+            "name": "parse_service_id",
+            "location": 187,
+            "return": [
+                "tuple[(str, ...)]"
+            ],
+            "arguments": {
+                "labels": [
+                    "dict[(str, str)]"
+                ]
+            }
+        },
+        "image_definition_labels_of_container": {
+            "name": "image_definition_labels_of_container",
+            "location": 204,
+            "return": [
+                "dict[(str, str)]"
+            ],
+            "arguments": {
+                "container_id": [
+                    "str"
+                ]
+            }
+        },
+        "parse_job_definitions": {
+            "name": "parse_job_definitions",
+            "location": 209,
+            "return": [
+                "dict[(str, dict)]"
+            ],
+            "arguments": {
+                "labels": [
+                    "Mapping[(str, str)]"
+                ],
+                "user": [
+                    "str"
+                ]
+            }
+        },
+        "JobConfigValidator.set_defaults": {
+            "name": "set_defaults",
+            "location": 39,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "cfg": []
+            }
+        },
+        "JobConfigValidator._fill_args": {
+            "name": "_fill_args",
+            "location": 48,
+            "return": [
+                "tuple[(str, ...)]"
+            ],
+            "arguments": {
+                "value": [
+                    "str"
+                ],
+                "length": [
+                    "int"
+                ],
+                "filling": [
+                    "str"
+                ]
+            }
+        },
+        "JobConfigValidator._normalize_coerce_cron": {
+            "name": "_normalize_coerce_cron",
+            "location": 55,
+            "return": [
+                "tuple[(Type, tuple[(str, ...)])]"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "JobConfigValidator._normalize_coerce_date": {
+            "name": "_normalize_coerce_date",
+            "location": 59,
+            "return": [
+                "tuple[(Type, tuple[str])]"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "JobConfigValidator._normalize_coerce_interval": {
+            "name": "_normalize_coerce_interval",
+            "location": 62,
+            "return": [
+                "tuple[(Type, Optional[tuple[(int, int, int, int, int)]])]"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "JobConfigValidator._normalize_coerce_timeunits": {
+            "name": "_normalize_coerce_timeunits",
+            "location": 77,
+            "return": [
+                "Optional[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "JobConfigValidator._check_with_trigger": {
+            "name": "_check_with_trigger",
+            "location": 82,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "field": [],
+                "value": []
+            }
+        }
+    },
+    "deck-chores-main/deck_chores/utils.py": {
+        "generate_id": {
+            "name": "generate_id",
+            "location": 29,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "parse_time_from_string_with_units": {
+            "name": "parse_time_from_string_with_units",
+            "location": 34,
+            "return": [
+                "Optional[int]"
+            ],
+            "arguments": {
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "seconds_as_interval_tuple": {
+            "name": "seconds_as_interval_tuple",
+            "location": 68,
+            "return": [
+                "Tuple[(int, int, int, int, int)]"
+            ],
+            "arguments": {
+                "value": [
+                    "int"
+                ]
+            }
+        },
+        "configure_logging": {
+            "name": "configure_logging",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "cfg": [
+                    "SimpleNamespace"
+                ]
+            }
+        },
+        "split_string": {
+            "name": "split_string",
+            "location": 90,
+            "return": [
+                "Tuple[(str, ...)]"
+            ],
+            "arguments": {
+                "value": [
+                    "str"
+                ],
+                "delimiter": [
+                    "str"
+                ],
+                "sort": [
+                    "bool"
+                ]
+            }
+        },
+        "trueish": {
+            "name": "trueish",
+            "location": 99,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "ExcludeErrorsFilter.__init__": {
+            "name": "__init__",
+            "location": 21,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "stderr_level": [
+                    "int"
+                ]
+            }
+        },
+        "ExcludeErrorsFilter.filter": {
+            "name": "filter",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "record": []
+            }
+        }
+    },
+    "deck-chores-main/deck_chores/__init__.py": {},
+    "deck-chores-main/docs/conf.py": {},
+    "deck-chores-main/tests/conftest.py": {
+        "cfg": {
+            "name": "cfg",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "fixtures": {
+            "name": "fixtures",
+            "location": 37,
+            "return": [],
+            "arguments": {}
+        },
+        "sanitize_indexes": {
+            "name": "sanitize_indexes",
+            "location": 42,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "deck-chores-main/tests/test_config.py": {
+        "test_default_config": {
+            "name": "test_default_config",
+            "location": 12,
+            "return": [],
+            "arguments": {
+                "monkeypatch": []
+            }
+        },
+        "test_default_config.docker_api_version": {
+            "name": "docker_api_version",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "test_default_config.every_file_exists": {
+            "name": "every_file_exists",
+            "location": 16,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "deck-chores-main/tests/test_jobs.py": {
+        "test_job_execution": {
+            "name": "test_job_execution",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "capsys": [],
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_job_execution.docker_containers": {
+            "name": "docker_containers",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "filters": []
+            }
+        }
+    },
+    "deck-chores-main/tests/test_main.py": {
+        "test_deck_chores_container_check": {
+            "name": "test_deck_chores_container_check",
+            "location": 26,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": [],
+                "has_label_seq": [],
+                "exp_result": []
+            }
+        },
+        "test_event_dispatching": {
+            "name": "test_event_dispatching",
+            "location": 38,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "fixtures": [],
+                "mocker": []
+            }
+        },
+        "test_find_other_container_for_service": {
+            "name": "test_find_other_container_for_service",
+            "location": 137,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_handle_die": {
+            "name": "test_handle_die",
+            "location": 182,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_handle_pause": {
+            "name": "test_handle_pause",
+            "location": 194,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_handle_unpause": {
+            "name": "test_handle_unpause",
+            "location": 206,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_inspect_running_containers": {
+            "name": "test_inspect_running_containers",
+            "location": 225,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_reassign_jobs": {
+            "name": "test_reassign_jobs",
+            "location": 253,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": [],
+                "container_status": [],
+                "job_next_run_time": [],
+                "expected_job_call": []
+            }
+        }
+    },
+    "deck-chores-main/tests/test_parsers.py": {
+        "test_from_iso_timetamp": {
+            "name": "test_from_iso_timetamp",
+            "location": 25,
+            "return": [],
+            "arguments": {
+                "sample": []
+            }
+        },
+        "test_parse_labels": {
+            "name": "test_parse_labels",
+            "location": 31,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_parse_labels_with_time_units": {
+            "name": "test_parse_labels_with_time_units",
+            "location": 89,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_parse_labels_with_user_option": {
+            "name": "test_parse_labels_with_user_option",
+            "location": 141,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_parse_labels_with_user_option_from_image": {
+            "name": "test_parse_labels_with_user_option_from_image",
+            "location": 169,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": []
+            }
+        },
+        "test_interval_trigger": {
+            "name": "test_interval_trigger",
+            "location": 198,
+            "return": [],
+            "arguments": {}
+        },
+        "test_flags": {
+            "name": "test_flags",
+            "location": 213,
+            "return": [],
+            "arguments": {
+                "cfg": [],
+                "mocker": [],
+                "default": [],
+                "value": [],
+                "result": []
+            }
+        }
+    },
+    "deck-chores-main/tests/__init__.py": {}
+}

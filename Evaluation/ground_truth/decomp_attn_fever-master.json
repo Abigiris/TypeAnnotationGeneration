@@ -1,0 +1,342 @@
+{
+    "decomp_attn_fever-master/wrapper_debug.py": {},
+    "decomp_attn_fever-master/experiments/__init__.py": {},
+    "decomp_attn_fever-master/models_readers/__init__.py": {},
+    "decomp_attn_fever-master/models_readers/dataset_readers/read_fever_data.py": {
+        "FeverDatasetReader.__init__": {
+            "name": "__init__",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "lazy": [
+                    "bool"
+                ],
+                "tokenizer": [
+                    "Tokenizer"
+                ],
+                "token_indexers": [
+                    "Dict[(str, TokenIndexer)]"
+                ]
+            }
+        },
+        "FeverDatasetReader.truncate": {
+            "name": "truncate",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "sent": []
+            }
+        },
+        "FeverDatasetReader._read": {
+            "name": "_read",
+            "location": 72,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "file_path": []
+            }
+        },
+        "FeverDatasetReader.text_to_instance": {
+            "name": "text_to_instance",
+            "location": 90,
+            "return": [
+                "Instance"
+            ],
+            "arguments": {
+                "self": [],
+                "claim": [
+                    "str"
+                ],
+                "evidence": [
+                    "str"
+                ],
+                "label": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "decomp_attn_fever-master/models_readers/dataset_readers/semantic_scholar_papers.py": {
+        "SemanticScholarDatasetReader.__init__": {
+            "name": "__init__",
+            "location": 48,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "lazy": [
+                    "bool"
+                ],
+                "tokenizer": [
+                    "Tokenizer"
+                ],
+                "token_indexers": [
+                    "Dict[(str, TokenIndexer)]"
+                ]
+            }
+        },
+        "SemanticScholarDatasetReader._read": {
+            "name": "_read",
+            "location": 56,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "file_path": []
+            }
+        },
+        "SemanticScholarDatasetReader.text_to_instance": {
+            "name": "text_to_instance",
+            "location": 71,
+            "return": [
+                "Instance"
+            ],
+            "arguments": {
+                "self": [],
+                "title": [
+                    "str"
+                ],
+                "abstract": [
+                    "str"
+                ],
+                "venue": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "decomp_attn_fever-master/models_readers/dataset_readers/__init__.py": {},
+    "decomp_attn_fever-master/models_readers/models/academic_paper_classifier.py": {
+        "AcademicPaperClassifier.__init__": {
+            "name": "__init__",
+            "location": 44,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "vocab": [
+                    "Vocabulary"
+                ],
+                "text_field_embedder": [
+                    "TextFieldEmbedder"
+                ],
+                "title_encoder": [
+                    "Seq2VecEncoder"
+                ],
+                "abstract_encoder": [
+                    "Seq2VecEncoder"
+                ],
+                "classifier_feedforward": [
+                    "FeedForward"
+                ],
+                "initializer": [
+                    "InitializerApplicator"
+                ],
+                "regularizer": [
+                    "Optional[RegularizerApplicator]"
+                ]
+            }
+        },
+        "AcademicPaperClassifier.forward": {
+            "name": "forward",
+            "location": 78,
+            "return": [
+                "Dict[(str, torch.Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "title": [
+                    "Dict[(str, torch.LongTensor)]"
+                ],
+                "abstract": [
+                    "Dict[(str, torch.LongTensor)]"
+                ],
+                "label": [
+                    "torch.LongTensor"
+                ]
+            }
+        },
+        "AcademicPaperClassifier.decode": {
+            "name": "decode",
+            "location": 121,
+            "return": [
+                "Dict[(str, torch.Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "output_dict": [
+                    "Dict[(str, torch.Tensor)]"
+                ]
+            }
+        },
+        "AcademicPaperClassifier.get_metrics": {
+            "name": "get_metrics",
+            "location": 137,
+            "return": [
+                "Dict[(str, float)]"
+            ],
+            "arguments": {
+                "self": [],
+                "reset": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "decomp_attn_fever-master/models_readers/models/decomp_attention_classifier.py": {
+        "DecomposableAttention.__init__": {
+            "name": "__init__",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "vocab": [
+                    "Vocabulary"
+                ],
+                "text_field_embedder": [
+                    "TextFieldEmbedder"
+                ],
+                "attend_feedforward": [
+                    "FeedForward"
+                ],
+                "similarity_function": [
+                    "SimilarityFunction"
+                ],
+                "compare_feedforward": [
+                    "FeedForward"
+                ],
+                "aggregate_feedforward": [
+                    "FeedForward"
+                ],
+                "claim_encoder": [
+                    "Optional[Seq2SeqEncoder]"
+                ],
+                "evidence_encoder": [
+                    "Optional[Seq2SeqEncoder]"
+                ],
+                "initializer": [
+                    "InitializerApplicator"
+                ],
+                "regularizer": [
+                    "Optional[RegularizerApplicator]"
+                ]
+            }
+        },
+        "DecomposableAttention.forward": {
+            "name": "forward",
+            "location": 95,
+            "return": [
+                "Dict[(str, torch.Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "claim": [
+                    "Dict[(str, torch.LongTensor)]"
+                ],
+                "evidence": [
+                    "Dict[(str, torch.LongTensor)]"
+                ],
+                "label": [
+                    "torch.IntTensor"
+                ],
+                "metadata": [
+                    "List[Dict[(str, Any)]]"
+                ]
+            }
+        },
+        "DecomposableAttention.decode": {
+            "name": "decode",
+            "location": 185,
+            "return": [
+                "Dict[(str, torch.Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "output_dict": [
+                    "Dict[(str, torch.Tensor)]"
+                ]
+            }
+        },
+        "DecomposableAttention.get_metrics": {
+            "name": "get_metrics",
+            "location": 200,
+            "return": [
+                "Dict[(str, float)]"
+            ],
+            "arguments": {
+                "self": [],
+                "reset": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "decomp_attn_fever-master/models_readers/models/__init__.py": {},
+    "decomp_attn_fever-master/tests/__init__.py": {},
+    "decomp_attn_fever-master/tests/dataset_readers/fever_dataset_reader_test.py": {
+        "TestFeverDatasetReader.test_read_from_file": {
+            "name": "test_read_from_file",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "decomp_attn_fever-master/tests/dataset_readers/semantic_scholar_dataset_reader_test.py": {
+        "TestScholarDatasetReader.test_read_from_file": {
+            "name": "test_read_from_file",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "decomp_attn_fever-master/tests/dataset_readers/__init__.py": {},
+    "decomp_attn_fever-master/tests/fixtures/__init__.py": {},
+    "decomp_attn_fever-master/tests/models/academic_paper_classifier_test.py": {
+        "AcademicPaperClassifierTest.setUp": {
+            "name": "setUp",
+            "location": 6,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "AcademicPaperClassifierTest.test_model_can_train_save_and_load": {
+            "name": "test_model_can_train_save_and_load",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "decomp_attn_fever-master/tests/models/decomp_attention_classifier_test.py": {
+        "DecomposableAttentionClassifierTest.setUp": {
+            "name": "setUp",
+            "location": 6,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DecomposableAttentionClassifierTest.test_model_can_train_save_and_load": {
+            "name": "test_model_can_train_save_and_load",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "decomp_attn_fever-master/tests/models/__init__.py": {}
+}

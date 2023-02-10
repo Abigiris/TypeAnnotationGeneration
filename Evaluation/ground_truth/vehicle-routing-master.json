@@ -1,0 +1,1056 @@
+{
+    "vehicle-routing-master/vrp.py": {
+        "cli": {
+            "name": "cli",
+            "location": 24,
+            "return": [],
+            "arguments": {}
+        },
+        "distance_matrix": {
+            "name": "distance_matrix",
+            "location": 36,
+            "return": [],
+            "arguments": {
+                "app_key": [],
+                "locations_json": [],
+                "output_csv": [],
+                "output_pickle": []
+            }
+        },
+        "scan_all": {
+            "name": "scan_all",
+            "location": 48,
+            "return": [],
+            "arguments": {
+                "distance_matrix": [],
+                "configuration": [],
+                "vehicles": [],
+                "output_file": []
+            }
+        },
+        "ortools": {
+            "name": "ortools",
+            "location": 60,
+            "return": [],
+            "arguments": {
+                "distance_matrix": [],
+                "configuration": [],
+                "vehicles": [],
+                "output_file": []
+            }
+        },
+        "simulated_annealing": {
+            "name": "simulated_annealing",
+            "location": 72,
+            "return": [],
+            "arguments": {
+                "distance_matrix": [],
+                "configuration": [],
+                "vehicles": [],
+                "output_file": []
+            }
+        },
+        "genetic": {
+            "name": "genetic",
+            "location": 84,
+            "return": [],
+            "arguments": {
+                "distance_matrix": [],
+                "configuration": [],
+                "vehicles": [],
+                "output_file": []
+            }
+        },
+        "simulation": {
+            "name": "simulation",
+            "location": 98,
+            "return": [],
+            "arguments": {
+                "algorithm": [],
+                "iterations": [],
+                "distance_matrix": [],
+                "configuration": [],
+                "vehicles": [],
+                "output_file": []
+            }
+        },
+        "comparison_chart": {
+            "name": "comparison_chart",
+            "location": 120,
+            "return": [],
+            "arguments": {
+                "chart_title": [],
+                "statistic_type": [],
+                "output_filename": [],
+                "aggregation_type": [],
+                "scan_all": [],
+                "ortools": [],
+                "genetic": [],
+                "simulated_annealing": []
+            }
+        },
+        "aggregation_chart": {
+            "name": "aggregation_chart",
+            "location": 147,
+            "return": [],
+            "arguments": {
+                "chart_title": [],
+                "statistic_type": [],
+                "algorithm": [],
+                "input_file": [],
+                "aggregation_type": [],
+                "output_filename": []
+            }
+        },
+        "custom_chart": {
+            "name": "custom_chart",
+            "location": 174,
+            "return": [],
+            "arguments": {
+                "chart_title": [],
+                "statistic_type": [],
+                "output_filename": [],
+                "aggregation_type": [],
+                "input_file": []
+            }
+        }
+    },
+    "vehicle-routing-master/algorithms/base.py": {
+        "BaseSolver.__init__": {
+            "name": "__init__",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "distance_matrix_path": [
+                    "str"
+                ],
+                "configuration_path": [
+                    "str"
+                ],
+                "vehicles_path": [
+                    "str"
+                ],
+                "output_path": [
+                    "str"
+                ]
+            }
+        },
+        "BaseSolver.solve": {
+            "name": "solve",
+            "location": 39,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseSolver._solve": {
+            "name": "_solve",
+            "location": 49,
+            "return": [
+                "Tuple[(Sequence, float)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "BaseSolver._arc_cost": {
+            "name": "_arc_cost",
+            "location": 52,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "from_node": [
+                    "int"
+                ],
+                "to_node": [
+                    "int"
+                ]
+            }
+        },
+        "BaseSolver._get_sequence_cost": {
+            "name": "_get_sequence_cost",
+            "location": 55,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "sequence": [
+                    "Sequence"
+                ]
+            }
+        },
+        "BaseSolver._print_results": {
+            "name": "_print_results",
+            "location": 63,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "sequence": [
+                    "Sequence"
+                ],
+                "sequence_cost": [
+                    "float"
+                ],
+                "execution_time": [
+                    "float"
+                ]
+            }
+        },
+        "BaseSolver._save_results": {
+            "name": "_save_results",
+            "location": 73,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "sequence": [],
+                "sequence_cost": [],
+                "execution_time": []
+            }
+        }
+    },
+    "vehicle-routing-master/algorithms/genetic.py": {
+        "GeneticSolver.__init__": {
+            "name": "__init__",
+            "location": 14,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "distance_matrix_path": [
+                    "str"
+                ],
+                "configuration_path": [
+                    "str"
+                ],
+                "vehicles_path": [
+                    "str"
+                ],
+                "output_path": [
+                    "str"
+                ]
+            }
+        },
+        "GeneticSolver._solve": {
+            "name": "_solve",
+            "location": 30,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GeneticSolver._generate_initial_population": {
+            "name": "_generate_initial_population",
+            "location": 46,
+            "return": [
+                "List[List[int]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GeneticSolver._get_population_with_costs": {
+            "name": "_get_population_with_costs",
+            "location": 55,
+            "return": [
+                "List[Tuple[(float, List[int])]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "GeneticSolver._select_elites": {
+            "name": "_select_elites",
+            "location": 64,
+            "return": [
+                "Tuple[(List[List[int]], float)]"
+            ],
+            "arguments": {
+                "self": [],
+                "population_with_costs": [
+                    "List[Tuple[(float, List[int])]]"
+                ]
+            }
+        },
+        "GeneticSolver._perform_tournament_selection": {
+            "name": "_perform_tournament_selection",
+            "location": 71,
+            "return": [
+                "List[List[int]]"
+            ],
+            "arguments": {
+                "self": [],
+                "selected_sequences": [
+                    "List[List[int]]"
+                ],
+                "population_with_costs": [
+                    "List[Tuple[(float, List[int])]]"
+                ]
+            }
+        },
+        "GeneticSolver._perform_crossing": {
+            "name": "_perform_crossing",
+            "location": 83,
+            "return": [
+                "List[List[int]]"
+            ],
+            "arguments": {
+                "self": [],
+                "population": [
+                    "List[List[int]]"
+                ]
+            }
+        },
+        "GeneticSolver._pmx_crossing": {
+            "name": "_pmx_crossing",
+            "location": 90,
+            "return": [
+                "Tuple[(List[int], List[int])]"
+            ],
+            "arguments": {
+                "self": [],
+                "sequence_a": [
+                    "List[int]"
+                ],
+                "sequence_b": [
+                    "List[int]"
+                ]
+            }
+        },
+        "GeneticSolver._get_pmx_crossed_sequence": {
+            "name": "_get_pmx_crossed_sequence",
+            "location": 108,
+            "return": [
+                "List[int]"
+            ],
+            "arguments": {
+                "sequence_a": [
+                    "OrderedSet"
+                ],
+                "sequence_b": [
+                    "OrderedSet"
+                ],
+                "part_from_a": [
+                    "OrderedSet"
+                ],
+                "part_from_b": [
+                    "OrderedSet"
+                ],
+                "start_index": [
+                    "int"
+                ],
+                "end_index": [
+                    "int"
+                ]
+            }
+        },
+        "GeneticSolver._mutate_population": {
+            "name": "_mutate_population",
+            "location": 135,
+            "return": [
+                "List[List[int]]"
+            ],
+            "arguments": {
+                "self": [],
+                "population": [
+                    "List[List[int]]"
+                ]
+            }
+        },
+        "GeneticSolver._mutate_by_inversion": {
+            "name": "_mutate_by_inversion",
+            "location": 144,
+            "return": [
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "sequence": [
+                    "List[int]"
+                ]
+            }
+        }
+    },
+    "vehicle-routing-master/algorithms/ortools_solution.py": {
+        "OrtoolsSolver.__init__": {
+            "name": "__init__",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "distance_matrix_path": [
+                    "str"
+                ],
+                "configuration_path": [
+                    "str"
+                ],
+                "vehicles_path": [
+                    "str"
+                ],
+                "output_path": [
+                    "str"
+                ]
+            }
+        },
+        "OrtoolsSolver._solve": {
+            "name": "_solve",
+            "location": 14,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "OrtoolsSolver._get_best_sequence": {
+            "name": "_get_best_sequence",
+            "location": 28,
+            "return": [
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "routing": [
+                    "Any"
+                ],
+                "assignment": [
+                    "Any"
+                ]
+            }
+        },
+        "OrtoolsSolver._create_distance_callback": {
+            "name": "_create_distance_callback",
+            "location": 43,
+            "return": [
+                "Callable"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "vehicle-routing-master/algorithms/scan_all.py": {
+        "ScanAllSolver.__init__": {
+            "name": "__init__",
+            "location": 12,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "distance_matrix_path": [
+                    "str"
+                ],
+                "configuration_path": [
+                    "str"
+                ],
+                "vehicles_path": [
+                    "str"
+                ],
+                "output_path": [
+                    "str"
+                ]
+            }
+        },
+        "ScanAllSolver._solve": {
+            "name": "_solve",
+            "location": 15,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "vehicle-routing-master/algorithms/simulated_annealing.py": {
+        "SimulatedAnnealingSolver.__init__": {
+            "name": "__init__",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "distance_matrix_path": [
+                    "str"
+                ],
+                "configuration_path": [
+                    "str"
+                ],
+                "vehicles_path": [
+                    "str"
+                ],
+                "output_path": [
+                    "str"
+                ]
+            }
+        },
+        "SimulatedAnnealingSolver._solve": {
+            "name": "_solve",
+            "location": 23,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SimulatedAnnealingSolver._generate_initial_sequence": {
+            "name": "_generate_initial_sequence",
+            "location": 41,
+            "return": [
+                "List[int]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SimulatedAnnealingSolver._create_new_sequence": {
+            "name": "_create_new_sequence",
+            "location": 47,
+            "return": [
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "sequence": [
+                    "List[int]"
+                ]
+            }
+        },
+        "SimulatedAnnealingSolver.calculate_probability": {
+            "name": "calculate_probability",
+            "location": 61,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "iteration_number": [
+                    "int"
+                ],
+                "cost": [
+                    "float"
+                ]
+            }
+        },
+        "SimulatedAnnealingSolver._calculate_temperature": {
+            "name": "_calculate_temperature",
+            "location": 67,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "iteration_number": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "vehicle-routing-master/algorithms/__init__.py": {},
+    "vehicle-routing-master/data/summary.py": {},
+    "vehicle-routing-master/data/charts/simulated_annealing_theory/simulated_annealing.py": {
+        "calculate_temperature": {
+            "name": "calculate_temperature",
+            "location": 6,
+            "return": [],
+            "arguments": {
+                "temperature_factor": [],
+                "i": []
+            }
+        },
+        "calculate_probability": {
+            "name": "calculate_probability",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "delta": [],
+                "temperature": []
+            }
+        },
+        "get_temperature_trace": {
+            "name": "get_temperature_trace",
+            "location": 14,
+            "return": [],
+            "arguments": {
+                "iterations": [],
+                "N": [],
+                "color": []
+            }
+        },
+        "get_probability_trace_const_N": {
+            "name": "get_probability_trace_const_N",
+            "location": 27,
+            "return": [],
+            "arguments": {
+                "iterations": [],
+                "N": [],
+                "d": [],
+                "color": []
+            }
+        },
+        "get_probability_trace_const_d": {
+            "name": "get_probability_trace_const_d",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "iterations": [],
+                "N": [],
+                "d": [],
+                "color": []
+            }
+        }
+    },
+    "vehicle-routing-master/tests/test_genetic_algorithm.py": {
+        "genetic_solver": {
+            "name": "genetic_solver",
+            "location": 21,
+            "return": [],
+            "arguments": {}
+        },
+        "test_select_elites": {
+            "name": "test_select_elites",
+            "location": 34,
+            "return": [],
+            "arguments": {
+                "genetic_solver": []
+            }
+        },
+        "test_perform_tournament_selection": {
+            "name": "test_perform_tournament_selection",
+            "location": 41,
+            "return": [],
+            "arguments": {
+                "genetic_solver": []
+            }
+        },
+        "test_get_pmx_crossed_sequence": {
+            "name": "test_get_pmx_crossed_sequence",
+            "location": 68,
+            "return": [],
+            "arguments": {
+                "sequence_a": [],
+                "sequence_b": [],
+                "start_index": [],
+                "end_index": [],
+                "expected_result": []
+            }
+        }
+    },
+    "vehicle-routing-master/tests/__init__.py": {},
+    "vehicle-routing-master/tools/distance_matrix.py": {
+        "DistanceMatrixManager.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "app_key": [
+                    "str"
+                ]
+            }
+        },
+        "DistanceMatrixManager.create_distance_matrix": {
+            "name": "create_distance_matrix",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "locations_json_path": [
+                    "str"
+                ],
+                "output_csv_path": [
+                    "str"
+                ],
+                "output_pickle_path": [
+                    "str"
+                ]
+            }
+        },
+        "DistanceMatrixManager._extract_coordinates": {
+            "name": "_extract_coordinates",
+            "location": 36,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "locations": [
+                    "List[dict]"
+                ]
+            }
+        },
+        "DistanceMatrixManager._compose_distance_matrix": {
+            "name": "_compose_distance_matrix",
+            "location": 43,
+            "return": [
+                "Tuple[(Union[(list, ndarray)], list)]"
+            ],
+            "arguments": {
+                "self": [],
+                "coordinates": [
+                    "list"
+                ]
+            }
+        },
+        "DistanceMatrixManager._get_coordinates_by_part_number": {
+            "name": "_get_coordinates_by_part_number",
+            "location": 72,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "self": [],
+                "coordinates": [
+                    "list"
+                ],
+                "part_number": [
+                    "int"
+                ]
+            }
+        },
+        "DistanceMatrixManager._get_distance_matrix_from_gmaps": {
+            "name": "_get_distance_matrix_from_gmaps",
+            "location": 78,
+            "return": [
+                "Tuple[(Union[(list, ndarray)], list)]"
+            ],
+            "arguments": {
+                "self": [],
+                "origins": [
+                    "list"
+                ],
+                "destinations": [
+                    "list"
+                ]
+            }
+        },
+        "DistanceMatrixManager._extract_raw_distance_matrix": {
+            "name": "_extract_raw_distance_matrix",
+            "location": 90,
+            "return": [
+                "list"
+            ],
+            "arguments": {
+                "distance_matrix": [
+                    "dict"
+                ]
+            }
+        },
+        "DistanceMatrixManager._stack_matrixes": {
+            "name": "_stack_matrixes",
+            "location": 102,
+            "return": [
+                "ndarray"
+            ],
+            "arguments": {
+                "base_matrix": [
+                    "Optional[ndarray]"
+                ],
+                "new_matrix": [
+                    "Union[(list, ndarray)]"
+                ],
+                "stack_function": [
+                    "Union[(vstack, hstack)]"
+                ]
+            }
+        }
+    },
+    "vehicle-routing-master/tools/file_operations.py": {
+        "load_from_pickle_file": {
+            "name": "load_from_pickle_file",
+            "location": 11,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "path": [
+                    "Union[(Path, str)]"
+                ]
+            }
+        },
+        "load_from_json_file": {
+            "name": "load_from_json_file",
+            "location": 17,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "path": [
+                    "Union[(Path, str)]"
+                ]
+            }
+        },
+        "load_json_and_validate": {
+            "name": "load_json_and_validate",
+            "location": 24,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "schema_path": [
+                    "Union[(Path, str)]"
+                ],
+                "file_path": [
+                    "Union[(Path, str)]"
+                ]
+            }
+        },
+        "save_to_pickle_file": {
+            "name": "save_to_pickle_file",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path": [
+                    "Union[(Path, str)]"
+                ],
+                "content": [
+                    "Any"
+                ]
+            }
+        },
+        "save_to_csv_file": {
+            "name": "save_to_csv_file",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path": [
+                    "Union[(Path, str)]"
+                ],
+                "header": [
+                    "Iterable[Any]"
+                ],
+                "rows": [
+                    "Iterable[Any]"
+                ],
+                "delimiter": [
+                    "str"
+                ]
+            }
+        },
+        "append_to_csv_file": {
+            "name": "append_to_csv_file",
+            "location": 47,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "path": [
+                    "Union[(Path, str)]"
+                ],
+                "rows": [
+                    "Iterable[Any]"
+                ],
+                "delimiter": [
+                    "str"
+                ]
+            }
+        },
+        "load_csv_file": {
+            "name": "load_csv_file",
+            "location": 55,
+            "return": [
+                "Tuple[(Sequence[str], List[dict])]"
+            ],
+            "arguments": {
+                "path": [
+                    "Union[(Path, str)]"
+                ],
+                "delimiter": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "vehicle-routing-master/tools/__init__.py": {},
+    "vehicle-routing-master/tools/charts/aggregations.py": {
+        "AggregationChart.build": {
+            "name": "build",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "drawable_stats": [
+                    "DrawableStats"
+                ],
+                "aggregation_types": [
+                    "Iterable"
+                ],
+                "filename": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "vehicle-routing-master/tools/charts/base.py": {
+        "BaseChart.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "statistic_type": [
+                    "str"
+                ],
+                "chart_tilte": []
+            }
+        },
+        "BaseChart._get_chart_data_from_csv_results": {
+            "name": "_get_chart_data_from_csv_results",
+            "location": 22,
+            "return": [
+                "Dict[(int, Dict)]"
+            ],
+            "arguments": {
+                "self": [],
+                "csv_results": [
+                    "List[dict]"
+                ]
+            }
+        },
+        "BaseChart._get_aggregation_method": {
+            "name": "_get_aggregation_method",
+            "location": 38,
+            "return": [
+                "Callable"
+            ],
+            "arguments": {
+                "self": [],
+                "aggregator": [
+                    "AggregatorType"
+                ]
+            }
+        },
+        "BaseChart._get_data_to_plot": {
+            "name": "_get_data_to_plot",
+            "location": 50,
+            "return": [
+                "Tuple[(List[int], List[float])]"
+            ],
+            "arguments": {
+                "self": [],
+                "chart_data": [
+                    "Dict[(int, Dict)]"
+                ],
+                "aggregator": [
+                    "AggregatorType"
+                ]
+            }
+        },
+        "BaseChart._plot_chart": {
+            "name": "_plot_chart",
+            "location": 62,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "figure_data": [
+                    "List"
+                ],
+                "filename": [
+                    "str"
+                ]
+            }
+        },
+        "BaseChart._get_color": {
+            "name": "_get_color",
+            "location": 75,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "scatter_number": []
+            }
+        }
+    },
+    "vehicle-routing-master/tools/charts/comparison.py": {
+        "ComparisonChart.build": {
+            "name": "build",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "drawable_stats": [
+                    "List[DrawableStats]"
+                ],
+                "filename": [
+                    "str"
+                ],
+                "aggregation_type": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "vehicle-routing-master/tools/charts/custom.py": {
+        "CustomChart.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "statistic_type": [
+                    "str"
+                ],
+                "chart_tilte": [],
+                "aggregation_type": []
+            }
+        },
+        "CustomChart.build": {
+            "name": "build",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "drawable_stats": [
+                    "List[DrawableStats]"
+                ],
+                "filename": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "vehicle-routing-master/tools/charts/types.py": {
+        "get_styles_for_aggregator": {
+            "name": "get_styles_for_aggregator",
+            "location": 17,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "aggregator": [
+                    "AggregatorType"
+                ]
+            }
+        },
+        "DrawableStats.__init__": {
+            "name": "__init__",
+            "location": 31,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "stats_path": []
+            }
+        },
+        "DrawableStats.__str__": {
+            "name": "__str__",
+            "location": 34,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CustomDrawableStats.__init__": {
+            "name": "__init__",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "stats_path": []
+            }
+        }
+    },
+    "vehicle-routing-master/tools/charts/__init__.py": {}
+}

@@ -1,0 +1,1878 @@
+{
+    "PyDG-master/codegra_plag/cdg.py": {
+        "process_block": {
+            "name": "process_block",
+            "location": 125,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "stmts": [
+                    "t.Iterable[ast.stmt]"
+                ],
+                "cdg_stack": [
+                    "CDGStack"
+                ],
+                "exit_node": [
+                    "CDGRegionNode"
+                ],
+                "res_graph": [
+                    "CDG"
+                ]
+            }
+        },
+        "create_cdg_try": {
+            "name": "create_cdg_try",
+            "location": 153,
+            "return": [
+                "CDGNode"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.Try"
+                ],
+                "cdg_stack": [
+                    "CDGStack"
+                ],
+                "exit_node": [
+                    "CDGRegionNode"
+                ],
+                "res_graph": [
+                    "CDG"
+                ]
+            }
+        },
+        "create_cdg_class": {
+            "name": "create_cdg_class",
+            "location": 213,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "t.Union[(ast.Module, ast.ClassDef)]"
+                ],
+                "res_graph": [
+                    "CDG"
+                ]
+            }
+        },
+        "create_cdg_loop": {
+            "name": "create_cdg_loop",
+            "location": 249,
+            "return": [
+                "CDGNode"
+            ],
+            "arguments": {
+                "loop": [
+                    "t.Union[(ast.While, ast.For, ast.AsyncFor)]"
+                ],
+                "stack": [
+                    "CDGStack"
+                ],
+                "exit_node": [
+                    "CDGRegionNode"
+                ],
+                "res_graph": [
+                    "CDG"
+                ]
+            }
+        },
+        "create_cdg_stmt": {
+            "name": "create_cdg_stmt",
+            "location": 284,
+            "return": [
+                "t.Optional[CDGNode]"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.stmt"
+                ],
+                "stack": [
+                    "CDGStack"
+                ],
+                "exit_node": [
+                    "t.Optional[CDGRegionNode]"
+                ],
+                "res_graph": [
+                    "CDG"
+                ]
+            }
+        },
+        "create_cdg": {
+            "name": "create_cdg",
+            "location": 413,
+            "return": [
+                "CDG"
+            ],
+            "arguments": {
+                "tree": [
+                    "ast.Module"
+                ]
+            }
+        },
+        "CDGNode.__init__": {
+            "name": "__init__",
+            "location": 12,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "orig": [
+                    "t.Union[(ast.stmt, ast.ExceptHandler)]"
+                ],
+                "label": [
+                    "str"
+                ]
+            }
+        },
+        "CDG.flatten": {
+            "name": "flatten",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CDG.get_all_tails_from_node": {
+            "name": "get_all_tails_from_node",
+            "location": 28,
+            "return": [
+                "t.Iterable[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "from_node": [
+                    "CDGNode"
+                ],
+                "dotted_only": [
+                    "bool"
+                ]
+            }
+        },
+        "CDG.get_not_special_nodes": {
+            "name": "get_not_special_nodes",
+            "location": 41,
+            "return": [
+                "t.Iterable[CDGNode]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CDG.to_mcgregor": {
+            "name": "to_mcgregor",
+            "location": 50,
+            "return": [
+                "t.List[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CDGRegionNode.__init__": {
+            "name": "__init__",
+            "location": 80,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "orig": [
+                    "t.Union[(ast.stmt, ast.ExceptHandler)]"
+                ],
+                "type": [
+                    "CDGRegionNodeType"
+                ],
+                "name": [
+                    "t.Optional[str]"
+                ],
+                "extra": [
+                    "t.Optional[str]"
+                ],
+                "stmt": [
+                    "t.Optional[ast.stmt]"
+                ]
+            }
+        },
+        "CDGStack.__init__": {
+            "name": "__init__",
+            "location": 96,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "graph": [
+                    "CDG"
+                ]
+            }
+        },
+        "CDGStack.add_node": {
+            "name": "add_node",
+            "location": 101,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "CDGNode"
+                ],
+                "label": [
+                    "t.Optional[str]"
+                ]
+            }
+        },
+        "CDGStack.get_loop": {
+            "name": "get_loop",
+            "location": 104,
+            "return": [
+                "CDGRegionNode"
+            ],
+            "arguments": {
+                "self": [],
+                "amount": [
+                    "int"
+                ]
+            }
+        },
+        "CDGStack.pushed": {
+            "name": "pushed",
+            "location": 114,
+            "return": [
+                "t.Iterator[CDGRegionNode]"
+            ],
+            "arguments": {
+                "self": [],
+                "item": [
+                    "CDGRegionNode"
+                ],
+                "label": [
+                    "t.Optional[str]"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/cfg.py": {
+        "process_block": {
+            "name": "process_block",
+            "location": 44,
+            "return": [
+                "t.List[CFGPartialEdge]"
+            ],
+            "arguments": {
+                "stmts": [
+                    "t.Iterable[ast.stmt]"
+                ],
+                "start": [
+                    "t.List[CFGPartialEdge]"
+                ],
+                "loop_start": [
+                    "t.Optional[CFGNode]"
+                ],
+                "loop_end": [
+                    "t.List[CFGPartialEdge]"
+                ],
+                "fun_end": [
+                    "CFGNode"
+                ],
+                "res_graph": [
+                    "CFG"
+                ]
+            }
+        },
+        "create_cfg_try": {
+            "name": "create_cfg_try",
+            "location": 76,
+            "return": [
+                "HeadTails"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.Try"
+                ],
+                "loop_start": [
+                    "t.Optional[CFGNode]"
+                ],
+                "loop_end": [
+                    "t.List[CFGPartialEdge]"
+                ],
+                "fun_end": [
+                    "CFGNode"
+                ],
+                "res_graph": [
+                    "CFG"
+                ]
+            }
+        },
+        "create_cfg_class": {
+            "name": "create_cfg_class",
+            "location": 154,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "t.Union[(ast.Module, ast.ClassDef)]"
+                ],
+                "res_graph": [
+                    "CFG"
+                ]
+            }
+        },
+        "create_cfg_loop": {
+            "name": "create_cfg_loop",
+            "location": 186,
+            "return": [
+                "HeadTails"
+            ],
+            "arguments": {
+                "loop": [
+                    "t.Union[(ast.While, ast.For, ast.AsyncFor)]"
+                ],
+                "loop_start": [
+                    "t.Optional[CFGNode]"
+                ],
+                "loop_end": [
+                    "t.List[CFGPartialEdge]"
+                ],
+                "fun_end": [
+                    "CFGNode"
+                ],
+                "res_graph": [
+                    "CFG"
+                ]
+            }
+        },
+        "create_cfg_stmt": {
+            "name": "create_cfg_stmt",
+            "location": 223,
+            "return": [
+                "HeadTails"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.stmt"
+                ],
+                "loop_start": [
+                    "t.Optional[CFGNode]"
+                ],
+                "loop_end": [
+                    "t.List[CFGPartialEdge]"
+                ],
+                "fun_end": [
+                    "t.Optional[CFGNode]"
+                ],
+                "res_graph": [
+                    "CFG"
+                ]
+            }
+        },
+        "create_cfg": {
+            "name": "create_cfg",
+            "location": 337,
+            "return": [
+                "CFG"
+            ],
+            "arguments": {
+                "tree": [
+                    "ast.Module"
+                ]
+            }
+        },
+        "CFG.simplify": {
+            "name": "simplify",
+            "location": 17,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "CFGPartialEdge.__init__": {
+            "name": "__init__",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "head": [
+                    "CFGNode"
+                ],
+                "label": [
+                    "t.Optional[str]"
+                ],
+                "graph": [
+                    "CFG"
+                ]
+            }
+        },
+        "CFGPartialEdge.add_tail": {
+            "name": "add_tail",
+            "location": 29,
+            "return": [
+                "CFGEdge"
+            ],
+            "arguments": {
+                "self": [],
+                "tail": [
+                    "CFGNode"
+                ],
+                "label": [
+                    "t.Optional[str]"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/ddg.py": {
+        "noop": {
+            "name": "noop",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "no_warn": {
+            "name": "no_warn",
+            "location": 20,
+            "return": [
+                "t.Iterator[None]"
+            ],
+            "arguments": {}
+        },
+        "flatten": {
+            "name": "flatten",
+            "location": 325,
+            "return": [
+                "t.Iterable[T]"
+            ],
+            "arguments": {
+                "iterator": [
+                    "t.Iterable[t.Iterable[T]]"
+                ]
+            }
+        },
+        "process_block": {
+            "name": "process_block",
+            "location": 336,
+            "return": [
+                "DefMap"
+            ],
+            "arguments": {
+                "stmts": [
+                    "t.Iterable[ast.stmt]"
+                ],
+                "loop": [
+                    "t.Optional[Loop]"
+                ],
+                "def_map": [
+                    "DefMap"
+                ],
+                "res_graph": [
+                    "DDG"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "create_ddg_try": {
+            "name": "create_ddg_try",
+            "location": 356,
+            "return": [
+                "DefMap"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.Try"
+                ],
+                "loop": [
+                    "t.Optional[Loop]"
+                ],
+                "def_map": [
+                    "DefMap"
+                ],
+                "res_graph": [
+                    "DDG"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "create_ddg_class": {
+            "name": "create_ddg_class",
+            "location": 389,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cls": [
+                    "t.Union[(ast.Module, ast.ClassDef)]"
+                ],
+                "res_graph": [
+                    "DDG"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "create_ddg_loop": {
+            "name": "create_ddg_loop",
+            "location": 425,
+            "return": [
+                "DefMap"
+            ],
+            "arguments": {
+                "loop": [
+                    "t.Union[(ast.While, ast.For, ast.AsyncFor)]"
+                ],
+                "outer_loop": [
+                    "t.Optional[Loop]"
+                ],
+                "def_map": [
+                    "DefMap"
+                ],
+                "res_graph": [
+                    "DDG"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "create_ddg_stmt": {
+            "name": "create_ddg_stmt",
+            "location": 471,
+            "return": [
+                "DefMap"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.stmt"
+                ],
+                "loop": [
+                    "t.Optional[Loop]"
+                ],
+                "def_map": [
+                    "DefMap"
+                ],
+                "res_graph": [
+                    "DDG"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "create_slice_ddg": {
+            "name": "create_slice_ddg",
+            "location": 593,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "s": [
+                    "ast.slice"
+                ],
+                "def_map": [
+                    "DefMap"
+                ],
+                "res_graph": [
+                    "DDG"
+                ],
+                "cur_stmt": [
+                    "ast.stmt"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "create_expr_ddg": {
+            "name": "create_expr_ddg",
+            "location": 622,
+            "return": [
+                "t.Iterable[Var]"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ],
+                "def_map": [
+                    "DefMap"
+                ],
+                "res_graph": [
+                    "DDG"
+                ],
+                "cur_stmt": [
+                    "ast.stmt"
+                ],
+                "options": [
+                    "Options"
+                ],
+                "recurse_name": [
+                    "bool"
+                ]
+            }
+        },
+        "create_ddg": {
+            "name": "create_ddg",
+            "location": 780,
+            "return": [
+                "DDG"
+            ],
+            "arguments": {
+                "tree": [
+                    "ast.Module"
+                ]
+            }
+        },
+        "DefMap.__init__": {
+            "name": "__init__",
+            "location": 79,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DefMap.items": {
+            "name": "items",
+            "location": 85,
+            "return": [
+                "t.Iterable[t.Tuple[(str, 'DefMap.Value')]]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DefMap.copy": {
+            "name": "copy",
+            "location": 88,
+            "return": [
+                "'DefMap'"
+            ],
+            "arguments": {
+                "self": [
+                    "'DefMap'"
+                ]
+            }
+        },
+        "DefMap.clear": {
+            "name": "clear",
+            "location": 97,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "var": [
+                    "'Var'"
+                ],
+                "val": [
+                    "t.Union[(ast.stmt, ast.ExceptHandler)]"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "DefMap.set": {
+            "name": "set",
+            "location": 105,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "var": [
+                    "'Var'"
+                ],
+                "val": [
+                    "t.Union[(ast.stmt, ast.ExceptHandler)]"
+                ],
+                "options": [
+                    "Options"
+                ],
+                "aliases": [
+                    "t.Optional[t.Iterable['Var']]"
+                ]
+            }
+        },
+        "DefMap.get_aliases": {
+            "name": "get_aliases",
+            "location": 148,
+            "return": [
+                "t.Iterable['Var']"
+            ],
+            "arguments": {
+                "self": [],
+                "var": [
+                    "'Var'"
+                ]
+            }
+        },
+        "DefMap.mutate": {
+            "name": "mutate",
+            "location": 152,
+            "return": [
+                "t.Optional['DefMap']"
+            ],
+            "arguments": {
+                "self": [],
+                "var": [
+                    "'Var'"
+                ],
+                "val": [
+                    "t.Union[(ast.stmt, ast.ExceptHandler)]"
+                ],
+                "options": [
+                    "Options"
+                ]
+            }
+        },
+        "DefMap.get": {
+            "name": "get",
+            "location": 183,
+            "return": [
+                "t.Iterable[Mutation]"
+            ],
+            "arguments": {
+                "self": [],
+                "var": [
+                    "'Var'"
+                ],
+                "recurse": [
+                    "bool"
+                ],
+                "done": [
+                    "t.Set['Var']"
+                ]
+            }
+        },
+        "DefMap.merge": {
+            "name": "merge",
+            "location": 207,
+            "return": [
+                "'DefMap'"
+            ],
+            "arguments": {
+                "one": [
+                    "'DefMap'"
+                ],
+                "other": [
+                    "'DefMap'"
+                ]
+            }
+        },
+        "DDG.__init__": {
+            "name": "__init__",
+            "location": 222,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "DDG.use_var": {
+            "name": "use_var",
+            "location": 227,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "stmt": [
+                    "ast.stmt"
+                ],
+                "var": [
+                    "'Var'"
+                ],
+                "def_map": [
+                    "DefMap"
+                ],
+                "recurse": [
+                    "bool"
+                ]
+            }
+        },
+        "Var.__repr__": {
+            "name": "__repr__",
+            "location": 240,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Var.__init__": {
+            "name": "__init__",
+            "location": 243,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "base": [
+                    "str"
+                ]
+            }
+        },
+        "Var.copy": {
+            "name": "copy",
+            "location": 247,
+            "return": [
+                "'Var'"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Var.index": {
+            "name": "index",
+            "location": 252,
+            "return": [
+                "'Var'"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Var.get_from_map": {
+            "name": "get_from_map",
+            "location": 255,
+            "return": [
+                "t.Union[(t.Set[t.Tuple[('Var', FMutations)]], T)]"
+            ],
+            "arguments": {
+                "self": [],
+                "mapping": [
+                    "t.Dict[('Var', t.Set[t.Tuple[('Var', FMutations)]])]"
+                ],
+                "default": [
+                    "T"
+                ],
+                "recurse": [
+                    "bool"
+                ],
+                "done": [
+                    "t.Set['Var']"
+                ]
+            }
+        },
+        "Var.is_prefix": {
+            "name": "is_prefix",
+            "location": 292,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "'Var'"
+                ]
+            }
+        },
+        "Var.add_attr": {
+            "name": "add_attr",
+            "location": 299,
+            "return": [
+                "'Var'"
+            ],
+            "arguments": {
+                "self": [],
+                "attr": [
+                    "str"
+                ]
+            }
+        },
+        "Var.drop_attr": {
+            "name": "drop_attr",
+            "location": 304,
+            "return": [
+                "'Var'"
+            ],
+            "arguments": {
+                "self": [],
+                "index": [
+                    "int"
+                ]
+            }
+        },
+        "Var.__str__": {
+            "name": "__str__",
+            "location": 310,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Var.__hash__": {
+            "name": "__hash__",
+            "location": 316,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Var.__eq__": {
+            "name": "__eq__",
+            "location": 319,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "object"
+                ]
+            }
+        },
+        "Loop.__init__": {
+            "name": "__init__",
+            "location": 331,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "create_ddg_stmt.do_expr": {
+            "name": "do_expr",
+            "location": 478,
+            "return": [
+                "t.Iterable[Var]"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ]
+            }
+        },
+        "create_expr_ddg.recurse": {
+            "name": "recurse",
+            "location": 630,
+            "return": [
+                "t.Iterable[Var]"
+            ],
+            "arguments": {
+                "e": [
+                    "ast.expr"
+                ],
+                "rec": [
+                    "bool"
+                ]
+            }
+        },
+        "DefMap.Value.__init__": {
+            "name": "__init__",
+            "location": 57,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "mutations": [
+                    "Mutations"
+                ],
+                "submap": [
+                    "'DefMap'"
+                ]
+            }
+        },
+        "DefMap.Value.get_all_mutations": {
+            "name": "get_all_mutations",
+            "location": 61,
+            "return": [
+                "t.Iterable[t.Union[(ast.stmt, ast.ExceptHandler)]]"
+            ],
+            "arguments": {
+                "self": [],
+                "recurse": [
+                    "bool"
+                ]
+            }
+        },
+        "DefMap.Value.merge_into": {
+            "name": "merge_into",
+            "location": 72,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "'DefMap.Value'"
+                ]
+            }
+        },
+        "DefMap.Value.copy": {
+            "name": "copy",
+            "location": 76,
+            "return": [
+                "'DefMap.Value'"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Var.get_from_map.create_res": {
+            "name": "create_res",
+            "location": 262,
+            "return": [
+                "t.Set[t.Tuple[('Var', FMutations)]]"
+            ],
+            "arguments": {
+                "key": [
+                    "'Var'"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/explode.py": {
+        "gensym": {
+            "name": "gensym",
+            "location": 8,
+            "return": [],
+            "arguments": {}
+        },
+        "maybe_store": {
+            "name": "maybe_store",
+            "location": 19,
+            "return": [
+                "ast.expr"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ],
+                "force": [
+                    "bool"
+                ]
+            }
+        },
+        "is_simple": {
+            "name": "is_simple",
+            "location": 30,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ]
+            }
+        },
+        "explode_arguments": {
+            "name": "explode_arguments",
+            "location": 55,
+            "return": [
+                "ast.arguments"
+            ],
+            "arguments": {
+                "args": [
+                    "ast.arguments"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "explode_list_comp": {
+            "name": "explode_list_comp",
+            "location": 64,
+            "return": [
+                "ast.expr"
+            ],
+            "arguments": {
+                "comp": [
+                    "t.Union[(ast.ListComp, ast.GeneratorExp, ast.SetComp)]"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ],
+                "init": [
+                    "ast.expr"
+                ],
+                "appender_attr": [
+                    "str"
+                ]
+            }
+        },
+        "explode_slice": {
+            "name": "explode_slice",
+            "location": 110,
+            "return": [
+                "ast.slice"
+            ],
+            "arguments": {
+                "slice": [
+                    "ast.slice"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "explode_dict": {
+            "name": "explode_dict",
+            "location": 129,
+            "return": [
+                "ast.expr"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.Dict"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "explode_expr": {
+            "name": "explode_expr",
+            "location": 145,
+            "return": [
+                "ast.expr"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "explode_with": {
+            "name": "explode_with",
+            "location": 271,
+            "return": [
+                "t.List[ast.stmt]"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.With"
+                ]
+            }
+        },
+        "explode_target": {
+            "name": "explode_target",
+            "location": 282,
+            "return": [
+                "ast.expr"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "explode_delete": {
+            "name": "explode_delete",
+            "location": 299,
+            "return": [
+                "t.List[ast.stmt]"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.Delete"
+                ]
+            }
+        },
+        "explode_stmts": {
+            "name": "explode_stmts",
+            "location": 302,
+            "return": [
+                "t.List[ast.stmt]"
+            ],
+            "arguments": {
+                "stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/graph.py": {
+        "Edge.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "head": [
+                    "T"
+                ],
+                "tail": [
+                    "T"
+                ],
+                "label": [
+                    "t.Optional[str]"
+                ],
+                "dotted": [
+                    "bool"
+                ]
+            }
+        },
+        "Edge.__str__": {
+            "name": "__str__",
+            "location": 27,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Node.__init__": {
+            "name": "__init__",
+            "location": 35,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "label": [
+                    "str"
+                ]
+            }
+        },
+        "Node.__str__": {
+            "name": "__str__",
+            "location": 38,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Graph.__init__": {
+            "name": "__init__",
+            "location": 43,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Graph.add_subgraph": {
+            "name": "add_subgraph",
+            "location": 49,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "subgraph": [
+                    "'Graph[T]'"
+                ]
+            }
+        },
+        "Graph.add_edge": {
+            "name": "add_edge",
+            "location": 52,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "edge": [
+                    "Edge[T]"
+                ]
+            }
+        },
+        "Graph.to_networkx": {
+            "name": "to_networkx",
+            "location": 61,
+            "return": [
+                "nx.DiGraph"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Graph.to_dot": {
+            "name": "to_dot",
+            "location": 71,
+            "return": [
+                "graphviz.Digraph"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Graph.remove_useless_nodes": {
+            "name": "remove_useless_nodes",
+            "location": 94,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/pdg.py": {
+        "create_pdg": {
+            "name": "create_pdg",
+            "location": 12,
+            "return": [
+                "PDG"
+            ],
+            "arguments": {
+                "tree": [
+                    "ast.Module"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/pprint.py": {
+        "boolop_to_str": {
+            "name": "boolop_to_str",
+            "location": 5,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "boolop": [
+                    "ast.boolop"
+                ]
+            }
+        },
+        "unaryop_to_str": {
+            "name": "unaryop_to_str",
+            "location": 11,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "unaryop": [
+                    "ast.unaryop"
+                ]
+            }
+        },
+        "binop_to_str": {
+            "name": "binop_to_str",
+            "location": 19,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "binop": [
+                    "ast.operator"
+                ]
+            }
+        },
+        "cmpop_to_str": {
+            "name": "cmpop_to_str",
+            "location": 36,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cmpop": [
+                    "ast.cmpop"
+                ]
+            }
+        },
+        "arguments_to_str": {
+            "name": "arguments_to_str",
+            "location": 50,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "arguments": [
+                    "ast.arguments"
+                ]
+            }
+        },
+        "comprehension_to_str": {
+            "name": "comprehension_to_str",
+            "location": 64,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "comp": [
+                    "ast.comprehension"
+                ]
+            }
+        },
+        "slice_to_str": {
+            "name": "slice_to_str",
+            "location": 73,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "slice": [
+                    "ast.slice"
+                ]
+            }
+        },
+        "keyword_to_str": {
+            "name": "keyword_to_str",
+            "location": 91,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "keyword": [
+                    "ast.keyword"
+                ]
+            }
+        },
+        "expr_to_str": {
+            "name": "expr_to_str",
+            "location": 97,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/simplify.py": {
+        "gensym": {
+            "name": "gensym",
+            "location": 10,
+            "return": [
+                "t.Tuple[(ast.Name, ast.Name)]"
+            ],
+            "arguments": {}
+        },
+        "simplify_slice": {
+            "name": "simplify_slice",
+            "location": 21,
+            "return": [
+                "ast.slice"
+            ],
+            "arguments": {
+                "slice": [
+                    "ast.slice"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "simplify_list_comp": {
+            "name": "simplify_list_comp",
+            "location": 65,
+            "return": [
+                "ast.Name"
+            ],
+            "arguments": {
+                "comp": [
+                    "t.Union[(ast.ListComp, ast.GeneratorExp, ast.SetComp, ast.DictComp)]"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ],
+                "init": [
+                    "ast.expr"
+                ],
+                "appender_attr": [
+                    "str"
+                ]
+            }
+        },
+        "simplify_with": {
+            "name": "simplify_with",
+            "location": 207,
+            "return": [
+                "t.List[ast.stmt]"
+            ],
+            "arguments": {
+                "stmt": [
+                    "ast.With"
+                ]
+            }
+        },
+        "simplify_target": {
+            "name": "simplify_target",
+            "location": 218,
+            "return": [
+                "ast.expr"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "simplify_stmts": {
+            "name": "simplify_stmts",
+            "location": 235,
+            "return": [
+                "t.List[ast.stmt]"
+            ],
+            "arguments": {
+                "stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "NameRewriter.__init__": {
+            "name": "__init__",
+            "location": 41,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "NameRewriter.visit_Attribute": {
+            "name": "visit_Attribute",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.Attribute"
+                ]
+            }
+        },
+        "NameRewriter.visit_Subscript": {
+            "name": "visit_Subscript",
+            "location": 51,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.Subscript"
+                ]
+            }
+        },
+        "NameRewriter.visit_Name": {
+            "name": "visit_Name",
+            "location": 57,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.Name"
+                ]
+            }
+        },
+        "SimplifyExpr.__init__": {
+            "name": "__init__",
+            "location": 138,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "new_stmts": [
+                    "t.List[ast.stmt]"
+                ]
+            }
+        },
+        "SimplifyExpr.reset": {
+            "name": "reset",
+            "location": 143,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SimplifyExpr.visit_Lambda": {
+            "name": "visit_Lambda",
+            "location": 146,
+            "return": [
+                "ast.Lambda"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.Lambda"
+                ]
+            }
+        },
+        "SimplifyExpr.visit_ListComp": {
+            "name": "visit_ListComp",
+            "location": 149,
+            "return": [
+                "ast.Name"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.ListComp"
+                ]
+            }
+        },
+        "SimplifyExpr.visit_GeneratorExp": {
+            "name": "visit_GeneratorExp",
+            "location": 158,
+            "return": [
+                "ast.Name"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.GeneratorExp"
+                ]
+            }
+        },
+        "SimplifyExpr.visit_DictComp": {
+            "name": "visit_DictComp",
+            "location": 167,
+            "return": [
+                "ast.Name"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.DictComp"
+                ]
+            }
+        },
+        "SimplifyExpr.visit_SetComp": {
+            "name": "visit_SetComp",
+            "location": 179,
+            "return": [
+                "ast.Name"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.SetComp"
+                ]
+            }
+        },
+        "SimplifyExpr.visit_IfExp": {
+            "name": "visit_IfExp",
+            "location": 190,
+            "return": [
+                "ast.Name"
+            ],
+            "arguments": {
+                "self": [],
+                "node": [
+                    "ast.IfExp"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/str.py": {
+        "boolop_to_str": {
+            "name": "boolop_to_str",
+            "location": 5,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "boolop": [
+                    "ast.boolop"
+                ]
+            }
+        },
+        "unaryop_to_str": {
+            "name": "unaryop_to_str",
+            "location": 11,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "unaryop": [
+                    "ast.unaryop"
+                ]
+            }
+        },
+        "binop_to_str": {
+            "name": "binop_to_str",
+            "location": 19,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "binop": [
+                    "ast.operator"
+                ]
+            }
+        },
+        "cmpop_to_str": {
+            "name": "cmpop_to_str",
+            "location": 36,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cmpop": [
+                    "ast.cmpop"
+                ]
+            }
+        },
+        "arguments_to_str": {
+            "name": "arguments_to_str",
+            "location": 50,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "arguments": [
+                    "ast.arguments"
+                ]
+            }
+        },
+        "comprehension_to_str": {
+            "name": "comprehension_to_str",
+            "location": 64,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "comp": [
+                    "ast.comprehension"
+                ]
+            }
+        },
+        "slice_to_str": {
+            "name": "slice_to_str",
+            "location": 73,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "slice": [
+                    "ast.slice"
+                ]
+            }
+        },
+        "keyword_to_str": {
+            "name": "keyword_to_str",
+            "location": 91,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "keyword": [
+                    "ast.keyword"
+                ]
+            }
+        },
+        "expr_to_str": {
+            "name": "expr_to_str",
+            "location": 97,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "expr": [
+                    "ast.expr"
+                ]
+            }
+        }
+    },
+    "PyDG-master/codegra_plag/__init__.py": {},
+    "PyDG-master/experiments/create_job.py": {
+        "to_mcgregor": {
+            "name": "to_mcgregor",
+            "location": 21,
+            "return": [
+                "t.List[str]"
+            ],
+            "arguments": {
+                "graph": []
+            }
+        },
+        "find_enter": {
+            "name": "find_enter",
+            "location": 34,
+            "return": [
+                "t.Optional[cdg.CDGRegionNode]"
+            ],
+            "arguments": {
+                "graph": [
+                    "graph.Graph[cdg.CDGNode]"
+                ]
+            }
+        },
+        "find_files": {
+            "name": "find_files",
+            "location": 45,
+            "return": [],
+            "arguments": {
+                "directory": [],
+                "pattern": []
+            }
+        },
+        "get_pdgs": {
+            "name": "get_pdgs",
+            "location": 56,
+            "return": [],
+            "arguments": {
+                "d": [],
+                "split": []
+            }
+        },
+        "create_csv": {
+            "name": "create_csv",
+            "location": 109,
+            "return": [],
+            "arguments": {
+                "output_name": [],
+                "dirs": [],
+                "use_mincut": []
+            }
+        },
+        "main": {
+            "name": "main",
+            "location": 152,
+            "return": [],
+            "arguments": {}
+        },
+        "SubGraphs.__init__": {
+            "name": "__init__",
+            "location": 105,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    }
+}

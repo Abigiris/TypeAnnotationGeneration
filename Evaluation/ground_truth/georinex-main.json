@@ -1,0 +1,1670 @@
+{
+    "georinex-main/setup.py": {},
+    "georinex-main/.archive/profileme.py": {},
+    "georinex-main/.archive/rinex_reader.py": {
+        "rinexnav": {
+            "name": "rinexnav",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "fn": [],
+                "ofn": []
+            }
+        },
+        "rinexobs": {
+            "name": "rinexobs",
+            "location": 136,
+            "return": [],
+            "arguments": {
+                "fn": [],
+                "ofn": []
+            }
+        },
+        "scan": {
+            "name": "scan",
+            "location": 181,
+            "return": [],
+            "arguments": {
+                "L": []
+            }
+        },
+        "processBlocks": {
+            "name": "processBlocks",
+            "location": 255,
+            "return": [],
+            "arguments": {
+                "lines": [],
+                "header": [],
+                "obstimes": [],
+                "svset": [],
+                "ihead": [],
+                "headlength": [],
+                "sats": []
+            }
+        },
+        "_obstime": {
+            "name": "_obstime",
+            "location": 286,
+            "return": [],
+            "arguments": {
+                "fol": []
+            }
+        },
+        "_block2df": {
+            "name": "_block2df",
+            "location": 304,
+            "return": [],
+            "arguments": {
+                "block": [],
+                "obstypes": [],
+                "svnames": [],
+                "svnum": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/base.py": {
+        "load": {
+            "name": "load",
+            "location": 20,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "rinexfn": [
+                    "((T.TextIO | str) | Path)"
+                ],
+                "out": [
+                    "Path"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "meas": [
+                    "list[str]"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "batch_convert": {
+            "name": "batch_convert",
+            "location": 108,
+            "return": [],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "glob": [
+                    "str"
+                ],
+                "out": [
+                    "Path"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "meas": [
+                    "list[str]"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "rinexnav": {
+            "name": "rinexnav",
+            "location": 141,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "((T.TextIO | str) | Path)"
+                ],
+                "outfn": [
+                    "Path"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "group": [
+                    "str"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ]
+            }
+        },
+        "rinexobs": {
+            "name": "rinexobs",
+            "location": 185,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "outfn": [
+                    "Path"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "group": [
+                    "str"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "meas": [
+                    "list[str]"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "_groupexists": {
+            "name": "_groupexists",
+            "location": 255,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "fn": [
+                    "Path"
+                ],
+                "group": [
+                    "str"
+                ],
+                "overwrite": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/common.py": {
+        "check_unique_times": {
+            "name": "check_unique_times",
+            "location": 14,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "times": [
+                    "np.ndarray"
+                ]
+            }
+        },
+        "rinex_string_to_float": {
+            "name": "rinex_string_to_float",
+            "location": 26,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "s": [
+                    "str"
+                ]
+            }
+        },
+        "check_ram": {
+            "name": "check_ram",
+            "location": 30,
+            "return": [],
+            "arguments": {
+                "memneed": [
+                    "int"
+                ],
+                "fn": [
+                    "(T.TextIO | Path)"
+                ]
+            }
+        },
+        "determine_time_system": {
+            "name": "determine_time_system",
+            "location": 46,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "header": [
+                    "dict[(str, T.Any)]"
+                ]
+            }
+        },
+        "check_time_interval": {
+            "name": "check_time_interval",
+            "location": 77,
+            "return": [
+                "timedelta"
+            ],
+            "arguments": {
+                "interval": [
+                    "((float | int) | timedelta)"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/geo.py": {
+        "get_locations": {
+            "name": "get_locations",
+            "location": 10,
+            "return": [
+                "pandas.DataFrame"
+            ],
+            "arguments": {
+                "files": [
+                    "list[Path]"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/keplerian.py": {
+        "keplerian2ecef": {
+            "name": "keplerian2ecef",
+            "location": 12,
+            "return": [
+                "tuple[(xarray.DataArray, xarray.DataArray, xarray.DataArray)]"
+            ],
+            "arguments": {
+                "sv": [
+                    "xarray.Dataset"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/nav2.py": {
+        "rinexnav2": {
+            "name": "rinexnav2",
+            "location": 17,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ]
+            }
+        },
+        "navheader2": {
+            "name": "navheader2",
+            "location": 213,
+            "return": [
+                "dict[(str, T.Any)]"
+            ],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ]
+            }
+        },
+        "_timenav": {
+            "name": "_timenav",
+            "location": 232,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ]
+            }
+        },
+        "_skip": {
+            "name": "_skip",
+            "location": 253,
+            "return": [],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ],
+                "Nl": [
+                    "int"
+                ]
+            }
+        },
+        "navtime2": {
+            "name": "navtime2",
+            "location": 258,
+            "return": [
+                "np.ndarray"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/nav3.py": {
+        "rinexnav3": {
+            "name": "rinexnav3",
+            "location": 19,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ]
+            }
+        },
+        "_num_fields": {
+            "name": "_num_fields",
+            "location": 163,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "raw": [
+                    "str"
+                ]
+            }
+        },
+        "_skip": {
+            "name": "_skip",
+            "location": 171,
+            "return": [],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ],
+                "Nl": [
+                    "int"
+                ]
+            }
+        },
+        "_time": {
+            "name": "_time",
+            "location": 176,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ]
+            }
+        },
+        "_sparefields": {
+            "name": "_sparefields",
+            "location": 188,
+            "return": [
+                "list[str]"
+            ],
+            "arguments": {
+                "cf": [
+                    "list[str]"
+                ],
+                "sys": [
+                    "str"
+                ],
+                "N": [
+                    "int"
+                ]
+            }
+        },
+        "_fields": {
+            "name": "_fields",
+            "location": 237,
+            "return": [
+                "list[str]"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ],
+                "sv_sys": [
+                    "str"
+                ]
+            }
+        },
+        "navheader3": {
+            "name": "navheader3",
+            "location": 470,
+            "return": [
+                "dict[(str, T.Any)]"
+            ],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ]
+            }
+        },
+        "navtime3": {
+            "name": "navtime3",
+            "location": 513,
+            "return": [
+                "np.ndarray"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/obs2.py": {
+        "rinexobs2": {
+            "name": "rinexobs2",
+            "location": 21,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "meas": [
+                    "list[str]"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "rinexsystem2": {
+            "name": "rinexsystem2",
+            "location": 61,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "system": [
+                    "str"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "meas": [
+                    "list[str]"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "_num_times": {
+            "name": "_num_times",
+            "location": 311,
+            "return": [
+                "np.ndarray"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "Nextra": [
+                    "int"
+                ],
+                "tlim": [
+                    "T.Optional[tuple[(datetime, datetime)]]"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "obsheader2": {
+            "name": "obsheader2",
+            "location": 342,
+            "return": [
+                "dict[(str, T.Any)]"
+            ],
+            "arguments": {
+                "f": [
+                    "(T.TextIO | Path)"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "meas": [
+                    "list[str]"
+                ]
+            }
+        },
+        "_getsvind": {
+            "name": "_getsvind",
+            "location": 455,
+            "return": [
+                "list[str]"
+            ],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ],
+                "ln": [
+                    "str"
+                ]
+            }
+        },
+        "_getSVlist": {
+            "name": "_getSVlist",
+            "location": 475,
+            "return": [
+                "list[str]"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ],
+                "N": [
+                    "int"
+                ],
+                "sv": [
+                    "list[str]"
+                ]
+            }
+        },
+        "obstime2": {
+            "name": "obstime2",
+            "location": 488,
+            "return": [
+                "np.ndarray"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "_skip": {
+            "name": "_skip",
+            "location": 514,
+            "return": [],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ],
+                "ln": [
+                    "str"
+                ],
+                "Nl_sv": [
+                    "int"
+                ],
+                "sv": [
+                    "list[str]"
+                ]
+            }
+        },
+        "_timehdr": {
+            "name": "_timehdr",
+            "location": 526,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ]
+            }
+        },
+        "_timeobs": {
+            "name": "_timeobs",
+            "location": 559,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ]
+            }
+        },
+        "_skip_header": {
+            "name": "_skip_header",
+            "location": 589,
+            "return": [],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ]
+            }
+        },
+        "_fast_alloc": {
+            "name": "_fast_alloc",
+            "location": 595,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "Nl_sv": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/obs3.py": {
+        "rinexobs3": {
+            "name": "rinexobs3",
+            "location": 26,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "meas": [
+                    "list[str]"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "_timeobs": {
+            "name": "_timeobs",
+            "location": 165,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ]
+            }
+        },
+        "obstime3": {
+            "name": "obstime3",
+            "location": 184,
+            "return": [
+                "np.ndarray"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "_epoch": {
+            "name": "_epoch",
+            "location": 207,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "data": [
+                    "xarray.Dataset"
+                ],
+                "raw": [
+                    "str"
+                ],
+                "hdr": [
+                    "dict[(str, T.Any)]"
+                ],
+                "time": [
+                    "datetime"
+                ],
+                "sv": [
+                    "list[str]"
+                ],
+                "useindicators": [
+                    "bool"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        },
+        "_indicators": {
+            "name": "_indicators",
+            "location": 257,
+            "return": [
+                "dict[(str, tuple)]"
+            ],
+            "arguments": {
+                "d": [
+                    "dict"
+                ],
+                "k": [
+                    "str"
+                ],
+                "arr": [
+                    "np.ndarray"
+                ]
+            }
+        },
+        "obsheader3": {
+            "name": "obsheader3",
+            "location": 269,
+            "return": [
+                "dict[(str, T.Any)]"
+            ],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ],
+                "use": [
+                    "set[str]"
+                ],
+                "meas": [
+                    "list[str]"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/plots.py": {
+        "timeseries": {
+            "name": "timeseries",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "data": [
+                    "xarray.Dataset"
+                ]
+            }
+        },
+        "obstimeseries": {
+            "name": "obstimeseries",
+            "location": 27,
+            "return": [],
+            "arguments": {
+                "obs": [
+                    "xarray.Dataset"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/plots_geo.py": {
+        "navtimeseries": {
+            "name": "navtimeseries",
+            "location": 21,
+            "return": [],
+            "arguments": {
+                "nav": [
+                    "xarray.Dataset"
+                ]
+            }
+        },
+        "receiver_locations": {
+            "name": "receiver_locations",
+            "location": 89,
+            "return": [],
+            "arguments": {
+                "locs": [
+                    "pandas.DataFrame"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/rio.py": {
+        "opener": {
+            "name": "opener",
+            "location": 23,
+            "return": [
+                "T.Iterator[T.TextIO]"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ],
+                "header": [
+                    "bool"
+                ]
+            }
+        },
+        "first_nonblank_line": {
+            "name": "first_nonblank_line",
+            "location": 88,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "f": [
+                    "T.TextIO"
+                ],
+                "max_lines": [
+                    "int"
+                ]
+            }
+        },
+        "rinexinfo": {
+            "name": "rinexinfo",
+            "location": 114,
+            "return": [
+                "dict[(str, T.Any)]"
+            ],
+            "arguments": {
+                "f": [
+                    "(T.TextIO | Path)"
+                ]
+            }
+        },
+        "rinex_version": {
+            "name": "rinex_version",
+            "location": 177,
+            "return": [
+                "tuple[((float | str), bool)]"
+            ],
+            "arguments": {
+                "s": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/sp3.py": {
+        "load_sp3": {
+            "name": "load_sp3",
+            "location": 20,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "Path"
+                ],
+                "outfn": [
+                    "Path"
+                ]
+            }
+        },
+        "sp3dt": {
+            "name": "sp3dt",
+            "location": 128,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ]
+            }
+        },
+        "get_sv": {
+            "name": "get_sv",
+            "location": 167,
+            "return": [
+                "list[str]"
+            ],
+            "arguments": {
+                "ln": [
+                    "str"
+                ],
+                "Nsv": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/utils.py": {
+        "globber": {
+            "name": "globber",
+            "location": 17,
+            "return": [
+                "list[Path]"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "glob": [
+                    "list[str]"
+                ]
+            }
+        },
+        "gettime": {
+            "name": "gettime",
+            "location": 33,
+            "return": [
+                "np.ndarray"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ]
+            }
+        },
+        "rinexheader": {
+            "name": "rinexheader",
+            "location": 79,
+            "return": [
+                "dict[(str, T.Any)]"
+            ],
+            "arguments": {
+                "fn": [
+                    "(T.TextIO | Path)"
+                ]
+            }
+        },
+        "_tlim": {
+            "name": "_tlim",
+            "location": 120,
+            "return": [
+                "tuple[(datetime, datetime)]"
+            ],
+            "arguments": {
+                "tlim": [
+                    "tuple[(datetime, datetime)]"
+                ]
+            }
+        },
+        "to_datetime": {
+            "name": "to_datetime",
+            "location": 133,
+            "return": [
+                "datetime"
+            ],
+            "arguments": {
+                "times": [
+                    "xarray.DataArray"
+                ]
+            }
+        }
+    },
+    "georinex-main/src/georinex/__init__.py": {},
+    "georinex-main/src/georinex/loc/__init__.py": {},
+    "georinex-main/src/georinex/loc/__main__.py": {},
+    "georinex-main/src/georinex/plot/__init__.py": {},
+    "georinex-main/src/georinex/plot/__main__.py": {},
+    "georinex-main/src/georinex/read/__init__.py": {},
+    "georinex-main/src/georinex/read/__main__.py": {},
+    "georinex-main/src/georinex/rinex2hdf5/__init__.py": {},
+    "georinex-main/src/georinex/rinex2hdf5/__main__.py": {},
+    "georinex-main/src/georinex/tests/test_batch_convert.py": {
+        "test_batch_convert_rinex2": {
+            "name": "test_batch_convert_rinex2",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "tmp_path": [],
+                "filename": []
+            }
+        },
+        "test_bad": {
+            "name": "test_bad",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "tmp_path": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/tests/test_conv.py": {
+        "test_to_datetime": {
+            "name": "test_to_datetime",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "time": [],
+                "exp_time": []
+            }
+        },
+        "test_bad_files": {
+            "name": "test_bad_files",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "tmp_path": []
+            }
+        },
+        "test_netcdf_read": {
+            "name": "test_netcdf_read",
+            "location": 51,
+            "return": [],
+            "arguments": {}
+        },
+        "test_netcdf_write": {
+            "name": "test_netcdf_write",
+            "location": 60,
+            "return": [],
+            "arguments": {
+                "tmp_path": []
+            }
+        },
+        "test_locs": {
+            "name": "test_locs",
+            "location": 74,
+            "return": [],
+            "arguments": {}
+        },
+        "test_nc_load": {
+            "name": "test_nc_load",
+            "location": 88,
+            "return": [],
+            "arguments": {
+                "dtype": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/tests/test_hatanaka.py": {
+        "test_obs2": {
+            "name": "test_obs2",
+            "location": 10,
+            "return": [],
+            "arguments": {}
+        },
+        "test_obs3_gz": {
+            "name": "test_obs3_gz",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        },
+        "test_obs3": {
+            "name": "test_obs3",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "suffix": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/tests/test_header.py": {
+        "test_header": {
+            "name": "test_header",
+            "location": 26,
+            "return": [],
+            "arguments": {
+                "fn": [],
+                "rtype": [],
+                "vers": []
+            }
+        },
+        "test_position": {
+            "name": "test_position",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "fn": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/tests/test_kepler.py": {
+        "kep_data": {
+            "name": "kep_data",
+            "location": 14,
+            "return": [],
+            "arguments": {}
+        },
+        "test_kepler": {
+            "name": "test_kepler",
+            "location": 52,
+            "return": [],
+            "arguments": {
+                "kep_data": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/tests/test_lzw.py": {
+        "test_obs2_lzw": {
+            "name": "test_obs2_lzw",
+            "location": 12,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "georinex-main/src/georinex/tests/test_nav2.py": {
+        "test_time": {
+            "name": "test_time",
+            "location": 13,
+            "return": [],
+            "arguments": {}
+        },
+        "test_data": {
+            "name": "test_data",
+            "location": 20,
+            "return": [],
+            "arguments": {}
+        },
+        "test_mangled": {
+            "name": "test_mangled",
+            "location": 64,
+            "return": [],
+            "arguments": {}
+        },
+        "test_mangled2": {
+            "name": "test_mangled2",
+            "location": 74,
+            "return": [],
+            "arguments": {}
+        },
+        "test_tlim_past_eof": {
+            "name": "test_tlim_past_eof",
+            "location": 97,
+            "return": [],
+            "arguments": {}
+        },
+        "test_galileo": {
+            "name": "test_galileo",
+            "location": 105,
+            "return": [],
+            "arguments": {}
+        },
+        "test_gps": {
+            "name": "test_gps",
+            "location": 144,
+            "return": [],
+            "arguments": {}
+        },
+        "test_small": {
+            "name": "test_small",
+            "location": 187,
+            "return": [],
+            "arguments": {}
+        },
+        "test_ionospheric_correction": {
+            "name": "test_ionospheric_correction",
+            "location": 196,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "georinex-main/src/georinex/tests/test_nav3.py": {
+        "test_nav3header": {
+            "name": "test_nav3header",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "fname": []
+            }
+        },
+        "test_time": {
+            "name": "test_time",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "fname": []
+            }
+        },
+        "test_tlim_past_eof": {
+            "name": "test_tlim_past_eof",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "fname": []
+            }
+        },
+        "test_spare": {
+            "name": "test_spare",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "fname": []
+            }
+        },
+        "test_mixed": {
+            "name": "test_mixed",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "fname": []
+            }
+        },
+        "test_large": {
+            "name": "test_large",
+            "location": 187,
+            "return": [],
+            "arguments": {
+                "filename": [],
+                "sv": [],
+                "shape": []
+            }
+        },
+        "test_large_all": {
+            "name": "test_large_all",
+            "location": 207,
+            "return": [],
+            "arguments": {
+                "sv": [],
+                "size": []
+            }
+        },
+        "test_ref": {
+            "name": "test_ref",
+            "location": 226,
+            "return": [],
+            "arguments": {
+                "rfn": [],
+                "ncfn": []
+            }
+        },
+        "test_ionospheric_correction": {
+            "name": "test_ionospheric_correction",
+            "location": 243,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "georinex-main/src/georinex/tests/test_obs2.py": {
+        "test_fast_slow": {
+            "name": "test_fast_slow",
+            "location": 12,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_continuation": {
+            "name": "test_meas_continuation",
+            "location": 23,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_one": {
+            "name": "test_meas_one",
+            "location": 61,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_two": {
+            "name": "test_meas_two",
+            "location": 103,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_miss": {
+            "name": "test_meas_miss",
+            "location": 125,
+            "return": [],
+            "arguments": {}
+        },
+        "test_mangled_data": {
+            "name": "test_mangled_data",
+            "location": 151,
+            "return": [],
+            "arguments": {}
+        },
+        "test_mangled_times": {
+            "name": "test_mangled_times",
+            "location": 170,
+            "return": [],
+            "arguments": {}
+        },
+        "test_one_sv": {
+            "name": "test_one_sv",
+            "location": 180,
+            "return": [],
+            "arguments": {}
+        },
+        "test_all_systems": {
+            "name": "test_all_systems",
+            "location": 194,
+            "return": [],
+            "arguments": {
+                "tmp_path": [],
+                "use": []
+            }
+        },
+        "test_one_system": {
+            "name": "test_one_system",
+            "location": 224,
+            "return": [],
+            "arguments": {
+                "use": []
+            }
+        },
+        "test_multi_system": {
+            "name": "test_multi_system",
+            "location": 235,
+            "return": [],
+            "arguments": {}
+        },
+        "test_all_indicators": {
+            "name": "test_all_indicators",
+            "location": 246,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_indicators": {
+            "name": "test_meas_indicators",
+            "location": 259,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_onesys_indicators": {
+            "name": "test_meas_onesys_indicators",
+            "location": 272,
+            "return": [],
+            "arguments": {}
+        },
+        "test_time_system": {
+            "name": "test_time_system",
+            "location": 282,
+            "return": [],
+            "arguments": {
+                "fn": [],
+                "tname": []
+            }
+        },
+        "test_wrong_header_count": {
+            "name": "test_wrong_header_count",
+            "location": 287,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "georinex-main/src/georinex/tests/test_obs3.py": {
+        "test_contents": {
+            "name": "test_contents",
+            "location": 12,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_one": {
+            "name": "test_meas_one",
+            "location": 23,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_two": {
+            "name": "test_meas_two",
+            "location": 34,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_some_missing": {
+            "name": "test_meas_some_missing",
+            "location": 53,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_all_missing": {
+            "name": "test_meas_all_missing",
+            "location": 66,
+            "return": [],
+            "arguments": {}
+        },
+        "test_meas_wildcard": {
+            "name": "test_meas_wildcard",
+            "location": 75,
+            "return": [],
+            "arguments": {}
+        },
+        "test_junk_time": {
+            "name": "test_junk_time",
+            "location": 84,
+            "return": [],
+            "arguments": {
+                "fname": []
+            }
+        },
+        "test_zip": {
+            "name": "test_zip",
+            "location": 96,
+            "return": [],
+            "arguments": {
+                "fname": []
+            }
+        },
+        "test_bad_system": {
+            "name": "test_bad_system",
+            "location": 142,
+            "return": [],
+            "arguments": {}
+        },
+        "test_one_system": {
+            "name": "test_one_system",
+            "location": 152,
+            "return": [],
+            "arguments": {
+                "use": []
+            }
+        },
+        "test_multi_system": {
+            "name": "test_multi_system",
+            "location": 170,
+            "return": [],
+            "arguments": {}
+        },
+        "test_all_system": {
+            "name": "test_all_system",
+            "location": 184,
+            "return": [],
+            "arguments": {}
+        },
+        "tests_all_indicators": {
+            "name": "tests_all_indicators",
+            "location": 196,
+            "return": [],
+            "arguments": {}
+        },
+        "test_time_system": {
+            "name": "test_time_system",
+            "location": 209,
+            "return": [],
+            "arguments": {
+                "fn": [],
+                "tname": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/tests/test_rinex.py": {
+        "test_blank_read": {
+            "name": "test_blank_read",
+            "location": 22,
+            "return": [],
+            "arguments": {
+                "tmp_path": [],
+                "filename": []
+            }
+        },
+        "test_blank_write": {
+            "name": "test_blank_write",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "tmp_path": [],
+                "filename": []
+            }
+        },
+        "test_blank_times": {
+            "name": "test_blank_times",
+            "location": 34,
+            "return": [],
+            "arguments": {
+                "filename": []
+            }
+        },
+        "test_minimal": {
+            "name": "test_minimal",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "tmp_path": [],
+                "filename": []
+            }
+        },
+        "test_dont_care_file_extension": {
+            "name": "test_dont_care_file_extension",
+            "location": 67,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "georinex-main/src/georinex/tests/test_scripts.py": {
+        "test_convenience": {
+            "name": "test_convenience",
+            "location": 13,
+            "return": [],
+            "arguments": {}
+        },
+        "test_time": {
+            "name": "test_time",
+            "location": 17,
+            "return": [],
+            "arguments": {}
+        },
+        "test_batch_convert": {
+            "name": "test_batch_convert",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "tmp_path": [],
+                "filename": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/tests/test_sp3.py": {
+        "test_sp3a": {
+            "name": "test_sp3a",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "fn": []
+            }
+        },
+        "test_sp3c": {
+            "name": "test_sp3c",
+            "location": 31,
+            "return": [],
+            "arguments": {
+                "fn": []
+            }
+        },
+        "test_blank": {
+            "name": "test_blank",
+            "location": 44,
+            "return": [],
+            "arguments": {}
+        },
+        "test_header": {
+            "name": "test_header",
+            "location": 49,
+            "return": [],
+            "arguments": {}
+        },
+        "test_minimal_sp3c": {
+            "name": "test_minimal_sp3c",
+            "location": 54,
+            "return": [],
+            "arguments": {}
+        },
+        "test_minimal_sp3d": {
+            "name": "test_minimal_sp3d",
+            "location": 67,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "georinex-main/src/georinex/tests/test_stringio.py": {
+        "test_nav3": {
+            "name": "test_nav3",
+            "location": 15,
+            "return": [],
+            "arguments": {
+                "rinex_version": [],
+                "t": []
+            }
+        },
+        "test_obs": {
+            "name": "test_obs",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "rinex_version": []
+            }
+        },
+        "test_locs": {
+            "name": "test_locs",
+            "location": 48,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "georinex-main/src/georinex/tests/test_time.py": {
+        "test_tlim": {
+            "name": "test_tlim",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "fn": [],
+                "tlim": [],
+                "tref": [],
+                "tlen": []
+            }
+        },
+        "test_interval_obs3": {
+            "name": "test_interval_obs3",
+            "location": 71,
+            "return": [],
+            "arguments": {
+                "interval": [],
+                "expected_len": []
+            }
+        },
+        "test_interval_obs2": {
+            "name": "test_interval_obs2",
+            "location": 85,
+            "return": [],
+            "arguments": {
+                "interval": [],
+                "expected_len": []
+            }
+        }
+    },
+    "georinex-main/src/georinex/time/__init__.py": {},
+    "georinex-main/src/georinex/time/__main__.py": {
+        "eachfile": {
+            "name": "eachfile",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "fn": [
+                    "Path"
+                ],
+                "verbose": [
+                    "bool"
+                ]
+            }
+        }
+    }
+}

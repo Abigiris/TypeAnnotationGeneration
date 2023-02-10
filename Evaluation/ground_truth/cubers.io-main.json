@@ -1,0 +1,4761 @@
+{
+    "cubers.io-main/app.py": {},
+    "cubers.io-main/config.py": {},
+    "cubers.io-main/queue_config.py": {},
+    "cubers.io-main/cubersio/commands.py": {
+        "set_all_events_flags": {
+            "name": "set_all_events_flags",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "all_events": []
+            }
+        },
+        "set_title_override": {
+            "name": "set_title_override",
+            "location": 40,
+            "return": [],
+            "arguments": {
+                "title": []
+            }
+        },
+        "score_and_generate_new_comp": {
+            "name": "score_and_generate_new_comp",
+            "location": 50,
+            "return": [],
+            "arguments": {
+                "all_events": [],
+                "title": []
+            }
+        },
+        "score_comp_only": {
+            "name": "score_comp_only",
+            "location": 63,
+            "return": [],
+            "arguments": {
+                "comp_id": [],
+                "rerun": []
+            }
+        },
+        "generate_new_comp_only": {
+            "name": "generate_new_comp_only",
+            "location": 73,
+            "return": [],
+            "arguments": {
+                "all_events": [],
+                "title": []
+            }
+        },
+        "calculate_all_user_site_rankings": {
+            "name": "calculate_all_user_site_rankings",
+            "location": 85,
+            "return": [],
+            "arguments": {}
+        },
+        "top_off_scrambles": {
+            "name": "top_off_scrambles",
+            "location": 92,
+            "return": [],
+            "arguments": {}
+        },
+        "add_gift_codes": {
+            "name": "add_gift_codes",
+            "location": 103,
+            "return": [],
+            "arguments": {
+                "codes": [
+                    "str"
+                ]
+            }
+        },
+        "set_admin": {
+            "name": "set_admin",
+            "location": 111,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "remove_admin": {
+            "name": "remove_admin",
+            "location": 122,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "list_admins": {
+            "name": "list_admins",
+            "location": 132,
+            "return": [],
+            "arguments": {}
+        },
+        "recalculate_pbs": {
+            "name": "recalculate_pbs",
+            "location": 145,
+            "return": [],
+            "arguments": {}
+        },
+        "calculate_latest_pbs": {
+            "name": "calculate_latest_pbs",
+            "location": 161,
+            "return": [],
+            "arguments": {}
+        },
+        "rerun_podiums_for_comp": {
+            "name": "rerun_podiums_for_comp",
+            "location": 172,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "backfill_results_medals": {
+            "name": "backfill_results_medals",
+            "location": 180,
+            "return": [],
+            "arguments": {}
+        },
+        "__build_solve": {
+            "name": "__build_solve",
+            "location": 216,
+            "return": [],
+            "arguments": {
+                "user_num": [],
+                "wr_average": [],
+                "event_name": [],
+                "scramble_id": []
+            }
+        },
+        "generate_fake_comp_results": {
+            "name": "generate_fake_comp_results",
+            "location": 239,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/__init__.py": {
+        "static_from_root": {
+            "name": "static_from_root",
+            "location": 178,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/business/rankings.py": {
+        "calculate_user_site_rankings": {
+            "name": "calculate_user_site_rankings",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "_calculate_site_rankings_for_user": {
+            "name": "_calculate_site_rankings_for_user",
+            "location": 108,
+            "return": [
+                "UserSiteRankings"
+            ],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ],
+                "event_singles_map": [
+                    "Dict[(Event, List[PersonalBestRecord])]"
+                ],
+                "event_singles_ix_map": [
+                    "Dict[(Event, Dict[(int, int)])]"
+                ],
+                "events_singles_len": [
+                    "Dict[(Event, int)]"
+                ],
+                "event_averages_map": [
+                    "Dict[(Event, List[PersonalBestRecord])]"
+                ],
+                "event_averages_ix_map": [
+                    "Dict[(Event, Dict[(int, int)])]"
+                ],
+                "events_averages_len": [
+                    "Dict[(Event, int)]"
+                ],
+                "wca_event_ids": [
+                    "Set[int]"
+                ],
+                "all_events": [
+                    "List[Event]"
+                ]
+            }
+        },
+        "_build_personal_best_record": {
+            "name": "_build_personal_best_record",
+            "location": 264,
+            "return": [],
+            "arguments": {
+                "query_tuple": []
+            }
+        },
+        "_determine_ranks": {
+            "name": "_determine_ranks",
+            "location": 273,
+            "return": [],
+            "arguments": {
+                "personal_bests": []
+            }
+        },
+        "get_ordered_pb_singles_for_event": {
+            "name": "get_ordered_pb_singles_for_event",
+            "location": 312,
+            "return": [],
+            "arguments": {
+                "event_id": []
+            }
+        },
+        "get_ordered_pb_averages_for_event": {
+            "name": "get_ordered_pb_averages_for_event",
+            "location": 342,
+            "return": [],
+            "arguments": {
+                "event_id": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/business/user_history.py": {
+        "get_user_competition_history": {
+            "name": "get_user_competition_history",
+            "location": 12,
+            "return": [],
+            "arguments": {
+                "user": [],
+                "include_blacklisted": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/business/__init__.py": {},
+    "cubers.io-main/cubersio/business/competition/generation.py": {
+        "generate_new_competition": {
+            "name": "generate_new_competition",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        },
+        "week_of_month": {
+            "name": "week_of_month",
+            "location": 69,
+            "return": [],
+            "arguments": {
+                "datetime_timestamp": []
+            }
+        },
+        "get_comp_name_from_date": {
+            "name": "get_comp_name_from_date",
+            "location": 75,
+            "return": [],
+            "arguments": {}
+        },
+        "get_bonus_events": {
+            "name": "get_bonus_events",
+            "location": 86,
+            "return": [],
+            "arguments": {
+                "comp_gen_data": []
+            }
+        },
+        "update_coll_info": {
+            "name": "update_coll_info",
+            "location": 110,
+            "return": [],
+            "arguments": {
+                "comp_gen_data": []
+            }
+        },
+        "get_events_data": {
+            "name": "get_events_data",
+            "location": 116,
+            "return": [],
+            "arguments": {
+                "weekly_events": [],
+                "bonus_events": [],
+                "comp_gen_data": []
+            }
+        },
+        "get_scrambles_for_event": {
+            "name": "get_scrambles_for_event",
+            "location": 145,
+            "return": [],
+            "arguments": {
+                "event_id": [],
+                "num_scrambles": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/business/competition/scoring.py": {
+        "post_results_thread": {
+            "name": "post_results_thread",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "competition_id": [],
+                "is_rerun": []
+            }
+        },
+        "__escape_username": {
+            "name": "__escape_username",
+            "location": 101,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "__profile_for": {
+            "name": "__profile_for",
+            "location": 109,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/business/competition/__init__.py": {},
+    "cubers.io-main/cubersio/business/user_results/blacklisting.py": {
+        "take_blacklist_action_if_necessary": {
+            "name": "take_blacklist_action_if_necessary",
+            "location": 87,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "user": []
+            }
+        },
+        "__ensure_clean_unblacklisted": {
+            "name": "__ensure_clean_unblacklisted",
+            "location": 143,
+            "return": [],
+            "arguments": {
+                "results": []
+            }
+        },
+        "__perform_perma_blacklist_action": {
+            "name": "__perform_perma_blacklist_action",
+            "location": 151,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "user": []
+            }
+        },
+        "__perform_single_results_blacklist_action": {
+            "name": "__perform_single_results_blacklist_action",
+            "location": 158,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "user": []
+            }
+        },
+        "__perform_average_results_blacklist_action": {
+            "name": "__perform_average_results_blacklist_action",
+            "location": 165,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "user": []
+            }
+        },
+        "__blacklist_results_with_note": {
+            "name": "__blacklist_results_with_note",
+            "location": 173,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "note_template": []
+            }
+        },
+        "__get_event_thresholds": {
+            "name": "__get_event_thresholds",
+            "location": 184,
+            "return": [],
+            "arguments": {
+                "comp_event_name": []
+            }
+        },
+        "__check_event_single_threshold_breached": {
+            "name": "__check_event_single_threshold_breached",
+            "location": 206,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "single_threshold": []
+            }
+        },
+        "__check_event_average_threshold_breached": {
+            "name": "__check_event_average_threshold_breached",
+            "location": 212,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "average_threshold": []
+            }
+        },
+        "__check_if_threshold_breached": {
+            "name": "__check_if_threshold_breached",
+            "location": 218,
+            "return": [],
+            "arguments": {
+                "results_value": [],
+                "threshold_value": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/business/user_results/creation.py": {
+        "process_event_results": {
+            "name": "process_event_results",
+            "location": 26,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "comp_event": [],
+                "user": []
+            }
+        },
+        "__set_is_complete": {
+            "name": "__set_is_complete",
+            "location": 77,
+            "return": [],
+            "arguments": {
+                "user_event_results": [],
+                "event_format": [],
+                "expected_num_solves": []
+            }
+        },
+        "__set_single_and_average": {
+            "name": "__set_single_and_average",
+            "location": 90,
+            "return": [],
+            "arguments": {
+                "user_event_results": [],
+                "expected_num_solves": [],
+                "event_format": []
+            }
+        },
+        "__build_times_string": {
+            "name": "__build_times_string",
+            "location": 105,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "event_format": [],
+                "is_fmc": [],
+                "is_blind": [],
+                "is_mbld": []
+            }
+        },
+        "__determine_best_single": {
+            "name": "__determine_best_single",
+            "location": 199,
+            "return": [],
+            "arguments": {
+                "solves": []
+            }
+        },
+        "__determine_event_result": {
+            "name": "__determine_event_result",
+            "location": 211,
+            "return": [],
+            "arguments": {
+                "single": [],
+                "average": [],
+                "event_format": []
+            }
+        },
+        "__determine_bests": {
+            "name": "__determine_bests",
+            "location": 227,
+            "return": [],
+            "arguments": {
+                "solves": [],
+                "event_format": []
+            }
+        },
+        "__determine_bests_bo1": {
+            "name": "__determine_bests_bo1",
+            "location": 244,
+            "return": [],
+            "arguments": {
+                "solves": []
+            }
+        },
+        "__determine_bests_bo3": {
+            "name": "__determine_bests_bo3",
+            "location": 255,
+            "return": [],
+            "arguments": {
+                "solves": []
+            }
+        },
+        "__determine_bests_mo3": {
+            "name": "__determine_bests_mo3",
+            "location": 261,
+            "return": [],
+            "arguments": {
+                "solves": []
+            }
+        },
+        "__determine_bests_ao5": {
+            "name": "__determine_bests_ao5",
+            "location": 284,
+            "return": [],
+            "arguments": {
+                "solves": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/business/user_results/personal_bests.py": {
+        "set_pb_flags": {
+            "name": "set_pb_flags",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ],
+                "event_result": [
+                    "UserEventResults"
+                ],
+                "event_id": [
+                    "int"
+                ],
+                "event_format": [
+                    "EventFormat"
+                ]
+            }
+        },
+        "recalculate_user_pbs_for_event": {
+            "name": "recalculate_user_pbs_for_event",
+            "location": 52,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "event_id": []
+            }
+        },
+        "__pb_representation": {
+            "name": "__pb_representation",
+            "location": 132,
+            "return": [],
+            "arguments": {
+                "time": []
+            }
+        },
+        "__get_pbs_for_user_and_event_excluding_latest": {
+            "name": "__get_pbs_for_user_and_event_excluding_latest",
+            "location": 147,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "event_id": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/business/user_results/__init__.py": {
+        "set_medals_on_best_event_results": {
+            "name": "set_medals_on_best_event_results",
+            "location": 17,
+            "return": [],
+            "arguments": {
+                "comp_events": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/integrations/reddit.py": {
+        "__get_praw_instance": {
+            "name": "__get_praw_instance",
+            "location": 27,
+            "return": [
+                "Reddit"
+            ],
+            "arguments": {}
+        },
+        "__get_admin_praw_instance": {
+            "name": "__get_admin_praw_instance",
+            "location": 36,
+            "return": [
+                "Reddit"
+            ],
+            "arguments": {}
+        },
+        "send_pm_to_user": {
+            "name": "send_pm_to_user",
+            "location": 45,
+            "return": [],
+            "arguments": {
+                "username": [
+                    "str"
+                ],
+                "title": [
+                    "str"
+                ],
+                "body": [
+                    "str"
+                ]
+            }
+        },
+        "submit_post": {
+            "name": "submit_post",
+            "location": 52,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "title": [
+                    "str"
+                ],
+                "post_body": [
+                    "str"
+                ]
+            }
+        },
+        "update_post": {
+            "name": "update_post",
+            "location": 60,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "post_body": [
+                    "str"
+                ],
+                "thread_id": [
+                    "str"
+                ]
+            }
+        },
+        "get_username_and_refresh_token_from_code": {
+            "name": "get_username_and_refresh_token_from_code",
+            "location": 70,
+            "return": [
+                "Tuple[(str, str)]"
+            ],
+            "arguments": {
+                "code": [
+                    "str"
+                ]
+            }
+        },
+        "get_reddit_auth_url": {
+            "name": "get_reddit_auth_url",
+            "location": 80,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "state": [
+                    "str"
+                ]
+            }
+        },
+        "get_app_account_auth_url": {
+            "name": "get_app_account_auth_url",
+            "location": 86,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "state": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/integrations/wca.py": {
+        "get_wca_auth_url": {
+            "name": "get_wca_auth_url",
+            "location": 28,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "state": [
+                    "str"
+                ]
+            }
+        },
+        "get_wca_access_token_from_auth_code": {
+            "name": "get_wca_access_token_from_auth_code",
+            "location": 42,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "auth_code": [
+                    "str"
+                ]
+            }
+        },
+        "get_wca_id_from_access_token": {
+            "name": "get_wca_id_from_access_token",
+            "location": 63,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "access_token": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/integrations/__init__.py": {},
+    "cubers.io-main/cubersio/persistence/comp_manager.py": {
+        "get_competition": {
+            "name": "get_competition",
+            "location": 18,
+            "return": [
+                "Competition"
+            ],
+            "arguments": {
+                "competition_id": []
+            }
+        },
+        "get_competition_by_reddit_id": {
+            "name": "get_competition_by_reddit_id",
+            "location": 25,
+            "return": [],
+            "arguments": {
+                "reddit_id": []
+            }
+        },
+        "get_active_competition": {
+            "name": "get_active_competition",
+            "location": 33,
+            "return": [],
+            "arguments": {}
+        },
+        "get_previous_competition": {
+            "name": "get_previous_competition",
+            "location": 41,
+            "return": [],
+            "arguments": {}
+        },
+        "get_all_comp_events_for_comp": {
+            "name": "get_all_comp_events_for_comp",
+            "location": 50,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "get_comp_event_name_by_id": {
+            "name": "get_comp_event_name_by_id",
+            "location": 62,
+            "return": [],
+            "arguments": {
+                "comp_event_id": []
+            }
+        },
+        "get_comp_event_by_id": {
+            "name": "get_comp_event_by_id",
+            "location": 72,
+            "return": [],
+            "arguments": {
+                "comp_event_id": []
+            }
+        },
+        "get_user_participated_competitions_count": {
+            "name": "get_user_participated_competitions_count",
+            "location": 80,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "get_participants_in_competition": {
+            "name": "get_participants_in_competition",
+            "location": 93,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "get_reddit_participants_in_competition": {
+            "name": "get_reddit_participants_in_competition",
+            "location": 114,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "get_random_reddit_participant_for_competition": {
+            "name": "get_random_reddit_participant_for_competition",
+            "location": 135,
+            "return": [
+                "User"
+            ],
+            "arguments": {
+                "comp_id": [
+                    "int"
+                ]
+            }
+        },
+        "get_complete_competitions": {
+            "name": "get_complete_competitions",
+            "location": 143,
+            "return": [],
+            "arguments": {}
+        },
+        "get_all_competitions": {
+            "name": "get_all_competitions",
+            "location": 154,
+            "return": [],
+            "arguments": {}
+        },
+        "bulk_update_comps": {
+            "name": "bulk_update_comps",
+            "location": 164,
+            "return": [],
+            "arguments": {
+                "comps": []
+            }
+        },
+        "get_all_competitions_user_has_participated_in": {
+            "name": "get_all_competitions_user_has_participated_in",
+            "location": 172,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "save_competition": {
+            "name": "save_competition",
+            "location": 187,
+            "return": [],
+            "arguments": {
+                "competition": []
+            }
+        },
+        "save_new_competition": {
+            "name": "save_new_competition",
+            "location": 194,
+            "return": [],
+            "arguments": {
+                "title": [],
+                "event_data": []
+            }
+        },
+        "get_competition_gen_resources": {
+            "name": "get_competition_gen_resources",
+            "location": 228,
+            "return": [],
+            "arguments": {}
+        },
+        "save_competition_gen_resources": {
+            "name": "save_competition_gen_resources",
+            "location": 234,
+            "return": [],
+            "arguments": {
+                "comp_gen_resource": []
+            }
+        },
+        "override_title_for_next_comp": {
+            "name": "override_title_for_next_comp",
+            "location": 241,
+            "return": [],
+            "arguments": {
+                "title": []
+            }
+        },
+        "set_all_events_flag_for_next_comp": {
+            "name": "set_all_events_flag_for_next_comp",
+            "location": 250,
+            "return": [],
+            "arguments": {
+                "all_events": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/events_manager.py": {
+        "get_event_by_name": {
+            "name": "get_event_by_name",
+            "location": 12,
+            "return": [],
+            "arguments": {
+                "name": []
+            }
+        },
+        "get_all_events": {
+            "name": "get_all_events",
+            "location": 20,
+            "return": [
+                "List[Event]"
+            ],
+            "arguments": {}
+        },
+        "get_event_format_for_event": {
+            "name": "get_event_format_for_event",
+            "location": 30,
+            "return": [],
+            "arguments": {
+                "event_id": []
+            }
+        },
+        "get_all_WCA_events": {
+            "name": "get_all_WCA_events",
+            "location": 39,
+            "return": [],
+            "arguments": {}
+        },
+        "get_all_non_WCA_events": {
+            "name": "get_all_non_WCA_events",
+            "location": 46,
+            "return": [],
+            "arguments": {}
+        },
+        "get_all_bonus_events": {
+            "name": "get_all_bonus_events",
+            "location": 53,
+            "return": [],
+            "arguments": {}
+        },
+        "get_events_name_id_mapping": {
+            "name": "get_events_name_id_mapping",
+            "location": 60,
+            "return": [],
+            "arguments": {}
+        },
+        "get_all_events_user_has_participated_in": {
+            "name": "get_all_events_user_has_participated_in",
+            "location": 70,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "retrieve_from_scramble_pool_for_event": {
+            "name": "retrieve_from_scramble_pool_for_event",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "event_id": [],
+                "num_scrambles": []
+            }
+        },
+        "delete_from_scramble_pool": {
+            "name": "delete_from_scramble_pool",
+            "location": 93,
+            "return": [],
+            "arguments": {
+                "scrambles": []
+            }
+        },
+        "add_scramble_to_scramble_pool": {
+            "name": "add_scramble_to_scramble_pool",
+            "location": 102,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "scramble": [
+                    "str"
+                ],
+                "event_id": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/gift_code_manager.py": {
+        "bulk_add_gift_codes": {
+            "name": "bulk_add_gift_codes",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "gift_codes": [
+                    "List[str]"
+                ]
+            }
+        },
+        "get_gift_code_by_id": {
+            "name": "get_gift_code_by_id",
+            "location": 25,
+            "return": [
+                "SCSGiftCodePool"
+            ],
+            "arguments": {
+                "gift_code_id": [
+                    "int"
+                ]
+            }
+        },
+        "get_unused_gift_code": {
+            "name": "get_unused_gift_code",
+            "location": 34,
+            "return": [
+                "SCSGiftCodePool"
+            ],
+            "arguments": {}
+        },
+        "get_unused_gift_code_count": {
+            "name": "get_unused_gift_code_count",
+            "location": 43,
+            "return": [
+                "int"
+            ],
+            "arguments": {}
+        },
+        "mark_gift_code_used": {
+            "name": "mark_gift_code_used",
+            "location": 52,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "gift_code_id": [
+                    "int"
+                ]
+            }
+        },
+        "create_confirm_deny_record": {
+            "name": "create_confirm_deny_record",
+            "location": 62,
+            "return": [
+                "WeeklyCodeRecipientConfirmDeny"
+            ],
+            "arguments": {
+                "gift_code_id": [
+                    "int"
+                ],
+                "user_id": [
+                    "int"
+                ],
+                "comp_id": [
+                    "int"
+                ]
+            }
+        },
+        "update_confirm_deny_record": {
+            "name": "update_confirm_deny_record",
+            "location": 75,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "confirm_deny_record": [
+                    "WeeklyCodeRecipientConfirmDeny"
+                ]
+            }
+        },
+        "get_pending_confirm_deny_record_by_deny_code": {
+            "name": "get_pending_confirm_deny_record_by_deny_code",
+            "location": 82,
+            "return": [
+                "WeeklyCodeRecipientConfirmDeny"
+            ],
+            "arguments": {
+                "deny_code": [
+                    "str"
+                ]
+            }
+        },
+        "get_pending_confirm_deny_record_by_confirm_code": {
+            "name": "get_pending_confirm_deny_record_by_confirm_code",
+            "location": 92,
+            "return": [
+                "WeeklyCodeRecipientConfirmDeny"
+            ],
+            "arguments": {
+                "confirm_code": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/models.py": {
+        "load_user": {
+            "name": "load_user",
+            "location": 89,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "PersonalBestRecord.__init__": {
+            "name": "__init__",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Nobody.__init__": {
+            "name": "__init__",
+            "location": 79,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "username": []
+            }
+        },
+        "Nobody.__bool__": {
+            "name": "__bool__",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Scramble.to_front_end_consolidated_dict": {
+            "name": "to_front_end_consolidated_dict",
+            "location": 132,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserEventResults.init_on_load": {
+            "name": "init_on_load",
+            "location": 174,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserEventResults.set_solves": {
+            "name": "set_solves",
+            "location": 185,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "incoming_solves": []
+            }
+        },
+        "UserEventResults.friendly_result": {
+            "name": "friendly_result",
+            "location": 191,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserEventResults.friendly_single": {
+            "name": "friendly_single",
+            "location": 197,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserEventResults.friendly_average": {
+            "name": "friendly_average",
+            "location": 203,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserEventResults.__format_for_friendly": {
+            "name": "__format_for_friendly",
+            "location": 209,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "value": []
+            }
+        },
+        "CompetitionEvent.to_front_end_consolidated_dict": {
+            "name": "to_front_end_consolidated_dict",
+            "location": 244,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.__get_site_rankings_data_as_dict": {
+            "name": "__get_site_rankings_data_as_dict",
+            "location": 313,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.get_site_rankings_and_pbs": {
+            "name": "get_site_rankings_and_pbs",
+            "location": 330,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.get_combined_sum_of_ranks": {
+            "name": "get_combined_sum_of_ranks",
+            "location": 337,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.get_WCA_sum_of_ranks": {
+            "name": "get_WCA_sum_of_ranks",
+            "location": 344,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.get_non_WCA_sum_of_ranks": {
+            "name": "get_non_WCA_sum_of_ranks",
+            "location": 351,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.get_combined_kinchrank": {
+            "name": "get_combined_kinchrank",
+            "location": 358,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.get_WCA_kinchrank": {
+            "name": "get_WCA_kinchrank",
+            "location": 365,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSiteRankings.get_non_WCA_kinchrank": {
+            "name": "get_non_WCA_kinchrank",
+            "location": 372,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSolve.get_total_time": {
+            "name": "get_total_time",
+            "location": 398,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "UserSolve.get_friendly_time": {
+            "name": "get_friendly_time",
+            "location": 403,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/settings_manager.py": {
+        "boolean_validator": {
+            "name": "boolean_validator",
+            "location": 177,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "hex_color_validator": {
+            "name": "hex_color_validator",
+            "location": 190,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "int_list_validator": {
+            "name": "int_list_validator",
+            "location": 204,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "__create_unset_setting": {
+            "name": "__create_unset_setting",
+            "location": 672,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "setting_code": []
+            }
+        },
+        "get_default_values_for_settings": {
+            "name": "get_default_values_for_settings",
+            "location": 688,
+            "return": [],
+            "arguments": {
+                "setting_codes": []
+            }
+        },
+        "get_setting_for_user": {
+            "name": "get_setting_for_user",
+            "location": 695,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "setting_code": []
+            }
+        },
+        "get_boolean_setting_for_user": {
+            "name": "get_boolean_setting_for_user",
+            "location": 708,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "setting_code": []
+            }
+        },
+        "get_all_user_ids_with_setting_value": {
+            "name": "get_all_user_ids_with_setting_value",
+            "location": 713,
+            "return": [],
+            "arguments": {
+                "setting_code": [],
+                "setting_value": []
+            }
+        },
+        "get_bulk_settings_for_user_as_dict": {
+            "name": "get_bulk_settings_for_user_as_dict",
+            "location": 725,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "setting_codes": []
+            }
+        },
+        "get_settings_for_user_for_edit": {
+            "name": "get_settings_for_user_for_edit",
+            "location": 744,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "setting_codes": []
+            }
+        },
+        "set_new_settings_for_user": {
+            "name": "set_new_settings_for_user",
+            "location": 784,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "settings_dict": []
+            }
+        },
+        "get_setting_type": {
+            "name": "get_setting_type",
+            "location": 806,
+            "return": [],
+            "arguments": {
+                "setting_code": []
+            }
+        },
+        "get_color_defaults": {
+            "name": "get_color_defaults",
+            "location": 812,
+            "return": [],
+            "arguments": {}
+        },
+        "__ensure_all_settings_desired_exist": {
+            "name": "__ensure_all_settings_desired_exist",
+            "location": 822,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "setting_codes": []
+            }
+        },
+        "SettingInfo.__init__": {
+            "name": "__init__",
+            "location": 103,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "title": [],
+                "validator": [],
+                "setting_type": [],
+                "default_value": [],
+                "affects": [],
+                "opposite_affects": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/user_manager.py": {
+        "get_all_users": {
+            "name": "get_all_users",
+            "location": 22,
+            "return": [],
+            "arguments": {}
+        },
+        "get_all_active_usernames": {
+            "name": "get_all_active_usernames",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_count": {
+            "name": "get_user_count",
+            "location": 41,
+            "return": [],
+            "arguments": {}
+        },
+        "update_or_create_user_for_reddit": {
+            "name": "update_or_create_user_for_reddit",
+            "location": 47,
+            "return": [],
+            "arguments": {
+                "reddit_id": [],
+                "token": []
+            }
+        },
+        "update_or_create_user_for_wca": {
+            "name": "update_or_create_user_for_wca",
+            "location": 63,
+            "return": [],
+            "arguments": {
+                "wca_id": [],
+                "token": []
+            }
+        },
+        "add_wca_info_to_user": {
+            "name": "add_wca_info_to_user",
+            "location": 79,
+            "return": [],
+            "arguments": {
+                "username": [],
+                "wca_id": [],
+                "wca_token": []
+            }
+        },
+        "add_reddit_info_to_user": {
+            "name": "add_reddit_info_to_user",
+            "location": 93,
+            "return": [],
+            "arguments": {
+                "username": [],
+                "reddit_id": [],
+                "reddit_token": []
+            }
+        },
+        "get_user_by_username": {
+            "name": "get_user_by_username",
+            "location": 107,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "get_user_by_username_case_insensitive": {
+            "name": "get_user_by_username_case_insensitive",
+            "location": 113,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "get_user_by_reddit_id": {
+            "name": "get_user_by_reddit_id",
+            "location": 127,
+            "return": [],
+            "arguments": {
+                "reddit_id": []
+            }
+        },
+        "get_user_by_wca_id": {
+            "name": "get_user_by_wca_id",
+            "location": 133,
+            "return": [],
+            "arguments": {
+                "wca_id": []
+            }
+        },
+        "get_user_by_id": {
+            "name": "get_user_by_id",
+            "location": 139,
+            "return": [
+                "User"
+            ],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "set_user_as_admin": {
+            "name": "set_user_as_admin",
+            "location": 145,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "unset_user_as_admin": {
+            "name": "unset_user_as_admin",
+            "location": 157,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "set_perma_blacklist_for_user": {
+            "name": "set_perma_blacklist_for_user",
+            "location": 169,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "unset_perma_blacklist_for_user": {
+            "name": "unset_perma_blacklist_for_user",
+            "location": 181,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "verify_user": {
+            "name": "verify_user",
+            "location": 193,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "unverify_user": {
+            "name": "unverify_user",
+            "location": 205,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "get_all_admins": {
+            "name": "get_all_admins",
+            "location": 217,
+            "return": [],
+            "arguments": {}
+        },
+        "get_username_id_map": {
+            "name": "get_username_id_map",
+            "location": 225,
+            "return": [],
+            "arguments": {}
+        },
+        "UserDoesNotExistException.__init__": {
+            "name": "__init__",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "username": []
+            }
+        },
+        "UserDoesNotExistException.__str__": {
+            "name": "__str__",
+            "location": 17,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/user_results_manager.py": {
+        "blacklist_results": {
+            "name": "blacklist_results",
+            "location": 26,
+            "return": [],
+            "arguments": {
+                "results_id": [],
+                "note": []
+            }
+        },
+        "unblacklist_results": {
+            "name": "unblacklist_results",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "results_id": []
+            }
+        },
+        "get_user_event_results_by_id": {
+            "name": "get_user_event_results_by_id",
+            "location": 66,
+            "return": [],
+            "arguments": {
+                "user_event_results_id": []
+            }
+        },
+        "get_user_completed_solves_count": {
+            "name": "get_user_completed_solves_count",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "get_user_medals_count": {
+            "name": "get_user_medals_count",
+            "location": 88,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "get_user_solve_for_scramble_id": {
+            "name": "get_user_solve_for_scramble_id",
+            "location": 110,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "scramble_id": []
+            }
+        },
+        "get_event_results_for_user": {
+            "name": "get_event_results_for_user",
+            "location": 121,
+            "return": [],
+            "arguments": {
+                "comp_event_id": [],
+                "user": []
+            }
+        },
+        "get_all_complete_event_results": {
+            "name": "get_all_complete_event_results",
+            "location": 130,
+            "return": [],
+            "arguments": {}
+        },
+        "get_results_for_comp_event": {
+            "name": "get_results_for_comp_event",
+            "location": 138,
+            "return": [],
+            "arguments": {
+                "comp_event_id": []
+            }
+        },
+        "get_pb_single_event_results_except_current_comp": {
+            "name": "get_pb_single_event_results_except_current_comp",
+            "location": 150,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "event_id": []
+            }
+        },
+        "get_pb_average_event_results_except_current_comp": {
+            "name": "get_pb_average_event_results_except_current_comp",
+            "location": 171,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "event_id": []
+            }
+        },
+        "get_all_complete_user_results_for_comp": {
+            "name": "get_all_complete_user_results_for_comp",
+            "location": 192,
+            "return": [],
+            "arguments": {
+                "comp_id": [],
+                "omit_blacklisted": []
+            }
+        },
+        "get_all_complete_user_results_for_comp_event": {
+            "name": "get_all_complete_user_results_for_comp_event",
+            "location": 210,
+            "return": [],
+            "arguments": {
+                "comp_event_id": [],
+                "omit_blacklisted": []
+            }
+        },
+        "get_blacklisted_entries_for_comp": {
+            "name": "get_blacklisted_entries_for_comp",
+            "location": 231,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "get_all_complete_user_results_for_comp_and_user": {
+            "name": "get_all_complete_user_results_for_comp_and_user",
+            "location": 248,
+            "return": [],
+            "arguments": {
+                "comp_id": [],
+                "user_id": [],
+                "include_blacklisted": []
+            }
+        },
+        "get_all_user_results_for_comp_and_user": {
+            "name": "get_all_user_results_for_comp_and_user",
+            "location": 272,
+            "return": [],
+            "arguments": {
+                "comp_id": [],
+                "user_id": []
+            }
+        },
+        "get_all_complete_user_results_for_user_and_event": {
+            "name": "get_all_complete_user_results_for_user_and_event",
+            "location": 285,
+            "return": [
+                "List[UserEventResults]"
+            ],
+            "arguments": {
+                "user_id": [],
+                "event_id": []
+            }
+        },
+        "get_all_user_results_for_user": {
+            "name": "get_all_user_results_for_user",
+            "location": 299,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "save_event_results": {
+            "name": "save_event_results",
+            "location": 315,
+            "return": [],
+            "arguments": {
+                "new_results": [
+                    "UserEventResults"
+                ],
+                "event_id": [
+                    "int"
+                ]
+            }
+        },
+        "calculate_latest_user_pbs_for_event": {
+            "name": "calculate_latest_user_pbs_for_event",
+            "location": 338,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "event_id": []
+            }
+        },
+        "delete_event_results": {
+            "name": "delete_event_results",
+            "location": 363,
+            "return": [],
+            "arguments": {
+                "comp_event_results": []
+            }
+        },
+        "delete_user_solve": {
+            "name": "delete_user_solve",
+            "location": 370,
+            "return": [],
+            "arguments": {
+                "user_solve": []
+            }
+        },
+        "bulk_save_event_results": {
+            "name": "bulk_save_event_results",
+            "location": 377,
+            "return": [],
+            "arguments": {
+                "results_list": []
+            }
+        },
+        "UserEventResultsDoesNotExistException.__init__": {
+            "name": "__init__",
+            "location": 17,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "results_id": []
+            }
+        },
+        "UserEventResultsDoesNotExistException.__str__": {
+            "name": "__str__",
+            "location": 21,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/user_site_rankings_manager.py": {
+        "get_site_rankings_for_user": {
+            "name": "get_site_rankings_for_user",
+            "location": 12,
+            "return": [
+                "Optional[UserSiteRankings]"
+            ],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "get_site_rankings_for_users": {
+            "name": "get_site_rankings_for_users",
+            "location": 21,
+            "return": [
+                "Dict[(int, UserSiteRankings)]"
+            ],
+            "arguments": {
+                "user_ids": []
+            }
+        },
+        "get_user_site_rankings_all_sorted_single": {
+            "name": "get_user_site_rankings_all_sorted_single",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_site_rankings_all_sorted_average": {
+            "name": "get_user_site_rankings_all_sorted_average",
+            "location": 49,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_site_rankings_wca_sorted_single": {
+            "name": "get_user_site_rankings_wca_sorted_single",
+            "location": 66,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_site_rankings_wca_sorted_average": {
+            "name": "get_user_site_rankings_wca_sorted_average",
+            "location": 83,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_site_rankings_non_wca_sorted_single": {
+            "name": "get_user_site_rankings_non_wca_sorted_single",
+            "location": 100,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_site_rankings_non_wca_sorted_average": {
+            "name": "get_user_site_rankings_non_wca_sorted_average",
+            "location": 117,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_kinchranks_wca_sorted": {
+            "name": "get_user_kinchranks_wca_sorted",
+            "location": 134,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_kinchranks_non_wca_sorted": {
+            "name": "get_user_kinchranks_non_wca_sorted",
+            "location": 146,
+            "return": [],
+            "arguments": {}
+        },
+        "get_user_kinchranks_all_sorted": {
+            "name": "get_user_kinchranks_all_sorted",
+            "location": 158,
+            "return": [],
+            "arguments": {}
+        },
+        "bulk_update_site_rankings": {
+            "name": "bulk_update_site_rankings",
+            "location": 170,
+            "return": [],
+            "arguments": {
+                "site_rankings": [
+                    "List[UserSiteRankings]"
+                ]
+            }
+        },
+        "update_one_event_site_rankings_for_user": {
+            "name": "update_one_event_site_rankings_for_user",
+            "location": 201,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "new_site_rankings": [],
+                "event": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/persistence/__init__.py": {},
+    "cubers.io-main/cubersio/routes/__init__.py": {
+        "api_login_required": {
+            "name": "api_login_required",
+            "location": 8,
+            "return": [],
+            "arguments": {
+                "func": []
+            }
+        },
+        "api_login_required.decorated_function": {
+            "name": "decorated_function",
+            "location": 14,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/admin/gift_codes.py": {
+        "confirm_gift_code_recipient": {
+            "name": "confirm_gift_code_recipient",
+            "location": 19,
+            "return": [],
+            "arguments": {
+                "confirm_code": []
+            }
+        },
+        "deny_gift_code_recipient": {
+            "name": "deny_gift_code_recipient",
+            "location": 39,
+            "return": [],
+            "arguments": {
+                "deny_code": []
+            }
+        },
+        "add_gift_codes": {
+            "name": "add_gift_codes",
+            "location": 56,
+            "return": [],
+            "arguments": {}
+        },
+        "__handle_add_gift_codes": {
+            "name": "__handle_add_gift_codes",
+            "location": 69,
+            "return": [
+                "Text"
+            ],
+            "arguments": {
+                "form": [
+                    "dict"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/admin/__init__.py": {},
+    "cubers.io-main/cubersio/routes/auth/reddit.py": {
+        "__get_oauth_state_for_reddit_association": {
+            "name": "__get_oauth_state_for_reddit_association",
+            "location": 30,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "__handle_login_state": {
+            "name": "__handle_login_state",
+            "location": 40,
+            "return": [],
+            "arguments": {
+                "_": [],
+                "reddit_id": [],
+                "token": []
+            }
+        },
+        "__handle_assoc_state": {
+            "name": "__handle_assoc_state",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "state_params": [],
+                "reddit_id": [],
+                "token": []
+            }
+        },
+        "reddit_login": {
+            "name": "reddit_login",
+            "location": 83,
+            "return": [],
+            "arguments": {}
+        },
+        "reddit_assoc": {
+            "name": "reddit_assoc",
+            "location": 94,
+            "return": [],
+            "arguments": {}
+        },
+        "reddit_authorize": {
+            "name": "reddit_authorize",
+            "location": 105,
+            "return": [],
+            "arguments": {}
+        },
+        "admin_login": {
+            "name": "admin_login",
+            "location": 130,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/auth/wca.py": {
+        "__get_oauth_state_for_WCA_association": {
+            "name": "__get_oauth_state_for_WCA_association",
+            "location": 36,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "__handle_login_state": {
+            "name": "__handle_login_state",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "_": [],
+                "wca_id": [],
+                "token": []
+            }
+        },
+        "__handle_assoc_state": {
+            "name": "__handle_assoc_state",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "state_params": [],
+                "wca_id": [],
+                "token": []
+            }
+        },
+        "wca_login": {
+            "name": "wca_login",
+            "location": 89,
+            "return": [],
+            "arguments": {}
+        },
+        "wca_assoc": {
+            "name": "wca_assoc",
+            "location": 100,
+            "return": [],
+            "arguments": {}
+        },
+        "wca_authorize": {
+            "name": "wca_authorize",
+            "location": 111,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/auth/__init__.py": {
+        "__encrypt_state": {
+            "name": "__encrypt_state",
+            "location": 26,
+            "return": [],
+            "arguments": {
+                "state": []
+            }
+        },
+        "__decrypt_state": {
+            "name": "__decrypt_state",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "state": []
+            }
+        },
+        "logout": {
+            "name": "logout",
+            "location": 44,
+            "return": [],
+            "arguments": {}
+        },
+        "denied": {
+            "name": "denied",
+            "location": 54,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/events/event_routes.py": {
+        "event_results": {
+            "name": "event_results",
+            "location": 27,
+            "return": [],
+            "arguments": {
+                "event_name": []
+            }
+        },
+        "event_results_export": {
+            "name": "event_results_export",
+            "location": 45,
+            "return": [],
+            "arguments": {
+                "event_name": []
+            }
+        },
+        "__safe_get_event": {
+            "name": "__safe_get_event",
+            "location": 61,
+            "return": [],
+            "arguments": {
+                "event_name": []
+            }
+        },
+        "__scrub_pb_value": {
+            "name": "__scrub_pb_value",
+            "location": 70,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "__build_user_pb_pairs": {
+            "name": "__build_user_pb_pairs",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "singles": [],
+                "averages": []
+            }
+        },
+        "__build_csv_output": {
+            "name": "__build_csv_output",
+            "location": 100,
+            "return": [],
+            "arguments": {
+                "event_name": [],
+                "user_pb_dict": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/events/kinchranks_routes.py": {
+        "kinchranks": {
+            "name": "kinchranks",
+            "location": 35,
+            "return": [],
+            "arguments": {
+                "rank_type": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/events/sum_of_ranks_routes.py": {
+        "sum_of_ranks": {
+            "name": "sum_of_ranks",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "sor_type": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/events/__init__.py": {},
+    "cubers.io-main/cubersio/routes/export/export_routes.py": {
+        "export": {
+            "name": "export",
+            "location": 139,
+            "return": [],
+            "arguments": {}
+        },
+        "TwistyTimerResultsExporter.__init__": {
+            "name": "__init__",
+            "location": 62,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "username": [],
+                "event_name_results_map": []
+            }
+        },
+        "TwistyTimerResultsExporter.get_filename": {
+            "name": "get_filename",
+            "location": 67,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TwistyTimerResultsExporter.generate_results": {
+            "name": "generate_results",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TwistyTimerResultsExporter.generate_results.gen_results": {
+            "name": "gen_results",
+            "location": 80,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/export/__init__.py": {},
+    "cubers.io-main/cubersio/routes/home/home_routes.py": {
+        "index": {
+            "name": "index",
+            "location": 16,
+            "return": [],
+            "arguments": {}
+        },
+        "prompt_login": {
+            "name": "prompt_login",
+            "location": 63,
+            "return": [],
+            "arguments": {}
+        },
+        "__build_is_incomplete_func": {
+            "name": "__build_is_incomplete_func",
+            "location": 70,
+            "return": [],
+            "arguments": {
+                "complete_ids": []
+            }
+        },
+        "__build_is_incomplete_func.__is_incomplete": {
+            "name": "__is_incomplete",
+            "location": 74,
+            "return": [],
+            "arguments": {
+                "result": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/home/__init__.py": {},
+    "cubers.io-main/cubersio/routes/persistence/persistence_routes.py": {
+        "post_solve": {
+            "name": "post_solve",
+            "location": 57,
+            "return": [],
+            "arguments": {}
+        },
+        "toggle_prev_penalty": {
+            "name": "toggle_prev_penalty",
+            "location": 123,
+            "return": [],
+            "arguments": {}
+        },
+        "delete_prev_solve": {
+            "name": "delete_prev_solve",
+            "location": 182,
+            "return": [],
+            "arguments": {}
+        },
+        "apply_comment": {
+            "name": "apply_comment",
+            "location": 231,
+            "return": [],
+            "arguments": {}
+        },
+        "set_time": {
+            "name": "set_time",
+            "location": 270,
+            "return": [],
+            "arguments": {}
+        },
+        "set_plus_two": {
+            "name": "set_plus_two",
+            "location": 311,
+            "return": [],
+            "arguments": {}
+        },
+        "set_dnf": {
+            "name": "set_dnf",
+            "location": 337,
+            "return": [],
+            "arguments": {}
+        },
+        "clear_penalty": {
+            "name": "clear_penalty",
+            "location": 363,
+            "return": [],
+            "arguments": {}
+        },
+        "delete_solve": {
+            "name": "delete_solve",
+            "location": 389,
+            "return": [],
+            "arguments": {}
+        },
+        "__retrieve_target_solve": {
+            "name": "__retrieve_target_solve",
+            "location": 420,
+            "return": [],
+            "arguments": {
+                "request_data": [],
+                "user": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/persistence/__init__.py": {},
+    "cubers.io-main/cubersio/routes/results/results_routes.py": {
+        "comp_results": {
+            "name": "comp_results",
+            "location": 25,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "comp_event_results": {
+            "name": "comp_event_results",
+            "location": 54,
+            "return": [],
+            "arguments": {
+                "comp_event_id": []
+            }
+        },
+        "get_overall_performance_data": {
+            "name": "get_overall_performance_data",
+            "location": 107,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "curr_leaders": {
+            "name": "curr_leaders",
+            "location": 140,
+            "return": [],
+            "arguments": {}
+        },
+        "prev_leaders": {
+            "name": "prev_leaders",
+            "location": 148,
+            "return": [],
+            "arguments": {}
+        },
+        "results_list": {
+            "name": "results_list",
+            "location": 156,
+            "return": [],
+            "arguments": {}
+        },
+        "blacklist": {
+            "name": "blacklist",
+            "location": 166,
+            "return": [],
+            "arguments": {
+                "results_id": []
+            }
+        },
+        "unblacklist": {
+            "name": "unblacklist",
+            "location": 196,
+            "return": [],
+            "arguments": {
+                "results_id": []
+            }
+        },
+        "filter_blacklisted_results": {
+            "name": "filter_blacklisted_results",
+            "location": 223,
+            "return": [],
+            "arguments": {
+                "results": [],
+                "show_admin": [],
+                "curr_user": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/results/__init__.py": {},
+    "cubers.io-main/cubersio/routes/timer/timer_routes.py": {
+        "timer_page": {
+            "name": "timer_page",
+            "location": 102,
+            "return": [],
+            "arguments": {
+                "comp_event_id": [],
+                "gather_info_for_live_refresh": []
+            }
+        },
+        "__build_user_solves_list": {
+            "name": "__build_user_solves_list",
+            "location": 210,
+            "return": [],
+            "arguments": {
+                "user_results": [],
+                "event_total_solves": [],
+                "scrambles": []
+            }
+        },
+        "__determine_is_complete": {
+            "name": "__determine_is_complete",
+            "location": 235,
+            "return": [],
+            "arguments": {
+                "is_complete_flag": [],
+                "event_format": [],
+                "num_solves_completed": []
+            }
+        },
+        "__determine_scramble_id_text_index": {
+            "name": "__determine_scramble_id_text_index",
+            "location": 246,
+            "return": [],
+            "arguments": {
+                "user_results": [],
+                "user_solves_list": [],
+                "scrambles": [],
+                "event_name": [],
+                "event_format": []
+            }
+        },
+        "__determine_button_states": {
+            "name": "__determine_button_states",
+            "location": 281,
+            "return": [],
+            "arguments": {
+                "user_results": [],
+                "scramble_index": [],
+                "settings": []
+            }
+        },
+        "__determine_page_subtype": {
+            "name": "__determine_page_subtype",
+            "location": 349,
+            "return": [],
+            "arguments": {
+                "event_name": [],
+                "settings": []
+            }
+        },
+        "__build_done_message": {
+            "name": "__build_done_message",
+            "location": 362,
+            "return": [],
+            "arguments": {
+                "user_results": [],
+                "event_name": [],
+                "event_format": []
+            }
+        },
+        "__get_user_settings": {
+            "name": "__get_user_settings",
+            "location": 465,
+            "return": [],
+            "arguments": {
+                "user": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/timer/__init__.py": {},
+    "cubers.io-main/cubersio/routes/user/profile_routes.py": {
+        "profile": {
+            "name": "profile",
+            "location": 28,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "blacklist_user": {
+            "name": "blacklist_user",
+            "location": 110,
+            "return": [],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ]
+            }
+        },
+        "unblacklist_user": {
+            "name": "unblacklist_user",
+            "location": 126,
+            "return": [],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ]
+            }
+        },
+        "do_verify_user": {
+            "name": "do_verify_user",
+            "location": 142,
+            "return": [],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ]
+            }
+        },
+        "do_unverify_user": {
+            "name": "do_unverify_user",
+            "location": 158,
+            "return": [],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ]
+            }
+        },
+        "__should_show_blacklisted_results": {
+            "name": "__should_show_blacklisted_results",
+            "location": 174,
+            "return": [],
+            "arguments": {
+                "profile_username": [],
+                "is_admin_here": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/user/versus_routes.py": {
+        "versus_search": {
+            "name": "versus_search",
+            "location": 24,
+            "return": [],
+            "arguments": {}
+        },
+        "user_versus_user": {
+            "name": "user_versus_user",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "username1": [],
+                "username2": [],
+                "errors": []
+            }
+        },
+        "me_versus_other": {
+            "name": "me_versus_other",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "__render_versus_page_for_users": {
+            "name": "__render_versus_page_for_users",
+            "location": 61,
+            "return": [],
+            "arguments": {
+                "user1": [],
+                "user2": [],
+                "errors": []
+            }
+        },
+        "usernames": {
+            "name": "usernames",
+            "location": 86,
+            "return": [],
+            "arguments": {}
+        },
+        "user_site_stats": {
+            "name": "user_site_stats",
+            "location": 93,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "user_site_rankings": {
+            "name": "user_site_rankings",
+            "location": 106,
+            "return": [],
+            "arguments": {
+                "username": []
+            }
+        },
+        "__get_versus_page_info_for_user": {
+            "name": "__get_versus_page_info_for_user",
+            "location": 127,
+            "return": [],
+            "arguments": {
+                "user": []
+            }
+        },
+        "__get_user_site_rankings": {
+            "name": "__get_user_site_rankings",
+            "location": 134,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "__get_user_site_stats": {
+            "name": "__get_user_site_stats",
+            "location": 160,
+            "return": [],
+            "arguments": {
+                "user_id": []
+            }
+        },
+        "__remove_events_not_participated_in": {
+            "name": "__remove_events_not_participated_in",
+            "location": 204,
+            "return": [],
+            "arguments": {
+                "event_id_name_map": [],
+                "rankings1": [],
+                "rankings2": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/routes/user/__init__.py": {},
+    "cubers.io-main/cubersio/routes/user/settings/custom_colors_settings_routes.py": {
+        "colors_settings": {
+            "name": "colors_settings",
+            "location": 134,
+            "return": [],
+            "arguments": {
+                "event": []
+            }
+        },
+        "save_colors_settings": {
+            "name": "save_colors_settings",
+            "location": 156,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/user/settings/event_settings_routes.py": {
+        "events_settings": {
+            "name": "events_settings",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "save_events_settings": {
+            "name": "save_events_settings",
+            "location": 40,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/user/settings/reddit_settings_routes.py": {
+        "reddit_settings": {
+            "name": "reddit_settings",
+            "location": 21,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/user/settings/timer_settings_routes.py": {
+        "timer_settings": {
+            "name": "timer_settings",
+            "location": 26,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/user/settings/wca_settings_routes.py": {
+        "wca_settings": {
+            "name": "wca_settings",
+            "location": 20,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/routes/user/settings/__init__.py": {
+        "__determine_disabled_settings": {
+            "name": "__determine_disabled_settings",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "all_settings": []
+            }
+        },
+        "__handle_get": {
+            "name": "__handle_get",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "user": [],
+                "settings_list": [],
+                "template_path": []
+            }
+        },
+        "save_settings": {
+            "name": "save_settings",
+            "location": 46,
+            "return": [],
+            "arguments": {}
+        },
+        "toggle_settings": {
+            "name": "toggle_settings",
+            "location": 55,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/tasks/competition_management.py": {
+        "run_weekly_site_rankings": {
+            "name": "run_weekly_site_rankings",
+            "location": 35,
+            "return": [],
+            "arguments": {}
+        },
+        "run_user_site_rankings": {
+            "name": "run_user_site_rankings",
+            "location": 42,
+            "return": [],
+            "arguments": {}
+        },
+        "wrap_weekly_competition": {
+            "name": "wrap_weekly_competition",
+            "location": 53,
+            "return": [],
+            "arguments": {}
+        },
+        "post_results_thread_task": {
+            "name": "post_results_thread_task",
+            "location": 68,
+            "return": [],
+            "arguments": {
+                "comp_id": [],
+                "is_rerun": []
+            }
+        },
+        "generate_new_competition_task": {
+            "name": "generate_new_competition_task",
+            "location": 75,
+            "return": [],
+            "arguments": {}
+        },
+        "update_pbs": {
+            "name": "update_pbs",
+            "location": 83,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/tasks/gift_code_management.py": {
+        "check_gift_code_pool": {
+            "name": "check_gift_code_pool",
+            "location": 86,
+            "return": [],
+            "arguments": {}
+        },
+        "send_gift_code_winner_approval_pm": {
+            "name": "send_gift_code_winner_approval_pm",
+            "location": 100,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "send_gift_code_to_winner": {
+            "name": "send_gift_code_to_winner",
+            "location": 133,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "user_id": [
+                    "int"
+                ],
+                "gift_code_id": [
+                    "int"
+                ],
+                "comp_id": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/tasks/reddit.py": {
+        "naturally_join": {
+            "name": "naturally_join",
+            "location": 53,
+            "return": [],
+            "arguments": {
+                "values": []
+            }
+        },
+        "prepare_new_competition_notification": {
+            "name": "prepare_new_competition_notification",
+            "location": 73,
+            "return": [],
+            "arguments": {
+                "comp_id": [],
+                "is_all_events": []
+            }
+        },
+        "send_competition_notification_pm": {
+            "name": "send_competition_notification_pm",
+            "location": 104,
+            "return": [],
+            "arguments": {
+                "username": [],
+                "message_body": []
+            }
+        },
+        "prepare_end_of_competition_info_notifications": {
+            "name": "prepare_end_of_competition_info_notifications",
+            "location": 111,
+            "return": [],
+            "arguments": {
+                "comp_id": []
+            }
+        },
+        "send_end_of_competition_message": {
+            "name": "send_end_of_competition_message",
+            "location": 129,
+            "return": [],
+            "arguments": {
+                "user_id": [],
+                "comp_id": [],
+                "comp_title": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/tasks/scramble_generation.py": {
+        "check_scramble_pool": {
+            "name": "check_scramble_pool",
+            "location": 25,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "top_off_scramble_pool": {
+            "name": "top_off_scramble_pool",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "top_off_info": [
+                    "ScramblePoolTopOffInfo"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/tasks/__init__.py": {
+        "__task_error_handler": {
+            "name": "__task_error_handler",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "_": [],
+                "task": [],
+                "exc": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/simplecrypt.py": {
+        "encrypt": {
+            "name": "encrypt",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "password": [],
+                "data": []
+            }
+        },
+        "decrypt": {
+            "name": "decrypt",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "password": [],
+                "data": []
+            }
+        },
+        "_assert_not_unicode": {
+            "name": "_assert_not_unicode",
+            "location": 88,
+            "return": [],
+            "arguments": {
+                "data": []
+            }
+        },
+        "_assert_encrypt_length": {
+            "name": "_assert_encrypt_length",
+            "location": 95,
+            "return": [],
+            "arguments": {
+                "data": []
+            }
+        },
+        "_assert_decrypt_length": {
+            "name": "_assert_decrypt_length",
+            "location": 100,
+            "return": [],
+            "arguments": {
+                "data": [],
+                "version": []
+            }
+        },
+        "_assert_header_prefix": {
+            "name": "_assert_header_prefix",
+            "location": 104,
+            "return": [],
+            "arguments": {
+                "data": []
+            }
+        },
+        "_assert_header_version": {
+            "name": "_assert_header_version",
+            "location": 108,
+            "return": [],
+            "arguments": {
+                "data": []
+            }
+        },
+        "_assert_hmac": {
+            "name": "_assert_hmac",
+            "location": 119,
+            "return": [],
+            "arguments": {
+                "key": [],
+                "hmac": [],
+                "hmac2": []
+            }
+        },
+        "_pbkdf2": {
+            "name": "_pbkdf2",
+            "location": 124,
+            "return": [],
+            "arguments": {
+                "password": [],
+                "salt": [],
+                "n_bytes": [],
+                "count": []
+            }
+        },
+        "_expand_keys": {
+            "name": "_expand_keys",
+            "location": 129,
+            "return": [],
+            "arguments": {
+                "password": [],
+                "salt": [],
+                "expansion_count": []
+            }
+        },
+        "_hide": {
+            "name": "_hide",
+            "location": 138,
+            "return": [],
+            "arguments": {
+                "ranbytes": []
+            }
+        },
+        "_random_bytes": {
+            "name": "_random_bytes",
+            "location": 144,
+            "return": [],
+            "arguments": {
+                "n": []
+            }
+        },
+        "_hmac": {
+            "name": "_hmac",
+            "location": 147,
+            "return": [],
+            "arguments": {
+                "key": [],
+                "data": []
+            }
+        },
+        "_str_to_bytes": {
+            "name": "_str_to_bytes",
+            "location": 150,
+            "return": [],
+            "arguments": {
+                "data": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/sorting.py": {
+        "sort_personal_best_records": {
+            "name": "sort_personal_best_records",
+            "location": 12,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "pb1": [
+                    "PersonalBestRecord"
+                ],
+                "pb2": [
+                    "PersonalBestRecord"
+                ]
+            }
+        },
+        "__sort_user_event_results_by_result": {
+            "name": "__sort_user_event_results_by_result",
+            "location": 30,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "result1": [
+                    "UserEventResults"
+                ],
+                "result2": [
+                    "UserEventResults"
+                ]
+            }
+        },
+        "__sort_user_event_results_by_single": {
+            "name": "__sort_user_event_results_by_single",
+            "location": 48,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "result1": [
+                    "UserEventResults"
+                ],
+                "result2": [
+                    "UserEventResults"
+                ]
+            }
+        },
+        "sort_user_results_with_rankings": {
+            "name": "sort_user_results_with_rankings",
+            "location": 65,
+            "return": [
+                "List[Tuple[(int, str, UserEventResults)]]"
+            ],
+            "arguments": {
+                "results": [
+                    "List[UserEventResults]"
+                ],
+                "event_format": [
+                    "EventFormat"
+                ]
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/template.py": {
+        "link_to_algcubingnet": {
+            "name": "link_to_algcubingnet",
+            "location": 14,
+            "return": [],
+            "arguments": {}
+        },
+        "slugify_filter": {
+            "name": "slugify_filter",
+            "location": 38,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "value": [
+                    "str"
+                ]
+            }
+        },
+        "format_datetime": {
+            "name": "format_datetime",
+            "location": 45,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "friendly_time": {
+            "name": "friendly_time",
+            "location": 52,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "format_fmc_result": {
+            "name": "format_fmc_result",
+            "location": 66,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "format_mbld_result": {
+            "name": "format_mbld_result",
+            "location": 84,
+            "return": [],
+            "arguments": {
+                "value": []
+            }
+        },
+        "link_to_algcubingnet.__link_to_algcubingnet": {
+            "name": "__link_to_algcubingnet",
+            "location": 17,
+            "return": [],
+            "arguments": {
+                "setup": [],
+                "alg": [],
+                "moves_count": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/times.py": {
+        "convert_centiseconds_to_friendly_time": {
+            "name": "convert_centiseconds_to_friendly_time",
+            "location": 4,
+            "return": [],
+            "arguments": {
+                "centiseconds": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/__init__.py": {},
+    "cubers.io-main/cubersio/util/events/mbld.py": {
+        "MbldSolve.__init__": {
+            "name": "__init__",
+            "location": 12,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "coded_value": [
+                    "Union[(str, int)]"
+                ]
+            }
+        },
+        "MbldSolve.__str__": {
+            "name": "__str__",
+            "location": 48,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/events/resources.py": {
+        "sort_comp_events_by_global_sort_order": {
+            "name": "sort_comp_events_by_global_sort_order",
+            "location": 233,
+            "return": [
+                "List[CompetitionEvent]"
+            ],
+            "arguments": {
+                "comp_events": [
+                    "List[CompetitionEvent]"
+                ]
+            }
+        },
+        "sort_events_by_global_sort_order": {
+            "name": "sort_events_by_global_sort_order",
+            "location": 248,
+            "return": [
+                "List[Event]"
+            ],
+            "arguments": {
+                "events": [
+                    "List[Event]"
+                ]
+            }
+        },
+        "get_bonus_events_rotation_starting_at": {
+            "name": "get_bonus_events_rotation_starting_at",
+            "location": 263,
+            "return": [
+                "List[BonusEventDefinition]"
+            ],
+            "arguments": {
+                "starting_index": [
+                    "int"
+                ],
+                "count": [
+                    "int"
+                ]
+            }
+        },
+        "get_bonus_events_without_current": {
+            "name": "get_bonus_events_without_current",
+            "location": 272,
+            "return": [
+                "List[BonusEventDefinition]"
+            ],
+            "arguments": {
+                "bonus_events": [
+                    "List[BonusEventDefinition]"
+                ]
+            }
+        },
+        "get_event_definition_for_name": {
+            "name": "get_event_definition_for_name",
+            "location": 278,
+            "return": [
+                "Optional[EventDefinition]"
+            ],
+            "arguments": {
+                "event_name": [
+                    "str"
+                ]
+            }
+        },
+        "EventDefinition.__init__": {
+            "name": "__init__",
+            "location": 18,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "name": [],
+                "scramble_func": [],
+                "num_scrambles": [],
+                "is_weekly": [],
+                "is_wca": [],
+                "is_rotating": []
+            }
+        },
+        "EventDefinition.get_scramble": {
+            "name": "get_scramble",
+            "location": 29,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "EventDefinition.get_multiple_scrambles": {
+            "name": "get_multiple_scrambles",
+            "location": 33,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "WCAEventDefinition.__init__": {
+            "name": "__init__",
+            "location": 39,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "name": [],
+                "scramble_func": [],
+                "num_scrambles": []
+            }
+        },
+        "WeeklyEventDefinition.__init__": {
+            "name": "__init__",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "name": [],
+                "scramble_func": [],
+                "num_scrambles": []
+            }
+        },
+        "BonusEventDefinition.__init__": {
+            "name": "__init__",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "name": [],
+                "scramble_func": [],
+                "num_scrambles": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/events/__init__.py": {},
+    "cubers.io-main/cubersio/util/events/scramblers/coll.py": {
+        "get_coll_scramble": {
+            "name": "get_coll_scramble",
+            "location": 6,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "coll": [
+                    "str"
+                ]
+            }
+        },
+        "__build_scramble": {
+            "name": "__build_scramble",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "coll": []
+            }
+        },
+        "__inverse_scramble": {
+            "name": "__inverse_scramble",
+            "location": 33,
+            "return": [],
+            "arguments": {
+                "s": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/events/scramblers/internal.py": {
+        "mbld_scrambler": {
+            "name": "mbld_scrambler",
+            "location": 11,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "attack_scrambler": {
+            "name": "attack_scrambler",
+            "location": 21,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "redi_scrambler": {
+            "name": "redi_scrambler",
+            "location": 31,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "total_faces": [
+                    "int"
+                ]
+            }
+        },
+        "fifteen_puzzle_scrambler": {
+            "name": "fifteen_puzzle_scrambler",
+            "location": 47,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "fmc_scrambler": {
+            "name": "fmc_scrambler",
+            "location": 72,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "does_fmc_scramble_have_cancellations": {
+            "name": "does_fmc_scramble_have_cancellations",
+            "location": 81,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "scramble": [
+                    "str"
+                ]
+            }
+        },
+        "scrambler_234_relay": {
+            "name": "scrambler_234_relay",
+            "location": 113,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "scrambler_333_relay": {
+            "name": "scrambler_333_relay",
+            "location": 123,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/cubersio/util/events/scramblers/sliding_tile.py": {
+        "get_random_moves_scramble": {
+            "name": "get_random_moves_scramble",
+            "location": 20,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "n": [
+                    "int"
+                ],
+                "total_moves": [
+                    "int"
+                ]
+            }
+        },
+        "get_random_state_scramble": {
+            "name": "get_random_state_scramble",
+            "location": 61,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "n": [
+                    "int"
+                ]
+            }
+        },
+        "__get_move_between": {
+            "name": "__get_move_between",
+            "location": 87,
+            "return": [],
+            "arguments": {
+                "state1": [],
+                "state2": []
+            }
+        },
+        "__convert_steps_to_scramble": {
+            "name": "__convert_steps_to_scramble",
+            "location": 120,
+            "return": [],
+            "arguments": {
+                "steps": []
+            }
+        },
+        "__count_inversions": {
+            "name": "__count_inversions",
+            "location": 140,
+            "return": [],
+            "arguments": {
+                "puzzle": [],
+                "solved": [],
+                "size": []
+            }
+        },
+        "__is_solvable": {
+            "name": "__is_solvable",
+            "location": 158,
+            "return": [],
+            "arguments": {
+                "puzzle": [],
+                "solved": [],
+                "size": []
+            }
+        },
+        "__manhattan_distance": {
+            "name": "__manhattan_distance",
+            "location": 176,
+            "return": [],
+            "arguments": {
+                "candidate": [],
+                "solved": [],
+                "size": []
+            }
+        },
+        "__linear_conflicts": {
+            "name": "__linear_conflicts",
+            "location": 191,
+            "return": [],
+            "arguments": {
+                "candidate": [],
+                "solved": [],
+                "size": []
+            }
+        },
+        "__smart_reduce": {
+            "name": "__smart_reduce",
+            "location": 239,
+            "return": [],
+            "arguments": {
+                "grouping": []
+            }
+        },
+        "__clone_and_swap": {
+            "name": "__clone_and_swap",
+            "location": 246,
+            "return": [],
+            "arguments": {
+                "data": [],
+                "ix1": [],
+                "ix2": []
+            }
+        },
+        "__possible_moves": {
+            "name": "__possible_moves",
+            "location": 254,
+            "return": [],
+            "arguments": {
+                "puzzle": [],
+                "size": []
+            }
+        },
+        "__ida_star_search": {
+            "name": "__ida_star_search",
+            "location": 279,
+            "return": [],
+            "arguments": {
+                "puzzle": [],
+                "solved": [],
+                "size": []
+            }
+        },
+        "get_random_moves_scramble.__get_possible_moves": {
+            "name": "__get_possible_moves",
+            "location": 31,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "m": [
+                    "int"
+                ],
+                "x": [
+                    "int"
+                ],
+                "y": [
+                    "int"
+                ],
+                "previous_move": [
+                    "str"
+                ]
+            }
+        },
+        "__linear_conflicts.__count_conflicts": {
+            "name": "__count_conflicts",
+            "location": 199,
+            "return": [],
+            "arguments": {
+                "candidate_row": [],
+                "solved_row": [],
+                "i_size": [],
+                "ans": []
+            }
+        },
+        "__ida_star_search.__search": {
+            "name": "__search",
+            "location": 284,
+            "return": [],
+            "arguments": {
+                "path": [],
+                "g": [],
+                "bound": [],
+                "evaluated": []
+            }
+        }
+    },
+    "cubers.io-main/cubersio/util/events/scramblers/__init__.py": {},
+    "cubers.io-main/migrations/env.py": {
+        "run_migrations_offline": {
+            "name": "run_migrations_offline",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        },
+        "run_migrations_online": {
+            "name": "run_migrations_online",
+            "location": 50,
+            "return": [],
+            "arguments": {}
+        },
+        "run_migrations_online.process_revision_directives": {
+            "name": "process_revision_directives",
+            "location": 61,
+            "return": [],
+            "arguments": {
+                "context": [],
+                "revision": [],
+                "directives": []
+            }
+        }
+    },
+    "cubers.io-main/migrations/versions/001_011ec2822d26.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 130,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/002_ed46ff56f083_add_reddit_id_to_usereventresults.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/003_0a0980f7b6eb_add_comp_generation_resources_and_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 59,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/004_255c01bd1e49_add_results_thread_id_to_comp_model_and_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/005_a929c366aeef_change_comp_gen_resources_to_not_use_fks.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/006_aabbccddeeff_add_new_events.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 29,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/007_285503dad691_add_is_complete_and_result_field_to_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/008_5967a351c5f3_added_times_string_utility_field_to_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/009_71ad7fd5fb3a_added_a_few_indexs_to_commonly_queried_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/010_f4a53c1272e5_added_user_id_and_comp_id_to_blacklist_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/011_94c29a81f73a_removed_comp_event_id_from_blacklist_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/012_e3e42c7b6077_added_pb_flags_to_usereventresults.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/013_4519159d3019_adding_usersiterankings_model.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 36,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/014_dd535b1f37a1_add_admin_flag_to_user.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/015_3371f5156029_remove_blacklist_table_and_add_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/016_feb771f719c7_remove_usersiterankings_competition_fk_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 29,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/017_a55e8b8d40ca_added_sum_of_ranks_int_columns_to_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/018_efa99b5579e6_add_user_preferences.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 37,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/019_cf7c80b82dfd_add_gold_silver_bronze_medal_flags_to_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 29,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/020_c92b137ff8be_added_scramblepool_model.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/021_b2855e6c4438_scramblepool_only_has_raw_scramble.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 29,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/022_b466c9da106b_add_title_override_and_all_events_flag_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/023_d760c7a84ba3_add_weekly_metrics_table.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 36,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/024_c92d221771c4_add_bot_hit_count_to_metrics.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/025_ababcdcdefef_add_8x8_9x9.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 17,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 26,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/026_347361bd5358_added_weeklyblacklist_and_results_mod_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 41,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/027_acac00000000_add_mbld.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 17,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/028_adad00000000_update_fmc_bo3.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 22,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/030_aaaa0000ffff_add_event_descriptions.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 30,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/031_01c4eb2444b9_add_dnf_due_to_inspection_flag_to_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/032_bbeebbee1234_add_dino_cube.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 17,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/033_bbeebbee2345_add_223.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 17,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/034_bbeebbee3456_add_descs_for_recent_events.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 23,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/035_e74ccd606cdc_add_fmc_explanation.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/036_020203030404_add_fmc_event_description.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 22,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/037_2c5f898d5dd7_add_kinchranks.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/038_66f166a908a4_add_non_wca_only_kinchrank.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/039_5de7c9b4e68c_add_unique_constraint_to_solve_for_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/040_2b57bbba58cb_add_wca_to_user_model.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 65,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/041_0a8384c69050_remove_unused_results_moderator_user_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 27,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/042_9a8860e9294c_remove_weekly_blacklist.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/043_555566667777_update_mirror_blocks_event_desc.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 20,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 24,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/044_503d27d0a21a_update_dino_cube_and_fmc_events.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 24,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/045_74b025612a81_add_weekly_gift_code_confirmation_data_.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 48,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/046_05923bad79cf_add_fifteen_puzzle.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 17,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/047_bdeb38c37fg1_add_desc_to_15_puzzle.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 22,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/048_9203bd471dg0_fix_15_puzzle_desc.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 22,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/049_9036ae93bb1c_make_15_puzzle_ao5.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 22,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/050_050050fe0fe0_add_fto_event.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 20,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/051_94da0303ef1f_add_rex_event.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 20,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/052_3a12bgd0012c_add_10x10.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 20,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/053_01d403b3c85d_add_latest_pb_flags_to_results.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 32,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/migrations/versions/archive/029_SKIPPED_50644721ac4e_lengthen_desc.py": {
+        "upgrade": {
+            "name": "upgrade",
+            "location": 26,
+            "return": [],
+            "arguments": {}
+        },
+        "downgrade": {
+            "name": "downgrade",
+            "location": 33,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/tst/test_queue_config.py": {
+        "test_devo_huey_uses_sqlite": {
+            "name": "test_devo_huey_uses_sqlite",
+            "location": 11,
+            "return": [],
+            "arguments": {}
+        },
+        "test_devo_huey_raises_runtime_if_no_peewee": {
+            "name": "test_devo_huey_raises_runtime_if_no_peewee",
+            "location": 16,
+            "return": [],
+            "arguments": {}
+        },
+        "test_prod_huey_uses_redis": {
+            "name": "test_prod_huey_uses_redis",
+            "location": 24,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/tst/__init__.py": {},
+    "cubers.io-main/tst/tasks/test_scramble_generation.py": {
+        "_setup_mock": {
+            "name": "_setup_mock",
+            "location": 16,
+            "return": [],
+            "arguments": {}
+        },
+        "test_check_scramble_pool": {
+            "name": "test_check_scramble_pool",
+            "location": 29,
+            "return": [],
+            "arguments": {
+                "mock_top_off_scramble_pool": [],
+                "mock_get_all_events": []
+            }
+        },
+        "test_top_off_scramble_pool_multi_scramble_puzzles": {
+            "name": "test_top_off_scramble_pool_multi_scramble_puzzles",
+            "location": 58,
+            "return": [],
+            "arguments": {
+                "mock_get_event_definition_for_name": [],
+                "mock_add_scramble_to_scramble_pool": [],
+                "top_off_info": [
+                    "ScramblePoolTopOffInfo"
+                ]
+            }
+        },
+        "test_top_off_scramble_pool_single_scramble_puzzles": {
+            "name": "test_top_off_scramble_pool_single_scramble_puzzles",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "mock_get_event_definition_for_name": [],
+                "mock_add_scramble_to_scramble_pool": []
+            }
+        },
+        "test_top_off_scramble_pool_raises_for_nonexistent_event": {
+            "name": "test_top_off_scramble_pool_raises_for_nonexistent_event",
+            "location": 108,
+            "return": [],
+            "arguments": {
+                "mock_get_event_definition_for_name": []
+            }
+        }
+    },
+    "cubers.io-main/tst/tasks/__init__.py": {},
+    "cubers.io-main/tst/util/test_sorting.py": {
+        "test_sort_personal_best_records": {
+            "name": "test_sort_personal_best_records",
+            "location": 22,
+            "return": [],
+            "arguments": {
+                "unsorted_pbs": []
+            }
+        },
+        "test_sort_user_event_results_by_result": {
+            "name": "test_sort_user_event_results_by_result",
+            "location": 36,
+            "return": [],
+            "arguments": {
+                "unsorted_results": []
+            }
+        },
+        "test_sort_user_event_results_by_single": {
+            "name": "test_sort_user_event_results_by_single",
+            "location": 41,
+            "return": [],
+            "arguments": {
+                "unsorted_results": []
+            }
+        },
+        "test_sort_user_results_with_rankings_best_of_format": {
+            "name": "test_sort_user_results_with_rankings_best_of_format",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "event_format": []
+            }
+        },
+        "test_sort_user_results_with_rankings_mean_average_formats": {
+            "name": "test_sort_user_results_with_rankings_mean_average_formats",
+            "location": 62,
+            "return": [],
+            "arguments": {
+                "event_format": []
+            }
+        }
+    },
+    "cubers.io-main/tst/util/test_template.py": {
+        "test_link_to_algcubingnet_no_solution": {
+            "name": "test_link_to_algcubingnet_no_solution",
+            "location": 21,
+            "return": [],
+            "arguments": {
+                "setup": [],
+                "alg": [],
+                "moves_count": []
+            }
+        },
+        "test_link_to_algcubingnet": {
+            "name": "test_link_to_algcubingnet",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        },
+        "test_slugify": {
+            "name": "test_slugify",
+            "location": 57,
+            "return": [],
+            "arguments": {
+                "input_value": [],
+                "expected_slug": []
+            }
+        },
+        "test_format_datetime": {
+            "name": "test_format_datetime",
+            "location": 61,
+            "return": [],
+            "arguments": {}
+        },
+        "test_friendly_time": {
+            "name": "test_friendly_time",
+            "location": 73,
+            "return": [],
+            "arguments": {
+                "input_value": [],
+                "expected_friendly_time": []
+            }
+        },
+        "test_format_fmc_result": {
+            "name": "test_format_fmc_result",
+            "location": 84,
+            "return": [],
+            "arguments": {
+                "input_value": [],
+                "expected_formatted_result": []
+            }
+        },
+        "test_format_mbld_result": {
+            "name": "test_format_mbld_result",
+            "location": 95,
+            "return": [],
+            "arguments": {
+                "input_value": [],
+                "expected_formatted_result": []
+            }
+        }
+    },
+    "cubers.io-main/tst/util/test_times.py": {
+        "test_convert_centiseconds_to_friendly_time": {
+            "name": "test_convert_centiseconds_to_friendly_time",
+            "location": 15,
+            "return": [],
+            "arguments": {
+                "input_value": [],
+                "expected_friendly_time": []
+            }
+        }
+    },
+    "cubers.io-main/tst/util/__init__.py": {},
+    "cubers.io-main/tst/util/events/test_mbld.py": {
+        "__build_coded_result": {
+            "name": "__build_coded_result",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "successful": [],
+                "attempted": [],
+                "time_seconds": []
+            }
+        },
+        "test_mbld_solve_parses_correct_attempted": {
+            "name": "test_mbld_solve_parses_correct_attempted",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "coded_value": [],
+                "expected_attempted": []
+            }
+        },
+        "test_mbld_solve_parses_correct_successful": {
+            "name": "test_mbld_solve_parses_correct_successful",
+            "location": 44,
+            "return": [],
+            "arguments": {
+                "coded_value": [],
+                "expected_successful": []
+            }
+        },
+        "test_mbld_solve_calculates_correct_points": {
+            "name": "test_mbld_solve_calculates_correct_points",
+            "location": 71,
+            "return": [],
+            "arguments": {
+                "coded_value": [],
+                "expected_fractional_hour_remaining": []
+            }
+        },
+        "test_mbld_solve_str": {
+            "name": "test_mbld_solve_str",
+            "location": 78,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_mbld_dnf": {
+            "name": "test_mbld_dnf",
+            "location": 89,
+            "return": [],
+            "arguments": {}
+        },
+        "test_mbld_dnf_has_points_and_sort_value": {
+            "name": "test_mbld_dnf_has_points_and_sort_value",
+            "location": 95,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/tst/util/events/test_resources.py": {
+        "__build_mock_comp_event": {
+            "name": "__build_mock_comp_event",
+            "location": 15,
+            "return": [],
+            "arguments": {
+                "name": []
+            }
+        },
+        "test_sort_comp_events_by_global_sort_order": {
+            "name": "test_sort_comp_events_by_global_sort_order",
+            "location": 34,
+            "return": [],
+            "arguments": {}
+        },
+        "test_sort_events_by_global_sort_order": {
+            "name": "test_sort_events_by_global_sort_order",
+            "location": 54,
+            "return": [],
+            "arguments": {}
+        },
+        "test_get_bonus_events_rotation_starting_at_correct_starting_index": {
+            "name": "test_get_bonus_events_rotation_starting_at_correct_starting_index",
+            "location": 75,
+            "return": [],
+            "arguments": {
+                "starting_index": []
+            }
+        },
+        "test_get_bonus_events_rotation_starting_at_wraps_around": {
+            "name": "test_get_bonus_events_rotation_starting_at_wraps_around",
+            "location": 82,
+            "return": [],
+            "arguments": {}
+        },
+        "test_get_bonus_events_without_current": {
+            "name": "test_get_bonus_events_without_current",
+            "location": 90,
+            "return": [],
+            "arguments": {}
+        },
+        "test_get_event_definition_for_name": {
+            "name": "test_get_event_definition_for_name",
+            "location": 109,
+            "return": [],
+            "arguments": {
+                "event_name": [],
+                "expected_event_definition": []
+            }
+        },
+        "test_event_definition_get_scramble": {
+            "name": "test_event_definition_get_scramble",
+            "location": 115,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/tst/util/events/__init__.py": {},
+    "cubers.io-main/tst/util/events/scramblers/test_coll.py": {
+        "mocked_build_scramble": {
+            "name": "mocked_build_scramble",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_get_coll_scramble_uses_generated_scramble": {
+            "name": "test_get_coll_scramble_uses_generated_scramble",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "mocked_build_scramble": []
+            }
+        },
+        "test_get_coll_scramble_has_links": {
+            "name": "test_get_coll_scramble_has_links",
+            "location": 23,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "cubers.io-main/tst/util/events/scramblers/test_internal.py": {
+        "mock_cube_scramblers": {
+            "name": "mock_cube_scramblers",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_internal_scramblers_return_string": {
+            "name": "test_internal_scramblers_return_string",
+            "location": 32,
+            "return": [],
+            "arguments": {
+                "scramble_fn": []
+            }
+        },
+        "test_relays_have_correct_numbers_of_parts": {
+            "name": "test_relays_have_correct_numbers_of_parts",
+            "location": 42,
+            "return": [],
+            "arguments": {
+                "relay_fn": [],
+                "num_parts": []
+            }
+        },
+        "test_333_relay_of_3": {
+            "name": "test_333_relay_of_3",
+            "location": 49,
+            "return": [],
+            "arguments": {}
+        },
+        "test_234_relay_of_3": {
+            "name": "test_234_relay_of_3",
+            "location": 60,
+            "return": [],
+            "arguments": {}
+        },
+        "test_redi_scrambler_rotations": {
+            "name": "test_redi_scrambler_rotations",
+            "location": 76,
+            "return": [],
+            "arguments": {
+                "num_faces": []
+            }
+        },
+        "test_fmc_scrambler_calls_wca_333_scrambler": {
+            "name": "test_fmc_scrambler_calls_wca_333_scrambler",
+            "location": 83,
+            "return": [],
+            "arguments": {}
+        },
+        "test_fmc_scrambler_pads_wca_scramble": {
+            "name": "test_fmc_scrambler_pads_wca_scramble",
+            "location": 91,
+            "return": [],
+            "arguments": {}
+        },
+        "test_does_fmc_scramble_have_cancellations": {
+            "name": "test_does_fmc_scramble_have_cancellations",
+            "location": 107,
+            "return": [],
+            "arguments": {
+                "scramble": [],
+                "expected_result": []
+            }
+        },
+        "test_fmc_scramblers_runs_until_no_cancellations": {
+            "name": "test_fmc_scramblers_runs_until_no_cancellations",
+            "location": 114,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "mock_15_scramblers": {
+            "name": "mock_15_scramblers",
+            "location": 124,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_fifteen_puzzle_scrambler_calls_correct_impl": {
+            "name": "test_fifteen_puzzle_scrambler_calls_correct_impl",
+            "location": 135,
+            "return": [],
+            "arguments": {
+                "is_devo": [],
+                "random_state_calls": [],
+                "random_moves_calls": [],
+                "mock_15_scramblers": [],
+                "mocker": []
+            }
+        }
+    },
+    "cubers.io-main/tst/util/events/scramblers/test_sliding_tile.py": {
+        "test_sliding_tile_scramblers_return_string": {
+            "name": "test_sliding_tile_scramblers_return_string",
+            "location": 17,
+            "return": [],
+            "arguments": {
+                "scramble_fn": []
+            }
+        },
+        "test_get_random_moves_scramble_returns_correct_number_of_moves": {
+            "name": "test_get_random_moves_scramble_returns_correct_number_of_moves",
+            "location": 25,
+            "return": [],
+            "arguments": {
+                "num_moves": []
+            }
+        },
+        "test_get_random_state_scramble_success": {
+            "name": "test_get_random_state_scramble_success",
+            "location": 37,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_get_random_state_scramble_no_solution": {
+            "name": "test_get_random_state_scramble_no_solution",
+            "location": 61,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_get_random_state_scramble_reshuffles_if_unsolvable": {
+            "name": "test_get_random_state_scramble_reshuffles_if_unsolvable",
+            "location": 83,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_get_move_between_raises_exc_if_multiple_tiles_swapped": {
+            "name": "test_get_move_between_raises_exc_if_multiple_tiles_swapped",
+            "location": 112,
+            "return": [],
+            "arguments": {}
+        },
+        "test_ida_star_returns_empty_for_inf_search": {
+            "name": "test_ida_star_returns_empty_for_inf_search",
+            "location": 120,
+            "return": [],
+            "arguments": {
+                "mocker": []
+            }
+        },
+        "test_get_random_state_scramble_reshuffles_if_unsolvable.side_effect": {
+            "name": "side_effect",
+            "location": 96,
+            "return": [],
+            "arguments": {
+                "shuffled_state": [],
+                "_": [],
+                "__": []
+            }
+        }
+    },
+    "cubers.io-main/tst/util/events/scramblers/__init__.py": {}
+}

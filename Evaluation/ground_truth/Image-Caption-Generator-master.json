@@ -1,0 +1,878 @@
+{
+    "Image-Caption-Generator-master/image_caption_generator/__init__.py": {},
+    "Image-Caption-Generator-master/image_caption_generator/datasets/coco2014.py": {
+        "COCO2014.__init__": {
+            "name": "__init__",
+            "location": 24,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "is_validation_set": [
+                    "bool"
+                ],
+                "is_test_set": [
+                    "bool"
+                ]
+            }
+        },
+        "COCO2014.__len__": {
+            "name": "__len__",
+            "location": 29,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "COCO2014.__getitem__": {
+            "name": "__getitem__",
+            "location": 32,
+            "return": [
+                "Union[(Tuple[(Tensor, LongTensor)], Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "idx": [
+                    "int"
+                ]
+            }
+        },
+        "COCO2014.load_dataset": {
+            "name": "load_dataset",
+            "location": 46,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "COCO2014._create_img_filename": {
+            "name": "_create_img_filename",
+            "location": 92,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": [],
+                "img": [
+                    "str"
+                ],
+                "is_img_id": [
+                    "bool"
+                ]
+            }
+        },
+        "COCO2014._create_img_to_lbl_csv": {
+            "name": "_create_img_to_lbl_csv",
+            "location": 110,
+            "return": [
+                "pd.DataFrame"
+            ],
+            "arguments": {
+                "self": [],
+                "ds_path": [
+                    "str"
+                ],
+                "anns_file_path": [
+                    "Optional[str]"
+                ],
+                "csv_filename": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/datasets/dataset.py": {
+        "Dataset.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "dataset_path": [
+                    "Path"
+                ],
+                "metadata_path": [
+                    "Path"
+                ],
+                "is_validation_set": [
+                    "bool"
+                ],
+                "is_test_set": [
+                    "bool"
+                ],
+                "img_size": [
+                    "Tuple[(int, int)]"
+                ]
+            }
+        },
+        "Dataset.__len__": {
+            "name": "__len__",
+            "location": 34,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Dataset.__getitem__": {
+            "name": "__getitem__",
+            "location": 37,
+            "return": [
+                "Union[(Tuple[(Tensor, LongTensor)], Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "idx": [
+                    "int"
+                ]
+            }
+        },
+        "Dataset.load_dataset": {
+            "name": "load_dataset",
+            "location": 40,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Dataset.create_dataloader": {
+            "name": "create_dataloader",
+            "location": 44,
+            "return": [
+                "DataLoader"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/datasets/util.py": {
+        "download_from_url": {
+            "name": "download_from_url",
+            "location": 11,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "url": [
+                    "str"
+                ],
+                "dst": [
+                    "str"
+                ]
+            }
+        },
+        "extract_zip": {
+            "name": "extract_zip",
+            "location": 45,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "zip_file_path": [
+                    "Union[(str, Path)]"
+                ],
+                "destination_file_path": [
+                    "Union[(str, ZipInfo, None)]"
+                ]
+            }
+        },
+        "save_to_json": {
+            "name": "save_to_json",
+            "location": 58,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "data": [
+                    "Any"
+                ],
+                "file_path": [
+                    "Union[(str, Path)]"
+                ]
+            }
+        },
+        "load_json": {
+            "name": "load_json",
+            "location": 63,
+            "return": [
+                "Any"
+            ],
+            "arguments": {
+                "file_path": [
+                    "Union[(str, Path)]"
+                ]
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/datasets/vocab.py": {
+        "Vocab.__init__": {
+            "name": "__init__",
+            "location": 19,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "ds_path": [
+                    "str"
+                ],
+                "train_csv_file_path": [
+                    "str"
+                ],
+                "val_csv_file_path": [
+                    "Optional[str]"
+                ],
+                "lang_id": [
+                    "str"
+                ]
+            }
+        },
+        "Vocab.preprocess_annotation": {
+            "name": "preprocess_annotation",
+            "location": 36,
+            "return": [
+                "List[int]"
+            ],
+            "arguments": {
+                "self": [],
+                "annotation": [
+                    "List[str]"
+                ]
+            }
+        },
+        "Vocab.pad_annotations": {
+            "name": "pad_annotations",
+            "location": 47,
+            "return": [
+                "Tuple[(Tensor, Tensor, List[int])]"
+            ],
+            "arguments": {
+                "self": [],
+                "samples": [
+                    "Any"
+                ]
+            }
+        },
+        "Vocab._load_stoi": {
+            "name": "_load_stoi",
+            "location": 57,
+            "return": [
+                "Dict[(str, int)]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Vocab._load_vocab": {
+            "name": "_load_vocab",
+            "location": 64,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "csv_file_path": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/datasets/__init__.py": {},
+    "Image-Caption-Generator-master/image_caption_generator/datasets/pycocotools/coco.py": {
+        "_isArrayLike": {
+            "name": "_isArrayLike",
+            "location": 66,
+            "return": [],
+            "arguments": {
+                "obj": []
+            }
+        },
+        "COCO.__init__": {
+            "name": "__init__",
+            "location": 71,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "annotation_file": []
+            }
+        },
+        "COCO.createIndex": {
+            "name": "createIndex",
+            "location": 90,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "COCO.info": {
+            "name": "info",
+            "location": 121,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "COCO.getAnnIds": {
+            "name": "getAnnIds",
+            "location": 129,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "imgIds": [],
+                "catIds": [],
+                "areaRng": [],
+                "iscrowd": []
+            }
+        },
+        "COCO.getCatIds": {
+            "name": "getCatIds",
+            "location": 157,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "catNms": [],
+                "supNms": [],
+                "catIds": []
+            }
+        },
+        "COCO.getImgIds": {
+            "name": "getImgIds",
+            "location": 179,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "imgIds": [],
+                "catIds": []
+            }
+        },
+        "COCO.loadAnns": {
+            "name": "loadAnns",
+            "location": 200,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "ids": []
+            }
+        },
+        "COCO.loadCats": {
+            "name": "loadCats",
+            "location": 211,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "ids": []
+            }
+        },
+        "COCO.loadImgs": {
+            "name": "loadImgs",
+            "location": 222,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "ids": []
+            }
+        },
+        "COCO.showAnns": {
+            "name": "showAnns",
+            "location": 233,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "anns": []
+            }
+        },
+        "COCO.loadRes": {
+            "name": "loadRes",
+            "location": 297,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "resFile": []
+            }
+        },
+        "COCO.download": {
+            "name": "download",
+            "location": 358,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "tarDir": [],
+                "imgIds": []
+            }
+        },
+        "COCO.loadNumpyAnnotations": {
+            "name": "loadNumpyAnnotations",
+            "location": 382,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "data": []
+            }
+        },
+        "COCO.annToRLE": {
+            "name": "annToRLE",
+            "location": 405,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "ann": []
+            }
+        },
+        "COCO.annToMask": {
+            "name": "annToMask",
+            "location": 426,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "ann": []
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/datasets/pycocotools/cocoeval.py": {
+        "COCOeval.__init__": {
+            "name": "__init__",
+            "location": 60,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "cocoGt": [],
+                "cocoDt": [],
+                "iouType": []
+            }
+        },
+        "COCOeval._prepare": {
+            "name": "_prepare",
+            "location": 84,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "COCOeval.evaluate": {
+            "name": "evaluate",
+            "location": 121,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "COCOeval.computeIoU": {
+            "name": "computeIoU",
+            "location": 163,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "imgId": [],
+                "catId": []
+            }
+        },
+        "COCOeval.computeOks": {
+            "name": "computeOks",
+            "location": 192,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "imgId": [],
+                "catId": []
+            }
+        },
+        "COCOeval.evaluateImg": {
+            "name": "evaluateImg",
+            "location": 235,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "imgId": [],
+                "catId": [],
+                "aRng": [],
+                "maxDet": []
+            }
+        },
+        "COCOeval.accumulate": {
+            "name": "accumulate",
+            "location": 315,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "p": []
+            }
+        },
+        "COCOeval.summarize": {
+            "name": "summarize",
+            "location": 422,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "COCOeval.__str__": {
+            "name": "__str__",
+            "location": 495,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Params.setDetParams": {
+            "name": "setDetParams",
+            "location": 502,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Params.setKpParams": {
+            "name": "setKpParams",
+            "location": 513,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Params.__init__": {
+            "name": "__init__",
+            "location": 525,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "iouType": []
+            }
+        },
+        "COCOeval._prepare._toMask": {
+            "name": "_toMask",
+            "location": 89,
+            "return": [],
+            "arguments": {
+                "anns": [],
+                "coco": []
+            }
+        },
+        "COCOeval.summarize._summarize": {
+            "name": "_summarize",
+            "location": 427,
+            "return": [],
+            "arguments": {
+                "ap": [],
+                "iouThr": [],
+                "areaRng": [],
+                "maxDets": []
+            }
+        },
+        "COCOeval.summarize._summarizeDets": {
+            "name": "_summarizeDets",
+            "location": 458,
+            "return": [],
+            "arguments": {}
+        },
+        "COCOeval.summarize._summarizeKps": {
+            "name": "_summarizeKps",
+            "location": 473,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/datasets/pycocotools/mask.py": {
+        "encode": {
+            "name": "encode",
+            "location": 80,
+            "return": [],
+            "arguments": {
+                "bimask": []
+            }
+        },
+        "decode": {
+            "name": "decode",
+            "location": 87,
+            "return": [],
+            "arguments": {
+                "rleObjs": []
+            }
+        },
+        "area": {
+            "name": "area",
+            "location": 93,
+            "return": [],
+            "arguments": {
+                "rleObjs": []
+            }
+        },
+        "toBbox": {
+            "name": "toBbox",
+            "location": 99,
+            "return": [],
+            "arguments": {
+                "rleObjs": []
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/datasets/pycocotools/__init__.py": {},
+    "Image-Caption-Generator-master/image_caption_generator/models/image_caption_generator_model.py": {
+        "ImageCaptionGeneratorModel.__init__": {
+            "name": "__init__",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "train_ds": [
+                    "Dataset"
+                ],
+                "network_cls": [
+                    "type"
+                ],
+                "network_kwargs": [
+                    "Optional[Mapping]"
+                ],
+                "val_ds": [
+                    "Optional[Dataset]"
+                ],
+                "test_ds": [
+                    "Optional[Dataset]"
+                ]
+            }
+        },
+        "ImageCaptionGeneratorModel.learning_rate": {
+            "name": "learning_rate",
+            "location": 22,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/models/model.py": {
+        "Model.__init__": {
+            "name": "__init__",
+            "location": 15,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "network_cls": [
+                    "type"
+                ],
+                "train_ds": [
+                    "Dataset"
+                ],
+                "val_ds": [
+                    "Optional[Dataset]"
+                ],
+                "test_ds": [
+                    "Optional[Dataset]"
+                ],
+                "network_kwargs": [
+                    "Optional[Mapping]"
+                ]
+            }
+        },
+        "Model.optimizer": {
+            "name": "optimizer",
+            "location": 27,
+            "return": [
+                "Optimizer"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Model.loss_fn": {
+            "name": "loss_fn",
+            "location": 34,
+            "return": [
+                "Module"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Model.learning_rate": {
+            "name": "learning_rate",
+            "location": 38,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Model.momentum": {
+            "name": "momentum",
+            "location": 42,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Model.weight_decay": {
+            "name": "weight_decay",
+            "location": 46,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Model.train": {
+            "name": "train",
+            "location": 50,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "num_epochs": [
+                    "int"
+                ],
+                "train_dl_kwargs": [
+                    "Any"
+                ],
+                "val_dl_kwargs": [
+                    "Any"
+                ],
+                "use_wandb": [
+                    "bool"
+                ]
+            }
+        },
+        "Model._run_epoch": {
+            "name": "_run_epoch",
+            "location": 79,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "epoch": [
+                    "int"
+                ],
+                "dataloader": [
+                    "DataLoader"
+                ],
+                "loss_fn": [
+                    "Module"
+                ],
+                "optimizer": [
+                    "Optimizer"
+                ],
+                "is_training": [
+                    "bool"
+                ],
+                "use_wandb": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/models/__init__.py": {},
+    "Image-Caption-Generator-master/image_caption_generator/networks/resnet101_lstm.py": {
+        "ResNet101LSTM.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "vocab": [
+                    "Vocab"
+                ]
+            }
+        },
+        "ResNet101LSTM.forward": {
+            "name": "forward",
+            "location": 17,
+            "return": [
+                "Tensor"
+            ],
+            "arguments": {
+                "self": [],
+                "x": [
+                    "Tensor"
+                ],
+                "y": [
+                    "Tensor"
+                ],
+                "y_lengths": [
+                    "List[int]"
+                ]
+            }
+        },
+        "ResNet101LSTM._create_modules": {
+            "name": "_create_modules",
+            "location": 36,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "num_img_features": [
+                    "int"
+                ],
+                "embedding_dim": [
+                    "int"
+                ],
+                "hidden_size": [
+                    "int"
+                ],
+                "bidirectional": [
+                    "bool"
+                ],
+                "num_layers": [
+                    "int"
+                ],
+                "dropout": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "Image-Caption-Generator-master/image_caption_generator/networks/__init__.py": {},
+    "Image-Caption-Generator-master/training/train.py": {
+        "main": {
+            "name": "main",
+            "location": 18,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "Namespace"
+                ]
+            }
+        },
+        "_initialize_wandb": {
+            "name": "_initialize_wandb",
+            "location": 60,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "args": [
+                    "Namespace"
+                ]
+            }
+        },
+        "_parse_args": {
+            "name": "_parse_args",
+            "location": 69,
+            "return": [
+                "Namespace"
+            ],
+            "arguments": {}
+        }
+    }
+}

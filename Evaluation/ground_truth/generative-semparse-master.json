@@ -1,0 +1,567 @@
+{
+    "generative-semparse-master/gensem/__init__.py": {},
+    "generative-semparse-master/gensem/models/wikitables_question_generator.py": {
+        "WikiTablesQuestionGenerator.__init__": {
+            "name": "__init__",
+            "location": 23,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "vocab": [
+                    "Vocabulary"
+                ],
+                "source_embedder": [
+                    "TextFieldEmbedder"
+                ],
+                "encoder": [
+                    "Seq2SeqEncoder"
+                ],
+                "max_decoding_steps": [
+                    "int"
+                ],
+                "encode_trees": [
+                    "bool"
+                ],
+                "attention": [
+                    "Attention"
+                ],
+                "attention_function": [
+                    "SimilarityFunction"
+                ],
+                "beam_size": [
+                    "int"
+                ],
+                "target_namespace": [
+                    "str"
+                ],
+                "target_embedding_dim": [
+                    "int"
+                ],
+                "scheduled_sampling_ratio": [
+                    "float"
+                ],
+                "use_bleu": [
+                    "bool"
+                ]
+            }
+        },
+        "WikiTablesQuestionGenerator.forward": {
+            "name": "forward",
+            "location": 52,
+            "return": [
+                "Dict[(str, torch.Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "action_sequences": [
+                    "Dict[(str, torch.LongTensor)]"
+                ],
+                "actions": [
+                    "List[List[List[ProductionRule]]]"
+                ],
+                "world": [
+                    "List[WikiTablesLanguage]"
+                ],
+                "target_tokens": [
+                    "Dict[(str, torch.LongTensor)]"
+                ]
+            }
+        },
+        "WikiTablesQuestionGenerator._encode": {
+            "name": "_encode",
+            "location": 91,
+            "return": [
+                "List[Dict[(str, torch.Tensor)]]"
+            ],
+            "arguments": {
+                "self": [],
+                "action_sequences": [
+                    "Dict[(str, torch.Tensor)]"
+                ],
+                "actions": [
+                    "List[List[List[ProductionRule]]]"
+                ],
+                "world": [
+                    "List[WikiTablesLanguage]"
+                ]
+            }
+        },
+        "WikiTablesQuestionGenerator._init_decoder_state": {
+            "name": "_init_decoder_state",
+            "location": 130,
+            "return": [
+                "Dict[(str, torch.Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "state": [
+                    "Dict[(str, torch.Tensor)]"
+                ]
+            }
+        },
+        "WikiTablesQuestionGenerator._merge_output_dicts": {
+            "name": "_merge_output_dicts",
+            "location": 146,
+            "return": [
+                "Dict[(str, torch.Tensor)]"
+            ],
+            "arguments": {
+                "self": [],
+                "candidate_output_dicts": [
+                    "List[Dict[(str, torch.Tensor)]]"
+                ]
+            }
+        },
+        "WikiTablesQuestionGenerator._get_final_encoder_states": {
+            "name": "_get_final_encoder_states",
+            "location": 197,
+            "return": [
+                "torch.Tensor"
+            ],
+            "arguments": {
+                "encoder_outputs": [
+                    "torch.Tensor"
+                ],
+                "mask": [
+                    "torch.Tensor"
+                ],
+                "bidirectional": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "generative-semparse-master/gensem/models/__init__.py": {},
+    "generative-semparse-master/gensem/modules/rnn_grammar_state.py": {
+        "RnnGrammarState.__init__": {
+            "name": "__init__",
+            "location": 13,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "nonterminal_stack": [
+                    "List[Tuple[(str, Any)]]"
+                ],
+                "is_nonterminal": [
+                    "Callable[([str], bool)]"
+                ]
+            }
+        },
+        "RnnGrammarState._get_nonterminals_from_rule": {
+            "name": "_get_nonterminals_from_rule",
+            "location": 19,
+            "return": [
+                "Tuple[(str, List[str])]"
+            ],
+            "arguments": {
+                "self": [],
+                "production_rule": [
+                    "str"
+                ]
+            }
+        },
+        "RnnGrammarState.update": {
+            "name": "update",
+            "location": 32,
+            "return": [
+                "'RnnGrammarState'"
+            ],
+            "arguments": {
+                "self": [],
+                "production_rule": [
+                    "str"
+                ],
+                "rnn_state": [
+                    "Any"
+                ]
+            }
+        },
+        "RnnGrammarState.get_child_rnn_states": {
+            "name": "get_child_rnn_states",
+            "location": 59,
+            "return": [
+                "Optional[List[Any]]"
+            ],
+            "arguments": {
+                "self": [],
+                "production_rule": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "generative-semparse-master/gensem/modules/tree_lstm.py": {
+        "TreeLSTM.__init__": {
+            "name": "__init__",
+            "location": 16,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "input_dim": [
+                    "int"
+                ],
+                "output_dim": [
+                    "int"
+                ]
+            }
+        },
+        "TreeLSTM.get_input_dim": {
+            "name": "get_input_dim",
+            "location": 27,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TreeLSTM.get_output_dim": {
+            "name": "get_output_dim",
+            "location": 31,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TreeLSTM.is_bidirectional": {
+            "name": "is_bidirectional",
+            "location": 35,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TreeLSTM._aggregate_child_states": {
+            "name": "_aggregate_child_states",
+            "location": 38,
+            "return": [
+                "Tuple[torch.Tensor]"
+            ],
+            "arguments": {
+                "self": [],
+                "child_rnn_states": [
+                    "List[Tuple[torch.Tensor]]"
+                ]
+            }
+        },
+        "TreeLSTM.forward": {
+            "name": "forward",
+            "location": 56,
+            "return": [
+                "torch.Tensor"
+            ],
+            "arguments": {
+                "self": [],
+                "inputs": [
+                    "torch.Tensor"
+                ],
+                "mask": [
+                    "torch.LongTensor"
+                ],
+                "production_rules": [
+                    "List[List[str]]"
+                ],
+                "is_nonterminal": [
+                    "Callable[([str], bool)]"
+                ]
+            }
+        }
+    },
+    "generative-semparse-master/gensem/modules/__init__.py": {},
+    "generative-semparse-master/gensem/predictors/wikitables_reranker.py": {
+        "WikiTablesReranker._json_to_instance": {
+            "name": "_json_to_instance",
+            "location": 10,
+            "return": [
+                "Instance"
+            ],
+            "arguments": {
+                "self": [],
+                "json_dict": [
+                    "JsonDict"
+                ]
+            }
+        },
+        "WikiTablesReranker.predict_json": {
+            "name": "predict_json",
+            "location": 21,
+            "return": [
+                "JsonDict"
+            ],
+            "arguments": {
+                "self": [],
+                "inputs": [
+                    "JsonDict"
+                ]
+            }
+        }
+    },
+    "generative-semparse-master/gensem/predictors/__init__.py": {},
+    "generative-semparse-master/gensem/readers/dataset_reader.py": {
+        "WikiTablesQuestionGeneratorReader.__init__": {
+            "name": "__init__",
+            "location": 32,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "lazy": [
+                    "bool"
+                ],
+                "tables_directory": [
+                    "str"
+                ],
+                "offline_logical_forms_directory": [
+                    "str"
+                ],
+                "max_num_logical_forms": [
+                    "int"
+                ],
+                "tokenizer": [
+                    "Tokenizer"
+                ],
+                "question_token_indexers": [
+                    "Dict[(str, TokenIndexer)]"
+                ],
+                "rule_indexers": [
+                    "Dict[(str, TokenIndexer)]"
+                ]
+            }
+        },
+        "WikiTablesQuestionGeneratorReader._read": {
+            "name": "_read",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "file_path": [
+                    "str"
+                ]
+            }
+        },
+        "WikiTablesQuestionGeneratorReader.text_to_instance": {
+            "name": "text_to_instance",
+            "location": 110,
+            "return": [
+                "Instance"
+            ],
+            "arguments": {
+                "self": [],
+                "logical_forms": [
+                    "List[str]"
+                ],
+                "table_lines": [
+                    "List[List[str]]"
+                ],
+                "question": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "generative-semparse-master/gensem/readers/utils.py": {
+        "get_nonterminals_from_list": {
+            "name": "get_nonterminals_from_list",
+            "location": 4,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "right_side": [
+                    "str"
+                ]
+            }
+        },
+        "make_bottom_up_action_sequence": {
+            "name": "make_bottom_up_action_sequence",
+            "location": 8,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "top_down_sequence": [
+                    "List[str]"
+                ],
+                "is_nonterminal": [
+                    "Callable[([str], bool)]"
+                ]
+            }
+        }
+    },
+    "generative-semparse-master/gensem/readers/__init__.py": {},
+    "generative-semparse-master/scripts/label_logical_forms.py": {
+        "main": {
+            "name": "main",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "examples_file": [
+                    "str"
+                ],
+                "tables_directory": [
+                    "str"
+                ],
+                "logical_forms_directory": [
+                    "str"
+                ],
+                "output_file": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "generative-semparse-master/tests/__init__.py": {},
+    "generative-semparse-master/tests/models/wikitables_question_generator_test.py": {
+        "TestWikiTablesQuestionGenerator.setUp": {
+            "name": "setUp",
+            "location": 8,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWikiTablesQuestionGenerator.test_model_can_train_save_and_load": {
+            "name": "test_model_can_train_save_and_load",
+            "location": 14,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWikiTablesQuestionGenerator.test_simple_seq2seq_can_train_save_and_load": {
+            "name": "test_simple_seq2seq_can_train_save_and_load",
+            "location": 18,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "generative-semparse-master/tests/models/__init__.py": {},
+    "generative-semparse-master/tests/modules/rnn_grammar_state_test.py": {
+        "is_nonterminal": {
+            "name": "is_nonterminal",
+            "location": 8,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "symbol": [
+                    "str"
+                ]
+            }
+        },
+        "TestRnnGrammarStatelet.setUp": {
+            "name": "setUp",
+            "location": 13,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestRnnGrammarStatelet.test_update_works": {
+            "name": "test_update_works",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestRnnGrammarStatelet.test_get_child_rnn_states": {
+            "name": "test_get_child_rnn_states",
+            "location": 34,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestRnnGrammarStatelet.test_update_followed_by_get_states": {
+            "name": "test_update_followed_by_get_states",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "generative-semparse-master/tests/modules/tree_lstm_test.py": {
+        "TestTreeLSTM.test_forward": {
+            "name": "test_forward",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestTreeLSTM.test_forward_with_masked_input": {
+            "name": "test_forward_with_masked_input",
+            "location": 25,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "generative-semparse-master/tests/modules/__init__.py": {},
+    "generative-semparse-master/tests/predictors/wikitables_reranker_test.py": {
+        "TestWikiTablesReranker.test_ranked_logical_forms_present": {
+            "name": "test_ranked_logical_forms_present",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "generative-semparse-master/tests/predictors/__init__.py": {},
+    "generative-semparse-master/tests/readers/dataset_reader_test.py": {
+        "TestWikiTablesBackTranslationDatasetReader.test_reader_reads_jsonl": {
+            "name": "test_reader_reads_jsonl",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestWikiTablesBackTranslationDatasetReader.test_reader_reads_examples": {
+            "name": "test_reader_reads_examples",
+            "location": 56,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "generative-semparse-master/tests/readers/utils_test.py": {
+        "TestUtils.test_make_bottom_up_action_sequence": {
+            "name": "test_make_bottom_up_action_sequence",
+            "location": 8,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "TestUtils.test_make_bottom_up_action_sequence_on_wtq_sequence": {
+            "name": "test_make_bottom_up_action_sequence_on_wtq_sequence",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "generative-semparse-master/tests/readers/__init__.py": {}
+}

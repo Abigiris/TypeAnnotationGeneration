@@ -1,0 +1,780 @@
+{
+    "airflow-sync-master/setup.py": {},
+    "airflow-sync-master/src/airflow_sync/csv_sync_s3.py": {
+        "create_dag": {
+            "name": "create_dag",
+            "location": 29,
+            "return": [],
+            "arguments": {
+                "dag_name": [
+                    "str"
+                ],
+                "pg_conn_id": [
+                    "str"
+                ],
+                "s3_conn_id": [
+                    "str"
+                ],
+                "s3_bucket": [
+                    "str"
+                ],
+                "sync_interval": [
+                    "str"
+                ],
+                "dag_base": [
+                    "str"
+                ],
+                "concurrent_uploads": [
+                    "str"
+                ],
+                "upload_timeout": [
+                    "str"
+                ],
+                "csv_dir": [
+                    "str"
+                ],
+                "owner": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "airflow-sync-master/src/airflow_sync/note_sync.py": {
+        "create_dag": {
+            "name": "create_dag",
+            "location": 22,
+            "return": [],
+            "arguments": {
+                "dag_name": [
+                    "str"
+                ],
+                "pg_conn_id": [
+                    "str"
+                ],
+                "sf_conn_id": [
+                    "str"
+                ],
+                "catchup": [
+                    "bool"
+                ],
+                "dag_base": [
+                    "str"
+                ],
+                "owner": [
+                    "str"
+                ],
+                "sync_file": [
+                    "SqlFile"
+                ],
+                "triggers": [
+                    "List[SqlFile]"
+                ],
+                "deps": [
+                    "List[SqlFile]"
+                ]
+            }
+        },
+        "create_dag._cleanup_temp_table": {
+            "name": "_cleanup_temp_table",
+            "location": 75,
+            "return": [],
+            "arguments": {
+                "context": []
+            }
+        },
+        "create_dag._sync_join_insert": {
+            "name": "_sync_join_insert",
+            "location": 87,
+            "return": [],
+            "arguments": {
+                "context": []
+            }
+        }
+    },
+    "airflow-sync-master/src/airflow_sync/s3_postgres_sync.py": {
+        "create_dag": {
+            "name": "create_dag",
+            "location": 48,
+            "return": [],
+            "arguments": {
+                "dag_name": [
+                    "str"
+                ],
+                "pg_conn_id": [
+                    "str"
+                ],
+                "s3_conn_id": [
+                    "str"
+                ],
+                "owner": [
+                    "str"
+                ],
+                "variable_key": [
+                    "str"
+                ],
+                "tables": [
+                    "List[str]"
+                ],
+                "pool": [
+                    "str"
+                ]
+            }
+        },
+        "create_dag.get_s3_uri": {
+            "name": "get_s3_uri",
+            "location": 80,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "filename": [
+                    "str"
+                ]
+            }
+        },
+        "create_dag.convert_table_to_file": {
+            "name": "convert_table_to_file",
+            "location": 85,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "table": [
+                    "str"
+                ]
+            }
+        },
+        "create_dag.get_s3_uris": {
+            "name": "get_s3_uris",
+            "location": 91,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "tables": [
+                    "Optional[List[str]]"
+                ]
+            }
+        },
+        "create_dag._sync_join": {
+            "name": "_sync_join",
+            "location": 102,
+            "return": [],
+            "arguments": {}
+        },
+        "create_dag._cleanup_temp_table": {
+            "name": "_cleanup_temp_table",
+            "location": 110,
+            "return": [],
+            "arguments": {
+                "context": []
+            }
+        }
+    },
+    "airflow-sync-master/src/airflow_sync/salesforce_sync.py": {
+        "create_dag": {
+            "name": "create_dag",
+            "location": 29,
+            "return": [],
+            "arguments": {
+                "dag_name": [
+                    "str"
+                ],
+                "pg_conn_id": [
+                    "str"
+                ],
+                "sf_conn_id": [
+                    "str"
+                ],
+                "catchup": [
+                    "bool"
+                ],
+                "owner": [
+                    "str"
+                ],
+                "sql_files": [
+                    "List[Tuple[(str, ...)]]"
+                ]
+            }
+        },
+        "create_dag._sync_join_inserts": {
+            "name": "_sync_join_inserts",
+            "location": 80,
+            "return": [],
+            "arguments": {}
+        },
+        "create_dag._sync_join_triggers": {
+            "name": "_sync_join_triggers",
+            "location": 90,
+            "return": [],
+            "arguments": {}
+        },
+        "create_dag._cleanup_temp_table": {
+            "name": "_cleanup_temp_table",
+            "location": 98,
+            "return": [],
+            "arguments": {
+                "context": []
+            }
+        }
+    },
+    "airflow-sync-master/src/airflow_sync/salesforce_sync_attachments.py": {
+        "create_dag": {
+            "name": "create_dag",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "dag_name": [
+                    "str"
+                ],
+                "sf_conn_id": [
+                    "str"
+                ],
+                "s3_conn_id": [
+                    "str"
+                ],
+                "dag_base": [
+                    "str"
+                ],
+                "owner": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "airflow-sync-master/src/airflow_sync/sync.py": {
+        "_sync_interval": {
+            "name": "_sync_interval",
+            "location": 35,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "delta": [
+                    "Optional[Dict[(str, int)]]"
+                ]
+            }
+        },
+        "_run_sql": {
+            "name": "_run_sql",
+            "location": 48,
+            "return": [
+                "List[Tuple[(Any, ...)]]"
+            ],
+            "arguments": {
+                "pg_conn_id": [
+                    "str"
+                ],
+                "query": [
+                    "str"
+                ],
+                "schema": [
+                    "Optional[str]"
+                ],
+                "returns_rows": [
+                    "bool"
+                ]
+            }
+        },
+        "_upsert_table": {
+            "name": "_upsert_table",
+            "location": 65,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "pg_conn_id": [
+                    "str"
+                ],
+                "table": [
+                    "str"
+                ],
+                "schema": [
+                    "Optional[str]"
+                ],
+                "constraints": [
+                    "List[str]"
+                ],
+                "returns_rows": [
+                    "bool"
+                ]
+            }
+        },
+        "_cleanup": {
+            "name": "_cleanup",
+            "location": 113,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "pg_conn_id": [
+                    "str"
+                ],
+                "schema": [
+                    "str"
+                ]
+            }
+        },
+        "query_salesforce": {
+            "name": "query_salesforce",
+            "location": 124,
+            "return": [
+                "Union[(List[str], str)]"
+            ],
+            "arguments": {
+                "sf_conn_id": [
+                    "str"
+                ],
+                "soql": [
+                    "str"
+                ]
+            }
+        },
+        "upload_file_to_s3": {
+            "name": "upload_file_to_s3",
+            "location": 137,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "s3_bucket": [
+                    "str"
+                ],
+                "path": [
+                    "Optional[str]"
+                ],
+                "s3_conn_id": [
+                    "str"
+                ],
+                "s3_key": [
+                    "Optional[str]"
+                ],
+                "s3_hook": [
+                    "S3Hook"
+                ]
+            }
+        },
+        "gzip_file": {
+            "name": "gzip_file",
+            "location": 175,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "filepath": [
+                    "str"
+                ]
+            }
+        },
+        "gzip_files": {
+            "name": "gzip_files",
+            "location": 188,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "filepaths": [
+                    "List[str]"
+                ],
+                "max_workers": [
+                    "int"
+                ]
+            }
+        },
+        "_upload_file": {
+            "name": "_upload_file",
+            "location": 199,
+            "return": [],
+            "arguments": {
+                "path_and_hook": [
+                    "Tuple[(str, S3Hook)]"
+                ],
+                "bucket": [
+                    "str"
+                ]
+            }
+        },
+        "upload_files_to_s3": {
+            "name": "upload_files_to_s3",
+            "location": 222,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "s3_conn_id": [
+                    "str"
+                ],
+                "s3_bucket": [
+                    "str"
+                ],
+                "max_connections": [
+                    "int"
+                ]
+            }
+        },
+        "get_s3_files": {
+            "name": "get_s3_files",
+            "location": 246,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {
+                "s3_conn_id": [
+                    "str"
+                ],
+                "s3_bucket": [
+                    "str"
+                ],
+                "prefix": []
+            }
+        },
+        "upload_files_to_s3.upload_file": {
+            "name": "upload_file",
+            "location": 230,
+            "return": [],
+            "arguments": {
+                "filepath_and_hook": [
+                    "Tuple[(str, S3Hook)]"
+                ],
+                "bucket": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "airflow-sync-master/src/airflow_sync/utils.py": {
+        "get_sql_dir": {
+            "name": "get_sql_dir",
+            "location": 19,
+            "return": [],
+            "arguments": {}
+        },
+        "convert_path": {
+            "name": "convert_path",
+            "location": 27,
+            "return": [
+                "Optional[Path]"
+            ],
+            "arguments": {
+                "path": [
+                    "Optional[Path]"
+                ]
+            }
+        },
+        "dedup": {
+            "name": "dedup",
+            "location": 37,
+            "return": [],
+            "arguments": {
+                "iterable": []
+            }
+        },
+        "get_upsert_mapping": {
+            "name": "get_upsert_mapping",
+            "location": 317,
+            "return": [],
+            "arguments": {
+                "pipeline_list": [
+                    "List[Pipeline]"
+                ],
+                "allow_upsert": [
+                    "bool"
+                ]
+            }
+        },
+        "pairwise": {
+            "name": "pairwise",
+            "location": 347,
+            "return": [],
+            "arguments": {
+                "seq": []
+            }
+        },
+        "annotated_last": {
+            "name": "annotated_last",
+            "location": 353,
+            "return": [],
+            "arguments": {
+                "seq": []
+            }
+        },
+        "SqlFile__MetaClass.DEFAULT_SQL_DIR": {
+            "name": "DEFAULT_SQL_DIR",
+            "location": 43,
+            "return": [],
+            "arguments": {
+                "cls": []
+            }
+        },
+        "SqlFile.name": {
+            "name": "name",
+            "location": 60,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SqlFile.is_trigger": {
+            "name": "is_trigger",
+            "location": 66,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SqlFile.merge": {
+            "name": "merge",
+            "location": 79,
+            "return": [
+                "'SqlFile'"
+            ],
+            "arguments": {
+                "self": [],
+                "other": [
+                    "'SqlFile'"
+                ]
+            }
+        },
+        "SqlFile.load_sql": {
+            "name": "load_sql",
+            "location": 101,
+            "return": [],
+            "arguments": {
+                "self": []
+            }
+        },
+        "SqlFile.merge_and_update": {
+            "name": "merge_and_update",
+            "location": 105,
+            "return": [
+                "List['SqlFile']"
+            ],
+            "arguments": {
+                "cls": [],
+                "original_list": [
+                    "List['SqlFile']"
+                ],
+                "new_file": [
+                    "'SqlFile'"
+                ]
+            }
+        },
+        "SqlFile.merge_from_list": {
+            "name": "merge_from_list",
+            "location": 117,
+            "return": [
+                "List['SqlFile']"
+            ],
+            "arguments": {
+                "cls": [],
+                "original_list": [
+                    "List['SqlFile']"
+                ],
+                "new_list": [
+                    "List['SqlFile']"
+                ]
+            }
+        },
+        "SqlFile.depends_on": {
+            "name": "depends_on",
+            "location": 124,
+            "return": [
+                "'SqlFile'"
+            ],
+            "arguments": {
+                "self": [],
+                "sql_file": [
+                    "'SqlFile'"
+                ]
+            }
+        },
+        "SqlFile.with_dependencies": {
+            "name": "with_dependencies",
+            "location": 138,
+            "return": [
+                "'SqlFile'"
+            ],
+            "arguments": {
+                "self": [],
+                "dependencies": [
+                    "List['SqlFile']"
+                ]
+            }
+        },
+        "SqlFile.with_trigger": {
+            "name": "with_trigger",
+            "location": 151,
+            "return": [
+                "'SqlFile'"
+            ],
+            "arguments": {
+                "self": [],
+                "sql_file": [
+                    "'SqlFile'"
+                ]
+            }
+        },
+        "SqlFile.with_triggers": {
+            "name": "with_triggers",
+            "location": 165,
+            "return": [
+                "'SqlFile'"
+            ],
+            "arguments": {
+                "self": [],
+                "triggers": [
+                    "List['SqlFile']"
+                ]
+            }
+        },
+        "SqlFile.with_child": {
+            "name": "with_child",
+            "location": 178,
+            "return": [
+                "'SqlFile'"
+            ],
+            "arguments": {
+                "self": [],
+                "sql_file": [
+                    "'SqlFile'"
+                ]
+            }
+        },
+        "SqlFile.with_children": {
+            "name": "with_children",
+            "location": 192,
+            "return": [
+                "'SqlFile'"
+            ],
+            "arguments": {
+                "self": [],
+                "children": [
+                    "List['SqlFile']"
+                ]
+            }
+        },
+        "SqlFile.from_tuple": {
+            "name": "from_tuple",
+            "location": 206,
+            "return": [
+                "Tuple[('SqlFile', List['SqlFile'], Optional[List['SqlFile']])]"
+            ],
+            "arguments": {
+                "cls": [],
+                "pipeline": [
+                    "Tuple[(Union[(str, Path)], Union[(str, List[Union[(str, 'SqlFile')]])], List[Union[(str, 'SqlFile')]])]"
+                ]
+            }
+        },
+        "SqlFile.build_trigger": {
+            "name": "build_trigger",
+            "location": 228,
+            "return": [
+                "Tuple[('SqlFile', 'SqlFile', Optional[List['SqlFile']])]"
+            ],
+            "arguments": {
+                "cls": [],
+                "parent": [
+                    "'SqlFile'"
+                ],
+                "trigger": [
+                    "Union[('SqlFile', str)]"
+                ],
+                "deps": [
+                    "Optional[List['SqlFile']]"
+                ]
+            }
+        },
+        "SqlFile.build_dependencies": {
+            "name": "build_dependencies",
+            "location": 251,
+            "return": [
+                "Tuple[(Optional['SqlFile'], List['SqlFile'])]"
+            ],
+            "arguments": {
+                "cls": [],
+                "dependencies": [
+                    "List[Union[('SqlFile', str)]]"
+                ],
+                "parent": [
+                    "Optional['SqlFile']"
+                ]
+            }
+        },
+        "SqlFile.build_triggers": {
+            "name": "build_triggers",
+            "location": 273,
+            "return": [
+                "Tuple[('SqlFile', List['SqlFile'], Optional[List['SqlFile']])]"
+            ],
+            "arguments": {
+                "cls": [],
+                "parent": [
+                    "'SqlFile'"
+                ],
+                "triggers": [
+                    "List[Union[(str, 'SqlFile')]]"
+                ],
+                "dependencies": [
+                    "List[Union[(str, 'SqlFile')]]"
+                ]
+            }
+        },
+        "SqlFile.create": {
+            "name": "create",
+            "location": 290,
+            "return": [
+                "Tuple[('SqlFile', List['SqlFile'], Optional[List['SqlFile']])]"
+            ],
+            "arguments": {
+                "cls": [],
+                "path": [
+                    "Union[(str, Path)]"
+                ],
+                "triggers": [
+                    "List[Union[(str, 'SqlFile')]]"
+                ],
+                "dependencies": [
+                    "List[Union[(str, 'SqlFile')]]"
+                ]
+            }
+        }
+    },
+    "airflow-sync-master/src/airflow_sync/__init__.py": {},
+    "airflow-sync-master/tasks/__init__.py": {
+        "typecheck": {
+            "name": "typecheck",
+            "location": 16,
+            "return": [],
+            "arguments": {
+                "ctx": []
+            }
+        },
+        "build_package": {
+            "name": "build_package",
+            "location": 24,
+            "return": [],
+            "arguments": {
+                "ctx": []
+            }
+        },
+        "upload": {
+            "name": "upload",
+            "location": 37,
+            "return": [],
+            "arguments": {
+                "ctx": []
+            }
+        },
+        "build_docs": {
+            "name": "build_docs",
+            "location": 46,
+            "return": [],
+            "arguments": {
+                "ctx": []
+            }
+        }
+    }
+}

@@ -1,0 +1,689 @@
+{
+    "ecs-autoscale-master/lambda/lambda_function.py": {
+        "load_yaml": {
+            "name": "load_yaml",
+            "location": 25,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "path": [
+                    "str"
+                ]
+            }
+        },
+        "load_cluster_defs": {
+            "name": "load_cluster_defs",
+            "location": 36,
+            "return": [
+                "dict"
+            ],
+            "arguments": {}
+        },
+        "clusters": {
+            "name": "clusters",
+            "location": 50,
+            "return": [
+                "List[str]"
+            ],
+            "arguments": {}
+        },
+        "lambda_handler": {
+            "name": "lambda_handler",
+            "location": 59,
+            "return": [],
+            "arguments": {
+                "event": [],
+                "context": []
+            }
+        },
+        "run_test": {
+            "name": "run_test",
+            "location": 153,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "ecs-autoscale-master/lambda/ecsautoscale/exceptions.py": {
+        "ClusterARNError.__init__": {
+            "name": "__init__",
+            "location": 11,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "cluster_name": []
+            }
+        },
+        "ASGGroupError.__init__": {
+            "name": "__init__",
+            "location": 20,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "asg_group_name": []
+            }
+        },
+        "MissingResourceValueError.__init__": {
+            "name": "__init__",
+            "location": 29,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "resource": []
+            }
+        },
+        "CloudWatchError.__init__": {
+            "name": "__init__",
+            "location": 38,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "namespace": [],
+                "metric_name": [],
+                "dimensions": [],
+                "period": [],
+                "statistics": []
+            }
+        },
+        "ThirdPartyError.__init__": {
+            "name": "__init__",
+            "location": 58,
+            "return": [],
+            "arguments": {
+                "self": [],
+                "status_code": [],
+                "url": []
+            }
+        }
+    },
+    "ecs-autoscale-master/lambda/ecsautoscale/instances.py": {
+        "get_cluster_arn": {
+            "name": "get_cluster_arn",
+            "location": 15,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "cluster_name": [
+                    "str"
+                ],
+                "cluster_list": [
+                    "List[str]"
+                ]
+            }
+        },
+        "get_asg_group_data": {
+            "name": "get_asg_group_data",
+            "location": 24,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "asg_group_name": [
+                    "str"
+                ],
+                "asg_data": [
+                    "dict"
+                ]
+            }
+        },
+        "get_empty_instances": {
+            "name": "get_empty_instances",
+            "location": 32,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "active_container_described": [
+                    "dict"
+                ]
+            }
+        },
+        "get_draining_instances": {
+            "name": "get_draining_instances",
+            "location": 45,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "draining_container_described": [
+                    "dict"
+                ]
+            }
+        },
+        "retrieve_cluster_data": {
+            "name": "retrieve_cluster_data",
+            "location": 57,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "cluster_arn": [
+                    "str"
+                ],
+                "cluster_name": [
+                    "str"
+                ]
+            }
+        },
+        "drain_instance": {
+            "name": "drain_instance",
+            "location": 107,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cluster_data": [
+                    "dict"
+                ],
+                "instance": [
+                    "dict"
+                ],
+                "is_test_run": [
+                    "bool"
+                ]
+            }
+        },
+        "terminate_instance": {
+            "name": "terminate_instance",
+            "location": 123,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cluster_name": [
+                    "str"
+                ],
+                "asg_group_data": [
+                    "dict"
+                ],
+                "ec2_instance_id": [
+                    "str"
+                ],
+                "is_test_run": [
+                    "bool"
+                ]
+            }
+        },
+        "get_cpu_avail": {
+            "name": "get_cpu_avail",
+            "location": 137,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "instance": [
+                    "dict"
+                ]
+            }
+        },
+        "get_mem_avail": {
+            "name": "get_mem_avail",
+            "location": 144,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "instance": [
+                    "dict"
+                ]
+            }
+        },
+        "get_cpu_used": {
+            "name": "get_cpu_used",
+            "location": 151,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "instance": [
+                    "dict"
+                ]
+            }
+        },
+        "get_mem_used": {
+            "name": "get_mem_used",
+            "location": 161,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "instance": [
+                    "dict"
+                ]
+            }
+        },
+        "place_task": {
+            "name": "place_task",
+            "location": 171,
+            "return": [
+                "Tuple[(List[Tuple[(int, int)]], bool)]"
+            ],
+            "arguments": {
+                "instance_tuples": [
+                    "List[Tuple[(int, int)]]"
+                ],
+                "cpu": [
+                    "int"
+                ],
+                "mem": [
+                    "int"
+                ]
+            }
+        },
+        "scale_up": {
+            "name": "scale_up",
+            "location": 181,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "cluster_data": [
+                    "dict"
+                ],
+                "cluster_def": [
+                    "dict"
+                ],
+                "asg_group_data": [
+                    "dict"
+                ],
+                "services": [
+                    "List[Service]"
+                ],
+                "is_test_run": [
+                    "bool"
+                ]
+            }
+        },
+        "get_min_cpu_instance": {
+            "name": "get_min_cpu_instance",
+            "location": 237,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "instances": [
+                    "List[dict]"
+                ]
+            }
+        },
+        "get_min_mem_instance": {
+            "name": "get_min_mem_instance",
+            "location": 241,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "instances": [
+                    "List[dict]"
+                ]
+            }
+        },
+        "allocate_instances": {
+            "name": "allocate_instances",
+            "location": 245,
+            "return": [
+                "Tuple[(List[Tuple[(int, int)]], bool)]"
+            ],
+            "arguments": {
+                "desired_cpu": [
+                    "int"
+                ],
+                "desired_mem": [
+                    "int"
+                ],
+                "instance_tuples": [
+                    "List[Tuple[(int, int)]]"
+                ]
+            }
+        },
+        "place_instance": {
+            "name": "place_instance",
+            "location": 256,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "instance": [
+                    "dict"
+                ],
+                "instances": [
+                    "List[dict]"
+                ],
+                "services": [
+                    "List[Service]"
+                ]
+            }
+        },
+        "scale_down": {
+            "name": "scale_down",
+            "location": 300,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "cluster_data": [
+                    "dict"
+                ],
+                "asg_group_data": [
+                    "dict"
+                ],
+                "services": [
+                    "List[Service]"
+                ],
+                "is_test_run": [
+                    "bool"
+                ]
+            }
+        },
+        "log_instances": {
+            "name": "log_instances",
+            "location": 348,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cluster_name": [
+                    "str"
+                ],
+                "instances": [
+                    "List[dict]"
+                ],
+                "status": [
+                    "str"
+                ]
+            }
+        },
+        "_scale_ec2_instances": {
+            "name": "_scale_ec2_instances",
+            "location": 372,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "cluster_data": [
+                    "dict"
+                ],
+                "cluster_def": [
+                    "dict"
+                ],
+                "asg_group_data": [
+                    "dict"
+                ],
+                "services": [
+                    "List[Service]"
+                ],
+                "is_test_run": [
+                    "bool"
+                ]
+            }
+        },
+        "scale_ec2_instances": {
+            "name": "scale_ec2_instances",
+            "location": 434,
+            "return": [
+                "int"
+            ],
+            "arguments": {
+                "cluster_name": [
+                    "str"
+                ],
+                "cluster_def": [
+                    "dict"
+                ],
+                "asg_data": [
+                    "dict"
+                ],
+                "cluster_list": [
+                    "List[str]"
+                ],
+                "services": [
+                    "List[Service]"
+                ],
+                "is_test_run": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "ecs-autoscale-master/lambda/ecsautoscale/services.py": {
+        "chunks": {
+            "name": "chunks",
+            "location": 196,
+            "return": [],
+            "arguments": {
+                "l": [],
+                "n": []
+            }
+        },
+        "get_services": {
+            "name": "get_services",
+            "location": 201,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "cluster_name": [
+                    "str"
+                ],
+                "cluster_def": [
+                    "dict"
+                ]
+            }
+        },
+        "gather_services": {
+            "name": "gather_services",
+            "location": 220,
+            "return": [
+                "List[Service]"
+            ],
+            "arguments": {
+                "cluster_name": [
+                    "str"
+                ],
+                "cluster_def": [
+                    "dict"
+                ]
+            }
+        },
+        "Service.__init__": {
+            "name": "__init__",
+            "location": 51,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "cluster_name": [
+                    "str"
+                ],
+                "service_name": [
+                    "str"
+                ],
+                "task_name": [
+                    "str"
+                ],
+                "task_count": [
+                    "int"
+                ],
+                "events": [
+                    "List[dict]"
+                ],
+                "metric_sources": [
+                    "dict"
+                ],
+                "min_tasks": [
+                    "int"
+                ],
+                "max_tasks": [
+                    "int"
+                ],
+                "state": [
+                    "dict"
+                ]
+            }
+        },
+        "Service._get_metric": {
+            "name": "_get_metric",
+            "location": 110,
+            "return": [
+                "float"
+            ],
+            "arguments": {
+                "self": [],
+                "metric_str": [
+                    "str"
+                ]
+            }
+        },
+        "Service.pretend_scale": {
+            "name": "pretend_scale",
+            "location": 116,
+            "return": [
+                "bool"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Service.scale": {
+            "name": "scale",
+            "location": 174,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "self": [],
+                "is_test_run": [
+                    "bool"
+                ]
+            }
+        }
+    },
+    "ecs-autoscale-master/lambda/ecsautoscale/__init__.py": {},
+    "ecs-autoscale-master/lambda/ecsautoscale/metric_sources/cloudwatch.py": {
+        "_format_dimensions": {
+            "name": "_format_dimensions",
+            "location": 15,
+            "return": [
+                "List[dict]"
+            ],
+            "arguments": {
+                "dimensions": [
+                    "List[dict]"
+                ]
+            }
+        },
+        "get_data": {
+            "name": "get_data",
+            "location": 25,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "metric_name": [
+                    "str"
+                ],
+                "dimensions": [
+                    "List[dict]"
+                ],
+                "statistics": [
+                    "List[dict]"
+                ],
+                "namespace": [
+                    "str"
+                ],
+                "period": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "ecs-autoscale-master/lambda/ecsautoscale/metric_sources/third_party.py": {
+        "_get_nested_field": {
+            "name": "_get_nested_field",
+            "location": 15,
+            "return": [],
+            "arguments": {
+                "data": [
+                    "dict"
+                ],
+                "field": [
+                    "str"
+                ]
+            }
+        },
+        "get_data": {
+            "name": "get_data",
+            "location": 23,
+            "return": [
+                "dict"
+            ],
+            "arguments": {
+                "url": [
+                    "str"
+                ],
+                "statistics": [
+                    "List[dict]"
+                ],
+                "method": [
+                    "str"
+                ],
+                "payload": [
+                    "dict"
+                ]
+            }
+        }
+    },
+    "ecs-autoscale-master/lambda/ecsautoscale/metric_sources/__init__.py": {},
+    "ecs-autoscale-master/test/conftest.py": {
+        "service": {
+            "name": "service",
+            "location": 9,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "ecs-autoscale-master/test/test_service.py": {
+        "test_metric_arithmetic1": {
+            "name": "test_metric_arithmetic1",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "service": []
+            }
+        },
+        "test_pretend_scale": {
+            "name": "test_pretend_scale",
+            "location": 62,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "service": [
+                    "Service"
+                ],
+                "events": [
+                    "List[dict]"
+                ],
+                "max_tasks": [
+                    "int"
+                ],
+                "desired_tasks_check": [
+                    "int"
+                ],
+                "task_diff_check": [
+                    "int"
+                ]
+            }
+        }
+    },
+    "ecs-autoscale-master/test/test_third_party.py": {
+        "test_nested_get": {
+            "name": "test_nested_get",
+            "location": 4,
+            "return": [],
+            "arguments": {}
+        }
+    }
+}

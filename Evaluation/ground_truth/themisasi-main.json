@@ -1,0 +1,612 @@
+{
+    "themisasi-main/PlotCameraResponse.py": {},
+    "themisasi-main/setup.py": {},
+    "themisasi-main/archive/setup_spacepy.py": {},
+    "themisasi-main/Examples/DascThemisFOV.py": {
+        "main": {
+            "name": "main",
+            "location": 16,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "themisasi-main/Examples/DascThemisSlice.py": {
+        "main": {
+            "name": "main",
+            "location": 28,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "themisasi-main/Examples/Projection.py": {},
+    "themisasi-main/Examples/Themis2008.py": {},
+    "themisasi-main/Examples/ThemisHistApr14T854.py": {},
+    "themisasi-main/src/themisasi/download.py": {
+        "cli": {
+            "name": "cli",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        },
+        "download": {
+            "name": "download",
+            "location": 52,
+            "return": [],
+            "arguments": {
+                "treq": [
+                    "T.Sequence[T.Union[(str, datetime)]]"
+                ],
+                "site": [
+                    "T.Sequence[str]"
+                ],
+                "odir": [
+                    "Path"
+                ],
+                "urls": [
+                    "T.Dict[(str, str)]"
+                ],
+                "overwrite": [
+                    "bool"
+                ]
+            }
+        },
+        "_urlgen": {
+            "name": "_urlgen",
+            "location": 154,
+            "return": [
+                "T.Iterator[str]"
+            ],
+            "arguments": {
+                "site": [
+                    "str"
+                ],
+                "start": [
+                    "datetime"
+                ],
+                "end": [
+                    "datetime"
+                ],
+                "url_stem": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "themisasi-main/src/themisasi/fov.py": {
+        "getimgind": {
+            "name": "getimgind",
+            "location": 16,
+            "return": [
+                "np.ndarray"
+            ],
+            "arguments": {
+                "imgs": [
+                    "xarray.Dataset"
+                ],
+                "lla": [
+                    "np.ndarray"
+                ],
+                "az": [
+                    "np.ndarray"
+                ],
+                "el": [
+                    "np.ndarray"
+                ]
+            }
+        },
+        "projected_coord": {
+            "name": "projected_coord",
+            "location": 49,
+            "return": [],
+            "arguments": {
+                "imgs": [
+                    "xarray.Dataset"
+                ],
+                "ind": [
+                    "np.ndarray"
+                ],
+                "lla": [
+                    "Tuple[(float, float, float)]"
+                ]
+            }
+        },
+        "line2plane": {
+            "name": "line2plane",
+            "location": 62,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "cam": [
+                    "xarray.Dataset"
+                ]
+            }
+        },
+        "sky2beam": {
+            "name": "sky2beam",
+            "location": 115,
+            "return": [],
+            "arguments": {
+                "anglesep_deg": [],
+                "Ncol": [
+                    "int"
+                ]
+            }
+        },
+        "mergefov": {
+            "name": "mergefov",
+            "location": 129,
+            "return": [],
+            "arguments": {
+                "w0": [
+                    "xarray.Dataset"
+                ],
+                "w1": [
+                    "xarray.Dataset"
+                ],
+                "projalt": [
+                    "float"
+                ],
+                "method": [
+                    "str"
+                ]
+            }
+        },
+        "pixelmask": {
+            "name": "pixelmask",
+            "location": 197,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "data": [
+                    "xarray.Dataset"
+                ],
+                "method": [
+                    "str"
+                ]
+            }
+        }
+    },
+    "themisasi-main/src/themisasi/io.py": {
+        "load": {
+            "name": "load",
+            "location": 34,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "site": [
+                    "str"
+                ],
+                "treq": [
+                    "datetime"
+                ],
+                "calfn": [
+                    "Path"
+                ]
+            }
+        },
+        "filetimes": {
+            "name": "filetimes",
+            "location": 94,
+            "return": [
+                "list[datetime]"
+            ],
+            "arguments": {
+                "fn": [
+                    "Path"
+                ]
+            }
+        },
+        "_timeslice": {
+            "name": "_timeslice",
+            "location": 118,
+            "return": [
+                "xarray.DataArray"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "site": [
+                    "str"
+                ],
+                "treq": [
+                    "T.Optional[(datetime | list[datetime])]"
+                ]
+            }
+        },
+        "_sitefn": {
+            "name": "_sitefn",
+            "location": 182,
+            "return": [
+                "tuple[(str, Path)]"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "site": [
+                    "str"
+                ],
+                "treq": [
+                    "T.Optional[(datetime | list[datetime])]"
+                ]
+            }
+        },
+        "_timereq": {
+            "name": "_timereq",
+            "location": 247,
+            "return": [
+                "(datetime | list[datetime])"
+            ],
+            "arguments": {
+                "treq": [
+                    "(datetime | list[datetime])"
+                ]
+            }
+        },
+        "_downsample": {
+            "name": "_downsample",
+            "location": 266,
+            "return": [
+                "tuple[(np.ndarray, np.ndarray, np.ndarray, np.ndarray)]"
+            ],
+            "arguments": {
+                "imgs": [
+                    "xarray.Dataset"
+                ],
+                "az": [
+                    "np.ndarray"
+                ],
+                "el": [
+                    "np.ndarray"
+                ],
+                "x": [
+                    "np.ndarray"
+                ],
+                "y": [
+                    "np.ndarray"
+                ]
+            }
+        },
+        "loadcal_file": {
+            "name": "loadcal_file",
+            "location": 292,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "fn": [
+                    "Path"
+                ]
+            }
+        },
+        "loadcal": {
+            "name": "loadcal",
+            "location": 400,
+            "return": [
+                "xarray.Dataset"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "site": [
+                    "str"
+                ],
+                "time": [
+                    "datetime"
+                ]
+            }
+        },
+        "_findcal": {
+            "name": "_findcal",
+            "location": 433,
+            "return": [
+                "Path"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ],
+                "site": [
+                    "str"
+                ],
+                "time": [
+                    "datetime"
+                ]
+            }
+        }
+    },
+    "themisasi-main/src/themisasi/pixels.py": {
+        "cli": {
+            "name": "cli",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "themisasi-main/src/themisasi/plots.py": {
+        "jointazel": {
+            "name": "jointazel",
+            "location": 9,
+            "return": [],
+            "arguments": {
+                "cam": [
+                    "xarray.Dataset"
+                ],
+                "ofn": [
+                    "Path"
+                ],
+                "ttxt": [
+                    "str"
+                ]
+            }
+        },
+        "plotazel": {
+            "name": "plotazel",
+            "location": 35,
+            "return": [],
+            "arguments": {
+                "data": [
+                    "xarray.Dataset"
+                ],
+                "ttxt": [
+                    "str"
+                ]
+            }
+        },
+        "plottimeseries": {
+            "name": "plottimeseries",
+            "location": 63,
+            "return": [],
+            "arguments": {
+                "data": [
+                    "np.ndarray"
+                ],
+                "time": [
+                    "datetime"
+                ],
+                "ttxt": [
+                    "str"
+                ]
+            }
+        },
+        "overlayrowcol": {
+            "name": "overlayrowcol",
+            "location": 75,
+            "return": [],
+            "arguments": {
+                "ax": [],
+                "rows": [],
+                "cols": [],
+                "color": [
+                    "str"
+                ],
+                "label": [
+                    "str"
+                ]
+            }
+        },
+        "plotasi": {
+            "name": "plotasi",
+            "location": 97,
+            "return": [],
+            "arguments": {
+                "data": [
+                    "xarray.Dataset"
+                ],
+                "ofn": [
+                    "Path"
+                ]
+            }
+        },
+        "pcolormesh_nan": {
+            "name": "pcolormesh_nan",
+            "location": 141,
+            "return": [],
+            "arguments": {
+                "x": [
+                    "np.ndarray"
+                ],
+                "y": [
+                    "np.ndarray"
+                ],
+                "c": [
+                    "np.ndarray"
+                ],
+                "cmap": [],
+                "axis": []
+            }
+        }
+    },
+    "themisasi-main/src/themisasi/projections.py": {
+        "asi_projection": {
+            "name": "asi_projection",
+            "location": 10,
+            "return": [],
+            "arguments": {
+                "dat": [
+                    "xarray.Dataset"
+                ],
+                "projalt_m": [
+                    "float"
+                ],
+                "min_el": [
+                    "float"
+                ],
+                "ofn": [
+                    "Path"
+                ]
+            }
+        },
+        "asi_radec": {
+            "name": "asi_radec",
+            "location": 75,
+            "return": [],
+            "arguments": {
+                "dat": [
+                    "xarray.Dataset"
+                ],
+                "min_el": [
+                    "float"
+                ],
+                "ofn": [
+                    "Path"
+                ]
+            }
+        }
+    },
+    "themisasi-main/src/themisasi/radec.py": {
+        "cli": {
+            "name": "cli",
+            "location": 13,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "themisasi-main/src/themisasi/video.py": {
+        "cli": {
+            "name": "cli",
+            "location": 14,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "themisasi-main/src/themisasi/__init__.py": {},
+    "themisasi-main/src/themisasi/tests/test_download.py": {
+        "test_single_time_site": {
+            "name": "test_single_time_site",
+            "location": 13,
+            "return": [],
+            "arguments": {}
+        },
+        "test_time_range": {
+            "name": "test_time_range",
+            "location": 31,
+            "return": [],
+            "arguments": {}
+        },
+        "test_multi_site": {
+            "name": "test_multi_site",
+            "location": 41,
+            "return": [],
+            "arguments": {}
+        },
+        "test_nonexisting": {
+            "name": "test_nonexisting",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "time": [],
+                "site": []
+            }
+        }
+    },
+    "themisasi-main/src/themisasi/tests/test_load.py": {
+        "test_missing_file": {
+            "name": "test_missing_file",
+            "location": 19,
+            "return": [],
+            "arguments": {
+                "tmp_path": []
+            }
+        },
+        "test_filename_simple": {
+            "name": "test_filename_simple",
+            "location": 25,
+            "return": [],
+            "arguments": {}
+        },
+        "test_filename_calname": {
+            "name": "test_filename_calname",
+            "location": 33,
+            "return": [],
+            "arguments": {}
+        },
+        "test_load_filename": {
+            "name": "test_load_filename",
+            "location": 43,
+            "return": [],
+            "arguments": {}
+        },
+        "test_load_site_time": {
+            "name": "test_load_site_time",
+            "location": 55,
+            "return": [],
+            "arguments": {
+                "site": [],
+                "time": []
+            }
+        },
+        "test_load_site_timerange": {
+            "name": "test_load_site_timerange",
+            "location": 70,
+            "return": [],
+            "arguments": {
+                "site": [],
+                "treq": []
+            }
+        },
+        "test_bad_time": {
+            "name": "test_bad_time",
+            "location": 89,
+            "return": [],
+            "arguments": {
+                "path": [],
+                "val": [],
+                "err": []
+            }
+        },
+        "test_good_time": {
+            "name": "test_good_time",
+            "location": 94,
+            "return": [],
+            "arguments": {}
+        },
+        "test_autoload_cal": {
+            "name": "test_autoload_cal",
+            "location": 105,
+            "return": [],
+            "arguments": {}
+        },
+        "test_calread_idl": {
+            "name": "test_calread_idl",
+            "location": 110,
+            "return": [],
+            "arguments": {}
+        },
+        "test_calread_cdf": {
+            "name": "test_calread_cdf",
+            "location": 119,
+            "return": [],
+            "arguments": {}
+        },
+        "test_calread_sitedate": {
+            "name": "test_calread_sitedate",
+            "location": 127,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "themisasi-main/src/themisasi/tests/test_scripts.py": {
+        "test_video": {
+            "name": "test_video",
+            "location": 9,
+            "return": [],
+            "arguments": {}
+        },
+        "test_pixels_azel": {
+            "name": "test_pixels_azel",
+            "location": 18,
+            "return": [],
+            "arguments": {}
+        }
+    },
+    "themisasi-main/src/themisasi/tests/__init__.py": {}
+}

@@ -1,0 +1,509 @@
+{
+    "asyncpg-migrate-master/setup.py": {},
+    "asyncpg-migrate-master/asyncpg_migrate/constants.py": {},
+    "asyncpg-migrate-master/asyncpg_migrate/exceptions.py": {},
+    "asyncpg-migrate-master/asyncpg_migrate/loader.py": {
+        "load_configuration": {
+            "name": "load_configuration",
+            "location": 15,
+            "return": [
+                "model.Config"
+            ],
+            "arguments": {
+                "filename": [
+                    "Path"
+                ]
+            }
+        },
+        "load_migrations": {
+            "name": "load_migrations",
+            "location": 46,
+            "return": [
+                "model.Migrations"
+            ],
+            "arguments": {
+                "config": [
+                    "model.Config"
+                ]
+            }
+        },
+        "load_python_module": {
+            "name": "load_python_module",
+            "location": 101,
+            "return": [
+                "types.ModuleType"
+            ],
+            "arguments": {
+                "path": [
+                    "Path"
+                ]
+            }
+        }
+    },
+    "asyncpg-migrate-master/asyncpg_migrate/main.py": {
+        "db": {
+            "name": "db",
+            "location": 44,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "ctx": [
+                    "click.Context"
+                ],
+                "config": [
+                    "Path"
+                ],
+                "verbose": [
+                    "int"
+                ]
+            }
+        },
+        "version": {
+            "name": "version",
+            "location": 79,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        },
+        "upgrade_cmd": {
+            "name": "upgrade_cmd",
+            "location": 95,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "ctx": [
+                    "click.Context"
+                ],
+                "revision": [
+                    "str"
+                ]
+            }
+        },
+        "downgrade_cmd": {
+            "name": "downgrade_cmd",
+            "location": 118,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "ctx": [
+                    "click.Context"
+                ],
+                "revision": [
+                    "str"
+                ]
+            }
+        },
+        "revision_cmd": {
+            "name": "revision_cmd",
+            "location": 135,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "ctx": [
+                    "click.Context"
+                ]
+            }
+        },
+        "history": {
+            "name": "history",
+            "location": 153,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "ctx": [
+                    "click.Context"
+                ]
+            }
+        },
+        "async_run": {
+            "name": "async_run",
+            "location": 26,
+            "return": [
+                "_T"
+            ],
+            "arguments": {
+                "coro": [
+                    "t.Awaitable[_T]"
+                ]
+            }
+        }
+    },
+    "asyncpg-migrate-master/asyncpg_migrate/model.py": {
+        "Revision.decode": {
+            "name": "decode",
+            "location": 23,
+            "return": [
+                "'Revision'"
+            ],
+            "arguments": {
+                "cls": [],
+                "rev": [
+                    "t.Union[(str, int, 'Revision')]"
+                ],
+                "all_revisions": [
+                    "t.Sequence['Revision']"
+                ]
+            }
+        },
+        "Migrations.slice": {
+            "name": "slice",
+            "location": 60,
+            "return": [
+                "'Migrations'"
+            ],
+            "arguments": {
+                "self": [],
+                "start": [
+                    "int"
+                ],
+                "end": [
+                    "t.Optional[int]"
+                ]
+            }
+        },
+        "Migrations.upgrade_iterator": {
+            "name": "upgrade_iterator",
+            "location": 78,
+            "return": [
+                "t.Iterator['Migration']"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Migrations.downgrade_iterator": {
+            "name": "downgrade_iterator",
+            "location": 81,
+            "return": [
+                "t.Iterator['Migration']"
+            ],
+            "arguments": {
+                "self": []
+            }
+        },
+        "Migrations.revisions": {
+            "name": "revisions",
+            "location": 84,
+            "return": [
+                "t.Sequence[Revision]"
+            ],
+            "arguments": {
+                "self": []
+            }
+        }
+    },
+    "asyncpg-migrate-master/asyncpg_migrate/__init__.py": {},
+    "asyncpg-migrate-master/asyncpg_migrate/engine/downgrade.py": {},
+    "asyncpg-migrate-master/asyncpg_migrate/engine/migration.py": {
+        "error_trap": {
+            "name": "error_trap",
+            "location": 25,
+            "return": [
+                "t.Callable[(..., t.Coroutine[(t.Any, t.Any, MT)])]"
+            ],
+            "arguments": {
+                "func": [
+                    "t.Callable[(..., t.Coroutine[(t.Any, t.Any, MT)])]"
+                ]
+            }
+        }
+    },
+    "asyncpg-migrate-master/asyncpg_migrate/engine/upgrade.py": {},
+    "asyncpg-migrate-master/asyncpg_migrate/engine/__init__.py": {},
+    "asyncpg-migrate-master/tests/__init__.py": {},
+    "asyncpg-migrate-master/tests/integration/conftest.py": {
+        "db_name": {
+            "name": "db_name",
+            "location": 12,
+            "return": [
+                "str"
+            ],
+            "arguments": {}
+        },
+        "db_dsn": {
+            "name": "db_dsn",
+            "location": 17,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "db_name": [
+                    "str"
+                ]
+            }
+        },
+        "migration_config": {
+            "name": "migration_config",
+            "location": 53,
+            "return": [
+                "t.Tuple[(model.Config, int)]"
+            ],
+            "arguments": {
+                "db_name": [
+                    "str"
+                ],
+                "db_dsn": [
+                    "str"
+                ],
+                "tmp_path_factory": [
+                    "t.Any"
+                ],
+                "request": [
+                    "t.Any"
+                ]
+            }
+        }
+    },
+    "asyncpg-migrate-master/tests/integration/test_dummy.py": {
+        "test_dummy": {
+            "name": "test_dummy",
+            "location": 1,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "asyncpg-migrate-master/tests/integration/test_engine_downgrade.py": {},
+    "asyncpg-migrate-master/tests/integration/test_engine_migrations.py": {},
+    "asyncpg-migrate-master/tests/integration/test_engine_upgrade.py": {},
+    "asyncpg-migrate-master/tests/integration/__init__.py": {},
+    "asyncpg-migrate-master/tests/unit/conftest.py": {
+        "config_env": {
+            "name": "config_env",
+            "location": 17,
+            "return": [
+                "t.Tuple[(Path, Path, t.Dict[(str, str)])]"
+            ],
+            "arguments": {
+                "tmp_path": [
+                    "Path"
+                ],
+                "request": [
+                    "t.Any"
+                ],
+                "config_with_migrations": [
+                    "t.Tuple[(Path, model.Config, int)]"
+                ]
+            }
+        },
+        "config_with_migrations": {
+            "name": "config_with_migrations",
+            "location": 60,
+            "return": [
+                "t.Tuple[(Path, model.Config, int)]"
+            ],
+            "arguments": {
+                "tmp_path": [
+                    "Path"
+                ],
+                "mocker": [
+                    "ptm.MockFixture"
+                ],
+                "request": [
+                    "t.Any"
+                ]
+            }
+        }
+    },
+    "asyncpg-migrate-master/tests/unit/test_cli.py": {
+        "test_version": {
+            "name": "test_version",
+            "location": 14,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cli_runner": [
+                    "testing.CliRunner"
+                ]
+            }
+        },
+        "test_db_help": {
+            "name": "test_db_help",
+            "location": 20,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cli_runner": [
+                    "testing.CliRunner"
+                ]
+            }
+        },
+        "test_db_verbosity": {
+            "name": "test_db_verbosity",
+            "location": 38,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cli_runner": [
+                    "testing.CliRunner"
+                ],
+                "mocker": [
+                    "ptm.MockFixture"
+                ],
+                "invoke_arg": [
+                    "t.List[str]"
+                ]
+            }
+        },
+        "test_db_upgrade": {
+            "name": "test_db_upgrade",
+            "location": 89,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cli_runner": [
+                    "testing.CliRunner"
+                ],
+                "mocker": [
+                    "ptm.MockFixture"
+                ],
+                "revision": [
+                    "str"
+                ]
+            }
+        },
+        "test_db_downgrade": {
+            "name": "test_db_downgrade",
+            "location": 129,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cli_runner": [
+                    "testing.CliRunner"
+                ],
+                "mocker": [
+                    "ptm.MockFixture"
+                ],
+                "revision": [
+                    "str"
+                ]
+            }
+        },
+        "test_db_revision": {
+            "name": "test_db_revision",
+            "location": 169,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cli_runner": [
+                    "testing.CliRunner"
+                ],
+                "mocker": [
+                    "ptm.MockFixture"
+                ],
+                "return_revision": [
+                    "t.Optional[int]"
+                ]
+            }
+        },
+        "test_db_history": {
+            "name": "test_db_history",
+            "location": 207,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "cli_runner": [
+                    "testing.CliRunner"
+                ],
+                "mocker": [
+                    "ptm.MockFixture"
+                ],
+                "entries_count": [
+                    "int"
+                ]
+            }
+        },
+        "test_db_verbosity.test": {
+            "name": "test",
+            "location": 52,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "asyncpg-migrate-master/tests/unit/test_configuration.py": {
+        "test_load_configuration_env": {
+            "name": "test_load_configuration_env",
+            "location": 9,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "config_env": [
+                    "t.Tuple[(Path, Path, t.Dict[(str, str)])]"
+                ],
+                "mocker": [
+                    "ptm.MockFixture"
+                ]
+            }
+        },
+        "test_load_migrations": {
+            "name": "test_load_migrations",
+            "location": 26,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "config_with_migrations": [
+                    "t.Tuple[(Path, model.Config, int)]"
+                ]
+            }
+        }
+    },
+    "asyncpg-migrate-master/tests/unit/test_constant.py": {
+        "test_migration_table_location": {
+            "name": "test_migration_table_location",
+            "location": 4,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "asyncpg-migrate-master/tests/unit/test_dummy.py": {
+        "test_dummy": {
+            "name": "test_dummy",
+            "location": 1,
+            "return": [
+                "None"
+            ],
+            "arguments": {}
+        }
+    },
+    "asyncpg-migrate-master/tests/unit/test_revision.py": {
+        "test_revision_decoding": {
+            "name": "test_revision_decoding",
+            "location": 28,
+            "return": [
+                "None"
+            ],
+            "arguments": {
+                "test_revision": [
+                    "t.Union[(str, int)]"
+                ],
+                "expected_revision": [
+                    "t.Union[(model.Revision, Exception)]"
+                ],
+                "all_revisions": [
+                    "t.Sequence[model.Revision]"
+                ]
+            }
+        }
+    },
+    "asyncpg-migrate-master/tests/unit/__init__.py": {}
+}

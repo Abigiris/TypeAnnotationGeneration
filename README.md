@@ -4,7 +4,7 @@ This repository stores the source codes and results of our type annotation gener
 
 ### Contents
 
-- Data: Our dataset includes 3,379 filtered Python projects from [ManyTypes4Py](https://github.com/saltudelft/many-types-4-py-dataset "ManyTypes4Py").
+- Data: Our dataset.
 - Evaluation: Our effectiveness evaluation experiments, including evaluation approaches and preprocessed data to be evaluated.
 - PyAnnGen: Our implementation of the type annotation generation tool.
 - Results: Detailed results of all the research questions in our study.

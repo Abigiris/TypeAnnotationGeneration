@@ -1,0 +1,77 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "mypy typecheck",
+			"type": "shell",
+			"command": "mypy -p meld",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "build docs",
+			"type": "shell",
+			"command": "make html",
+			"options": {
+				"cwd": "${workspaceFolder}/docs"
+			},
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "setup cli",
+			"type": "shell",
+			"command": "pip install --editable ${workspaceFolder}",
+			"group": "build"
+		},
+		{
+			"label": "update .bashrc",
+			"type": "shell",
+			"command": "echo 'eval \"$(_MELD_COMPLETE=source meld)\"' > ~/.bashrc",
+			"group": "build"
+		},
+		{
+			"label": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"setup cli",
+				"update .bashrc"
+			]
+		},
+		{
+			"label": "Generate coverage",
+			"group": "test",
+			"type": "shell",
+			"command": "coverage run --omit='test*' -m unittest discover -s ${workspaceFolder}/test"
+		},
+		{
+			"label": "Print coverage report",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"type": "shell",
+			"command": "coverage report -m",
+			"dependsOn": [
+				"Generate coverage"
+			]
+		},
+		{
+			"label": "Coverage html",
+			"group": "test",
+			"command": "coverage html",
+			"dependsOn": [
+				"Generate coverage"
+			]
+		}
+	]
+}

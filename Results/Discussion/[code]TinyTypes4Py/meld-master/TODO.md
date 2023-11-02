@@ -1,0 +1,11 @@
+- Tests: All filesystem related setup should switch to pyfakefs.
+- Plugin: Config - needs testing
+- Plugin: Import - needs testing
+- Plugin: Move - needs testing
+- Plugin: Move - Not yet implemented
+- Plugin: Plugins - needs testing
+- Docs: Everything needs docstrings
+- Misc: Create stubs for third-party packages
+- Types: Some files missing type-hints
+- Types: Fix errors from mypy
+- Docs: Write them!!

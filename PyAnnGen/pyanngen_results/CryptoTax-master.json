@@ -12,7 +12,7 @@
             "name": "_load_data_avanza",
             "location": 57,
             "return": [
-                "List[dict]"
+                "List[Dict[(str, Any)]]"
             ],
             "arguments": {
                 "filename": [
@@ -24,7 +24,7 @@
             "name": "compute_balances",
             "location": 104,
             "return": [
-                "Tuple[(Dict[(str, float)], Dict[(str, float)], Dict[(str, float)])]"
+                "Tuple[(collections.defaultdict, collections.defaultdict, collections.defaultdict)]"
             ],
             "arguments": {
                 "trades": []
@@ -37,9 +37,7 @@
                 "None"
             ],
             "arguments": {
-                "txs": [
-                    "List[dict]"
-                ]
+                "txs": []
             }
         },
         "plot_realized_profits": {
@@ -53,31 +51,35 @@
         "txs_to_dataframe": {
             "name": "txs_to_dataframe",
             "location": 160,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "txs": [
-                    "List[dict]"
-                ]
+                "txs": []
             }
         },
         "_clean_price": {
             "name": "_clean_price",
             "location": 168,
             "return": [
-                "_T0"
+                "_T0@@"
             ],
             "arguments": {
                 "df": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
         "_calc_costavg": {
             "name": "_calc_costavg",
             "location": 187,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "df": []
+                "df": [
+                    "_T0@@"
+                ]
             }
         },
         "test_calc_costavg": {
@@ -91,7 +93,9 @@
         "_fill_with_daily_prices": {
             "name": "_fill_with_daily_prices",
             "location": 224,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": []
             }
@@ -115,11 +119,11 @@
         "all_txs_to_dataframe": {
             "name": "all_txs_to_dataframe",
             "location": 365,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "txs": [
-                    "List[dict]"
-                ]
+                "txs": []
             }
         },
         "plot_total_holdings": {
@@ -154,11 +158,11 @@
             "name": "_normalize_currency_to_sek",
             "location": 486,
             "return": [
-                "_T0"
+                "_T0@@"
             ],
             "arguments": {
                 "txs": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -179,16 +183,14 @@
                 "None"
             ],
             "arguments": {
-                "txs": [
-                    "List[dict]"
-                ]
+                "txs": []
             }
         },
         "_load_crypto_trades": {
             "name": "_load_crypto_trades",
             "location": 559,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "list"
             ],
             "arguments": {}
         },
@@ -218,21 +220,20 @@
             "name": "get_history",
             "location": 12,
             "return": [
-                "list[]",
+                "List",
                 "bytes",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "Callable",
                 "Optional[str]",
-                "Callable[[str], T]"
+                "Callable[[str],T]"
             ],
             "arguments": {
                 "oid": [
                     "str",
+                    "Dict[str,str]",
                     "int",
-                    "Dict[str, str]",
-                    "bytes",
-                    "dict[str, str]"
+                    "bytes"
                 ],
                 "start": [
                     "int",
@@ -265,14 +266,21 @@
             "name": "get_price_coingecko",
             "location": 39,
             "return": [
-                "float"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,str]",
+                    "Optional[Dict[str,str]]",
+                    "None"
                 ],
                 "date": [
-                    "datetime.date"
+                    "datetime.date",
+                    "str",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -308,13 +316,12 @@
             "name": "get_data_from_coingecko",
             "location": 73,
             "return": [
-                "Dict[(Any, float)]"
+                "dict"
             ],
             "arguments": {
                 "currency": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
-                    "dict[str, typing.Any]",
                     "str"
                 ]
             }
@@ -335,14 +342,13 @@
             "name": "parse_json",
             "location": 100,
             "return": [
-                "Dict[(datetime.date, Dict[(str, Any)])]"
+                "dict"
             ],
             "arguments": {
                 "doc": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -355,24 +361,19 @@
             "arguments": {
                 "currency": [
                     "str",
-                    "Optional[Union[Dict, str, int, bytes]]",
-                    "dict",
-                    "dict[, ]",
-                    "list",
+                    "Dict",
+                    "Optional[Union[Dict,str,int,bytes]]",
+                    "List",
                     "int",
                     "bytes",
-                    "None",
-                    "list[]"
+                    "None"
                 ],
                 "data": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[int, Dict]",
-                    "dict[int, dict[, ]]",
+                    "Dict",
                     "Mapping",
-                    "typing.Mapping",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[int,Dict]",
+                    "Dict[str,Any]",
+                    "Dict[int,dict]"
                 ]
             }
         },
@@ -390,7 +391,7 @@
             "name": "_load_csv",
             "location": 14,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "List[Dict[(str, str)]]"
             ],
             "arguments": {
                 "filepath": [
@@ -398,7 +399,7 @@
                     "bool"
                 ],
                 "delimiter": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "bool",
                     "Callable"
@@ -414,9 +415,8 @@
             "arguments": {
                 "symbol": [
                     "str",
+                    "Dict",
                     "bool",
-                    "dict",
-                    "dict[, ]",
                     "Optional[str]",
                     "None"
                 ]
@@ -426,7 +426,7 @@
             "name": "_load_price_csv2",
             "location": 32,
             "return": [
-                "Dict[(datetime.date, float)]"
+                "dict"
             ],
             "arguments": {
                 "symbol": [
@@ -439,7 +439,12 @@
             "name": "_load_pricehistory",
             "location": 38,
             "return": [
-                "Dict[(datetime.date, Dict[(str, float)])]"
+                "str",
+                "Callable",
+                "Callable[[KT, VT], bool]",
+                "dict",
+                "Optional[str]",
+                "Callable[[str], T]"
             ],
             "arguments": {
                 "symbol": [
@@ -451,7 +456,7 @@
             "name": "_load_incoming_balances",
             "location": 44,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "list"
             ],
             "arguments": {}
         },
@@ -459,11 +464,19 @@
             "name": "_format_csv_from_kraken",
             "location": 53,
             "return": [
-                "_T0"
+                "List[dict[str,Any]]",
+                "Callable[[bytes],None]",
+                "int",
+                "str",
+                "float"
             ],
             "arguments": {
                 "trades_csv": [
-                    "_T0"
+                    "List[dict[str,Any]]",
+                    "str",
+                    "bool",
+                    "Optional[int]",
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -476,10 +489,10 @@
             "arguments": {
                 "trades_csv": [
                     "str",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "bool",
                     "Optional[int]",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -507,11 +520,10 @@
             ],
             "arguments": {
                 "trades_csv": [
-                    "list[str]",
+                    "List[str]",
                     "str",
                     "int",
-                    "float",
-                    "List[str]"
+                    "float"
                 ]
             }
         },
@@ -519,11 +531,19 @@
             "name": "_format_csv_from_poloniex",
             "location": 171,
             "return": [
-                "_T0"
+                "str",
+                "Callable[[bytes],None]",
+                "List[dict[str,Any]]",
+                "int",
+                "float"
             ],
             "arguments": {
                 "trades_csv": [
-                    "_T0"
+                    "str",
+                    "List[dict[str,Any]]",
+                    "bool",
+                    "Optional[int]",
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -531,11 +551,19 @@
             "name": "_format_csv_from_generic",
             "location": 191,
             "return": [
-                "_T0"
+                "List[dict[str,Any]]",
+                "Callable[[bytes],None]",
+                "int",
+                "str",
+                "float"
             ],
             "arguments": {
                 "trades_csv": [
-                    "_T0"
+                    "List[dict[str,Any]]",
+                    "str",
+                    "bool",
+                    "Optional[int]",
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -543,7 +571,7 @@
             "name": "load_all_trades",
             "location": 203,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "list"
             ],
             "arguments": {}
         },
@@ -555,13 +583,11 @@
             ],
             "arguments": {
                 "ledger": [
-                    "list[str]",
-                    "int",
                     "List[str]",
+                    "int",
+                    "Set[Optional[str]]",
                     "float",
-                    "set[typing.Optional[str]]",
-                    "[[]]",
-                    "Set[Optional[str]]"
+                    "[]"
                 ]
             }
         },
@@ -573,13 +599,11 @@
             ],
             "arguments": {
                 "trades": [
-                    "list[str]",
-                    "int",
                     "List[str]",
+                    "int",
+                    "Set[Optional[str]]",
                     "float",
-                    "set[typing.Optional[str]]",
-                    "[[]]",
-                    "Set[Optional[str]]"
+                    "[]"
                 ]
             }
         },
@@ -600,9 +624,7 @@
                 "None"
             ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ],
+                "trades": [],
                 "n": [
                     "None"
                 ]
@@ -612,15 +634,13 @@
             "name": "_sum_trades",
             "location": 43,
             "return": [
-                "Dict[(str, Any)]"
+                "_T0@@"
             ],
             "arguments": {
                 "t1": [
-                    "Dict[(str, Any)]"
+                    "_T0@@"
                 ],
-                "t2": [
-                    "Dict[(str, Any)]"
-                ]
+                "t2": []
             }
         },
         "test_sum_trades": {
@@ -634,11 +654,11 @@
         "_reduce_trades": {
             "name": "_reduce_trades",
             "location": 67,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ]
+                "trades": []
             }
         },
         "_pair_fmt": {
@@ -655,11 +675,11 @@
             "name": "_calc_cost_usd",
             "location": 92,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "_T0@@"
             ],
             "arguments": {
                 "trades": [
-                    "List[Dict[(str, Any)]]"
+                    "_T0@@"
                 ]
             }
         },
@@ -670,24 +690,18 @@
                 "None"
             ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ]
+                "trades": []
             }
         },
         "_filter_trades_by_time": {
             "name": "_filter_trades_by_time",
             "location": 159,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "list"
             ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ],
-                "year": [
-                    "int"
-                ]
+                "trades": [],
+                "year": []
             }
         },
         "test_filter_trades_by_time": {
@@ -702,11 +716,11 @@
             "name": "_flip_pair",
             "location": 175,
             "return": [
-                "Dict[(str, Any)]"
+                "_T0@@"
             ],
             "arguments": {
                 "t": [
-                    "Dict[(str, Any)]"
+                    "_T0@@"
                 ]
             }
         },
@@ -714,11 +728,11 @@
             "name": "_normalize_trade_type",
             "location": 185,
             "return": [
-                "Dict[(str, Any)]"
+                "_T0@@"
             ],
             "arguments": {
                 "t": [
-                    "Dict[(str, Any)]"
+                    "_T0@@"
                 ]
             }
         },
@@ -734,26 +748,22 @@
             "name": "_calculate_delta",
             "location": 213,
             "return": [
-                "Dict[(str, Dict[(str, float)])]"
+                "collections.defaultdict"
             ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ]
+                "trades": []
             }
         },
         "_calculate_inout_balances": {
             "name": "_calculate_inout_balances",
             "location": 229,
             "return": [
-                "Dict[(str, int)]"
+                "Union[(collections.defaultdict, _T1)]"
             ],
             "arguments": {
-                "trades": [
-                    "List[dict]"
-                ],
+                "trades": [],
                 "balances": [
-                    "Dict[(str, int)]"
+                    "None"
                 ]
             }
         },
@@ -761,12 +771,10 @@
             "name": "_aggregate_trades",
             "location": 242,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "list"
             ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ]
+                "trades": []
             }
         },
         "_print_balances": {
@@ -776,11 +784,9 @@
                 "None"
             ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ],
+                "trades": [],
                 "year": [
-                    "int"
+                    "None"
                 ]
             }
         },
@@ -791,11 +797,9 @@
                 "None"
             ],
             "arguments": {
-                "trades": [
-                    "List[Dict[(str, Any)]]"
-                ],
+                "trades": [],
                 "year": [
-                    "int"
+                    "None"
                 ]
             }
         },
@@ -803,7 +807,7 @@
             "name": "get_trades",
             "location": 293,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "Any"
             ],
             "arguments": {}
         },
@@ -885,19 +889,19 @@
                 "None",
                 "bool",
                 "int",
-                "Optional[List[\"custom_index\"]]",
+                "Optional[List[custom_index]]",
                 "Optional[str]"
             ],
             "arguments": {
                 "isin": [
                     "str",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "exchcode": [
-                    "typing.Text",
+                    "Text",
                     "str",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -905,7 +909,6 @@
             "name": "test_get_by_isin",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -945,8 +948,8 @@
                 "asset": [
                     "str",
                     "int",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -975,13 +978,12 @@
                 "trades": [
                     "str",
                     "int",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ],
                 "deposits": [
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -1002,25 +1004,21 @@
             "arguments": {
                 "self": [],
                 "header": [
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "str",
-                    "Dict[str, str]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
-                    "MutableMapping[str, str]"
+                    "MutableMapping[str,str]"
                 ],
                 "_format": [
-                    "dict",
+                    "Dict",
                     "None",
-                    "list",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "list[]",
-                    "List[Dict[str, Any]]",
-                    "dict[str, str]",
-                    "Dict[str, Any]",
-                    "list[dict[str, typing.Any]]",
-                    "Union[bytes, str]",
+                    "List",
+                    "Dict[str,str]",
+                    "List[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "List[dict[str,Any]]",
+                    "Union[bytes,str]",
                     "bytes",
                     "str"
                 ]
@@ -1037,8 +1035,7 @@
                 "key": [
                     "str",
                     "bytes",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "value": [
                     "str",
@@ -1068,9 +1065,8 @@
                 "key": [
                     "int",
                     "bytes",
-                    "str",
                     "List[str]",
-                    "list[str]"
+                    "str"
                 ]
             }
         },
@@ -1083,9 +1079,8 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "list[str]",
-                    "str",
                     "List[str]",
+                    "str",
                     "Iterable[Hashable]"
                 ]
             }
@@ -1104,12 +1099,13 @@
             "name": "__add__",
             "location": 58,
             "return": [
-                "ProfitLoss"
+                "ProfitLoss",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
-                "self": [
-                    "_TProfitLoss"
-                ],
+                "self": [],
                 "other": []
             }
         }
@@ -1130,17 +1126,16 @@
                     "int",
                     "float",
                     "List[str]",
-                    "Tuple[float, float]",
+                    "Tuple[float,float]",
                     "str"
                 ],
                 "duration": [
                     "int",
-                    "float",
                     "List[str]",
-                    "list[str]",
+                    "float",
                     "str",
-                    "Tuple[float, float]",
-                    "tuple[typing.Union[float,float]]"
+                    "Tuple[float,float]",
+                    "Tuple[Union[float,float]]"
                 ]
             }
         },
@@ -1204,16 +1199,36 @@
             ],
             "arguments": {
                 "amount": [
-                    "float"
+                    "str",
+                    "float",
+                    "range",
+                    "int",
+                    "datetime.datetime",
+                    "datetime.date"
                 ],
                 "cfrom": [
-                    "str"
+                    "str",
+                    "float",
+                    "range",
+                    "int",
+                    "datetime.datetime",
+                    "datetime.date"
                 ],
                 "cto": [
-                    "str"
+                    "str",
+                    "float",
+                    "range",
+                    "int",
+                    "datetime.datetime",
+                    "datetime.date"
                 ],
                 "date": [
-                    "_datetime.datetime"
+                    "str",
+                    "float",
+                    "range",
+                    "int",
+                    "datetime.datetime",
+                    "datetime.date"
                 ],
                 "fallback": [
                     "bool",
@@ -1231,7 +1246,11 @@
             ],
             "arguments": {
                 "symbol": [
-                    "_T0"
+                    "str",
+                    "Dict",
+                    "bool",
+                    "Awaitable",
+                    "collections.abc.Awaitable"
                 ]
             }
         }

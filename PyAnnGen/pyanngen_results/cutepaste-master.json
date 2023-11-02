@@ -22,9 +22,8 @@
             "arguments": {
                 "self": [],
                 "get_response": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -55,7 +54,10 @@
                     "django.http.HttpRequest"
                 ],
                 "exception": [
-                    "Exception"
+                    "Exception",
+                    "str",
+                    "scrapy.http.Request",
+                    "fastapi.exceptions.RequestValidationError"
                 ]
             }
         }
@@ -66,7 +68,9 @@
             "name": "render_response",
             "location": 5,
             "return": [
-                "str"
+                "List[str]",
+                "cmk.utils.type_defs.UserId",
+                "dict"
             ],
             "arguments": {
                 "response": [
@@ -84,12 +88,13 @@
             "return": [
                 "JsonResponse",
                 "str",
-                "List[Dict[str, Any]]",
-                "dict"
+                "List[Dict[str,Any]]",
+                "Dict"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         }
@@ -113,16 +118,28 @@
             ],
             "arguments": {
                 "files": [
-                    "List[cutepaste.files.models.File]"
+                    "str",
+                    "List[cutepaste.files.models.File]",
+                    "List[str]",
+                    "Callable[,str]"
                 ],
                 "directory": [
-                    "str"
+                    "str",
+                    "List[cutepaste.files.models.File]",
+                    "List[str]",
+                    "Callable[,str]"
                 ],
                 "clipboard_files": [
-                    "List[str]"
+                    "str",
+                    "List[cutepaste.files.models.File]",
+                    "List[str]",
+                    "Callable[,str]"
                 ],
                 "selection_status": [
-                    "str"
+                    "str",
+                    "List[cutepaste.files.models.File]",
+                    "List[str]",
+                    "Callable[,str]"
                 ]
             }
         },
@@ -130,7 +147,7 @@
             "name": "_get_all_parent_paths",
             "location": 29,
             "return": [
-                "Iterator[Tuple[(str, str)]]"
+                "reversed[Tuple[(Any, str)]]"
             ],
             "arguments": {
                 "start_path": [
@@ -146,13 +163,25 @@
             ],
             "arguments": {
                 "files": [
-                    "List[cutepaste.files.models.File]"
+                    "List[cutepaste.files.models.File]",
+                    "List[str]",
+                    "str",
+                    "int",
+                    "Dict[int, Set[str]]"
                 ],
                 "directory": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "IO",
+                    "TextIO",
+                    "None"
                 ],
                 "clipboard_files": [
-                    "List[str]"
+                    "List[cutepaste.files.models.File]",
+                    "List[str]",
+                    "str",
+                    "int",
+                    "Dict[int, Set[str]]"
                 ]
             }
         },
@@ -164,13 +193,16 @@
             ],
             "arguments": {
                 "directory": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ],
                 "clipboard_files": [
+                    "str",
                     "List[str]"
                 ],
                 "selection_status": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -182,10 +214,16 @@
             ],
             "arguments": {
                 "form": [
-                    "cutepaste.files.forms.FilesEditForm"
+                    "str",
+                    "cutepaste.files.forms.FilesEditForm",
+                    "bool",
+                    "Dict"
                 ],
                 "directory": [
-                    "str"
+                    "str",
+                    "cutepaste.files.forms.FilesEditForm",
+                    "bool",
+                    "Dict"
                 ]
             }
         }
@@ -212,10 +250,12 @@
             "arguments": {
                 "self": [],
                 "absolute_path": [
-                    "str"
+                    "str",
+                    "path.Path"
                 ],
                 "relative_path": [
-                    "str"
+                    "str",
+                    "path.Path"
                 ]
             }
         },
@@ -258,7 +298,8 @@
             "name": "_relative_path",
             "location": 15,
             "return": [
-                "str"
+                "str",
+                "path.Path"
             ],
             "arguments": {
                 "file_path": [
@@ -274,7 +315,9 @@
             ],
             "arguments": {
                 "file_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -282,11 +325,14 @@
             "name": "_sort_files",
             "location": 26,
             "return": [
-                "List[cutepaste.files.models.File]"
+                "list"
             ],
             "arguments": {
                 "files": [
-                    "List[cutepaste.files.models.File]"
+                    "List[cutepaste.files.models.File]",
+                    "bytes",
+                    "Dict",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -298,7 +344,8 @@
             ],
             "arguments": {
                 "files_path": [
-                    "str"
+                    "str",
+                    "cerulean.path.AbstractPath"
                 ]
             }
         },
@@ -322,13 +369,21 @@
             ],
             "arguments": {
                 "operation": [
-                    "Callable[([str, str], Any)]"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "waterbutler.core.path.WaterButlerPath"
                 ],
                 "source_files": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "Tuple[str]",
+                    "Sequence[str]",
+                    "bool"
                 ],
                 "destination_path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -340,10 +395,12 @@
             ],
             "arguments": {
                 "source_files": [
+                    "str",
                     "List[str]"
                 ],
                 "destination_path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -355,10 +412,17 @@
             ],
             "arguments": {
                 "source_file": [
-                    "str"
+                    "Tuple[int,int]",
+                    "str",
+                    "Tuple[Union[int,int]]",
+                    "List[str]",
+                    "bool"
                 ],
                 "destination_file": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "path.Path"
                 ]
             }
         },
@@ -370,10 +434,12 @@
             ],
             "arguments": {
                 "source_files": [
+                    "str",
                     "List[str]"
                 ],
                 "destination_path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -385,7 +451,10 @@
             ],
             "arguments": {
                 "source_files": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "dep_check.models.SourceFile",
+                    "BinaryIO"
                 ]
             }
         }
@@ -398,7 +467,7 @@
             "return": [
                 "HttpResponse",
                 "bytes",
-                "Tuple[Any, int]",
+                "Tuple[Any,int]",
                 "List[str]",
                 "str",
                 "werkzeug.Response"
@@ -408,7 +477,8 @@
                     "django.http.HttpRequest"
                 ],
                 "directory": [
-                    "str"
+                    "collector_utilities.type.Response",
+                    "Text"
                 ]
             }
         },
@@ -427,7 +497,11 @@
                     "apistar.http.RequestData"
                 ],
                 "directory": [
-                    "str"
+                    "Text",
+                    "Dict[str,Any]",
+                    "django.http.HttpRequest",
+                    "rest_framework.requesRequest",
+                    "Dict"
                 ]
             }
         },
@@ -437,7 +511,7 @@
             "return": [
                 "JsonResponse",
                 "int",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "request": [
@@ -451,7 +525,7 @@
             "return": [
                 "Response",
                 "bytes",
-                "dict",
+                "Dict",
                 "flask.Response"
             ],
             "arguments": {
@@ -466,7 +540,7 @@
             "return": [
                 "Response",
                 "bytes",
-                "dict",
+                "Dict",
                 "flask.Response"
             ],
             "arguments": {
@@ -481,16 +555,15 @@
             "return": [
                 "Response",
                 "bytes",
-                "dict",
+                "Dict",
                 "flask.Response"
             ],
             "arguments": {
                 "request": [
-                    "dict[, ]",
+                    "Dict",
                     "django.http.HttpRequest",
                     "rest_framework.requesRequest",
-                    "django.http.requesHttpRequest",
-                    "dict"
+                    "django.http.requesHttpRequest"
                 ]
             }
         },
@@ -500,7 +573,7 @@
             "return": [
                 "Response",
                 "bytes",
-                "dict",
+                "Dict",
                 "flask.Response"
             ],
             "arguments": {
@@ -517,9 +590,9 @@
                 "HttpResponseBadRequest",
                 "str",
                 "Optional[str]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "guillotina.response.Response",
-                "Iterable[Tuple[str, int]]"
+                "Iterable[Tuple[str,int]]"
             ],
             "arguments": {
                 "request": [
@@ -535,7 +608,7 @@
                 "str",
                 "Optional[str]",
                 "guillotina.response.Response",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "request": [
@@ -552,8 +625,8 @@
             "return": [
                 "FilesEditForm",
                 "str",
-                "dict",
-                "Dict[str, List[Any]]",
+                "Dict",
+                "Dict[str,List[Any]]",
                 "Optional[Exception]"
             ],
             "arguments": {}
@@ -567,11 +640,9 @@
             "arguments": {
                 "valid_form": [
                     "str",
-                    "list[int]",
                     "List[int]",
-                    "list[str]",
-                    "Iterable[str]",
-                    "List[str]"
+                    "List[str]",
+                    "Iterable[str]"
                 ]
             }
         }
@@ -582,7 +653,7 @@
             "location": 9,
             "return": [
                 "File",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "tests.models.Customer"
             ],
@@ -596,8 +667,7 @@
             ],
             "arguments": {
                 "file": [
-                    "TextIO",
-                    "typing.TextIO"
+                    "TextIO"
                 ]
             }
         },
@@ -609,8 +679,7 @@
             ],
             "arguments": {
                 "file": [
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "mocker": [
                     "str",
@@ -776,7 +845,7 @@
             "name": "list_of_files",
             "location": 14,
             "return": [
-                "list[typing.Text]",
+                "List[Text]",
                 "str",
                 "Tuple[str]",
                 "BinaryIO"
@@ -816,10 +885,10 @@
             "name": "ensure_listdir_inside_data_dir",
             "location": 41,
             "return": [
-                "list[]",
+                "List",
                 "str",
                 "bytes",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "IO",
                 "Type[Any]"
             ],
@@ -982,9 +1051,7 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
+                "name": [],
                 "is_file": [
                     "bool"
                 ]
@@ -1021,7 +1088,6 @@
             "name": "test_index",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1039,7 +1105,6 @@
             "name": "test_navigate_to_directory",
             "location": 22,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1058,7 +1123,6 @@
             "name": "test_breadcrumbs",
             "location": 38,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1076,7 +1140,6 @@
             "name": "test_breadcrumbs_in_subdirs",
             "location": 47,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1094,7 +1157,6 @@
             "name": "test_remove_file",
             "location": 58,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1113,7 +1175,6 @@
             "name": "test_copy_paste_file",
             "location": 85,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1132,7 +1193,6 @@
             "name": "test_cut_paste_file",
             "location": 133,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1151,7 +1211,6 @@
             "name": "test_select_all_then_none",
             "location": 181,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1168,7 +1227,6 @@
             "name": "test_buttons_visibility_no_selection_no_clipboard",
             "location": 202,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1188,7 +1246,6 @@
             "name": "test_buttons_visibility_no_selection_with_clipboard",
             "location": 214,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1206,7 +1263,6 @@
             "name": "test_buttons_visibility_with_selection_no_clipboard",
             "location": 246,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1225,7 +1281,6 @@
             "name": "test_buttons_visibility_with_selection_with_clipboard",
             "location": 269,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1246,7 +1301,6 @@
             "name": "webdriver",
             "location": 14,
             "return": [
-                "",
                 "typing.Generator[Chrome]"
             ],
             "arguments": {
@@ -1259,7 +1313,6 @@
             "name": "data_files",
             "location": 41,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}

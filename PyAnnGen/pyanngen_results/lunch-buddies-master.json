@@ -11,10 +11,12 @@
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.BotMention"
+                    "str",
+                    "int"
                 ],
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "bytes",
+                    "zulip_bots.lib.Any"
                 ]
             }
         },
@@ -22,11 +24,11 @@
             "name": "_parse_message",
             "location": 80,
             "return": [
-                "Optional[Tuple[(str, str)]]"
+                "Optional[Tuple[(Any, str)]]"
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.BotMention"
+                    "str"
                 ]
             }
         },
@@ -34,7 +36,7 @@
             "name": "_split_text",
             "location": 93,
             "return": [
-                "Tuple[(str, str)]"
+                "Tuple[(Any, str)]"
             ],
             "arguments": {
                 "text": [
@@ -46,11 +48,16 @@
             "name": "parse_raw_request",
             "location": 101,
             "return": [
-                "lunch_buddies.types.BotMention"
+                "BotMention",
+                "str",
+                "bool",
+                "Dict"
             ],
             "arguments": {
                 "raw_request_form": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -60,23 +67,32 @@
             "name": "close_poll",
             "location": 17,
             "return": [
-                "List[lunch_buddies.types.GroupsToNotifyMessage]"
+                "list"
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.PollsToCloseMessage"
-                ],
-                "slack_client": [
-                    "lunch_buddies.clients.slack.SlackClient"
-                ],
-                "polls_dao": [
                     "lunch_buddies.dao.polls.PollsDao"
                 ],
+                "slack_client": [
+                    "bool",
+                    "lunch_buddies.clients.slack.SlackClient",
+                    "int"
+                ],
+                "polls_dao": [
+                    "int",
+                    "lunch_buddies.dao.polls.PollsDao",
+                    "bool"
+                ],
                 "poll_responses_dao": [
-                    "lunch_buddies.dao.poll_responses.PollResponsesDao"
+                    "int",
+                    "str",
+                    "dict",
+                    "Optional[str]",
+                    "Dict[str, Dict[str, Any]]"
                 ],
                 "teams_dao": [
-                    "lunch_buddies.dao.teams.TeamsDao"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -84,29 +100,35 @@
             "name": "_guess_channel_id",
             "location": 80,
             "return": [
-                "Optional[str]"
+                "None",
+                "Optional[bool]",
+                "Optional[str]",
+                "str",
+                "List[str]",
+                "bool",
+                "int"
             ],
             "arguments": {
-                "slack_client": [
-                    "lunch_buddies.clients.slack.SlackClient"
-                ],
-                "team": [
-                    "lunch_buddies.models.teams.Team"
-                ]
+                "slack_client": [],
+                "team": []
             }
         },
         "_group_by_answer": {
             "name": "_group_by_answer",
             "location": 90,
             "return": [
-                "Dict[(lunch_buddies.models.polls.Choice, List[lunch_buddies.models.poll_responses.PollResponse])]"
+                "collections.defaultdict"
             ],
             "arguments": {
                 "poll_responses": [
-                    "List[lunch_buddies.models.poll_responses.PollResponse]"
+                    "Dict[str,Any]"
                 ],
                 "poll": [
-                    "lunch_buddies.models.polls.Poll"
+                    "Dict",
+                    "str",
+                    "lunch_buddies.models.polls.Poll",
+                    "Dict[str,str]",
+                    "lunch_buddies.types.CreatePoll"
                 ]
             }
         },
@@ -114,14 +136,24 @@
             "name": "_get_choice_from_response",
             "location": 102,
             "return": [
-                "lunch_buddies.models.polls.Choice"
+                "List[int]",
+                "List[str]",
+                "int",
+                "List[Tuple[int, int]]",
+                "Set[str]"
             ],
             "arguments": {
                 "poll_response": [
+                    "Dict[str,Any]",
+                    "Dict",
+                    "lunch_buddies.models.polls.Poll",
                     "lunch_buddies.models.poll_responses.PollResponse"
                 ],
                 "poll": [
-                    "lunch_buddies.models.polls.Poll"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "lunch_buddies.models.polls.Poll",
+                    "lunch_buddies.models.poll_responses.PollResponse"
                 ]
             }
         },
@@ -129,20 +161,29 @@
             "name": "_get_groups",
             "location": 111,
             "return": [
-                "List[List[T]]"
+                "List",
+                "Optional[str]",
+                "zerver.models.Realm",
+                "bool",
+                "str"
             ],
             "arguments": {
                 "elements": [
-                    "List[T]"
+                    "int"
                 ],
                 "group_size": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool",
+                    "Callable"
                 ],
                 "min_group_size": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "max_group_size": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -152,20 +193,27 @@
             "name": "create_poll",
             "location": 30,
             "return": [
-                "List[lunch_buddies.types.UsersToPollMessage]"
+                "list"
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.PollsToStartMessage"
+                    "int",
+                    "Dict[str,Any]",
+                    "str",
+                    "models.characters.character_base.Character",
+                    "bool"
                 ],
                 "slack_client": [
-                    "lunch_buddies.clients.slack.SlackClient"
+                    "telethon.tl.types.Channel"
                 ],
                 "polls_dao": [
-                    "lunch_buddies.dao.polls.PollsDao"
+                    "int",
+                    "Awaitable",
+                    "List[src.main.core.models.area.Area]"
                 ],
                 "teams_dao": [
-                    "lunch_buddies.dao.teams.TeamsDao"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -173,18 +221,17 @@
             "name": "_get_default_channel_id",
             "location": 94,
             "return": [
-                "Optional[str]"
+                "None",
+                "Optional[str]",
+                "bool",
+                "Optional[float]"
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.PollsToStartMessage"
+                    "axion.utils.types.AnyCallable"
                 ],
-                "slack_client": [
-                    "lunch_buddies.clients.slack.SlackClient"
-                ],
-                "team": [
-                    "lunch_buddies.models.teams.Team"
-                ]
+                "slack_client": [],
+                "team": []
             }
         },
         "_get_uuid": {
@@ -207,11 +254,16 @@
             "name": "parse_message_text",
             "location": 152,
             "return": [
-                "Tuple[(List[lunch_buddies.models.polls.Choice], int)]"
+                "Tuple[(list, int)]"
             ],
             "arguments": {
                 "text": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes",
+                    "None",
+                    "opentrons.types.Location",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -219,11 +271,12 @@
             "name": "_get_group_size_from_text",
             "location": 173,
             "return": [
-                "Tuple[(str, int)]"
+                "Tuple[(Any, int)]"
             ],
             "arguments": {
                 "text": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -231,10 +284,14 @@
             "name": "get_choice_from_raw_option",
             "location": 190,
             "return": [
-                "lunch_buddies.models.polls.Choice"
+                "Choice",
+                "int",
+                "bool"
             ],
             "arguments": {
                 "option": [
+                    "T",
+                    "Exception",
                     "str"
                 ]
             }
@@ -247,7 +304,8 @@
             ],
             "arguments": {
                 "raw_option": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -260,7 +318,10 @@
             "arguments": {
                 "self": [],
                 "option": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -273,7 +334,9 @@
             "arguments": {
                 "self": [],
                 "size": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -287,16 +350,21 @@
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.BotMention"
-                ],
-                "rest_of_command": [
                     "str"
                 ],
+                "rest_of_command": [
+                    "str",
+                    "bytes"
+                ],
                 "team": [
-                    "lunch_buddies.models.teams.Team"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -308,7 +376,8 @@
             ],
             "arguments": {
                 "rest_of_command": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -320,13 +389,24 @@
             ],
             "arguments": {
                 "poll": [
-                    "lunch_buddies.models.polls.Poll"
+                    "int",
+                    "str",
+                    "float",
+                    "datetime.datetime",
+                    "app.models.GameMember"
                 ],
                 "groups_dao": [
-                    "lunch_buddies.dao.groups.GroupsDao"
+                    "str",
+                    "int",
+                    "Optional[Tuple[int, int]]"
                 ],
                 "user_tz": [
-                    "str"
+                    "int",
+                    "str",
+                    "float",
+                    "Dict",
+                    "datetime.datetime",
+                    "app.models.GameMember"
                 ]
             }
         },
@@ -334,14 +414,25 @@
             "name": "_get_choice_from_key",
             "location": 87,
             "return": [
-                "lunch_buddies.models.polls.Choice"
+                "lunch_buddies.models.polls.Choice",
+                "Text",
+                "List[int]",
+                "Tuple[int]",
+                "Tuple[int,int]",
+                "Set[str]",
+                "Sequence[Any]",
+                "int"
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "List[lunch_buddies.models.polls.Choice]",
+                    "str",
+                    "List[str]"
                 ],
                 "choices": [
-                    "List[lunch_buddies.models.polls.Choice]"
+                    "List[lunch_buddies.models.polls.Choice]",
+                    "str",
+                    "List[str]"
                 ]
             }
         }
@@ -355,10 +446,17 @@
             ],
             "arguments": {
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "Callable",
+                    "lunch_buddies.lib.service_contexServiceContext",
+                    "str",
+                    "bool"
                 ],
                 "dry_run": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -366,17 +464,23 @@
             "name": "_get_line_item",
             "location": 51,
             "return": [
-                "lunch_buddies.clients.stripe.LineItem"
+                "LineItem",
+                "str",
+                "Mapping[str,Any]"
             ],
             "arguments": {
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "float",
+                    "server.models.bike.Bike",
+                    "server.models.Rental"
                 ],
                 "team": [
-                    "lunch_buddies.models.teams.Team"
+                    "Dict[str,Any]",
+                    "purplship.core.models.ShipmentRequest"
                 ],
                 "polls": [
-                    "List[lunch_buddies.models.polls.Poll]"
+                    "str",
+                    "tracim.models.User"
                 ]
             }
         },
@@ -384,11 +488,13 @@
             "name": "_find_teams_eligible_for_invoicing",
             "location": 71,
             "return": [
-                "List[lunch_buddies.models.teams.Team]"
+                "list"
             ],
             "arguments": {
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "List[int]",
+                    "Dict[str,Any]",
+                    "lunch_buddies.lib.service_contexServiceContext"
                 ]
             }
         },
@@ -396,13 +502,19 @@
             "name": "_get_polls_needing_invoice",
             "location": 85,
             "return": [
-                "List[lunch_buddies.models.polls.Poll]"
+                "list"
             ],
             "arguments": {
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "List[int]",
+                    "Dict[str,Any]",
+                    "lunch_buddies.lib.service_contexServiceContext",
+                    "lunch_buddies.models.teams.Team"
                 ],
                 "team": [
+                    "List[int]",
+                    "Dict[str,Any]",
+                    "lunch_buddies.lib.service_contexServiceContext",
                     "lunch_buddies.models.teams.Team"
                 ]
             }
@@ -411,14 +523,18 @@
             "name": "_get_unique_yes_users_from_polls",
             "location": 97,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "List[lunch_buddies.models.polls.Poll]",
+                    "Dict",
+                    "lunch_buddies.lib.service_contexServiceContext"
                 ],
                 "polls": [
-                    "List[lunch_buddies.models.polls.Poll]"
+                    "List[lunch_buddies.models.polls.Poll]",
+                    "Dict",
+                    "lunch_buddies.lib.service_contexServiceContext"
                 ]
             }
         },
@@ -436,17 +552,33 @@
             "name": "listen_to_poll",
             "location": 13,
             "return": [
-                "Dict[(str, Any)]"
+                "bytes",
+                "int",
+                "IO",
+                "List[str]",
+                "str"
             ],
             "arguments": {
                 "request_form": [
-                    "lunch_buddies.types.ListenToPoll"
+                    "int",
+                    "zerver.models.UserProfile",
+                    "bytes",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]"
                 ],
                 "polls_dao": [
-                    "lunch_buddies.dao.polls.PollsDao"
+                    "str",
+                    "int",
+                    "Mapping",
+                    "Dict",
+                    "zerver.models.UserProfile",
+                    "Mapping[str,Any]",
+                    "List[dict[str,Any]]",
+                    "lunch_buddies.dao.polls.PollsDao",
+                    "List[Dict[str,Any]]"
                 ],
                 "poll_responses_dao": [
-                    "lunch_buddies.dao.poll_responses.PollResponsesDao"
+                    "Optional[str]"
                 ]
             }
         }
@@ -459,20 +591,28 @@
                 "None"
             ],
             "arguments": {
-                "message": [
-                    "lunch_buddies.types.GroupsToNotifyMessage"
-                ],
+                "message": [],
                 "slack_client": [
+                    "bool",
+                    "Callable",
                     "lunch_buddies.clients.slack.SlackClient"
                 ],
                 "polls_dao": [
-                    "lunch_buddies.dao.polls.PollsDao"
+                    "int",
+                    "str",
+                    "lunch_buddies.models.teams.Team",
+                    "lunch_buddies.clients.slack.SlackClient",
+                    "lunch_buddies.models.polls.Poll",
+                    "app.user.models.User"
                 ],
                 "teams_dao": [
-                    "lunch_buddies.dao.teams.TeamsDao"
+                    "bool",
+                    "str"
                 ],
                 "groups_dao": [
-                    "lunch_buddies.dao.groups.GroupsDao"
+                    "bool",
+                    "bytes",
+                    "str"
                 ]
             }
         },
@@ -484,17 +624,16 @@
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.GroupsToNotifyMessage"
+                    "float",
+                    "server.models.bike.Bike",
+                    "models.User",
+                    "models.RepoInterface",
+                    "server.models.Rental",
+                    "zam_repondeur.models.Dossier"
                 ],
-                "slack_client": [
-                    "lunch_buddies.clients.slack.SlackClient"
-                ],
-                "team": [
-                    "lunch_buddies.models.teams.Team"
-                ],
-                "choice": [
-                    "lunch_buddies.models.polls.Choice"
-                ]
+                "slack_client": [],
+                "team": [],
+                "choice": []
             }
         },
         "_notify_in_channel": {
@@ -505,19 +644,29 @@
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.GroupsToNotifyMessage"
+                    "List[str]",
+                    "str",
+                    "telethon.tl.types.Channel"
                 ],
                 "slack_client": [
-                    "lunch_buddies.clients.slack.SlackClient"
+                    "bool",
+                    "List"
                 ],
                 "team": [
-                    "lunch_buddies.models.teams.Team"
+                    "bool",
+                    "List"
                 ],
                 "poll": [
-                    "lunch_buddies.models.polls.Poll"
+                    "bool",
+                    "List"
                 ],
                 "choice": [
-                    "lunch_buddies.models.polls.Choice"
+                    "bool",
+                    "List[str]",
+                    "lunch_buddies.models.polls.Choice",
+                    "str",
+                    "lunch_buddies.types.GroupsToNotifyMessage",
+                    "int"
                 ]
             }
         }
@@ -531,10 +680,11 @@
             ],
             "arguments": {
                 "request_form": [
-                    "lunch_buddies.types.Auth"
+                    "Dict[str,Any]"
                 ],
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "django.db.models.QuerySet",
+                    "viewer.models.Archive.QuerySet"
                 ]
             }
         },
@@ -556,15 +706,21 @@
             ],
             "arguments": {
                 "message": [
-                    "lunch_buddies.types.UsersToPollMessage"
+                    "bool"
                 ],
                 "slack_client": [
+                    "bool",
                     "lunch_buddies.clients.slack.SlackClient"
                 ],
                 "polls_dao": [
-                    "lunch_buddies.dao.polls.PollsDao"
+                    "int",
+                    "str",
+                    "lunch_buddies.models.teams.Team",
+                    "lunch_buddies.clients.slack.SlackClient",
+                    "lunch_buddies.models.polls.Poll"
                 ],
                 "teams_dao": [
+                    "str",
                     "lunch_buddies.dao.teams.TeamsDao"
                 ]
             }
@@ -578,11 +734,9 @@
                 "str"
             ],
             "arguments": {
-                "request_form": [
-                    "lunch_buddies.types.ClosePoll"
-                ],
+                "request_form": [],
                 "service_contect": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "lunch_buddies.lib.service_contexServiceContext"
                 ]
             }
         },
@@ -590,11 +744,18 @@
             "name": "_is_help",
             "location": 26,
             "return": [
-                "bool"
+                "bool",
+                "Callable[...,None]",
+                "Optional[recidiviz.common.constants.state.state_supervision_period.StateSupervisionPeriodSupervisionType]",
+                "Callable[[KT],VT]"
             ],
             "arguments": {
                 "request_form": [
-                    "lunch_buddies.types.ClosePoll"
+                    "str",
+                    "lunch_buddies.types.CreatePoll",
+                    "Dict[str,str]",
+                    "Exception",
+                    "Dict"
                 ]
             }
         }
@@ -608,10 +769,12 @@
             ],
             "arguments": {
                 "request_form": [
-                    "lunch_buddies.types.CreatePoll"
+                    "Dict[str,Any]",
+                    "lunch_buddies.types.CreatePoll",
+                    "lunch_buddies.lib.service_contexServiceContext"
                 ],
                 "service_context": [
-                    "lunch_buddies.lib.service_context.ServiceContext"
+                    "lunch_buddies.lib.service_contexServiceContext"
                 ]
             }
         },
@@ -619,11 +782,18 @@
             "name": "_is_help",
             "location": 37,
             "return": [
-                "bool"
+                "bool",
+                "Callable[...,None]",
+                "Optional[recidiviz.common.constants.state.state_supervision_period.StateSupervisionPeriodSupervisionType]",
+                "Callable[[KT],VT]"
             ],
             "arguments": {
                 "request_form": [
-                    "lunch_buddies.types.CreatePoll"
+                    "str",
+                    "lunch_buddies.types.CreatePoll",
+                    "Dict[str,str]",
+                    "Exception",
+                    "Dict"
                 ]
             }
         },
@@ -635,6 +805,8 @@
             ],
             "arguments": {
                 "request_form": [
+                    "str",
+                    "Dict",
                     "lunch_buddies.types.CreatePoll"
                 ]
             }
@@ -650,7 +822,8 @@
             ],
             "arguments": {
                 "func": [
-                    "Callable[([lunch_buddies.clients.sqs_v2.SqsMessage], None)]"
+                    "Callable",
+                    "Callable[...,None]"
                 ]
             }
         },
@@ -662,10 +835,9 @@
             ],
             "arguments": {
                 "message": [
-                    "dict",
-                    "dict[, ]",
-                    "MutableMapping[str, Any]",
-                    "typing.MutableMapping"
+                    "Dict",
+                    "MutableMapping[str,Any]",
+                    "MutableMapping"
                 ]
             }
         },
@@ -677,13 +849,11 @@
             ],
             "arguments": {
                 "message": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Dict",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -721,8 +891,7 @@
                 "message": [
                     "str",
                     "bool",
-                    "List[object]",
-                    "list[object]"
+                    "List[object]"
                 ]
             }
         },
@@ -752,8 +921,7 @@
             "name": "_validate_request_token",
             "location": 34,
             "return": [
-                "bool",
-                "Optional[str]"
+                "bool"
             ],
             "arguments": {
                 "token": [
@@ -853,7 +1021,7 @@
             "name": "bot_http",
             "location": 165,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "int",
                 "Callable",
                 "str"
@@ -864,7 +1032,7 @@
             "name": "error_http",
             "location": 185,
             "return": [
-                "builtins.str",
+                "str",
                 "None"
             ],
             "arguments": {}
@@ -885,17 +1053,13 @@
                 "self": [],
                 "url": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict",
+                    "Dict[str,str]"
                 ],
                 "params": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict",
+                    "Dict[str,str]"
                 ]
             }
         }
@@ -913,8 +1077,8 @@
                     "int",
                     "str",
                     "float",
-                    "List[Tuple[int, int]]",
-                    "list[tuple[typing.Union[int,int]]]"
+                    "List[Tuple[int,int]]",
+                    "List[tuple[Union[int,int]]]"
                 ]
             }
         },
@@ -929,14 +1093,11 @@
                 "self": [],
                 "token": [
                     "str",
+                    "Dict[str,str]",
                     "Optional[str]",
-                    "None",
-                    "Dict[str, str]",
-                    "dict[str, str]",
                     "List[int]",
-                    "list[int]",
-                    "Dict[int, str]",
-                    "dict[int, str]"
+                    "None",
+                    "Dict[int,str]"
                 ]
             }
         },
@@ -946,7 +1107,7 @@
             "return": [
                 "OpenConversationResponse",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "Optional[int]"
             ],
             "arguments": {
@@ -963,7 +1124,7 @@
                 "PostMessageResponse",
                 "int",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "Optional[Dict]"
             ],
             "arguments": {
@@ -1027,11 +1188,7 @@
             "name": "_channels_list_internal",
             "location": 96,
             "return": [
-                "list[Channel]",
-                "bool",
-                "Optional[str]",
-                "Optional[Union[Any, str]]",
-                "dict"
+                "list"
             ],
             "arguments": {
                 "self": [],
@@ -1044,8 +1201,7 @@
             "name": "conversations_members",
             "location": 104,
             "return": [
-                "str",
-                "list[]"
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
@@ -1054,10 +1210,8 @@
                 ],
                 "channel_id": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -1068,7 +1222,7 @@
                 "User",
                 "str",
                 "Optional[str]",
-                "dict",
+                "Dict",
                 "List[str]",
                 "bool"
             ],
@@ -1080,9 +1234,8 @@
                 "user_id": [
                     "str",
                     "int",
-                    "Union[int, str]",
-                    "dict[str, str]",
-                    "Dict[str, str]"
+                    "Dict[str,str]",
+                    "Union[int,str]"
                 ]
             }
         },
@@ -1097,14 +1250,11 @@
                 "bot_access_token": [
                     "str",
                     "int",
-                    "list",
-                    "list[]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[Any, Dict[str, Any]]",
-                    "dict[typing.Any, dict[str, typing.Any]]",
-                    "dict",
-                    "dict[, ]"
+                    "List",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Dict[Any,Dict[str,Any]]",
+                    "Dict[Any,dict[str,Any]]"
                 ],
                 "name": [
                     "str",
@@ -1119,7 +1269,7 @@
             "name": "default",
             "location": 39,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "bool",
                 "str",
                 "int"
@@ -1130,10 +1280,9 @@
                     "float",
                     "str",
                     "int",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "datetime.timedelta",
-                    "datetime.datetime",
-                    "Dict[str, str]"
+                    "datetime.datetime"
                 ]
             }
         },
@@ -1151,11 +1300,7 @@
             "name": "object_hook",
             "location": 52,
             "return": [
-                "str",
-                "UUID",
-                "int",
-                "bool",
-                "float"
+                "Union[(_datetime.datetime, uuid.UUID, _T0)]"
             ],
             "arguments": {
                 "self": [],
@@ -1164,7 +1309,7 @@
                     "float",
                     "int",
                     "datetime.timedelta",
-                    "Dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -1182,7 +1327,7 @@
             "name": "_name_for_queue_stage",
             "location": 72,
             "return": [
-                "str"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "self": [],
@@ -1190,7 +1335,7 @@
                     "str"
                 ],
                 "stage": [
-                    "lunch_buddies.constants.stages.Stage"
+                    "str"
                 ]
             }
         },
@@ -1216,7 +1361,11 @@
             "arguments": {
                 "self": [],
                 "arn": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Union[str,IO]",
+                    "Callable",
+                    "IO[str]"
                 ]
             }
         },
@@ -1224,12 +1373,20 @@
             "name": "_parse_sqs_message",
             "location": 97,
             "return": [
-                "SqsMessage"
+                "SqsMessage",
+                "str",
+                "Optional[int]",
+                "Optional[str]",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict",
+                    "Mapping[str,Any]",
+                    "int",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1237,12 +1394,14 @@
             "name": "parse_sqs_messages",
             "location": 121,
             "return": [
-                "List[SqsMessage]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "List[dict]",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -1255,10 +1414,12 @@
             "arguments": {
                 "self": [],
                 "queue_name": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "message": [
-                    "NamedTuple"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1271,10 +1432,19 @@
             "arguments": {
                 "self": [],
                 "queue_name": [
-                    "str"
+                    "List[Dict[str,Any]]",
+                    "str",
+                    "List[dict[str,Any]]",
+                    "Type"
                 ],
                 "messages": [
-                    "List[NamedTuple]"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "Iterable[float]",
+                    "Any",
+                    "Optional[Callable]",
+                    "int"
                 ]
             }
         },
@@ -1287,7 +1457,11 @@
             "arguments": {
                 "self": [],
                 "sqs_message": [
-                    "SqsMessage"
+                    "str",
+                    "int",
+                    "Callable[[None,None],bool]",
+                    "Dict",
+                    "Callable[N,bool]"
                 ]
             }
         }
@@ -1307,7 +1481,10 @@
             "name": "create_customer",
             "location": 31,
             "return": [
-                "Optional[Customer]"
+                "Optional[int]",
+                "None",
+                "str",
+                "Customer"
             ],
             "arguments": {
                 "self": [],
@@ -1331,16 +1508,20 @@
             "arguments": {
                 "self": [],
                 "customer_id": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "email": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "team_name": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1348,12 +1529,17 @@
             "name": "latest_invoice_for_customer",
             "location": 55,
             "return": [
-                "Optional[Invoice]"
+                "Optional[str]",
+                "None",
+                "Optional[int]",
+                "Invoice"
             ],
             "arguments": {
                 "self": [],
                 "customer_id": [
-                    "str"
+                    "str",
+                    "Iterable[int]",
+                    "int"
                 ]
             }
         },
@@ -1361,15 +1547,22 @@
             "name": "create_invoice",
             "location": 69,
             "return": [
-                "Optional[Invoice]"
+                "None",
+                "Optional[int]",
+                "Invoice",
+                "Optional[bool]",
+                "str",
+                "Optional[float]"
             ],
             "arguments": {
                 "self": [],
                 "customer": [
-                    "Customer"
+                    "bool"
                 ],
                 "line_items": [
-                    "List[LineItem]"
+                    "List[dict]",
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -1385,15 +1578,13 @@
             "name": "convert_to_dynamo",
             "location": 13,
             "return": [
-                "bool",
-                "dict[typing.Text, str]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "q": [
                     "str",
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "zerver.models.Realm",
                     "models.Name"
                 ]
@@ -1406,19 +1597,18 @@
                 "Group",
                 "float",
                 "flask_appbuilder.security.sqla.models.User",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
                 "self": [],
                 "q": [
-                    "list[deeplearning.ml4pl.models.log_database.Batch]",
-                    "str",
                     "List[deeplearning.ml4pl.models.log_database.Batch]",
-                    "Dict[str, Any]",
+                    "str",
+                    "Dict[str,Any]",
                     "Callable",
                     "models.scenes.inventory_scene.InventoryScene",
-                    "dict"
+                    "Dict"
                 ]
             }
         }
@@ -1428,10 +1618,10 @@
             "name": "choices_from_dynamo",
             "location": 90,
             "return": [
-                "list[Choice]",
+                "List[Choice]",
                 "bool",
                 "Set[str]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "Iterable[int]"
             ],
@@ -1440,9 +1630,7 @@
                     "str",
                     "bool",
                     "Tuple[str]",
-                    "tuple[str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1459,14 +1647,11 @@
             ],
             "arguments": {
                 "value": [
-                    "list[lunch_buddies.models.polls.Choice]",
                     "List[lunch_buddies.models.polls.Choice]",
-                    "list[]",
-                    "list[str]",
+                    "List",
+                    "List[str]",
                     "str",
-                    "Callable[[], Iterator[Any]]",
-                    "list",
-                    "List[str]"
+                    "Callable[,Iterator[Any]]"
                 ]
             }
         },
@@ -1486,9 +1671,8 @@
                 ],
                 "callback_id": [
                     "str",
-                    "dict[, ]",
-                    "transfer.models.SnippetID",
-                    "dict"
+                    "Dict",
+                    "transfer.models.SnippetID"
                 ]
             }
         },
@@ -1513,10 +1697,9 @@
                     "Optional[str]",
                     "str",
                     "int",
-                    "None",
-                    "uuid.UUID",
                     "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "None",
+                    "uuid.UUID"
                 ]
             }
         },
@@ -1553,7 +1736,7 @@
             "name": "convert_to_dynamo",
             "location": 59,
             "return": [
-                "dict[typing.Text, typing.Union[None,str]]",
+                "Dict[Text,Union[None,str]]",
                 "bool",
                 "models.seat_group.SeatGroup",
                 "ticketing.models.ticket_bundle.TicketBundle",
@@ -1574,11 +1757,11 @@
             "location": 72,
             "return": [
                 "Poll",
-                "Dict[str, Any]",
-                "Tuple[str, str]",
+                "Dict[str,Any]",
+                "Tuple[str,str]",
                 "List[server.models.Rental]",
                 "bool",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "int"
             ],
             "arguments": {
@@ -1598,8 +1781,7 @@
             "name": "convert_to_dynamo",
             "location": 16,
             "return": [
-                "bool",
-                "dict[typing.Text, str]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -1615,12 +1797,7 @@
             "name": "convert_from_dynamo",
             "location": 24,
             "return": [
-                "PollResponse",
-                "Dict[str, str]",
-                "int",
-                "bool",
-                "Dict[str, Any]",
-                "str"
+                "lunch_buddies.models.poll_responses.PollResponse"
             ],
             "arguments": {
                 "self": [],
@@ -1638,21 +1815,17 @@
             "name": "convert_to_dynamo",
             "location": 14,
             "return": [
-                "dict[typing.Text, typing.Union[int,None]]",
-                "bool",
-                "Dict[str, Any]",
-                "Union[int, float, complex]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "var": [
                     "bool",
                     "str",
-                    "list[]",
-                    "list",
+                    "List",
                     "float",
                     "paradigm.models.Plain",
-                    "Union[int, float]"
+                    "Union[int,float]"
                 ]
             }
         },
@@ -1661,22 +1834,21 @@
             "location": 28,
             "return": [
                 "Team",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "bool",
                 "List[server.models.Rental]",
-                "Tuple[str, str]",
+                "Tuple[str,str]",
                 "django.db.models.Q.uerySet",
-                "dict",
-                "Dict[str, str]"
+                "Dict",
+                "Dict[str,str]"
             ],
             "arguments": {
                 "self": [],
                 "var": [
                     "str",
-                    "list[]",
+                    "List",
                     "Optional[Dict]",
-                    "list",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool"
                 ]
             }
@@ -1692,7 +1864,10 @@
             ],
             "arguments": {
                 "var": [
-                    "_datetime.datetime"
+                    "datetime.datetime",
+                    "int",
+                    "Sequence[float]",
+                    "decimal.Decimal"
                 ]
             }
         },
@@ -1704,7 +1879,13 @@
             ],
             "arguments": {
                 "var": [
-                    "Optional[Union[(int, str, decimal.Decimal)]]"
+                    "str",
+                    "bool",
+                    "List",
+                    "bytes",
+                    "Tuple[float,float]",
+                    "float",
+                    "Tuple[Union[float,float]]"
                 ]
             }
         }
@@ -1729,7 +1910,7 @@
             "name": "team_summary",
             "location": 18,
             "return": [
-                "dict[typing.Text, typing.Union[int,None,int]]",
+                "Dict[Text,Union[int,None,int]]",
                 "str",
                 "bool"
             ],
@@ -1875,7 +2056,7 @@
                     "str",
                     "bool",
                     "List[List[str]]",
-                    "list[list[str]]"
+                    "List[list[str]]"
                 ]
             }
         },
@@ -1888,11 +2069,10 @@
             "arguments": {
                 "raw_request": [
                     "str",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "None",
-                    "dict[, ]"
+                    "Dict",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "None"
                 ],
                 "expected": [
                     "str",
@@ -1909,8 +2089,7 @@
             "arguments": {
                 "text": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "expected": [
                     "str",
@@ -1939,12 +2118,12 @@
             "arguments": {
                 "mocker": [],
                 "mocked_slack": [
-                    "Generator[None, Any, None]",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                    "Generator[None,Any,None]",
+                    "Generator[Union[None,Any,None]]"
                 ],
                 "mocked_team": [
-                    "Generator[None, Any, None]",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                    "Generator[None,Any,None]",
+                    "Generator[Union[None,Any,None]]"
                 ]
             }
         },
@@ -2063,28 +2242,23 @@
             "arguments": {
                 "elements": [
                     "int",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ],
                 "group_size": [
                     "int",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ],
                 "min_group_size": [
                     "int",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ],
                 "max_group_size": [
                     "int",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ],
                 "expected": [
                     "List[str]",
                     "int",
-                    "list[str]",
                     "Optional[str]",
                     "str",
                     "tests.conftesWorker",
@@ -2108,12 +2282,9 @@
             ],
             "arguments": {
                 "elements": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "deeplearning.ml4pl.models.log_database.Database"
                 ]
             }
@@ -2137,8 +2308,7 @@
             "arguments": {
                 "mocker": [
                     "int",
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "starlette.types.Message"
                 ]
             }
@@ -2225,12 +2395,12 @@
             "arguments": {
                 "mocker": [],
                 "mocked_slack": [
-                    "Generator[None, Any, None]",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                    "Generator[None,Any,None]",
+                    "Generator[Union[None,Any,None]]"
                 ],
                 "mocked_team": [
-                    "Generator[None, Any, None]",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                    "Generator[None,Any,None]",
+                    "Generator[Union[None,Any,None]]"
                 ]
             }
         },
@@ -2259,8 +2429,7 @@
                 ],
                 "expected_group_size": [
                     "int",
-                    "Iterable[int]",
-                    "typing.Iterable[int]"
+                    "Iterable[int]"
                 ]
             }
         },
@@ -2277,7 +2446,6 @@
                 ],
                 "expected_group_size": [
                     "int",
-                    "typing.Iterable[int]",
                     "Iterable[int]",
                     "bool"
                 ]
@@ -2304,15 +2472,14 @@
             "arguments": {
                 "rest_of_command": [
                     "str",
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "expected": [
                     "bytes",
                     "int",
                     "str",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
                     "None"
                 ]
             }
@@ -2337,12 +2504,10 @@
             ],
             "arguments": {
                 "mocker": [
-                    "List[T]",
-                    "list[T]"
+                    "List[T]"
                 ],
                 "mocked_data": [
-                    "List[T]",
-                    "list[T]"
+                    "List[T]"
                 ]
             }
         },
@@ -2366,8 +2531,7 @@
             "arguments": {
                 "mocker": [],
                 "mocked_data": [
-                    "List[T]",
-                    "list[T]"
+                    "List[T]"
                 ]
             }
         },
@@ -2382,8 +2546,7 @@
                     "str"
                 ],
                 "mocked_data": [
-                    "List[T]",
-                    "list[T]"
+                    "List[T]"
                 ]
             }
         },
@@ -2413,8 +2576,7 @@
                     "bool"
                 ],
                 "now": [
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "created_ats": [
                     "str",
@@ -2459,10 +2621,9 @@
             "arguments": {
                 "mocker": [],
                 "mocked_polls": [
-                    "Generator[None, Any, None]",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]",
+                    "Generator[None,Any,None]",
                     "List[T]",
-                    "list[T]"
+                    "Generator[Union[None,Any,None]]"
                 ]
             }
         }
@@ -2530,11 +2691,10 @@
             "arguments": {
                 "mocker": [],
                 "mocked_slack": [
-                    "list[T]",
-                    "tests.test_util.aiohttp.AiohttpClientMocker",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]",
                     "List[T]",
-                    "Generator[None, Any, None]"
+                    "tests.test_util.aiohttp.AiohttpClientMocker",
+                    "Generator[Union[None,Any,None]]",
+                    "Generator[None,Any,None]"
                 ]
             }
         },
@@ -2547,11 +2707,10 @@
             "arguments": {
                 "mocker": [],
                 "mocked_slack": [
-                    "list[T]",
-                    "tests.test_util.aiohttp.AiohttpClientMocker",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]",
                     "List[T]",
-                    "Generator[None, Any, None]"
+                    "tests.test_util.aiohttp.AiohttpClientMocker",
+                    "Generator[Union[None,Any,None]]",
+                    "Generator[None,Any,None]"
                 ]
             }
         }
@@ -2667,10 +2826,9 @@
                 "mocker": [
                     "Optional[str]",
                     "str",
+                    "Dict[str,Any]",
                     "tests.basilisp.helpers.CompileFn",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "None"
                 ]
             }
         },
@@ -2735,8 +2893,8 @@
             "name": "client",
             "location": 57,
             "return": [
-                "typing.Any",
-                "typing.Generator[typing.Union[typing.Generator[typing.Union[typing.Any,None,None]],dict[str, dict[str, typing.Any]]]]"
+                "Any",
+                "Generator[Union[Generator[Union[Any,None,None]],dict[str,dict[str,Any]]]]"
             ],
             "arguments": {}
         },
@@ -2825,11 +2983,9 @@
                     "models.cf_recommend_models.ICfRecommendationModel"
                 ],
                 "dynamo": [
-                    "typing.Type",
-                    "tests.basilisp.helpers.CompileFn",
-                    "dict[, ]",
                     "Type",
-                    "dict"
+                    "Dict",
+                    "tests.basilisp.helpers.CompileFn"
                 ]
             }
         }
@@ -2846,11 +3002,9 @@
                     "tests.setup.SetupTest"
                 ],
                 "dynamo": [
-                    "typing.Type",
-                    "tests.basilisp.helpers.CompileFn",
-                    "dict[, ]",
                     "Type",
-                    "dict"
+                    "Dict",
+                    "tests.basilisp.helpers.CompileFn"
                 ]
             }
         },
@@ -2868,8 +3022,7 @@
                 ],
                 "expected": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2930,11 +3083,9 @@
             "arguments": {
                 "model": [],
                 "dynamo": [
-                    "typing.Type",
-                    "tests.basilisp.helpers.CompileFn",
-                    "dict[, ]",
                     "Type",
-                    "dict"
+                    "Dict",
+                    "tests.basilisp.helpers.CompileFn"
                 ]
             }
         }
@@ -2951,11 +3102,9 @@
                     "tests.setup.SetupTest"
                 ],
                 "dynamo": [
-                    "typing.Type",
-                    "tests.basilisp.helpers.CompileFn",
-                    "dict[, ]",
                     "Type",
-                    "dict"
+                    "Dict",
+                    "tests.basilisp.helpers.CompileFn"
                 ]
             }
         }

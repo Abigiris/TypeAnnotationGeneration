@@ -40,7 +40,7 @@
             "name": "generate_full_index_context_with_date",
             "location": 62,
             "return": [
-                "dict"
+                "Dict[(str, scheduler.forms.MassEditForm)]"
             ],
             "arguments": {
                 "start_time": [
@@ -55,7 +55,7 @@
             "name": "generate_full_index_context",
             "location": 73,
             "return": [
-                "dict"
+                "Dict[(str, scheduler.forms.MassEditForm)]"
             ],
             "arguments": {}
         },
@@ -79,19 +79,17 @@
             "name": "generate_context_for_conflicts_report",
             "location": 95,
             "return": [
-                "Dict[(str, Union[(int, List[scheduler.models.Conflict])])]"
+                "Dict[(str, Union[(int, list, _T1)])]"
             ],
             "arguments": {
                 "past_conflicts": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "float",
-                    "dict[str, typing.Any]",
                     "str"
                 ],
                 "current_conflicts": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "float",
-                    "dict[str, typing.Any]",
                     "str"
                 ]
             }
@@ -101,9 +99,7 @@
         "debug_task": {
             "name": "debug_task",
             "location": 22,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -118,10 +114,10 @@
             ],
             "arguments": {
                 "lesson1": [
-                    "scheduler.models.Lesson"
+                    "int"
                 ],
                 "lesson2": [
-                    "scheduler.models.Lesson"
+                    "int"
                 ]
             }
         },
@@ -129,14 +125,24 @@
             "name": "check_lesson",
             "location": 24,
             "return": [
-                "List[Tuple[(str, scheduler.models.Lesson, scheduler.models.Lesson, int)]]"
+                "List[Tuple[(str, Any, Any, Any)]]"
             ],
             "arguments": {
                 "index": [
-                    "int"
+                    "List",
+                    "int",
+                    "List[int]",
+                    "bytes",
+                    "bytearray",
+                    "Sequence[int]"
                 ],
                 "lesson_list": [
-                    "List[scheduler.models.Lesson]"
+                    "str",
+                    "List[int]",
+                    "int",
+                    "bool",
+                    "Dict[str, str]",
+                    "List[Tuple[int, int]]"
                 ]
             }
         },
@@ -152,14 +158,20 @@
             "name": "conflicts_diff",
             "location": 73,
             "return": [
-                "Tuple[(List[scheduler.models.Conflict], List[scheduler.models.Conflict])]"
+                "Tuple[(_T1, list)]"
             ],
             "arguments": {
                 "past_conflicts": [
-                    "List[scheduler.models.Conflict]"
+                    "int",
+                    "str",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
                 ],
                 "current_conflicts": [
-                    "List[scheduler.models.Conflict]"
+                    "str",
+                    "Dict",
+                    "Callable"
                 ]
             }
         }
@@ -285,23 +297,23 @@
             "name": "parse_data",
             "location": 19,
             "return": [
-                "Tuple[(int, List[int], List[int])]"
+                "Tuple[(int, list, list)]"
             ],
             "arguments": {
                 "data": [
-                    "typing.Callable[str,str, float]",
+                    "Callable[str,str,float]",
                     "pandas.DataFrame",
-                    "bool",
-                    "list[int]",
-                    "Callable[[str, str], float]",
                     "List[int]",
-                    "list[utils.models.Base]",
-                    "typing.Mapping",
+                    "bool",
                     "List[utils.models.Base]",
-                    "Mapping[str, Any]"
+                    "Callable[[str,str],float]",
+                    "Mapping",
+                    "Mapping[str,Any]"
                 ],
                 "ext": [
-                    "str"
+                    "str",
+                    "List",
+                    "int"
                 ]
             }
         },
@@ -309,7 +321,7 @@
             "name": "import_csv",
             "location": 36,
             "return": [
-                "Tuple[(int, List[int], List[int])]"
+                "Tuple[(int, list, list)]"
             ],
             "arguments": {
                 "data": [
@@ -323,7 +335,7 @@
             "name": "import_excel",
             "location": 96,
             "return": [
-                "Tuple[(int, List[int], List[int])]"
+                "Tuple[(int, list, list)]"
             ],
             "arguments": {
                 "data": [
@@ -341,7 +353,15 @@
             ],
             "arguments": {
                 "row": [
-                    "tuple"
+                    "Tuple",
+                    "str",
+                    "List[dict[str,str]]",
+                    "List",
+                    "Iterable[Tuple[str,str]]",
+                    "Dict",
+                    "models.Match",
+                    "Type",
+                    "List[Dict[str,str]]"
                 ]
             }
         },
@@ -353,7 +373,11 @@
             ],
             "arguments": {
                 "row": [
-                    "tuple"
+                    "Tuple",
+                    "Dict[str,Any]",
+                    "Set[str]",
+                    "Match",
+                    "Dict"
                 ]
             }
         },
@@ -361,7 +385,7 @@
             "name": "import_students",
             "location": 183,
             "return": [
-                "Tuple[(int, List[int], List[int])]"
+                "Tuple[(int, list, list)]"
             ],
             "arguments": {
                 "data": [
@@ -382,7 +406,10 @@
             ],
             "arguments": {
                 "row": [
-                    "tuple"
+                    "int",
+                    "Type",
+                    "pandas.DataFrame",
+                    "bool"
                 ]
             }
         }
@@ -397,14 +424,14 @@
             "arguments": {
                 "self": [],
                 "from_email": [
-                    "typing.Text",
-                    "Tuple[int, int]",
-                    "dict",
+                    "Text",
+                    "Tuple[int,int]",
+                    "Dict",
                     "bool",
                     "bytes",
-                    "Optional[Dict[str, Any]]",
+                    "Optional[Dict[str,Any]]",
                     "Optional[int]",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
                     "str"
                 ]
             }
@@ -421,29 +448,29 @@
                     "str",
                     "bytes",
                     "int",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "template": [
                     "str",
                     "bytes",
                     "int",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "context": [
                     "str",
                     "bytes",
                     "int",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "to_emails": [
                     "str",
                     "bytes",
                     "int",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -457,9 +484,8 @@
                 "self": [],
                 "mail_messages": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -476,8 +502,8 @@
                     "bool",
                     "Optional[str]",
                     "None",
-                    "Optional[Mapping[str, Any]]",
-                    "typing.Mapping"
+                    "Optional[Mapping[str,Any]]",
+                    "Mapping"
                 ],
                 "template": [
                     "str",
@@ -508,22 +534,21 @@
             "location": 25,
             "return": [
                 "HttpResponseRedirect",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "None",
-                "dict",
+                "Dict",
                 "str",
-                "Dict[str, str]"
+                "Dict[str,str]"
             ],
             "arguments": {
                 "self": [],
                 "request": [
                     "str",
-                    "Union[dict, list]",
-                    "dict[, ]",
+                    "Union[dict,list]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "http.MITMRequest",
-                    "list[]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "List"
                 ]
             }
         }
@@ -533,7 +558,7 @@
             "name": "color_from_id",
             "location": 16,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "int"
             ],
@@ -710,8 +735,7 @@
                 "self": [],
                 "other": [
                     "bool",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -721,14 +745,19 @@
             "name": "get_professor",
             "location": 5,
             "return": [
-                "scheduler.models.Professor"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Iterable[str]",
+                    "paradigm.models.Overloaded"
                 ],
                 "surname": [
-                    "str"
+                    "str",
+                    "Iterable[str]",
+                    "paradigm.models.Overloaded"
                 ]
             }
         },
@@ -736,11 +765,15 @@
             "name": "get_room",
             "location": 11,
             "return": [
-                "scheduler.models.Room"
+                "str",
+                "Tuple[Union[Any,Any]]",
+                "bool"
             ],
             "arguments": {
                 "number": [
-                    "str"
+                    "str",
+                    "int",
+                    "models.order.Order"
                 ]
             }
         },
@@ -748,11 +781,14 @@
             "name": "get_group",
             "location": 17,
             "return": [
-                "scheduler.models.Group"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "List[str]"
                 ]
             }
         }
@@ -762,7 +798,6 @@
             "name": "notify_professors",
             "location": 9,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -783,7 +818,9 @@
         "index": {
             "name": "index",
             "location": 50,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": []
             }
@@ -791,21 +828,27 @@
         "index_specific": {
             "name": "index_specific",
             "location": 59,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "_request": [
                     "str",
                     "None"
                 ],
                 "date": [
-                    "str"
+                    "int",
+                    "str",
+                    "float"
                 ]
             }
         },
         "upload_schedule": {
             "name": "upload_schedule",
             "location": 68,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": []
             }
@@ -813,7 +856,9 @@
         "upload_students": {
             "name": "upload_students",
             "location": 109,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": []
             }
@@ -861,7 +906,9 @@
         "show_schedule": {
             "name": "show_schedule",
             "location": 266,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": []
             }
@@ -869,7 +916,9 @@
         "edit": {
             "name": "edit",
             "location": 272,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": [],
                 "lesson_id": [
@@ -880,7 +929,9 @@
         "create": {
             "name": "create",
             "location": 306,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": []
             }
@@ -888,7 +939,9 @@
         "remove": {
             "name": "remove",
             "location": 338,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": [
                     "str"
@@ -913,7 +966,9 @@
         "delete_lessons": {
             "name": "delete_lessons",
             "location": 359,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": []
             }
@@ -921,7 +976,9 @@
         "edit_lessons": {
             "name": "edit_lessons",
             "location": 374,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "request": []
             }
@@ -965,9 +1022,9 @@
             "name": "get_color_tag",
             "location": 8,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "counter": [
@@ -987,11 +1044,11 @@
             "name": "get_danger_tag",
             "location": 16,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "int",
                 "bytes",
-                "Tuple[int, int]"
+                "Tuple[int,int]"
             ],
             "arguments": {}
         }
@@ -1130,7 +1187,6 @@
                 "cls": [
                     "List[str]",
                     "Exception",
-                    "list[str]",
                     "bool",
                     "str"
                 ]

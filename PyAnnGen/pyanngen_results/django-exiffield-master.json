@@ -5,7 +5,8 @@
             "name": "get_exif",
             "location": 19,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "file_": [
@@ -31,7 +32,10 @@
             "name": "check",
             "location": 55,
             "return": [
-                "list"
+                "str",
+                "int",
+                "List[app.models.Subject]",
+                "Set[str]"
             ],
             "arguments": {
                 "self": []
@@ -41,7 +45,7 @@
             "name": "_check_for_exiftool",
             "location": 66,
             "return": [
-                "Generator[(Any, None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -51,7 +55,7 @@
             "name": "_check_for_source",
             "location": 78,
             "return": [
-                "Generator[(Any, None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -61,7 +65,7 @@
             "name": "_check_fields",
             "location": 109,
             "return": [
-                "Generator[(Any, None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -83,7 +87,9 @@
                     "Iterable[str]"
                 ],
                 "name": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -115,9 +121,15 @@
                     "bool"
                 ],
                 "force": [
-                    "bool"
+                    "str",
+                    "pathlib.Path",
+                    "BinaryIO",
+                    "int"
                 ],
                 "commit": [
+                    "int",
+                    "str",
+                    "Optional[bool]",
                     "bool"
                 ]
             }
@@ -128,11 +140,15 @@
             "name": "exifgetter",
             "location": 24,
             "return": [
-                "Callable[([Dict[(str, Dict[(str, Any)])]], Any)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "field": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Set[str]",
+                    "Callable",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -144,7 +160,7 @@
             ],
             "arguments": {
                 "exif": [
-                    "Dict[(str, Dict[(str, Any)])]"
+                    "str"
                 ]
             }
         },
@@ -152,11 +168,12 @@
             "name": "get_datetaken",
             "location": 43,
             "return": [
-                "Optional[datetime.datetime]"
+                "datetime.datetime"
             ],
             "arguments": {
                 "exif": [
-                    "Dict[(str, Dict[(str, Any)])]"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -164,11 +181,16 @@
             "name": "get_orientation",
             "location": 63,
             "return": [
-                "Orientation"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "exif": [
-                    "Dict[(str, Dict[(str, Any)])]"
+                    "List",
+                    "List[str]",
+                    "int",
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -176,7 +198,9 @@
             "name": "get_sequencetype",
             "location": 78,
             "return": [
-                "Mode"
+                "str",
+                "bytes",
+                "int"
             ],
             "arguments": {
                 "exif": [
@@ -189,14 +213,19 @@
             "name": "get_sequencenumber",
             "location": 104,
             "return": [
-                "int"
+                "str",
+                "int",
+                "bool",
+                "List[str]",
+                "Set",
+                "bytes"
             ],
             "arguments": {
                 "exif": [
                     "str",
                     "bool",
                     "T",
-                    "dict"
+                    "Dict"
                 ]
             }
         },
@@ -251,7 +280,6 @@
             "name": "test_exiftool",
             "location": 18,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -262,7 +290,6 @@
             "name": "test_source",
             "location": 53,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -282,21 +309,19 @@
             "name": "test_fields",
             "location": 88,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocked_which": [],
                 "denormalized_fields": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
                     "models.Project"
                 ],
                 "error": [
                     "Collection[str]",
                     "bool",
-                    "typing.Collection"
+                    "Collection"
                 ]
             }
         },
@@ -304,7 +329,6 @@
             "name": "test_valid_definition",
             "location": 110,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -317,7 +341,6 @@
             "name": "uncommitted_img",
             "location": 18,
             "return": [
-                "",
                 "typing.Generator[Image]"
             ],
             "arguments": {}
@@ -326,15 +349,13 @@
             "name": "committed_img",
             "location": 48,
             "return": [
-                "",
                 "typing.Generator[typing.Union[int,typing.Callable[, ],str]]"
             ],
             "arguments": {
                 "uncommitted_img": [
                     "int",
-                    "str",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "str",
                     "models.Question"
                 ]
             }
@@ -343,22 +364,19 @@
             "name": "img",
             "location": 63,
             "return": [
-                "typing.Callable[, ]",
-                "int",
                 "Callable",
+                "int",
                 "models.Question",
                 "str"
             ],
             "arguments": {
                 "request": [
-                    "typing.Callable[, ]",
-                    "django.http.HttpRequest",
-                    "Callable"
+                    "Callable",
+                    "django.http.HttpRequest"
                 ],
                 "uncommitted_img": [
-                    "typing.Callable[, ]",
-                    "django.http.HttpRequest",
-                    "Callable"
+                    "Callable",
+                    "django.http.HttpRequest"
                 ]
             }
         },
@@ -366,7 +384,6 @@
             "name": "remotestorage",
             "location": 75,
             "return": [
-                "",
                 "typing.Generator[FileSystemStorage]"
             ],
             "arguments": {
@@ -379,7 +396,6 @@
             "name": "img_remotestorage",
             "location": 94,
             "return": [
-                "",
                 "typing.Generator[typing.Union[str,list[str],None]]"
             ],
             "arguments": {
@@ -390,11 +406,10 @@
                 ],
                 "img": [
                     "str",
-                    "list[str]",
+                    "List[str]",
                     "None",
                     "starfish.core.imagestack.parser.TileKey",
                     "models.User",
-                    "List[str]",
                     "Optional[str]",
                     "zerver.models.Stream"
                 ]
@@ -404,7 +419,6 @@
             "name": "test_unsupported_file",
             "location": 108,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -413,14 +427,13 @@
             "name": "test_extract_exif",
             "location": 137,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "img": []
             }
@@ -429,7 +442,6 @@
             "name": "test_exif_should_contain_filename",
             "location": 154,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -448,7 +460,6 @@
             "name": "test_do_not_reextract_exif_if_filename_is_known",
             "location": 165,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -468,15 +479,13 @@
             "name": "test_do_reextract_exif_if_new_file_is_uncommited",
             "location": 180,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
                     "str",
-                    "pathlib.Path",
-                    "typing.Type",
-                    "Type"
+                    "Type",
+                    "pathlib.Path"
                 ],
                 "committed_img": [
                     "pathlib.Path",
@@ -489,14 +498,12 @@
             "name": "test_do_not_extract_exif_without_file",
             "location": 192,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
-                    "typing.Callable[, ]",
-                    "pathlib.Path",
-                    "Callable"
+                    "Callable",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -504,7 +511,6 @@
             "name": "test_extract_remote_backend",
             "location": 204,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -522,7 +528,6 @@
             "name": "test_extract_exif_if_missing",
             "location": 215,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -540,7 +545,6 @@
             "name": "test_extract_exif_if_forced",
             "location": 229,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -559,14 +563,12 @@
             "name": "test_extract_exif_if_file_changes",
             "location": 243,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
-                    "typing.Generator[]",
-                    "pathlib.Path",
-                    "Generator"
+                    "Generator",
+                    "pathlib.Path"
                 ],
                 "img": [
                     "pathlib.Path",
@@ -578,7 +580,6 @@
             "name": "test_extract_exif_and_save",
             "location": 254,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -594,7 +595,6 @@
             "name": "test_denormalization",
             "location": 266,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -608,7 +608,6 @@
             "name": "test_denormalization_invalid_exif",
             "location": 272,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -626,7 +625,6 @@
             "name": "test_async",
             "location": 292,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -635,7 +633,7 @@
             "name": "remote_open",
             "location": 81,
             "return": [
-                "typing.IO",
+                "IO",
                 "str",
                 "List[str]"
             ],
@@ -656,7 +654,6 @@
             "name": "remote_path",
             "location": 85,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -667,21 +664,18 @@
             "name": "test_exifgetter",
             "location": 10,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "key": [
                     "str",
-                    "bool",
                     "List[str]",
-                    "list[str]"
+                    "bool"
                 ],
                 "expected": [
                     "str",
-                    "bool",
                     "List[str]",
-                    "list[str]"
+                    "bool"
                 ]
             }
         },
@@ -689,30 +683,26 @@
             "name": "test_get_type",
             "location": 23,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "value": [
                     "str",
-                    "typing.Callable[[], typing.Any]",
-                    "Callable[[], Any]",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "typing.Mapping",
-                    "Union[str, Dict[str, Any]]",
-                    "dict[, ]",
-                    "Mapping[str, Any]",
-                    "dict"
+                    "Callable[,Any]",
+                    "Dict[str,str]",
+                    "Dict",
+                    "Mapping",
+                    "Union[str,Dict[str,Any]]",
+                    "Mapping[str,Any]"
                 ],
                 "expected": [
                     "str",
                     "bool",
-                    "Union[Type, Tuple[Type, ...]]",
-                    "typing.Type",
-                    "tuple[typing.Union[typing.Type,...]]",
-                    "Union[str, Dict[str, Any]]",
-                    "dict[str, typing.Any]"
+                    "Union[Type,Tuple[Type,...]]",
+                    "Type",
+                    "Tuple[Union[Type,...]]",
+                    "Union[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -720,7 +710,6 @@
             "name": "test_get_datetaken",
             "location": 44,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -744,19 +733,17 @@
             "name": "test_get_datetaken_invalid_data",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "exif_data": [
                     "List[List[int]]",
                     "str",
-                    "list[list[int]]"
+                    "List[list[int]]"
                 ],
                 "error_msg": [
                     "str",
-                    "TextIO",
-                    "typing.TextIO"
+                    "TextIO"
                 ]
             }
         },
@@ -764,7 +751,6 @@
             "name": "test_get_orientation",
             "location": 82,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -784,9 +770,8 @@
                     "str"
                 ],
                 "expected": [
-                    "set",
-                    "bool",
-                    "set[]"
+                    "Set",
+                    "bool"
                 ]
             }
         },
@@ -794,7 +779,6 @@
             "name": "test_get_sequencetype",
             "location": 101,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -818,7 +802,6 @@
             "name": "test_get_sequencenumber",
             "location": 109,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

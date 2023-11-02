@@ -27,11 +27,12 @@
             "name": "collect_created_tables",
             "location": 27,
             "return": [
-                "List[Table]"
+                "list"
             ],
             "arguments": {
                 "text_stream": [
-                    "TextIO"
+                    "str",
+                    "Dict[str, Sequence[str]]"
                 ]
             }
         },
@@ -39,11 +40,15 @@
             "name": "get_table_names_from_script",
             "location": 38,
             "return": [
-                "List[Table]"
+                "List[Callable[[datetime.datetime], bool]]",
+                "str",
+                "dict",
+                "Optional[List[str]]"
             ],
             "arguments": {
                 "script_path": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -51,14 +56,23 @@
             "name": "get_matches_in_script",
             "location": 43,
             "return": [
-                "List[FileMatch]"
+                "list"
             ],
             "arguments": {
                 "script_path": [
-                    "str"
+                    "str",
+                    "pathlib.Path",
+                    "Optional[str]",
+                    "Dict",
+                    "pathlib.PurePath"
                 ],
                 "regex": [
-                    "Pattern"
+                    "Pattern",
+                    "BinaryIO",
+                    "Optional[str]",
+                    "str",
+                    "pathlib.Path",
+                    "None"
                 ]
             }
         },
@@ -66,14 +80,20 @@
             "name": "get_matches_in_directory",
             "location": 51,
             "return": [
-                "List[FileMatch]"
+                "list"
             ],
             "arguments": {
                 "tables": [
-                    "List[Table]"
+                    "str",
+                    "List[str]",
+                    "Iterable[pathlib.Path]",
+                    "bool",
+                    "pathlib.Path"
                 ],
                 "dir_path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -81,11 +101,15 @@
             "name": "get_consolidated_matches",
             "location": 60,
             "return": [
-                "List[ConsolidatedFileMatch]"
+                "list"
             ],
             "arguments": {
                 "matches": [
-                    "List[FileMatch]"
+                    "List",
+                    "str",
+                    "Dict",
+                    "Type",
+                    "Iterable"
                 ]
             }
         },
@@ -97,12 +121,10 @@
             ],
             "arguments": {
                 "tables": [
-                    "List[Dict[str, str]]",
-                    "list[dict[str, str]]",
+                    "List[Dict[str,str]]",
                     "List[list]",
-                    "list[list[]]",
-                    "List[str]",
-                    "list[str]"
+                    "List[dict[str,str]]",
+                    "List[str]"
                 ]
             }
         },
@@ -114,10 +136,17 @@
             ],
             "arguments": {
                 "tables": [
-                    "List[Table]"
+                    "List[str]",
+                    "str",
+                    "List[Dict[str,str]]",
+                    "List[Union[dict[str,str],str,str,str,str,str,str,str,str,str,str,str,str,str,str]]"
                 ],
                 "matches": [
-                    "List[FileMatch]"
+                    "Optional[str]",
+                    "str",
+                    "Union[str,int]",
+                    "None",
+                    "int"
                 ]
             }
         },
@@ -129,10 +158,14 @@
             ],
             "arguments": {
                 "target_script_path": [
-                    "str"
+                    "str",
+                    "pathlib.Path",
+                    "Path"
                 ],
                 "dir_path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "pathlib.Path"
                 ]
             }
         }
@@ -210,8 +243,7 @@
                 "single_table_str": [
                     "str",
                     "bool",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -226,8 +258,7 @@
                 "single_table_str_caps": [
                     "str",
                     "bool",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -254,11 +285,10 @@
                 "self": [],
                 "view_str_split_across_lines": [
                     "str",
-                    "bool",
                     "List[str]",
-                    "list[str]",
+                    "bool",
                     "Type[Any]",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -287,7 +317,7 @@
                     "str",
                     "bool",
                     "Type[Any]",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },

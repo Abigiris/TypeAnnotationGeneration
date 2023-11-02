@@ -85,7 +85,7 @@
             ],
             "arguments": {
                 "cls": [
-                    "Type[unittest.case.TestCase]"
+                    "bool"
                 ]
             }
         },
@@ -97,7 +97,12 @@
             ],
             "arguments": {
                 "debug": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Callable",
+                    "float",
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         }
@@ -164,11 +169,9 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "bool",
-                    "list[str]",
                     "List[str]",
-                    "dict[, ]",
-                    "dict",
+                    "bool",
+                    "Dict",
                     "int"
                 ]
             }
@@ -267,12 +270,11 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "Union[str, \"Date\"]",
+                    "Union[str,Date]",
                     "str",
-                    "Tuple[float, float]",
-                    "tuple[typing.Union[float,float]]",
                     "Type",
-                    "typing.Type"
+                    "Tuple[float,float]",
+                    "Tuple[Union[float,float]]"
                 ]
             }
         },
@@ -295,9 +297,7 @@
                 "float"
             ],
             "arguments": {
-                "lat_or_lon": [
-                    "str"
-                ]
+                "lat_or_lon": []
             }
         },
         "handle_float": {
@@ -314,24 +314,20 @@
             "name": "get_python_type",
             "location": 93,
             "return": [
-                "type"
+                "Type[Union[(float, int, str, _datetime.date, _datetime.time)]]"
             ],
             "arguments": {
-                "conf_type": [
-                    "str"
-                ]
+                "conf_type": []
             }
         },
         "get_sql_type": {
             "name": "get_sql_type",
             "location": 97,
             "return": [
-                "Type[sqlalchemy.sql.type_api.TypeEngine]"
+                "Type[Union[(sqlalchemy.sql.sqltypes.Boolean, sqlalchemy.sql.sqltypes.Date, sqlalchemy.sql.sqltypes.DateTime, sqlalchemy.sql.sqltypes.Float, sqlalchemy.sql.sqltypes.Integer, sqlalchemy.sql.sqltypes.Time, sqlalchemy.sql.sqltypes.Unicode)]]"
             ],
             "arguments": {
-                "conf_type": [
-                    "str"
-                ]
+                "conf_type": []
             }
         },
         "get_cass_type": {
@@ -341,9 +337,7 @@
                 "str"
             ],
             "arguments": {
-                "conf_type": [
-                    "str"
-                ]
+                "conf_type": []
             }
         },
         "parse_model_file": {
@@ -353,9 +347,7 @@
                 "Tuple[(List[ConfColumn], PrimaryKeyConf, InputFileConfig)]"
             ],
             "arguments": {
-                "file_path": [
-                    "str"
-                ]
+                "file_path": []
             }
         },
         "_parse_primary_key_config": {
@@ -365,12 +357,8 @@
                 "PrimaryKeyConf"
             ],
             "arguments": {
-                "col_names": [
-                    "List[str]"
-                ],
-                "pkey_value": [
-                    "Union[(str, List[str])]"
-                ]
+                "col_names": [],
+                "pkey_value": []
             }
         },
         "InputFileConfig.__init__": {
@@ -381,9 +369,7 @@
             ],
             "arguments": {
                 "self": [],
-                "conf_dict": [
-                    "Dict[(str, Any)]"
-                ]
+                "conf_dict": []
             }
         },
         "InputFileConfig.file_encoding": {
@@ -434,24 +420,12 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
-                "col_index": [
-                    "int"
-                ],
-                "conf_type": [
-                    "str"
-                ],
-                "nullable": [
-                    "bool"
-                ],
-                "indexed": [
-                    "bool"
-                ],
-                "unique": [
-                    "bool"
-                ]
+                "name": [],
+                "col_index": [],
+                "conf_type": [],
+                "nullable": [],
+                "indexed": [],
+                "unique": []
             }
         },
         "PrimaryKeyConf.__init__": {
@@ -462,12 +436,8 @@
             ],
             "arguments": {
                 "self": [],
-                "mode": [
-                    "str"
-                ],
-                "columns": [
-                    "List[str]"
-                ]
+                "mode": [],
+                "columns": []
             }
         },
         "PrimaryKeyConf.is_clustered": {
@@ -486,17 +456,29 @@
             "name": "init_table",
             "location": 9,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "List[todb.data_model.ConfColumn]",
+                    "float",
+                    "bool",
+                    "todb.data_model.PrimaryKeyConf"
                 ],
                 "columns": [
-                    "List[todb.data_model.ConfColumn]"
+                    "str",
+                    "List[todb.data_model.ConfColumn]",
+                    "float",
+                    "bool",
+                    "todb.data_model.PrimaryKeyConf"
                 ],
                 "pkey": [
+                    "str",
+                    "List[todb.data_model.ConfColumn]",
+                    "float",
+                    "bool",
                     "todb.data_model.PrimaryKeyConf"
                 ]
             }
@@ -505,15 +487,33 @@
             "name": "insert_in_batch",
             "location": 12,
             "return": [
-                "Tuple[(bool, List[List[str]])]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "table_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[List[str]]",
+                    "List[list[str]]",
+                    "Iterable",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
+                    "Any",
+                    "Optional[Any]",
+                    "None"
                 ],
                 "objects": [
-                    "List[List[str]]"
+                    "str",
+                    "bool",
+                    "List[List[str]]",
+                    "List[list[str]]",
+                    "Iterable",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
+                    "Any",
+                    "Optional[Any]",
+                    "None"
                 ]
             }
         },
@@ -521,15 +521,33 @@
             "name": "insert_one_by_one",
             "location": 15,
             "return": [
-                "List[List[str]]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "table_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[List[str]]",
+                    "List[list[str]]",
+                    "Iterable",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
+                    "Any",
+                    "Optional[Any]",
+                    "None"
                 ],
                 "objects": [
-                    "List[List[str]]"
+                    "str",
+                    "bool",
+                    "List[List[str]]",
+                    "List[list[str]]",
+                    "Iterable",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
+                    "Any",
+                    "Optional[Any]",
+                    "None"
                 ]
             }
         },
@@ -537,12 +555,16 @@
             "name": "drop_table",
             "location": 18,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -550,12 +572,21 @@
             "name": "count",
             "location": 21,
             "return": [
-                "int"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "table_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[List[str]]",
+                    "List[list[str]]",
+                    "Iterable",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
+                    "Any",
+                    "Optional[Any]",
+                    "None"
                 ]
             }
         },
@@ -563,7 +594,7 @@
             "name": "close",
             "location": 24,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -580,7 +611,12 @@
             "arguments": {
                 "self": [],
                 "columns": [
-                    "List[todb.data_model.ConfColumn]"
+                    "int",
+                    "str",
+                    "float",
+                    "List[str]",
+                    "Union[str,float]",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -588,12 +624,17 @@
             "name": "to_entity",
             "location": 27,
             "return": [
-                "Optional[Dict[(str, Any)]]"
+                "Optional[dict]"
             ],
             "arguments": {
                 "self": [],
                 "cells_in_row": [
-                    "List[str]"
+                    "List[str]",
+                    "List[int]",
+                    "List",
+                    "str",
+                    "ImmutableSet[T]",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -610,10 +651,14 @@
             "arguments": {
                 "self": [],
                 "column": [
-                    "todb.data_model.ConfColumn"
+                    "str",
+                    "datetime.date",
+                    "int",
+                    "Callable"
                 ],
                 "value": [
-                    "Optional[str]"
+                    "int",
+                    "str"
                 ]
             }
         }
@@ -628,10 +673,16 @@
             "arguments": {
                 "self": [],
                 "input_file_config": [
-                    "todb.data_model.InputFileConfig"
+                    "str",
+                    "Dict[str,str]",
+                    "int",
+                    "Dict[str,cerulean.path.Path]",
+                    "Dict"
                 ],
                 "output_file_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -644,7 +695,12 @@
             "arguments": {
                 "self": [],
                 "rows": [
-                    "List[List[str]]"
+                    "bytes",
+                    "List[str]",
+                    "dict",
+                    "list",
+                    "int",
+                    "List[int]"
                 ]
             }
         },
@@ -657,7 +713,13 @@
             "arguments": {
                 "self": [],
                 "rows": [
-                    "List[List[str]]"
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "Dict[str,bool]",
+                    "bool",
+                    "Dict",
+                    "Dict[str,list[Any]]",
+                    "Dict[str,List[Any]]"
                 ]
             }
         }
@@ -672,7 +734,7 @@
             "arguments": {
                 "self": [],
                 "db_client": [
-                    "todb.db_client.DbClient"
+                    "Callable"
                 ]
             }
         },
@@ -680,15 +742,18 @@
             "name": "parse_and_import",
             "location": 16,
             "return": [
-                "List[List[str]]"
+                "Callable",
+                "str",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "rows": [
-                    "List[List[str]]"
+                    "str"
                 ]
             }
         },
@@ -712,10 +777,15 @@
             ],
             "arguments": {
                 "level": [
-                    "int"
+                    "int",
+                    "str",
+                    "Union[bytes, bytearray]",
+                    "float"
                 ],
                 "log_file": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "str"
                 ]
             }
         },
@@ -723,11 +793,18 @@
             "name": "get_logger",
             "location": 29,
             "return": [
-                "logging.Logger"
+                "None",
+                "str",
+                "bool"
             ],
             "arguments": {
                 "calling_module": [
-                    "str"
+                    "Text",
+                    "str",
+                    "logging.Logger",
+                    "Callable",
+                    "Exception",
+                    "Tuple[str,int]"
                 ]
             }
         }
@@ -745,10 +822,12 @@
             "name": "todb",
             "location": 39,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "params": [
+                    "str",
+                    "Dict[str,str]",
                     "todb.params.InputParams"
                 ]
             }
@@ -769,7 +848,10 @@
             ],
             "arguments": {
                 "params": [
-                    "todb.params.InputParams"
+                    "str",
+                    "List[str]",
+                    "todb.params.InputParams",
+                    "argparse.Namespace"
                 ]
             }
         }
@@ -784,22 +866,44 @@
             "arguments": {
                 "self": [],
                 "params": [
-                    "todb.params.InputParams"
+                    "str",
+                    "bool",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "int",
+                    "None"
                 ],
                 "input_file_config": [
-                    "todb.data_model.InputFileConfig"
+                    "str",
+                    "Dict[str,str]",
+                    "int",
+                    "todb.data_model.InputFileConfig",
+                    "allennlp.common.params.Params"
                 ],
                 "columns": [
-                    "List[todb.data_model.ConfColumn]"
+                    "str",
+                    "bool",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "int",
+                    "None"
                 ],
                 "pkey": [
-                    "todb.data_model.PrimaryKeyConf"
+                    "str",
+                    "bool",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "int",
+                    "None"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "failed_rows_file": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -807,7 +911,7 @@
             "name": "start",
             "location": 28,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(int, Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -825,16 +929,37 @@
             "arguments": {
                 "self": [],
                 "task_queue": [
-                    "mp.queues.Queue"
+                    "Dict[str,Any]",
+                    "Optional[Dict[str,Any]]",
+                    "Optional[dict]",
+                    "str",
+                    "None",
+                    "Dict",
+                    "Dict[str,ModuleConfigDict]",
+                    "Dict[str,C]"
                 ],
                 "unsuccessful_rows_queue": [
-                    "mp.queues.Queue"
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "Exception",
+                    "Optional[Dict[str,Any]]",
+                    "None",
+                    "Optional[dict]",
+                    "Dict",
+                    "Optional[bool]",
+                    "bool"
                 ],
                 "importer": [
-                    "todb.importer.Importer"
+                    "str",
+                    "bool",
+                    "List",
+                    "int"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -857,10 +982,16 @@
             "arguments": {
                 "self": [],
                 "unsuccessful_rows_queue": [
-                    "mp.queues.Queue"
+                    "Dict[str,Any]",
+                    "Dict[str,str]"
                 ],
                 "handler": [
-                    "todb.fail_row_handler.FailRowHandler"
+                    "int",
+                    "str",
+                    "Sequence[MutableMapping]",
+                    "Dict[str,str]",
+                    "Sequence[MutableSet[int]]",
+                    "Sequence[MutableSet]"
                 ]
             }
         },
@@ -886,9 +1017,7 @@
                 "cls": [
                     "Type[_TInputParams]"
                 ],
-                "args": [
-                    "argparse.Namespace"
-                ]
+                "args": []
             }
         },
         "InputParams.__init__": {
@@ -900,30 +1029,61 @@
             "arguments": {
                 "self": [],
                 "model_path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "input_path": [
                     "str"
                 ],
                 "fail_output_path": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "sql_db": [
-                    "str"
+                    "bool",
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "MutableMapping",
+                    "MutableMapping[str,str]",
+                    "Optional[str]"
                 ],
                 "cass_db": [
+                    "bool",
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "MutableMapping",
+                    "MutableMapping[str,str]",
                     "Optional[str]"
                 ],
                 "table_name": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[str]",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ],
                 "processes": [
-                    "Optional[int]"
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "str"
                 ],
                 "chunk_size_kB": [
-                    "Optional[int]"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "Optional[Callable]",
+                    "Callable"
                 ],
                 "ca_file": [
+                    "str",
+                    "None",
                     "Optional[str]"
                 ]
             }
@@ -937,7 +1097,10 @@
             "arguments": {
                 "self": [],
                 "date_time": [
-                    "_datetime.datetime"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -960,10 +1123,14 @@
             "arguments": {
                 "self": [],
                 "the_path": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "Optional[cerulean.path.Path]"
                 ],
                 "err_msg_fmt": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -991,10 +1158,23 @@
             "arguments": {
                 "self": [],
                 "input_file_config": [
-                    "todb.data_model.InputFileConfig"
+                    "str",
+                    "Dict[str,str]",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "Dict",
+                    "Optional[dict]",
+                    "Dict[str,Any]"
                 ],
                 "chunk_size_kB": [
-                    "int"
+                    "bool",
+                    "float",
+                    "Optional[str]",
+                    "str",
+                    "Optional[Dict[str,Any]]",
+                    "None",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1002,7 +1182,7 @@
             "name": "read_rows_in_chunks",
             "location": 13,
             "return": [
-                "Iterator[List[List[str]]]"
+                "Generator[(List[List[str]], Any, None)]"
             ],
             "arguments": {
                 "self": [],
@@ -1022,16 +1202,32 @@
             "arguments": {
                 "self": [],
                 "db_url": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "entity_builder": [
-                    "todb.entity_builder.EntityBuilder"
+                    "bool",
+                    "str",
+                    "List",
+                    "Dict[str,str]",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "db_engine": [
-                    "Optional[sqlalchemy.engine.base.Engine]"
+                    "bool",
+                    "None",
+                    "str",
+                    "List",
+                    "Dict[str,str]",
+                    "int",
+                    "Optional[str]"
                 ],
                 "ca_file": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "Dict[str,Any]",
+                    "None",
+                    "str"
                 ]
             }
         },
@@ -1044,13 +1240,23 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "columns": [
-                    "List[todb.data_model.ConfColumn]"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "pkey": [
-                    "todb.data_model.PrimaryKeyConf"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "bool"
                 ]
             }
         },
@@ -1071,12 +1277,18 @@
             "name": "count",
             "location": 38,
             "return": [
-                "int"
+                "int",
+                "Tuple[Union[str,str]]",
+                "str",
+                "Callable",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1084,15 +1296,23 @@
             "name": "insert_in_batch",
             "location": 49,
             "return": [
-                "Tuple[(bool, List[List[str]])]"
+                "Tuple[(bool, list)]"
             ],
             "arguments": {
                 "self": [],
                 "table_name": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "sqlalchemy.engine.base.Engine"
                 ],
                 "rows": [
-                    "List[List[str]]"
+                    "List[List[str]]",
+                    "Dict[str,int]",
+                    "List[list[str]]",
+                    "str",
+                    "Dict",
+                    "List"
                 ]
             }
         },
@@ -1100,15 +1320,27 @@
             "name": "insert_one_by_one",
             "location": 61,
             "return": [
-                "List[List[str]]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "rows": [
-                    "List[List[str]]"
+                    "List[list[str]]",
+                    "str",
+                    "List[List[str]]",
+                    "Optional[str]",
+                    "Optional[bool]",
+                    "Union[str,Callable]",
+                    "Optional[Callable]",
+                    "Optional[float]",
+                    "int",
+                    "Callable",
+                    "bool"
                 ]
             }
         },
@@ -1126,12 +1358,15 @@
             "name": "_build_entities_from_rows",
             "location": 77,
             "return": [
-                "Tuple[(List[Dict[(str, Any)]], List[List[str]])]"
+                "Tuple[(list, list)]"
             ],
             "arguments": {
                 "self": [],
                 "rows": [
-                    "List[List[str]]"
+                    "List[List[str]]",
+                    "str",
+                    "List[list[str]]",
+                    "List[dict]"
                 ]
             }
         },
@@ -1139,12 +1374,15 @@
             "name": "_insert_entities",
             "location": 88,
             "return": [
-                "sqlalchemy.engine.base.Connection"
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "list_of_model_dicts": [
-                    "List[Dict[(str, Any)]]"
+                    "List[Dict[str,Any]]",
+                    "bool",
+                    "List[dict[str,Any]]",
+                    "str"
                 ],
                 "table_name": [
                     "str"
@@ -1155,12 +1393,21 @@
             "name": "_get_table",
             "location": 96,
             "return": [
-                "Optional[sqlalchemy.sql.schema.Table]"
+                "None",
+                "Optional[str]",
+                "Optional[Dict[str,Any]]",
+                "Optional[Dict]",
+                "Optional[BaseException]"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Sequence[float]",
+                    "float",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -1168,7 +1415,12 @@
             "name": "_get_connection",
             "location": 105,
             "return": [
-                "sqlalchemy.engine.base.Connection"
+                "str",
+                "bool",
+                "frozenset",
+                "int",
+                "List",
+                "float"
             ],
             "arguments": {
                 "self": []
@@ -1178,7 +1430,11 @@
             "name": "_get_db_engine",
             "location": 110,
             "return": [
-                "sqlalchemy.engine.base.Engine"
+                "int",
+                "bool",
+                "str",
+                "Optional[sqlalchemy.engine.Engine]",
+                "List"
             ],
             "arguments": {
                 "self": []
@@ -1188,21 +1444,47 @@
             "name": "_sql_table_from_columns",
             "location": 120,
             "return": [
-                "sqlalchemy.sql.schema.Table"
+                "Table",
+                "str",
+                "Optional[str]",
+                "int",
+                "sqlalchemy.Column"
             ],
             "arguments": {
                 "self": [],
                 "sql_metadata": [
-                    "sqlalchemy.sql.schema.MetaData"
+                    "str",
+                    "Set[str]",
+                    "None",
+                    "Callable[...,T]",
+                    "sqlalchemy.MetaData",
+                    "Dict[str,str]",
+                    "Optional[str]"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "None",
+                    "Callable[...,T]",
+                    "sqlalchemy.MetaData",
+                    "Dict[str,str]",
+                    "Optional[str]"
                 ],
                 "columns": [
-                    "List[todb.data_model.ConfColumn]"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "Optional[Any]",
+                    "int"
                 ],
                 "pkey": [
-                    "todb.data_model.PrimaryKeyConf"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Any",
+                    "Optional[Any]",
+                    "int"
                 ]
             }
         }
@@ -1216,13 +1498,17 @@
             ],
             "arguments": {
                 "start": [
-                    "_datetime.datetime"
+                    "int",
+                    "datetime.datetime"
                 ],
                 "end": [
-                    "_datetime.datetime"
+                    "datetime.datetime",
+                    "int",
+                    "None"
                 ],
                 "precision": [
-                    "int"
+                    "int",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -1242,20 +1528,42 @@
             "name": "limit_or_default",
             "location": 19,
             "return": [
-                "int"
+                "float",
+                "int",
+                "str",
+                "Set",
+                "Optional[int]",
+                "List",
+                "bool",
+                "Optional[str]"
             ],
             "arguments": {
                 "value": [
-                    "Optional[int]"
+                    "int",
+                    "Optional[int]",
+                    "Callable",
+                    "Dict",
+                    "None"
                 ],
                 "default": [
-                    "int"
+                    "int",
+                    "float",
+                    "Set",
+                    "bool"
                 ],
                 "lower_bound": [
-                    "Optional[int]"
+                    "Optional[int]",
+                    "None",
+                    "List",
+                    "int",
+                    "Callable"
                 ],
                 "upper_bound": [
-                    "Optional[int]"
+                    "Optional[int]",
+                    "None",
+                    "List",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -1267,10 +1575,10 @@
             ],
             "arguments": {
                 "o": [
-                    "Dict[(str, Any)]"
+                    "str"
                 ],
                 "sorted_keys": [
-                    "List[str]"
+                    "str"
                 ]
             }
         },
@@ -1282,7 +1590,9 @@
             ],
             "arguments": {
                 "content": [
-                    "str"
+                    "str",
+                    "BinaryIO",
+                    "bool"
                 ]
             }
         },
@@ -1290,11 +1600,17 @@
             "name": "split_in_half",
             "location": 43,
             "return": [
-                "Tuple[(list, list)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "values": [
-                    "list"
+                    "str",
+                    "list",
+                    "float",
+                    "List[Union[int, float]]",
+                    "List[Union[int, Any]]",
+                    "bool",
+                    "Optional[datetime.datetime]"
                 ]
             }
         }

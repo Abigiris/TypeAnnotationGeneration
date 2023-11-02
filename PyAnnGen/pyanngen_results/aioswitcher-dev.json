@@ -1,33 +1,48 @@
 {
-    "docs/conf.py": {},
-    "scripts/control_device.py": {
+    "aioswitcher-dev/docs/conf.py": {},
+    "aioswitcher-dev/scripts/control_device.py": {
         "asdict": {
             "name": "asdict",
             "location": 167,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "dc": [
-                    "object"
+                    "Dict[str,Set[str]]",
+                    "str",
+                    "Dict[str,set[str]]",
+                    "bytes",
+                    "Mapping[Any,Any]",
+                    "Mapping"
                 ],
                 "verbose": [
-                    "bool"
+                    "bool",
+                    "Dict[str,Set[str]]",
+                    "str",
+                    "Mapping[Any,Any]",
+                    "bytes"
                 ]
             }
         }
     },
-    "scripts/discover_devices.py": {
+    "aioswitcher-dev/scripts/discover_devices.py": {
         "print_devices.on_device_found_callback": {
             "name": "on_device_found_callback",
             "location": 67,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "device": []
+                "device": [
+                    "str",
+                    "int",
+                    "List[int]"
+                ]
             }
         }
     },
-    "src/aioswitcher/bridge.py": {
+    "aioswitcher-dev/src/aioswitcher/bridge.py": {
         "_parse_device_from_datagram": {
             "name": "_parse_device_from_datagram",
             "location": 42,
@@ -36,10 +51,13 @@
             ],
             "arguments": {
                 "device_callback": [
-                    "Callable[([aioswitcher.device.SwitcherBase], Any)]"
+                    "Dict[str,Any]",
+                    "ark.types.PrimalGameData"
                 ],
                 "datagram": [
-                    "bytes"
+                    "str",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -52,17 +70,24 @@
             "arguments": {
                 "self": [],
                 "on_device": [
-                    "Callable[([aioswitcher.device.SwitcherBase], Any)]"
+                    "int",
+                    "float",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ],
                 "broadcast_port": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
         "SwitcherBridge.is_running": {
             "name": "is_running",
             "location": 165,
-            "return": [],
+            "return": [
+                "bool"
+            ],
             "arguments": {
                 "self": []
             }
@@ -76,7 +101,10 @@
             "arguments": {
                 "self": [],
                 "on_datagram": [
-                    "Callable[([bytes], None)]"
+                    "int",
+                    "float",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ]
             }
         },
@@ -89,7 +117,9 @@
             "arguments": {
                 "self": [],
                 "transport": [
-                    "asyncio.transports.BaseTransport"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -102,10 +132,17 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "Dict",
+                    "bytes",
+                    "Union[bytes,bytearray,memoryview]",
+                    "bytearray",
+                    "memoryview"
                 ],
                 "addr": [
-                    "tuple"
+                    "int",
+                    "bytes",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -118,7 +155,9 @@
             "arguments": {
                 "self": [],
                 "exc": [
-                    "Optional[Exception]"
+                    "str",
+                    "Exception",
+                    "logging.Logger"
                 ]
             }
         },
@@ -131,7 +170,12 @@
             "arguments": {
                 "self": [],
                 "exc": [
-                    "Optional[Exception]"
+                    "str",
+                    "int",
+                    "None",
+                    "Callable",
+                    "logging.Logger",
+                    "Optional[logging.Logger]"
                 ]
             }
         },
@@ -169,7 +213,8 @@
             "name": "get_name",
             "location": 238,
             "return": [
-                "str"
+                "str",
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -189,7 +234,8 @@
             "name": "get_device_state",
             "location": 246,
             "return": [
-                "aioswitcher.device.DeviceState"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -229,15 +275,16 @@
             "name": "get_device_type",
             "location": 284,
             "return": [
-                "aioswitcher.device.DeviceType"
+                "mypy.types.Type",
+                "str"
             ],
             "arguments": {
                 "self": []
             }
         }
     },
-    "src/aioswitcher/__init__.py": {},
-    "src/aioswitcher/api/messages.py": {
+    "aioswitcher-dev/src/aioswitcher/__init__.py": {},
+    "aioswitcher-dev/src/aioswitcher/api/messages.py": {
         "StateMessageParser.__post_init__": {
             "name": "__post_init__",
             "location": 33,
@@ -246,7 +293,9 @@
             ],
             "arguments": {
                 "self": [],
-                "response": []
+                "response": [
+                    "str"
+                ]
             }
         },
         "StateMessageParser.get_power_consumption": {
@@ -293,7 +342,10 @@
             "name": "get_state",
             "location": 75,
             "return": [
-                "aioswitcher.device.DeviceState"
+                "bool",
+                "str",
+                "int",
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -302,7 +354,11 @@
         "SwitcherBaseResponse.successful": {
             "name": "successful",
             "location": 98,
-            "return": [],
+            "return": [
+                "bool",
+                "Optional[bool]",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -340,14 +396,19 @@
         "SwitcherGetSchedulesResponse.found_schedules": {
             "name": "found_schedules",
             "location": 157,
-            "return": [],
+            "return": [
+                "bool",
+                "int",
+                "Set",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
         }
     },
-    "src/aioswitcher/api/packets.py": {},
-    "src/aioswitcher/api/__init__.py": {
+    "aioswitcher-dev/src/aioswitcher/api/packets.py": {},
+    "aioswitcher-dev/src/aioswitcher/api/__init__.py": {
         "SwitcherApi.__init__": {
             "name": "__init__",
             "location": 65,
@@ -357,26 +418,36 @@
             "arguments": {
                 "self": [],
                 "ip_address": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "device_id": [
-                    "str"
+                    "str",
+                    "Set[int]",
+                    "int",
+                    "Optional[int]"
                 ],
                 "port": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,str]"
                 ]
             }
         },
         "SwitcherApi.connected": {
             "name": "connected",
             "location": 114,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
         }
     },
-    "src/aioswitcher/device/tools.py": {
+    "aioswitcher-dev/src/aioswitcher/device/tools.py": {
         "seconds_to_iso_time": {
             "name": "seconds_to_iso_time",
             "location": 23,
@@ -385,7 +456,10 @@
             ],
             "arguments": {
                 "all_seconds": [
-                    "int"
+                    "int",
+                    "List[str]",
+                    "str",
+                    "Iterable[int]"
                 ]
             }
         },
@@ -393,11 +467,16 @@
             "name": "sign_packet_with_crc_key",
             "location": 40,
             "return": [
-                "str"
+                "str",
+                "Callable",
+                "bool",
+                "int",
+                "bytes"
             ],
             "arguments": {
                 "hex_packet": [
-                    "str"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -409,7 +488,10 @@
             ],
             "arguments": {
                 "minutes": [
-                    "int"
+                    "bytearray",
+                    "bytes",
+                    "float",
+                    "Dict"
                 ]
             }
         },
@@ -421,7 +503,10 @@
             ],
             "arguments": {
                 "full_time": [
-                    "datetime.timedelta"
+                    "int",
+                    "float",
+                    "dss.util.time.RemainingTime",
+                    "str"
                 ]
             }
         },
@@ -433,7 +518,8 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -453,27 +539,56 @@
             ],
             "arguments": {
                 "watts": [
-                    "int"
+                    "int",
+                    "bytes",
+                    "IO",
+                    "List[str]",
+                    "str"
                 ]
             }
         }
     },
-    "src/aioswitcher/device/__init__.py": {
+    "aioswitcher-dev/src/aioswitcher/device/__init__.py": {
         "DeviceType.__new__": {
             "name": "__new__",
             "location": 43,
-            "return": [],
+            "return": [
+                "int",
+                "Sequence[str]",
+                "Iterable[str]",
+                "Callable"
+            ],
             "arguments": {
-                "cls": [],
-                "value": [],
-                "hex_rep": [],
-                "category": []
+                "cls": [
+                    "bool",
+                    "Tuple[type]",
+                    "str",
+                    "Tuple[Type]",
+                    "Optional[Iterable[str]]",
+                    "None"
+                ],
+                "value": [
+                    "str",
+                    "List"
+                ],
+                "hex_rep": [
+                    "str",
+                    "int"
+                ],
+                "category": [
+                    "str",
+                    "int"
+                ]
             }
         },
         "DeviceType.value": {
             "name": "value",
             "location": 54,
-            "return": [],
+            "return": [
+                "str",
+                "int",
+                "Type[T]"
+            ],
             "arguments": {
                 "self": []
             }
@@ -481,7 +596,11 @@
         "DeviceType.hex_rep": {
             "name": "hex_rep",
             "location": 59,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -489,7 +608,11 @@
         "DeviceType.category": {
             "name": "category",
             "location": 64,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -497,17 +620,39 @@
         "DeviceState.__new__": {
             "name": "__new__",
             "location": 76,
-            "return": [],
+            "return": [
+                "int",
+                "Sequence[str]",
+                "Iterable[str]",
+                "Callable"
+            ],
             "arguments": {
-                "cls": [],
-                "value": [],
-                "display": []
+                "cls": [
+                    "bool",
+                    "Tuple[type]",
+                    "str",
+                    "Tuple[Type]",
+                    "Optional[Iterable[str]]",
+                    "None"
+                ],
+                "value": [
+                    "str",
+                    "List"
+                ],
+                "display": [
+                    "str",
+                    "int"
+                ]
             }
         },
         "DeviceState.display": {
             "name": "display",
             "location": 84,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -515,7 +660,11 @@
         "DeviceState.value": {
             "name": "value",
             "location": 89,
-            "return": [],
+            "return": [
+                "str",
+                "int",
+                "Type[T]"
+            ],
             "arguments": {
                 "self": []
             }
@@ -533,7 +682,12 @@
         "SwitcherTimedBase.auto_off_set": {
             "name": "auto_off_set",
             "location": 149,
-            "return": [],
+            "return": [
+                "bool",
+                "str",
+                "int",
+                "float"
+            ],
             "arguments": {
                 "self": []
             }
@@ -559,7 +713,7 @@
             }
         }
     },
-    "src/aioswitcher/schedule/parser.py": {
+    "aioswitcher-dev/src/aioswitcher/schedule/parser.py": {
         "get_schedules": {
             "name": "get_schedules",
             "location": 106,
@@ -568,7 +722,12 @@
             ],
             "arguments": {
                 "message": [
-                    "bytes"
+                    "str",
+                    "bytes",
+                    "int",
+                    "Dict[str,str]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -601,7 +760,12 @@
             "arguments": {
                 "self": [],
                 "obj": [
-                    "object"
+                    "List[List[str]]",
+                    "Dict",
+                    "List[list[str]]",
+                    "str",
+                    "Union[int,str]",
+                    "int"
                 ]
             }
         },
@@ -629,7 +793,9 @@
             "name": "is_recurring",
             "location": 78,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "Type"
             ],
             "arguments": {
                 "self": []
@@ -639,7 +805,7 @@
             "name": "get_days",
             "location": 82,
             "return": [
-                "Set[aioswitcher.schedule.Days]"
+                "Set[nothing]"
             ],
             "arguments": {
                 "self": []
@@ -676,19 +842,28 @@
             }
         }
     },
-    "src/aioswitcher/schedule/tools.py": {
+    "aioswitcher-dev/src/aioswitcher/schedule/tools.py": {
         "pretty_next_run": {
             "name": "pretty_next_run",
             "location": 26,
             "return": [
-                "str"
+                "str",
+                "Text"
             ],
             "arguments": {
                 "start_time": [
-                    "str"
+                    "int",
+                    "str",
+                    "datetime.datetime",
+                    "datetime.date"
                 ],
                 "days": [
-                    "Set[aioswitcher.schedule.Days]"
+                    "Set",
+                    "int",
+                    "List[int]",
+                    "bool",
+                    "Tuple[str,int]",
+                    "float"
                 ]
             }
         },
@@ -700,10 +875,12 @@
             ],
             "arguments": {
                 "start_time": [
-                    "str"
+                    "int",
+                    "datetime.datetime"
                 ],
                 "end_time": [
-                    "str"
+                    "int",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -711,11 +888,19 @@
             "name": "bit_summary_to_days",
             "location": 81,
             "return": [
-                "Set[aioswitcher.schedule.Days]"
+                "Set",
+                "str",
+                "Iterator[Any]",
+                "Dict[str,Any]",
+                "Iterable[Hashable]"
             ],
             "arguments": {
                 "sum_weekdays_bit": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool",
+                    "str",
+                    "Union[int,float]"
                 ]
             }
         },
@@ -723,11 +908,15 @@
             "name": "hexadecimale_timestamp_to_localtime",
             "location": 105,
             "return": [
+                "datetime.datetime",
+                "int",
                 "str"
             ],
             "arguments": {
                 "hex_timestamp": [
-                    "bytes"
+                    "float",
+                    "int",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -735,11 +924,13 @@
             "name": "weekdays_to_hexadecimal",
             "location": 125,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "days": [
-                    "Union[(aioswitcher.schedule.Days, Set[aioswitcher.schedule.Days])]"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -747,32 +938,68 @@
             "name": "time_to_hexadecimal_timestamp",
             "location": 144,
             "return": [
-                "str"
+                "float",
+                "str",
+                "int",
+                "datetime.datetime",
+                "Union[str, int, float]"
             ],
             "arguments": {
                 "time_value": [
-                    "str"
+                    "str",
+                    "T",
+                    "int",
+                    "Sequence[Any]",
+                    "float"
                 ]
             }
         }
     },
-    "src/aioswitcher/schedule/__init__.py": {
+    "aioswitcher-dev/src/aioswitcher/schedule/__init__.py": {
         "Days.__new__": {
             "name": "__new__",
             "location": 40,
-            "return": [],
+            "return": [
+                "int",
+                "Sequence[str]",
+                "Iterable[str]",
+                "Callable"
+            ],
             "arguments": {
-                "cls": [],
-                "value": [],
-                "hex_rep": [],
-                "bit_rep": [],
-                "weekday": []
+                "cls": [
+                    "bool",
+                    "Tuple[type]",
+                    "str",
+                    "Tuple[Type]",
+                    "Optional[Iterable[str]]",
+                    "None"
+                ],
+                "value": [
+                    "str",
+                    "List"
+                ],
+                "hex_rep": [
+                    "str",
+                    "int"
+                ],
+                "bit_rep": [
+                    "str",
+                    "int"
+                ],
+                "weekday": [
+                    "str",
+                    "int"
+                ]
             }
         },
         "Days.bit_rep": {
             "name": "bit_rep",
             "location": 50,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -780,7 +1007,11 @@
         "Days.hex_rep": {
             "name": "hex_rep",
             "location": 55,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -788,19 +1019,28 @@
         "Days.weekday": {
             "name": "weekday",
             "location": 60,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
         }
     },
-    "tests/test_api_messages.py": {
+    "aioswitcher-dev/tests/test_api_messages.py": {
         "test_switcher_base_response_with_an_empty_bytes_value_should_return_not_succefull": {
             "name": "test_switcher_base_response_with_an_empty_bytes_value_should_return_not_succefull",
             "location": 36,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "faulty_response": []
+                "faulty_response": [
+                    "str",
+                    "bool"
+                ]
             }
         },
         "test_switcher_login_response_dataclass": {
@@ -810,7 +1050,9 @@
                 "None"
             ],
             "arguments": {
-                "resource_path": []
+                "resource_path": [
+                    "pathlib.Path"
+                ]
             }
         },
         "test_switcher_login_response_dataclass_without_a_valid_input_will_throw_an_error": {
@@ -824,29 +1066,53 @@
         "test_switcher_state_response_dataclass": {
             "name": "test_switcher_state_response_dataclass",
             "location": 59,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "get_power_consumption": [],
-                "get_auto_shutdown": [],
-                "get_time_on": [],
-                "get_time_left": [],
-                "get_state": []
+                "get_power_consumption": [
+                    "Callable"
+                ],
+                "get_auto_shutdown": [
+                    "Callable"
+                ],
+                "get_time_on": [
+                    "Callable"
+                ],
+                "get_time_left": [
+                    "Callable"
+                ],
+                "get_state": [
+                    "Callable"
+                ]
             }
         },
         "test_switcher_get_schedules_response_dataclass_with_two_schedules": {
             "name": "test_switcher_get_schedules_response_dataclass_with_two_schedules",
             "location": 74,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "get_schedules": []
+                "get_schedules": [
+                    "int",
+                    "List[str]",
+                    "unittesmock.Mock"
+                ]
             }
         },
         "test_switcher_get_schedules_response_dataclass_with_no_schedules": {
             "name": "test_switcher_get_schedules_response_dataclass_with_no_schedules",
             "location": 85,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "get_schedules": []
+                "get_schedules": [
+                    "int",
+                    "Dict[str, str]",
+                    "List[str]"
+                ]
             }
         },
         "test_the_state_message_parser": {
@@ -856,11 +1122,13 @@
                 "None"
             ],
             "arguments": {
-                "resource_path": []
+                "resource_path": [
+                    "pathlib.Path"
+                ]
             }
         }
     },
-    "tests/test_api_packet_crc_signing.py": {
+    "aioswitcher-dev/tests/test_api_packet_crc_signing.py": {
         "test_sign_packet_with_crc_key_for_a_random_string_throws_error": {
             "name": "test_sign_packet_with_crc_key_for_a_random_string_throws_error",
             "location": 30,
@@ -934,25 +1202,43 @@
             "arguments": {}
         }
     },
-    "tests/test_api_tcp_client.py": {
+    "aioswitcher-dev/tests/test_api_tcp_client.py": {
         "writer_write": {
             "name": "writer_write",
             "location": 39,
-            "return": [],
+            "return": [
+                "Mock"
+            ],
             "arguments": {}
         },
         "reader_mock": {
             "name": "reader_mock",
             "location": 44,
-            "return": [],
+            "return": [
+                "AsyncMock",
+                "List[str]",
+                "Dict[str,Sequence[str]]",
+                "unittesmock.Mock"
+            ],
             "arguments": {}
         },
         "writer_mock": {
             "name": "writer_mock",
             "location": 49,
-            "return": [],
+            "return": [
+                "AsyncMock",
+                "Callable[[bytes],None]",
+                "float",
+                "str",
+                "List[str]",
+                "int"
+            ],
             "arguments": {
-                "writer_write": []
+                "writer_write": [
+                    "str",
+                    "Mapping[str,Any]",
+                    "Mapping"
+                ]
             }
         },
         "_get_two_packets": {
@@ -962,8 +1248,20 @@
                 "List[bytes]"
             ],
             "arguments": {
-                "resource_path_root": [],
-                "second_packet": []
+                "resource_path_root": [
+                    "str",
+                    "bool",
+                    "bytes",
+                    "IO[Any]",
+                    "IO"
+                ],
+                "second_packet": [
+                    "str",
+                    "bool",
+                    "bytes",
+                    "IO[Any]",
+                    "IO"
+                ]
             }
         },
         "_load_packet": {
@@ -973,39 +1271,68 @@
                 "bytes"
             ],
             "arguments": {
-                "path": [],
-                "file_name": []
+                "path": [
+                    "str"
+                ],
+                "file_name": [
+                    "str"
+                ]
             }
         }
     },
-    "tests/test_bridge.py": {
+    "aioswitcher-dev/tests/test_bridge.py": {
         "mock_callback": {
             "name": "mock_callback",
             "location": 31,
-            "return": [],
+            "return": [
+                "Mock",
+                "str",
+                "Dict[str,Sequence[str]]"
+            ],
             "arguments": {}
         },
         "udp_broadcast_server": {
             "name": "udp_broadcast_server",
             "location": 36,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {}
         }
     },
-    "tests/test_device_dataclasses.py": {
+    "aioswitcher-dev/tests/test_device_dataclasses.py": {
         "fake_data": {
             "name": "fake_data",
             "location": 45,
-            "return": [],
+            "return": [
+                "FakeData",
+                "Dict",
+                "Dict[str,List[int]]",
+                "IO[bytes]",
+                "Optional[float]",
+                "bool"
+            ],
             "arguments": {}
         },
         "test_given_a_device_of_type_water_heater_when_instantiating_as_a_water_heater_should_be_instatiated_properly": {
             "name": "test_given_a_device_of_type_water_heater_when_instantiating_as_a_water_heater_should_be_instatiated_properly",
             "location": 50,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "fake_data": [],
-                "device_type": []
+                "fake_data": [
+                    "str",
+                    "int",
+                    "Dict[str,Any]"
+                ],
+                "device_type": [
+                    "str",
+                    "int",
+                    "Dict[str,Any]"
+                ]
             }
         },
         "test_given_a_device_of_type_power_plug_when_instantiating_as_a_power_plug_should_be_instatiated_properly": {
@@ -1015,13 +1342,17 @@
                 "None"
             ],
             "arguments": {
-                "fake_data": []
+                "fake_data": [
+                    "int"
+                ]
             }
         },
         "test_given_a_device_of_type_water_heater_when_instantiating_as_a_power_plug_should_raise_an_error": {
             "name": "test_given_a_device_of_type_water_heater_when_instantiating_as_a_power_plug_should_raise_an_error",
             "location": 100,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "fake_data": [],
                 "device_type": []
@@ -1034,59 +1365,118 @@
                 "None"
             ],
             "arguments": {
-                "fake_data": []
+                "fake_data": [
+                    "bool",
+                    "str",
+                    "Tuple",
+                    "int"
+                ]
             }
         }
     },
-    "tests/test_device_enum_helpers.py": {
+    "aioswitcher-dev/tests/test_device_enum_helpers.py": {
         "test_the_given_type_custom_properties_are_returning_the_expected_data": {
             "name": "test_the_given_type_custom_properties_are_returning_the_expected_data",
             "location": 31,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "sut_type": [],
-                "expected_value": [],
-                "expected_hex_rep": [],
-                "expected_category": []
+                "sut_type": [
+                    "str",
+                    "float",
+                    "Dict[str,str]"
+                ],
+                "expected_value": [
+                    "str",
+                    "float",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]",
+                    "None"
+                ],
+                "expected_hex_rep": [
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
+                ],
+                "expected_category": [
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "Sequence[Any]",
+                    "None",
+                    "Sequence[str]"
+                ]
             }
         },
         "test_the_given_state_custom_properties_are_returning_the_expected_data": {
             "name": "test_the_given_state_custom_properties_are_returning_the_expected_data",
             "location": 40,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "sut_state": [],
-                "expected_value": [],
-                "expected_display": []
+                "sut_state": [
+                    "Dict",
+                    "str",
+                    "int"
+                ],
+                "expected_value": [
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "int"
+                ],
+                "expected_display": [
+                    "str",
+                    "List[str]",
+                    "int"
+                ]
             }
         }
     },
-    "tests/test_device_parsing.py": {
+    "aioswitcher-dev/tests/test_device_parsing.py": {
         "mock_callback": {
             "name": "mock_callback",
             "location": 29,
-            "return": [],
+            "return": [
+                "Mock",
+                "str",
+                "Dict[str,Sequence[str]]"
+            ],
             "arguments": {}
         },
         "mock_device": {
             "name": "mock_device",
             "location": 34,
-            "return": [],
+            "return": [
+                "Mock",
+                "str",
+                "Dict[str,Sequence[str]]"
+            ],
             "arguments": {}
         },
         "test_an_unknown_datagram_not_produces_device": {
             "name": "test_an_unknown_datagram_not_produces_device",
             "location": 40,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "mock_debug": [],
-                "mock_callback": []
+                "mock_callback": [
+                    "unittesmock.Mock",
+                    "mock.MagicMock"
+                ]
             }
         },
         "test_an_unknown_device_type_produces_a_warning": {
             "name": "test_an_unknown_device_type_produces_a_warning",
             "location": 49,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "mock_callback": []
             }
@@ -1094,27 +1484,51 @@
         "test_a_water_heater_datagram_produces_device": {
             "name": "test_a_water_heater_datagram_produces_device",
             "location": 57,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "mock_device_cls": [],
-                "mock_device": [],
-                "resource_path": [],
-                "mock_callback": []
+                "mock_device_cls": [
+                    "unittesmock.Mock",
+                    "mock.MagicMock"
+                ],
+                "mock_device": [
+                    "unittesmock.Mock",
+                    "mock.Mock"
+                ],
+                "resource_path": [
+                    "pathlib.Path"
+                ],
+                "mock_callback": [
+                    "unittesmock.Mock"
+                ]
             }
         },
         "test_a_power_plug_datagram_produces_device": {
             "name": "test_a_power_plug_datagram_produces_device",
             "location": 66,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "mock_device_cls": [],
-                "mock_device": [],
-                "resource_path": [],
-                "mock_callback": []
+                "mock_device_cls": [
+                    "unittesmock.Mock",
+                    "mock.MagicMock"
+                ],
+                "mock_device": [
+                    "unittesmock.Mock",
+                    "mock.Mock"
+                ],
+                "resource_path": [
+                    "pathlib.Path"
+                ],
+                "mock_callback": [
+                    "unittesmock.Mock"
+                ]
             }
         }
     },
-    "tests/test_device_tools.py": {
+    "aioswitcher-dev/tests/test_device_tools.py": {
         "test_seconds_to_iso_time_with_a_valid_seconds_value_should_return_a_time_string": {
             "name": "test_seconds_to_iso_time_with_a_valid_seconds_value_should_return_a_time_string",
             "location": 28,
@@ -1158,9 +1572,16 @@
         "test_timedelta_to_hexadecimal_seconds_with_an_out_of_range_value_should_throw_an_error": {
             "name": "test_timedelta_to_hexadecimal_seconds_with_an_out_of_range_value_should_throw_an_error",
             "location": 57,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "out_of_range": []
+                "out_of_range": [
+                    "str",
+                    "Sequence[Hashable]",
+                    "Callable",
+                    "datetime.datetime"
+                ]
             }
         },
         "test_string_to_hexadecimale_device_name_with_a_correct_length_name_should_return_a_right_zero_padded_hex_name": {
@@ -1174,9 +1595,13 @@
         "test_string_to_hexadecimale_device_name_with_an_unsupported_length_value_should_throw_an_error": {
             "name": "test_string_to_hexadecimale_device_name_with_an_unsupported_length_value_should_throw_an_error",
             "location": 71,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "unsupported_length_value": []
+                "unsupported_length_value": [
+                    "str"
+                ]
             }
         },
         "test_current_timestamp_to_hexadecimal_should_return_the_current_timestamp": {
@@ -1190,7 +1615,9 @@
         "test_current_timestamp_to_hexadecimal_with_errornous_value_should_throw_an_error": {
             "name": "test_current_timestamp_to_hexadecimal_with_errornous_value_should_throw_an_error",
             "location": 88,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "_": []
             }
@@ -1198,28 +1625,51 @@
         "test_watts_to_amps_with_parameterized_watts_should_procude_expected_amps": {
             "name": "test_watts_to_amps_with_parameterized_watts_should_procude_expected_amps",
             "location": 95,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "watts": [],
-                "amps": []
+                "watts": [
+                    "Type"
+                ],
+                "amps": [
+                    "Type"
+                ]
             }
         }
     },
-    "tests/test_schedule_days.py": {
+    "aioswitcher-dev/tests/test_schedule_days.py": {
         "test_the_and_verify_the_paramerized_member_of_the_days_enum": {
             "name": "test_the_and_verify_the_paramerized_member_of_the_days_enum",
             "location": 32,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "sut_day": [],
-                "expected_value": [],
-                "expected_hex_rep": [],
-                "expected_bit_rep": [],
+                "sut_day": [
+                    "Dict",
+                    "Hashable"
+                ],
+                "expected_value": [
+                    "Dict",
+                    "str",
+                    "List[str]",
+                    "List[List[str]]",
+                    "List[list[str]]"
+                ],
+                "expected_hex_rep": [
+                    "int",
+                    "str"
+                ],
+                "expected_bit_rep": [
+                    "int",
+                    "str"
+                ],
                 "expected_weekday": []
             }
         }
     },
-    "tests/test_schedule_parser.py": {
+    "aioswitcher-dev/tests/test_schedule_parser.py": {
         "test_switcher_schedule_dataclass_to_verify_the_post_initialization_of_the_dispaly_and_duration": {
             "name": "test_switcher_schedule_dataclass_to_verify_the_post_initialization_of_the_dispaly_and_duration",
             "location": 26,
@@ -1275,31 +1725,53 @@
                 "None"
             ],
             "arguments": {
-                "resource_path": []
+                "resource_path": [
+                    "pathlib.Path"
+                ]
             }
         }
     },
-    "tests/test_schedule_tools.py": {
+    "aioswitcher-dev/tests/test_schedule_tools.py": {
         "today": {
             "name": "today",
             "location": 31,
-            "return": [],
+            "return": [
+                "str",
+                "datetime.datetime",
+                "datetime.date"
+            ],
             "arguments": {}
         },
         "todays_day": {
             "name": "todays_day",
             "location": 36,
-            "return": [],
+            "return": [
+                "Dict[str, Dict[str, int]]",
+                "Dict[str, Any]",
+                "int",
+                "List[str]"
+            ],
             "arguments": {
-                "today": []
+                "today": [
+                    "int",
+                    "float"
+                ]
             }
         },
         "one_hour_from_now": {
             "name": "one_hour_from_now",
             "location": 41,
-            "return": [],
+            "return": [
+                "datetime.datetime",
+                "str",
+                "datetime.date"
+            ],
             "arguments": {
-                "today": []
+                "today": [
+                    "str",
+                    "float",
+                    "int"
+                ]
             }
         },
         "test_pretty_next_run_with_no_selected_days_should_return_due_today": {
@@ -1309,7 +1781,11 @@
                 "None"
             ],
             "arguments": {
-                "one_hour_from_now": []
+                "one_hour_from_now": [
+                    "Callable[[List,bool],None]",
+                    "bool",
+                    "Callable[List,bool,None]"
+                ]
             }
         },
         "test_pretty_next_run_with_todays_day_should_return_due_today": {
@@ -1320,7 +1796,11 @@
             ],
             "arguments": {
                 "todays_day": [],
-                "one_hour_from_now": []
+                "one_hour_from_now": [
+                    "Dict",
+                    "bool",
+                    "Dict[str,Any]"
+                ]
             }
         },
         "test_pretty_next_run_with_multiple_days_should_return_due_the_closest_day": {
@@ -1330,7 +1810,9 @@
                 "None"
             ],
             "arguments": {
-                "today": []
+                "today": [
+                    "int"
+                ]
             }
         },
         "test_pretty_next_run_on_yesterday_with_todays_day_should_return_due_tomorrow": {
@@ -1341,7 +1823,9 @@
             ],
             "arguments": {
                 "today": [],
-                "todays_day": []
+                "todays_day": [
+                    "Dict[str,Sequence[Any]]"
+                ]
             }
         },
         "test_pretty_next_run_on_two_days_ago_with_todays_day_should_return_due_on_next_day": {
@@ -1351,7 +1835,10 @@
                 "None"
             ],
             "arguments": {
-                "today": [],
+                "today": [
+                    "int",
+                    "str"
+                ],
                 "todays_day": []
             }
         },
@@ -1362,7 +1849,9 @@
                 "None"
             ],
             "arguments": {
-                "today": []
+                "today": [
+                    "int"
+                ]
             }
         },
         "test_calc_duration_with_valid_start_and_end_time_should_return_the_duration": {
@@ -1400,33 +1889,57 @@
         "test_bit_summary_to_days_with_parameterized_sum_should_return_the_expected_weekday_set": {
             "name": "test_bit_summary_to_days_with_parameterized_sum_should_return_the_expected_weekday_set",
             "location": 121,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "sum": [],
-                "expected_weekdays": []
+                "sum": [
+                    "str",
+                    "IO[bytes]",
+                    "IO"
+                ],
+                "expected_weekdays": [
+                    "str",
+                    "IO[bytes]",
+                    "IO"
+                ]
             }
         },
         "test_bit_summary_to_days_with_wrong_bit_sum_parameterized_value": {
             "name": "test_bit_summary_to_days_with_wrong_bit_sum_parameterized_value",
             "location": 126,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "wrong_bit_sum": []
+                "wrong_bit_sum": [
+                    "str"
+                ]
             }
         },
         "test_weekdays_to_hexadecimal_with_parameterized_weekday_set_should_return_the_expected_sum": {
             "name": "test_weekdays_to_hexadecimal_with_parameterized_weekday_set_should_return_the_expected_sum",
             "location": 141,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "weekdays": [],
-                "expected_sum": []
+                "weekdays": [
+                    "str",
+                    "Dict[str,Any]"
+                ],
+                "expected_sum": [
+                    "str",
+                    "int"
+                ]
             }
         },
         "test_weekdays_to_hexadecimal_with_empty_collections_should_throw_an_error": {
             "name": "test_weekdays_to_hexadecimal_with_empty_collections_should_throw_an_error",
             "location": 148,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "empty_collection": []
             }
@@ -1434,7 +1947,9 @@
         "test_weekdays_to_hexadecimal_with_duplicate_members_should_throw_an_encoding_error": {
             "name": "test_weekdays_to_hexadecimal_with_duplicate_members_should_throw_an_encoding_error",
             "location": 155,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "duplicate_members": []
             }
@@ -1456,19 +1971,30 @@
             "arguments": {}
         }
     },
-    "tests/test_udp_client_protocol.py": {
+    "aioswitcher-dev/tests/test_udp_client_protocol.py": {
         "mock_callback": {
             "name": "mock_callback",
             "location": 26,
-            "return": [],
+            "return": [
+                "Mock",
+                "str",
+                "Dict[str,Sequence[str]]"
+            ],
             "arguments": {}
         },
         "sut_protocol": {
             "name": "sut_protocol",
             "location": 31,
-            "return": [],
+            "return": [
+                "UdpClientProtocol",
+                "Callable",
+                "Callable[[str],None]"
+            ],
             "arguments": {
-                "mock_callback": []
+                "mock_callback": [
+                    "str",
+                    "bool"
+                ]
             }
         },
         "test_given_transport_when_connection_made_then_transport_should_be_served": {
@@ -1478,7 +2004,9 @@
                 "None"
             ],
             "arguments": {
-                "sut_protocol": []
+                "sut_protocol": [
+                    "unittesmock.Mock"
+                ]
             }
         },
         "test_given_datagram_when_sut_received_then_the_callback_is_called": {
@@ -1489,7 +2017,9 @@
             ],
             "arguments": {
                 "sut_protocol": [],
-                "mock_callback": []
+                "mock_callback": [
+                    "unittesmock.Mock"
+                ]
             }
         },
         "test_error_received_with_no_error_should_issue_a_warning": {
@@ -1505,7 +2035,9 @@
         "test_error_received_with_an_actual_error_should_write_to_the_error_output": {
             "name": "test_error_received_with_an_actual_error_should_write_to_the_error_output",
             "location": 53,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "mock_error": [],
                 "sut_protocol": []
@@ -1514,7 +2046,9 @@
         "test_connection_lost_with_no_error_should_write_to_the_info_output": {
             "name": "test_connection_lost_with_no_error_should_write_to_the_info_output",
             "location": 59,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "mock_info": [],
                 "sut_protocol": []
@@ -1523,43 +2057,105 @@
         "test_connection_lost_with_an_actual_error_should_write_to_the_critical_output": {
             "name": "test_connection_lost_with_an_actual_error_should_write_to_the_critical_output",
             "location": 65,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "mock_critical": [],
+                "mock_critical": [
+                    "unittesmock.Mock"
+                ],
                 "sut_protocol": []
             }
         }
     },
-    "tests/test_udp_datagram_parsing.py": {
+    "aioswitcher-dev/tests/test_udp_datagram_parsing.py": {
         "test_datagram_state_off": {
             "name": "test_datagram_state_off",
             "location": 35,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "resource_path": [],
-                "type_suffix": [],
-                "expected_type": []
+                "resource_path": [
+                    "str",
+                    "bool",
+                    "pathlib.PosixPath",
+                    "pathlib.Path",
+                    "path.Path"
+                ],
+                "type_suffix": [
+                    "str",
+                    "bool",
+                    "pathlib.PosixPath",
+                    "pathlib.Path",
+                    "path.Path"
+                ],
+                "expected_type": [
+                    "bool",
+                    "Dict",
+                    "Optional[bool]",
+                    "str",
+                    "None",
+                    "Type",
+                    "Callable"
+                ]
             }
         },
         "test_datagram_state_on": {
             "name": "test_datagram_state_on",
             "location": 61,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "resource_path": [],
-                "type_suffix": [],
-                "expected_type": []
+                "resource_path": [
+                    "str",
+                    "bool",
+                    "pathlib.PosixPath",
+                    "pathlib.Path",
+                    "path.Path"
+                ],
+                "type_suffix": [
+                    "str",
+                    "bool",
+                    "pathlib.PosixPath",
+                    "pathlib.Path",
+                    "path.Path"
+                ],
+                "expected_type": [
+                    "bool",
+                    "Dict",
+                    "Optional[bool]",
+                    "str",
+                    "None",
+                    "Type",
+                    "Callable"
+                ]
             }
         },
         "test_a_faulty_datagram": {
             "name": "test_a_faulty_datagram",
             "location": 80,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "resource_path": [],
-                "type_suffix": []
+                "resource_path": [
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "pathlib.PosixPath",
+                    "path.Path"
+                ],
+                "type_suffix": [
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "pathlib.PosixPath",
+                    "path.Path"
+                ]
             }
         }
     },
-    "tests/__init__.py": {}
+    "aioswitcher-dev/tests/__init__.py": {}
 }

@@ -20,7 +20,9 @@
             ],
             "arguments": {
                 "comment_symbols": [
-                    "config.CommentSymbol"
+                    "str",
+                    "config.CommentSymbol",
+                    "config.CreateOptions"
                 ]
             }
         },
@@ -40,11 +42,14 @@
             "name": "get_exclude_regex",
             "location": 36,
             "return": [
-                "Pattern"
+                "Pattern[str]"
             ],
             "arguments": {
                 "raw_regexes": [
-                    "Set[str]"
+                    "Set[str]",
+                    "str",
+                    "int",
+                    "Container[Taxon]"
                 ]
             }
         },
@@ -59,7 +64,11 @@
                     "str"
                 ],
                 "lines": [
-                    "List[str]"
+                    "List[str]",
+                    "bool",
+                    "str",
+                    "Dict[str,int]",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -67,16 +76,17 @@
             "name": "clean",
             "location": 51,
             "return": [
-                "Dict[(str, List[tuple])]"
+                "collections.defaultdict"
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "line_processor": [
-                    "callable",
+                    "Callable",
                     "str",
-                    "typing.Callable[, ]",
                     "int"
                 ]
             }
@@ -92,13 +102,19 @@
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "config.Tag",
+                    "config.CommentSymbol"
                 ],
                 "comment_symbol": [
+                    "str",
+                    "config.Tag",
                     "config.CommentSymbol"
                 ],
                 "tag": [
-                    "config.Tag"
+                    "str",
+                    "config.Tag",
+                    "config.CommentSymbol"
                 ]
             }
         },
@@ -106,17 +122,27 @@
             "name": "comment_line_processor",
             "location": 11,
             "return": [
-                "str"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "None",
+                    "config.CommentSymbol",
+                    "Optional[str]"
                 ],
                 "comment_symbol": [
-                    "config.CommentSymbol"
+                    "str",
+                    "None",
+                    "config.CommentSymbol",
+                    "Optional[str]"
                 ],
                 "tag": [
-                    "config.Tag"
+                    "str",
+                    "Sequence[str]",
+                    "config.Tag",
+                    "List[str]",
+                    "config.CommentSymbol"
                 ]
             }
         },
@@ -124,16 +150,22 @@
             "name": "uncomment_line_processor",
             "location": 19,
             "return": [
-                "str"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Type[T]",
+                    "Type",
+                    "Optional[Scope]",
+                    "None"
                 ],
                 "comment_symbol": [
-                    "config.CommentSymbol"
+                    "str"
                 ],
                 "tag": [
+                    "str",
                     "config.Tag"
                 ]
             }
@@ -142,17 +174,34 @@
             "name": "check_line_processor",
             "location": 29,
             "return": [
-                "str"
+                "str",
+                "Sequence[str]",
+                "List[str]",
+                "Iterable[str]",
+                "List",
+                "Set[str]"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "Sequence[str]",
+                    "config.Tag",
+                    "List[str]",
+                    "config.CommentSymbol"
                 ],
                 "comment_symbol": [
+                    "str",
+                    "Sequence[str]",
+                    "config.Tag",
+                    "List[str]",
                     "config.CommentSymbol"
                 ],
                 "tag": [
-                    "config.Tag"
+                    "str",
+                    "Sequence[str]",
+                    "config.Tag",
+                    "List[str]",
+                    "config.CommentSymbol"
                 ]
             }
         }

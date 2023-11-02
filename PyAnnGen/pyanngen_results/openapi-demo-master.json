@@ -5,7 +5,7 @@
             "name": "hello",
             "location": 17,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -31,7 +31,10 @@
             "arguments": {
                 "self": [],
                 "logger": [
-                    "Optional[logging.Logger]"
+                    "logging.Logger",
+                    "str",
+                    "None",
+                    "List[str]"
                 ]
             }
         },
@@ -44,7 +47,9 @@
             "arguments": {
                 "self": [],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -52,7 +57,11 @@
             "name": "_read_file",
             "location": 28,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "List",
+                "str",
+                "int",
+                "Dict[str,Any]",
+                "Iterable[int]"
             ],
             "arguments": {
                 "self": [],
@@ -70,7 +79,10 @@
             "arguments": {
                 "self": [],
                 "filepath": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "int",
+                    "Dict"
                 ]
             }
         },
@@ -113,7 +125,10 @@
             "arguments": {
                 "self": [],
                 "person_id": [
-                    "int"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "Union[int,str]"
                 ]
             }
         },
@@ -126,7 +141,8 @@
             "arguments": {
                 "self": [],
                 "person_id": [
-                    "int"
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -139,7 +155,10 @@
             "arguments": {
                 "self": [],
                 "person_id": [
-                    "int"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "None"
                 ]
             }
         }
@@ -149,11 +168,21 @@
             "name": "_person_or_404",
             "location": 9,
             "return": [
-                "Dict[(str, Union[(int, str)])]"
+                "dict",
+                "str",
+                "List[str]",
+                "Dict[str, Any]",
+                "Dict[str, str]",
+                "Mapping[str, Union[int, slice]]"
             ],
             "arguments": {
                 "person": [
-                    "Optional[persons.models.PersonModel]"
+                    "None",
+                    "Optional[str]",
+                    "Optional[int]",
+                    "Optional[float]",
+                    "Optional[models.PersonModel]",
+                    "bool"
                 ]
             }
         },
@@ -161,7 +190,7 @@
             "name": "list_persons",
             "location": 15,
             "return": [
-                "List[Dict[(str, Union[(int, str)])]]"
+                "List[Dict[(str, Any)]]"
             ],
             "arguments": {}
         },
@@ -169,13 +198,13 @@
             "name": "create_person",
             "location": 20,
             "return": [
-                "Dict[(str, Union[(int, str)])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "body": [
                     "str",
                     "bytes",
-                    "Union[str, \"TrackingCode\"]",
+                    "Union[str,TrackingCode]",
                     "int",
                     "users.models.CustomUser"
                 ]
@@ -185,11 +214,12 @@
             "name": "retrieve_person",
             "location": 29,
             "return": [
-                "Dict[(str, Union[(int, str)])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "person_id": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -197,11 +227,12 @@
             "name": "update_person",
             "location": 34,
             "return": [
-                "Dict[(str, Union[(int, str)])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "person_id": [
-                    "int"
+                    "int",
+                    "str"
                 ],
                 "body": [
                     "str",
@@ -213,11 +244,12 @@
             "name": "delete_person",
             "location": 43,
             "return": [
-                "Optional[Dict[(str, Union[(int, str)])]]"
+                "Optional[Dict[(str, Any)]]"
             ],
             "arguments": {
                 "person_id": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         }
@@ -228,7 +260,7 @@
             "name": "as_dict",
             "location": 16,
             "return": [
-                "Dict[(str, Union[(int, str)])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -242,7 +274,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TPersonModel"
+                    "_TPersonModel@@PersonModel@@"
                 ]
             }
         },
@@ -250,7 +282,7 @@
             "name": "as_dict",
             "location": 28,
             "return": [
-                "Dict[(str, Union[(int, str)])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -263,8 +295,8 @@
             "name": "db",
             "location": 9,
             "return": [
-                "typing.Generator[persons.db.DB, None, None]",
-                "typing.Generator[]"
+                "Generator[persons.db.DB,None,None]",
+                "Generator"
             ],
             "arguments": {}
         }
@@ -277,9 +309,7 @@
                 "None"
             ],
             "arguments": {
-                "db": [
-                    "persons.db.DB"
-                ]
+                "db": []
             }
         },
         "test_create_person": {
@@ -290,7 +320,8 @@
             ],
             "arguments": {
                 "db": [
-                    "persons.db.DB"
+                    "deeplearning.ml4pl.models.log_database.Database",
+                    "bool"
                 ]
             }
         },
@@ -302,7 +333,8 @@
             ],
             "arguments": {
                 "db": [
-                    "persons.db.DB"
+                    "zerver.models.UserProfile",
+                    "zerver.models.UserGroup"
                 ]
             }
         },
@@ -314,7 +346,8 @@
             ],
             "arguments": {
                 "db": [
-                    "persons.db.DB"
+                    "str",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -326,7 +359,7 @@
             ],
             "arguments": {
                 "db": [
-                    "persons.db.DB"
+                    "bool"
                 ]
             }
         }

@@ -1,6 +1,6 @@
 {
-    "setup.py": {},
-    "batch_crop/batch_crop.py": {
+    "batch_crop-master/setup.py": {},
+    "batch_crop-master/batch_crop/batch_crop.py": {
         "display_block": {
             "name": "display_block",
             "location": 35,
@@ -24,60 +24,104 @@
             ],
             "arguments": {
                 "box_ratio": [
-                    "Tuple[(float, float, float, float)]"
+                    "str",
+                    "int",
+                    "_types.Image"
                 ],
                 "in_path": [
                     "str"
                 ],
                 "out_path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
         "crop_image": {
             "name": "crop_image",
             "location": 559,
-            "return": [],
+            "return": [
+                "_types.Image",
+                "int",
+                "str"
+            ],
             "arguments": {
                 "box_ratio": [
-                    "Tuple[(float, float, float, float)]"
+                    "float",
+                    "int",
+                    "PIL.Image.Image"
                 ],
-                "image": []
+                "image": [
+                    "int",
+                    "PIL.Image.Image",
+                    "Image"
+                ]
             }
         },
         "scale_image": {
             "name": "scale_image",
             "location": 577,
-            "return": [],
+            "return": [
+                "List[int]",
+                "Dict[str, Dict[str, int]]"
+            ],
             "arguments": {
                 "scale_factor": [
-                    "float"
+                    "int",
+                    "float",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
-                "image_raw": []
+                "image_raw": [
+                    "PIL.Image",
+                    "Tuple[int, int]",
+                    "Tuple[int, int, int]"
+                ]
             }
         },
         "get_scale_factor": {
             "name": "get_scale_factor",
             "location": 599,
             "return": [
-                "float"
+                "float",
+                "int",
+                "bool",
+                "str",
+                "List[str]",
+                "bytes",
+                "Set"
             ],
             "arguments": {
                 "max_dimen": [
-                    "float"
+                    "float",
+                    "int",
+                    "List[int]",
+                    "bool"
                 ],
-                "image_raw": []
+                "image_raw": [
+                    "str",
+                    "PIL.Image",
+                    "float",
+                    "IO",
+                    "int",
+                    "Union[str,IO[bytes]]",
+                    "Collection",
+                    "Collection[float]"
+                ]
             }
         },
         "coor_to_box": {
             "name": "coor_to_box",
             "location": 614,
             "return": [
-                "Tuple[(float, float, float, float)]"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "coors": [
-                    "Tuple[(float, float, float, float)]"
+                    "Tuple[float,float,float,float]",
+                    "int",
+                    "Tuple[Union[float,float,float,float]]",
+                    "List"
                 ]
             }
         },
@@ -85,14 +129,20 @@
             "name": "coors_to_ratios",
             "location": 649,
             "return": [
-                "Tuple[(float, float, float, float)]"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "image_size": [
-                    "Tuple[(float, float)]"
+                    "Tuple[float,float]",
+                    "float",
+                    "Tuple[Union[float,float]]",
+                    "Mapping[str,float]",
+                    "Mapping"
                 ],
                 "coors": [
-                    "Tuple[(float, float, float, float)]"
+                    "Tuple[float,float,float,float]",
+                    "bool",
+                    "Tuple[Union[float,float,float,float]]"
                 ]
             }
         },
@@ -100,14 +150,20 @@
             "name": "ratios_to_coors",
             "location": 674,
             "return": [
-                "Tuple[(float, float, float, float)]"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "image_size": [
-                    "Tuple[(float, float)]"
+                    "Tuple[float,float]",
+                    "float",
+                    "Tuple[Union[float,float]]",
+                    "Mapping[str,float]",
+                    "Mapping"
                 ],
                 "ratios": [
-                    "Tuple[(float, float, float, float)]"
+                    "Tuple[float,float,float,float]",
+                    "bool",
+                    "Tuple[Union[float,float,float,float]]"
                 ]
             }
         },
@@ -119,7 +175,10 @@
             ],
             "arguments": {
                 "box_ratio": [
-                    "Tuple[(float, float, float, float)]"
+                    "Tuple[float,float,float,float]",
+                    "str",
+                    "Tuple[Union[float,float,float,float]]",
+                    "int"
                 ]
             }
         },
@@ -131,10 +190,18 @@
             ],
             "arguments": {
                 "box_ratio": [
-                    "Tuple[(float, float, float, float)]"
+                    "Tuple[float,float,float,float]",
+                    "str",
+                    "Tuple[Union[float,float,float,float]]",
+                    "int",
+                    "Optional[str]",
+                    "None",
+                    "Callable[[str],None]",
+                    "Callable[str,None]"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "os.PathLike"
                 ]
             }
         },
@@ -154,11 +221,12 @@
             "name": "get_ratios_from_config",
             "location": 772,
             "return": [
-                "Tuple[(float, float, float, float)]"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "config": [
-                    "configparser.ConfigParser"
+                    "configparser.ConfigParser",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -182,14 +250,17 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
         "display_block.close": {
             "name": "close",
             "location": 49,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {}
         },
         "BatchCropper.__init__": {
@@ -201,7 +272,10 @@
             "arguments": {
                 "self": [],
                 "window": [
-                    "tk.Tk"
+                    "int",
+                    "Optional[int]",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
@@ -223,14 +297,17 @@
             ],
             "arguments": {
                 "self": [],
-                "image": []
+                "image": [
+                    "int",
+                    "PIL.Image"
+                ]
             }
         },
         "BatchCropper.get_coors_ratios": {
             "name": "get_coors_ratios",
             "location": 226,
             "return": [
-                "Tuple[(float, float, float, float)]"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -245,7 +322,8 @@
             "arguments": {
                 "self": [],
                 "box_ratio": [
-                    "Tuple[(float, float, float, float)]"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -277,7 +355,15 @@
             ],
             "arguments": {
                 "self": [],
-                "event": []
+                "event": [
+                    "Callable[[str],bool]",
+                    "Callable[str,bool]",
+                    "int",
+                    "Mapping[str,object]",
+                    "Set",
+                    "Mapping",
+                    "str"
+                ]
             }
         },
         "BatchCropper.replace_rect": {
@@ -289,9 +375,11 @@
             "arguments": {
                 "self": [],
                 "x": [
+                    "int",
                     "float"
                 ],
                 "y": [
+                    "int",
                     "float"
                 ]
             }
@@ -304,7 +392,10 @@
             ],
             "arguments": {
                 "self": [],
-                "event": []
+                "event": [
+                    "int",
+                    "Dict"
+                ]
             }
         },
         "BatchCropper.callback_quit": {
@@ -339,18 +430,10 @@
             ],
             "arguments": {
                 "self": [],
-                "x1": [
-                    "float"
-                ],
-                "y1": [
-                    "float"
-                ],
-                "x2": [
-                    "float"
-                ],
-                "y2": [
-                    "float"
-                ]
+                "x1": [],
+                "y1": [],
+                "x2": [],
+                "y2": []
             }
         },
         "BatchCropper.callback_mouse_up": {
@@ -361,7 +444,9 @@
             ],
             "arguments": {
                 "self": [],
-                "event": []
+                "event": [
+                    "int"
+                ]
             }
         },
         "BatchCropper.callback_crop": {
@@ -385,81 +470,235 @@
             }
         }
     },
-    "batch_crop/__init__.py": {},
-    "docs/conf.py": {},
-    "tests/src/test_batch_crop.py": {
+    "batch_crop-master/batch_crop/__init__.py": {},
+    "batch_crop-master/docs/conf.py": {},
+    "batch_crop-master/tests/src/test_batch_crop.py": {
         "test_coor_to_box": {
             "name": "test_coor_to_box",
             "location": 36,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "x1": [],
-                "y1": [],
-                "x2": [],
-                "y2": []
+                "x1": [
+                    "int",
+                    "float",
+                    "Dict[int,Tuple[int,int]]",
+                    "Dict[int,tuple[Union[int,int]]]"
+                ],
+                "y1": [
+                    "int",
+                    "float",
+                    "Dict[int,Tuple[int,int]]",
+                    "Dict[int,tuple[Union[int,int]]]"
+                ],
+                "x2": [
+                    "int",
+                    "float",
+                    "Dict[int,Tuple[int,int]]",
+                    "Dict[int,tuple[Union[int,int]]]"
+                ],
+                "y2": [
+                    "int",
+                    "float",
+                    "Dict[int,Tuple[int,int]]",
+                    "Dict[int,tuple[Union[int,int]]]"
+                ]
             }
         },
         "test_coors_to_ratios": {
             "name": "test_coors_to_ratios",
             "location": 52,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "width": [],
-                "height": [],
-                "x1": [],
-                "y1": [],
-                "x2": [],
-                "y2": []
+                "width": [
+                    "int",
+                    "float"
+                ],
+                "height": [
+                    "int",
+                    "List[int]",
+                    "Sequence[List[int]]",
+                    "Sequence[list[int]]"
+                ],
+                "x1": [
+                    "int",
+                    "List[str]"
+                ],
+                "y1": [
+                    "int",
+                    "Optional[float]",
+                    "Iterable[int]",
+                    "float",
+                    "Optional[int]",
+                    "None"
+                ],
+                "x2": [
+                    "int",
+                    "List[str]"
+                ],
+                "y2": [
+                    "int",
+                    "Optional[float]",
+                    "Iterable[int]",
+                    "float",
+                    "Optional[int]",
+                    "None"
+                ]
             }
         },
         "test_ratios_to_coors": {
             "name": "test_ratios_to_coors",
             "location": 72,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "width": [],
-                "height": [],
-                "x1": [],
-                "y1": [],
-                "x2": [],
-                "y2": []
+                "width": [
+                    "int",
+                    "float"
+                ],
+                "height": [
+                    "int",
+                    "bool"
+                ],
+                "x1": [
+                    "float",
+                    "str",
+                    "int",
+                    "None",
+                    "Tuple",
+                    "Optional[float]",
+                    "Optional[int]",
+                    "bool"
+                ],
+                "y1": [
+                    "float",
+                    "List[str]",
+                    "Tuple",
+                    "str"
+                ],
+                "x2": [
+                    "float",
+                    "str",
+                    "int",
+                    "None",
+                    "Tuple",
+                    "Optional[float]",
+                    "Optional[int]",
+                    "bool"
+                ],
+                "y2": [
+                    "float",
+                    "List[str]",
+                    "Tuple",
+                    "str"
+                ]
             }
         },
         "test_ratios_coors_interconversion": {
             "name": "test_ratios_coors_interconversion",
             "location": 92,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "width": [],
-                "height": [],
-                "x1": [],
-                "y1": [],
-                "x2": [],
-                "y2": []
+                "width": [
+                    "int"
+                ],
+                "height": [
+                    "int"
+                ],
+                "x1": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ],
+                "y1": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ],
+                "x2": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ],
+                "y2": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ]
             }
         },
         "test_coors_ratios_interconversion": {
             "name": "test_coors_ratios_interconversion",
             "location": 110,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "width": [],
-                "height": [],
-                "x1": [],
-                "y1": [],
-                "x2": [],
-                "y2": []
+                "width": [
+                    "int"
+                ],
+                "height": [
+                    "int"
+                ],
+                "x1": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ],
+                "y1": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ],
+                "x2": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ],
+                "y2": [
+                    "int",
+                    "float",
+                    "Union[float,str]",
+                    "str"
+                ]
             }
         },
         "test_ratios_config_interconversion": {
             "name": "test_ratios_config_interconversion",
             "location": 126,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "x1": [],
-                "y1": [],
-                "x2": [],
-                "y2": []
+                "x1": [
+                    "int",
+                    "float"
+                ],
+                "y1": [
+                    "int",
+                    "float"
+                ],
+                "x2": [
+                    "int",
+                    "float"
+                ],
+                "y2": [
+                    "int",
+                    "float"
+                ]
             }
         },
         "test_open_image": {

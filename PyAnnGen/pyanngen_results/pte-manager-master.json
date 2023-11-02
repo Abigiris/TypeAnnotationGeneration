@@ -4,7 +4,6 @@
             "name": "cli",
             "location": 11,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17,7 +16,6 @@
             "name": "list_scrapers",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -34,9 +32,8 @@
             "arguments": {
                 "scraper_names": [
                     "str",
-                    "list[str]",
-                    "Optional[str]",
                     "List[str]",
+                    "Optional[str]",
                     "Iterable[float]",
                     "Any",
                     "Optional[Callable]",
@@ -48,7 +45,6 @@
             "name": "status",
             "location": 38,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -57,7 +53,6 @@
             "name": "sync_github",
             "location": 46,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -66,7 +61,6 @@
             "name": "sync_gcal",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -75,7 +69,6 @@
             "name": "shell",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -126,11 +119,12 @@
             "name": "get_by_id",
             "location": 55,
             "return": [
-                "GenericEvent"
+                "Optional[GenericEvent]"
             ],
             "arguments": {
                 "cls": [
-                    "Type[_TGenericEvent]"
+                    "str",
+                    "int"
                 ],
                 "event_id": [
                     "str"
@@ -141,7 +135,7 @@
             "name": "get_all",
             "location": 62,
             "return": [
-                "Iterator[GenericEvent]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "cls": [
@@ -163,10 +157,10 @@
                     "str",
                     "Optional[Callable]",
                     "int",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "Match[str]",
                     "None",
-                    "typing.Match"
+                    "Match"
                 ]
             }
         },
@@ -195,11 +189,11 @@
             ],
             "arguments": {
                 "message": [
-                    "typing.Text",
-                    "dict",
+                    "Text",
+                    "Dict",
                     "str",
                     "bytes",
-                    "Callable[[bytes], bytes]"
+                    "Callable[[bytes],bytes]"
                 ]
             }
         },
@@ -242,10 +236,10 @@
             ],
             "arguments": {
                 "log_level": [
-                    "typing.Text",
+                    "Text",
                     "bytes",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool",
                     "int"
                 ]
@@ -361,7 +355,9 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "events.GenericEvent"
+                    "Dict[str,Any]",
+                    "str",
+                    "watchdog.events.FileSystemEvent"
                 ]
             }
         },
@@ -374,7 +370,9 @@
             "arguments": {
                 "self": [],
                 "ev": [
-                    "events.GenericEvent"
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -396,11 +394,11 @@
             "name": "redirect",
             "location": 35,
             "return": [
-                "tuple[typing.Text]",
-                "Dict[str, int]",
-                "typing.Text",
+                "Tuple[Text]",
+                "Dict[str,int]",
+                "Text",
                 "int",
-                "dict"
+                "Dict"
             ],
             "arguments": {}
         },
@@ -416,7 +414,6 @@
             "name": "_target",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -432,10 +429,16 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Optional[List[str]]",
+                    "None"
                 ],
                 "scraper": [
-                    "Callable[([], Iterator[events.GenericEvent])]"
+                    "str",
+                    "List[str]",
+                    "Optional[List[str]]",
+                    "None"
                 ]
             }
         },
@@ -455,7 +458,12 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "Union[int,str]",
+                    "int"
                 ]
             }
         },
@@ -467,10 +475,25 @@
             ],
             "arguments": {
                 "target": [
-                    "events.GenericEvent"
+                    "str",
+                    "Set[str]",
+                    "Optional[str]",
+                    "Type",
+                    "None",
+                    "Sequence[type]",
+                    "Sequence[Type]"
                 ],
                 "source": [
-                    "events.GenericEvent"
+                    "str",
+                    "Sequence[str]",
+                    "Union[dict,list]",
+                    "Dict",
+                    "Optional[Dict[str,str]]",
+                    "List",
+                    "Callable[[KT,VT],bool]",
+                    "Dict[str,str]",
+                    "None",
+                    "Callable[KT,VT,bool]"
                 ]
             }
         }
@@ -480,7 +503,7 @@
             "name": "scrape",
             "location": 16,
             "return": [
-                "Iterator[pte.events.Event]"
+                "Generator[(pte.events.Event, Any, None)]"
             ],
             "arguments": {}
         },
@@ -492,7 +515,9 @@
             ],
             "arguments": {
                 "ev_dict": [
-                    "dict"
+                    "dict",
+                    "Dict[str, Any]",
+                    "datetime.datetime"
                 ]
             }
         }
@@ -512,10 +537,14 @@
                     "bool"
                 ],
                 "page_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "semaphore": [
-                    "asyncio.locks.Semaphore"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -555,7 +584,11 @@
             "arguments": {
                 "self": [],
                 "ev_dict": [
-                    "dict"
+                    "Dict[str, Any]",
+                    "dict",
+                    "homeassistancore.Event",
+                    "Type['Declared']",
+                    "edp.journal.Event"
                 ]
             }
         }
@@ -565,7 +598,7 @@
             "name": "scrape",
             "location": 11,
             "return": [
-                "Iterator[pte.events.Event]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {}
         },
@@ -573,7 +606,7 @@
             "name": "scrape_feed",
             "location": 16,
             "return": [
-                "Iterator[pte.events.Event]"
+                "Generator[(pte.events.Event, Any, None)]"
             ],
             "arguments": {
                 "feed_name": [
@@ -582,8 +615,7 @@
                 "feed_url": [
                     "str",
                     "bytes",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -593,7 +625,7 @@
             "name": "scrape",
             "location": 12,
             "return": [
-                "Iterator[pte.events.Event]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {}
         },
@@ -601,11 +633,15 @@
             "name": "scrape_community",
             "location": 17,
             "return": [
-                "Iterator[pte.events.Event]"
+                "Generator[(pte.events.Event, Any, None)]"
             ],
             "arguments": {
                 "community": [
-                    "str"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Optional[cmk.utils.diagnostics.DiagnosticsOptionalParameters]",
+                    "int",
+                    "None"
                 ]
             }
         }
@@ -648,7 +684,7 @@
             "name": "scrape",
             "location": 12,
             "return": [
-                "Iterator[pte.events.MiscEvent]"
+                "Generator[(pte.events.MiscEvent, Any, None)]"
             ],
             "arguments": {}
         }

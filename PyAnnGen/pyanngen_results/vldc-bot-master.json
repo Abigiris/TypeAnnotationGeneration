@@ -20,7 +20,7 @@
             "name": "get_debugger",
             "location": 15,
             "return": [
-                "Optional[str]"
+                "str"
             ],
             "arguments": {}
         },
@@ -28,7 +28,7 @@
             "name": "get_group_chat_id",
             "location": 20,
             "return": [
-                "Optional[str]"
+                "str"
             ],
             "arguments": {}
         },
@@ -36,7 +36,7 @@
             "name": "get_token",
             "location": 28,
             "return": [
-                "Optional[str]"
+                "str"
             ],
             "arguments": {}
         },
@@ -60,7 +60,7 @@
             "name": "get_config",
             "location": 50,
             "return": [
-                "dict"
+                "Dict[(str, Optional[Union[(bool, str)]])]"
             ],
             "arguments": {}
         }
@@ -75,7 +75,9 @@
             "arguments": {
                 "self": [],
                 "db_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -88,7 +90,9 @@
             "arguments": {
                 "self": [],
                 "user_id": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -101,10 +105,9 @@
             "arguments": {
                 "self": [],
                 "message": [
-                    "dict[, ]",
+                    "Dict",
                     "bool",
-                    "telebotypes.Message",
-                    "dict"
+                    "telebotypes.Message"
                 ]
             }
         },
@@ -119,10 +122,10 @@
                 "message": [
                     "str",
                     "int",
-                    "list[dict[str, typing.Any]]",
-                    "List[Dict[str, Any]]",
-                    "typing.Mapping",
-                    "Mapping[str, Any]",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]",
+                    "Mapping",
+                    "Mapping[str,Any]",
                     "pymongo.database.Database"
                 ]
             }
@@ -180,24 +183,21 @@
                 ],
                 "cmd": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "result": [
-                    "list[]",
-                    "list",
+                    "List",
+                    "Dict",
                     "int",
-                    "dict[, ]",
-                    "dict",
-                    "tuple[]",
-                    "dict[str, str]",
-                    "tuple",
+                    "Tuple",
+                    "Dict[str,str]",
                     "bool",
-                    "message.header.Message",
-                    "Dict[str, str]"
+                    "message.header.Message"
                 ],
                 "seconds": [
-                    "int"
+                    "bool",
+                    "int",
+                    "config.Config"
                 ],
                 "remove_cmd": [
                     "bool",
@@ -234,7 +234,10 @@
                     "telebotypes.Message"
                 ],
                 "seconds": [
-                    "int"
+                    "int",
+                    "str",
+                    "BaseException",
+                    "telegram.Message"
                 ]
             }
         },
@@ -247,19 +250,47 @@
             "arguments": {
                 "self": [],
                 "mode_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Dict",
+                    "int",
+                    "Mapping",
+                    "Optional[Mapping[str,Any]]",
+                    "None"
                 ],
                 "default": [
-                    "bool"
+                    "bool",
+                    "Optional[str]",
+                    "int",
+                    "Iterable[str]",
+                    "str",
+                    "List[str]"
                 ],
                 "pin_info_msg": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "int",
+                    "Dict"
                 ],
                 "off_callback": [
-                    "Optional[Callable[([Any], None)]]"
+                    "bool",
+                    "None",
+                    "str",
+                    "Iterable[str]",
+                    "Optional[str]",
+                    "int",
+                    "List[str]"
                 ],
                 "on_callback": [
-                    "Optional[Callable[([Any], None)]]"
+                    "bool",
+                    "None",
+                    "str",
+                    "Iterable[str]",
+                    "Optional[str]",
+                    "int",
+                    "List[str]"
                 ]
             }
         },
@@ -287,11 +318,9 @@
                 "self": [],
                 "context": [
                     "str",
+                    "Dict",
                     "int",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[Dict]",
                     "None"
                 ]
@@ -306,13 +335,13 @@
             "arguments": {
                 "self": [],
                 "state": [
+                    "str",
                     "bool"
                 ],
                 "context": [
                     "str",
                     "bool",
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[str]",
                     "None"
                 ]
@@ -377,11 +406,11 @@
             "arguments": {
                 "self": [],
                 "update": [
-                    "typing.Iterable[dict[str, typing.Any]]",
+                    "Iterable[dict[str,Any]]",
                     "telegram.Update",
                     "telegram.exCallbackContext",
                     "telegram.exUpdater",
-                    "Iterable[Dict[str, Any]]"
+                    "Iterable[Dict[str,Any]]"
                 ],
                 "context": [
                     "telegram.Update"
@@ -401,9 +430,8 @@
                     "telegram.exCallbackContext"
                 ],
                 "context": [
-                    "dict[, ]",
+                    "Dict",
                     "telegram.Update",
-                    "dict",
                     "T"
                 ]
             }
@@ -412,13 +440,12 @@
             "name": "add",
             "location": 145,
             "return": [
-                "Callable"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "self": [],
                 "func": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -426,7 +453,6 @@
             "name": "wrapper",
             "location": 147,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -510,7 +536,9 @@
         "aoc_day_from_datetime": {
             "name": "aoc_day_from_datetime",
             "location": 82,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "dt": []
             }
@@ -518,7 +546,9 @@
         "aoc_time_since_day_start": {
             "name": "aoc_time_since_day_start",
             "location": 86,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "dt": []
             }
@@ -575,9 +605,7 @@
             ],
             "arguments": {
                 "self": [],
-                "db_name": [
-                    "str"
-                ]
+                "db_name": []
             }
         },
         "DB.update": {
@@ -594,7 +622,9 @@
         "DB.get": {
             "name": "get",
             "location": 41,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -630,9 +660,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "_70k": {
@@ -656,9 +684,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "ban": {
@@ -690,9 +716,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "banme": {
@@ -723,7 +747,13 @@
                     "None"
                 ],
                 "handlers_group": [
-                    "int"
+                    "List[dict[str,float]]",
+                    "logging.Logger",
+                    "Mapping",
+                    "List[Dict[str,float]]",
+                    "None",
+                    "logging.FileHandler",
+                    "Optional[Mapping[str,Any]]"
                 ]
             }
         },
@@ -754,9 +784,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "core_handlers_group": [
-                    "int"
-                ]
+                "core_handlers_group": []
             }
         },
         "start": {
@@ -942,12 +970,8 @@
             ],
             "arguments": {
                 "user": [],
-                "masked_probability": [
-                    "float"
-                ],
-                "unmasked_probability": [
-                    "float"
-                ],
+                "masked_probability": [],
+                "unmasked_probability": [],
                 "context": []
             }
         },
@@ -969,9 +993,7 @@
                 "str"
             ],
             "arguments": {
-                "img": [
-                    "bytearray"
-                ]
+                "img": []
             }
         },
         "container_predict": {
@@ -981,12 +1003,8 @@
                 "bool"
             ],
             "arguments": {
-                "img": [
-                    "bytearray"
-                ],
-                "key": [
-                    "str"
-                ]
+                "img": [],
+                "key": []
             }
         },
         "is_avatar_has_mask": {
@@ -996,9 +1014,7 @@
                 "bool"
             ],
             "arguments": {
-                "img": [
-                    "bytearray"
-                ],
+                "img": [],
                 "user": [],
                 "context": []
             }
@@ -1022,9 +1038,7 @@
             ],
             "arguments": {
                 "self": [],
-                "db_name": [
-                    "str"
-                ]
+                "db_name": []
             }
         },
         "DB.find_all": {
@@ -1040,18 +1054,20 @@
         "DB.find": {
             "name": "find",
             "location": 96,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.add": {
             "name": "add",
             "location": 99,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
                 "user": []
@@ -1065,9 +1081,7 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.cure": {
@@ -1078,9 +1092,7 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.is_user_infected": {
@@ -1091,9 +1103,7 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.add_quarantine": {
@@ -1104,15 +1114,9 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ],
-                "since": [
-                    "_datetime.datetime"
-                ],
-                "until": [
-                    "_datetime.datetime"
-                ]
+                "user_id": [],
+                "since": [],
+                "until": []
             }
         },
         "DB.add_lethality": {
@@ -1123,23 +1127,19 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ],
-                "since": [
-                    "_datetime.datetime"
-                ]
+                "user_id": [],
+                "since": []
             }
         },
         "DB.is_lethaled": {
             "name": "is_lethaled",
             "location": 139,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.remove": {
@@ -1150,9 +1150,7 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.remove_all": {
@@ -1193,27 +1191,21 @@
             "name": "f",
             "location": 60,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "text": [
-                    "str"
-                ],
-                "lingvo": [
-                    "str"
-                ]
+                "text": [],
+                "lingvo": []
             }
         },
         "_make_traduki": {
             "name": "_make_traduki",
             "location": 78,
             "return": [
-                "Callable[([str, str], str)]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
-                "func": [
-                    "Callable[([str, str], str)]"
-                ]
+                "func": []
             }
         },
         "_make_traduki.tr": {
@@ -1235,9 +1227,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "_get_usd_rate": {
@@ -1270,9 +1260,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "_length": {
@@ -1305,16 +1293,14 @@
             ],
             "arguments": {
                 "self": [],
-                "db_name": [
-                    "str"
-                ]
+                "db_name": []
             }
         },
         "DB.get_best_n": {
             "name": "get_best_n",
             "location": 54,
             "return": [
-                "List[PeninsulaDataType]"
+                "list"
             ],
             "arguments": {
                 "self": [],
@@ -1326,7 +1312,9 @@
         "DB.add": {
             "name": "add",
             "location": 57,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
                 "user": []
@@ -1342,21 +1330,17 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "_get_minutes": {
             "name": "_get_minutes",
             "location": 46,
             "return": [
-                "_datetime.timedelta"
+                "Any"
             ],
             "arguments": {
-                "args": [
-                    "List[str]"
-                ]
+                "args": []
             }
         },
         "mute_user_for_time": {
@@ -1369,9 +1353,7 @@
                 "update": [],
                 "context": [],
                 "user": [],
-                "mute_duration": [
-                    "_datetime.timedelta"
-                ]
+                "mute_duration": []
             }
         },
         "mute": {
@@ -1460,7 +1442,12 @@
                     "None"
                 ],
                 "handlers_group": [
-                    "int"
+                    "Dict[str,Callable[,None]]",
+                    "Tuple[float]",
+                    "int",
+                    "str",
+                    "Callable",
+                    "logging.LogRecord"
                 ]
             }
         },
@@ -1478,9 +1465,8 @@
                     "telegram.update.Update"
                 ],
                 "context": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "Dict[str, Any]",
                     "telegram.Update",
                     "telegram.update.Update"
                 ]
@@ -1496,9 +1482,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "_pr": {
@@ -1522,9 +1506,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "extract_words": {
@@ -1542,36 +1524,30 @@
             "name": "_get_words",
             "location": 77,
             "return": [
-                "List[str]"
+                "Any"
             ],
             "arguments": {
-                "t": [
-                    "str"
-                ]
+                "t": []
             }
         },
         "_normalize_words": {
             "name": "_normalize_words",
             "location": 81,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
-                "words": [
-                    "List[str]"
-                ]
+                "words": []
             }
         },
         "_normalize_pred": {
             "name": "_normalize_pred",
             "location": 85,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "pred": [
-                    "str"
-                ]
+                "pred": []
             }
         },
         "_get_pred": {
@@ -1591,12 +1567,8 @@
                 "list"
             ],
             "arguments": {
-                "words": [
-                    "List[dict]"
-                ],
-                "pred": [
-                    "str"
-                ]
+                "words": [],
+                "pred": []
             }
         },
         "show_top": {
@@ -1618,9 +1590,7 @@
             ],
             "arguments": {
                 "self": [],
-                "db_name": [
-                    "str"
-                ]
+                "db_name": []
             }
         },
         "DB.add_word": {
@@ -1631,9 +1601,7 @@
             ],
             "arguments": {
                 "self": [],
-                "word": [
-                    "str"
-                ]
+                "word": []
             }
         },
         "DB.add_words": {
@@ -1644,16 +1612,14 @@
             ],
             "arguments": {
                 "self": [],
-                "words": [
-                    "List[str]"
-                ]
+                "words": []
             }
         },
         "DB.find_all": {
             "name": "find_all",
             "location": 42,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -1677,9 +1643,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "_reload": {
@@ -1699,9 +1663,7 @@
                 "str"
             ],
             "arguments": {
-                "shots_remain": [
-                    "int"
-                ]
+                "shots_remain": []
             }
         },
         "get_mute_minutes": {
@@ -1711,16 +1673,14 @@
                 "int"
             ],
             "arguments": {
-                "shots_remain": [
-                    "int"
-                ]
+                "shots_remain": []
             }
         },
         "_shot": {
             "name": "_shot",
             "location": 184,
             "return": [
-                "Tuple[(bool, int)]"
+                "Tuple[(Any, int)]"
             ],
             "arguments": {
                 "context": []
@@ -1733,9 +1693,7 @@
                 "str"
             ],
             "arguments": {
-                "h": [
-                    "dict"
-                ]
+                "h": []
             }
         },
         "_create_empty_image": {
@@ -1834,9 +1792,7 @@
             ],
             "arguments": {
                 "self": [],
-                "db_name": [
-                    "str"
-                ]
+                "db_name": []
             }
         },
         "DB.find_all": {
@@ -1852,18 +1808,20 @@
         "DB.find": {
             "name": "find",
             "location": 56,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.add": {
             "name": "add",
             "location": 59,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
                 "user": []
@@ -1877,12 +1835,8 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ],
-                "mute_min": [
-                    "int"
-                ]
+                "user_id": [],
+                "mute_min": []
             }
         },
         "DB.miss": {
@@ -1893,9 +1847,7 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.remove": {
@@ -1906,9 +1858,7 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.remove_all": {
@@ -1938,12 +1888,10 @@
             "name": "_get_topic",
             "location": 47,
             "return": [
-                "dict"
+                "dict[typing.Text, int]"
             ],
             "arguments": {
-                "t": [
-                    "str"
-                ]
+                "t": []
             }
         },
         "_get_delta_days": {
@@ -1953,9 +1901,7 @@
                 "str"
             ],
             "arguments": {
-                "t": [
-                    "_datetime.datetime"
-                ]
+                "t": []
             }
         },
         "_update_topic": {
@@ -1965,9 +1911,7 @@
                 "None"
             ],
             "arguments": {
-                "t": [
-                    "dict"
-                ]
+                "t": []
             }
         },
         "since_callback": {
@@ -1985,12 +1929,10 @@
             "name": "_get_all_topics",
             "location": 104,
             "return": [
-                "List[dict]"
+                "list"
             ],
             "arguments": {
-                "limit": [
-                    "int"
-                ]
+                "limit": []
             }
         },
         "since_list_callback": {
@@ -2009,7 +1951,6 @@
             "name": "add_smile_mode",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2055,9 +1996,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "to_2k_year": {
@@ -2067,9 +2006,7 @@
                 "str"
             ],
             "arguments": {
-                "year": [
-                    "int"
-                ]
+                "year": []
             }
         },
         "still": {
@@ -2092,9 +2029,7 @@
                 "bool"
             ],
             "arguments": {
-                "user": [
-                    "dict"
-                ]
+                "user": []
             }
         },
         "_delete_user_rel_messages": {
@@ -2104,12 +2039,8 @@
                 "None"
             ],
             "arguments": {
-                "chat_id": [
-                    "int"
-                ],
-                "user_id": [
-                    "str"
-                ],
+                "chat_id": [],
+                "user_id": [],
                 "context": []
             }
         },
@@ -2132,9 +2063,7 @@
             ],
             "arguments": {
                 "user": [],
-                "chat_id": [
-                    "str"
-                ],
+                "chat_id": [],
                 "context": []
             }
         },
@@ -2200,9 +2129,7 @@
             ],
             "arguments": {
                 "self": [],
-                "db_name": [
-                    "str"
-                ]
+                "db_name": []
             }
         },
         "DB.add_user": {
@@ -2213,26 +2140,26 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.find_user": {
             "name": "find_user",
             "location": 58,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.find_all_users": {
             "name": "find_all_users",
             "location": 61,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -2245,29 +2172,27 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ],
-                "message_id": [
-                    "str"
-                ]
+                "user_id": [],
+                "message_id": []
             }
         },
         "DB.delete_user": {
             "name": "delete_user",
             "location": 69,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ]
+                "user_id": []
             }
         },
         "DB.delete_all_users": {
             "name": "delete_all_users",
             "location": 72,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -2282,9 +2207,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "tree": {
@@ -2308,9 +2231,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "_get_user_and_admin": {
@@ -2353,22 +2274,18 @@
             ],
             "arguments": {
                 "self": [],
-                "db_name": [
-                    "str"
-                ]
+                "db_name": []
             }
         },
         "DB.get_user": {
             "name": "get_user",
             "location": 23,
             "return": [
-                "Optional[dict]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "int"
-                ]
+                "user_id": []
             }
         },
         "DB.trust": {
@@ -2379,12 +2296,8 @@
             ],
             "arguments": {
                 "self": [],
-                "user_id": [
-                    "str"
-                ],
-                "admin_id": [
-                    "str"
-                ]
+                "user_id": [],
+                "admin_id": []
             }
         },
         "DB.untrust": {
@@ -2408,9 +2321,7 @@
             ],
             "arguments": {
                 "upd": [],
-                "handlers_group": [
-                    "int"
-                ]
+                "handlers_group": []
             }
         },
         "uwu": {
@@ -2434,16 +2345,14 @@
             ],
             "arguments": {
                 "upd": [],
-                "version_handlers_group": [
-                    "int"
-                ]
+                "version_handlers_group": []
             }
         },
         "_get_version_from_pipfile": {
             "name": "_get_version_from_pipfile",
             "location": 53,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {}
         },
@@ -2462,17 +2371,17 @@
             "name": "_make_skill",
             "location": 83,
             "return": [
-                "dict"
+                "Dict[(str, Union[(_T0, _T1, _T2)])]"
             ],
             "arguments": {
                 "add_handlers": [
-                    "Callable"
+                    "_T0@@"
                 ],
                 "name": [
-                    "str"
+                    "_T1@@"
                 ],
                 "hint": [
-                    "str"
+                    "_T2@@"
                 ]
             }
         },
@@ -2483,9 +2392,7 @@
                 "str"
             ],
             "arguments": {
-                "skills_list": [
-                    "List[dict]"
-                ]
+                "skills_list": []
             }
         }
     },
@@ -2685,11 +2592,13 @@
             "name": "get_duration",
             "location": 8,
             "return": [
-                "datetime.timedelta"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "raw_duration": [
-                    "str"
+                    "str",
+                    "Awaitable"
                 ]
             }
         },
@@ -2741,7 +2650,6 @@
             "arguments": {
                 "file": [
                     "str",
-                    "list[str]",
                     "List[str]",
                     "Optional[str]"
                 ]
@@ -2751,21 +2659,20 @@
             "name": "_send_binary_to_google_speech",
             "location": 77,
             "return": [
-                "dict[str, typing.Union[typing.Any,typing.Any]]",
+                "Dict[str,Union[Any,Any]]",
                 "Optional[str]",
                 "str",
                 "bytes",
                 "List[str]",
-                "dict[typing.Any, str]",
-                "Dict[str, Any]",
-                "Dict[str, dict]"
+                "Dict[Any,str]",
+                "Dict[str,Any]",
+                "Dict[str,dict]"
             ],
             "arguments": {
                 "content": [
                     "str",
                     "bytes",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2777,18 +2684,17 @@
                 "int",
                 "Optional[int]",
                 "str",
-                "dict[, ]",
-                "list",
-                "list[int]",
-                "list[list[int]]",
+                "Dict",
+                "List",
+                "List[int]",
+                "List[list[int]]",
                 "None"
             ],
             "arguments": {
                 "response": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
                     "requests.Response",
-                    "dict",
                     "requests.models.Response"
                 ]
             }
@@ -2798,12 +2704,12 @@
             "location": 103,
             "return": [
                 "str",
-                "type",
-                "dict[str, str]",
+                "Type",
+                "Dict[str,str]",
                 "Optional[T]",
                 "bytes",
                 "Optional[int]",
-                "dict[, ]",
+                "Dict",
                 "Optional[str]",
                 "None"
             ],
@@ -2824,9 +2730,8 @@
                 "self": [],
                 "name": [
                     "str",
-                    "bool",
                     "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "bool"
                 ]
             }
         },
@@ -2834,7 +2739,6 @@
             "name": "funcoff",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}

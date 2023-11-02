@@ -14,7 +14,7 @@
                     "str",
                     "bool",
                     "Type[T]",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         }
@@ -25,11 +25,14 @@
             "name": "ensure_bytes",
             "location": 23,
             "return": [
-                "bytes"
+                "Union[(bytes, _T0)]"
             ],
             "arguments": {
                 "data": [
-                    "Union[(bytes, str)]"
+                    "Union[str,bytes]",
+                    "bytes",
+                    "str",
+                    "List[int]"
                 ]
             }
         },
@@ -37,11 +40,16 @@
             "name": "ensure_str",
             "location": 36,
             "return": [
-                "str"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "data": [
-                    "Union[(bytes, str)]"
+                    "str",
+                    "bytes",
+                    "Union[str,bytes]",
+                    "List[int]",
+                    "int",
+                    "Union[int,bytes]"
                 ]
             }
         },
@@ -53,10 +61,20 @@
             ],
             "arguments": {
                 "b1": [
-                    "bytes"
+                    "bytes",
+                    "List[int]",
+                    "Tuple[int,int]",
+                    "int",
+                    "Tuple[Union[int,int]]",
+                    "Sequence[str]"
                 ],
                 "b2": [
-                    "bytes"
+                    "bytes",
+                    "List[int]",
+                    "Tuple[int,int]",
+                    "int",
+                    "Tuple[Union[int,int]]",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -68,7 +86,10 @@
             ],
             "arguments": {
                 "seedhex": [
-                    "str"
+                    "str",
+                    "Union[int,float]",
+                    "int",
+                    "List[int]"
                 ]
             }
         },
@@ -76,11 +97,18 @@
             "name": "convert_seed_to_seedhex",
             "location": 73,
             "return": [
-                "str"
+                "str",
+                "Union[int, float]",
+                "int",
+                "List[int]"
             ],
             "arguments": {
                 "seed": [
-                    "bytes"
+                    "bytes",
+                    "bytearray",
+                    "int",
+                    "str",
+                    "List[dict]"
                 ]
             }
         },
@@ -109,7 +137,8 @@
                     "str"
                 ],
                 "schema": [
-                    "dict"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -117,7 +146,9 @@
             "name": "parse_error",
             "location": 64,
             "return": [
-                "dict"
+                "str",
+                "List[Dict[str, Any]]",
+                "Callable"
             ],
             "arguments": {
                 "text": [
@@ -136,11 +167,9 @@
                 "connection": [
                     "Callable",
                     "int",
-                    "typing.Callable[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Mapping[str, str]",
-                    "typing.Mapping"
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -153,10 +182,20 @@
             "arguments": {
                 "self": [],
                 "connection_handler": [
-                    "endpoint.ConnectionHandler"
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "bool",
+                    "List[str]",
+                    "Optional[List[Any]]",
+                    "None"
                 ],
                 "headers": [
-                    "Optional[dict]"
+                    "Dict",
+                    "None",
+                    "str",
+                    "Optional[Dict]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -171,9 +210,7 @@
                 "scheme": [
                     "str"
                 ],
-                "path": [
-                    "str"
-                ]
+                "path": []
             }
         },
         "Client.__init__": {
@@ -185,18 +222,24 @@
             "arguments": {
                 "self": [],
                 "_endpoint": [
-                    "Union[(str, endpoint.Endpoint)]"
+                    "str",
+                    "Dict",
+                    "Optional[str]",
+                    "None"
                 ],
                 "session": [
                     "None",
+                    "Dict",
                     "aiohttp.ClientSession",
                     "str",
-                    "dict[, ]",
-                    "dict",
                     "Optional[aiohttp.ClientSession]"
                 ],
                 "proxy": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "bool",
+                    "bytes",
+                    "int"
                 ]
             }
         },
@@ -209,6 +252,7 @@
             "arguments": {
                 "self": [],
                 "_function": [
+                    "Dict[str,Any]",
                     "Callable"
                 ]
             }
@@ -220,10 +264,10 @@
             "location": 800,
             "return": [
                 "bool",
-                "Optional[Union[str, Any]]",
-                "dict[, ]",
+                "Optional[Union[str,Any]]",
+                "Dict",
                 "None",
-                "list[typing.Any]",
+                "List[Any]",
                 "float",
                 "str",
                 "bytes"
@@ -233,9 +277,8 @@
                     "int",
                     "bytes",
                     "str",
-                    "dict[, ]",
-                    "bool",
-                    "dict"
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -248,19 +291,43 @@
             "arguments": {
                 "self": [],
                 "http_scheme": [
-                    "str"
+                    "bool",
+                    "str",
+                    "float",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "ws_scheme": [
-                    "str"
+                    "bool",
+                    "str",
+                    "float",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "server": [
-                    "str"
+                    "bool",
+                    "str",
+                    "float",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "port": [
-                    "int"
+                    "bool",
+                    "str",
+                    "float",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[Callable]",
+                    "Callable",
+                    "None"
                 ],
                 "session": [
                     "bool",
@@ -271,6 +338,11 @@
                     "Optional[str]"
                 ],
                 "proxy": [
+                    "bool",
+                    "None",
+                    "str",
+                    "float",
+                    "int",
                     "Optional[str]"
                 ]
             }
@@ -289,14 +361,18 @@
             "name": "from_inline",
             "location": 69,
             "return": [
-                "EndpointType"
+                "NoReturn"
             ],
             "arguments": {
                 "cls": [
-                    "Type[EndpointType]"
+                    "int",
+                    "Dict[str,Any]",
+                    "bool"
                 ],
                 "inline": [
-                    "str"
+                    "int",
+                    "Dict[str,Any]",
+                    "bool"
                 ]
             }
         },
@@ -304,7 +380,7 @@
             "name": "inline",
             "location": 72,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -314,19 +390,22 @@
             "name": "conn_handler",
             "location": 75,
             "return": [
-                "ConnectionHandler"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "session": [
                     "str",
-                    "list[]",
-                    "list",
+                    "List",
                     "aiohttp.ClientSession",
                     "Iterable"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None",
+                    "List",
+                    "aiohttp.ClientSession",
+                    "Iterable"
                 ]
             }
         },
@@ -334,7 +413,7 @@
             "name": "__str__",
             "location": 80,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -344,19 +423,18 @@
             "name": "__eq__",
             "location": 83,
             "return": [
-                "bool"
+                "_NotImplementedType"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "SupportsFloat",
-                    "list[str]",
                     "List[str]",
+                    "SupportsFloat",
                     "int",
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "float",
                     "AbstractSet[T]",
-                    "typing.AbstractSet"
+                    "AbstractSet"
                 ]
             }
         },
@@ -369,10 +447,20 @@
             "arguments": {
                 "self": [],
                 "api": [
-                    "str"
+                    "int",
+                    "str",
+                    "bool",
+                    "Dict",
+                    "Optional[Dict]",
+                    "None"
                 ],
                 "properties": [
-                    "list"
+                    "int",
+                    "str",
+                    "bool",
+                    "Dict",
+                    "Optional[Dict]",
+                    "None"
                 ]
             }
         },
@@ -380,14 +468,15 @@
             "name": "from_inline",
             "location": 99,
             "return": [
-                "UnknownEndpointType"
+                "UnknownEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[UnknownEndpointType]"
+                    "Type[_TUnknownEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -395,6 +484,8 @@
             "name": "inline",
             "location": 113,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
@@ -411,13 +502,16 @@
                 "self": [],
                 "session": [
                     "str",
-                    "list[]",
-                    "list",
+                    "List",
                     "aiohttp.ClientSession",
                     "Iterable"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None",
+                    "List",
+                    "aiohttp.ClientSession",
+                    "Iterable"
                 ]
             }
         },
@@ -435,6 +529,7 @@
             "name": "__eq__",
             "location": 141,
             "return": [
+                "str",
                 "bool"
             ],
             "arguments": {
@@ -464,16 +559,24 @@
             "arguments": {
                 "self": [],
                 "server": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "ipv4": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "ipv6": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "port": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -481,14 +584,19 @@
             "name": "from_inline",
             "location": 179,
             "return": [
-                "BMAEndpointType"
+                "BMAEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[BMAEndpointType]"
+                    "Type[_TBMAEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Pattern[str]",
+                    "Pattern",
+                    "Dict[str,List[str]]",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -515,7 +623,9 @@
                     "aiohttp.ClientSession"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None",
+                    "aiohttp.ClientSession"
                 ]
             }
         },
@@ -533,7 +643,10 @@
             "name": "__eq__",
             "location": 236,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
@@ -559,19 +672,37 @@
             "arguments": {
                 "self": [],
                 "server": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[int]",
+                    "Optional[str]"
                 ],
                 "ipv4": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[int]",
+                    "Optional[str]"
                 ],
                 "ipv6": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[int]",
+                    "Optional[str]"
                 ],
                 "port": [
-                    "int"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[int]",
+                    "Optional[str]"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -579,14 +710,19 @@
             "name": "from_inline",
             "location": 279,
             "return": [
-                "SecuredBMAEndpointType"
+                "SecuredBMAEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SecuredBMAEndpointType]"
+                    "Type[_TSecuredBMAEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Pattern[str]",
+                    "Pattern",
+                    "Dict[str,List[str]]",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -611,12 +747,17 @@
                 "session": [
                     "str",
                     "int",
-                    "dict[str, typing.Union[str,None]]",
-                    "Dict[str, Optional[str]]",
+                    "Dict[str,Union[str,None]]",
+                    "Dict[str,Optional[str]]",
                     "bool"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None",
+                    "int",
+                    "Dict[str,Optional[str]]",
+                    "Dict[str,Union[str,None]]",
+                    "bool"
                 ]
             }
         },
@@ -629,16 +770,39 @@
             "arguments": {
                 "self": [],
                 "ws2pid": [
-                    "str"
+                    "Iterator",
+                    "int",
+                    "Iterator[int]",
+                    "Tuple[int]",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "bool"
                 ],
                 "server": [
-                    "str"
+                    "Iterator",
+                    "int",
+                    "Iterator[int]",
+                    "Tuple[int]",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "bool"
                 ],
                 "port": [
-                    "int"
+                    "Iterator",
+                    "int",
+                    "Iterator[int]",
+                    "Tuple[int]",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "bool"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -646,14 +810,19 @@
             "name": "from_inline",
             "location": 368,
             "return": [
-                "WS2PEndpointType"
+                "WS2PEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[WS2PEndpointType]"
+                    "Type[_TWS2PEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Pattern[str]",
+                    "Pattern",
+                    "Dict[str,List[str]]",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -680,7 +849,9 @@
                     "aiohttp.ClientSession"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None",
+                    "aiohttp.ClientSession"
                 ]
             }
         },
@@ -698,15 +869,17 @@
             "name": "__eq__",
             "location": 427,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
                     "bool",
                     "str",
-                    "Tuple[float]",
-                    "tuple[float]"
+                    "Tuple[float]"
                 ]
             }
         },
@@ -729,10 +902,14 @@
             "arguments": {
                 "self": [],
                 "server": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "port": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -740,14 +917,19 @@
             "name": "from_inline",
             "location": 458,
             "return": [
-                "ESCoreEndpointType"
+                "ESCoreEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[ESCoreEndpointType]"
+                    "Type[_TESCoreEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Pattern[str]",
+                    "Pattern",
+                    "Dict[str,List[str]]",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -773,7 +955,8 @@
                     "str"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -791,16 +974,17 @@
             "name": "__eq__",
             "location": 498,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
                     "int",
-                    "List['cirq.Qid']",
-                    "list['cirq.Qid']",
-                    "List[str]",
-                    "list[str]"
+                    "List[cirq.Qid]",
+                    "List[str]"
                 ]
             }
         },
@@ -823,10 +1007,14 @@
             "arguments": {
                 "self": [],
                 "server": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "port": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -834,14 +1022,16 @@
             "name": "from_inline",
             "location": 524,
             "return": [
-                "ESUserEndpointType"
+                "ESUserEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[ESUserEndpointType]"
+                    "Type[_TESUserEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Mapping"
                 ]
             }
         },
@@ -867,7 +1057,8 @@
                     "str"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -885,16 +1076,19 @@
             "name": "__eq__",
             "location": 564,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
                     "str",
                     "int",
-                    "Union[tuple, list]",
-                    "tuple[]",
-                    "list[]"
+                    "Union[tuple,list]",
+                    "Tuple",
+                    "List"
                 ]
             }
         },
@@ -917,10 +1111,14 @@
             "arguments": {
                 "self": [],
                 "server": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "port": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -928,14 +1126,19 @@
             "name": "from_inline",
             "location": 592,
             "return": [
-                "ESSubscribtionEndpointType"
+                "ESSubscribtionEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[ESSubscribtionEndpointType]"
+                    "Type[_TESSubscribtionEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Pattern[str]",
+                    "Pattern",
+                    "Dict[str,List[str]]",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -961,7 +1164,8 @@
                     "str"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -979,16 +1183,17 @@
             "name": "__eq__",
             "location": 634,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
                     "int",
-                    "List['cirq.Qid']",
-                    "list['cirq.Qid']",
-                    "List[str]",
-                    "list[str]"
+                    "List[cirq.Qid]",
+                    "List[str]"
                 ]
             }
         },
@@ -1011,22 +1216,67 @@
             "arguments": {
                 "self": [],
                 "flags": [
-                    "str"
+                    "bool",
+                    "str",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Optional[int]",
+                    "int"
                 ],
                 "server": [
-                    "str"
+                    "bool",
+                    "str",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Optional[int]",
+                    "int"
                 ],
                 "ipv4": [
-                    "str"
+                    "bool",
+                    "str",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Optional[int]",
+                    "int"
                 ],
                 "ipv6": [
-                    "str"
+                    "bool",
+                    "str",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Optional[int]",
+                    "int"
                 ],
                 "port": [
+                    "bool",
+                    "str",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Optional[int]",
                     "int"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Optional[Callable]",
+                    "bool",
+                    "Callable",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1034,14 +1284,15 @@
             "name": "from_inline",
             "location": 679,
             "return": [
-                "GVAEndpointType"
+                "GVAEndpoint"
             ],
             "arguments": {
                 "cls": [
-                    "Type[GVAEndpointType]"
+                    "Type[_TGVAEndpoint]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -1067,7 +1318,8 @@
                     "str"
                 ],
                 "proxy": [
-                    "str"
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -1085,7 +1337,10 @@
             "name": "__eq__",
             "location": 764,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
@@ -1113,7 +1368,11 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "dict"
+                    "str",
+                    "bytes",
+                    "Dict",
+                    "bool",
+                    "Mapping[str,Any]"
                 ]
             }
         }
@@ -1138,7 +1397,10 @@
             ],
             "arguments": {
                 "request_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1150,10 +1412,17 @@
             ],
             "arguments": {
                 "request_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "None"
                 ],
                 "block_number": [
-                    "int"
+                    "int",
+                    "str",
+                    "float",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1165,13 +1434,17 @@
             ],
             "arguments": {
                 "request_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict"
                 ],
                 "from_number": [
-                    "int"
+                    "int",
+                    "bytes"
                 ],
                 "count": [
-                    "int"
+                    "int",
+                    "bytes"
                 ]
             }
         },
@@ -1183,7 +1456,11 @@
             ],
             "arguments": {
                 "request_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict",
+                    "Optional[str]",
+                    "None"
                 ],
                 "min_cert": [
                     "int"
@@ -1202,10 +1479,18 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "int",
+                    "Set[str]",
+                    "str",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "int"
                 ],
                 "number": [
                     "int"
@@ -1220,67 +1505,102 @@
                     "int"
                 ],
                 "ud": [
-                    "Optional[int]"
-                ],
-                "unit_base": [
                     "int"
                 ],
+                "unit_base": [
+                    "str",
+                    "bytes",
+                    "int",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
+                ],
                 "issuer": [
-                    "str"
+                    "int"
                 ],
                 "issuers_frame": [
                     "int"
                 ],
                 "issuers_frame_var": [
-                    "int"
+                    "str",
+                    "bool"
                 ],
                 "different_issuers_count": [
-                    "int"
+                    "int",
+                    "Tuple[int]",
+                    "Union[int,str]",
+                    "str"
                 ],
                 "prev_hash": [
-                    "Optional[str]"
-                ],
-                "prev_issuer": [
-                    "Optional[str]"
-                ],
-                "parameters": [
-                    "Optional[Sequence[str]]"
-                ],
-                "members_count": [
                     "int"
                 ],
+                "prev_issuer": [
+                    "int"
+                ],
+                "parameters": [
+                    "int"
+                ],
+                "members_count": [
+                    "int",
+                    "float",
+                    "bool"
+                ],
                 "identities": [
-                    "List[duniterpy.documents.identity.Identity]"
+                    "Tuple[Union[float,float]]",
+                    "int",
+                    "Tuple[float,float]",
+                    "bool"
                 ],
                 "joiners": [
-                    "List[duniterpy.documents.membership.Membership]"
+                    "Tuple[Union[float,float]]",
+                    "int",
+                    "Tuple[float,float]",
+                    "bool"
                 ],
                 "actives": [
-                    "List[duniterpy.documents.membership.Membership]"
+                    "Tuple[Union[float,float]]",
+                    "int",
+                    "Tuple[float,float]",
+                    "bool"
                 ],
                 "leavers": [
-                    "List[duniterpy.documents.membership.Membership]"
+                    "Tuple[Union[float,float]]",
+                    "int",
+                    "Tuple[float,float]",
+                    "bool"
                 ],
                 "revokations": [
-                    "List[duniterpy.documents.revocation.Revocation]"
+                    "Tuple[Union[float,float]]",
+                    "int",
+                    "Tuple[float,float]",
+                    "bool"
                 ],
                 "excluded": [
-                    "List[str]"
+                    "int"
                 ],
                 "certifications": [
-                    "List[duniterpy.documents.certification.Certification]"
+                    "Tuple[Union[float,float]]",
+                    "int",
+                    "Tuple[float,float]",
+                    "bool"
                 ],
                 "transactions": [
-                    "List[duniterpy.documents.transaction.Transaction]"
+                    "Tuple[Union[float,float]]",
+                    "int",
+                    "Tuple[float,float]",
+                    "bool"
                 ],
                 "inner_hash": [
-                    "str"
+                    "int"
                 ],
                 "nonce": [
                     "int"
                 ],
                 "signature": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -1299,14 +1619,17 @@
             "name": "from_parsed_json",
             "location": 256,
             "return": [
-                "BlockType"
+                "Block"
             ],
             "arguments": {
                 "cls": [
-                    "Type[BlockType]"
+                    "Type[_TBlock]"
                 ],
                 "parsed_json_block": [
-                    "dict"
+                    "str",
+                    "bool",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -1314,14 +1637,16 @@
             "name": "from_signed_raw",
             "location": 334,
             "return": [
-                "BlockType"
+                "Block"
             ],
             "arguments": {
                 "cls": [
-                    "Type[BlockType]"
+                    "Type[_TBlock]"
                 ],
                 "signed_raw": [
-                    "str"
+                    "bytes",
+                    "bool",
+                    "Mapping"
                 ]
             }
         },
@@ -1365,9 +1690,8 @@
                 "self": [],
                 "keys": [
                     "str",
-                    "list[str]",
-                    "int",
-                    "List[str]"
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -1375,12 +1699,14 @@
             "name": "__eq__",
             "location": 638,
             "return": [
-                "bool"
+                "bool",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -1388,12 +1714,14 @@
             "name": "__lt__",
             "location": 643,
             "return": [
-                "bool"
+                "bool",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -1401,12 +1729,14 @@
             "name": "__gt__",
             "location": 648,
             "return": [
-                "bool"
+                "bool",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -1414,12 +1744,14 @@
             "name": "__le__",
             "location": 653,
             "return": [
-                "bool"
+                "bool",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -1427,12 +1759,14 @@
             "name": "__ge__",
             "location": 658,
             "return": [
-                "bool"
+                "bool",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "List",
+                    "str"
                 ]
             }
         }
@@ -1442,11 +1776,17 @@
             "name": "block_uid",
             "location": 107,
             "return": [
-                "BlockUID"
+                "Union[(BlockUID, _T0)]"
             ],
             "arguments": {
                 "value": [
-                    "Optional[Union[(BlockUID, str)]]"
+                    "str",
+                    "Collection",
+                    "Sequence[str]",
+                    "Tuple[Union[str,int]]",
+                    "Optional[str]",
+                    "float",
+                    "None"
                 ]
             }
         },
@@ -1459,10 +1799,14 @@
             "arguments": {
                 "self": [],
                 "number": [
-                    "int"
+                    "int",
+                    "str"
                 ],
                 "sha_hash": [
-                    "str"
+                    "str",
+                    "Set",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1470,11 +1814,11 @@
             "name": "empty",
             "location": 49,
             "return": [
-                "BlockUIDType"
+                "BlockUID"
             ],
             "arguments": {
                 "cls": [
-                    "Type[BlockUIDType]"
+                    "Type[_TBlockUID]"
                 ]
             }
         },
@@ -1482,14 +1826,16 @@
             "name": "from_str",
             "location": 53,
             "return": [
-                "BlockUIDType"
+                "BlockUID"
             ],
             "arguments": {
                 "cls": [
-                    "Type[BlockUIDType]"
+                    "Type[_TBlockUID]"
                 ],
                 "blockid": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Type"
                 ]
             }
         },
@@ -1507,12 +1853,19 @@
             "name": "__eq__",
             "location": 75,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "Type",
+                    "str",
+                    "int",
+                    "Union[str,int,float]",
+                    "float"
                 ]
             }
         },
@@ -1520,12 +1873,19 @@
             "name": "__lt__",
             "location": 80,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "str",
+                    "Type",
+                    "int",
+                    "Union[str,int,float]",
+                    "float"
                 ]
             }
         },
@@ -1533,12 +1893,19 @@
             "name": "__gt__",
             "location": 85,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "str",
+                    "Type",
+                    "int",
+                    "Union[str,int,float]",
+                    "float"
                 ]
             }
         },
@@ -1546,12 +1913,19 @@
             "name": "__le__",
             "location": 90,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "str",
+                    "Type",
+                    "int",
+                    "Union[str,int,float]",
+                    "float"
                 ]
             }
         },
@@ -1559,12 +1933,19 @@
             "name": "__ge__",
             "location": 95,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "str",
+                    "Type",
+                    "int",
+                    "Union[str,int,float]",
+                    "float"
                 ]
             }
         },
@@ -1599,22 +1980,54 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "Dict[str,str]",
+                    "Sequence[str]",
+                    "float"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,str]",
+                    "Sequence[str]",
+                    "float"
                 ],
                 "pubkey_from": [
-                    "str"
+                    "bool",
+                    "Optional[dict]",
+                    "float",
+                    "Dict",
+                    "List[cirq.Circuit]",
+                    "None",
+                    "List[C]"
                 ],
                 "identity": [
-                    "Union[(str, duniterpy.documents.identity.Identity)]"
+                    "int",
+                    "Optional[str]",
+                    "str",
+                    "Optional[Union[AbstractSetIntStr,MappingIntStrAny]]",
+                    "None",
+                    "Optional[list]",
+                    "List",
+                    "Optional[float]",
+                    "float"
                 ],
                 "timestamp": [
-                    "duniterpy.documents.block_uid.BlockUID"
+                    "bool",
+                    "Optional[dict]",
+                    "float",
+                    "Dict",
+                    "List[cirq.Circuit]",
+                    "None",
+                    "List[C]"
                 ],
                 "signature": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,str]",
+                    "Sequence[str]",
+                    "float"
                 ]
             }
         },
@@ -1622,14 +2035,16 @@
             "name": "from_signed_raw",
             "location": 114,
             "return": [
-                "CertificationType"
+                "Certification"
             ],
             "arguments": {
                 "cls": [
-                    "Type[CertificationType]"
+                    "Type[_TCertification]"
                 ],
                 "signed_raw": [
-                    "str"
+                    "bytes",
+                    "bool",
+                    "Mapping"
                 ]
             }
         },
@@ -1637,20 +2052,27 @@
             "name": "from_inline",
             "location": 171,
             "return": [
-                "CertificationType"
+                "Certification"
             ],
             "arguments": {
                 "cls": [
-                    "Type[CertificationType]"
+                    "Type[_TCertification]"
                 ],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "blockhash": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None"
                 ],
                 "inline": [
                     "str"
@@ -1676,7 +2098,8 @@
             "arguments": {
                 "self": [],
                 "keys": [
-                    "list"
+                    "str",
+                    "Union[float, int]"
                 ]
             }
         },
@@ -1684,6 +2107,8 @@
             "name": "signed_raw",
             "location": 252,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
@@ -1711,10 +2136,14 @@
             "arguments": {
                 "self": [],
                 "pubkey": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "crc": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1722,14 +2151,17 @@
             "name": "from_str",
             "location": 50,
             "return": [
-                "CRCPubkeyType"
+                "CRCPubkey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[CRCPubkeyType]"
+                    "Type[_TCRCPubkey]"
                 ],
                 "crc_pubkey": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1737,14 +2169,17 @@
             "name": "from_pubkey",
             "location": 65,
             "return": [
-                "CRCPubkeyType"
+                "CRCPubkey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[CRCPubkeyType]"
+                    "Type[_TCRCPubkey]"
                 ],
                 "pubkey": [
-                    "str"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Optional[Iterable[str]]",
+                    "None"
                 ]
             }
         },
@@ -1752,7 +2187,10 @@
             "name": "is_valid",
             "location": 81,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[Callable]",
+                "Union[str,Dict]"
             ],
             "arguments": {
                 "self": []
@@ -1792,13 +2230,26 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "bool"
                 ],
                 "currency": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "bool"
                 ],
                 "signatures": [
-                    "List[str]"
+                    "str",
+                    "Iterable[str]",
+                    "List[str]",
+                    "bool",
+                    "List[List[Callable]]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -1806,15 +2257,15 @@
             "name": "parse_field",
             "location": 74,
             "return": [
-                "str",
-                "list"
+                "str"
             ],
             "arguments": {
                 "cls": [
-                    "Type[DocumentType]"
+                    "str"
                 ],
                 "field_name": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "line": [
                     "str"
@@ -1830,7 +2281,8 @@
             "arguments": {
                 "self": [],
                 "keys": [
-                    "list"
+                    "str",
+                    "Union[float, int]"
                 ]
             }
         },
@@ -1838,7 +2290,7 @@
             "name": "raw",
             "location": 105,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1848,6 +2300,8 @@
             "name": "signed_raw",
             "location": 111,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
@@ -1880,22 +2334,40 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "int",
+                    "str",
+                    "float"
                 ],
                 "currency": [
-                    "str"
+                    "int",
+                    "str",
+                    "float"
                 ],
                 "pubkey": [
-                    "str"
+                    "int"
                 ],
                 "uid": [
-                    "str"
+                    "bool",
+                    "bytes",
+                    "str",
+                    "List",
+                    "Optional[int]",
+                    "None"
                 ],
                 "ts": [
-                    "duniterpy.documents.block_uid.BlockUID"
+                    "str",
+                    "float",
+                    "int",
+                    "Union[int,str]",
+                    "bool"
                 ],
                 "signature": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "Sequence[str]",
+                    "None",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1903,20 +2375,29 @@
             "name": "from_inline",
             "location": 92,
             "return": [
-                "IdentityType"
+                "Identity"
             ],
             "arguments": {
                 "cls": [
-                    "Type[IdentityType]"
+                    "Type[_TIdentity]"
                 ],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "float",
+                    "Dict",
+                    "List[str]"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "float",
+                    "Dict",
+                    "List[str]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -1924,14 +2405,16 @@
             "name": "from_signed_raw",
             "location": 113,
             "return": [
-                "IdentityType"
+                "Identity"
             ],
             "arguments": {
                 "cls": [
-                    "Type[IdentityType]"
+                    "Type[_TIdentity]"
                 ],
                 "signed_raw": [
-                    "str"
+                    "bytes",
+                    "bool",
+                    "Mapping"
                 ]
             }
         },
@@ -1966,28 +2449,60 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "issuer": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "Optional[int]"
                 ],
                 "membership_ts": [
-                    "duniterpy.documents.block_uid.BlockUID"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "Optional[int]"
                 ],
                 "membership_type": [
-                    "str"
+                    "bool",
+                    "str",
+                    "None",
+                    "AsyncContextManager[None]",
+                    "Optional[int]",
+                    "int"
                 ],
                 "uid": [
-                    "str"
+                    "str",
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "identity_ts": [
-                    "duniterpy.documents.block_uid.BlockUID"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "Optional[int]"
                 ],
                 "signature": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "bool",
+                    "Optional[int]"
                 ]
             }
         },
@@ -1995,23 +2510,31 @@
             "name": "from_inline",
             "location": 114,
             "return": [
-                "MembershipType"
+                "Membership"
             ],
             "arguments": {
                 "cls": [
-                    "Type[MembershipType]"
+                    "Type[_TMembership]"
                 ],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "bytes"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes"
                 ],
                 "membership_type": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "Tuple[str,List[str],List[str]]",
+                    "Tuple[Union[str,list[str],list[str]]]"
                 ]
             }
         },
@@ -2019,14 +2542,16 @@
             "name": "from_signed_raw",
             "location": 150,
             "return": [
-                "MembershipType"
+                "Membership"
             ],
             "arguments": {
                 "cls": [
-                    "Type[MembershipType]"
+                    "Type[_TMembership]"
                 ],
                 "signed_raw": [
-                    "str"
+                    "bytes",
+                    "bool",
+                    "Mapping"
                 ]
             }
         },
@@ -2061,22 +2586,54 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "pubkey": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "List[list[str]]",
+                    "List[List[str]]",
+                    "int",
+                    "Optional[bool]"
                 ],
                 "block_uid": [
-                    "duniterpy.documents.block_uid.BlockUID"
+                    "bool",
+                    "Optional[bool]",
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[int]"
                 ],
                 "endpoints": [
-                    "List[duniterpy.api.endpoint.Endpoint]"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "List[list[str]]",
+                    "List[List[str]]",
+                    "int",
+                    "Optional[bool]"
                 ],
                 "signature": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -2084,14 +2641,15 @@
             "name": "from_signed_raw",
             "location": 92,
             "return": [
-                "PeerType"
+                "Peer"
             ],
             "arguments": {
                 "cls": [
-                    "Type[PeerType]"
+                    "Type[_TPeer]"
                 ],
                 "raw": [
-                    "str"
+                    "str",
+                    "Union[Callable,None]"
                 ]
             }
         },
@@ -2109,14 +2667,18 @@
             "name": "from_bma",
             "location": 154,
             "return": [
-                "PeerType"
+                "Peer"
             ],
             "arguments": {
                 "cls": [
-                    "Type[PeerType]"
+                    "Type[_TPeer]"
                 ],
                 "data": [
-                    "dict"
+                    "str",
+                    "Dict",
+                    "int",
+                    "Dict[str,Any]",
+                    "Mapping[str,Any]"
                 ]
             }
         }
@@ -2131,16 +2693,33 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "identity": [
-                    "Union[(str, duniterpy.documents.identity.Identity)]"
+                    "Callable",
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "Dict",
+                    "None",
+                    "Pattern",
+                    "Iterable[str]",
+                    "Union[str,Pattern]"
                 ],
                 "signature": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -2148,20 +2727,25 @@
             "name": "from_inline",
             "location": 85,
             "return": [
-                "RevocationType"
+                "Revocation"
             ],
             "arguments": {
                 "cls": [
-                    "Type[RevocationType]"
+                    "Type[_TRevocation]"
                 ],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -2169,14 +2753,16 @@
             "name": "from_signed_raw",
             "location": 108,
             "return": [
-                "RevocationType"
+                "Revocation"
             ],
             "arguments": {
                 "cls": [
-                    "Type[RevocationType]"
+                    "Type[_TRevocation]"
                 ],
                 "signed_raw": [
-                    "str"
+                    "bytes",
+                    "bool",
+                    "Mapping"
                 ]
             }
         },
@@ -2188,7 +2774,9 @@
             ],
             "arguments": {
                 "signed_raw": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "List[str]"
                 ]
             }
         },
@@ -2221,7 +2809,8 @@
             "arguments": {
                 "self": [],
                 "keys": [
-                    "list"
+                    "str",
+                    "Union[float, int]"
                 ]
             }
         },
@@ -2229,6 +2818,8 @@
             "name": "signed_raw",
             "location": 240,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
@@ -2244,12 +2835,8 @@
                 "Tuple[(int, int)]"
             ],
             "arguments": {
-                "amount": [
-                    "int"
-                ],
-                "base": [
-                    "int"
-                ]
+                "amount": [],
+                "base": []
             }
         },
         "InputSource.__init__": {
@@ -2260,21 +2847,11 @@
             ],
             "arguments": {
                 "self": [],
-                "amount": [
-                    "int"
-                ],
-                "base": [
-                    "int"
-                ],
-                "source": [
-                    "str"
-                ],
-                "origin_id": [
-                    "str"
-                ],
-                "index": [
-                    "int"
-                ]
+                "amount": [],
+                "base": [],
+                "source": [],
+                "origin_id": [],
+                "index": []
             }
         },
         "InputSource.__eq__": {
@@ -2302,15 +2879,13 @@
             "name": "from_inline",
             "location": 121,
             "return": [
-                "InputSourceType"
+                "InputSource"
             ],
             "arguments": {
                 "cls": [
-                    "Type[InputSourceType]"
+                    "Type[_TInputSource]"
                 ],
-                "inline": [
-                    "str"
-                ]
+                "inline": []
             }
         },
         "InputSource.inline": {
@@ -2331,15 +2906,9 @@
             ],
             "arguments": {
                 "self": [],
-                "amount": [
-                    "int"
-                ],
-                "base": [
-                    "int"
-                ],
-                "condition": [
-                    "str"
-                ]
+                "amount": [],
+                "base": [],
+                "condition": []
             }
         },
         "OutputSource.__eq__": {
@@ -2367,15 +2936,13 @@
             "name": "from_inline",
             "location": 195,
             "return": [
-                "OutputSourceType"
+                "OutputSource"
             ],
             "arguments": {
                 "cls": [
-                    "Type[OutputSourceType]"
+                    "Type[_TOutputSource]"
                 ],
-                "inline": [
-                    "str"
-                ]
+                "inline": []
             }
         },
         "OutputSource.inline": {
@@ -2392,7 +2959,7 @@
             "name": "inline_condition",
             "location": 221,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -2402,7 +2969,7 @@
             "name": "condition_from_text",
             "location": 230,
             "return": [
-                "output.Condition"
+                "Condition"
             ],
             "arguments": {
                 "text": []
@@ -2416,9 +2983,7 @@
             ],
             "arguments": {
                 "self": [],
-                "index": [
-                    "int"
-                ]
+                "index": []
             }
         },
         "SIGParameter.__eq__": {
@@ -2446,15 +3011,11 @@
             "name": "from_parameter",
             "location": 277,
             "return": [
-                "Optional[SIGParameterType]"
+                "Optional[SIGParameter]"
             ],
             "arguments": {
-                "cls": [
-                    "Type[SIGParameterType]"
-                ],
-                "parameter": [
-                    "str"
-                ]
+                "cls": [],
+                "parameter": []
             }
         },
         "SIGParameter.__str__": {
@@ -2475,9 +3036,7 @@
             ],
             "arguments": {
                 "self": [],
-                "integer": [
-                    "int"
-                ]
+                "integer": []
             }
         },
         "XHXParameter.__eq__": {
@@ -2505,15 +3064,11 @@
             "name": "from_parameter",
             "location": 333,
             "return": [
-                "Optional[XHXParameterType]"
+                "Optional[XHXParameter]"
             ],
             "arguments": {
-                "cls": [
-                    "Type[XHXParameterType]"
-                ],
-                "parameter": [
-                    "str"
-                ]
+                "cls": [],
+                "parameter": []
             }
         },
         "XHXParameter.compute": {
@@ -2540,15 +3095,11 @@
             "name": "from_parameter",
             "location": 367,
             "return": [
-                "Optional[Union[(SIGParameter, XHXParameter)]]"
+                "None"
             ],
             "arguments": {
-                "cls": [
-                    "Type[UnlockParameterType]"
-                ],
-                "parameter": [
-                    "str"
-                ]
+                "cls": [],
+                "parameter": []
             }
         },
         "UnlockParameter.compute": {
@@ -2569,12 +3120,8 @@
             ],
             "arguments": {
                 "self": [],
-                "index": [
-                    "int"
-                ],
-                "parameters": [
-                    "List[Union[(SIGParameter, XHXParameter)]]"
-                ]
+                "index": [],
+                "parameters": []
             }
         },
         "Unlock.__eq__": {
@@ -2602,15 +3149,13 @@
             "name": "from_inline",
             "location": 431,
             "return": [
-                "UnlockType"
+                "Unlock"
             ],
             "arguments": {
                 "cls": [
-                    "Type[UnlockType]"
+                    "Type[_TUnlock]"
                 ],
-                "inline": [
-                    "str"
-                ]
+                "inline": []
             }
         },
         "Unlock.inline": {
@@ -2631,38 +3176,18 @@
             ],
             "arguments": {
                 "self": [],
-                "version": [
-                    "int"
-                ],
-                "currency": [
-                    "str"
-                ],
-                "blockstamp": [
-                    "Optional[duniterpy.documents.block_uid.BlockUID]"
-                ],
-                "locktime": [
-                    "int"
-                ],
-                "issuers": [
-                    "List[str]"
-                ],
-                "inputs": [
-                    "List[InputSource]"
-                ],
-                "unlocks": [
-                    "List[Unlock]"
-                ],
-                "outputs": [
-                    "List[OutputSource]"
-                ],
-                "comment": [
-                    "str"
-                ],
-                "signatures": [
-                    "List[str]"
-                ],
+                "version": [],
+                "currency": [],
+                "blockstamp": [],
+                "locktime": [],
+                "issuers": [],
+                "inputs": [],
+                "unlocks": [],
+                "outputs": [],
+                "comment": [],
+                "signatures": [],
                 "time": [
-                    "Optional[int]"
+                    "None"
                 ]
             }
         },
@@ -2691,51 +3216,39 @@
             "name": "from_bma_history",
             "location": 615,
             "return": [
-                "TransactionType"
+                "Any"
             ],
             "arguments": {
-                "cls": [
-                    "Type[TransactionType]"
-                ],
-                "currency": [
-                    "str"
-                ],
-                "tx_data": [
-                    "dict"
-                ]
+                "cls": [],
+                "currency": [],
+                "tx_data": []
             }
         },
         "Transaction.from_compact": {
             "name": "from_compact",
             "location": 653,
             "return": [
-                "TransactionType"
+                "Transaction"
             ],
             "arguments": {
                 "cls": [
-                    "Type[TransactionType]"
+                    "Type[_TTransaction]"
                 ],
-                "currency": [
-                    "str"
-                ],
-                "compact": [
-                    "str"
-                ]
+                "currency": [],
+                "compact": []
             }
         },
         "Transaction.from_signed_raw": {
             "name": "from_signed_raw",
             "location": 739,
             "return": [
-                "TransactionType"
+                "Transaction"
             ],
             "arguments": {
                 "cls": [
-                    "Type[TransactionType]"
+                    "Type[_TTransaction]"
                 ],
-                "raw": [
-                    "str"
-                ],
+                "raw": [],
                 "time": [
                     "int"
                 ]
@@ -2769,39 +3282,17 @@
             ],
             "arguments": {
                 "self": [],
-                "version": [
-                    "int"
-                ],
-                "currency": [
-                    "str"
-                ],
-                "blockstamp": [
-                    "duniterpy.documents.block_uid.BlockUID"
-                ],
-                "locktime": [
-                    "int"
-                ],
-                "issuer": [
-                    "str"
-                ],
-                "single_input": [
-                    "InputSource"
-                ],
-                "unlocks": [
-                    "List[Unlock]"
-                ],
-                "outputs": [
-                    "List[OutputSource]"
-                ],
-                "comment": [
-                    "str"
-                ],
-                "signature": [
-                    "str"
-                ],
-                "time": [
-                    "int"
-                ]
+                "version": [],
+                "currency": [],
+                "blockstamp": [],
+                "locktime": [],
+                "issuer": [],
+                "single_input": [],
+                "unlocks": [],
+                "outputs": [],
+                "comment": [],
+                "signature": [],
+                "time": []
             }
         },
         "SimpleTransaction.is_simple": {
@@ -2811,9 +3302,7 @@
                 "bool"
             ],
             "arguments": {
-                "tx": [
-                    "Transaction"
-                ]
+                "tx": []
             }
         }
     },
@@ -2830,7 +3319,10 @@
                     "Type[_TAPI]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2855,10 +3347,18 @@
                     "Type[_THead]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,dict[str,str]]"
                 ],
                 "signature": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Optional[bool]",
+                    "None"
                 ]
             }
         },
@@ -2883,7 +3383,10 @@
                     "str"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Pattern[str]",
+                    "Pattern"
                 ],
                 "signature": [
                     "str"
@@ -2910,25 +3413,26 @@
                 "cls": [
                     "List[int]",
                     "str",
-                    "list[int]",
-                    "Dict[str, int]",
-                    "dict[str, int]",
-                    "set",
-                    "set[]",
+                    "Dict[str,int]",
+                    "Set",
+                    "List",
                     "Optional[dict]",
-                    "dict[, ]",
+                    "Dict",
                     "List[List[Any]]",
                     "None",
                     "Iterable[str]",
-                    "list[list[typing.Any]]",
-                    "list",
-                    "list[]"
+                    "List[list[Any]]"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "int",
+                    "Dict[str,Any]"
                 ],
                 "signature": [
-                    "str"
+                    "str",
+                    "float",
+                    "Iterable[Union[Any,int]]"
                 ]
             }
         },
@@ -2942,18 +3446,21 @@
                 "cls": [
                     "str",
                     "int",
-                    "Dict[str, int]",
-                    "dict[str, int]",
-                    "dict",
-                    "dict[, ]",
+                    "Dict[str,int]",
+                    "Dict",
                     "Optional[dict]",
                     "None"
                 ],
                 "inline": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "int",
+                    "Dict[str,Any]"
                 ],
                 "signature": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bytes"
                 ]
             }
         }
@@ -2968,16 +3475,37 @@
             "arguments": {
                 "self": [],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "pubkey": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "Optional[bytes]"
                 ],
                 "challenge": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "bool",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ],
                 "signature": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "str",
+                    "Optional[Tuple[float,float]]",
+                    "Optional[bool]",
+                    "Tuple[Union[float,float]]",
+                    "Optional[Dict[str,int]]",
+                    "Dict[str,int]"
                 ]
             }
         },
@@ -3000,7 +3528,9 @@
             "arguments": {
                 "self": [],
                 "signing_key": [
-                    "duniterpy.key.signing_key.SigningKey"
+                    "int",
+                    "bytes",
+                    "str"
                 ]
             }
         },
@@ -3023,15 +3553,27 @@
             "arguments": {
                 "self": [],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "pubkey": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "challenge": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "signature": [
+                    "str",
+                    "None",
+                    "int",
                     "Optional[str]"
                 ]
             }
@@ -3045,7 +3587,9 @@
             "arguments": {
                 "self": [],
                 "signing_key": [
-                    "duniterpy.key.signing_key.SigningKey"
+                    "int",
+                    "bytes",
+                    "str"
                 ]
             }
         },
@@ -3058,15 +3602,27 @@
             "arguments": {
                 "self": [],
                 "currency": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "pubkey": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "challenge": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "signature": [
+                    "str",
+                    "None",
+                    "int",
                     "Optional[str]"
                 ]
             }
@@ -3080,7 +3636,9 @@
             "arguments": {
                 "self": [],
                 "signing_key": [
-                    "duniterpy.key.signing_key.SigningKey"
+                    "int",
+                    "bytes",
+                    "str"
                 ]
             }
         },
@@ -3093,10 +3651,12 @@
             "arguments": {
                 "self": [],
                 "document_type_id": [
+                    "str",
                     "int"
                 ],
                 "document": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -3112,7 +3672,12 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "str"
+                    "Text",
+                    "enum.Enum",
+                    "float",
+                    "str",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -3120,7 +3685,8 @@
             "name": "__str__",
             "location": 69,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -3130,14 +3696,19 @@
             "name": "__eq__",
             "location": 72,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Tuple",
+                "float",
+                "List[int]",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "T",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -3155,14 +3726,15 @@
             "name": "token",
             "location": 84,
             "return": [
-                "SIGType"
+                "SIG"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SIGType]"
+                    "Type[_TSIG]"
                 ],
                 "pubkey": [
-                    "str"
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -3178,28 +3750,25 @@
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "grammar": [
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "attr_of": [
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ]
             }
         },
@@ -3212,7 +3781,12 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "str"
+                    "Text",
+                    "enum.Enum",
+                    "float",
+                    "str",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -3220,7 +3794,8 @@
             "name": "__str__",
             "location": 129,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -3230,14 +3805,19 @@
             "name": "__eq__",
             "location": 132,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "str",
+                "Tuple",
+                "float",
+                "List[int]"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "T",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -3255,14 +3835,16 @@
             "name": "token",
             "location": 144,
             "return": [
-                "CSVType"
+                "CSV"
             ],
             "arguments": {
                 "cls": [
-                    "Type[CSVType]"
+                    "Type[_TCSV]"
                 ],
                 "time": [
-                    "int"
+                    "int",
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -3278,22 +3860,25 @@
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "grammar": [
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "attr_of": [
-                    "str"
+                    "bool",
+                    "None",
+                    "str",
+                    "Dict",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -3306,7 +3891,12 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "str"
+                    "Text",
+                    "enum.Enum",
+                    "float",
+                    "str",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -3314,7 +3904,8 @@
             "name": "__str__",
             "location": 188,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -3324,14 +3915,19 @@
             "name": "__eq__",
             "location": 191,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Tuple",
+                "float",
+                "List[int]",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "T",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -3349,13 +3945,14 @@
             "name": "token",
             "location": 203,
             "return": [
-                "CLTVType"
+                "CLTV"
             ],
             "arguments": {
                 "cls": [
-                    "Type[CLTVType]"
+                    "Type[_TCLTV]"
                 ],
                 "timestamp": [
+                    "str",
                     "int"
                 ]
             }
@@ -3372,22 +3969,25 @@
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "grammar": [
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "attr_of": [
-                    "str"
+                    "bool",
+                    "None",
+                    "str",
+                    "Dict",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -3400,7 +4000,12 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "str"
+                    "Text",
+                    "enum.Enum",
+                    "float",
+                    "str",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -3408,7 +4013,8 @@
             "name": "__str__",
             "location": 247,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -3418,7 +4024,12 @@
             "name": "__eq__",
             "location": 250,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Tuple",
+                "float",
+                "List[int]",
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -3439,14 +4050,18 @@
             "name": "token",
             "location": 262,
             "return": [
-                "XHXType"
+                "XHX"
             ],
             "arguments": {
                 "cls": [
-                    "Type[XHXType]"
+                    "Type[_TXHX]"
                 ],
                 "sha_hash": [
-                    "str"
+                    "str",
+                    "Sized",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ]
             }
         },
@@ -3462,22 +4077,25 @@
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "grammar": [
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "attr_of": [
-                    "str"
+                    "bool",
+                    "None",
+                    "str",
+                    "Dict",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -3485,14 +4103,16 @@
             "name": "token",
             "location": 299,
             "return": [
-                "OperatorType"
+                "Operator"
             ],
             "arguments": {
                 "cls": [
-                    "Type[OperatorType]"
+                    "Type[_TOperator]"
                 ],
                 "keyword": [
-                    "str"
+                    "bool",
+                    "Type",
+                    "int"
                 ]
             }
         },
@@ -3508,22 +4128,25 @@
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "grammar": [
                     "bool",
                     "None",
                     "str",
+                    "Dict",
                     "Optional[str]",
-                    "int",
-                    "dict[, ]",
-                    "dict"
+                    "int"
                 ],
                 "attr_of": [
-                    "str"
+                    "bool",
+                    "None",
+                    "str",
+                    "Dict",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -3536,7 +4159,12 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "str"
+                    "Text",
+                    "enum.Enum",
+                    "float",
+                    "str",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -3544,7 +4172,12 @@
             "name": "__eq__",
             "location": 345,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Tuple",
+                "float",
+                "List[int]",
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -3565,7 +4198,8 @@
             "name": "__str__",
             "location": 361,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -3575,11 +4209,11 @@
             "name": "token",
             "location": 365,
             "return": [
-                "ConditionType"
+                "Condition"
             ],
             "arguments": {
                 "cls": [
-                    "Type[ConditionType]"
+                    "Type[_TCondition]"
                 ],
                 "left": [
                     "str",
@@ -3587,14 +4221,13 @@
                     "float",
                     "int",
                     "None",
-                    "Union[int, float]",
-                    "Optional[Union[\"IPUtilityFunction\", \"UtilityDistribution\"]]"
+                    "Union[int,float]",
+                    "Optional[Union[IPUtilityFunction,UtilityDistribution]]"
                 ],
                 "op": [
+                    "Dict[str,Any]",
                     "None",
-                    "Dict[str, Any]",
                     "bytes",
-                    "dict[str, typing.Any]",
                     "int",
                     "Iterable[Hashable]",
                     "Optional[int]"
@@ -3605,8 +4238,8 @@
                     "bool",
                     "int",
                     "float",
-                    "Union[int, float]",
-                    "Optional[Union[\"IPUtilityFunction\", \"UtilityDistribution\"]]"
+                    "Union[int,float]",
+                    "Optional[Union[IPUtilityFunction,UtilityDistribution]]"
                 ]
             }
         },
@@ -3614,7 +4247,9 @@
             "name": "compose",
             "location": 387,
             "return": [
-                "str"
+                "str",
+                "bool",
+                "Optional[Union[str,Any]]"
             ],
             "arguments": {
                 "self": [],
@@ -3626,7 +4261,8 @@
                     "None"
                 ],
                 "attr_of": [
-                    "str"
+                    "str",
+                    "None"
                 ]
             }
         }
@@ -3655,12 +4291,12 @@
             ],
             "arguments": {
                 "path": [
-                    "typing.Text",
+                    "Text",
                     "pathlib.Path",
                     "str",
                     "pathlib.PurePath",
-                    "Union[str, pathlib.Path]",
-                    "Union[pathlib.Path, str]"
+                    "Union[str,pathlib.Path]",
+                    "Union[pathlib.Path,str]"
                 ]
             }
         },
@@ -3672,10 +4308,10 @@
             ],
             "arguments": {
                 "path": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "List[Dict]",
-                    "list"
+                    "List"
                 ]
             }
         },
@@ -3716,7 +4352,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TJsonBlockchain"
+                    "_TJsonBlockchain@@JsonBlockchain@@"
                 ]
             }
         },
@@ -3766,17 +4402,23 @@
             "name": "output_available",
             "location": 22,
             "return": [
-                "bool"
+                "bool",
+                "Dict[Tuple[str,str],Tuple[float,float]]",
+                "int",
+                "str",
+                "Tuple[int,int,int]"
             ],
             "arguments": {
                 "condition": [
-                    "duniterpy.grammars.output.Condition"
+                    "str",
+                    "int",
+                    "float"
                 ],
                 "comparison": [
                     "int"
                 ],
                 "value": [
-                    "Union[(int, str)]"
+                    "int"
                 ]
             }
         }
@@ -3793,19 +4435,42 @@
             ],
             "arguments": {
                 "message": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[str]"
                 ],
                 "pubkey": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[str]",
+                    "bytes",
+                    "Optional[bytes]",
+                    "bool"
                 ],
                 "signing_keys": [
-                    "Optional[List[duniterpy.key.signing_key.SigningKey]]"
+                    "bytes",
+                    "None",
+                    "str",
+                    "Optional[bytes]"
                 ],
                 "message_comment": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "Type",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "bool",
+                    "Optional[Dict[str,Any]]"
                 ],
                 "signatures_comment": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -3817,7 +4482,8 @@
             ],
             "arguments": {
                 "text": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -3829,7 +4495,8 @@
             ],
             "arguments": {
                 "text": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -3861,7 +4528,11 @@
             ],
             "arguments": {
                 "comment": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "int",
+                    "List[str]",
+                    "bytearray"
                 ]
             }
         },
@@ -3873,16 +4544,25 @@
             ],
             "arguments": {
                 "message": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "signing_key": [
-                    "duniterpy.key.signing_key.SigningKey"
+                    "str",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "close_block": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str"
                 ],
                 "comment": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -3890,17 +4570,25 @@
             "name": "parse",
             "location": 279,
             "return": [
-                "dict"
+                "Dict[(str, Union[(Dict[(str, Any)], List[Dict[(str, Any)]])])]"
             ],
             "arguments": {
-                "ascii_armor_message": [
-                    "str"
-                ],
+                "ascii_armor_message": [],
                 "signing_key": [
-                    "Optional[duniterpy.key.signing_key.SigningKey]"
+                    "bytes",
+                    "None",
+                    "Optional[int]",
+                    "Optional[AnyStr]",
+                    "int",
+                    "AnyStr"
                 ],
                 "sender_pubkeys": [
-                    "Optional[List[str]]"
+                    "List[str]",
+                    "bool",
+                    "Optional[List[str]]",
+                    "str",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -3908,14 +4596,23 @@
             "name": "_decrypt",
             "location": 442,
             "return": [
-                "str"
+                "str",
+                "Optional[float]",
+                "int",
+                "List[Dict[str, Any]]",
+                "Dict[str, str]",
+                "bool"
             ],
             "arguments": {
                 "ascii_armor_message": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "certificate_engine.ssl.key.Key"
                 ],
                 "signing_key": [
-                    "duniterpy.key.signing_key.SigningKey"
+                    "str",
+                    "bytes",
+                    "certificate_engine.ssl.key.Key"
                 ]
             }
         }
@@ -3929,7 +4626,9 @@
             ],
             "arguments": {
                 "data": [
-                    "Union[(bytes, str)]"
+                    "str",
+                    "bytes",
+                    "Union[str,bytes]"
                 ]
             }
         },
@@ -3937,11 +4636,13 @@
             "name": "decode",
             "location": 36,
             "return": [
-                "bytes"
+                "str"
             ],
             "arguments": {
                 "data": [
-                    "str"
+                    "Dict",
+                    "str",
+                    "bytes"
                 ]
             }
         }
@@ -3957,13 +4658,33 @@
             "arguments": {
                 "self": [],
                 "salt": [
-                    "Union[(bytes, str)]"
+                    "str",
+                    "int",
+                    "Optional[bytes]",
+                    "bytes",
+                    "None"
                 ],
                 "password": [
-                    "Union[(bytes, str)]"
+                    "str",
+                    "int",
+                    "Optional[bytes]",
+                    "bytes",
+                    "None"
                 ],
                 "scrypt_params": [
-                    "Optional[duniterpy.key.scrypt_params.ScryptParams]"
+                    "Optional[str]",
+                    "None",
+                    "Optional[int]",
+                    "str",
+                    "Optional[float]",
+                    "int",
+                    "Optional[Callable]",
+                    "float",
+                    "Optional[Tuple[int,int]]",
+                    "Callable",
+                    "Optional[Dict[str,dict]]",
+                    "Tuple[Union[int,int]]",
+                    "Dict[str,dict]"
                 ]
             }
         },
@@ -3971,7 +4692,11 @@
             "name": "encrypt",
             "location": 63,
             "return": [
-                "str"
+                "List[int]",
+                "str",
+                "bytes",
+                "int",
+                "tuple"
             ],
             "arguments": {
                 "self": [],
@@ -3979,10 +4704,20 @@
                     "str"
                 ],
                 "nonce": [
-                    "Union[(bytes, str)]"
+                    "int",
+                    "str",
+                    "Dict[str,Sequence[str]]",
+                    "bytes",
+                    "Union[bytes,bytearray]",
+                    "bytearray"
                 ],
                 "text": [
-                    "Union[(bytes, str)]"
+                    "int",
+                    "str",
+                    "Dict[str,Sequence[str]]",
+                    "bytes",
+                    "Union[bytes,bytearray]",
+                    "bytearray"
                 ]
             }
         },
@@ -3990,7 +4725,9 @@
             "name": "decrypt",
             "location": 87,
             "return": [
-                "str"
+                "str",
+                "int",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
@@ -3998,7 +4735,12 @@
                     "str"
                 ],
                 "nonce": [
-                    "Union[(bytes, str)]"
+                    "int",
+                    "str",
+                    "Dict[str,Sequence[str]]",
+                    "bytes",
+                    "Union[bytes,bytearray]",
+                    "bytearray"
                 ],
                 "text": [
                     "str"
@@ -4014,7 +4756,13 @@
             "arguments": {
                 "self": [],
                 "pubkey": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[int]",
+                    "Tuple",
+                    "None",
+                    "Optional[float]",
+                    "float"
                 ]
             }
         },
@@ -4022,7 +4770,9 @@
             "name": "base58",
             "location": 115,
             "return": [
-                "str"
+                "str",
+                "List[int]",
+                "tuple"
             ],
             "arguments": {
                 "self": []
@@ -4032,12 +4782,17 @@
             "name": "encrypt_seal",
             "location": 121,
             "return": [
-                "bytes"
+                "str",
+                "List[dict]",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "data": [
-                    "Union[(bytes, str)]"
+                    "bytes",
+                    "Dict[str,Any]",
+                    "Union[bytes,str]",
+                    "str"
                 ]
             }
         }
@@ -4052,16 +4807,24 @@
             "arguments": {
                 "self": [],
                 "n": [
-                    "int"
+                    "int",
+                    "bool",
+                    "tuple"
                 ],
                 "r": [
-                    "int"
+                    "int",
+                    "Optional[List[int]]",
+                    "bytes"
                 ],
                 "p": [
-                    "int"
+                    "int",
+                    "bool",
+                    "tuple"
                 ],
                 "seed_length": [
-                    "int"
+                    "int",
+                    "bool",
+                    "tuple"
                 ]
             }
         }
@@ -4076,7 +4839,10 @@
             "arguments": {
                 "self": [],
                 "seed": [
-                    "bytes"
+                    "bool",
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]",
+                    "Callable[Any,Any,bool]"
                 ]
             }
         },
@@ -4084,20 +4850,38 @@
             "name": "from_credentials",
             "location": 51,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SigningKeyType]"
+                    "Type[_TSigningKey]"
                 ],
                 "salt": [
-                    "Union[(bytes, str)]"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[bytes]",
+                    "None"
                 ],
                 "password": [
-                    "Union[(bytes, str)]"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[bytes]",
+                    "None"
                 ],
                 "scrypt_params": [
-                    "Optional[duniterpy.key.scrypt_params.ScryptParams]"
+                    "Optional[str]",
+                    "None",
+                    "Optional[int]",
+                    "str",
+                    "Optional[Dict[str,dict]]",
+                    "int",
+                    "Optional[float]",
+                    "Dict[str,dict]",
+                    "Optional[Callable]",
+                    "float",
+                    "Callable"
                 ]
             }
         },
@@ -4105,20 +4889,21 @@
             "name": "from_credentials_file",
             "location": 81,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "cls": [
-                    "str",
-                    "int",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "Type[_TSigningKey]"
                 ],
                 "path": [
                     "str"
                 ],
                 "scrypt_params": [
-                    "Optional[duniterpy.key.scrypt_params.ScryptParams]"
+                    "str",
+                    "int",
+                    "None",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -4139,7 +4924,7 @@
             "name": "from_seedhex_file",
             "location": 113,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "path": [
@@ -4151,14 +4936,15 @@
             "name": "from_seedhex",
             "location": 124,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SigningKeyType]"
+                    "Type[_TSigningKey]"
                 ],
                 "seedhex": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -4171,7 +4957,8 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -4179,11 +4966,15 @@
             "name": "from_private_key",
             "location": 147,
             "return": [
-                "SigningKeyType"
+                "str",
+                "Type",
+                "Dict",
+                "int"
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "Dict[cmk.utils.type_defs.HostName,str]"
                 ]
             }
         },
@@ -4191,12 +4982,20 @@
             "name": "decrypt_seal",
             "location": 158,
             "return": [
-                "bytes"
+                "List[dict]",
+                "str",
+                "int",
+                "float"
             ],
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "raiden.utils.Any",
+                    "Union[bytes,str]"
                 ]
             }
         },
@@ -4204,11 +5003,11 @@
             "name": "from_pubsec_file",
             "location": 173,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SigningKeyType]"
+                    "Type[_TSigningKey]"
                 ],
                 "path": [
                     "str"
@@ -4232,14 +5031,26 @@
             "name": "from_wif_or_ewif_file",
             "location": 231,
             "return": [
-                "SigningKeyType"
+                "bool",
+                "Optional[Any]",
+                "bytes",
+                "Mapping",
+                "Dict[str, str]",
+                "dict",
+                "str"
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ],
                 "password": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "bytes",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -4247,14 +5058,22 @@
             "name": "from_wif_or_ewif_hex",
             "location": 254,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "wif_hex": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "password": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "Optional[Union[Any,Any]]",
+                    "int",
+                    "Any"
                 ]
             }
         },
@@ -4262,7 +5081,7 @@
             "name": "from_wif_file",
             "location": 277,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "path": [
@@ -4274,14 +5093,19 @@
             "name": "from_wif_hex",
             "location": 297,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SigningKeyType]"
+                    "Type[_TSigningKey]"
                 ],
                 "wif_hex": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Dict[str,str]",
+                    "Optional[Exception]",
+                    "Exception",
+                    "None"
                 ]
             }
         },
@@ -4302,14 +5126,18 @@
             "name": "from_ewif_file",
             "location": 354,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ],
                 "password": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -4317,17 +5145,21 @@
             "name": "from_ewif_hex",
             "location": 375,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SigningKeyType]"
+                    "Type[_TSigningKey]"
                 ],
                 "ewif_hex": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "password": [
-                    "str"
+                    "str",
+                    "Union[str,bytes]",
+                    "Optional[Callable]",
+                    "bytes"
                 ]
             }
         },
@@ -4343,7 +5175,9 @@
                     "str"
                 ],
                 "password": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Dict"
                 ]
             }
         },
@@ -4351,11 +5185,11 @@
             "name": "from_ssb_file",
             "location": 487,
             "return": [
-                "SigningKeyType"
+                "SigningKey"
             ],
             "arguments": {
                 "cls": [
-                    "Type[SigningKeyType]"
+                    "Type[_TSigningKey]"
                 ],
                 "path": [
                     "str"
@@ -4411,12 +5245,18 @@
             "name": "get_verified_data",
             "location": 79,
             "return": [
-                "bytes"
+                "dict",
+                "str",
+                "IO[bytes]"
             ],
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "Dict",
+                    "bytes",
+                    "int",
+                    "Iterable[T]",
+                    "Iterable"
                 ]
             }
         }
@@ -4451,17 +5291,25 @@
             "name": "get_signed_raw_revocation_document",
             "location": 99,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "identity": [
-                    "duniterpy.documents.identity.Identity"
+                    "str",
+                    "duniterpy.documents.Identity"
                 ],
                 "salt": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Callable[[T],bool]",
+                    "Callable[T,bool]"
                 ],
                 "password": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Callable[[T],bool]",
+                    "Callable[T,bool]"
                 ]
             }
         }
@@ -4475,13 +5323,22 @@
             ],
             "arguments": {
                 "current_block": [
-                    "dict"
+                    "str",
+                    "duniterpy.documents.Identity",
+                    "Dict",
+                    "Type"
                 ],
                 "self_cert_document": [
-                    "duniterpy.documents.identity.Identity"
+                    "str",
+                    "Dict",
+                    "Type",
+                    "duniterpy.documents.Identity"
                 ],
                 "from_pubkey": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Type",
+                    "duniterpy.documents.Identity"
                 ]
             }
         }
@@ -4495,13 +5352,21 @@
             ],
             "arguments": {
                 "current_block": [
-                    "dict"
+                    "str",
+                    "cirq.api.google.v1.params_pb2.SingleSweep",
+                    "Optional[int]"
                 ],
                 "uid": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "bool",
+                    "bytes"
                 ],
                 "key": [
-                    "duniterpy.key.signing_key.SigningKey"
+                    "Dict[str,Union[str,int,bool]]",
+                    "str",
+                    "bool",
+                    "Tuple"
                 ]
             }
         }
@@ -4515,16 +5380,32 @@
             ],
             "arguments": {
                 "membership_type": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[str]",
+                    "None"
                 ],
                 "current_block": [
-                    "dict"
+                    "Type[T]",
+                    "cirq.api.google.v1.params_pb2.SingleSweep",
+                    "Dict[str, Any]",
+                    "Dict[str, str]",
+                    "Dict[str, float]"
                 ],
                 "identity": [
-                    "dict"
+                    "str",
+                    "bool",
+                    "Optional[bool]",
+                    "Callable",
+                    "int"
                 ],
                 "key": [
-                    "duniterpy.key.signing_key.SigningKey"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -4538,13 +5419,21 @@
             ],
             "arguments": {
                 "current_block": [
-                    "dict"
+                    "str"
                 ],
                 "source": [
-                    "dict"
+                    "str",
+                    "bool",
+                    "Dict",
+                    "Optional[str]",
+                    "Dict[str,Any]"
                 ],
                 "from_pubkey": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "to_pubkey": [
                     "str"
@@ -4580,7 +5469,9 @@
             "name": "find_unused_port",
             "location": 28,
             "return": [
-                "int"
+                "int",
+                "set",
+                "str"
             ],
             "arguments": {}
         },
@@ -5884,7 +6775,6 @@
             "name": "test_output_available",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

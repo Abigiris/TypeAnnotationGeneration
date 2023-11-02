@@ -50,7 +50,6 @@
             "name": "_extend_whitelist_with_trades",
             "location": 149,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -75,11 +74,11 @@
             "name": "_create_pair_whitelist",
             "location": 155,
             "return": [
-                "list[tuple[]]",
+                "List[tuple]",
                 "List[str]",
                 "str",
                 "bool",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "self": [],
@@ -138,11 +137,11 @@
             "return": [
                 "None",
                 "float",
-                "Dict[str, mypy.build.State]",
+                "Dict[str,mypy.build.State]",
                 "Optional[int]",
                 "bool",
                 "Optional[str]",
-                "Optional[Literal[\"only_clustered\", \"include_clustered\"]]",
+                "Optional[Literal[only_clustered,include_clustered]]",
                 "Optional[Dict]"
             ],
             "arguments": {
@@ -270,7 +269,7 @@
             "return": [
                 "None",
                 "int",
-                "list",
+                "List",
                 "str"
             ],
             "arguments": {
@@ -284,7 +283,7 @@
                 "action_order": [
                     "None",
                     "int",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str"
                 ]
             }
@@ -526,7 +525,6 @@
             "name": "_notify_sell",
             "location": 904,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -549,7 +547,10 @@
             "name": "went_up",
             "location": 8,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "series": [
@@ -563,7 +564,10 @@
             "name": "went_down",
             "location": 12,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "series": [
@@ -586,7 +590,9 @@
                     "str"
                 ],
                 "smoothing": [
-                    "float"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -594,7 +600,8 @@
             "name": "fishers_inverse",
             "location": 32,
             "return": [
-                "np.ndarray"
+                "int",
+                "Optional[int]"
             ],
             "arguments": {
                 "series": [
@@ -603,7 +610,13 @@
                     "str"
                 ],
                 "smoothing": [
-                    "float"
+                    "int",
+                    "float",
+                    "Optional[List[float]]",
+                    "str",
+                    "numpy.ndarray",
+                    "List[Optional[float]]",
+                    "List"
                 ]
             }
         }
@@ -617,7 +630,9 @@
             ],
             "arguments": {
                 "verbosity": [
-                    "int"
+                    "int",
+                    "logging.Logger",
+                    "Exception"
                 ]
             }
         },
@@ -629,7 +644,9 @@
             ],
             "arguments": {
                 "config": [
-                    "Dict[(str, Any)]"
+                    "Dict[str, Any]",
+                    "MutableMapping[str, Any]",
+                    "dict"
                 ]
             }
         }
@@ -645,9 +662,8 @@
                 "sysargv": [
                     "str",
                     "None",
-                    "bool",
                     "List[str]",
-                    "list[str]",
+                    "bool",
                     "int",
                     "Optional[str]"
                 ]
@@ -663,7 +679,8 @@
             ],
             "arguments": {
                 "_date": [
-                    "str"
+                    "str",
+                    "datetime.date"
                 ]
             }
         },
@@ -671,11 +688,18 @@
             "name": "datesarray_to_datetimearray",
             "location": 34,
             "return": [
-                "np.ndarray"
+                "str",
+                "bool",
+                "Optional[Mapping[str, Any]]",
+                "int"
             ],
             "arguments": {
                 "dates": [
-                    "np.ndarray"
+                    "None",
+                    "numpy.ndarray",
+                    "datetime.date",
+                    "datetime.datetime",
+                    "Optional[datetime.datetime]"
                 ]
             }
         },
@@ -687,27 +711,23 @@
             ],
             "arguments": {
                 "filename": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "data": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
                     "MutableMapping",
-                    "typing.MutableMapping",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[Any, pathlib.Path]",
-                    "dict[typing.Any, pathlib.Path]",
-                    "Type['Declared']",
-                    "typing.Type"
+                    "Dict",
+                    "Dict[Any,pathlib.Path]",
+                    "Type[Declared]",
+                    "Type"
                 ],
                 "is_zip": [
                     "bool",
                     "Optional[bytes]",
                     "str",
-                    "list"
+                    "List"
                 ]
             }
         },
@@ -728,10 +748,10 @@
                     "bool",
                     "str",
                     "int",
-                    "list[str]",
+                    "List[str]",
                     "datetime.datetime",
-                    "tuple[typing.Union[str,...]]",
-                    "Union[str, List[str], Tuple[str, ...]]"
+                    "Tuple[Union[str,...]]",
+                    "Union[str,List[str],Tuple[str,...]]"
                 ]
             }
         },
@@ -745,9 +765,9 @@
                 "str",
                 "int",
                 "bool",
-                "dict[, ]",
-                "list[int]",
-                "list[list[int]]"
+                "Dict",
+                "List[int]",
+                "List[list[int]]"
             ],
             "arguments": {
                 "file": [
@@ -767,7 +787,10 @@
             ],
             "arguments": {
                 "date": [
-                    "int"
+                    "int",
+                    "str",
+                    "datetime.datetime",
+                    "datetime.date"
                 ]
             }
         },
@@ -775,17 +798,28 @@
             "name": "deep_merge_dicts",
             "location": 99,
             "return": [
-                "_T1"
+                "int",
+                "Callable",
+                "str",
+                "Dict",
+                "None",
+                "Dict[str,Any]",
+                "Exception"
             ],
             "arguments": {
                 "source": [
-                    "dict[, ]",
-                    "Mapping[str, Any]",
-                    "str",
-                    "dict"
+                    "Dict",
+                    "Mapping[str,Any]",
+                    "str"
                 ],
                 "destination": [
-                    "_T1"
+                    "Dict",
+                    "int",
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "Exception",
+                    "None"
                 ]
             }
         },
@@ -816,10 +850,18 @@
             ],
             "arguments": {
                 "db_url": [
-                    "str"
+                    "str",
+                    "Awaitable",
+                    "Dict[str, str]",
+                    "Optional[str]"
                 ],
                 "clean_open_orders": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "float",
+                    "robot_server.service.session.session_types.base_session.SessionMetaData",
+                    "robot_server.service.session.configuration.SessionConfiguration"
                 ]
             }
         },
@@ -838,7 +880,11 @@
                     "dict"
                 ],
                 "searchname": [
-                    "str"
+                    "List[str]",
+                    "list",
+                    "List[Dict[str, Any]]",
+                    "int",
+                    "dict"
                 ]
             }
         },
@@ -846,7 +892,7 @@
             "name": "get_column_def",
             "location": 69,
             "return": [
-                "str"
+                "Union[(_T1, _T2)]"
             ],
             "arguments": {
                 "columns": [
@@ -856,10 +902,16 @@
                     "Optional[List[str]]"
                 ],
                 "column": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Optional[list]",
+                    "Optional[List[str]]"
                 ],
                 "default": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Optional[list]",
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -921,9 +973,7 @@
             ],
             "arguments": {
                 "self": [],
-                "current_price": [
-                    "float"
-                ]
+                "current_price": []
             }
         },
         "Trade.adjust_stop_loss": {
@@ -934,14 +984,13 @@
             ],
             "arguments": {
                 "self": [],
-                "current_price": [
-                    "float"
-                ],
-                "stoploss": [
-                    "float"
-                ],
+                "current_price": [],
+                "stoploss": [],
                 "initial": [
-                    "bool"
+                    "bool",
+                    "float",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -954,7 +1003,9 @@
             "arguments": {
                 "self": [],
                 "order": [
-                    "dict"
+                    "str",
+                    "Optional[str]",
+                    "List[str]"
                 ]
             }
         },
@@ -967,7 +1018,9 @@
             "arguments": {
                 "self": [],
                 "rate": [
-                    "float"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -980,7 +1033,10 @@
             "arguments": {
                 "self": [],
                 "fee": [
-                    "Optional[float]"
+                    "None",
+                    "bool",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -993,10 +1049,15 @@
             "arguments": {
                 "self": [],
                 "rate": [
-                    "Optional[float]"
+                    "None",
+                    "int",
+                    "Optional[int]"
                 ],
                 "fee": [
-                    "Optional[float]"
+                    "None",
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1009,10 +1070,16 @@
             "arguments": {
                 "self": [],
                 "rate": [
-                    "Optional[float]"
+                    "None",
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "fee": [
-                    "Optional[float]"
+                    "None",
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1025,10 +1092,16 @@
             "arguments": {
                 "self": [],
                 "rate": [
-                    "Optional[float]"
+                    "None",
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "fee": [
-                    "Optional[float]"
+                    "None",
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1036,7 +1109,9 @@
             "name": "total_open_trades_stakes",
             "location": 409,
             "return": [
-                "float"
+                "int",
+                "str",
+                "MutableMapping"
             ],
             "arguments": {}
         },
@@ -1044,7 +1119,10 @@
             "name": "get_open_trades",
             "location": 420,
             "return": [
-                "list"
+                "int",
+                "str",
+                "bool",
+                "dict"
             ],
             "arguments": {}
         },
@@ -1071,21 +1149,18 @@
             "return": [
                 "str",
                 "bool",
-                "dict[str, typing.Union[typing.Any,str]]",
+                "Dict[str,Union[Any,str]]",
                 "Optional[str]",
-                "dict[, ]"
+                "Dict"
             ],
             "arguments": {
                 "args": [],
                 "method": [
-                    "typing.Callable[..., str]",
-                    "Callable[..., str]",
-                    "dict[, ]",
-                    "list[]",
-                    "dict",
+                    "Callable[...,str]",
+                    "Dict",
+                    "List",
                     "Callable",
-                    "Callable[..., T]",
-                    "list"
+                    "Callable[...,T]"
                 ]
             }
         },
@@ -1131,10 +1206,9 @@
                 "self": [],
                 "config": [],
                 "exchange": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Dict[str,Any]",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -1144,7 +1218,7 @@
             "return": [
                 "int",
                 "str",
-                "Optional[Dict[str, Any]]",
+                "Optional[Dict[str,Any]]",
                 "Optional[str]"
             ],
             "arguments": {
@@ -1152,9 +1226,8 @@
                 "currency": [
                     "int",
                     "djmoney.contrib.exchange.models.Rate",
-                    "str",
-                    "dict[str, bool]",
-                    "Dict[str, bool]"
+                    "Dict[str,bool]",
+                    "str"
                 ]
             }
         },
@@ -1169,12 +1242,11 @@
                 "self": [],
                 "currency": [
                     "str",
-                    "Optional[Mapping[str, Any]]",
-                    "typing.Mapping",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
+                    "Optional[Mapping[str,Any]]",
+                    "Mapping",
                     "None",
-                    "Dict[str, Any]",
-                    "dict[str, str]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1184,7 +1256,7 @@
             "return": [
                 "int",
                 "str",
-                "Optional[Dict[str, Any]]",
+                "Optional[Dict[str,Any]]",
                 "Optional[str]"
             ],
             "arguments": {
@@ -1192,9 +1264,8 @@
                 "currency": [
                     "int",
                     "djmoney.contrib.exchange.models.Rate",
-                    "str",
-                    "dict[str, bool]",
-                    "Dict[str, bool]"
+                    "Dict[str,bool]",
+                    "str"
                 ]
             }
         },
@@ -1281,18 +1352,16 @@
                 "self": [],
                 "old_state": [
                     "float",
-                    "tuple[]",
+                    "Tuple",
                     "str",
                     "homeassistancore.State",
-                    "tuple",
                     "states.State"
                 ],
                 "throttle_secs": [
                     "None",
+                    "Iterable[Callable]",
                     "prefecengine.state.Cached",
-                    "typing.Iterable[typing.Callable[, ]]",
-                    "State",
-                    "Iterable[Callable]"
+                    "State"
                 ]
             }
         },
@@ -1306,16 +1375,14 @@
             "arguments": {
                 "self": [],
                 "func": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "min_secs": [
                     "int",
                     "str",
-                    "Mapping[str, Dict[str, Any]]",
-                    "typing.Mapping",
-                    "dict",
-                    "dict[, ]"
+                    "Mapping[str,Dict[str,Any]]",
+                    "Dict",
+                    "Mapping"
                 ]
             }
         },
@@ -1380,11 +1447,11 @@
             "return": [
                 "str",
                 "bool",
-                "dict[, ]",
+                "Dict",
                 "int",
                 "None",
-                "dict[int, list[typing.Any]]",
-                "dict[str, int]"
+                "Dict[int,list[Any]]",
+                "Dict[str,int]"
             ],
             "arguments": {
                 "self": []
@@ -1405,7 +1472,6 @@
             "name": "_build_args",
             "location": 88,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1413,7 +1479,7 @@
                 "optionlist": [
                     "str",
                     "argparse.ArgumentParser",
-                    "Callable[[str], T]",
+                    "Callable[[str],T]",
                     "bool",
                     "Sequence[int]"
                 ],
@@ -1447,16 +1513,16 @@
             "arguments": {
                 "config": [
                     "str",
-                    "Dict[str, Any]",
-                    "Dict[str, str]",
-                    "dict"
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "Dict"
                 ],
                 "check_for_bad": [
                     "bool",
                     "Optional[str]",
                     "str",
-                    "dict",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -1470,7 +1536,9 @@
             ],
             "arguments": {
                 "value": [
-                    "str"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -1520,13 +1588,13 @@
             "name": "from_files",
             "location": 47,
             "return": [
-                "dict[typing.Text, dict[, ]]",
+                "Dict[Text,dict]",
                 "List[str]",
                 "argparse.Namespace",
                 "bool",
                 "raiden.constants.Environment",
                 "Optional[str]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
@@ -1669,14 +1737,14 @@
                     "None",
                     "Optional[Callable]",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int"
                 ],
                 "deprecated_msg": [
                     "None",
                     "Optional[str]",
                     "str",
-                    "Callable[[str], str]"
+                    "Callable[[str],str]"
                 ]
             }
         },
@@ -1684,7 +1752,7 @@
             "name": "_resolve_pairs_list",
             "location": 337,
             "return": [
-                "Iterator[Tuple[str, str]]",
+                "Iterator[Tuple[str,str]]",
                 "None"
             ],
             "arguments": {
@@ -1704,15 +1772,13 @@
             "location": 13,
             "return": [
                 "str",
-                "list[typing.Text]"
+                "List[Text]"
             ],
             "arguments": {
                 "validator_class": [
                     "bool",
-                    "dict",
-                    "dict[, ]",
-                    "type",
-                    "typing.Type"
+                    "Dict",
+                    "Type"
                 ]
             }
         },
@@ -1720,11 +1786,17 @@
             "name": "validate_config_schema",
             "location": 38,
             "return": [
-                "Dict[(str, Any)]"
+                "str",
+                "Dict[str,Any]",
+                "int",
+                "bool",
+                "Optional[int]"
             ],
             "arguments": {
                 "conf": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1736,7 +1808,10 @@
             ],
             "arguments": {
                 "conf": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "str",
+                    "int",
+                    "Iterable"
                 ]
             }
         },
@@ -1748,7 +1823,10 @@
             ],
             "arguments": {
                 "conf": [
-                    "Dict[(str, Any)]"
+                    "dict",
+                    "Dict[str, Any]",
+                    "Mapping[str, Any]",
+                    "Dict[int, Dict[int, Any]]"
                 ]
             }
         },
@@ -1760,7 +1838,12 @@
             ],
             "arguments": {
                 "conf": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str",
+                    "int",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,dict[str,str]]"
                 ]
             }
         },
@@ -1768,7 +1851,6 @@
             "name": "set_defaults",
             "location": 20,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -1813,10 +1895,15 @@
             ],
             "arguments": {
                 "config": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "datadir": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "Optional[str]",
+                    "NamedTuple",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -1828,7 +1915,10 @@
             ],
             "arguments": {
                 "directory": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Union[str,pathlib.Path]",
+                    "pathlib.Path"
                 ],
                 "create_dir": [
                     "bool",
@@ -1842,7 +1932,10 @@
             "name": "load_config_file",
             "location": 18,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[str, Any]",
+                "Optional[str]",
+                "dict",
+                "str"
             ],
             "arguments": {
                 "path": [
@@ -1856,7 +1949,6 @@
             "name": "__init__",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1906,7 +1998,7 @@
                 "float",
                 "str",
                 "int",
-                "Union[int, Tuple[int, ...]]",
+                "Union[int,Tuple[int,...]]",
                 "bool"
             ],
             "arguments": {
@@ -1924,21 +2016,21 @@
             "name": "load_backtest_data",
             "location": 23,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "int",
-                "list[]",
+                "List",
                 "Type",
                 "bool",
-                "set"
+                "Set"
             ],
             "arguments": {
                 "filename": [
                     "str",
                     "None",
                     "pathlib.Path",
-                    "typing.IO",
+                    "IO",
                     "Optional[str]",
-                    "Union[str, pathlib.Path]",
+                    "Union[str,pathlib.Path]",
                     "path.Path",
                     "IO[Any]",
                     "cerulean.Path",
@@ -1959,18 +2051,24 @@
             "arguments": {
                 "results": [
                     "str",
+                    "List[recidiviz.persistence.entity.state.entities.StateIncarcerationSentence]",
                     "pandas.DataFrame",
-                    "list[recidiviz.persistence.entity.state.entities.StateIncarcerationSentence]",
-                    "list[recidiviz.persistence.entity.state.entities.StateSupervisionSentence]",
+                    "List[recidiviz.persistence.entity.state.entities.StateSupervisionSentence]",
+                    "int"
+                ],
+                "freq": [
                     "int",
+                    "pandas.DataFrame",
+                    "str",
                     "List[recidiviz.persistence.entity.state.entities.StateIncarcerationSentence]",
                     "List[recidiviz.persistence.entity.state.entities.StateSupervisionSentence]"
                 ],
-                "freq": [
-                    "str"
-                ],
                 "max_open_trades": [
-                    "int"
+                    "int",
+                    "Optional[float]",
+                    "float",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -1997,10 +2095,19 @@
             ],
             "arguments": {
                 "source": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "Set[str]",
+                    "Iterable[Sequence[Hashable]]",
+                    "Hashable",
+                    "Optional[Hashable]",
+                    "None"
                 ],
                 "db_url": [
-                    "str"
+                    "str",
+                    "List",
+                    "Callable[...,T]"
                 ],
                 "exportfilename": [
                     "str"
@@ -2017,10 +2124,9 @@
             ],
             "arguments": {
                 "dataframe": [
-                    "typing.Sequence[]",
+                    "Sequence",
                     "str",
-                    "pandas.DataFrame",
-                    "Sequence"
+                    "pandas.DataFrame"
                 ],
                 "trades": [
                     "str",
@@ -2039,10 +2145,21 @@
             ],
             "arguments": {
                 "tickers": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "pandas.DataFrame",
+                    "numpy.ndarray",
+                    "Optional[int]",
+                    "Mapping[str,Any]",
+                    "int"
                 ],
                 "column": [
-                    "str"
+                    "Text",
+                    "pandas.DataFrame",
+                    "str",
+                    "numpy.ndarray",
+                    "Optional[int]",
+                    "Mapping[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -2063,7 +2180,8 @@
                     "int"
                 ],
                 "col_name": [
-                    "str"
+                    "str",
+                    "pandas.DataFrame"
                 ]
             }
         }
@@ -2078,13 +2196,25 @@
             ],
             "arguments": {
                 "ticker": [
-                    "list"
+                    "List",
+                    "float",
+                    "str",
+                    "List[float]",
+                    "pandas.DataFrame",
+                    "Tuple[Union[int,int,int]]",
+                    "Tuple[int,int,int]"
                 ],
                 "ticker_interval": [
-                    "str"
+                    "str",
+                    "int",
+                    "Sequence[int]",
+                    "bytes"
                 ],
                 "pair": [
-                    "str"
+                    "str",
+                    "int",
+                    "Sequence[int]",
+                    "bytes"
                 ]
             }
         },
@@ -2106,7 +2236,10 @@
                     "pandas.DataFrame"
                 ],
                 "ticker_interval": [
-                    "str"
+                    "str",
+                    "int",
+                    "pandas.DataFrame",
+                    "bool"
                 ],
                 "pair": [
                     "str"
@@ -2124,10 +2257,14 @@
             ],
             "arguments": {
                 "bids": [
-                    "list"
+                    "List",
+                    "int",
+                    "pandas.DataFrame"
                 ],
                 "asks": [
-                    "list"
+                    "List",
+                    "int",
+                    "pandas.DataFrame"
                 ]
             }
         }
@@ -2143,10 +2280,9 @@
                 "self": [],
                 "config": [],
                 "exchange": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Dict[str,Any]",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -2174,9 +2310,9 @@
             "name": "available_pairs",
             "location": 38,
             "return": [
-                "list[]",
+                "List",
                 "List[str]",
-                "List[Tuple[str, str]]",
+                "List[Tuple[str,str]]",
                 "freqtrade.constants.ListPairsWithTimeframes"
             ],
             "arguments": {
@@ -2196,22 +2332,20 @@
             "arguments": {
                 "self": [],
                 "pair": [
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[int]",
                     "int",
                     "None"
                 ],
                 "ticker_interval": [
-                    "Dict[str, str]",
+                    "Dict[str,str]",
                     "None",
                     "Optional[int]",
-                    "dict[str, str]",
                     "int"
                 ],
                 "copy": [
                     "bool",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[int]"
                 ]
             }
@@ -2230,17 +2364,15 @@
                 "self": [],
                 "pair": [
                     "str",
-                    "Optional[str]",
-                    "None",
                     "Any",
-                    "typing.Any"
+                    "Optional[str]",
+                    "None"
                 ],
                 "ticker_interval": [
                     "str",
                     "None",
-                    "Optional[str]",
                     "Any",
-                    "typing.Any"
+                    "Optional[str]"
                 ]
             }
         },
@@ -2261,16 +2393,16 @@
                     "bytes",
                     "str",
                     "bool",
-                    "Callable[[bytes], bytes]",
-                    "typing.Callable[bytes, bytes]"
+                    "Callable[[bytes],bytes]",
+                    "Callable[bytes,bytes]"
                 ],
                 "ticker_interval": [
                     "bytes",
                     "None",
                     "str",
                     "bool",
-                    "Callable[[bytes], bytes]",
-                    "typing.Callable[bytes, bytes]"
+                    "Callable[[bytes],bytes]",
+                    "Callable[bytes,bytes]"
                 ]
             }
         },
@@ -2278,7 +2410,6 @@
             "name": "ticker",
             "location": 90,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2286,9 +2417,8 @@
                 "pair": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -2307,14 +2437,12 @@
                 "pair": [
                     "str",
                     "int",
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "maximum": [
                     "str",
                     "int",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -2325,7 +2453,7 @@
                 "RunMode",
                 "bool",
                 "Optional[str]",
-                "Mapping[str, str]",
+                "Mapping[str,str]",
                 "int"
             ],
             "arguments": {
@@ -2361,7 +2489,7 @@
             "name": "load_tickerdata_file",
             "location": 60,
             "return": [
-                "list[]",
+                "List",
                 "bool",
                 "str",
                 "pathlib.Path",
@@ -2399,7 +2527,6 @@
             "name": "store_tickerdata_file",
             "location": 76,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2422,7 +2549,7 @@
                 ],
                 "is_zip": [
                     "bool",
-                    "Union[str, IO]",
+                    "Union[str,IO]",
                     "str",
                     "pathlib.Path"
                 ]
@@ -2467,7 +2594,7 @@
                 "refresh_pairs": [
                     "bool",
                     "str",
-                    "list",
+                    "List",
                     "IO[str]"
                 ],
                 "exchange": [
@@ -2495,10 +2622,9 @@
             "name": "load_data",
             "location": 138,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "str",
-                "set",
-                "dict",
+                "Set",
                 "List[bool]",
                 "Optional[str]"
             ],
@@ -2566,7 +2692,7 @@
                     "List[str]",
                     "int",
                     "Iterable[str]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "Callable"
                 ]
             }
@@ -2620,12 +2746,12 @@
             "name": "load_cached_data_for_updating",
             "location": 187,
             "return": [
-                "tuple[typing.Optional[list[]]]",
+                "Tuple[Optional[list]]",
                 "str",
-                "dict",
+                "Dict",
                 "bool",
-                "Dict[int, str]",
-                "Mapping[int, str]"
+                "Dict[int,str]",
+                "Mapping[int,str]"
             ],
             "arguments": {
                 "datadir": [
@@ -2673,9 +2799,9 @@
                     "str"
                 ],
                 "ticker_interval": [
-                    "typing.Text",
-                    "Mapping[str, Any]",
-                    "dict",
+                    "Text",
+                    "Mapping[str,Any]",
+                    "Dict",
                     "str"
                 ],
                 "timerange": [
@@ -2691,12 +2817,12 @@
             "name": "refresh_backtest_ohlcv_data",
             "location": 283,
             "return": [
-                "list[]",
+                "List",
                 "str",
                 "int",
                 "pandas.DataFrame",
                 "bytes",
-                "set"
+                "Set"
             ],
             "arguments": {
                 "exchange": [
@@ -2739,12 +2865,12 @@
             "name": "get_timeframe",
             "location": 312,
             "return": [
-                "tuple[tuple[]]",
+                "Tuple[tuple]",
                 "str",
                 "Optional[str]",
                 "bytes",
                 "int",
-                "List[Dict[str, Any]]"
+                "List[Dict[str,Any]]"
             ],
             "arguments": {
                 "data": [
@@ -2761,8 +2887,8 @@
             "location": 326,
             "return": [
                 "bool",
-                "Optional[Dict[str, Any]]",
-                "List[Union[int, Any]]"
+                "Optional[Dict[str,Any]]",
+                "List[Union[int,Any]]"
             ],
             "arguments": {
                 "data": [
@@ -2884,7 +3010,7 @@
             "name": "adjust",
             "location": 173,
             "return": [
-                "list[]",
+                "List",
                 "int",
                 "Callable",
                 "str"
@@ -2903,7 +3029,7 @@
             "name": "accepted_pairs",
             "location": 200,
             "return": [
-                "list[dict[typing.Text, ]]",
+                "List[dict[Text,]]",
                 "int",
                 "Callable",
                 "str"
@@ -2935,9 +3061,9 @@
             "name": "_process_expectancy",
             "location": 268,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "int",
-                "dict[, PairInfo]",
+                "Dict[,PairInfo]",
                 "Callable",
                 "str"
             ],
@@ -2958,13 +3084,13 @@
             "name": "_find_trades_for_stoploss_range",
             "location": 349,
             "return": [
-                "list[]",
-                "set",
-                "List[Dict[str, Any]]",
+                "List",
+                "Set",
+                "List[Dict[str,Any]]",
                 "List[str]",
-                "Dict[str, Any]",
-                "Optional[Dict[str, Any]]",
-                "dict",
+                "Dict[str,Any]",
+                "Optional[Dict[str,Any]]",
+                "Dict",
                 "str",
                 "Optional[int]"
             ],
@@ -3000,10 +3126,10 @@
             "name": "_detect_next_stop_or_sell_point",
             "location": 363,
             "return": [
-                "list[dict[typing.Text, typing.Union[typing.Text,float]]]",
+                "List[dict[Text,Union[Text,float]]]",
                 "bool",
                 "pandas.DataFrame",
-                "Optional[Union[str, Any]]"
+                "Optional[Union[str,Any]]"
             ],
             "arguments": {
                 "self": [],
@@ -3063,11 +3189,11 @@
                 ],
                 "limit": [
                     "int",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool",
                     "str",
-                    "type",
-                    "dict",
+                    "Type",
+                    "Dict",
                     "List[str]"
                 ]
             }
@@ -3078,32 +3204,29 @@
             "return": [
                 "int",
                 "Callable",
-                "list[]",
+                "List",
                 "str",
-                "dict[typing.Any, dict[str, str]]",
-                "tuple[typing.Union[typing.Literal,typing.Literal,typing.Literal]]"
+                "Dict[Any,dict[str,str]]",
+                "Tuple[Union[Literal,Literal,Literal]]"
             ],
             "arguments": {
                 "self": [],
                 "pair": [
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "amount": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "stop_price": [
                     "str",
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "int",
                     "bool",
                     "float"
                 ],
                 "rate": [
                     "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -3353,9 +3476,7 @@
         "Exchange.__del__": {
             "name": "__del__",
             "location": 151,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -3444,9 +3565,7 @@
         "Exchange.set_sandbox": {
             "name": "set_sandbox",
             "location": 216,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "api": [
@@ -4158,7 +4277,6 @@
             "name": "_set_strategy",
             "location": 93,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4257,10 +4375,10 @@
                 ],
                 "strategyname": [
                     "None",
-                    "List[Union[\"PipeChain\", str]]",
+                    "List[Union[PipeChain,str]]",
                     "bool",
                     "Optional[str]",
-                    "list"
+                    "List"
                 ]
             }
         },
@@ -4268,11 +4386,11 @@
             "name": "_get_ticker_list",
             "location": 210,
             "return": [
-                "dict[, list[]]",
+                "Dict[,list]",
                 "str",
                 "Callable",
                 "List[str]",
-                "list"
+                "List"
             ],
             "arguments": {
                 "self": [],
@@ -4356,8 +4474,8 @@
             "location": 397,
             "return": [
                 "None",
-                "Union[tuple, list]",
-                "Dict[str, Any]",
+                "Union[tuple,list]",
+                "Dict[str,Any]",
                 "List[int]",
                 "str"
             ],
@@ -4378,16 +4496,15 @@
             "arguments": {
                 "dataframe": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "metadata": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4404,9 +4521,9 @@
                 "params": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4415,7 +4532,7 @@
             "name": "indicator_space",
             "location": 92,
             "return": [
-                "list[typing.Union[Integer,Categorical]]",
+                "List[Union[Integer,Categorical]]",
                 "str",
                 "bool",
                 "Optional[str]"
@@ -4434,9 +4551,9 @@
                 "params": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4445,7 +4562,7 @@
             "name": "sell_indicator_space",
             "location": 152,
             "return": [
-                "list[typing.Union[Integer,Categorical]]",
+                "List[Union[Integer,Categorical]]",
                 "str",
                 "bool",
                 "Optional[str]"
@@ -4470,9 +4587,9 @@
                 "metadata": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4495,9 +4612,9 @@
                 "metadata": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4575,10 +4692,9 @@
             "arguments": {
                 "self": [],
                 "results": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "OrderedDict",
-                    "Iterable[Tuple[Hashable, Any]]",
+                    "Iterable[Tuple[Hashable,Any]]",
                     "str"
                 ]
             }
@@ -4788,17 +4904,17 @@
                 "dataframe": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ],
                 "metadata": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4807,16 +4923,16 @@
             "name": "buy_strategy_generator",
             "location": 42,
             "return": [
-                "typing.Callable",
+                "Callable",
                 "None"
             ],
             "arguments": {
                 "params": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4825,16 +4941,16 @@
             "name": "sell_strategy_generator",
             "location": 49,
             "return": [
-                "typing.Callable",
+                "Callable",
                 "None"
             ],
             "arguments": {
                 "params": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -4843,7 +4959,7 @@
             "name": "indicator_space",
             "location": 56,
             "return": [
-                "typing.List[skopt.space.Dimension]",
+                "List[skopt.space.Dimension]",
                 "None"
             ],
             "arguments": {}
@@ -4852,7 +4968,7 @@
             "name": "sell_indicator_space",
             "location": 63,
             "return": [
-                "typing.List[skopt.space.Dimension]",
+                "List[skopt.space.Dimension]",
                 "None"
             ],
             "arguments": {}
@@ -4861,12 +4977,12 @@
             "name": "generate_roi_table",
             "location": 69,
             "return": [
-                "dict[int, int]",
+                "Dict[int,int]",
                 "float",
-                "type",
+                "Type",
                 "str",
                 "logging.LogRecord",
-                "list",
+                "List",
                 "Optional[List[str]]"
             ],
             "arguments": {
@@ -4891,7 +5007,7 @@
             "name": "stoploss_space",
             "location": 162,
             "return": [
-                "list[Real]",
+                "List[Real]",
                 "str",
                 "Tuple[str]",
                 "bool"
@@ -4916,7 +5032,6 @@
             "name": "__setstate__",
             "location": 181,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4934,7 +5049,8 @@
             "name": "hyperopt_loss_function",
             "location": 21,
             "return": [
-                "float"
+                "float",
+                "None"
             ],
             "arguments": {
                 "results": [
@@ -4944,13 +5060,22 @@
                     "Optional[datetime.datetime]"
                 ],
                 "trade_count": [
-                    "int"
+                    "int",
+                    "None",
+                    "datetime.datetime",
+                    "Optional[datetime.datetime]"
                 ],
                 "min_date": [
-                    "_datetime.datetime"
+                    "int",
+                    "None",
+                    "datetime.datetime",
+                    "Optional[datetime.datetime]"
                 ],
                 "max_date": [
-                    "_datetime.datetime"
+                    "int",
+                    "None",
+                    "datetime.datetime",
+                    "Optional[datetime.datetime]"
                 ]
             }
         }
@@ -4976,18 +5101,15 @@
                 "float",
                 "int",
                 "str",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "results": [
                     "bool",
                     "pandas.DataFrame",
-                    "dict[str, str]",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "list[]",
-                    "dict",
-                    "list"
+                    "Dict[str,str]",
+                    "Dict",
+                    "List"
                 ],
                 "trade_count": [
                     "int",
@@ -4998,13 +5120,13 @@
                 "min_date": [
                     "bool",
                     "datetime.datetime",
-                    "Optional[Union[str, datetime.datetime]]",
+                    "Optional[Union[str,datetime.datetime]]",
                     "datetime"
                 ],
                 "max_date": [
                     "bool",
                     "datetime.datetime",
-                    "Optional[Union[str, datetime.datetime]]",
+                    "Optional[Union[str,datetime.datetime]]",
                     "datetime"
                 ]
             }
@@ -5022,9 +5144,8 @@
             "arguments": {
                 "args": [],
                 "method": [
-                    "Dict[str, Any]",
-                    "bytes",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "bytes"
                 ]
             }
         },
@@ -5069,11 +5190,9 @@
             "arguments": {
                 "self": [],
                 "freqtrade": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "config": [
                     "dict"
@@ -5119,7 +5238,8 @@
             "name": "short_desc",
             "location": 47,
             "return": [
-                "str"
+                "str",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -5139,12 +5259,16 @@
             "name": "_validate_whitelist",
             "location": 60,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "whitelist": [
-                    "List[str]"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -5159,14 +5283,14 @@
             "arguments": {
                 "self": [],
                 "freqtrade": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str"
                 ],
                 "config": [
-                    "dict"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -5201,14 +5325,14 @@
             "arguments": {
                 "self": [],
                 "freqtrade": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str"
                 ],
                 "config": [
-                    "dict"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -5250,15 +5374,23 @@
             "name": "_gen_pair_whitelist",
             "location": 60,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "base_currency": [
-                    "str"
+                    "str",
+                    "Sequence[str]",
+                    "bool",
+                    "Tuple[str]",
+                    "Container[str]",
+                    "Container"
                 ],
                 "key": [
-                    "str"
+                    "str",
+                    "List[Dict[str, Any]]",
+                    "Sequence[str]",
+                    "Container[str]"
                 ]
             }
         }
@@ -5269,7 +5401,7 @@
             "name": "init_plotscript",
             "location": 26,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "int",
                 "bool",
                 "float"
@@ -5394,12 +5526,12 @@
                     "int"
                 ],
                 "indicators1": [
-                    "list[]",
+                    "List",
                     "List[str]",
                     "str"
                 ],
                 "indicators2": [
-                    "list[]",
+                    "List",
                     "List[str]",
                     "str"
                 ]
@@ -5483,7 +5615,6 @@
             "name": "analyse_and_plot_pairs",
             "location": 327,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5513,7 +5644,6 @@
             "name": "validate_plot_args",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5553,12 +5683,12 @@
                 "self": [],
                 "exchange_name": [
                     "str",
-                    "dict",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "config": [
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ]
             }
@@ -5632,11 +5762,9 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "dict",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[, ]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
@@ -5654,10 +5782,9 @@
                     "str",
                     "Optional[str]",
                     "None",
-                    "list[dict[str, typing.Any]]",
-                    "List[Dict[str, Any]]",
-                    "list[str]",
                     "List[str]",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]",
                     "pathlib.PurePath"
                 ],
                 "config": [
@@ -5669,7 +5796,7 @@
                     "None",
                     "str",
                     "Optional[str]",
-                    "Union[str, pathlib.Path]",
+                    "Union[str,pathlib.Path]",
                     "pathlib.Path",
                     "Optional[pathlib.Path]"
                 ]
@@ -5687,8 +5814,8 @@
             "arguments": {
                 "object_type": [
                     "str",
-                    "Dict[str, type]",
-                    "dict[str, typing.Type]"
+                    "Dict[str,type]",
+                    "Dict[str,Type]"
                 ],
                 "module_path": [
                     "str"
@@ -5705,11 +5832,11 @@
             "name": "_search_object",
             "location": 48,
             "return": [
-                "tuple[]",
-                "tuple[None]",
+                "Tuple",
+                "Tuple[None]",
                 "str",
                 "Optional[str]",
-                "Optional[Dict[str, Any]]",
+                "Optional[Dict[str,Any]]",
                 "bool",
                 "Optional[pathlib.Path]",
                 "Optional[int]"
@@ -5722,13 +5849,11 @@
                 ],
                 "object_type": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "object_name": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "kwargs": [
                     "dict[, ]"
@@ -5740,32 +5865,28 @@
             "location": 70,
             "return": [
                 "bool",
-                "list[]",
-                "Optional[str]",
-                "dict[str, list[str]]",
+                "List",
                 "List[str]",
+                "Optional[str]",
+                "Dict[str,list[str]]",
                 "str",
-                "Optional[Literal[\"only_clustered\", \"include_clustered\"]]",
-                "list[str]",
+                "Optional[Literal[only_clustered,include_clustered]]",
                 "None"
             ],
             "arguments": {
                 "paths": [
-                    "list[pathlib.Path]",
+                    "List[pathlib.Path]",
                     "str",
                     "Optional[str]",
-                    "List[pathlib.Path]",
                     "pathlib.Path"
                 ],
                 "object_type": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "object_name": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "kwargs": [
                     "dict[, ]"
@@ -5783,23 +5904,31 @@
             "arguments": {
                 "self": [],
                 "pairlist_name": [
-                    "str"
+                    "List[str]",
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict[Any,pathlib.Path]",
+                    "Type[BaseConfig]",
+                    "Type"
                 ],
                 "freqtrade": [
                     "List[str]",
-                    "list[str]",
+                    "Dict",
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[Any, pathlib.Path]",
-                    "dict[typing.Any, pathlib.Path]",
-                    "Type['BaseConfig']",
-                    "typing.Type"
+                    "Dict[str,Any]",
+                    "Dict[Any,pathlib.Path]",
+                    "Type[BaseConfig]",
+                    "Type"
                 ],
                 "config": [
-                    "dict"
+                    "List[str]",
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict[Any,pathlib.Path]",
+                    "Type[BaseConfig]",
+                    "Type"
                 ]
             }
         },
@@ -5807,19 +5936,24 @@
             "name": "_load_pairlist",
             "location": 31,
             "return": [
-                "freqtrade.pairlist.IPairList.IPairList"
+                "str",
+                "bool",
+                "Optional[freqtrade.exchange.Exchange]"
             ],
             "arguments": {
                 "self": [],
                 "pairlist_name": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "pathlib.PurePath"
                 ],
                 "config": [
-                    "dict"
+                    "str",
+                    "Optional[str]",
+                    "path.Path"
                 ],
-                "kwargs": [
-                    "dict"
-                ]
+                "kwargs": []
             }
         }
     },
@@ -5833,11 +5967,9 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "dict",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[, ]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
@@ -5845,7 +5977,6 @@
             "name": "_override_attribute_helper",
             "location": 86,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5862,15 +5993,12 @@
                 ],
                 "default": [
                     "float",
+                    "Dict",
                     "Optional[str]",
-                    "str",
-                    "dict",
-                    "None",
                     "Callable",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "typing.Callable[, ]",
-                    "dict[str, typing.Any]"
+                    "str",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
@@ -5878,7 +6006,6 @@
             "name": "_strategy_sanity_validations",
             "location": 105,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5896,13 +6023,12 @@
                 "self": [],
                 "strategy_name": [
                     "str",
-                    "dict",
+                    "Dict",
                     "List[str]",
-                    "Dict[str, pathlib.Path]"
+                    "Dict[str,pathlib.Path]"
                 ],
                 "config": [
                     "str",
-                    "list[str]",
                     "List[str]",
                     "pathlib.Path"
                 ],
@@ -5920,7 +6046,7 @@
             "name": "default",
             "location": 21,
             "return": [
-                "list[]",
+                "List",
                 "bool",
                 "str"
             ],
@@ -5956,11 +6082,11 @@
             "location": 56,
             "return": [
                 "bool",
-                "dict",
-                "Dict[str, Any]",
-                "Dict[str, str]",
+                "Dict",
+                "Dict[str,Any]",
+                "Dict[str,str]",
                 "str",
-                "List[Tuple[str, str, str, str, str, str, str]]"
+                "List[Tuple[str,str,str,str,str,str,str]]"
             ],
             "arguments": {
                 "self": [],
@@ -6014,7 +6140,6 @@
             "name": "run",
             "location": 94,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6060,10 +6185,10 @@
             "name": "rest_error",
             "location": 133,
             "return": [
-                "tuple[int]",
-                "Dict[str, Any]",
-                "Callable[..., None]",
-                "Callable[[Exception], bool]",
+                "Tuple[int]",
+                "Dict[str,Any]",
+                "Callable[...,None]",
+                "Callable[[Exception],bool]",
                 "flask.Markup"
             ],
             "arguments": {
@@ -6081,7 +6206,6 @@
             "name": "register_rest_rpc_urls",
             "location": 136,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6092,10 +6216,10 @@
             "name": "page_not_found",
             "location": 183,
             "return": [
-                "tuple[int]",
+                "Tuple[int]",
                 "str",
-                "dict",
-                "Mapping[str, Any]"
+                "Dict",
+                "Mapping[str,Any]"
             ],
             "arguments": {
                 "self": [],
@@ -6334,13 +6458,19 @@
             "arguments": {
                 "self": [],
                 "crypto_symbol": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Optional[int]"
                 ],
                 "fiat_symbol": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Optional[int]"
                 ],
                 "price": [
-                    "float"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -6353,6 +6483,7 @@
             "arguments": {
                 "self": [],
                 "price": [
+                    "bool",
                     "float"
                 ]
             }
@@ -6406,18 +6537,28 @@
             "name": "convert_amount",
             "location": 98,
             "return": [
-                "float"
+                "Union[(float, _T0)]"
             ],
             "arguments": {
                 "self": [],
                 "crypto_amount": [
-                    "float"
+                    "int",
+                    "Optional[int]",
+                    "float",
+                    "None",
+                    "str",
+                    "Optional[float]",
+                    "Optional[str]"
                 ],
                 "crypto_symbol": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "fiat_symbol": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -6430,10 +6571,14 @@
             "arguments": {
                 "self": [],
                 "crypto_symbol": [
-                    "str"
+                    "str",
+                    "Sequence[str]"
                 ],
                 "fiat_symbol": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "Tuple[str]"
                 ]
             }
         },
@@ -6441,18 +6586,31 @@
             "name": "_add_pair",
             "location": 150,
             "return": [
-                "float"
+                "int",
+                "str",
+                "Optional[str]",
+                "None",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "crypto_symbol": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "Optional[str]",
+                    "None"
                 ],
                 "fiat_symbol": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "Optional[str]",
+                    "None"
                 ],
                 "price": [
-                    "float"
+                    "str",
+                    "Callable",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -6478,10 +6636,18 @@
             "arguments": {
                 "self": [],
                 "crypto_symbol": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Any]",
+                    "Any"
                 ],
                 "fiat_symbol": [
-                    "str"
+                    "str",
+                    "Optional[Any]",
+                    "bool",
+                    "List[str]",
+                    "Callable"
                 ]
             }
         }
@@ -6530,7 +6696,7 @@
             "name": "__json__",
             "location": 51,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "int",
                 "Callable",
                 "str"
@@ -6594,10 +6760,10 @@
             "name": "_rpc_trade_status",
             "location": 85,
             "return": [
-                "list[dict[, ]]",
+                "List[dict]",
                 "bool",
                 "pandas.Series",
-                "Tuple[int, Dict[str, Any]]",
+                "Tuple[int,Dict[str,Any]]",
                 "List[object]",
                 "pandas.DataFrame"
             ],
@@ -6621,13 +6787,13 @@
             "name": "_rpc_daily_profit",
             "location": 146,
             "return": [
-                "list[list[str]]",
+                "List[list[str]]",
                 "str",
-                "Dict[str, Set[str]]",
-                "dict",
-                "List[Dict[str, str]]",
+                "Dict[str,Set[str]]",
+                "Dict",
+                "List[Dict[str,str]]",
                 "List[int]",
-                "Dict[int, str]"
+                "Dict[int,str]"
             ],
             "arguments": {
                 "self": [],
@@ -6677,12 +6843,12 @@
             "name": "_rpc_balance",
             "location": 273,
             "return": [
-                "dict[typing.Text, typing.Union[list[dict[typing.Text, float]],float,int]]",
+                "Dict[Text,Union[list[dict[Text,float]],float,int]]",
                 "bool",
                 "Optional[float]",
-                "Dict[str, int]",
+                "Dict[str,int]",
                 "OrderedDict",
-                "List[Dict[str, Any]]",
+                "List[Dict[str,Any]]",
                 "str"
             ],
             "arguments": {
@@ -6698,7 +6864,7 @@
             "name": "_rpc_start",
             "location": 318,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
                 "Optional[str]"
             ],
@@ -6710,10 +6876,10 @@
             "name": "_rpc_stop",
             "location": 326,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
                 "List[recidiviz.persistence.entity.state.entities.StateSupervisionPeriod]",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "self": []
@@ -6723,8 +6889,8 @@
             "name": "_rpc_reload_conf",
             "location": 334,
             "return": [
-                "dict",
-                "dict[typing.Text, typing.Text]"
+                "Dict",
+                "Dict[Text,Text]"
             ],
             "arguments": {
                 "self": []
@@ -6734,10 +6900,10 @@
             "name": "_rpc_stopbuy",
             "location": 339,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "int",
                 "List[str]",
-                "dict",
+                "Dict",
                 "str"
             ],
             "arguments": {
@@ -6749,7 +6915,7 @@
             "location": 349,
             "return": [
                 "bool",
-                "dict[typing.Text, typing.Text]"
+                "Dict[Text,Text]"
             ],
             "arguments": {
                 "self": [],
@@ -6766,7 +6932,7 @@
             "return": [
                 "None",
                 "Optional[str]",
-                "list",
+                "List",
                 "str"
             ],
             "arguments": {
@@ -6787,7 +6953,7 @@
             "name": "_rpc_performance",
             "location": 440,
             "return": [
-                "list[dict[typing.Text, float]]",
+                "List[dict[Text,float]]",
                 "int",
                 "Callable",
                 "str"
@@ -6800,7 +6966,7 @@
             "name": "_rpc_count",
             "location": 458,
             "return": [
-                "dict[typing.Text, typing.Union[int,float]]",
+                "Dict[Text,Union[int,float]]",
                 "int",
                 "Callable",
                 "bytes",
@@ -6814,7 +6980,7 @@
             "name": "_rpc_whitelist",
             "location": 470,
             "return": [
-                "dict[typing.Text, int]",
+                "Dict[Text,int]",
                 "List[int]",
                 "numpy.ndarray",
                 "Iterable[str]",
@@ -6829,7 +6995,7 @@
             "name": "_rpc_blacklist",
             "location": 478,
             "return": [
-                "dict[typing.Text, int]",
+                "Dict[Text,int]",
                 "List[int]",
                 "numpy.ndarray",
                 "Iterable[str]",
@@ -6884,11 +7050,10 @@
             "arguments": {
                 "self": [],
                 "freqtrade": [
-                    "List[Tuple[str, float]]",
-                    "list[tuple[typing.Union[str,float]]]",
-                    "int",
-                    "Sequence['cirq.Qid']",
-                    "typing.Sequence['cirq.Qid']"
+                    "List[Tuple[str,float]]",
+                    "Sequence[cirq.Qid]",
+                    "List[tuple[Union[str,float]]]",
+                    "int"
                 ]
             }
         },
@@ -6912,7 +7077,7 @@
                 "self": [],
                 "msg": [
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "logging.LogRecord",
                     "BaseException",
                     "int"
@@ -7212,8 +7377,8 @@
             "location": 38,
             "return": [
                 "None",
-                "Union[tuple, list]",
-                "Dict[str, Any]",
+                "Union[tuple,list]",
+                "Dict[str,Any]",
                 "str",
                 "List[int]"
             ],
@@ -7221,7 +7386,7 @@
                 "self": [],
                 "msg": [
                     "str",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -7234,9 +7399,8 @@
             "arguments": {
                 "self": [],
                 "payload": [
-                    "dict",
-                    "int",
-                    "dict[, ]"
+                    "Dict",
+                    "int"
                 ]
             }
         }
@@ -7247,7 +7411,7 @@
             "name": "informative_pairs",
             "location": 46,
             "return": [
-                "list[]",
+                "List",
                 "int",
                 "Callable",
                 "str"
@@ -7420,7 +7584,7 @@
             "name": "informative_pairs",
             "location": 145,
             "return": [
-                "list[]",
+                "List",
                 "int",
                 "Callable",
                 "str"
@@ -7529,7 +7693,7 @@
             "location": 226,
             "return": [
                 "bool",
-                "tuple[bool]"
+                "Tuple[bool]"
             ],
             "arguments": {
                 "self": [],
@@ -7554,7 +7718,7 @@
             "return": [
                 "SellCheckTuple",
                 "str",
-                "Dict[str, int]"
+                "Dict[str,int]"
             ],
             "arguments": {
                 "self": [],
@@ -7721,10 +7885,10 @@
             "name": "tickerdata_to_dataframe",
             "location": 416,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "bool",
-                "Dict[str, Any]",
-                "Dict[str, pandas.DataFrame]"
+                "Dict[str,Any]",
+                "Dict[str,pandas.DataFrame]"
             ],
             "arguments": {
                 "self": [],
@@ -7818,9 +7982,8 @@
             "arguments": {
                 "strategy": [],
                 "config": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         }
@@ -8412,7 +8575,6 @@
             "name": "test__args_to_config",
             "location": 66,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8754,7 +8916,6 @@
             "name": "test_set_logfile",
             "location": 586,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8898,7 +9059,6 @@
             "name": "test_validate_tsl",
             "location": 656,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8912,7 +9072,6 @@
             "name": "test_validate_edge",
             "location": 694,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8974,7 +9133,6 @@
             "name": "test_pairlist_resolving",
             "location": 774,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -8983,7 +9141,6 @@
             "name": "test_pairlist_resolving_with_config",
             "location": 790,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -9003,7 +9160,6 @@
             "name": "test_pairlist_resolving_with_config_pl",
             "location": 821,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -9021,7 +9177,6 @@
             "name": "test_pairlist_resolving_with_config_pl_not_exists",
             "location": 844,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -9039,7 +9194,6 @@
             "name": "test_pairlist_resolving_fallback",
             "location": 863,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -9996,7 +10150,6 @@
             "name": "test_create_stoploss_order_invalid_order",
             "location": 1203,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -10282,7 +10435,6 @@
             "name": "test_update_trade_state_withorderdict",
             "location": 1617,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -10363,7 +10515,6 @@
             "name": "test_update_trade_state_sell",
             "location": 1672,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11138,7 +11289,6 @@
             "name": "test_get_real_amount_quote",
             "location": 3018,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11176,7 +11326,6 @@
             "name": "test_get_real_amount_no_trade",
             "location": 3040,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11206,7 +11355,6 @@
             "name": "test_get_real_amount_stake",
             "location": 3063,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11237,7 +11385,6 @@
             "name": "test_get_real_amount_no_currency_in_fee",
             "location": 3084,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11272,7 +11419,6 @@
             "name": "test_get_real_amount_BNB",
             "location": 3108,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11303,7 +11449,6 @@
             "name": "test_get_real_amount_multi",
             "location": 3130,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11340,7 +11485,6 @@
             "name": "test_get_real_amount_fromorder",
             "location": 3152,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11380,7 +11524,6 @@
             "name": "test_get_real_amount_invalid_order",
             "location": 3178,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11412,7 +11555,6 @@
             "name": "test_get_real_amount_invalid",
             "location": 3200,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11443,7 +11585,6 @@
             "name": "test_get_real_amount_open_trade",
             "location": 3221,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11462,7 +11603,6 @@
             "name": "test_order_book_depth_of_market",
             "location": 3242,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11496,7 +11636,6 @@
             "name": "test_order_book_depth_of_market_high_delta",
             "location": 3277,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11646,7 +11785,6 @@
             "name": "test_startup_state",
             "location": 3439,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11664,7 +11802,6 @@
             "name": "test_startup_trade_reinit",
             "location": 3448,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11695,7 +11832,7 @@
             "return": [
                 "int",
                 "float",
-                "Callable[[T], bool]",
+                "Callable[[T],bool]",
                 "List[recidiviz.persistence.database.schema.state.schema.StatePerson]"
             ],
             "arguments": {
@@ -11720,7 +11857,7 @@
             "name": "_refresh_whitelist",
             "location": 896,
             "return": [
-                "list[typing.Text]",
+                "List[Text]",
                 "int",
                 "Callable",
                 "str"
@@ -11843,8 +11980,7 @@
                     "Dict[str, Any]"
                 ],
                 "default_conf": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "caplog": [
                     "str",
@@ -11863,8 +11999,7 @@
             "arguments": {
                 "mocker": [],
                 "default_conf": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -11882,13 +12017,11 @@
             "name": "test_datesarray_to_datetimearray",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "ticker_history_list": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -11926,7 +12059,6 @@
             "name": "create_mock_trades",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11940,7 +12072,6 @@
             "name": "test_init_create_session",
             "location": 58,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11955,7 +12086,6 @@
             "name": "test_init_custom_db_url",
             "location": 65,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11972,7 +12102,6 @@
             "name": "test_init_invalid_db_url",
             "location": 75,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -11985,7 +12114,6 @@
             "name": "test_init_prod_db",
             "location": 82,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12000,7 +12128,6 @@
             "name": "test_init_dryrun_db",
             "location": 93,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12017,7 +12144,6 @@
             "name": "test_update_with_bittrex",
             "location": 105,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12041,7 +12167,6 @@
             "name": "test_update_market_order",
             "location": 169,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12065,7 +12190,6 @@
             "name": "test_calc_open_close_trade_price",
             "location": 202,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12086,7 +12210,6 @@
             "name": "test_calc_close_trade_price_exception",
             "location": 226,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12103,7 +12226,6 @@
             "name": "test_update_open_order",
             "location": 241,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12117,7 +12239,6 @@
             "name": "test_update_invalid_order",
             "location": 265,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12131,7 +12252,6 @@
             "name": "test_calc_open_trade_price",
             "location": 279,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12148,7 +12268,6 @@
             "name": "test_calc_close_trade_price",
             "location": 298,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12169,7 +12288,6 @@
             "name": "test_calc_profit",
             "location": 321,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12190,7 +12308,6 @@
             "name": "test_calc_profit_percent",
             "location": 353,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12211,7 +12328,6 @@
             "name": "test_clean_dry_run_db",
             "location": 379,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12232,7 +12348,6 @@
             "name": "test_migrate_old",
             "location": 428,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12259,7 +12374,6 @@
             "name": "test_migrate_new",
             "location": 484,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12291,7 +12405,6 @@
             "name": "test_migrate_mid_state",
             "location": 566,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12322,7 +12435,6 @@
             "name": "test_adjust_stop_loss",
             "location": 627,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12336,7 +12448,6 @@
             "name": "test_adjust_min_max_rates",
             "location": 678,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12349,7 +12460,6 @@
             "name": "test_get_open",
             "location": 709,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12365,7 +12475,6 @@
             "name": "test_to_json",
             "location": 716,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12389,7 +12498,6 @@
             "name": "test_stoploss_reinitialization",
             "location": 781,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12453,7 +12561,6 @@
             "name": "test_init_plotscript",
             "location": 45,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12476,7 +12583,6 @@
             "name": "test_add_indicators",
             "location": 64,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12497,7 +12603,6 @@
             "name": "test_plot_trades",
             "location": 97,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12510,7 +12615,6 @@
             "name": "test_generate_candlestick_graph_no_signals_no_trades",
             "location": 125,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12535,7 +12639,6 @@
             "name": "test_generate_candlestick_graph_no_trades",
             "location": 161,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12553,7 +12656,6 @@
             "name": "test_generate_Plot_filename",
             "location": 208,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12562,7 +12664,6 @@
             "name": "test_generate_plot_file",
             "location": 213,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12577,7 +12678,6 @@
             "name": "test_add_profit",
             "location": 227,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12586,7 +12686,6 @@
             "name": "test_generate_profit_graph",
             "location": 247,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12595,7 +12694,6 @@
             "name": "test_start_plot_dataframe",
             "location": 282,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12609,7 +12707,6 @@
             "name": "test_analyse_and_plot_pairs",
             "location": 297,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12633,7 +12730,6 @@
             "name": "test_start_plot_profit",
             "location": 325,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12647,7 +12743,6 @@
             "name": "test_start_plot_profit_error",
             "location": 340,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12661,7 +12756,6 @@
             "name": "test_plot_profit",
             "location": 349,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12709,7 +12803,6 @@
             "name": "test_setup_utils_configuration",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12718,7 +12811,6 @@
             "name": "test_list_exchanges",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12734,7 +12826,6 @@
             "name": "test_create_datadir_failed",
             "location": 49,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12745,15 +12836,14 @@
             "name": "test_create_datadir",
             "location": 59,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "caplog": [
                     "int",
                     "float",
-                    "Tuple[float, float, float, float, float]",
-                    "tuple[typing.Union[float,float,float,float,float]]"
+                    "Tuple[float,float,float,float,float]",
+                    "Tuple[Union[float,float,float,float,float]]"
                 ],
                 "mocker": [
                     "tests.test_util.aiohttp.AiohttpClientMocker",
@@ -12766,7 +12856,6 @@
             "name": "test_download_data_keyboardInterrupt",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12788,7 +12877,6 @@
             "name": "test_download_data_no_markets",
             "location": 90,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12804,7 +12892,6 @@
             "name": "test_sync_wallet_at_boot",
             "location": 6,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12820,7 +12907,6 @@
             "name": "test_sync_wallet_missing_data",
             "location": 65,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12840,7 +12926,6 @@
             "name": "test_load_backtest_data",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12849,7 +12934,6 @@
             "name": "test_load_trades_db",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12870,7 +12954,6 @@
             "name": "test_extract_trades_of_period",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12879,7 +12962,6 @@
             "name": "test_load_trades",
             "location": 88,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12896,7 +12978,6 @@
             "name": "test_combine_tickers_with_mean",
             "location": 111,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12905,7 +12986,6 @@
             "name": "test_create_cum_profit",
             "location": 124,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -12916,7 +12996,6 @@
             "name": "test_dataframe_correct_columns",
             "location": 9,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12929,14 +13008,12 @@
             "name": "test_parse_ticker_dataframe",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "ticker_history_list": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ],
                 "caplog": [
                     "None",
@@ -12949,7 +13026,6 @@
             "name": "test_ohlcv_fill_up_missing_data",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12960,7 +13036,6 @@
             "name": "test_ohlcv_fill_up_missing_data2",
             "location": 45,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12971,7 +13046,6 @@
             "name": "test_ohlcv_drop_incomplete",
             "location": 102,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12986,25 +13060,22 @@
             "name": "test_ohlcv",
             "location": 10,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
                     "str",
                     "int",
-                    "Optional[str]",
-                    "None",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "default_conf": [
                     "float",
                     "int",
+                    "List[float]",
                     "None",
                     "Optional[int]",
-                    "list[float]",
-                    "List[float]",
                     "Iterable[Any]"
                 ],
                 "ticker_history": [
@@ -13020,7 +13091,6 @@
             "name": "test_historic_ohlcv",
             "location": 40,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13046,7 +13116,6 @@
             "name": "test_get_pair_dataframe",
             "location": 53,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13060,8 +13129,7 @@
                     "None"
                 ],
                 "ticker_history": [
-                    "Sequence['cirq.Qid']",
-                    "typing.Sequence['cirq.Qid']"
+                    "Sequence[cirq.Qid]"
                 ]
             }
         },
@@ -13069,17 +13137,15 @@
             "name": "test_available_pairs",
             "location": 87,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
                     "str",
                     "int",
-                    "Optional[str]",
-                    "None",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "default_conf": [
                     "str",
@@ -13100,7 +13166,6 @@
             "name": "test_refresh",
             "location": 101,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13113,9 +13178,8 @@
                 "ticker_history": [
                     "bool",
                     "str",
-                    "int",
-                    "typing.Callable[..., None]",
-                    "Callable[..., None]"
+                    "Callable[...,None]",
+                    "int"
                 ]
             }
         }
@@ -13475,7 +13539,6 @@
             "name": "test_refresh_backtest_ohlcv_data",
             "location": 564,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13500,7 +13563,6 @@
             "name": "test_download_data_no_markets",
             "location": 585,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13593,7 +13655,6 @@
             "name": "test_adjust",
             "location": 173,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13610,7 +13671,6 @@
             "name": "test_stoploss",
             "location": 188,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13627,7 +13687,6 @@
             "name": "test_nonexisting_stoploss",
             "location": 202,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13641,7 +13700,6 @@
             "name": "test_stake_amount",
             "location": 214,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13657,7 +13715,6 @@
             "name": "test_nonexisting_stake_amount",
             "location": 238,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13673,7 +13730,6 @@
             "name": "test_edge_heartbeat_calculate",
             "location": 250,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13689,7 +13745,7 @@
             "name": "mocked_load_data",
             "location": 261,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "str",
                 "int",
                 "Optional[int]"
@@ -13702,36 +13758,36 @@
                     "bool"
                 ],
                 "pairs": [
-                    "list[]",
+                    "List",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
                     "bool"
                 ],
                 "ticker_interval": [
-                    "typing.Text",
+                    "Text",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
                     "bool"
                 ],
                 "refresh_pairs": [
                     "bool",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int"
                 ],
                 "timerange": [
                     "None",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
                     "bool"
                 ],
                 "exchange": [
                     "None",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
                     "bool"
                 ]
@@ -13741,7 +13797,6 @@
             "name": "test_edge_process_downloaded_data",
             "location": 293,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13757,7 +13812,6 @@
             "name": "test_edge_process_no_data",
             "location": 305,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13775,7 +13829,6 @@
             "name": "test_edge_process_no_trades",
             "location": 318,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13794,7 +13847,6 @@
             "name": "test_edge_init_error",
             "location": 332,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13813,7 +13865,6 @@
             "name": "test_process_expectancy",
             "location": 339,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13849,7 +13900,6 @@
             "name": "test_stoploss_limit_order",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13863,7 +13913,6 @@
             "name": "test_stoploss_limit_order_dry_run",
             "location": 70,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13902,7 +13951,6 @@
             "name": "ccxt_exceptionhandlers",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13940,7 +13988,6 @@
             "name": "test_init",
             "location": 66,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13965,7 +14012,6 @@
             "name": "test_init_ccxt_kwargs",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -13987,7 +14033,6 @@
             "name": "test_destroy",
             "location": 95,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14006,7 +14051,6 @@
             "name": "test_init_exception",
             "location": 101,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14023,7 +14067,6 @@
             "name": "test_exchange_resolver",
             "location": 120,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14044,7 +14087,6 @@
             "name": "test_validate_order_time_in_force",
             "location": 146,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14072,7 +14114,6 @@
             "name": "test_symbol_amount_prec",
             "location": 168,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14089,7 +14130,6 @@
             "name": "test_symbol_price_prec",
             "location": 189,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14106,7 +14146,6 @@
             "name": "test_set_sandbox",
             "location": 210,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14125,7 +14164,6 @@
             "name": "test_set_sandbox_exception",
             "location": 228,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14143,7 +14181,6 @@
             "name": "test__load_async_markets",
             "location": 245,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14167,7 +14204,6 @@
             "name": "test__load_markets",
             "location": 258,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14190,7 +14226,6 @@
             "name": "test__reload_markets",
             "location": 278,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14213,7 +14248,6 @@
             "name": "test__reload_markets_exception",
             "location": 306,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14239,7 +14273,6 @@
             "name": "test_validate_pairs",
             "location": 320,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14253,7 +14286,6 @@
             "name": "test_validate_pairs_not_available",
             "location": 334,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14267,7 +14299,6 @@
             "name": "test_validate_pairs_exception",
             "location": 347,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14291,7 +14322,6 @@
             "name": "test_validate_pairs_restricted",
             "location": 365,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14310,7 +14340,6 @@
             "name": "test_validate_timeframes",
             "location": 381,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14324,7 +14353,6 @@
             "name": "test_validate_timeframes_failed",
             "location": 398,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14338,7 +14366,6 @@
             "name": "test_validate_timeframes_emulated_ohlcv_1",
             "location": 416,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14352,7 +14379,6 @@
             "name": "test_validate_timeframes_emulated_ohlcvi_2",
             "location": 435,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14366,7 +14392,6 @@
             "name": "test_validate_timeframes_not_in_config",
             "location": 455,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14384,7 +14409,6 @@
             "name": "test_validate_order_types",
             "location": 472,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14400,7 +14424,6 @@
             "name": "test_validate_order_types_not_in_config",
             "location": 516,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14417,7 +14440,6 @@
             "name": "test_exchange_has",
             "location": 527,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14429,7 +14451,6 @@
             "name": "test_dry_run_order",
             "location": 546,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14454,7 +14475,6 @@
             "name": "test_create_order",
             "location": 570,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14499,7 +14519,6 @@
             "name": "test_buy_dry_run",
             "location": 598,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14517,7 +14536,6 @@
             "name": "test_buy_prod",
             "location": 609,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14538,7 +14556,6 @@
             "name": "test_buy_considers_time_in_force",
             "location": 685,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14560,7 +14577,6 @@
             "name": "test_sell_dry_run",
             "location": 735,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14578,7 +14594,6 @@
             "name": "test_sell_prod",
             "location": 745,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14599,7 +14614,6 @@
             "name": "test_sell_considers_time_in_force",
             "location": 811,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14621,7 +14635,6 @@
             "name": "test_get_balance_dry_run",
             "location": 860,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14640,7 +14653,6 @@
             "name": "test_get_balance_prod",
             "location": 868,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14659,7 +14671,6 @@
             "name": "test_get_balances_dry_run",
             "location": 889,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14678,7 +14689,6 @@
             "name": "test_get_balances_prod",
             "location": 896,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14699,7 +14709,6 @@
             "name": "test_get_tickers",
             "location": 921,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14721,7 +14730,6 @@
             "name": "test_get_ticker",
             "location": 961,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14743,7 +14751,6 @@
             "name": "test_get_historic_ohlcv",
             "location": 1018,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14802,7 +14809,6 @@
             "name": "test_refresh_latest_ohlcv_inv_result",
             "location": 1160,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14826,7 +14832,6 @@
             "name": "test_get_order_book",
             "location": 1188,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14853,7 +14858,6 @@
             "name": "test_get_order_book_exception",
             "location": 1202,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14890,7 +14894,6 @@
             "name": "test_cancel_order_dry_run",
             "location": 1310,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14912,7 +14915,6 @@
             "name": "test_cancel_order",
             "location": 1318,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14931,7 +14933,6 @@
             "name": "test_get_order",
             "location": 1337,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14954,7 +14955,6 @@
             "name": "test_name",
             "location": 1367,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14978,7 +14978,6 @@
             "name": "test_get_trades_for_order",
             "location": 1377,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -14999,7 +14998,6 @@
             "name": "test_get_fee",
             "location": 1426,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15021,7 +15019,6 @@
             "name": "test_stoploss_limit_order_unsupported_exchange",
             "location": 1442,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15037,7 +15034,6 @@
             "name": "test_merge_ft_has_dict",
             "location": 1448,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15053,7 +15049,6 @@
             "name": "test_get_valid_pair_combination",
             "location": 1476,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15076,7 +15071,6 @@
             "name": "test_timeframe_to_minutes",
             "location": 1491,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -15085,7 +15079,6 @@
             "name": "test_timeframe_to_seconds",
             "location": 1498,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -15094,7 +15087,6 @@
             "name": "test_timeframe_to_msecs",
             "location": 1505,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -15103,7 +15095,6 @@
             "name": "test_timeframe_to_prev_date",
             "location": 1512,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -15112,7 +15103,6 @@
             "name": "test_timeframe_to_next_date",
             "location": 1537,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -15121,7 +15111,6 @@
             "name": "load_markets",
             "location": 282,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -15130,9 +15119,9 @@
             "name": "fetch_ohlcv_mock",
             "location": 1219,
             "return": [
-                "list[]",
+                "List",
                 "str",
-                "Dict[str, List[int]]",
+                "Dict[str,List[int]]",
                 "IO[bytes]",
                 "IO",
                 "Callable"
@@ -15165,9 +15154,9 @@
             "name": "sort_data",
             "location": 1230,
             "return": [
-                "list[]",
-                "dict",
-                "Dict[str, str]",
+                "List",
+                "Dict",
+                "Dict[str,str]",
                 "Mapping",
                 "str",
                 "List[Callable]"
@@ -15195,7 +15184,6 @@
             "name": "test_buy_kraken_trading_agreement",
             "location": 9,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15211,7 +15199,6 @@
             "name": "test_sell_kraken_trading_agreement",
             "location": 42,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15230,7 +15217,7 @@
             "name": "trim_dictlist",
             "location": 30,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "Iterable[str]",
                 "int",
                 "Callable",
@@ -15259,7 +15246,7 @@
             "name": "load_data_test",
             "location": 37,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "int",
                 "str"
             ],
@@ -15309,7 +15296,7 @@
             "name": "mocked_load_data",
             "location": 105,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "str",
                 "int",
                 "Optional[int]"
@@ -15323,44 +15310,44 @@
                     "Dict[str, Any]"
                 ],
                 "pairs": [
-                    "list[]",
+                    "List",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
                     "bool"
                 ],
                 "ticker_interval": [
-                    "typing.Text",
+                    "Text",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
                     "bool"
                 ],
                 "refresh_pairs": [
                     "bool",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int"
                 ],
                 "timerange": [
                     "None",
                     "str",
-                    "list",
+                    "List",
                     "pathlib.Path",
                     "BinaryIO",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ],
                 "exchange": [
                     "None",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
                     "bool"
                 ],
                 "live": [
                     "bool",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int"
                 ]
             }
@@ -15391,7 +15378,7 @@
             "name": "_make_backtest_conf",
             "location": 121,
             "return": [
-                "dict[typing.Text, typing.Union[int,None]]",
+                "Dict[Text,Union[int,None]]",
                 "str",
                 "bytearray"
             ],
@@ -15406,8 +15393,8 @@
                     "float"
                 ],
                 "pair": [
-                    "typing.Text",
-                    "Callable[[int], None]",
+                    "Text",
+                    "Callable[[int],None]",
                     "bool",
                     "Optional[int]",
                     "bytes",
@@ -15471,8 +15458,8 @@
                     "None",
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -15635,7 +15622,6 @@
             "name": "test_generate_text_table",
             "location": 359,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15655,7 +15641,6 @@
             "name": "test_generate_text_table_sell_reason",
             "location": 388,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15675,7 +15660,6 @@
             "name": "test_generate_text_table_strategyn",
             "location": 414,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15795,7 +15779,6 @@
             "name": "test_backtest_clash_buy_sell",
             "location": 623,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15819,7 +15802,6 @@
             "name": "test_backtest_only_sell",
             "location": 638,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15843,7 +15825,6 @@
             "name": "test_backtest_alternate_buy_sell",
             "location": 653,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15861,7 +15842,6 @@
             "name": "test_backtest_multi_pair",
             "location": 675,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15885,7 +15865,6 @@
             "name": "test_backtest_record",
             "location": 737,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15900,7 +15879,6 @@
             "name": "test_backtest_start_timerange",
             "location": 809,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15920,7 +15898,6 @@
             "name": "test_backtest_start_multi_strat",
             "location": 852,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -15950,7 +15927,7 @@
             "name": "get_timeframe",
             "location": 493,
             "return": [
-                "tuple[Arrow]",
+                "Tuple[Arrow]",
                 "str",
                 "bool"
             ],
@@ -16002,8 +15979,8 @@
                     "None",
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -16067,14 +16044,12 @@
                     "bool"
                 ],
                 "caplog": [
-                    "list[dict[str, float]]",
+                    "List[dict[str,float]]",
                     "int",
-                    "List[Dict[str, float]]",
-                    "typing.Callable[, ]",
-                    "bool",
-                    "dict[, ]",
+                    "List[Dict[str,float]]",
                     "Callable",
-                    "dict"
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -16141,7 +16116,6 @@
             "name": "test_generate_edge_table",
             "location": 111,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16556,11 +16530,9 @@
             ],
             "arguments": {
                 "ticker_with_signals": [
-                    "list[]",
+                    "List",
                     "pandas.DataFrame",
                     "int",
-                    "list",
-                    "list[str]",
                     "List[str]"
                 ]
             }
@@ -16588,7 +16560,6 @@
             "name": "test_load_pairlist_noexist",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16607,7 +16578,6 @@
             "name": "test_refresh_market_pair_not_in_whitelist",
             "location": 43,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16629,7 +16599,6 @@
             "name": "test_refresh_pairlists",
             "location": 58,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16650,7 +16619,6 @@
             "name": "test_refresh_pairlist_dynamic",
             "location": 70,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16672,7 +16640,6 @@
             "name": "test_VolumePairList_refresh_empty",
             "location": 97,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16709,14 +16676,13 @@
                 "tickers": [
                     "str",
                     "int",
-                    "tuple[typing.Union[int,int]]",
-                    "Tuple[int, int]",
-                    "Tuple[int, int, int]"
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "Tuple[int,int,int]"
                 ],
                 "base_currency": [
                     "bytes",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "key": [
                     "int",
@@ -16726,14 +16692,13 @@
                 "whitelist_result": [
                     "str",
                     "int",
-                    "tuple[typing.Union[int,int]]",
-                    "Tuple[int, int]",
-                    "Tuple[int, int, int]"
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "Tuple[int,int,int]"
                 ],
                 "precision_filter": [
                     "List[Callable]",
-                    "str",
-                    "list[typing.Callable[, ]]"
+                    "str"
                 ]
             }
         },
@@ -16765,7 +16730,6 @@
             "name": "test_pairlist_class",
             "location": 145,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16785,10 +16749,8 @@
                 ],
                 "pairlist": [
                     "Callable",
-                    "typing.Callable[, ]",
-                    "int",
-                    "set",
-                    "set[]"
+                    "Set",
+                    "int"
                 ]
             }
         },
@@ -16796,7 +16758,6 @@
             "name": "test_validate_whitelist",
             "location": 165,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16815,15 +16776,14 @@
                     "str"
                 ],
                 "whitelist": [
-                    "typing.Mapping",
-                    "Optional[Mapping[str, Any]]",
-                    "None",
+                    "Mapping",
+                    "Optional[Mapping[str,Any]]",
                     "Callable",
+                    "None",
                     "bool",
-                    "typing.Callable[, ]",
                     "Optional[bool]",
                     "int",
-                    "list[typing.Any]",
+                    "List[Any]",
                     "Optional[List[Any]]"
                 ],
                 "caplog": [
@@ -16833,9 +16793,8 @@
                     "str",
                     "bool",
                     "Optional[str]",
-                    "None",
                     "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "None"
                 ]
             }
         }
@@ -16846,7 +16805,6 @@
             "name": "test_pair_convertion_object",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -16855,7 +16813,6 @@
             "name": "test_fiat_convert_is_supported",
             "location": 42,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16868,14 +16825,12 @@
             "name": "test_fiat_convert_add_pair",
             "location": 50,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
-                    "typing.Type",
-                    "tests.basilisp.helpers.CompileFn",
-                    "Type"
+                    "Type",
+                    "tests.basilisp.helpers.CompileFn"
                 ]
             }
         },
@@ -16883,7 +16838,6 @@
             "name": "test_fiat_convert_find_price",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16898,7 +16852,6 @@
             "name": "test_fiat_convert_unsupported_crypto",
             "location": 90,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16910,7 +16863,6 @@
             "name": "test_fiat_convert_get_price",
             "location": 97,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16921,7 +16873,6 @@
             "name": "test_fiat_convert_same_currencies",
             "location": 129,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16936,7 +16887,6 @@
             "name": "test_fiat_convert_two_FIAT",
             "location": 135,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16951,17 +16901,16 @@
             "name": "test_loadcryptomap",
             "location": 141,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
                     "str",
-                    "typing.Mapping",
+                    "Mapping",
                     "tests.basilisp.helpers.CompileFn",
                     "tests.async_mock.MagicMock",
                     "tests.async_mock.Mock",
-                    "Mapping[str, Any]"
+                    "Mapping[str,Any]"
                 ]
             }
         },
@@ -16969,14 +16918,12 @@
             "name": "test_fiat_init_network_exception",
             "location": 149,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "mocker": [
                     "Callable",
-                    "str",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -16984,7 +16931,6 @@
             "name": "test_fiat_convert_without_network",
             "location": 165,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -16999,7 +16945,6 @@
             "name": "test_fiat_invalid_response",
             "location": 178,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17011,7 +16956,6 @@
             "name": "test_convert_amount",
             "location": 196,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17165,7 +17109,6 @@
             "name": "test_rpc_trade_statistics_closed",
             "location": 270,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17203,7 +17146,6 @@
             "name": "test_rpc_balance_handle_error",
             "location": 327,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17221,7 +17163,6 @@
             "name": "test_rpc_balance_handle",
             "location": 374,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17496,7 +17437,6 @@
             "name": "botclient",
             "location": 25,
             "return": [
-                "",
                 "typing.Generator[tuple[]]"
             ],
             "arguments": {
@@ -17548,7 +17488,6 @@
             "name": "assert_response",
             "location": 51,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17559,11 +17498,11 @@
                 ],
                 "expected_code": [
                     "int",
-                    "tuple",
-                    "dict",
+                    "Tuple",
+                    "Dict",
                     "List[int]",
                     "bytes",
-                    "Optional[Dict[str, Any]]"
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -17571,7 +17510,6 @@
             "name": "test_api_not_found",
             "location": 56,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17584,7 +17522,6 @@
             "name": "test_api_unauthorized",
             "location": 67,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17597,7 +17534,6 @@
             "name": "test_api_stop_workflow",
             "location": 95,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17610,7 +17546,6 @@
             "name": "test_api__init__",
             "location": 120,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17624,7 +17559,6 @@
             "name": "test_api_run",
             "location": 131,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17647,7 +17581,6 @@
             "name": "test_api_cleanup",
             "location": 184,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17669,7 +17602,6 @@
             "name": "test_api_reloadconf",
             "location": 203,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17682,7 +17614,6 @@
             "name": "test_api_stopbuy",
             "location": 212,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17695,7 +17626,6 @@
             "name": "test_api_balance",
             "location": 222,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17719,7 +17649,6 @@
             "name": "test_api_count",
             "location": 261,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17748,7 +17677,6 @@
             "name": "test_api_daily",
             "location": 285,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17777,7 +17705,6 @@
             "name": "test_api_edge_disabled",
             "location": 301,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17806,7 +17733,6 @@
             "name": "test_api_profit",
             "location": 316,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17843,7 +17769,6 @@
             "name": "test_api_performance",
             "location": 363,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17871,7 +17796,6 @@
             "name": "test_api_status",
             "location": 406,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17900,7 +17824,6 @@
             "name": "test_api_version",
             "location": 446,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17913,7 +17836,6 @@
             "name": "test_api_blacklist",
             "location": 454,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17933,7 +17855,6 @@
             "name": "test_api_whitelist",
             "location": 472,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17946,7 +17867,6 @@
             "name": "test_api_forcebuy",
             "location": 482,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17966,7 +17886,6 @@
             "name": "test_api_forcesell",
             "location": 535,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17996,7 +17915,7 @@
             "location": 225,
             "return": [
                 "str",
-                "dict[typing.Text, float]"
+                "Dict[Text,float]"
             ],
             "arguments": {
                 "symbol": [
@@ -18108,10 +18027,9 @@
                 "default_conf": [
                     "str",
                     "int",
-                    "Optional[str]",
-                    "None",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "caplog": [
                     "None",
@@ -18160,10 +18078,9 @@
                 "default_conf": [
                     "str",
                     "int",
-                    "Optional[str]",
-                    "None",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "caplog": [
                     "str",
@@ -18258,9 +18175,8 @@
                 "caplog": [
                     "bool",
                     "str",
-                    "int",
-                    "typing.Callable[..., None]",
-                    "Callable[..., None]"
+                    "Callable[...,None]",
+                    "int"
                 ]
             }
         },
@@ -18960,7 +18876,7 @@
             "location": 14,
             "return": [
                 "bool",
-                "dict[typing.Text, typing.Union[bool,typing.Text,dict[typing.Text, typing.Text]]]"
+                "Dict[Text,Union[bool,Text,dict[Text,Text]]]"
             ],
             "arguments": {}
         },
@@ -18968,7 +18884,6 @@
             "name": "test__init__",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -18985,7 +18900,6 @@
             "name": "test_send_msg",
             "location": 42,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -18997,19 +18911,16 @@
             "name": "test_exception_send_msg",
             "location": 114,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "default_conf": [],
                 "mocker": [],
                 "caplog": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
-                    "int",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "int"
                 ]
             }
         },
@@ -19017,7 +18928,6 @@
             "name": "test__send_msg",
             "location": 153,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19027,11 +18937,9 @@
                     "str"
                 ],
                 "caplog": [
-                    "dict",
+                    "Dict",
                     "Exception",
-                    "dict[, ]",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         }
@@ -19049,9 +18957,8 @@
             "arguments": {
                 "self": [],
                 "dataframe": [
-                    "List['cirq.Qid']",
-                    "float",
-                    "list['cirq.Qid']"
+                    "List[cirq.Qid]",
+                    "float"
                 ]
             }
         },
@@ -19105,7 +19012,6 @@
             "name": "test_default_strategy_structure",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -19114,14 +19020,12 @@
             "name": "test_default_strategy",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "result": [
-                    "Dict[str, Any]",
-                    "str",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         }
@@ -19131,7 +19035,6 @@
             "name": "test_returns_latest_buy_signal",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19153,7 +19056,6 @@
             "name": "test_returns_latest_sell_signal",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19176,7 +19078,6 @@
             "name": "test_get_signal_empty",
             "location": 49,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19205,7 +19106,6 @@
             "name": "test_get_signal_exception_valueerror",
             "location": 60,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19236,7 +19136,6 @@
             "name": "test_get_signal_empty_dataframe",
             "location": 71,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19268,7 +19167,6 @@
             "name": "test_get_signal_old_dataframe",
             "location": 82,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19295,7 +19193,6 @@
             "name": "test_get_signal_handles_exceptions",
             "location": 97,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19401,7 +19298,6 @@
             "name": "test_is_pair_locked",
             "location": 291,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19420,7 +19316,6 @@
             "name": "test_import_strategy",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19434,7 +19329,6 @@
             "name": "test_search_strategy",
             "location": 42,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -19443,7 +19337,6 @@
             "name": "test_load_strategy",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19457,7 +19350,6 @@
             "name": "test_load_strategy_base64",
             "location": 69,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19485,7 +19377,6 @@
             "name": "test_load_strategy_invalid_directory",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19511,7 +19402,6 @@
             "name": "test_load_not_found_strategy",
             "location": 91,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19522,7 +19412,6 @@
             "name": "test_load_staticmethod_importerror",
             "location": 99,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19541,7 +19430,6 @@
             "name": "test_strategy",
             "location": 109,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19561,7 +19449,6 @@
             "name": "test_strategy_override_minimal_roi",
             "location": 133,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19583,7 +19470,6 @@
             "name": "test_strategy_override_stoploss",
             "location": 147,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19605,7 +19491,6 @@
             "name": "test_strategy_override_trailing_stop",
             "location": 159,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19625,7 +19510,6 @@
             "name": "test_strategy_override_trailing_stop_positive",
             "location": 172,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19646,7 +19530,6 @@
             "name": "test_strategy_override_ticker_interval",
             "location": 191,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19668,7 +19551,6 @@
             "name": "test_strategy_override_process_only_new_candles",
             "location": 207,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19684,7 +19566,6 @@
             "name": "test_strategy_override_order_types",
             "location": 221,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19706,7 +19587,6 @@
             "name": "test_strategy_override_order_tif",
             "location": 255,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19727,7 +19607,6 @@
             "name": "test_strategy_override_use_sell_signal",
             "location": 287,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19746,7 +19625,6 @@
             "name": "test_strategy_override_use_sell_profit_only",
             "location": 312,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19765,7 +19643,6 @@
             "name": "test_deprecate_populate_indicators",
             "location": 338,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19787,7 +19664,6 @@
             "name": "test_call_deprecated_function",
             "location": 372,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19816,7 +19692,6 @@
             "name": "test_strategy_interface_versioning",
             "location": 398,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -19904,7 +19779,7 @@
                 ],
                 "as_source": [
                     "bool",
-                    "list",
+                    "List",
                     "Optional[bytes]",
                     "List[str]",
                     "str"
@@ -19930,7 +19805,7 @@
                 ],
                 "as_source": [
                     "bool",
-                    "list",
+                    "List",
                     "Optional[bytes]",
                     "List[str]",
                     "str"
@@ -19956,19 +19831,19 @@
                     "pandas.DataFrame"
                 ],
                 "start": [
-                    "typing.Text",
+                    "Text",
                     "int",
                     "str",
                     "List[datetime.date]",
-                    "Optional[Union[float, Any]]",
+                    "Optional[Union[float,Any]]",
                     "Sequence[T]",
                     "numpy.ndarray"
                 ],
                 "end": [
-                    "typing.Text",
+                    "Text",
                     "int",
                     "bool",
-                    "Iterable[\"Entity\"]",
+                    "Iterable[Entity]",
                     "Tuple[str]"
                 ]
             }
@@ -20013,21 +19888,21 @@
                 ],
                 "rsi_smooth_len": [
                     "int",
-                    "Dict[str, Any]",
-                    "dict",
+                    "Dict[str,Any]",
+                    "Dict",
                     "pandas.DataFrame"
                 ],
                 "rsi_signal_len": [
                     "int",
-                    "Dict[str, Any]",
-                    "dict",
+                    "Dict[str,Any]",
+                    "Dict",
                     "pandas.DataFrame"
                 ],
                 "bb_lookback": [
                     "int",
                     "pandas._ArrayLike",
                     "bool",
-                    "dict",
+                    "Dict",
                     "str",
                     "Iterable[T]"
                 ],
@@ -20035,7 +19910,7 @@
                     "float",
                     "pandas._ArrayLike",
                     "bool",
-                    "dict",
+                    "Dict",
                     "str",
                     "Iterable[T]"
                 ]
@@ -20059,19 +19934,19 @@
                     "bool",
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict"
+                    "Iterable[Context]",
+                    "Dict"
                 ],
                 "fast": [
                     "int",
-                    "Union[numpy.ndarray, astropy.units.quantity.Quantity]",
+                    "Union[numpy.ndarray,astropy.units.quantity.Quantity]",
                     "float",
                     "str",
                     "Iterable[str]"
                 ],
                 "slow": [
                     "int",
-                    "Union[numpy.ndarray, astropy.units.quantity.Quantity]",
+                    "Union[numpy.ndarray,astropy.units.quantity.Quantity]",
                     "float",
                     "str",
                     "Iterable[str]"
@@ -20198,7 +20073,7 @@
                     "numpy.ndarray",
                     "Optional[numpy.ndarray]",
                     "Optional[List]",
-                    "list",
+                    "List",
                     "int"
                 ]
             }
@@ -20347,13 +20222,13 @@
                 "window": [
                     "int",
                     "bool",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "numpy.ndarray"
                 ],
                 "min_periods": [
                     "None",
                     "bool",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "numpy.ndarray"
                 ]
             }
@@ -20377,13 +20252,13 @@
                 "window": [
                     "int",
                     "bool",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "numpy.ndarray"
                 ],
                 "min_periods": [
                     "None",
                     "bool",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "numpy.ndarray"
                 ]
             }
@@ -20408,17 +20283,17 @@
                 "window": [
                     "int",
                     "numpy.ndarray",
-                    "dict",
-                    "Optional[Dict[str, str]]",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,Any]"
                 ],
                 "min_periods": [
                     "None",
                     "int",
                     "numpy.ndarray",
-                    "dict",
-                    "Optional[Dict[str, str]]",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -20440,7 +20315,7 @@
                     "int",
                     "Optional[Sequence[int]]",
                     "bool",
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "starfish.core.imagestack.imagestack.ImageStack"
                 ],
                 "min_periods": [
@@ -20448,7 +20323,7 @@
                     "Optional[Sequence[int]]",
                     "int",
                     "bool",
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "starfish.core.imagestack.imagestack.ImageStack"
                 ]
             }
@@ -20471,14 +20346,14 @@
                 "window": [
                     "int",
                     "bool",
-                    "\"Rational\"",
+                    "Rational",
                     "Optional[Exception]",
                     "Optional[int]"
                 ],
                 "min_periods": [
                     "None",
                     "bool",
-                    "\"Rational\"",
+                    "Rational",
                     "Optional[Exception]",
                     "Optional[int]"
                 ]
@@ -20565,16 +20440,16 @@
                 "window": [
                     "int",
                     "Optional[str]",
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
                     "object",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ],
                 "min_periods": [
                     "None",
                     "Optional[str]",
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
                     "object",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -20618,20 +20493,20 @@
                 ],
                 "fast": [
                     "int",
-                    "dict",
-                    "Tuple[float, float]",
+                    "Dict",
+                    "Tuple[float,float]",
                     "numpy.ndarray"
                 ],
                 "slow": [
                     "int",
-                    "dict",
-                    "Tuple[float, float]",
+                    "Dict",
+                    "Tuple[float,float]",
                     "numpy.ndarray"
                 ],
                 "smooth": [
                     "int",
                     "float",
-                    "Tuple[float, float]"
+                    "Tuple[float,float]"
                 ]
             }
         },
@@ -20659,7 +20534,7 @@
                     "int",
                     "bool",
                     "Optional[str]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "Optional[Exception]",
                     "Callable",
                     "numpy.ndarray"
@@ -20790,7 +20665,7 @@
                     "int",
                     "bool",
                     "float",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ],
                 "atrs": [
                     "int",
@@ -20825,7 +20700,7 @@
                     "List[str]",
                     "str",
                     "bool",
-                    "Callable[[Any], None]",
+                    "Callable[[Any],None]",
                     "pandas.DataFrame",
                     "List[Dict]"
                 ]
@@ -20897,7 +20772,7 @@
                 "fast": [
                     "bool",
                     "float",
-                    "tuple",
+                    "Tuple",
                     "int",
                     "List[float]"
                 ]
@@ -20922,8 +20797,8 @@
                 "window": [
                     "int",
                     "bool",
-                    "Optional[Union[int, str]]",
-                    "Union[numpy.ndarray, numpy.void]",
+                    "Optional[Union[int,str]]",
+                    "Union[numpy.ndarray,numpy.void]",
                     "Optional[str]",
                     "Optional[numpy.ndarray]",
                     "static_frame.core.util.DtypesSpecifier",
@@ -20932,19 +20807,19 @@
                 "min_periods": [
                     "None",
                     "bool",
-                    "Optional[Union[int, str]]",
-                    "Union[numpy.ndarray, numpy.void]",
+                    "Optional[Union[int,str]]",
+                    "Union[numpy.ndarray,numpy.void]",
                     "Optional[str]",
                     "Optional[numpy.ndarray]",
                     "static_frame.core.util.DtypesSpecifier",
                     "numpy.ndarray"
                 ],
                 "kind": [
-                    "typing.Text",
+                    "Text",
                     "numpy.ndarray",
                     "Optional[numpy.ndarray]",
                     "Optional[List]",
-                    "list",
+                    "List",
                     "int"
                 ]
             }
@@ -21052,7 +20927,7 @@
                 "window": [
                     "int",
                     "bool",
-                    "list",
+                    "List",
                     "str"
                 ],
                 "stds": [
@@ -21062,10 +20937,10 @@
                     "Optional[str]"
                 ],
                 "col": [
-                    "typing.Text",
+                    "Text",
                     "int",
                     "bool",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "Optional[float]"
                 ]
             }
@@ -21103,7 +20978,7 @@
                 ],
                 "window": [
                     "int",
-                    "Dict[str, int]"
+                    "Dict[str,int]"
                 ]
             }
         },
@@ -21135,7 +21010,7 @@
                     "List[dict]",
                     "Type[object]",
                     "Type",
-                    "dict"
+                    "Dict"
                 ]
             }
         }
@@ -21274,19 +21149,18 @@
             "name": "load_config",
             "location": 220,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "Optional[dict]",
                 "bool",
                 "str",
                 "Optional[str]",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "configfile": [
                     "str",
-                    "bool",
                     "List[str]",
-                    "list[str]"
+                    "bool"
                 ]
             }
         },
@@ -21346,8 +21220,7 @@
                 "self": [],
                 "method": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "apipath": [
                     "str",
@@ -21355,24 +21228,27 @@
                     "int"
                 ],
                 "params": [
-                    "dict"
+                    "Dict",
+                    "None",
+                    "bool",
+                    "str",
+                    "int",
+                    "Optional[dict]",
+                    "Optional[str]"
                 ],
                 "data": [
                     "str",
                     "None",
-                    "dict",
+                    "Dict",
                     "Optional[str]",
-                    "dict[, ]",
-                    "Mapping[str, str]",
-                    "typing.Mapping"
+                    "Mapping[str,str]",
+                    "Mapping"
                 ],
                 "files": [
                     "str",
-                    "None",
                     "List[str]",
-                    "Dict[str, Any]",
-                    "list[str]",
-                    "dict[str, typing.Any]"
+                    "None",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -21389,12 +21265,15 @@
                 "apipath": [
                     "bytes",
                     "str",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "Dict[str, Any]"
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ],
                 "params": [
-                    "dict"
+                    "bytes",
+                    "None",
+                    "str",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -21407,18 +21286,24 @@
             "arguments": {
                 "self": [],
                 "apipath": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "bytes",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "bytes"
                 ],
                 "params": [
-                    "dict"
+                    "Dict",
+                    "None",
+                    "str",
+                    "Dict[str,Any]",
+                    "bytes"
                 ],
                 "data": [
-                    "dict"
+                    "Dict",
+                    "None",
+                    "str",
+                    "Dict[str,Any]",
+                    "bytes"
                 ]
             }
         },
@@ -21511,9 +21396,8 @@
                     "None",
                     "int",
                     "Optional[int]",
-                    "dict[str, typing.Any]",
-                    "bool",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "bool"
                 ]
             }
         },
@@ -21639,10 +21523,9 @@
                     "str",
                     "float",
                     "bytes",
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "IO[str]",
-                    "typing.IO"
+                    "IO"
                 ]
             }
         }
@@ -21659,16 +21542,15 @@
             "arguments": {
                 "dataframe": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "metadata": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -21685,9 +21567,9 @@
                 "params": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -21696,7 +21578,7 @@
             "name": "indicator_space",
             "location": 110,
             "return": [
-                "list[typing.Union[Integer,Categorical]]",
+                "List[Union[Integer,Categorical]]",
                 "str",
                 "bool",
                 "Optional[str]"
@@ -21715,9 +21597,9 @@
                 "params": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -21726,7 +21608,7 @@
             "name": "sell_indicator_space",
             "location": 170,
             "return": [
-                "list[typing.Union[Integer,Categorical]]",
+                "List[Union[Integer,Categorical]]",
                 "str",
                 "bool",
                 "Optional[str]"
@@ -21751,9 +21633,9 @@
                 "metadata": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -21776,9 +21658,9 @@
                 "metadata": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -21864,7 +21746,7 @@
             "name": "indicator_space",
             "location": 99,
             "return": [
-                "list[typing.Union[Integer,Categorical]]",
+                "List[Union[Integer,Categorical]]",
                 "str",
                 "bool",
                 "Optional[str]"
@@ -21893,7 +21775,7 @@
             "name": "sell_indicator_space",
             "location": 159,
             "return": [
-                "list[typing.Union[Integer,Categorical]]",
+                "List[Union[Integer,Categorical]]",
                 "str",
                 "bool",
                 "Optional[str]"
@@ -21904,11 +21786,11 @@
             "name": "generate_roi_table",
             "location": 178,
             "return": [
-                "dict[int, int]",
+                "Dict[int,int]",
                 "float",
-                "type",
+                "Type",
                 "str",
-                "list",
+                "List",
                 "Optional[List[str]]"
             ],
             "arguments": {
@@ -21923,7 +21805,7 @@
             "name": "roi_space",
             "location": 199,
             "return": [
-                "list[typing.Union[Integer,Real]]",
+                "List[Union[Integer,Real]]",
                 "str",
                 "bool",
                 "Optional[str]"
@@ -21934,7 +21816,7 @@
             "name": "stoploss_space",
             "location": 219,
             "return": [
-                "list[Real]",
+                "List[Real]",
                 "str",
                 "Tuple[str]",
                 "bool"
@@ -22029,7 +21911,7 @@
             "name": "informative_pairs",
             "location": 77,
             "return": [
-                "list[]",
+                "List",
                 "int",
                 "Callable",
                 "str"

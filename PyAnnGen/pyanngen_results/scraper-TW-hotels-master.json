@@ -31,12 +31,16 @@
             "name": "assemble",
             "location": 8,
             "return": [
-                "List[Dict[(domain.models.hotel.field.HotelField, str)]]"
+                "List[dict]"
             ],
             "arguments": {
                 "self": [],
                 "hotels": [
-                    "List[domain.models.hotel.content.HotelContentVO]"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -53,9 +57,7 @@
             ],
             "arguments": {
                 "self": [],
-                "scraping_logger": [
-                    "logging.Logger"
-                ]
+                "scraping_logger": []
             }
         }
     },
@@ -68,12 +70,8 @@
             ],
             "arguments": {
                 "self": [],
-                "filename": [
-                    "str"
-                ],
-                "scraping_logger": [
-                    "logging.Logger"
-                ]
+                "filename": [],
+                "scraping_logger": []
             }
         },
         "HotelStoringExcelService.close": {
@@ -94,9 +92,7 @@
             ],
             "arguments": {
                 "self": [],
-                "scraping_logger": [
-                    "logging.Logger"
-                ]
+                "scraping_logger": []
             }
         }
     },
@@ -113,28 +109,59 @@
             "arguments": {
                 "self": [],
                 "id": [
-                    "int"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Union[list,str]",
+                    "List"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Callable[,int]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "phone": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]"
                 ],
                 "addr": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]"
                 ],
                 "rooms": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]"
                 ],
                 "prices": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]"
                 ],
                 "email": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]"
                 ],
                 "url": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -252,12 +279,8 @@
             ],
             "arguments": {
                 "self": [],
-                "pages_num": [
-                    "int"
-                ],
-                "hotels_num": [
-                    "int"
-                ]
+                "pages_num": [],
+                "hotels_num": []
             }
         },
         "PagesOfHotelVO.total": {
@@ -284,9 +307,7 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "object"
-                ]
+                "other": []
             }
         },
         "PagesOfHotelVO.__repr__": {
@@ -309,21 +330,11 @@
             ],
             "arguments": {
                 "self": [],
-                "url": [
-                    "str"
-                ],
-                "params": [
-                    "dict"
-                ],
-                "scraping_logger": [
-                    "logging.Logger"
-                ],
-                "fake_header_generator": [
-                    "infra.asynchttp.header.FakeHeaderGenerator"
-                ],
-                "retryable_requester": [
-                    "infra.asynchttp.requester.RetryableRequester"
-                ]
+                "url": [],
+                "params": [],
+                "scraping_logger": [],
+                "fake_header_generator": [],
+                "retryable_requester": []
             }
         },
         "HotelsOfCountyParser.__init__": {
@@ -334,40 +345,24 @@
             ],
             "arguments": {
                 "self": [],
-                "url": [
-                    "str"
-                ],
-                "params": [
-                    "dict"
-                ],
-                "hotel_href_xpath": [
-                    "str"
-                ],
-                "scraping_logger": [
-                    "logging.Logger"
-                ],
-                "fake_header_generator": [
-                    "infra.asynchttp.header.FakeHeaderGenerator"
-                ],
-                "retryable_requester": [
-                    "infra.asynchttp.requester.RetryableRequester"
-                ]
+                "url": [],
+                "params": [],
+                "hotel_href_xpath": [],
+                "scraping_logger": [],
+                "fake_header_generator": [],
+                "retryable_requester": []
             }
         },
         "HotelsOfCountyParser._extract_hotels_id": {
             "name": "_extract_hotels_id",
             "location": 71,
             "return": [
-                "List[int]"
+                "list"
             ],
             "arguments": {
                 "self": [],
-                "page": [
-                    "int"
-                ],
-                "html": [
-                    "bytes"
-                ]
+                "page": [],
+                "html": []
             }
         },
         "HotelContentVOParser.__init__": {
@@ -378,21 +373,11 @@
             ],
             "arguments": {
                 "self": [],
-                "url": [
-                    "str"
-                ],
-                "hotel_content_xpath": [
-                    "Dict[(domain.models.hotel.field.HotelField, str)]"
-                ],
-                "scraping_logger": [
-                    "logging.Logger"
-                ],
-                "fake_header_generator": [
-                    "infra.asynchttp.header.FakeHeaderGenerator"
-                ],
-                "retryable_requester": [
-                    "infra.asynchttp.requester.RetryableRequester"
-                ]
+                "url": [],
+                "hotel_content_xpath": [],
+                "scraping_logger": [],
+                "fake_header_generator": [],
+                "retryable_requester": []
             }
         }
     },
@@ -410,10 +395,14 @@
                     "str"
                 ],
                 "code": [
-                    "str"
+                    "str",
+                    "List[county.CountyVO]",
+                    "List[C]"
                 ],
                 "counties": [
-                    "List[domain.models.region.county.CountyVO]"
+                    "str",
+                    "List[county.CountyVO]",
+                    "List[C]"
                 ]
             }
         },
@@ -426,7 +415,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -439,7 +430,8 @@
             "arguments": {
                 "self": [],
                 "code": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -452,7 +444,8 @@
             "arguments": {
                 "self": [],
                 "counties": [
-                    "List[domain.models.region.county.CountyVO]"
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -498,7 +491,7 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "int"
                 ]
             }
         },
@@ -523,9 +516,14 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "value": [
+                    "Sequence[Any]",
+                    "str",
                     "int"
                 ]
             }
@@ -539,7 +537,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -552,7 +552,8 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "int"
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -588,7 +589,9 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "Dict[str,float]",
+                    "Type",
+                    "str"
                 ]
             }
         },
@@ -612,18 +615,10 @@
             ],
             "arguments": {
                 "self": [],
-                "url": [
-                    "str"
-                ],
-                "city_xpath": [
-                    "str"
-                ],
-                "counties_xpath": [
-                    "str"
-                ],
-                "scraping_logger": [
-                    "logging.Logger"
-                ]
+                "url": [],
+                "city_xpath": [],
+                "counties_xpath": [],
+                "scraping_logger": []
             }
         }
     },
@@ -637,12 +632,8 @@
             ],
             "arguments": {
                 "self": [],
-                "filename": [
-                    "str"
-                ],
-                "scraping_logger": [
-                    "logging.Logger"
-                ]
+                "filename": [],
+                "scraping_logger": []
             }
         },
         "HotelsExcelStorer._format_cell": {
@@ -658,26 +649,24 @@
         "HotelsExcelStorer._retrieve_header": {
             "name": "_retrieve_header",
             "location": 21,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
-                "parsed_column": [
-                    "domain.models.hotel.field.HotelField"
-                ]
+                "parsed_column": []
             }
         },
         "HotelsExcelStorer.add_sheet": {
             "name": "add_sheet",
             "location": 24,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
-                "sheetname": [
-                    "str"
-                ],
-                "parsed_columns": [
-                    "List[domain.models.hotel.field.HotelField]"
-                ],
+                "sheetname": [],
+                "parsed_columns": [],
                 "column_width": [
                     "int"
                 ]
@@ -687,12 +676,12 @@
             "name": "_normializa_url",
             "location": 40,
             "return": [
-                "str"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "self": [],
                 "source": [
-                    "Optional[str]"
+                    "_T0@@"
                 ]
             }
         },
@@ -716,12 +705,8 @@
             ],
             "arguments": {
                 "self": [],
-                "filename": [
-                    "str"
-                ],
-                "scraping_logger": [
-                    "logging.Logger"
-                ]
+                "filename": [],
+                "scraping_logger": []
             }
         },
         "HotelsJsonStorer._check_json_format": {
@@ -732,9 +717,7 @@
             ],
             "arguments": {
                 "self": [],
-                "data": [
-                    "str"
-                ]
+                "data": []
             }
         },
         "HotelsJsonStorer._dump_hotels": {
@@ -745,15 +728,9 @@
             ],
             "arguments": {
                 "self": [],
-                "county_name": [
-                    "str"
-                ],
-                "stored_hotels": [
-                    "Dict[(str, List[Dict[(str, str)]])]"
-                ],
-                "hotels": [
-                    "List[Dict[(domain.models.hotel.field.HotelField, str)]]"
-                ]
+                "county_name": [],
+                "stored_hotels": [],
+                "hotels": []
             }
         },
         "HotelsJsonStorer._create_empty_json": {
@@ -764,9 +741,7 @@
             ],
             "arguments": {
                 "self": [],
-                "filename": [
-                    "str"
-                ]
+                "filename": []
             }
         },
         "HotelsJsonStorer._check_existed": {
@@ -777,9 +752,7 @@
             ],
             "arguments": {
                 "self": [],
-                "filename": [
-                    "str"
-                ]
+                "filename": []
             }
         }
     },
@@ -807,12 +780,8 @@
             ],
             "arguments": {
                 "self": [],
-                "logger": [
-                    "logging.Logger"
-                ],
-                "abnormal_url": [
-                    "str"
-                ]
+                "logger": [],
+                "abnormal_url": []
             }
         }
     },
@@ -827,18 +796,10 @@
             ],
             "arguments": {
                 "self": [],
-                "http_code": [
-                    "int"
-                ],
-                "message": [
-                    "str"
-                ],
-                "req_url": [
-                    "str"
-                ],
-                "req_content": [
-                    "str"
-                ]
+                "http_code": [],
+                "message": [],
+                "req_url": [],
+                "req_content": []
             }
         },
         "ReqSysAbnoramlError.http_code": {
@@ -908,12 +869,12 @@
             "name": "_set_formatter",
             "location": 31,
             "return": [
-                "_T0"
+                "_T0@@"
             ],
             "arguments": {
                 "self": [],
                 "source": [
-                    "_T0"
+                    "_T0@@"
                 ],
                 "level": [],
                 "format": []
@@ -927,9 +888,7 @@
             ],
             "arguments": {
                 "self": [],
-                "path": [
-                    "str"
-                ]
+                "path": []
             }
         },
         "LoggerFactory._check_logging_path_dir": {
@@ -940,9 +899,7 @@
             ],
             "arguments": {
                 "self": [],
-                "content": [
-                    "dict"
-                ]
+                "content": []
             }
         },
         "LoggerFactory.load_config": {
@@ -953,9 +910,7 @@
             ],
             "arguments": {
                 "self": [],
-                "path": [
-                    "str"
-                ]
+                "path": []
             }
         },
         "LoggerFactory.get_logger": {
@@ -966,9 +921,7 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ]
+                "name": []
             }
         },
         "LoggerFactory.make_console": {
@@ -1046,7 +999,9 @@
         "YamlLoader.load": {
             "name": "load",
             "location": 14,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "cls": [],
                 "path": []
@@ -1055,7 +1010,9 @@
         "JsonLoader.load": {
             "name": "load",
             "location": 25,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "cls": [],
                 "path": []

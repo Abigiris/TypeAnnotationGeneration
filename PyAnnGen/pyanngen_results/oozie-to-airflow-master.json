@@ -43,28 +43,50 @@
             "arguments": {
                 "self": [],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "input_directory_path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "output_directory_path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "action_mapper": [
-                    "Dict[(str, Type[o2a.mappers.action_mapper.ActionMapper])]"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "renderer": [
-                    "o2a.converter.renderers.BaseRenderer"
+                    "str",
+                    "int",
+                    "Dict",
+                    "Tuple",
+                    "Dict[str,str]"
                 ],
                 "transformers": [
-                    "List[o2a.transformers.base_transformer.BaseWorkflowTransformer]"
+                    "str",
+                    "None",
+                    "int",
+                    "Dict",
+                    "Tuple",
+                    "Dict[str,str]"
                 ],
                 "user": [
-                    "str"
+                    "str",
+                    "None",
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "initial_props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "None",
+                    "Dict[str,Any]",
+                    "Optional[Sequence[str]]",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -99,7 +121,7 @@
                 "as_subworkflow": [
                     "bool",
                     "int",
-                    "Tuple[int, str]",
+                    "Tuple[int,str]",
                     "Iterator[int]",
                     "Iterable[int]",
                     "Sequence[int]"
@@ -124,6 +146,7 @@
             ],
             "arguments": {
                 "oozie_node": [
+                    "Dict",
                     "o2a.converter.oozie_node.OozieNode"
                 ]
             }
@@ -167,7 +190,7 @@
             "arguments": {
                 "self": [],
                 "nodes": [
-                    "Dict[(str, o2a.converter.oozie_node.OozieNode)]"
+                    "Type[T]"
                 ]
             }
         },
@@ -202,25 +225,25 @@
             "arguments": {
                 "self": [],
                 "mapper": [
-                    "o2a.mappers.base_mapper.BaseMapper"
+                    "Dict[str,Any]",
+                    "str",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ],
                 "tasks": [
                     "List[o2a.converter.task.Task]",
                     "None",
-                    "dict",
-                    "list[o2a.converter.task.Task]",
-                    "list",
-                    "dict[, ]",
-                    "Task",
-                    "list[]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "List",
+                    "Dict[str,Any]",
+                    "Task"
                 ],
                 "relations": [
                     "List[Dict]",
                     "int",
                     "None",
-                    "list[dict[, ]]",
+                    "List[dict]",
                     "Optional[str]",
                     "str"
                 ]
@@ -291,10 +314,15 @@
             "arguments": {
                 "self": [],
                 "workflow": [
+                    "int",
+                    "str",
+                    "Dict",
                     "o2a.converter.workflow.Workflow"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -348,9 +376,9 @@
                     "bool"
                 ],
                 "schedule_interval": [
-                    "tuple[typing.Union[float,float,float,float]]",
+                    "Tuple[Union[float,float,float,float]]",
                     "bool",
-                    "Tuple[float, float, float, float]",
+                    "Tuple[float,float,float,float]",
                     "float",
                     "bytes",
                     "int"
@@ -358,13 +386,13 @@
                 "start_days_ago": [
                     "int",
                     "float",
-                    "typing.Callable[float, None]",
-                    "Callable[[float], None]",
+                    "Callable[float,None]",
+                    "Callable[[float],None]",
                     "None",
                     "bool",
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "Optional[int]",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -372,16 +400,21 @@
             "name": "create_workflow_file",
             "location": 65,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "workflow": [
+                    "IO",
+                    "List[str]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
                     "o2a.converter.workflow.Workflow"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "IO",
+                    "List[str]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "o2a.converter.workflow.Workflow"
                 ]
             }
         },
@@ -389,16 +422,21 @@
             "name": "create_subworkflow_file",
             "location": 73,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "workflow": [
+                    "IO",
+                    "List[str]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
                     "o2a.converter.workflow.Workflow"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "IO",
+                    "List[str]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "o2a.converter.workflow.Workflow"
                 ]
             }
         },
@@ -411,10 +449,16 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pypi2nix.path.Path"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pypi2nix.path.Path"
                 ]
             }
         },
@@ -427,10 +471,16 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pypi2nix.path.Path"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pypi2nix.path.Path"
                 ]
             }
         },
@@ -447,13 +497,22 @@
                     "Set[str]"
                 ],
                 "template_name": [
-                    "str"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pathlib.Path"
                 ],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pathlib.Path"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -461,7 +520,9 @@
             "name": "_render_content",
             "location": 112,
             "return": [
-                "str"
+                "str",
+                "pathlib.Path",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
@@ -470,10 +531,16 @@
                     "int"
                 ],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "Optional[dict]",
+                    "Dict",
+                    "None"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -486,9 +553,9 @@
             "arguments": {
                 "output_file_name": [
                     "str",
-                    "typing.Callable[str, str]",
+                    "Callable[str,str]",
                     "pathlib.Path",
-                    "Callable[[str], str]"
+                    "Callable[[str],str]"
                 ]
             }
         },
@@ -516,7 +583,6 @@
             "arguments": {
                 "output_file_name": [
                     "str",
-                    "tuple[pathlib.Path]",
                     "Tuple[pathlib.Path]",
                     "pathlib.Path"
                 ]
@@ -531,10 +597,17 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pypi2nix.path.Path",
+                    "pathlib.Path"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "IO",
+                    "List[str]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "o2a.converter.workflow.Workflow"
                 ]
             }
         },
@@ -547,10 +620,17 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "pypi2nix.path.Path",
+                    "pathlib.Path"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "IO",
+                    "List[str]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "o2a.converter.workflow.Workflow"
                 ]
             }
         },
@@ -569,7 +649,7 @@
                     "str"
                 ],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str"
                 ]
             }
         },
@@ -577,23 +657,28 @@
             "name": "_render_content",
             "location": 193,
             "return": [
-                "str"
+                "str",
+                "pathlib.Path",
+                "Optional[str]"
             ],
             "arguments": {
                 "template_name": [
                     "str",
-                    "dict[str, typing.Any]",
-                    "cirq.google.api.v2.device_pb2.DeviceSpecification",
-                    "bytes",
-                    "Dict[str, Any]",
-                    "list[str]",
-                    "Union[bytes, str]",
-                    "dict[, ]",
+                    "Dict[str,Any]",
                     "List[str]",
-                    "dict"
+                    "cirq.google.api.v2.device_pb2.DeviceSpecification",
+                    "Dict",
+                    "bytes",
+                    "Union[bytes,str]"
                 ],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "cirq.google.api.v2.device_pb2.DeviceSpecification",
+                    "Dict",
+                    "bytes",
+                    "Union[bytes,str]"
                 ]
             }
         }
@@ -611,13 +696,19 @@
                     "str"
                 ],
                 "template_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "trigger_rule": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "template_params": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -668,57 +759,53 @@
                     "Optional[str]",
                     "None",
                     "Optional[Sequence[Any]]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ],
                 "tasks": [
                     "List[dict]",
                     "bool",
-                    "list[dict[, ]]",
                     "str",
-                    "Union[bool, List, Tuple]",
-                    "list[]",
-                    "tuple[]"
+                    "Union[bool,List,Tuple]",
+                    "List",
+                    "Tuple"
                 ],
                 "relations": [
                     "None",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "bytes",
                     "Iterable[int]",
                     "str",
                     "bool",
                     "Optional[str]",
-                    "tuple[typing.Union[str,dict[, ]]]",
-                    "Optional[Tuple[str, dict]]",
+                    "Tuple[Union[str,dict]]",
+                    "Optional[Tuple[str,dict]]",
                     "cmk.utils.type_defs.HostName",
-                    "Optional[Literal[\"only_clustered\", \"include_clustered\"]]"
+                    "Optional[Literal[only_clustered,include_clustered]]"
                 ],
                 "downstream_names": [
-                    "None",
                     "List[str]",
+                    "None",
                     "int",
-                    "list[str]",
                     "str",
                     "List[List[str]]",
-                    "list[list[str]]",
+                    "List[list[str]]",
                     "bool",
-                    "Union[str, List[str]]"
+                    "Union[str,List[str]]"
                 ],
                 "error_downstream_name": [
                     "str",
                     "None",
                     "int",
                     "Optional[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "dependencies": [
-                    "None",
                     "List[str]",
+                    "None",
                     "str",
-                    "list[str]",
                     "Optional[List[str]]",
-                    "Union[str, List[str]]"
+                    "Union[str,List[str]]"
                 ]
             }
         },
@@ -770,10 +857,10 @@
             "name": "all_tasks",
             "location": 113,
             "return": [
-                "list[]",
+                "List",
                 "str",
-                "dict",
-                "Dict[str, Dict[str, Any]]"
+                "Dict",
+                "Dict[str,Dict[str,Any]]"
             ],
             "arguments": {
                 "self": []
@@ -811,25 +898,54 @@
             "arguments": {
                 "self": [],
                 "input_directory_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "output_directory_path": [
                     "str"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "task_group_relations": [
-                    "Set[o2a.converter.relation.Relation]"
+                    "str",
+                    "None",
+                    "List[str]",
+                    "Set[str]",
+                    "Dict",
+                    "raiden.utils.Dict",
+                    "Dict[str,Any]"
                 ],
                 "nodes": [
-                    "Dict[(str, o2a.converter.oozie_node.OozieNode)]"
+                    "str",
+                    "int",
+                    "None",
+                    "Sequence[object]"
                 ],
                 "task_groups": [
-                    "Dict[(str, o2a.converter.task_group.TaskGroup)]"
+                    "Optional[bytes]",
+                    "None",
+                    "str",
+                    "Dict",
+                    "bytes",
+                    "int",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]",
+                    "Union[str,int,None]"
                 ],
                 "dependencies": [
-                    "Set[str]"
+                    "str",
+                    "None",
+                    "Dict[str,Any]",
+                    "int",
+                    "Dict",
+                    "List[int]",
+                    "Optional[int]",
+                    "Optional[Dict]"
                 ]
             }
         },
@@ -837,12 +953,16 @@
             "name": "get_nodes_by_type",
             "location": 63,
             "return": [
-                "List[o2a.converter.oozie_node.OozieNode]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "mapper_type": [
-                    "type"
+                    "Iterable[T]",
+                    "o2a.converter.oozie_node.OozieNode",
+                    "Callable[...,None]",
+                    "None",
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -850,15 +970,13 @@
             "name": "find_upstream_nodes",
             "location": 66,
             "return": [
-                "List[o2a.converter.oozie_node.OozieNode]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "target_node": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -866,14 +984,13 @@
             "name": "find_upstream_task_group",
             "location": 73,
             "return": [
-                "List[o2a.converter.task_group.TaskGroup]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "target_task_group": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -881,7 +998,7 @@
             "name": "get_task_group_without_upstream",
             "location": 83,
             "return": [
-                "List[o2a.converter.task_group.TaskGroup]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -891,7 +1008,7 @@
             "name": "get_task_group_without_ok_downstream",
             "location": 91,
             "return": [
-                "List[o2a.converter.task_group.TaskGroup]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -901,7 +1018,7 @@
             "name": "get_task_group_without_error_downstream",
             "location": 98,
             "return": [
-                "List[o2a.converter.task_group.TaskGroup]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -916,7 +1033,11 @@
             "arguments": {
                 "self": [],
                 "node_to_delete": [
-                    "o2a.converter.oozie_node.OozieNode"
+                    "str",
+                    "Iterable[T]",
+                    "Type",
+                    "Optional[List[str]]",
+                    "None"
                 ]
             }
         },
@@ -952,19 +1073,30 @@
             "arguments": {
                 "self": [],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "action_mapper": [
-                    "Dict[(str, Type[o2a.mappers.action_mapper.ActionMapper])]"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "renderer": [
-                    "o2a.converter.renderers.BaseRenderer"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "List",
+                    "int"
                 ],
                 "transformers": [
-                    "List[o2a.transformers.base_transformer.BaseWorkflowTransformer]"
+                    "int",
+                    "None",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -977,7 +1109,8 @@
             "arguments": {
                 "self": [],
                 "kill_node": [
-                    "ET.Element"
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -990,12 +1123,10 @@
             "arguments": {
                 "self": [],
                 "end_node": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "raiden.utils.Address",
-                    "int",
-                    "typing.Type",
-                    "Dict[str, Any]",
-                    "type"
+                    "Type",
+                    "int"
                 ]
             }
         },
@@ -1009,11 +1140,10 @@
                 "self": [],
                 "root": [
                     "bool",
+                    "List[dict]",
                     "Optional[str]",
                     "str",
-                    "List[dict]",
-                    "None",
-                    "list[dict[, ]]"
+                    "None"
                 ],
                 "fork_node": [
                     "str",
@@ -1055,9 +1185,7 @@
             ],
             "arguments": {
                 "self": [],
-                "action_node": [
-                    "ET.Element"
-                ]
+                "action_node": []
             }
         },
         "WorkflowXmlParser.parse_start_node": {
@@ -1069,9 +1197,8 @@
             "arguments": {
                 "self": [],
                 "start_node": [
-                    "typing.Type",
-                    "str",
                     "Type",
+                    "str",
                     "utils.ContextType"
                 ]
             }
@@ -1086,10 +1213,8 @@
                 "self": [],
                 "root": [],
                 "node": [
-                    "list",
-                    "list[]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "List",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1115,19 +1240,30 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
                     "xml.etree.ElementTree.Element"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "input_directory_path": [
-                    "str"
+                    "str",
+                    "int",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ]
             }
         },
@@ -1155,17 +1291,26 @@
             "name": "prepend_task",
             "location": 77,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(_T1, _T2)]"
             ],
             "arguments": {
                 "task_to_prepend": [
-                    "o2a.converter.task.Task"
+                    "Dict",
+                    "o2a.converter.task.Task",
+                    "Dict[str,Any]",
+                    "bool"
                 ],
                 "tasks": [
-                    "List[o2a.converter.task.Task]"
+                    "List[o2a.converter.task.Task]",
+                    "List[dict]",
+                    "List",
+                    "purplship.core.utils.xml.Element",
+                    "o2a.converter.task.Task"
                 ],
                 "relations": [
-                    "List[o2a.converter.relation.Relation]"
+                    "List[o2a.converter.relation.Relation]",
+                    "List[asyncio.Task]",
+                    "List[T]"
                 ]
             }
         }
@@ -1180,16 +1325,33 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str",
+                    "float",
+                    "Optional[int]",
+                    "int",
+                    "T",
+                    "None"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "float",
+                    "Optional[int]",
+                    "int",
+                    "T",
+                    "None"
                 ]
             }
         },
@@ -1197,7 +1359,7 @@
             "name": "to_tasks_and_relations",
             "location": 37,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1207,7 +1369,7 @@
             "name": "required_imports",
             "location": 43,
             "return": [
-                "Set[str]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1232,10 +1394,20 @@
             "arguments": {
                 "self": [],
                 "input_directory_path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[Tuple[str,...]]",
+                    "Tuple[Union[str,...]]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "output_directory_path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[Tuple[str,...]]",
+                    "Tuple[Union[str,...]]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1271,15 +1443,32 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str",
+                    "Dict",
+                    "Tuple[Type]",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Tuple[Type]",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Tuple[Type]",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "props": [
+                    "str",
+                    "None",
+                    "Dict",
+                    "Tuple[Type]",
+                    "xml.etree.ElementTree.Element",
                     "o2a.o2a_libs.property_utils.PropertySet"
                 ]
             }
@@ -1298,7 +1487,7 @@
             "name": "to_tasks_and_relations",
             "location": 80,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1325,16 +1514,26 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "List",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "List",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "Dict",
+                    "None",
+                    "Optional[str]",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -1372,7 +1571,7 @@
             "name": "to_tasks_and_relations",
             "location": 69,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1399,16 +1598,25 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "props": [
-                    "Optional[o2a.o2a_libs.property_utils.PropertySet]"
+                    "str",
+                    "None",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ]
             }
         },
@@ -1416,7 +1624,7 @@
             "name": "to_tasks_and_relations",
             "location": 43,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1443,15 +1651,27 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str",
+                    "List",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "List",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "List",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "props": [
+                    "str",
+                    "List",
+                    "xml.etree.ElementTree.Element",
                     "o2a.o2a_libs.property_utils.PropertySet"
                 ]
             }
@@ -1470,7 +1690,7 @@
             "name": "to_tasks_and_relations",
             "location": 47,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1490,7 +1710,6 @@
             "name": "__extract_email_data",
             "location": 67,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1508,12 +1727,8 @@
                 "str"
             ],
             "arguments": {
-                "node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
-                ]
+                "node": [],
+                "props": []
             }
         },
         "prepare_delete_command": {
@@ -1523,12 +1738,8 @@
                 "str"
             ],
             "arguments": {
-                "node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
-                ]
+                "node": [],
+                "props": []
             }
         },
         "prepare_move_command": {
@@ -1538,12 +1749,8 @@
                 "str"
             ],
             "arguments": {
-                "node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
-                ]
+                "node": [],
+                "props": []
             }
         },
         "prepare_chmod_command": {
@@ -1553,12 +1760,8 @@
                 "str"
             ],
             "arguments": {
-                "node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
-                ]
+                "node": [],
+                "props": []
             }
         },
         "prepare_touchz_command": {
@@ -1568,12 +1771,8 @@
                 "str"
             ],
             "arguments": {
-                "node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
-                ]
+                "node": [],
+                "props": []
             }
         },
         "prepare_chgrp_command": {
@@ -1583,12 +1782,8 @@
                 "str"
             ],
             "arguments": {
-                "node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
-                ]
+                "node": [],
+                "props": []
             }
         },
         "FsMapper.__init__": {
@@ -1600,16 +1795,26 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str",
+                    "List",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "cmk.utils.type_defs.SectionName"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ]
             }
         },
@@ -1637,7 +1842,7 @@
             "name": "to_tasks_and_relations",
             "location": 144,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(list, list)]"
             ],
             "arguments": {
                 "self": []
@@ -1662,13 +1867,21 @@
             "arguments": {
                 "self": [],
                 "index": [
-                    "int"
-                ],
-                "node": [
+                    "int",
+                    "str",
+                    "List[str]",
                     "xml.etree.ElementTree.Element"
                 ],
+                "node": [
+                    "int",
+                    "List[int]",
+                    "bool"
+                ],
                 "operation_nodes_count": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]",
+                    "xml.etree.ElementTree.Element"
                 ]
             }
         }
@@ -1682,16 +1895,30 @@
             ],
             "arguments": {
                 "git_uri": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[Callable[[Any],None]]",
+                    "Callable[Any,None]",
+                    "None"
                 ],
                 "git_branch": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "psycopg2.extensions.connection"
                 ],
                 "destination_path": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[Callable[[Any],None]]",
+                    "Callable[Any,None]",
+                    "None"
                 ],
                 "key_path": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1704,13 +1931,25 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
                     "xml.etree.ElementTree.Element"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "xml.etree.ElementTree.Element"
                 ]
             }
         },
@@ -1728,7 +1967,7 @@
             "name": "to_tasks_and_relations",
             "location": 83,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1755,13 +1994,17 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "name": [
                     "str"
                 ],
+                "name": [
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "xml.etree.ElementTree.Element"
+                ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str"
                 ]
             }
         },
@@ -1779,7 +2022,7 @@
             "name": "to_tasks_and_relations",
             "location": 74,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1822,19 +2065,27 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str",
+                    "Dict"
                 ],
                 "name": [
-                    "str"
-                ],
-                "dag_name": [
-                    "str"
-                ],
-                "props": [
+                    "str",
+                    "xml.etree.ElementTree.Element",
                     "o2a.o2a_libs.property_utils.PropertySet"
                 ],
+                "dag_name": [
+                    "str",
+                    "xml.etree.ElementTree.Element",
+                    "o2a.o2a_libs.property_utils.PropertySet"
+                ],
+                "props": [
+                    "str",
+                    "Dict"
+                ],
                 "jar_files": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -1852,7 +2103,7 @@
             "name": "to_tasks_and_relations",
             "location": 71,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1894,7 +2145,7 @@
             "name": "to_tasks_and_relations",
             "location": 30,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1912,16 +2163,22 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "List",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "List",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str"
                 ]
             }
         },
@@ -1939,7 +2196,7 @@
             "name": "to_tasks_and_relations",
             "location": 57,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -1954,13 +2211,11 @@
             "arguments": {
                 "input_directory_path": [
                     "str",
-                    "TextIO",
-                    "typing.TextIO"
+                    "TextIO"
                 ],
                 "output_directory_path": [
                     "Tuple[str]",
-                    "str",
-                    "tuple[str]"
+                    "str"
                 ]
             }
         },
@@ -1985,13 +2240,17 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
-                ],
-                "name": [
                     "str"
                 ],
+                "name": [
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "xml.etree.ElementTree.Element"
+                ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str"
                 ]
             }
         },
@@ -2009,7 +2268,7 @@
             "name": "to_tasks_and_relations",
             "location": 60,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -2041,10 +2300,13 @@
             "arguments": {
                 "self": [],
                 "input_directory_path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "output_directory_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -2074,13 +2336,11 @@
             "arguments": {
                 "input_directory_path": [
                     "str",
-                    "TextIO",
-                    "typing.TextIO"
+                    "TextIO"
                 ],
                 "output_directory_path": [
                     "Tuple[str]",
-                    "str",
-                    "tuple[str]"
+                    "str"
                 ]
             }
         },
@@ -2105,13 +2365,25 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
                     "xml.etree.ElementTree.Element"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "xml.etree.ElementTree.Element"
                 ]
             }
         },
@@ -2156,13 +2428,16 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "ET.Element"
-                ],
-                "name": [
                     "str"
                 ],
+                "name": [
+                    "str",
+                    "Callable",
+                    "Optional[str]",
+                    "None"
+                ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str"
                 ]
             }
         },
@@ -2184,7 +2459,8 @@
             ],
             "arguments": {
                 "spark_opts_node": [
-                    "ET.Element"
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -2192,7 +2468,7 @@
             "name": "to_tasks_and_relations",
             "location": 112,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -2219,16 +2495,19 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str"
                 ],
                 "name": [
                     "str"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str"
                 ],
                 "template": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "Dict"
                 ]
             }
         },
@@ -2246,7 +2525,11 @@
             "name": "get_host_key",
             "location": 67,
             "return": [
-                "str"
+                "str",
+                "Optional[str]",
+                "bytes",
+                "int",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -2256,7 +2539,7 @@
             "name": "to_tasks_and_relations",
             "location": 77,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -2284,31 +2567,73 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ],
                 "dag_name": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ],
                 "input_directory_path": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ],
                 "output_directory_path": [
                     "str"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ],
                 "action_mapper": [
-                    "Dict[(str, Type[o2a.mappers.action_mapper.ActionMapper])]"
+                    "str",
+                    "bool",
+                    "float",
+                    "List[list[str]]",
+                    "List[List[str]]",
+                    "Sequence[dict[str,str]]",
+                    "int",
+                    "Sequence[Dict[str,str]]"
                 ],
                 "renderer": [
-                    "o2a.converter.renderers.BaseRenderer"
+                    "str",
+                    "bool",
+                    "float",
+                    "List[list[str]]",
+                    "List[List[str]]",
+                    "Sequence[dict[str,str]]",
+                    "int",
+                    "Sequence[Dict[str,str]]"
                 ],
                 "transformers": [
-                    "List[o2a.transformers.base_transformer.BaseWorkflowTransformer]"
+                    "str",
+                    "None",
+                    "bool",
+                    "float",
+                    "List[List[str]]",
+                    "List[list[str]]",
+                    "int",
+                    "Sequence[Dict[str,str]]",
+                    "Sequence[dict[str,str]]"
                 ]
             }
         },
@@ -2326,7 +2651,11 @@
             "name": "get_child_props",
             "location": 92,
             "return": [
-                "o2a.o2a_libs.property_utils.PropertySet"
+                "PropertySet",
+                "bytes",
+                "int",
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -2336,7 +2665,7 @@
             "name": "to_tasks_and_relations",
             "location": 101,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -2364,7 +2693,8 @@
             "arguments": {
                 "self": [],
                 "mapper": [
-                    "o2a.mappers.base_mapper.BaseMapper"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -2392,7 +2722,7 @@
             "name": "parse_prepare_node",
             "location": 51,
             "return": [
-                "Tuple[(List[str], List[str])]"
+                "Tuple[(list, list)]"
             ],
             "arguments": {
                 "self": []
@@ -2408,7 +2738,7 @@
             ],
             "arguments": {
                 "cmd": [
-                    "str"
+                    "Dict"
                 ]
             }
         },
@@ -2432,7 +2762,10 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "List",
+                    "Union[List,str]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -2468,7 +2801,8 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         }
@@ -2482,7 +2816,8 @@
             ],
             "arguments": {
                 "sentence": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -2517,12 +2852,9 @@
             "arguments": {
                 "tree": [
                     "Type",
-                    "str",
-                    "typing.Type"
-                ],
-                "functions_module": [
                     "str"
-                ]
+                ],
+                "functions_module": []
             }
         },
         "_translate_token": {
@@ -2534,10 +2866,10 @@
             "arguments": {
                 "token": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "Type[MutableMapping]",
                     "None",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -2549,11 +2881,11 @@
             ],
             "arguments": {
                 "tree": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "f_mod": [
-                    "str"
+                    "Dict",
+                    "Text"
                 ]
             }
         },
@@ -2576,7 +2908,9 @@
             "arguments": {
                 "tree": [],
                 "fun_mod": [
-                    "str"
+                    "str",
+                    "List[List[Any]]",
+                    "List[list[Any]]"
                 ]
             }
         },
@@ -2584,12 +2918,14 @@
             "name": "_translate_function",
             "location": 264,
             "return": [
-                "str"
+                "str",
+                "Pattern"
             ],
             "arguments": {
                 "tree": [],
                 "f_mod": [
-                    "str"
+                    "Optional[TreeNode]",
+                    "None"
                 ]
             }
         },
@@ -2597,12 +2933,15 @@
             "name": "_translate_el",
             "location": 281,
             "return": [
-                "str"
+                "float",
+                "Union[int,List]",
+                "str",
+                "Mapping"
             ],
             "arguments": {
                 "tree": [],
                 "functions_module": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
@@ -2614,7 +2953,9 @@
             ],
             "arguments": {
                 "sentence": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[int]"
                 ]
             }
         },
@@ -2629,10 +2970,14 @@
                     "str"
                 ],
                 "functions_module": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bytes",
+                    "Callable[[str],bool]"
                 ],
                 "quote": [
-                    "bool"
+                    "bool",
+                    "str"
                 ]
             }
         }
@@ -2646,7 +2991,7 @@
             ],
             "arguments": {
                 "task_map": [
-                    "dict"
+                    "Dict"
                 ]
             }
         },
@@ -2668,7 +3013,7 @@
                     "bool",
                     "str",
                     "List[str]",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -2676,7 +3021,7 @@
             "name": "user",
             "location": 54,
             "return": [
-                "set[str]",
+                "Set[str]",
                 "int",
                 "str",
                 "bool",
@@ -2685,12 +3030,12 @@
             ],
             "arguments": {
                 "context": [
-                    "dict[, ]",
+                    "Dict",
                     "int",
                     "Optional[dict]",
                     "bool",
                     "app.models.User",
-                    "type"
+                    "Type"
                 ]
             }
         },
@@ -2698,18 +3043,17 @@
             "name": "last_error_node",
             "location": 80,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
-                "Union[str, int]",
+                "Union[str,int]",
                 "bool",
                 "topicdb.core.models.language.Language"
             ],
             "arguments": {
                 "context": [
-                    "dict[, ]",
+                    "Dict",
                     "zerver.models.UserProfile",
-                    "core.models.User",
-                    "dict"
+                    "core.models.User"
                 ],
                 "session": [
                     "int",
@@ -2745,7 +3089,7 @@
             "arguments": {
                 "state_variable": [
                     "Optional[Dict]",
-                    "dict[, ]",
+                    "Dict",
                     "bool",
                     "Iterable",
                     "None"
@@ -2760,8 +3104,7 @@
             ],
             "arguments": {
                 "node": [
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         },
@@ -2806,12 +3149,11 @@
             "arguments": {
                 "node": [
                     "bool",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]",
+                    "List[Dict[str,Any]]",
+                    "List",
+                    "List[dict[str,Any]]",
                     "Optional[int]",
-                    "None",
-                    "list",
-                    "list[]"
+                    "None"
                 ]
             }
         },
@@ -2835,8 +3177,7 @@
             ],
             "arguments": {
                 "node": [
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         },
@@ -2848,8 +3189,7 @@
             ],
             "arguments": {
                 "node": [
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         }
@@ -2863,10 +3203,16 @@
             ],
             "arguments": {
                 "str_one": [
-                    "_T0"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "str_two": [
-                    "_T1"
+                    "str",
+                    "int",
+                    "datetime.datetime",
+                    "bool"
                 ]
             }
         },
@@ -2876,8 +3222,8 @@
             "return": [
                 "str",
                 "int",
-                "dict",
-                "Dict[str, str]",
+                "Dict",
+                "Dict[str,str]",
                 "bytes",
                 "bool"
             ],
@@ -2903,8 +3249,8 @@
                 "str",
                 "bytes",
                 "bool",
-                "Dict[str, str]",
-                "Optional[Dict[str, Any]]"
+                "Dict[str,str]",
+                "Optional[Dict[str,Any]]"
             ],
             "arguments": {
                 "src_str": [
@@ -2952,7 +3298,12 @@
             ],
             "arguments": {
                 "py_map": [
-                    "dict"
+                    "Dict",
+                    "str",
+                    "T",
+                    "int",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -2960,11 +3311,22 @@
             "name": "to_properties_str",
             "location": 109,
             "return": [
-                "dict"
+                "Dict",
+                "Dict[str,Any]",
+                "Dict[int,Dict[str,Any]]",
+                "Any",
+                "Exception",
+                "List[Dict]",
+                "None"
             ],
             "arguments": {
                 "py_map": [
-                    "dict"
+                    "Dict",
+                    "Any",
+                    "datetime.timedelta",
+                    "Exception",
+                    "Optional[Exception]",
+                    "None"
                 ]
             }
         },
@@ -2972,11 +3334,20 @@
             "name": "to_configuration_str",
             "location": 116,
             "return": [
-                "dict"
+                "Type",
+                "str",
+                "Dict",
+                "int",
+                "IO"
             ],
             "arguments": {
                 "py_map": [
-                    "dict"
+                    "Dict",
+                    "Type",
+                    "int",
+                    "str",
+                    "IO[str]",
+                    "IO"
                 ]
             }
         },
@@ -2984,14 +3355,18 @@
             "name": "concat",
             "location": 123,
             "return": [
-                "str"
+                "Union[(str, _T0, _T1)]"
             ],
             "arguments": {
                 "str1": [
-                    "str"
+                    "str",
+                    "int",
+                    "AnyStr"
                 ],
                 "str2": [
-                    "str"
+                    "str",
+                    "int",
+                    "AnyStr"
                 ]
             }
         },
@@ -3003,7 +3378,8 @@
             ],
             "arguments": {
                 "src_str": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -3011,15 +3387,17 @@
             "name": "evaluate_function",
             "location": 160,
             "return": [
-                "str"
+                "Type[object]",
+                "str",
+                "Type",
+                "Text"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ],
-                "args": [
-                    "tuple"
-                ]
+                "args": []
             }
         }
     },
@@ -3033,13 +3411,25 @@
             "arguments": {
                 "self": [],
                 "job_properties": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "None",
+                    "Dict[str,str]",
+                    "Optional[Dict[str,str]]"
                 ],
                 "config": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "None",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,str]",
+                    "Dict[str,Any]",
+                    "Dict[str,dict[str,Any]]"
                 ],
                 "action_node_properties": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "None",
+                    "List[str]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]"
                 ]
             }
         },
@@ -3058,7 +3448,7 @@
             "name": "merged",
             "location": 54,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "int",
                 "Callable",
                 "str"
@@ -3081,22 +3471,20 @@
             "name": "__eq__",
             "location": 72,
             "return": [
-                "bool"
+                "bool",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
                 "other": [
                     "int",
-                    "list[str]",
                     "List[str]",
+                    "Type",
                     "None",
-                    "typing.Type",
+                    "Dict[str,str]",
                     "Optional[int]",
-                    "dict[str, str]",
                     "bool",
-                    "type",
-                    "Dict[str, str]",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -3122,10 +3510,20 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "Tuple",
+                    "Tuple[str,str,str]",
+                    "Tuple[Union[str,str,str]]"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "Dict[str,Any]",
+                    "str",
+                    "Dict[str,dict[str,Any]]",
+                    "int",
+                    "Dict[str,Dict[str,Any]]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "Mapping",
+                    "Mapping[str,Any]"
                 ]
             }
         },
@@ -3138,7 +3536,11 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "Dict[str,Any]",
+                    "Union[str,List[Any]]",
+                    "str",
+                    "Iterable[str]",
+                    "List[Any]"
                 ]
             }
         },
@@ -3154,26 +3556,21 @@
                     "o2a.converter.task_group.ControlTaskGroup"
                 ],
                 "workflow": [
-                    "dict[, ]",
-                    "dict",
-                    "list[T]",
+                    "Dict",
+                    "List[T]",
+                    "Dict[str,Any]",
                     "List[google.cloud.tasks_v2.types.task_pb2.Task]",
-                    "typing.Mapping",
+                    "Mapping",
                     "List[asyncio.Task]",
-                    "dict[str, typing.Any]",
-                    "Mapping[str, Any]",
-                    "Dict[str, Any]"
+                    "Mapping[str,Any]"
                 ],
                 "upstream": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "None",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[int, str]",
-                    "dict[, ]",
+                    "Dict",
+                    "Dict[int,str]",
                     "Awaitable",
-                    "dict[int, str]",
-                    "collections.abc.Awaitable[]"
+                    "collections.abc.Awaitable"
                 ]
             }
         },
@@ -3215,13 +3612,10 @@
                 ],
                 "workflow": [
                     "str",
-                    "dict[, ]",
-                    "dict",
-                    "typing.Type",
-                    "type",
-                    "set[str]",
-                    "pc.data.Task",
-                    "Set[str]"
+                    "Dict",
+                    "Type",
+                    "Set[str]",
+                    "pc.data.Task"
                 ]
             }
         },
@@ -3237,10 +3631,9 @@
                 ],
                 "task_name": [
                     "str",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "Dict[str, List[bytes]]",
-                    "dict[str, list[bytes]]"
+                    "Dict[str,str]",
+                    "Dict[str,List[bytes]]",
+                    "Dict[str,list[bytes]]"
                 ],
                 "node_name": [
                     "str"
@@ -3263,8 +3656,7 @@
                 "task_name": [
                     "str",
                     "int",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "node_name": [
                     "str"
@@ -3285,10 +3677,14 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "Dict[str,Any]",
+                    "List",
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -3402,7 +3798,10 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "bool",
+                    "List[str]",
+                    "o2a.converter.workflow.Workflow",
+                    "o2a.o2a_libs.property_utils.PropertySet"
                 ]
             }
         },
@@ -3415,10 +3814,16 @@
             "arguments": {
                 "self": [],
                 "workflow": [
+                    "str",
+                    "List[int]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
                     "o2a.converter.workflow.Workflow"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "List[int]",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "o2a.converter.workflow.Workflow"
                 ]
             }
         }
@@ -3432,9 +3837,7 @@
             ],
             "arguments": {
                 "self": [],
-                "workflow": [
-                    "o2a.converter.workflow.Workflow"
-                ]
+                "workflow": []
             }
         }
     },
@@ -3448,7 +3851,7 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str"
                 ]
             }
         }
@@ -3463,7 +3866,7 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "bool"
                 ]
             }
         },
@@ -3471,11 +3874,15 @@
             "name": "_find_accessible_nodes",
             "location": 41,
             "return": [
-                "dict_values[o2a.converter.oozie_node.OozieNode]"
+                "dict_values"
             ],
             "arguments": {
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "bool",
+                    "List[str]",
+                    "List[list[str]]",
+                    "int",
+                    "List[List[str]]"
                 ]
             }
         },
@@ -3500,7 +3907,8 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "bool",
+                    "int"
                 ]
             }
         }
@@ -3515,7 +3923,7 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str"
                 ]
             }
         }
@@ -3530,7 +3938,10 @@
             "arguments": {
                 "self": [],
                 "workflow": [
-                    "o2a.converter.workflow.Workflow"
+                    "str",
+                    "int",
+                    "Iterator[T]",
+                    "Iterator"
                 ]
             }
         }
@@ -3541,11 +3952,13 @@
             "name": "extract_properties_from_configuration_node",
             "location": 32,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(Any, str)]"
             ],
             "arguments": {
                 "config_node": [
-                    "ET.Element"
+                    "Dict[str, Callable[[], Any]]",
+                    "Callable",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -3553,14 +3966,18 @@
             "name": "extract_properties_from_job_xml_nodes",
             "location": 65,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(Any, str)]"
             ],
             "arguments": {
                 "job_xml_nodes": [
-                    "List[ET.Element]"
+                    "str",
+                    "bool",
+                    "Iterable[str]"
                 ],
                 "input_directory_path": [
-                    "str"
+                    "str",
+                    "int",
+                    "Pattern"
                 ]
             }
         }
@@ -3583,14 +4000,21 @@
             "name": "extract_evaluate_properties",
             "location": 40,
             "return": [
-                "Dict[(str, str)]"
+                "dict"
             ],
             "arguments": {
                 "properties_file": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "Dict[str,str]",
+                    "Iterable[str]",
+                    "bool"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "Dict[str,Any]",
+                    "logging.Logger"
                 ]
             }
         },
@@ -3598,16 +4022,21 @@
             "name": "_evaluate_properties_line",
             "location": 78,
             "return": [
-                "Tuple[(str, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "line": [
                     "str"
                 ],
                 "known_values": [
-                    "dict"
+                    "str",
+                    "int",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "props": [
+                    "str",
+                    "Dict",
                     "o2a.o2a_libs.property_utils.PropertySet"
                 ]
             }
@@ -3616,11 +4045,16 @@
             "name": "comma_separated_string_to_list",
             "location": 97,
             "return": [
-                "Union[(str, List[str])]"
+                "str",
+                "bool",
+                "Optional[str]",
+                "list",
+                "Set[str]"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -3628,14 +4062,23 @@
             "name": "_resolve_name_node",
             "location": 106,
             "return": [
-                "Tuple[(Optional[str], int)]"
+                "Tuple[(Any, int)]"
             ],
             "arguments": {
                 "translation": [
-                    "str"
+                    "str",
+                    "jinja2.Template"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "Container[str]",
+                    "Container",
+                    "bool",
+                    "List",
+                    "Union[List,Dict]",
+                    "Dict"
                 ]
             }
         },
@@ -3643,14 +4086,23 @@
             "name": "normalize_path",
             "location": 119,
             "return": [
-                "str"
+                "str",
+                "Optional[str]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "None",
+                    "bool"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "o2a.o2a_libs.property_utils.PropertySet",
+                    "None",
+                    "Optional[str]"
                 ],
                 "allow_no_schema": [
                     "bool",
@@ -3674,9 +4126,14 @@
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "int"
                 ],
                 "props": [
+                    "str",
+                    "Dict",
                     "o2a.o2a_libs.property_utils.PropertySet"
                 ],
                 "allow_no_schema": [
@@ -3696,7 +4153,9 @@
             ],
             "arguments": {
                 "string_to_escape": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "List[Tuple[int,int]]"
                 ]
             }
         }
@@ -3706,7 +4165,8 @@
             "name": "split_by_hash_sign",
             "location": 43,
             "return": [
-                "List[str]"
+                "List[str]",
+                "str"
             ],
             "arguments": {
                 "path": [
@@ -3723,7 +4183,9 @@
             "arguments": {
                 "self": [],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -3735,7 +4197,8 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -3743,7 +4206,8 @@
             "name": "preprocess_path_to_hdfs",
             "location": 37,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": [],
@@ -3761,10 +4225,18 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "List[Dict[str,Any]]",
+                    "List[int]",
+                    "List[dict[str,Any]]",
+                    "List[T]",
+                    "List",
+                    "str"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "Optional[Tuple[str,...]]",
+                    "Tuple[Union[str,...]]",
+                    "None"
                 ]
             }
         },
@@ -3772,7 +4244,7 @@
             "name": "parse_node",
             "location": 67,
             "return": [
-                "Tuple[(List[str], List[str])]"
+                "Tuple[(list, list)]"
             ],
             "arguments": {
                 "self": []
@@ -3787,7 +4259,8 @@
             "arguments": {
                 "self": [],
                 "oozie_file_path": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -3800,10 +4273,15 @@
             "arguments": {
                 "self": [],
                 "oozie_node": [
-                    "xml.etree.ElementTree.Element"
+                    "List[Dict[str,Any]]",
+                    "List[int]",
+                    "List[dict[str,Any]]",
+                    "List[T]",
+                    "List",
+                    "str"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str"
                 ]
             }
         },
@@ -3811,7 +4289,7 @@
             "name": "parse_node",
             "location": 101,
             "return": [
-                "Tuple[(List[str], List[str])]"
+                "Tuple[(list, list)]"
             ],
             "arguments": {
                 "self": []
@@ -3821,7 +4299,7 @@
             "name": "_check_archive_extensions",
             "location": 109,
             "return": [
-                "List[str]"
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -3839,6 +4317,7 @@
             "arguments": {
                 "self": [],
                 "oozie_archive_path": [
+                    "bytes",
                     "str"
                 ]
             }
@@ -3849,7 +4328,7 @@
             "name": "get_lib_files",
             "location": 21,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "library_folder_path": [
@@ -3871,10 +4350,10 @@
             "arguments": {
                 "oozie_node": [
                     "str",
-                    "typing.Callable[str, None]",
+                    "Callable[str,None]",
                     "xml.etree.ElementTree.Element",
                     "o2a.o2a_libs.property_utils.PropertySet",
-                    "Callable[[str], None]"
+                    "Callable[[str],None]"
                 ]
             }
         }
@@ -3889,9 +4368,8 @@
             "arguments": {
                 "serializable_obj": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -3899,7 +4377,7 @@
             "name": "serialize_recursively",
             "location": 40,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -3923,11 +4401,13 @@
             "name": "chain",
             "location": 23,
             "return": [
-                "List[o2a.converter.relation.Relation]"
+                "list"
             ],
             "arguments": {
                 "ops": [
-                    "Sequence[o2a.converter.task.Task]"
+                    "str",
+                    "bool",
+                    "Mapping[str,Any]"
                 ]
             }
         }
@@ -3937,7 +4417,7 @@
             "name": "render_template",
             "location": 36,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "template_name": [
@@ -3965,18 +4445,16 @@
             "name": "find_node_by_name",
             "location": 29,
             "return": [
-                "ET.Element"
+                "str"
             ],
             "arguments": {
                 "root": [
-                    "dict",
+                    "Dict",
                     "bool",
-                    "dict[, ]",
                     "str",
-                    "Optional[int]",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "Optional[int]",
+                    "None"
                 ],
                 "name": [
                     "str"
@@ -3995,20 +4473,18 @@
                     "Optional[str]",
                     "bool",
                     "None",
-                    "Optional[Dict[str, str]]",
-                    "dict[str, str]",
                     "List[str]",
-                    "list[str]"
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]"
                 ],
                 "tag": [
                     "str",
                     "Optional[str]",
                     "bool",
                     "None",
-                    "Optional[Dict[str, str]]",
-                    "dict[str, str]",
                     "List[str]",
-                    "list[str]"
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -4033,37 +4509,33 @@
             "name": "find_nodes_by_attribute",
             "location": 69,
             "return": [
-                "List[ET.Element]"
+                "list"
             ],
             "arguments": {
                 "root": [
-                    "typing.Container",
+                    "Container",
                     "T",
                     "int",
+                    "Dict",
                     "str",
-                    "Container[T]",
-                    "dict[, ]",
-                    "dict"
+                    "Container[T]"
                 ],
                 "attr": [
                     "bool",
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "val": [
                     "bool",
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "tag": [
                     "T",
                     "None",
                     "int",
                     "Container[T]",
-                    "typing.Container",
-                    "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "Container",
+                    "str"
                 ]
             }
         },
@@ -4071,17 +4543,38 @@
             "name": "get_tag_el_text",
             "location": 89,
             "return": [
-                "Optional[str]"
+                "Union[(str, _T2)]"
             ],
             "arguments": {
                 "root": [
-                    "ET.Element"
+                    "str",
+                    "Optional[str]",
+                    "List[str]",
+                    "None",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]",
+                    "Tuple[Set[str],Set[str]]",
+                    "Tuple[Union[set[str],set[str]]]"
                 ],
                 "tag": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "List[str]",
+                    "None",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]",
+                    "Tuple[Set[str],Set[str]]",
+                    "Tuple[Union[set[str],set[str]]]"
                 ],
                 "default": [
-                    "str"
+                    "str",
+                    "None",
+                    "float",
+                    "Optional[str]",
+                    "int",
+                    "Iterable[dict]",
+                    "Iterable[Dict]",
+                    "bool"
                 ]
             }
         },
@@ -4093,10 +4586,16 @@
             ],
             "arguments": {
                 "root": [
-                    "ET.Element"
+                    "Iterable[str]",
+                    "str",
+                    "bool",
+                    "Dict[str,Dict]"
                 ],
                 "tag": [
-                    "str"
+                    "Iterable[str]",
+                    "str",
+                    "bool",
+                    "Dict[str,Dict]"
                 ]
             }
         }
@@ -4107,14 +4606,24 @@
             "name": "mutate",
             "location": 33,
             "return": [
-                "Dict[(str, Any)]"
+                "bool",
+                "Dict",
+                "Optional[Union[str,Any]]",
+                "Dict[Union[int,str],Union[int,str]]",
+                "List"
             ],
             "arguments": {
                 "parent": [
-                    "Dict[(str, Any)]"
+                    "Dict",
+                    "Optional[str]"
                 ],
                 "mutations": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Dict[str,int]",
+                    "Dict[str,str]",
+                    "Mapping[str,str]",
+                    "bool"
                 ]
             }
         },
@@ -4122,14 +4631,12 @@
             "name": "get_value_by_path",
             "location": 69,
             "return": [
+                "Dict",
                 "str",
-                "dict[, ]",
-                "dict[str, typing.Any]",
-                "dict",
-                "Mapping[str, Any]",
+                "Dict[str,Any]",
+                "Mapping[str,Any]",
                 "bool",
-                "Dict[str, Any]",
-                "Iterable[Tuple[str, str]]"
+                "Iterable[Tuple[str,str]]"
             ],
             "arguments": {
                 "target": [
@@ -4137,7 +4644,8 @@
                     "bool"
                 ],
                 "path": [
-                    "List[Union[(int, str)]]"
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -4152,7 +4660,7 @@
                     "str"
                 ],
                 "path": [
-                    "List[Union[(int, str)]]"
+                    "str"
                 ],
                 "value": [
                     "str"
@@ -4173,7 +4681,6 @@
             "name": "test_escape_character",
             "location": 199,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4197,7 +4704,6 @@
             "name": "test_escape_character",
             "location": 215,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4221,7 +4727,6 @@
             "name": "test_escape_character",
             "location": 243,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4245,7 +4750,6 @@
             "name": "test_optional_parameters",
             "location": 275,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4259,7 +4763,6 @@
             "name": "test_escape_character",
             "location": 281,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4283,7 +4786,6 @@
             "name": "test_optional_parameters",
             "location": 307,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4297,7 +4799,6 @@
             "name": "test_escape_character",
             "location": 324,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4321,7 +4822,6 @@
             "name": "test_escape_character",
             "location": 340,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4345,7 +4845,6 @@
             "name": "test_optional_parameters",
             "location": 372,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4359,7 +4858,6 @@
             "name": "test_escape_character",
             "location": 386,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4383,7 +4881,6 @@
             "name": "test_optional_parameters",
             "location": 411,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4397,7 +4894,6 @@
             "name": "test_escape_character",
             "location": 427,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4421,7 +4917,6 @@
             "name": "test_escape_character",
             "location": 451,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4445,7 +4940,6 @@
             "name": "test_escape_character",
             "location": 479,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4469,7 +4963,6 @@
             "name": "test_optional_parameters",
             "location": 519,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4483,7 +4976,6 @@
             "name": "test_escape_character",
             "location": 534,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4507,7 +4999,6 @@
             "name": "test_optional_parameters",
             "location": 558,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4521,7 +5012,6 @@
             "name": "test_escape_character",
             "location": 574,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4545,7 +5035,6 @@
             "name": "test_escape_character",
             "location": 592,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4602,7 +5091,6 @@
             "name": "walk_recursively_and_mutate",
             "location": 148,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4640,7 +5128,6 @@
             "name": "test_convert",
             "location": 54,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4652,7 +5139,6 @@
             "name": "test_convert_as_subworkflow",
             "location": 71,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4736,18 +5222,18 @@
             ],
             "arguments": {
                 "nodes": [
-                    "Dict[str, taskiapplication.models.task.Task]",
+                    "Dict[str,taskiapplication.models.task.Task]",
                     "None",
                     "bool",
                     "medtagger.database.models.Task",
-                    "dict[str, T]"
+                    "Dict[str,T]"
                 ],
                 "task_groups": [
-                    "Dict[str, taskiapplication.models.task.Task]",
+                    "Dict[str,taskiapplication.models.task.Task]",
                     "None",
                     "bool",
                     "medtagger.database.models.Task",
-                    "dict[str, T]"
+                    "Dict[str,T]"
                 ]
             }
         },
@@ -4788,7 +5274,6 @@
             "name": "test_create_workflow_file_should_create_file",
             "location": 54,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4799,46 +5284,38 @@
                 "render_template_mock": [
                     "bool",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]",
-                    "list[str]",
                     "List[str]",
-                    "dict[str, P]",
+                    "Dict[str,P]",
                     "pathlib.Path",
-                    "Dict[str, cerulean.Path]"
+                    "Dict[str,cerulean.Path]"
                 ],
                 "sort_file_moc": [
                     "bool",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]",
-                    "list[str]",
                     "List[str]",
-                    "dict[str, P]",
+                    "Dict[str,P]",
                     "pathlib.Path",
-                    "Dict[str, cerulean.Path]"
+                    "Dict[str,cerulean.Path]"
                 ],
                 "fix_file_mock": [
                     "bool",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]",
-                    "list[str]",
                     "List[str]",
-                    "dict[str, P]",
+                    "Dict[str,P]",
                     "pathlib.Path",
-                    "Dict[str, cerulean.Path]"
+                    "Dict[str,cerulean.Path]"
                 ],
                 "black_mock": [
                     "bool",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]",
-                    "list[str]",
                     "List[str]",
-                    "dict[str, P]",
+                    "Dict[str,P]",
                     "pathlib.Path",
-                    "Dict[str, cerulean.Path]"
+                    "Dict[str,cerulean.Path]"
                 ]
             }
         },
@@ -4846,7 +5323,6 @@
             "name": "test_create_workflow_file_should_render_template",
             "location": 70,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4854,9 +5330,8 @@
                 "open_mock": [
                     "bool",
                     "pathlib.Path",
-                    "str",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "str"
                 ],
                 "render_template_mock": [
                     "str",
@@ -4866,23 +5341,20 @@
                 "sort_file_moc": [
                     "bool",
                     "pathlib.Path",
-                    "str",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "str"
                 ],
                 "fix_file_mock": [
                     "bool",
                     "pathlib.Path",
-                    "str",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "str"
                 ],
                 "black_mock": [
                     "bool",
                     "pathlib.Path",
-                    "str",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "str"
                 ]
             }
         },
@@ -4890,7 +5362,6 @@
             "name": "test_create_subworkflow_file_should_be_render_template_with_different_template",
             "location": 97,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4899,7 +5370,6 @@
                     "bool",
                     "pathlib.Path",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]"
                 ],
                 "render_template_mock": [],
@@ -4907,21 +5377,18 @@
                     "bool",
                     "pathlib.Path",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]"
                 ],
                 "fix_file_mock": [
                     "bool",
                     "pathlib.Path",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]"
                 ],
                 "black_mock": [
                     "bool",
                     "pathlib.Path",
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]"
                 ]
             }
@@ -4930,7 +5397,6 @@
             "name": "test_create_workflow_file_should_format_file",
             "location": 123,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4973,7 +5439,6 @@
             "name": "test_create_workflow_file_should_create_file",
             "location": 173,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4988,7 +5453,6 @@
             "name": "test_create_workflow_file_should_render_template",
             "location": 184,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5004,7 +5468,6 @@
             "name": "test_create_subworkflow_file_should_be_render_template_with_the_same_template",
             "location": 200,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5127,7 +5590,6 @@
             "name": "test_parse_kill_node",
             "location": 47,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5139,7 +5601,6 @@
             "name": "test_parse_end_node",
             "location": 62,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5151,7 +5612,6 @@
             "name": "test_parse_fork_node",
             "location": 76,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5164,7 +5624,6 @@
             "name": "test_parse_join_node",
             "location": 104,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5176,7 +5635,6 @@
             "name": "test_parse_decision_node",
             "location": 119,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5188,7 +5646,6 @@
             "name": "test_parse_start_node",
             "location": 142,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5201,7 +5658,6 @@
             "name": "test_parse_action_node_ssh",
             "location": 158,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5233,7 +5689,6 @@
             "name": "test_parse_action_node_unknown",
             "location": 238,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5245,7 +5700,6 @@
             "name": "test_parse_node_action",
             "location": 265,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5257,7 +5711,6 @@
             "name": "test_parse_node_start",
             "location": 272,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5269,7 +5722,6 @@
             "name": "test_parse_node_kill",
             "location": 279,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5281,7 +5733,6 @@
             "name": "test_parse_node_end",
             "location": 286,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5293,7 +5744,6 @@
             "name": "test_parse_node_fork",
             "location": 293,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5305,7 +5755,6 @@
             "name": "test_parse_node_join",
             "location": 300,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5317,7 +5766,6 @@
             "name": "test_parse_node_decision",
             "location": 307,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5329,19 +5777,17 @@
             "name": "test_parse_workflow_examples",
             "location": 527,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "case": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "_": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         }
@@ -5352,7 +5798,7 @@
             "name": "to_tasks_and_relations",
             "location": 33,
             "return": [
-                "Tuple[(List[o2a.converter.task.Task], List[o2a.converter.relation.Relation])]"
+                "Tuple[(List[o2a.converter.task.Task], List[nothing])]"
             ],
             "arguments": {
                 "self": []
@@ -5402,7 +5848,6 @@
             "name": "test_parse_job_xml_and_configuration_minimal_green_path",
             "location": 83,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5417,7 +5862,6 @@
             "name": "test_parse_job_xml_and_configuration_minimal_green_path_precedense",
             "location": 119,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5432,7 +5876,6 @@
             "name": "test_parse_job_xml_and_configuration_minimal_green_path_without_job_xml",
             "location": 154,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5449,10 +5892,15 @@
             ],
             "arguments": {
                 "action_node": [
-                    "ET.Element"
+                    "bool",
+                    "xml.etree.ElementTree.Element",
+                    "Iterable[str]",
+                    "str"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "Type",
+                    "str",
+                    "None"
                 ]
             }
         }
@@ -5602,13 +6050,19 @@
             ],
             "arguments": {
                 "distcp_node": [
-                    "ET.Element"
+                    "str",
+                    "Sequence[str]",
+                    "bool"
                 ],
                 "job_properties": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Sequence[str]",
+                    "bool"
                 ],
                 "config": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Sequence[str]",
+                    "bool"
                 ]
             }
         },
@@ -5868,25 +6322,20 @@
             "name": "test_prepare_mkdir_command",
             "location": 46,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "xml": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]",
-                    "TextIO",
-                    "typing.TextIO"
+                    "int",
+                    "TextIO"
                 ],
                 "command": [
                     "IO",
                     "str",
-                    "typing.IO",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -5894,7 +6343,6 @@
             "name": "test_prepare_delete_command",
             "location": 67,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5902,16 +6350,13 @@
                 "xml": [
                     "str",
                     "List[str]",
-                    "bool",
-                    "list[str]",
                     "TextIO",
-                    "typing.TextIO"
+                    "bool"
                 ],
                 "command": [
                     "str",
-                    "typing.Callable[, ]",
-                    "xml.etree.ElementTree.Element",
-                    "Callable"
+                    "Callable",
+                    "xml.etree.ElementTree.Element"
                 ]
             }
         },
@@ -5919,25 +6364,20 @@
             "name": "test_prepare_move_command",
             "location": 95,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "xml": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]",
-                    "TextIO",
-                    "typing.TextIO"
+                    "int",
+                    "TextIO"
                 ],
                 "command": [
                     "IO",
                     "str",
-                    "typing.IO",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -5945,25 +6385,20 @@
             "name": "test_prepare_chmod_command",
             "location": 129,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "xml": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]",
-                    "TextIO",
-                    "typing.TextIO"
+                    "int",
+                    "TextIO"
                 ],
                 "command": [
                     "IO",
                     "str",
-                    "typing.IO",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -5971,25 +6406,20 @@
             "name": "test_prepare_touchz_command",
             "location": 150,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "xml": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]",
-                    "TextIO",
-                    "typing.TextIO"
+                    "int",
+                    "TextIO"
                 ],
                 "command": [
                     "IO",
                     "str",
-                    "typing.IO",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -5997,25 +6427,20 @@
             "name": "test_prepare_chgrp_command",
             "location": 171,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "xml": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]",
-                    "TextIO",
-                    "typing.TextIO"
+                    "int",
+                    "TextIO"
                 ],
                 "command": [
                     "IO",
                     "str",
-                    "typing.IO",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -6402,24 +6827,29 @@
                 "job_properties": [
                     "bool",
                     "str",
-                    "Optional[str]",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "config": [
                     "bool",
                     "str",
-                    "Optional[str]",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "single_opts": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "List[str]"
                 ],
                 "jar_files": [
-                    "List[str]"
+                    "bool",
+                    "None",
+                    "str",
+                    "List[str]",
+                    "Optional[str]"
                 ]
             }
         }
@@ -6664,18 +7094,14 @@
             "arguments": {
                 "self": [],
                 "job_properties": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "config": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -6810,11 +7236,10 @@
             "arguments": {
                 "cls": [
                     "float",
+                    "Dict",
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Tuple[bytes, bytes]",
-                    "tuple[typing.Union[bytes,bytes]]"
+                    "Tuple[bytes,bytes]",
+                    "Tuple[Union[bytes,bytes]]"
                 ]
             }
         },
@@ -6832,7 +7257,6 @@
             "name": "test_create_mapper_jinja",
             "location": 70,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6840,8 +7264,8 @@
                 "parse_els": [
                     "int",
                     "float",
-                    "Tuple[float, float, float, float, float]",
-                    "tuple[typing.Union[float,float,float,float,float]]"
+                    "Tuple[float,float,float,float,float]",
+                    "Tuple[Union[float,float,float,float,float]]"
                 ]
             }
         },
@@ -6849,14 +7273,13 @@
             "name": "test_create_mapper_jinja_no_propagate",
             "location": 86,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "parse_els": [
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -6864,7 +7287,6 @@
             "name": "test_to_tasks_and_relations",
             "location": 105,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6872,8 +7294,7 @@
                 "parse_els": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -6908,10 +7329,12 @@
             ],
             "arguments": {
                 "node": [
-                    "ET.Element"
+                    "str",
+                    "xml.etree.ElementTree.Element"
                 ],
                 "props": [
-                    "o2a.o2a_libs.property_utils.PropertySet"
+                    "str",
+                    "xml.etree.ElementTree.Element"
                 ]
             }
         },
@@ -6952,7 +7375,6 @@
             "name": "test_pig_job_executor_success",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6964,7 +7386,6 @@
             "name": "test_pig_job_executor_fail",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6976,7 +7397,6 @@
             "name": "test_exists",
             "location": 46,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6988,7 +7408,6 @@
             "name": "test_is_dir",
             "location": 57,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7000,7 +7419,6 @@
             "name": "test_dir_size",
             "location": 68,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7012,7 +7430,6 @@
             "name": "test_file_size",
             "location": 79,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7024,14 +7441,13 @@
             "name": "test_block_size",
             "location": 90,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "mock_pipe": [
-                    "Dict[str, Dict[str, str]]",
-                    "dict[str, dict[str, str]]"
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,dict[str,str]]"
                 ]
             }
         }
@@ -7041,7 +7457,6 @@
             "name": "test_translations",
             "location": 135,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7058,7 +7473,6 @@
             "name": "test_rendering",
             "location": 172,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7081,7 +7495,6 @@
             "name": "test_error_rendering",
             "location": 199,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7102,7 +7515,6 @@
             "name": "test_first_not_null",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7111,25 +7523,19 @@
                     "str",
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "Sequence[int]",
-                    "typing.Sequence[int]"
+                    "Sequence[int]"
                 ],
                 "str_one": [
                     "str",
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "Sequence[int]",
-                    "typing.Sequence[int]"
+                    "Sequence[int]"
                 ],
                 "str_two": [
                     "str",
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "Sequence[int]",
-                    "typing.Sequence[int]"
+                    "Sequence[int]"
                 ]
             }
         },
@@ -7137,7 +7543,6 @@
             "name": "test_concat",
             "location": 50,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7146,25 +7551,19 @@
                     "str",
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "Sequence[int]",
-                    "typing.Sequence[int]"
+                    "Sequence[int]"
                 ],
                 "str_one": [
                     "str",
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "Sequence[int]",
-                    "typing.Sequence[int]"
+                    "Sequence[int]"
                 ],
                 "str_two": [
                     "str",
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "Sequence[int]",
-                    "typing.Sequence[int]"
+                    "Sequence[int]"
                 ]
             }
         },
@@ -7172,7 +7571,6 @@
             "name": "test_replace_all",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7199,7 +7597,6 @@
             "name": "test_append_all",
             "location": 75,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7222,7 +7619,6 @@
             "name": "test_trim",
             "location": 79,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7235,7 +7631,6 @@
             "name": "test_urlencode",
             "location": 83,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7248,7 +7643,6 @@
             "name": "test_to_json_str",
             "location": 87,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7320,7 +7714,6 @@
             "name": "test_required_parameters",
             "location": 122,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7342,12 +7735,10 @@
             "arguments": {
                 "self": [],
                 "command": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
-                    "typing.Pattern",
-                    "Iterable[str]",
-                    "Pattern"
+                    "Pattern",
+                    "Iterable[str]"
                 ],
                 "dir_name": [
                     "str",
@@ -7364,15 +7755,12 @@
             "arguments": {
                 "self": [],
                 "command": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
+                    "Dict[str,str]",
                     "str",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "typing.Pattern",
+                    "Pattern",
                     "Iterable[str]",
                     "None",
-                    "Pattern",
                     "Optional[str]"
                 ],
                 "dir_name": [
@@ -7405,7 +7793,6 @@
             "name": "test_required_parameters",
             "location": 102,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7461,13 +7848,13 @@
                 ],
                 "traceback": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "Optional[BaseException]",
                     "None",
                     "Optional[Type[BaseException]]",
                     "BaseException",
                     "Optional[Exception]",
-                    "typing.Type",
+                    "Type",
                     "Exception"
                 ]
             }
@@ -7511,9 +7898,8 @@
             "arguments": {
                 "command": [
                     "str",
-                    "bool",
-                    "list",
-                    "list[]"
+                    "List",
+                    "bool"
                 ]
             }
         }
@@ -7943,7 +8329,6 @@
             "name": "test_extract_properties_from_job_xml_nodes_minimal_green_path",
             "location": 156,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7955,7 +8340,6 @@
             "name": "test_extract_properties_from_job_xml_nodes_should_parse_multie_elements",
             "location": 193,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8347,24 +8731,19 @@
             "name": "test_should_replace_invalid_characters_to_underscore",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "input_text": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "expected_output": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },

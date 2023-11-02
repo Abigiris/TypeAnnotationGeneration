@@ -4,12 +4,10 @@
             "name": "is_package",
             "location": 72,
             "return": [
-                "str"
+                "bool"
             ],
             "arguments": {
-                "module": [
-                    "str"
-                ]
+                "module": []
             }
         },
         "get_path_to_stubfile": {
@@ -30,15 +28,9 @@
                 "pathlib.Path"
             ],
             "arguments": {
-                "module": [
-                    "str"
-                ],
-                "config": [
-                    "typeline.postgres.config.PostgresConfig"
-                ],
-                "output_dir": [
-                    "str"
-                ],
+                "module": [],
+                "config": [],
+                "output_dir": [],
                 "line_length": [],
                 "suppress_errors": [],
                 "limit_rows": []
@@ -80,36 +72,30 @@
             "name": "module_path",
             "location": 38,
             "return": [
-                "Tuple[(str, Optional[str])]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
-                "path": [
-                    "str"
-                ]
+                "path": []
             }
         },
         "module_path_with_qualname": {
             "name": "module_path_with_qualname",
             "location": 51,
             "return": [
-                "Tuple[(str, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
-                "path": [
-                    "str"
-                ]
+                "path": []
             }
         },
         "monkeytype_config": {
             "name": "monkeytype_config",
             "location": 59,
             "return": [
-                "typeline.config.Config"
+                "Any"
             ],
             "arguments": {
-                "path": [
-                    "str"
-                ]
+                "path": []
             }
         },
         "display_sample_count": {
@@ -119,45 +105,31 @@
                 "None"
             ],
             "arguments": {
-                "traces": [
-                    "List[typeline.tracing.CallTrace]"
-                ],
-                "stderr": [
-                    "IO"
-                ]
+                "traces": [],
+                "stderr": []
             }
         },
         "get_stub": {
             "name": "get_stub",
             "location": 86,
             "return": [
-                "Optional[typeline.stubs.Stub]"
+                "Any"
             ],
             "arguments": {
-                "args": [
-                    "argparse.Namespace"
-                ],
-                "stdout": [
-                    "IO"
-                ],
-                "stderr": [
-                    "IO"
-                ]
+                "args": [],
+                "stdout": [],
+                "stderr": []
             }
         },
         "generate_stub_for_module": {
             "name": "generate_stub_for_module",
             "location": 111,
             "return": [
-                "Optional[typeline.stubs.Stub]"
+                "Optional[typeline.stubs.ModuleStub]"
             ],
             "arguments": {
-                "config": [
-                    "typeline.postgres.config.PostgresConfig"
-                ],
-                "module": [
-                    "str"
-                ],
+                "config": [],
+                "module": [],
                 "suppress_errors": [],
                 "stderr": [],
                 "limit_rows": [],
@@ -171,15 +143,9 @@
                 "None"
             ],
             "arguments": {
-                "args": [
-                    "argparse.Namespace"
-                ],
-                "stdout": [
-                    "IO"
-                ],
-                "stderr": [
-                    "IO"
-                ]
+                "args": [],
+                "stdout": [],
+                "stderr": []
             }
         },
         "update_args_from_config": {
@@ -189,9 +155,7 @@
                 "None"
             ],
             "arguments": {
-                "args": [
-                    "argparse.Namespace"
-                ]
+                "args": []
             }
         },
         "main": {
@@ -201,15 +165,9 @@
                 "int"
             ],
             "arguments": {
-                "argv": [
-                    "List[str]"
-                ],
-                "stdout": [
-                    "IO"
-                ],
-                "stderr": [
-                    "IO"
-                ]
+                "argv": [],
+                "stdout": [],
+                "stderr": []
             }
         },
         "entry_point_main": {
@@ -229,12 +187,8 @@
                 "bool"
             ],
             "arguments": {
-                "a": [
-                    "pathlib.Path"
-                ],
-                "b": [
-                    "pathlib.Path"
-                ]
+                "a": [],
+                "b": []
             }
         },
         "default_code_filter": {
@@ -249,7 +203,7 @@
             "name": "get_default_config",
             "location": 155,
             "return": [
-                "Config"
+                "Any"
             ],
             "arguments": {}
         },
@@ -257,7 +211,7 @@
             "name": "trace_store",
             "location": 41,
             "return": [
-                "typeline.db.base.CallTraceStore"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -276,7 +230,7 @@
             "name": "trace_logger",
             "location": 55,
             "return": [
-                "typeline.tracing.CallTraceLogger"
+                "typeline.db.base.CallTraceStoreLogger"
             ],
             "arguments": {
                 "self": []
@@ -286,7 +240,7 @@
             "name": "code_filter",
             "location": 63,
             "return": [
-                "Optional[Callable[([types.CodeType], bool)]]"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -296,7 +250,7 @@
             "name": "sample_rate",
             "location": 72,
             "return": [
-                "Optional[int]"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -306,7 +260,7 @@
             "name": "type_rewriter",
             "location": 80,
             "return": [
-                "typeline.typing.TypeRewriter"
+                "typeline.typing.NoOpRewriter"
             ],
             "arguments": {
                 "self": []
@@ -336,7 +290,7 @@
             "name": "type_rewriter",
             "location": 138,
             "return": [
-                "typeline.typing.TypeRewriter"
+                "typeline.typing.ChainedRewriter"
             ],
             "arguments": {
                 "self": []
@@ -346,7 +300,7 @@
             "name": "trace_store",
             "location": 141,
             "return": [
-                "typeline.db.base.CallTraceStore"
+                "typeline.db.sqlite.SQLiteStore"
             ],
             "arguments": {
                 "self": []
@@ -356,7 +310,7 @@
             "name": "code_filter",
             "location": 150,
             "return": [
-                "Callable[([types.CodeType], bool)]"
+                "functools._lru_cache_wrapper"
             ],
             "arguments": {
                 "self": []
@@ -368,24 +322,20 @@
             "name": "type_to_dict",
             "location": 52,
             "return": [
-                "typing.Any"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "type_from_dict": {
             "name": "type_from_dict",
             "location": 87,
             "return": [
-                "type"
+                "Any"
             ],
             "arguments": {
-                "d": [
-                    "typing.Any"
-                ]
+                "d": []
             }
         },
         "type_to_json": {
@@ -395,21 +345,17 @@
                 "str"
             ],
             "arguments": {
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "type_from_json": {
             "name": "type_from_json",
             "location": 120,
             "return": [
-                "type"
+                "Any"
             ],
             "arguments": {
-                "typ_json": [
-                    "str"
-                ]
+                "typ_json": []
             }
         },
         "arg_types_to_json": {
@@ -419,63 +365,49 @@
                 "str"
             ],
             "arguments": {
-                "arg_types": [
-                    "typing.Any"
-                ]
+                "arg_types": []
             }
         },
         "arg_types_from_json": {
             "name": "arg_types_from_json",
             "location": 135,
             "return": [
-                "typing.Any"
+                "dict"
             ],
             "arguments": {
-                "arg_types": [
-                    "str"
-                ]
+                "arg_types": []
             }
         },
         "maybe_encode_type": {
             "name": "maybe_encode_type",
             "location": 146,
             "return": [
-                "typing.Any"
+                "Any"
             ],
             "arguments": {
-                "encode": [
-                    "typing.Any"
-                ],
-                "typ": [
-                    "typing.Any"
-                ]
+                "encode": [],
+                "typ": []
             }
         },
         "maybe_decode_type": {
             "name": "maybe_decode_type",
             "location": 155,
             "return": [
-                "typing.Any"
+                "Any"
             ],
             "arguments": {
-                "decode": [
-                    "typing.Any"
-                ],
-                "encoded": [
-                    "typing.Any"
-                ]
+                "decode": [],
+                "encoded": []
             }
         },
         "serialize_traces": {
             "name": "serialize_traces",
             "location": 233,
             "return": [
-                "typing.Any"
+                "Generator[(CallTraceRow, Any, builtins.NoneType)]"
             ],
             "arguments": {
-                "traces": [
-                    "typing.Any"
-                ]
+                "traces": []
             }
         },
         "ClassPropsTraceRow.__init__": {
@@ -486,15 +418,9 @@
             ],
             "arguments": {
                 "self": [],
-                "module": [
-                    "str"
-                ],
-                "qualname": [
-                    "str"
-                ],
-                "props": [
-                    "typing.Any"
-                ]
+                "module": [],
+                "qualname": [],
+                "props": []
             }
         },
         "ClassPropsTraceRow.to_trace": {
@@ -515,36 +441,24 @@
             ],
             "arguments": {
                 "self": [],
-                "module": [
-                    "str"
-                ],
-                "qualname": [
-                    "str"
-                ],
-                "arg_types": [
-                    "str"
-                ],
-                "return_type": [
-                    "typing.Any"
-                ],
-                "yield_type": [
-                    "typing.Any"
-                ]
+                "module": [],
+                "qualname": [],
+                "arg_types": [],
+                "return_type": [],
+                "yield_type": []
             }
         },
         "CallTraceRow.from_trace": {
             "name": "from_trace",
             "location": 196,
             "return": [
-                "typing.Any"
+                "_TCallTraceRow@@CallTraceRow@@"
             ],
             "arguments": {
                 "cls": [
-                    "typing.Any"
+                    "Type[_TCallTraceRow]"
                 ],
-                "trace": [
-                    "typeline.tracing.CallTrace"
-                ]
+                "trace": []
             }
         },
         "CallTraceRow.to_trace": {
@@ -565,9 +479,7 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "object"
-                ]
+                "other": []
             }
         }
     },
@@ -596,7 +508,7 @@
             ],
             "arguments": {
                 "src": [
-                    "_T0"
+                    "_T0@@"
                 ],
                 "pyi_dir": [],
                 "targets": []
@@ -715,9 +627,7 @@
                 "pytree.Node"
             ],
             "arguments": {
-                "arg_names": [
-                    "List[str]"
-                ]
+                "arg_names": []
             }
         },
         "get_funcdef_node": {
@@ -727,15 +637,9 @@
                 "pytree.Node"
             ],
             "arguments": {
-                "funcname": [
-                    "str"
-                ],
-                "args": [
-                    "List[str]"
-                ],
-                "decorators": [
-                    "List[str]"
-                ],
+                "funcname": [],
+                "args": [],
+                "decorators": [],
                 "indentation_level": []
             }
         },
@@ -1047,9 +951,7 @@
                 "None"
             ],
             "arguments": {
-                "parameters": [
-                    "pytree.Node"
-                ],
+                "parameters": [],
                 "ast_args": []
             }
         },
@@ -1069,7 +971,7 @@
             "name": "get_function_signature",
             "location": 1135,
             "return": [
-                "Tuple[(Any, ast3.Name)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "fun": []
@@ -1140,12 +1042,12 @@
             "name": "maybe_replace_any_if_equal",
             "location": 1297,
             "return": [
-                "_T1"
+                "_T1@@"
             ],
             "arguments": {
                 "name": [],
                 "expected": [
-                    "_T1"
+                    "_T1@@"
                 ],
                 "actual": []
             }
@@ -1200,7 +1102,7 @@
             ],
             "arguments": {
                 "text": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -1303,7 +1205,7 @@
             ],
             "arguments": {
                 "n": [
-                    "_T0"
+                    "_T0@@"
                 ],
                 "prefix": []
             }
@@ -1328,12 +1230,10 @@
             "name": "_get_import_for_qualname",
             "location": 135,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "qualname": [
-                    "str"
-                ]
+                "qualname": []
             }
         },
         "get_imports_for_annotation": {
@@ -1343,9 +1243,7 @@
                 "ImportMap"
             ],
             "arguments": {
-                "anno": [
-                    "typing.Any"
-                ]
+                "anno": []
             }
         },
         "get_imports_for_signature": {
@@ -1355,9 +1253,7 @@
                 "ImportMap"
             ],
             "arguments": {
-                "sig": [
-                    "inspect.Signature"
-                ]
+                "sig": []
             }
         },
         "get_imports_for_types": {
@@ -1367,63 +1263,43 @@
                 "ImportMap"
             ],
             "arguments": {
-                "types": [
-                    "typing.Any"
-                ]
+                "types": []
             }
         },
         "update_signature_args": {
             "name": "update_signature_args",
             "location": 194,
             "return": [
-                "inspect.Signature"
+                "Any"
             ],
             "arguments": {
-                "sig": [
-                    "inspect.Signature"
-                ],
-                "arg_types": [
-                    "typing.Any"
-                ],
-                "has_self": [
-                    "bool"
-                ],
-                "ignore_existing_annotations": [
-                    "bool"
-                ]
+                "sig": [],
+                "arg_types": [],
+                "has_self": [],
+                "ignore_existing_annotations": []
             }
         },
         "update_signature_return": {
             "name": "update_signature_return",
             "location": 214,
             "return": [
-                "inspect.Signature"
+                "Any"
             ],
             "arguments": {
-                "sig": [
-                    "inspect.Signature"
-                ],
-                "return_type": [
-                    "type"
-                ],
-                "yield_type": [
-                    "type"
-                ],
-                "ignore_existing_annotations": [
-                    "bool"
-                ]
+                "sig": [],
+                "return_type": [],
+                "yield_type": [],
+                "ignore_existing_annotations": []
             }
         },
         "shrink_traced_types": {
             "name": "shrink_traced_types",
             "location": 236,
             "return": [
-                "typing.Any"
+                "Tuple[(dict, Any, Any)]"
             ],
             "arguments": {
-                "traces": [
-                    "typing.Any"
-                ]
+                "traces": []
             }
         },
         "get_updated_definition": {
@@ -1433,18 +1309,10 @@
                 "FunctionDefinition"
             ],
             "arguments": {
-                "func": [
-                    "typing.Any"
-                ],
-                "traces": [
-                    "typing.Any"
-                ],
-                "rewriter": [
-                    "typing.Any"
-                ],
-                "ignore_existing_annotations": [
-                    "bool"
-                ]
+                "func": [],
+                "traces": [],
+                "rewriter": [],
+                "ignore_existing_annotations": []
             }
         },
         "has_unparsable_defaults": {
@@ -1454,9 +1322,7 @@
                 "bool"
             ],
             "arguments": {
-                "sig": [
-                    "inspect.Signature"
-                ]
+                "sig": []
             }
         },
         "_is_optional": {
@@ -1466,21 +1332,17 @@
                 "bool"
             ],
             "arguments": {
-                "anno": [
-                    "typing.Any"
-                ]
+                "anno": []
             }
         },
         "_get_optional_elem": {
             "name": "_get_optional_elem",
             "location": 343,
             "return": [
-                "typing.Any"
+                "Any"
             ],
             "arguments": {
-                "anno": [
-                    "typing.Any"
-                ]
+                "anno": []
             }
         },
         "render_union": {
@@ -1490,21 +1352,17 @@
                 "str"
             ],
             "arguments": {
-                "anno": [
-                    "typing.Any"
-                ]
+                "anno": []
             }
         },
         "render_generic": {
             "name": "render_generic",
             "location": 358,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "anno": [
-                    "typing.Any"
-                ]
+                "anno": []
             }
         },
         "safe_issubclass": {
@@ -1514,36 +1372,28 @@
                 "bool"
             ],
             "arguments": {
-                "t": [
-                    "typing.Any"
-                ],
-                "base": [
-                    "typing.Any"
-                ]
+                "t": [],
+                "base": []
             }
         },
         "render_annotation": {
             "name": "render_annotation",
             "location": 375,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "anno": [
-                    "typing.Any"
-                ]
+                "anno": []
             }
         },
         "render_parameter": {
             "name": "render_parameter",
             "location": 402,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "param": [
-                    "inspect.Parameter"
-                ]
+                "param": []
             }
         },
         "render_signature": {
@@ -1553,30 +1403,20 @@
                 "str"
             ],
             "arguments": {
-                "sig": [
-                    "inspect.Signature"
-                ],
-                "max_line_len": [
-                    "typing.Any"
-                ],
-                "prefix": [
-                    "str"
-                ]
+                "sig": [],
+                "max_line_len": [],
+                "prefix": []
             }
         },
         "build_module_stubs": {
             "name": "build_module_stubs",
             "location": 618,
             "return": [
-                "typing.Any"
+                "Dict[(Any, ModuleStub)]"
             ],
             "arguments": {
-                "entries": [
-                    "typing.Any"
-                ],
-                "class_properties": [
-                    "typing.Any"
-                ]
+                "entries": [],
+                "class_properties": []
             }
         },
         "extract_public_properties": {
@@ -1586,45 +1426,31 @@
                 "dict"
             ],
             "arguments": {
-                "trace": [
-                    "dict"
-                ]
+                "trace": []
             }
         },
         "build_module_stubs_from_traces": {
             "name": "build_module_stubs_from_traces",
             "location": 680,
             "return": [
-                "typing.Any"
+                "Dict[(Any, ModuleStub)]"
             ],
             "arguments": {
-                "traces": [
-                    "typing.Any"
-                ],
-                "class_traces": [
-                    "typing.Any"
-                ],
-                "ignore_existing_annotations": [
-                    "bool"
-                ],
-                "rewriter": [
-                    "typing.Any"
-                ]
+                "traces": [],
+                "class_traces": [],
+                "ignore_existing_annotations": [],
+                "rewriter": []
             }
         },
         "FunctionKind.from_callable": {
             "name": "from_callable",
             "location": 66,
             "return": [
-                "_TFunctionKind"
+                "Any"
             ],
             "arguments": {
-                "cls": [
-                    "Type[_TFunctionKind]"
-                ],
-                "func": [
-                    "typing.Any"
-                ]
+                "cls": [],
+                "func": []
             }
         },
         "FunctionDefinition.__init__": {
@@ -1635,39 +1461,25 @@
             ],
             "arguments": {
                 "self": [],
-                "module": [
-                    "str"
-                ],
-                "qualname": [
-                    "str"
-                ],
-                "kind": [
-                    "FunctionKind"
-                ],
-                "sig": [
-                    "inspect.Signature"
-                ],
-                "is_async": [
-                    "typing.Union[(builtins.NoneType, bool)]"
-                ]
+                "module": [],
+                "qualname": [],
+                "kind": [],
+                "sig": [],
+                "is_async": []
             }
         },
         "FunctionDefinition.from_callable": {
             "name": "from_callable",
             "location": 104,
             "return": [
-                "_TFunctionDefinition"
+                "_TFunctionDefinition@@FunctionDefinition@@"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TFunctionDefinition]"
                 ],
-                "func": [
-                    "typing.Any"
-                ],
-                "kind": [
-                    "FunctionKind"
-                ]
+                "func": [],
+                "kind": []
             }
         },
         "FunctionDefinition.has_self": {
@@ -1686,9 +1498,7 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "typing.Any"
-                ]
+                "other": []
             }
         },
         "FunctionDefinition.__repr__": {
@@ -1719,9 +1529,7 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "ImportMap"
-                ]
+                "other": []
             }
         },
         "Stub.__eq__": {
@@ -1732,16 +1540,14 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "typing.Any"
-                ]
+                "other": []
             }
         },
         "Stub.render": {
             "name": "render",
             "location": 292,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1755,9 +1561,7 @@
             ],
             "arguments": {
                 "self": [],
-                "imports": [
-                    "ImportMap"
-                ]
+                "imports": []
             }
         },
         "ImportBlockStub.render": {
@@ -1788,34 +1592,22 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
-                "signature": [
-                    "inspect.Signature"
-                ],
-                "kind": [
-                    "FunctionKind"
-                ],
-                "strip_modules": [
-                    "typing.Any"
-                ],
-                "is_async": [
-                    "typing.Union[(builtins.NoneType, bool)]"
-                ]
+                "name": [],
+                "signature": [],
+                "kind": [],
+                "strip_modules": [],
+                "is_async": []
             }
         },
         "FunctionStub.render": {
             "name": "render",
             "location": 517,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "prefix": [
-                    "str"
-                ]
+                "prefix": []
             }
         },
         "FunctionStub.__repr__": {
@@ -1836,25 +1628,19 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
-                "typ": [
-                    "type"
-                ]
+                "name": [],
+                "typ": []
             }
         },
         "ClassPropertyStub.render": {
             "name": "render",
             "location": 549,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "prefix": [
-                    "str"
-                ]
+                "prefix": []
             }
         },
         "ClassStub.__init__": {
@@ -1865,15 +1651,9 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
-                "function_stubs": [
-                    "typing.Any"
-                ],
-                "property_stubs": [
-                    "typing.Any"
-                ]
+                "name": [],
+                "function_stubs": [],
+                "property_stubs": []
             }
         },
         "ClassStub.render": {
@@ -1904,15 +1684,9 @@
             ],
             "arguments": {
                 "self": [],
-                "function_stubs": [
-                    "typing.Any"
-                ],
-                "class_stubs": [
-                    "typing.Any"
-                ],
-                "imports_stub": [
-                    "ImportBlockStub"
-                ]
+                "function_stubs": [],
+                "class_stubs": [],
+                "imports_stub": []
             }
         },
         "ModuleStub.render": {
@@ -1943,9 +1717,7 @@
             ],
             "arguments": {
                 "self": [],
-                "module_re": [
-                    "str"
-                ]
+                "module_re": []
             }
         },
         "StubIndexBuilder.log": {
@@ -1956,16 +1728,14 @@
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "typeline.tracing.CallTrace"
-                ]
+                "trace": []
             }
         },
         "StubIndexBuilder.get_stubs": {
             "name": "get_stubs",
             "location": 760,
             "return": [
-                "typing.Any"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1977,40 +1747,32 @@
             "name": "get_func_in_mro",
             "location": 143,
             "return": [
-                "Optional[Callable]"
+                "Any"
             ],
             "arguments": {
                 "obj": [],
-                "code": [
-                    "types.CodeType"
-                ]
+                "code": []
             }
         },
         "_has_code": {
             "name": "_has_code",
             "location": 164,
             "return": [
-                "Optional[Callable]"
+                "Any"
             ],
             "arguments": {
-                "func": [
-                    "Optional[Callable]"
-                ],
-                "code": [
-                    "types.CodeType"
-                ]
+                "func": [],
+                "code": []
             }
         },
         "get_func": {
             "name": "get_func",
             "location": 174,
             "return": [
-                "Optional[Callable]"
+                "Any"
             ],
             "arguments": {
-                "frame": [
-                    "types.FrameType"
-                ]
+                "frame": []
             }
         },
         "is_method_of_class": {
@@ -2020,21 +1782,17 @@
                 "bool"
             ],
             "arguments": {
-                "frame": [
-                    "types.FrameType"
-                ]
+                "frame": []
             }
         },
         "is_private_function": {
             "name": "is_private_function",
             "location": 220,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
-                "code": [
-                    "types.CodeType"
-                ]
+                "code": []
             }
         },
         "trace_calls": {
@@ -2063,15 +1821,9 @@
             ],
             "arguments": {
                 "self": [],
-                "module": [
-                    "str"
-                ],
-                "qualname": [
-                    "str"
-                ],
-                "class_props": [
-                    "Dict[(str, type)]"
-                ]
+                "module": [],
+                "qualname": [],
+                "class_props": []
             }
         },
         "ClassPropsTrace.__eq__": {
@@ -2082,9 +1834,7 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "object"
-                ]
+                "other": []
             }
         },
         "ClassPropsTrace.__hash__": {
@@ -2105,18 +1855,10 @@
             ],
             "arguments": {
                 "self": [],
-                "func": [
-                    "Callable"
-                ],
-                "arg_types": [
-                    "Dict[(str, type)]"
-                ],
-                "return_type": [
-                    "Optional[type]"
-                ],
-                "yield_type": [
-                    "Optional[type]"
-                ]
+                "func": [],
+                "arg_types": [],
+                "return_type": [],
+                "yield_type": []
             }
         },
         "CallTrace.__eq__": {
@@ -2127,9 +1869,7 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "object"
-                ]
+                "other": []
             }
         },
         "CallTrace.__repr__": {
@@ -2160,9 +1900,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "CallTrace.funcname": {
@@ -2177,13 +1915,11 @@
             "name": "log",
             "location": 113,
             "return": [
-                "None"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "CallTrace"
-                ]
+                "trace": []
             }
         },
         "CallTraceLogger.flush": {
@@ -2200,13 +1936,11 @@
             "name": "log",
             "location": 129,
             "return": [
-                "None"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "ClassPropsTrace"
-                ]
+                "trace": []
             }
         },
         "ClassPropsTraceLogger.flush": {
@@ -2227,40 +1961,24 @@
             ],
             "arguments": {
                 "self": [],
-                "logger": [
-                    "CallTraceLogger"
-                ],
-                "class_logger": [
-                    "ClassPropsTraceLogger"
-                ],
-                "code_filter": [
-                    "Optional[Callable[([types.CodeType], bool)]]"
-                ],
-                "sample_rate": [
-                    "Optional[int]"
-                ],
-                "skip_private_methods": [
-                    "bool"
-                ],
-                "skip_private_properties": [
-                    "bool"
-                ],
-                "acceptable_modules": [
-                    "Optional[List[str]]"
-                ]
+                "logger": [],
+                "class_logger": [],
+                "code_filter": [],
+                "sample_rate": [],
+                "skip_private_methods": [],
+                "skip_private_properties": [],
+                "acceptable_modules": []
             }
         },
         "CallTracer._get_func": {
             "name": "_get_func",
             "location": 264,
             "return": [
-                "Optional[Callable]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "frame": [
-                    "types.FrameType"
-                ]
+                "frame": []
             }
         },
         "CallTracer.handle_call": {
@@ -2271,9 +1989,7 @@
             ],
             "arguments": {
                 "self": [],
-                "frame": [
-                    "types.FrameType"
-                ]
+                "frame": []
             }
         },
         "CallTracer.handle_return": {
@@ -2284,9 +2000,7 @@
             ],
             "arguments": {
                 "self": [],
-                "frame": [
-                    "types.FrameType"
-                ],
+                "frame": [],
                 "arg": []
             }
         },
@@ -2294,18 +2008,14 @@
             "name": "__call__",
             "location": 356,
             "return": [
-                "_TCallTracer"
+                "_TCallTracer@@CallTracer@@"
             ],
             "arguments": {
                 "self": [
-                    "_TCallTracer"
+                    "_TCallTracer@@CallTracer@@"
                 ],
-                "frame": [
-                    "types.FrameType"
-                ],
-                "event": [
-                    "str"
-                ],
+                "frame": [],
+                "event": [],
                 "arg": []
             }
         }
@@ -2351,7 +2061,7 @@
             ],
             "arguments": {
                 "obj": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2417,7 +2127,7 @@
             "arguments": {
                 "self": [],
                 "dct": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2430,7 +2140,7 @@
             "arguments": {
                 "self": [],
                 "lst": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2443,7 +2153,7 @@
             "arguments": {
                 "self": [],
                 "st": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2456,7 +2166,7 @@
             "arguments": {
                 "self": [],
                 "tup": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2469,7 +2179,7 @@
             "arguments": {
                 "self": [],
                 "union": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2477,12 +2187,12 @@
             "name": "generic_rewrite",
             "location": 151,
             "return": [
-                "_T0"
+                "_T0@@"
             ],
             "arguments": {
                 "self": [],
                 "typ": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2517,7 +2227,7 @@
             "arguments": {
                 "self": [],
                 "union": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2530,7 +2240,7 @@
             "arguments": {
                 "self": [],
                 "union": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2576,9 +2286,7 @@
             ],
             "arguments": {
                 "self": [],
-                "rewriters": [
-                    "Iterable[TypeRewriter]"
-                ]
+                "rewriters": []
             }
         },
         "ChainedRewriter.rewrite": {
@@ -2596,12 +2304,12 @@
             "name": "rewrite",
             "location": 295,
             "return": [
-                "_T0"
+                "_T0@@"
             ],
             "arguments": {
                 "self": [],
                 "typ": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         }
@@ -2611,27 +2319,21 @@
             "name": "get_func_fqname",
             "location": 28,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "func": [
-                    "Callable"
-                ]
+                "func": []
             }
         },
         "get_func_in_module": {
             "name": "get_func_in_module",
             "location": 33,
             "return": [
-                "Callable"
+                "Any"
             ],
             "arguments": {
-                "module": [
-                    "str"
-                ],
-                "qualname": [
-                    "str"
-                ]
+                "module": [],
+                "qualname": []
             }
         },
         "get_name_in_module": {
@@ -2641,15 +2343,9 @@
                 "Any"
             ],
             "arguments": {
-                "module": [
-                    "str"
-                ],
-                "qualname": [
-                    "str"
-                ],
-                "attr_getter": [
-                    "Callable[([Any, str], Any)]"
-                ]
+                "module": [],
+                "qualname": [],
+                "attr_getter": []
             }
         },
         "is_any": {
@@ -2659,9 +2355,7 @@
                 "bool"
             ],
             "arguments": {
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "is_union": {
@@ -2671,9 +2365,7 @@
                 "bool"
             ],
             "arguments": {
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         }
     },
@@ -2682,12 +2374,10 @@
             "name": "trace",
             "location": 20,
             "return": [
-                "ContextManager"
+                "contextlib._GeneratorContextManager"
             ],
             "arguments": {
-                "config": [
-                    "Optional[typeline.config.Config]"
-                ]
+                "config": []
             }
         }
     },
@@ -2697,7 +2387,7 @@
             "name": "to_trace",
             "location": 24,
             "return": [
-                "typeline.tracing.CallTrace"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -2707,54 +2397,42 @@
             "name": "add",
             "location": 33,
             "return": [
-                "None"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "traces": [
-                    "Iterable[typeline.tracing.CallTrace]"
-                ]
+                "traces": []
             }
         },
         "CallTraceStore.filter": {
             "name": "filter",
             "location": 38,
             "return": [
-                "List[CallTraceThunk]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "module": [
-                    "str"
-                ],
-                "qualname_prefix": [
-                    "Optional[str]"
-                ],
-                "limit": [
-                    "int"
-                ]
+                "module": [],
+                "qualname_prefix": [],
+                "limit": []
             }
         },
         "CallTraceStore.make_store": {
             "name": "make_store",
             "location": 52,
             "return": [
-                "_TCallTraceStore"
+                "None"
             ],
             "arguments": {
-                "cls": [
-                    "Type[_TCallTraceStore]"
-                ],
-                "connection_string": [
-                    "str"
-                ]
+                "cls": [],
+                "connection_string": []
             }
         },
         "CallTraceStore.list_modules": {
             "name": "list_modules",
             "location": 59,
             "return": [
-                "List[str]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -2768,9 +2446,7 @@
             ],
             "arguments": {
                 "self": [],
-                "store": [
-                    "CallTraceStore"
-                ]
+                "store": []
             }
         },
         "CallTraceStoreLogger.log": {
@@ -2781,9 +2457,7 @@
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "typeline.tracing.CallTrace"
-                ]
+                "trace": []
             }
         },
         "CallTraceStoreLogger.flush": {
@@ -2805,32 +2479,26 @@
                 "None"
             ],
             "arguments": {
-                "conn": [
-                    "sqlite3.dbapi2.Connection"
-                ],
-                "table": [
-                    "str"
-                ]
+                "conn": [],
+                "table": []
             }
         },
         "make_query": {
             "name": "make_query",
             "location": 52,
             "return": [
-                "Tuple[(str, List[Union[(int, str)]])]"
+                "Tuple[(str, List[Union[(_T1, _T2, _T3)]])]"
             ],
             "arguments": {
-                "table": [
-                    "str"
-                ],
+                "table": [],
                 "module": [
-                    "str"
+                    "_T1@@"
                 ],
                 "qualname": [
-                    "Optional[str]"
+                    "_T2@@"
                 ],
                 "limit": [
-                    "int"
+                    "_T3@@"
                 ]
             }
         },
@@ -2842,25 +2510,21 @@
             ],
             "arguments": {
                 "self": [],
-                "conn": [
-                    "sqlite3.dbapi2.Connection"
-                ],
-                "table": [
-                    "str"
-                ]
+                "conn": [],
+                "table": []
             }
         },
         "SQLiteStore.make_store": {
             "name": "make_store",
             "location": 80,
             "return": [
-                "typeline.db.base.CallTraceStore"
+                "_TSQLiteStore@@SQLiteStore@@"
             ],
             "arguments": {
-                "cls": [],
-                "connection_string": [
-                    "str"
-                ]
+                "cls": [
+                    "Type[_TSQLiteStore]"
+                ],
+                "connection_string": []
             }
         },
         "SQLiteStore.add": {
@@ -2871,35 +2535,27 @@
             ],
             "arguments": {
                 "self": [],
-                "traces": [
-                    "Iterable[typeline.tracing.CallTrace]"
-                ]
+                "traces": []
             }
         },
         "SQLiteStore.filter": {
             "name": "filter",
             "location": 96,
             "return": [
-                "List[typeline.db.base.CallTraceThunk]"
+                "List[typeline.encoding.CallTraceRow]"
             ],
             "arguments": {
                 "self": [],
-                "module": [
-                    "str"
-                ],
-                "qualname_prefix": [
-                    "Optional[str]"
-                ],
-                "limit": [
-                    "int"
-                ]
+                "module": [],
+                "qualname_prefix": [],
+                "limit": []
             }
         },
         "SQLiteStore.list_modules": {
             "name": "list_modules",
             "location": 108,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -2916,7 +2572,7 @@
             ],
             "arguments": {
                 "module": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -2927,9 +2583,7 @@
                 "None"
             ],
             "arguments": {
-                "connection": [
-                    "psycopg2.extras.LoggingConnection"
-                ]
+                "connection": []
             }
         },
         "MyLoggingConnection.filter": {
@@ -2954,9 +2608,7 @@
                 "self": [],
                 "conn": [],
                 "autocommit_conn": [],
-                "table": [
-                    "str"
-                ]
+                "table": []
             }
         },
         "PostgresStore.add": {
@@ -2967,9 +2619,7 @@
             ],
             "arguments": {
                 "self": [],
-                "traces": [
-                    "Iterable[typeline.tracing.CallTrace]"
-                ]
+                "traces": []
             }
         },
         "PostgresStore.add_classes": {
@@ -2980,9 +2630,7 @@
             ],
             "arguments": {
                 "self": [],
-                "class_traces": [
-                    "Iterable[typeline.tracing.ClassPropsTrace]"
-                ]
+                "class_traces": []
             }
         },
         "PostgresStore.remove_duplicates": {
@@ -3009,18 +2657,14 @@
             "name": "make_store",
             "location": 154,
             "return": [
-                "_TPostgresStore"
+                "_TPostgresStore@@PostgresStore@@"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TPostgresStore]"
                 ],
-                "connection_data": [
-                    "dict"
-                ],
-                "log_queries": [
-                    "bool"
-                ],
+                "connection_data": [],
+                "log_queries": [],
                 "skip_init": []
             }
         },
@@ -3032,12 +2676,8 @@
             ],
             "arguments": {
                 "self": [],
-                "module": [
-                    "str"
-                ],
-                "limit": [
-                    "int"
-                ]
+                "module": [],
+                "limit": []
             }
         },
         "PostgresStore.extract_class_props": {
@@ -3070,25 +2710,19 @@
             ],
             "arguments": {
                 "self": [],
-                "store": [
-                    "typeline.db.base.CallTraceStore"
-                ],
-                "relevant_modules": [
-                    "Optional[List[str]]"
-                ]
+                "store": [],
+                "relevant_modules": []
             }
         },
         "PostgresLogger._should_be_traced": {
             "name": "_should_be_traced",
             "location": 218,
             "return": [
-                "Optional[bool]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "typeline.tracing.CallTrace"
-                ]
+                "trace": []
             }
         },
         "PostgresLogger.log": {
@@ -3099,9 +2733,7 @@
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "typeline.tracing.CallTrace"
-                ]
+                "trace": []
             }
         },
         "PostgresClassLogger.__init__": {
@@ -3112,25 +2744,19 @@
             ],
             "arguments": {
                 "self": [],
-                "store": [
-                    "typeline.db.base.CallTraceStore"
-                ],
-                "relevant_modules": [
-                    "Optional[List[str]]"
-                ]
+                "store": [],
+                "relevant_modules": []
             }
         },
         "PostgresClassLogger._should_be_traced": {
             "name": "_should_be_traced",
             "location": 257,
             "return": [
-                "Optional[bool]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "typeline.tracing.ClassPropsTrace"
-                ]
+                "trace": []
             }
         },
         "PostgresClassLogger.log": {
@@ -3141,9 +2767,7 @@
             ],
             "arguments": {
                 "self": [],
-                "trace": [
-                    "typeline.tracing.ClassPropsTrace"
-                ]
+                "trace": []
             }
         },
         "PostgresClassLogger.flush": {
@@ -3168,9 +2792,7 @@
                 "skip_private_methods": [],
                 "skip_private_properties": [],
                 "log_queries": [],
-                "relevant_modules": [
-                    "Optional[List[str]]"
-                ]
+                "relevant_modules": []
             }
         },
         "PostgresConfig.trace_logger": {
@@ -3221,7 +2843,7 @@
             "name": "_find_acceptable_common_base",
             "location": 112,
             "return": [
-                "Optional[type]"
+                "Any"
             ],
             "arguments": {
                 "cls1": [],
@@ -3244,14 +2866,12 @@
             "name": "_traverse_all_pairs",
             "location": 13,
             "return": [
-                "Optional[Tuple[(int, int, type)]]"
+                "Optional[Tuple[(int, int, Any)]]"
             ],
             "arguments": {
                 "self": [],
                 "collection": [],
-                "return_transformed_obj": [
-                    "Callable"
-                ]
+                "return_transformed_obj": []
             }
         },
         "UnionRewriter.rewrite_Union": {
@@ -3296,10 +2916,10 @@
             "arguments": {
                 "self": [],
                 "obj1": [
-                    "_T0"
+                    "_T0@@"
                 ],
                 "obj2": [
-                    "_T1"
+                    "_T1@@"
                 ]
             }
         },
@@ -3332,9 +2952,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "SimplifyByMROTraversing.transform_objects": {
@@ -3353,12 +2971,12 @@
             "name": "rewrite_Union",
             "location": 204,
             "return": [
-                "_T0"
+                "_T0@@"
             ],
             "arguments": {
                 "self": [],
                 "union": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -3393,9 +3011,7 @@
             ],
             "arguments": {
                 "self": [],
-                "union_rewriter": [
-                    "typeline.typing.TypeRewriter"
-                ]
+                "union_rewriter": []
             }
         },
         "_DepthFirstTypeTraverser.rewrite": {
@@ -3406,9 +3022,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         }
     },
@@ -3417,7 +3031,7 @@
             "name": "is_generic",
             "location": 23,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
@@ -3462,10 +3076,10 @@
             ],
             "arguments": {
                 "obj1": [
-                    "_T0"
+                    "_T0@@"
                 ],
                 "obj2": [
-                    "_T1"
+                    "_T1@@"
                 ]
             }
         },
@@ -3484,7 +3098,7 @@
             "name": "find_acceptable_common_base",
             "location": 76,
             "return": [
-                "Optional[type]"
+                "Any"
             ],
             "arguments": {
                 "cls1": [],
@@ -3559,9 +3173,7 @@
             "arguments": {
                 "obj1": [],
                 "obj2": [],
-                "two_element_transformers": [
-                    "List[Callable]"
-                ]
+                "two_element_transformers": []
             }
         },
         "simplify_tuples": {
@@ -3585,7 +3197,7 @@
             "arguments": {
                 "obj1": [],
                 "obj2": [
-                    "_T1"
+                    "_T1@@"
                 ]
             }
         },
@@ -3596,9 +3208,7 @@
                 "bool"
             ],
             "arguments": {
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "FindAcceptableCommonBase.__init__": {
@@ -3617,7 +3227,7 @@
             "name": "__call__",
             "location": 71,
             "return": [
-                "type"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -3675,12 +3285,12 @@
             "name": "rewrite",
             "location": 173,
             "return": [
-                "_T0"
+                "_T0@@"
             ],
             "arguments": {
                 "self": [],
                 "union": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -3692,9 +3302,7 @@
             ],
             "arguments": {
                 "self": [],
-                "two_element_transformers": [
-                    "List[Callable]"
-                ]
+                "two_element_transformers": []
             }
         },
         "SimplifyGenerics.__call__": {
@@ -3717,9 +3325,7 @@
             ],
             "arguments": {
                 "self": [],
-                "two_element_transformers": [
-                    "List[Callable]"
-                ]
+                "two_element_transformers": []
             }
         },
         "SimplifyTuples.__call__": {
@@ -3742,23 +3348,19 @@
             ],
             "arguments": {
                 "self": [],
-                "two_element_transformers": [
-                    "List[Callable]"
-                ]
+                "two_element_transformers": []
             }
         },
         "TwoElementUnionRewriter._traverse_all_pairs": {
             "name": "_traverse_all_pairs",
             "location": 294,
             "return": [
-                "Optional[Tuple[(int, int, type)]]"
+                "Union[(NotDefined, Tuple[(int, int, Any)])]"
             ],
             "arguments": {
                 "self": [],
                 "collection": [],
-                "transformers": [
-                    "List[Callable]"
-                ]
+                "transformers": []
             }
         },
         "TwoElementUnionRewriter.rewrite_Union": {
@@ -3770,7 +3372,7 @@
             "arguments": {
                 "self": [],
                 "union": [
-                    "_T0"
+                    "_T0@@"
                 ]
             }
         },
@@ -3782,9 +3384,7 @@
             ],
             "arguments": {
                 "self": [],
-                "union_rewriter": [
-                    "TwoElementUnionRewriter"
-                ],
+                "union_rewriter": [],
                 "num_of_passes": []
             }
         },
@@ -3796,9 +3396,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "DepthFirstTypeTraverser.rewrite": {
@@ -3809,9 +3407,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "MroSimplifier.__init__": {
@@ -3834,9 +3430,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "MroSimplifier.rewrite": {
@@ -3847,9 +3441,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         },
         "TupleSimplifier.__init__": {
@@ -3867,12 +3459,12 @@
             "name": "_simplify_big_tuple",
             "location": 480,
             "return": [
-                "Union[(tuple, Type[tuple])]"
+                "Union[(Type[tuple], _T0)]"
             ],
             "arguments": {
                 "self": [],
                 "typ": [
-                    "tuple"
+                    "_T0@@"
                 ]
             }
         },
@@ -3884,9 +3476,7 @@
             ],
             "arguments": {
                 "self": [],
-                "typ": [
-                    "type"
-                ]
+                "typ": []
             }
         }
     },

@@ -8,28 +8,41 @@
             ],
             "arguments": {
                 "release_dir": [
-                    "pathlib.Path"
-                ],
-                "database_dir": [
-                    "pathlib.Path"
-                ],
-                "domain": [
+                    "pathlib.Path",
+                    "Optional[pathlib.Path]",
+                    "List[str]",
                     "str"
                 ],
+                "database_dir": [
+                    "pathlib.Path",
+                    "str",
+                    "Type[pathlib.PurePath]"
+                ],
+                "domain": [
+                    "str",
+                    "Dict"
+                ],
                 "api_key_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "bool"
                 ],
                 "recipients": [
-                    "List[str]"
+                    "str",
+                    "Dict"
                 ],
                 "cc": [
-                    "List[str]"
+                    "str",
+                    "Dict"
                 ],
                 "bcc": [
-                    "List[str]"
+                    "str",
+                    "Dict"
                 ],
                 "quiet": [
-                    "bool"
+                    "str",
+                    "List[str]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -91,13 +104,18 @@
             ],
             "arguments": {
                 "release_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str"
                 ],
                 "operation_dir": [
+                    "str",
+                    "Optional[str]",
                     "pathlib.Path"
                 ],
                 "quiet": [
-                    "bool"
+                    "str",
+                    "Dict[str,Sequence[str]]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -119,10 +137,20 @@
             ],
             "arguments": {
                 "port": [
-                    "int"
+                    "int",
+                    "None",
+                    "str",
+                    "Optional[int]",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "quiet": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[dict]",
+                    "Dict[str,Any]",
+                    "Callable",
+                    "int"
                 ]
             }
         },
@@ -134,13 +162,18 @@
             ],
             "arguments": {
                 "release_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "Union[str, pathlib.Path]"
                 ],
                 "operation_dir": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "quiet": [
-                    "bool"
+                    "str",
+                    "Dict[str,Sequence[str]]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -152,13 +185,17 @@
             ],
             "arguments": {
                 "release_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str"
                 ],
                 "operation_dir": [
+                    "str",
+                    "Optional[str]",
                     "pathlib.Path"
                 ],
                 "quiet": [
-                    "bool"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -170,13 +207,15 @@
             ],
             "arguments": {
                 "release_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str"
                 ],
                 "operation_dir": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "quiet": [
-                    "bool"
+                    "str"
                 ]
             }
         },
@@ -184,7 +223,9 @@
             "name": "find_free_port",
             "location": 495,
             "return": [
-                "int"
+                "int",
+                "set",
+                "str"
             ],
             "arguments": {}
         },
@@ -218,7 +259,7 @@
                     "str",
                     "Optional[str]",
                     "None",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "int"
                 ]
             }
@@ -249,13 +290,7 @@
             "name": "from_obj",
             "location": 15,
             "return": [
-                "str",
-                "float",
-                "Callable[[None, None], bool]",
-                "int",
-                "dict",
-                "list[]",
-                "dict[, ]"
+                "Union[(Channel, ChannelsPage, Entity, dict, float, list, _T0)]"
             ],
             "arguments": {
                 "obj": [
@@ -264,10 +299,11 @@
                     "str"
                 ],
                 "expected": [
-                    "List[type]"
+                    "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -275,22 +311,18 @@
             "name": "to_jsonable",
             "location": 74,
             "return": [
-                "list[]",
-                "str",
-                "dict[, ]",
-                "Optional[int]",
-                "Optional[str]",
-                "Callable"
+                "Union[(dict, list, _T0)]"
             ],
             "arguments": {
                 "obj": [
                     "str"
                 ],
                 "expected": [
-                    "List[type]"
+                    "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -313,7 +345,8 @@
                     "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -321,14 +354,17 @@
             "name": "entity_to_jsonable",
             "location": 191,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "entity": [
-                    "Entity"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -351,7 +387,8 @@
                     "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -359,14 +396,19 @@
             "name": "channel_to_jsonable",
             "location": 310,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "channel": [
-                    "Channel"
+                    "str",
+                    "bool",
+                    "Dict"
                 ],
                 "path": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -390,7 +432,8 @@
                     "Optional[str]"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -398,14 +441,21 @@
             "name": "channels_page_to_jsonable",
             "location": 402,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "channels_page": [
-                    "ChannelsPage"
+                    "int",
+                    "Hashable",
+                    "bytes",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "None"
                 ],
                 "path": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -418,10 +468,17 @@
             "arguments": {
                 "self": [],
                 "email": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "name": [
-                    "Optional[str]"
+                    "str",
+                    "List[str]",
+                    "None",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -429,7 +486,7 @@
             "name": "to_jsonable",
             "location": 152,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -444,31 +501,50 @@
             "arguments": {
                 "self": [],
                 "descriptor": [
-                    "str"
+                    "bool",
+                    "str",
+                    "int"
                 ],
                 "token": [
                     "str"
                 ],
                 "sender": [
-                    "Entity"
-                ],
-                "recipients": [
-                    "List[Entity]"
-                ],
-                "domain": [
-                    "str"
-                ],
-                "min_period": [
-                    "float"
-                ],
-                "max_size": [
+                    "bool",
+                    "str",
                     "int"
                 ],
+                "recipients": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "domain": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "min_period": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
+                "max_size": [
+                    "int",
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "bool"
+                ],
                 "cc": [
-                    "Optional[List[Entity]]"
+                    "bool",
+                    "None",
+                    "str",
+                    "int"
                 ],
                 "bcc": [
-                    "Optional[List[Entity]]"
+                    "bool",
+                    "None",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -476,7 +552,7 @@
             "name": "to_jsonable",
             "location": 244,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -491,16 +567,32 @@
             "arguments": {
                 "self": [],
                 "page": [
-                    "int"
+                    "bool",
+                    "Tuple",
+                    "int",
+                    "None",
+                    "Optional[int]"
                 ],
                 "page_count": [
-                    "int"
+                    "int",
+                    "str",
+                    "Set[Tuple[str,...]]",
+                    "Mapping",
+                    "Set[tuple[Union[str,...]]]"
                 ],
                 "per_page": [
-                    "int"
+                    "bool",
+                    "Tuple",
+                    "int",
+                    "None",
+                    "Optional[int]"
                 ],
                 "channels": [
-                    "List[Channel]"
+                    "bool",
+                    "Tuple",
+                    "int",
+                    "None",
+                    "Optional[int]"
                 ]
             }
         },
@@ -508,7 +600,7 @@
             "name": "to_jsonable",
             "location": 360,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -523,10 +615,25 @@
             "arguments": {
                 "self": [],
                 "url_prefix": [
-                    "str"
+                    "bool",
+                    "Dict[str,Type[Any]]",
+                    "Dict",
+                    "Dict[str,Type]",
+                    "Optional[Dict[str,Any]]",
+                    "None",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,dict[str,str]]"
                 ],
                 "auth": [
-                    "Optional[requests.auth.AuthBase]"
+                    "str",
+                    "None",
+                    "Callable",
+                    "List[Dict]",
+                    "float",
+                    "bool",
+                    "List[dict]"
                 ]
             }
         },
@@ -539,7 +646,9 @@
             "arguments": {
                 "self": [],
                 "channel": [
-                    "Channel"
+                    "List[Tuple[bool,Any]]",
+                    "Set",
+                    "List[tuple[Union[bool,Any]]]"
                 ]
             }
         },
@@ -552,7 +661,9 @@
             "arguments": {
                 "self": [],
                 "descriptor": [
-                    "str"
+                    "str",
+                    "IO",
+                    "bool"
                 ]
             }
         },
@@ -560,15 +671,23 @@
             "name": "list_channels",
             "location": 472,
             "return": [
-                "ChannelsPage"
+                "int",
+                "dict",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "page": [
-                    "Optional[int]"
+                    "int",
+                    "str",
+                    "None",
+                    "bytes"
                 ],
                 "per_page": [
-                    "Optional[int]"
+                    "int",
+                    "str",
+                    "None",
+                    "bytes"
                 ]
             }
         }
@@ -601,13 +720,17 @@
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "Union[str, pathlib.Path]"
                 ],
                 "py_dir": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "overwrite": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List"
                 ]
             }
         },
@@ -629,10 +752,18 @@
             ],
             "arguments": {
                 "proc": [
-                    "subprocess.Popen"
+                    "int",
+                    "float",
+                    "Iterable[Optional[Any]]",
+                    "subprocess.Popen",
+                    "Optional[int]"
                 ],
                 "seconds": [
-                    "float"
+                    "int",
+                    "float",
+                    "Iterable[Optional[Any]]",
+                    "subprocess.Popen",
+                    "Optional[int]"
                 ]
             }
         },
@@ -644,10 +775,18 @@
             ],
             "arguments": {
                 "proc": [
-                    "subprocess.Popen"
+                    "subprocess.Popen",
+                    "Optional[Dict]",
+                    "Optional[float]",
+                    "Optional[int]"
                 ],
                 "timeout": [
-                    "Optional[int]"
+                    "Optional[int]",
+                    "float",
+                    "None",
+                    "int",
+                    "Optional[Union[Any,Any]]",
+                    "Any"
                 ]
             }
         },
@@ -659,6 +798,7 @@
             ],
             "arguments": {
                 "seconds": [
+                    "int",
                     "float"
                 ]
             }
@@ -672,10 +812,15 @@
             "arguments": {
                 "self": [],
                 "proc": [
-                    "subprocess.Popen"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "timeout": [
-                    "Optional[int]"
+                    "int",
+                    "float",
+                    "None",
+                    "str"
                 ]
             }
         },
@@ -683,7 +828,9 @@
             "name": "__enter__",
             "location": 23,
             "return": [
-                "subprocess.Popen"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -705,7 +852,7 @@
                 ],
                 "exc_tb": [
                     "Optional[Type[BaseException]]",
-                    "typing.Type",
+                    "Type",
                     "str",
                     "BaseException",
                     "None",
@@ -720,13 +867,7 @@
             "name": "from_obj",
             "location": 16,
             "return": [
-                "str",
-                "float",
-                "Callable",
-                "int",
-                "Callable[[None, None], bool]",
-                "list[]",
-                "dict[, ]"
+                "Union[(Message, dict, float, list, _T0)]"
             ],
             "arguments": {
                 "obj": [
@@ -735,10 +876,11 @@
                     "str"
                 ],
                 "expected": [
-                    "List[type]"
+                    "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -746,22 +888,18 @@
             "name": "to_jsonable",
             "location": 69,
             "return": [
-                "list[]",
-                "float",
-                "dict[, ]",
-                "dict",
-                "str",
-                "int"
+                "Union[(dict, list, _T0)]"
             ],
             "arguments": {
                 "obj": [
                     "str"
                 ],
                 "expected": [
-                    "List[type]"
+                    "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         },
@@ -784,7 +922,9 @@
                     "str"
                 ],
                 "path": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -792,14 +932,19 @@
             "name": "message_to_jsonable",
             "location": 187,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "message": [
-                    "Message"
+                    "str"
                 ],
                 "path": [
-                    "str"
+                    "Text",
+                    "str",
+                    "List[str]",
+                    "List",
+                    "Optional[str]",
+                    "Optional[Tuple[str,...]]"
                 ]
             }
         },
@@ -812,13 +957,19 @@
             "arguments": {
                 "self": [],
                 "subject": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "content": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict",
+                    "bytes"
                 ],
                 "html": [
-                    "Optional[str]"
+                    "str",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -826,7 +977,7 @@
             "name": "to_jsonable",
             "location": 146,
             "return": [
-                "MutableMapping[(str, Any)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -841,10 +992,25 @@
             "arguments": {
                 "self": [],
                 "url_prefix": [
-                    "str"
+                    "bool",
+                    "Dict[str,Type[Any]]",
+                    "Dict",
+                    "Dict[str,Type]",
+                    "Optional[Dict[str,Any]]",
+                    "None",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,dict[str,str]]"
                 ],
                 "auth": [
-                    "Optional[requests.auth.AuthBase]"
+                    "str",
+                    "None",
+                    "Callable",
+                    "List[Dict]",
+                    "float",
+                    "bool",
+                    "List[dict]"
                 ]
             }
         },
@@ -857,13 +1023,24 @@
             "arguments": {
                 "self": [],
                 "x_descriptor": [
-                    "str"
+                    "str",
+                    "bool",
+                    "float",
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "x_token": [
-                    "str"
+                    "str",
+                    "bool",
+                    "float",
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "message": [
-                    "Message"
+                    "Dict[str,object]",
+                    "str",
+                    "IO[str]",
+                    "IO"
                 ]
             }
         }
@@ -885,10 +1062,14 @@
             ],
             "arguments": {
                 "signalnum": [
-                    "int"
+                    "str"
                 ],
                 "frame": [
-                    "object"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },

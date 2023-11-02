@@ -4,7 +4,6 @@
             "name": "media_root",
             "location": 4,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -20,11 +19,16 @@
             "name": "userinfo",
             "location": 40,
             "return": [
-                "Dict[(str, Any)]"
+                "List[str]",
+                "Optional[str]",
+                "int",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "token": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Tuple[int,str]"
                 ]
             }
         },
@@ -32,11 +36,15 @@
             "name": "usergroups",
             "location": 59,
             "return": [
-                "List[GroupJSON]"
+                "str",
+                "Optional[float]",
+                "bool"
             ],
             "arguments": {
                 "token": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Tuple[int,str]"
                 ]
             }
         }
@@ -52,9 +60,8 @@
             "arguments": {
                 "self": [],
                 "get_response": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -98,7 +105,9 @@
             "arguments": {
                 "self": [],
                 "token": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -111,7 +120,9 @@
             "arguments": {
                 "self": [],
                 "courses": [
-                    "Dict[(str, dataporten.parsers.Course)]"
+                    "Dict",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -119,7 +130,7 @@
             "name": "active",
             "location": 66,
             "return": [
-                "list[]",
+                "List",
                 "bool",
                 "int",
                 "str",
@@ -133,7 +144,7 @@
             "name": "finished",
             "location": 70,
             "return": [
-                "list[]",
+                "List",
                 "bool",
                 "int",
                 "str",
@@ -147,14 +158,14 @@
             "name": "less_semesters_ago",
             "location": 73,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "than": [
                     "Iterable[List[T]]",
                     "bool",
-                    "typing.Iterable[list[T]]"
+                    "Iterable[list[T]]"
                 ]
             }
         },
@@ -176,7 +187,7 @@
             "location": 107,
             "return": [
                 "DataportenGroupManager",
-                "dict",
+                "Dict",
                 "ajapaik.ajapaik.models.Album"
             ],
             "arguments": {
@@ -187,13 +198,16 @@
             "name": "valid_request",
             "location": 111,
             "return": [
-                "bool"
+                "bool",
+                "Dict",
+                "List[str]",
+                "int",
+                "cmk.utils.type_defs.HostName"
             ],
             "arguments": {
                 "request": [
-                    "dict[, ]",
-                    "django.http.HttpRequest",
-                    "dict"
+                    "Dict",
+                    "django.http.HttpRequest"
                 ]
             }
         }
@@ -207,7 +221,8 @@
             ],
             "arguments": {
                 "json_string": [
-                    "str"
+                    "str",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -215,11 +230,13 @@
             "name": "group_type",
             "location": 14,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "group": [
-                    "dataporten.api.GroupJSON"
+                    "api.GroupJSON",
+                    "str",
+                    "Exception"
                 ]
             }
         },
@@ -227,7 +244,7 @@
             "name": "group_factory",
             "location": 18,
             "return": [
-                "Generator[(BaseGroup, None, None)]"
+                "Generator[(Union[(Course, Group, MainProfile, OrganisationUnit, StudyProgram)], Any, None)]"
             ],
             "arguments": {}
         },
@@ -248,7 +265,11 @@
             "arguments": {
                 "self": [],
                 "group": [
-                    "dataporten.api.GroupJSON"
+                    "dict",
+                    "int",
+                    "str",
+                    "Mapping[str, Any]",
+                    "Union[Dict, str]"
                 ]
             }
         },
@@ -256,6 +277,8 @@
             "name": "valid",
             "location": 61,
             "return": [
+                "int",
+                "Tuple[str, str]",
                 "bool"
             ],
             "arguments": {
@@ -267,7 +290,11 @@
                     "Callable"
                 ],
                 "group": [
-                    "dataporten.api.GroupJSON"
+                    "api.GroupJSON",
+                    "bool",
+                    "str",
+                    "\"Project\"",
+                    "Callable"
                 ]
             }
         },
@@ -287,7 +314,12 @@
                     "Callable[[None], None]"
                 ],
                 "group": [
-                    "dataporten.api.GroupJSON"
+                    "api.GroupJSON",
+                    "int",
+                    "bool",
+                    "Type[T]",
+                    "str",
+                    "Callable[[None], None]"
                 ]
             }
         },
@@ -300,7 +332,8 @@
             "arguments": {
                 "self": [],
                 "membership": [
-                    "dataporten.api.MembershipJSON"
+                    "int",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -323,7 +356,8 @@
             "arguments": {
                 "self": [],
                 "group": [
-                    "dataporten.api.GroupJSON"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -331,7 +365,7 @@
             "name": "split_on_membership",
             "location": 134,
             "return": [
-                "Tuple[(Dict[(str, Course)], Dict[(str, Course)])]"
+                "Tuple[(dict, dict)]"
             ],
             "arguments": {
                 "cls": [
@@ -339,7 +373,8 @@
                     "bool"
                 ],
                 "courses": [
-                    "List[Course]"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -352,7 +387,8 @@
             "arguments": {
                 "self": [],
                 "group": [
-                    "dataporten.api.GroupJSON"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -365,7 +401,8 @@
             "arguments": {
                 "self": [],
                 "group": [
-                    "dataporten.api.GroupJSON"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -378,7 +415,9 @@
             "arguments": {
                 "self": [],
                 "dt": [
-                    "datetime.datetime"
+                    "datetime.datetime",
+                    "int",
+                    "Optional[datetime.datetime]"
                 ]
             }
         },
@@ -398,7 +437,9 @@
                     "Type"
                 ],
                 "month": [
-                    "int"
+                    "memoryview",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -418,12 +459,16 @@
             "name": "__sub__",
             "location": 195,
             "return": [
-                "int"
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "Semester"
+                    "int",
+                    "bool",
+                    "float",
+                    "str",
+                    "Optional[T]"
                 ]
             }
         }
@@ -481,12 +526,25 @@
             "name": "extract_extra_data",
             "location": 39,
             "return": [
-                "_T0"
+                "Dict[str, List[int]]",
+                "Optional[float]",
+                "dict",
+                "str",
+                "int",
+                "Optional[Dict[str, Any]]",
+                "bytes",
+                "float"
             ],
             "arguments": {
                 "self": [],
                 "data": [
-                    "_T0"
+                    "List[str]",
+                    "dict",
+                    "List[dict]",
+                    "str",
+                    "bytes",
+                    "List[List[Any]]",
+                    "bool"
                 ]
             }
         },
@@ -528,7 +586,7 @@
                     "bool",
                     "str",
                     "List[int]",
-                    "Callable[[], int]"
+                    "Callable[,int]"
                 ]
             }
         },
@@ -537,9 +595,9 @@
             "location": 31,
             "return": [
                 "MockedResponse",
-                "dict",
+                "Dict",
                 "bool",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "self": []
@@ -590,19 +648,16 @@
                 "self": [],
                 "request": [
                     "str",
+                    "Dict",
                     "bytes",
-                    "dict[, ]",
-                    "dict",
                     "requests.Request"
                 ],
                 "app": [
                     "str",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[, ]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "requests.Response",
                     "None",
-                    "dict",
                     "Optional[dict]"
                 ],
                 "token": [
@@ -708,7 +763,6 @@
             "name": "test_valid_case",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -719,7 +773,6 @@
             "name": "test_valid_case",
             "location": 32,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -742,19 +795,18 @@
             "name": "test_dataporten_middleware_with_plain_django_user",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "rf": [],
                 "django_user_model": [
-                    "typing.Iterable[typing.Any]",
+                    "Iterable[Any]",
                     "Optional[Iterable[Any]]",
                     "None",
                     "str",
                     "core.models.Recipe",
-                    "typing.Mapping",
-                    "Mapping[str, Any]",
+                    "Mapping",
+                    "Mapping[str,Any]",
                     "accounts.models.User"
                 ]
             }
@@ -763,23 +815,21 @@
             "name": "test_dataporten_middleware_with_user_with_dataporten_credentials",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "rf": [
-                    "dict[typing.Hashable, typing.Any]",
+                    "Dict[Hashable,Any]",
                     "str",
-                    "dict[str, typing.Any]",
-                    "Optional[Dict[Hashable, Any]]",
-                    "dict[, ]",
-                    "Optional[Dict[str, Any]]",
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Optional[Dict[Hashable,Any]]",
+                    "Optional[Dict[str,Any]]"
                 ],
                 "user_with_dataporten_token": [
                     "int",
                     "Type[models.taxonomies.T]",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         }
@@ -794,10 +844,9 @@
             "arguments": {
                 "user": [
                     "bool",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "int",
-                    "dict"
+                    "int"
                 ]
             }
         },
@@ -805,7 +854,6 @@
             "name": "test_dataporten_user_groups",
             "location": 122,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -818,13 +866,12 @@
             "name": "test_dataporten_user_validation",
             "location": 129,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "rf": [],
                 "django_user_model": [
-                    "typing.Iterable[typing.Any]",
+                    "Iterable[Any]",
                     "core.models.Recipe",
                     "None",
                     "Optional[Iterable[Any]]",
@@ -873,8 +920,7 @@
                 "dataporten": [
                     "str",
                     "int",
-                    "Type",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -914,7 +960,6 @@
             "name": "test_semester_in_future",
             "location": 75,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -926,13 +971,11 @@
             "name": "test_token_not_configured",
             "location": 90,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "settings": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "zerver.models.UserProfile"
                 ],
@@ -947,7 +990,6 @@
             "name": "test_token_unimportable_path",
             "location": 103,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -967,13 +1009,11 @@
             "name": "test_token_properly_configured",
             "location": 113,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "settings": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "zerver.models.UserProfile"
                 ],
@@ -1000,7 +1040,7 @@
             "name": "test_study_program_factory",
             "location": 30,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": [],
@@ -1011,7 +1051,7 @@
             "name": "test_course_factory",
             "location": 34,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": [],
@@ -1022,7 +1062,7 @@
             "name": "test_main_profile_factory",
             "location": 38,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": [],
@@ -1239,7 +1279,10 @@
             "name": "mock_userinfo_request",
             "location": 7,
             "return": [
-                "Dict[(str, Any)]"
+                "bool",
+                "Callable[[bytes], None]",
+                "int",
+                "str"
             ],
             "arguments": {}
         },
@@ -1247,7 +1290,10 @@
             "name": "mock_usergroups_request",
             "location": 25,
             "return": [
-                "List[dict]"
+                "bool",
+                "Callable[[bytes], None]",
+                "int",
+                "str"
             ],
             "arguments": {}
         }
@@ -1276,7 +1322,11 @@
             "arguments": {
                 "self": [],
                 "courses": [
-                    "Iterable[semesterpage.models.Course]"
+                    "str",
+                    "List[Callable]",
+                    "int",
+                    "Optional[str]",
+                    "Mapping[str,Any]"
                 ]
             }
         },
@@ -1299,7 +1349,9 @@
             "arguments": {
                 "self": [],
                 "code": [
-                    "str"
+                    "int",
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -1328,7 +1380,7 @@
             "name": "exams_pages",
             "location": 50,
             "return": [
-                "str"
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -1368,16 +1420,14 @@
             "name": "course_urls",
             "location": 139,
             "return": [
-                "Iterable[str]"
+                "Union[(Generator[(str, Any, None)], List[nothing])]"
             ],
             "arguments": {
                 "cls": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
-                    "bool",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "bool",
                     "requests.models.Response"
                 ]
             }
@@ -1386,7 +1436,7 @@
             "name": "pdf_urls",
             "location": 156,
             "return": [
-                "Iterable[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "cls": [
@@ -1406,7 +1456,8 @@
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -1414,18 +1465,15 @@
             "name": "course_urls",
             "location": 184,
             "return": [
-                "Iterable[str]"
+                "Union[(Generator[(str, Any, None)], List[nothing])]"
             ],
             "arguments": {
                 "cls": [
                     "str",
-                    "dict",
+                    "Dict",
+                    "Dict[str,Any]",
                     "bool",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -1433,7 +1481,7 @@
             "name": "pdf_urls",
             "location": 195,
             "return": [
-                "Iterable[str]"
+                "Generator[(str, Any, None)]"
             ],
             "arguments": {
                 "cls": [
@@ -1451,7 +1499,8 @@
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         }
@@ -1642,7 +1691,7 @@
             "name": "get_absolute_url",
             "location": 534,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1672,7 +1721,7 @@
             "name": "backup_file",
             "location": 631,
             "return": [
-                "bool"
+                "Optional[bool]"
             ],
             "arguments": {
                 "self": []
@@ -1732,9 +1781,7 @@
             ],
             "arguments": {
                 "self": [],
-                "url": [
-                    "str"
-                ]
+                "url": []
             }
         },
         "ExamURLParser.tokenize": {
@@ -1744,35 +1791,29 @@
                 "str"
             ],
             "arguments": {
-                "string": [
-                    "str"
-                ]
+                "string": []
             }
         },
         "ExamURLParser.find_date": {
             "name": "find_date",
             "location": 148,
             "return": [
-                "Tuple[(Optional[int], Optional[Season])]"
+                "Tuple[(Optional[int], Optional[Union[(int, str)]])]"
             ],
             "arguments": {
                 "cls": [],
-                "string": [
-                    "str"
-                ]
+                "string": []
             }
         },
         "ExamURLParser._code": {
             "name": "_code",
             "location": 224,
             "return": [
-                "Optional[str]"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
-                "string": [
-                    "str"
-                ]
+                "string": []
             }
         },
         "ExamURLParser.year": {
@@ -1861,24 +1902,20 @@
             ],
             "arguments": {
                 "self": [],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "PdfParser._content_type": {
             "name": "_content_type",
             "location": 607,
             "return": [
-                "Optional[str]"
+                "Any"
             ],
             "arguments": {
                 "cls": [
                     "PdfParser"
                 ],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "PdfParser._solutions": {
@@ -1891,9 +1928,7 @@
                 "cls": [
                     "PdfParser"
                 ],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "PdfParser._course_codes": {
@@ -1904,35 +1939,29 @@
             ],
             "arguments": {
                 "cls": [],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "PdfParser._language": {
             "name": "_language",
             "location": 641,
             "return": [
-                "Language"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "PdfParser._date": {
             "name": "_date",
             "location": 653,
             "return": [
-                "Tuple[(int, Season)]"
+                "Tuple[(Optional[Union[(int, Match[str])]], Any)]"
             ],
             "arguments": {
                 "cls": [],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "PdfParser.__repr__": {
@@ -1956,7 +1985,11 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "Union[(str, pathlib.Path)]"
+                    "str",
+                    "pathlib.Path",
+                    "Union[pathlib.Path,str]",
+                    "Union[str,pathlib.Path]",
+                    "Union[str,os.PathLike]"
                 ]
             }
         },
@@ -2005,8 +2038,8 @@
                     "zam_repondeur.models.Team"
                 ],
                 "context": [
-                    "dict[str, typing.Any]",
-                    "Optional[Dict[str, Any]]",
+                    "Dict[str,Any]",
+                    "Optional[Dict[str,Any]]",
                     "django.db.models.query.QuerySet",
                     "bytes"
                 ]
@@ -2017,7 +2050,7 @@
             "location": 26,
             "return": [
                 "str",
-                "dict[, ]",
+                "Dict",
                 "int",
                 "bool"
             ],
@@ -2032,7 +2065,7 @@
                 "JsonResponse",
                 "int",
                 "django.http.HttpResponse",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
@@ -2056,9 +2089,8 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "dict[str, typing.Any]",
-                    "django.http.HttpRequest",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "django.http.HttpRequest"
                 ]
             }
         },
@@ -2112,13 +2144,11 @@
                 "self": [],
                 "form": [
                     "str",
-                    "typing.IO",
-                    "dict[str, typing.Any]",
                     "IO",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "django.http.HttpRequest",
                     "Iterable[models.Entry]",
-                    "Union[str, IO]"
+                    "Union[str,IO]"
                 ]
             }
         },
@@ -2127,9 +2157,9 @@
             "location": 141,
             "return": [
                 "str",
-                "dict[, ]",
+                "Dict",
                 "int",
-                "dict[str, str]"
+                "Dict[str,str]"
             ],
             "arguments": {
                 "self": []
@@ -2170,7 +2200,9 @@
             "arguments": {
                 "self": [],
                 "course_code": [
-                    "str"
+                    "str",
+                    "int",
+                    "Set[str]"
                 ]
             }
         },
@@ -2183,10 +2215,15 @@
             "arguments": {
                 "self": [],
                 "course_code": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ],
                 "retry": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Set[str]",
+                    "List[libkol.Item]"
                 ]
             }
         },
@@ -2209,7 +2246,9 @@
             "arguments": {
                 "self": [],
                 "gui": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Mapping[str,Any]"
                 ]
             }
         }
@@ -2222,21 +2261,19 @@
             "name": "delete_pdf_backup_on_deletion",
             "location": 8,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "sender": [
                     "str",
                     "bool",
-                    "typing.Iterable[int]",
                     "Iterable[int]",
                     "T"
                 ],
                 "instance": [
                     "str",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ]
             }
@@ -2510,7 +2547,7 @@
             "name": "__repr__",
             "location": 28,
             "return": [
-                "typing.Text"
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -2614,7 +2651,7 @@
             "name": "__repr__",
             "location": 587,
             "return": [
-                "typing.Text"
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -2735,7 +2772,6 @@
             "name": "test_read_text_of_text_indexed_pdf",
             "location": 66,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2802,9 +2838,9 @@
             "arguments": {
                 "monkeypatch": [
                     "pathlib.Path",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "bool",
-                    "Optional[Dict[str, Any]]",
+                    "Optional[Dict[str,Any]]",
                     "None"
                 ]
             }
@@ -2874,20 +2910,22 @@
             "name": "allauth_token",
             "location": 6,
             "return": [
-                "str"
+                "str",
+                "zerver.models.Realm",
+                "socialhome.activities.models.Activity",
+                "zerver.models.UserProfile"
             ],
             "arguments": {
                 "user": [
                     "str",
                     "django.contrib.auth.models.User",
                     "None",
-                    "list[U]",
+                    "List[U]",
+                    "Dict[str,Any]",
                     "zerver.models.UserProfile",
-                    "dict[str, typing.Any]",
                     "Optional[zerver.models.UserProfile]",
                     "zerver.models.Stream",
-                    "List[zerver.models.UserProfile]",
-                    "Dict[str, Any]"
+                    "List[zerver.models.UserProfile]"
                 ]
             }
         }
@@ -2917,7 +2955,6 @@
             "name": "test_dataporten_user_token",
             "location": 4,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2935,7 +2972,11 @@
             ],
             "arguments": {
                 "user": [
-                    "dataporten.models.DataportenUser"
+                    "Dict[str, Any]",
+                    "str",
+                    "dict",
+                    "int",
+                    "django.contrib.auth.models.User"
                 ]
             }
         },
@@ -2947,7 +2988,11 @@
             ],
             "arguments": {
                 "courses": [
-                    "Dict[(str, dataporten.parsers.Course)]"
+                    "Optional[Tuple[str, ...]]",
+                    "dict",
+                    "Dict[str, float]",
+                    "Dict[str, Any]",
+                    "owlmixin.owlTDict[jumeaux.models.DiffKeys]"
                 ]
             }
         },
@@ -2959,7 +3004,8 @@
             ],
             "arguments": {
                 "user": [
-                    "dataporten.models.DataportenUser"
+                    "str",
+                    "app.user.models.User"
                 ]
             }
         }
@@ -2990,7 +3036,6 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "set[str]",
                     "Set[str]",
                     "django.http.HttpRequest"
                 ],
@@ -3013,7 +3058,6 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "set[str]",
                     "Set[str]",
                     "django.http.HttpRequest"
                 ],
@@ -3036,17 +3080,14 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "dict[, ]",
-                    "django.http.HttpRequest",
-                    "dict"
+                    "Dict",
+                    "django.http.HttpRequest"
                 ],
                 "form": [
-                    "tuple[int]",
-                    "django.http.HttpRequest",
-                    "dict[, ]",
-                    "viewer.models.Archive",
                     "Tuple[int]",
-                    "dict"
+                    "Dict",
+                    "django.http.HttpRequest",
+                    "viewer.models.Archive"
                 ],
                 "formset": [
                     "bytes",
@@ -3108,17 +3149,15 @@
             "arguments": {
                 "self": [],
                 "db_field": [
-                    "typing.Callable[, ]",
-                    "django.db.models.fields.Field",
-                    "typing.Mapping",
                     "Callable",
-                    "Mapping[str, List[Any]]"
+                    "django.db.models.fields.Field",
+                    "Mapping",
+                    "Mapping[str,List[Any]]"
                 ],
                 "request": [
                     "str",
+                    "Dict",
                     "django.http.HttpRequest",
-                    "dict[, ]",
-                    "dict",
                     "deeplearning.ml4pl.models.log_database.Database"
                 ]
             }
@@ -3162,12 +3201,11 @@
                 ],
                 "obj": [
                     "None",
-                    "dict[, ]",
+                    "Dict",
                     "django.http.HttpRequest",
                     "Optional[django.db.models.Model]",
                     "django.http.requesHttpRequest",
-                    "django.db.models.Model",
-                    "dict"
+                    "django.db.models.Model"
                 ]
             }
         },
@@ -3186,8 +3224,7 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "Set[str]",
-                    "set[str]"
+                    "Set[str]"
                 ],
                 "obj": [
                     "None",
@@ -3210,9 +3247,8 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "dict[, ]",
-                    "django.http.HttpRequest",
-                    "dict"
+                    "Dict",
+                    "django.http.HttpRequest"
                 ],
                 "obj": [
                     "django.http.HttpRequest",
@@ -3220,12 +3256,11 @@
                 ],
                 "form": [
                     "bool",
-                    "dict[, ]",
+                    "Dict",
                     "django.forms.Form",
                     "django.forms.ModelForm",
                     "django.db.models.Model",
-                    "django.http.requesHttpRequest",
-                    "dict"
+                    "django.http.requesHttpRequest"
                 ],
                 "change": [
                     "str"
@@ -3261,11 +3296,10 @@
             "arguments": {
                 "self": [],
                 "db_field": [
-                    "typing.Callable[, ]",
-                    "django.db.models.fields.Field",
-                    "typing.Mapping",
                     "Callable",
-                    "Mapping[str, List[Any]]"
+                    "django.db.models.fields.Field",
+                    "Mapping",
+                    "Mapping[str,List[Any]]"
                 ],
                 "request": [
                     "str",
@@ -3349,12 +3383,11 @@
                 ],
                 "obj": [
                     "None",
-                    "dict[, ]",
+                    "Dict",
                     "django.http.HttpRequest",
                     "Optional[django.db.models.Model]",
                     "django.http.requesHttpRequest",
-                    "django.db.models.Model",
-                    "dict"
+                    "django.db.models.Model"
                 ]
             }
         },
@@ -3367,32 +3400,26 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "dict[, ]",
-                    "dict",
-                    "tuple[int]",
+                    "Dict",
+                    "Tuple[int]",
                     "django.http.HttpRequest",
-                    "viewer.models.Archive",
-                    "Tuple[int]"
+                    "viewer.models.Archive"
                 ],
                 "obj": [
                     "django.http.HttpRequest",
                     "zerver.models.UserProfile"
                 ],
                 "form": [
-                    "dict[, ]",
-                    "dict",
-                    "tuple[int]",
+                    "Dict",
+                    "Tuple[int]",
                     "django.http.HttpRequest",
-                    "viewer.models.Archive",
-                    "Tuple[int]"
+                    "viewer.models.Archive"
                 ],
                 "change": [
-                    "dict[, ]",
-                    "dict",
-                    "tuple[int]",
+                    "Dict",
+                    "Tuple[int]",
                     "django.http.HttpRequest",
-                    "viewer.models.Archive",
-                    "Tuple[int]"
+                    "viewer.models.Archive"
                 ]
             }
         }
@@ -3433,7 +3460,9 @@
         "upload_path": {
             "name": "upload_path",
             "location": 23,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "instance": [],
                 "filename": []
@@ -3443,7 +3472,7 @@
             "name": "norwegian_slugify",
             "location": 32,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "instance": []
@@ -3456,12 +3485,8 @@
                 "str"
             ],
             "arguments": {
-                "instance": [
-                    "CourseUpload"
-                ],
-                "filename": [
-                    "str"
-                ]
+                "instance": [],
+                "filename": []
             }
         },
         "StudyProgram.simple_semesters": {
@@ -3502,7 +3527,9 @@
         "StudyProgram.get_absolute_url": {
             "name": "get_absolute_url",
             "location": 110,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3510,7 +3537,9 @@
         "StudyProgram.__str__": {
             "name": "__str__",
             "location": 113,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3529,7 +3558,9 @@
         "MainProfile.get_absolute_url": {
             "name": "get_absolute_url",
             "location": 152,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3537,7 +3568,9 @@
         "MainProfile.__str__": {
             "name": "__str__",
             "location": 158,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3546,18 +3579,14 @@
             "name": "get",
             "location": 205,
             "return": [
-                "Semester"
+                "Any"
             ],
             "arguments": {
-                "study_program": [
-                    "str"
-                ],
+                "study_program": [],
                 "main_profile": [
-                    "Optional[str]"
+                    "None"
                 ],
-                "number": [
-                    "Optional[str]"
-                ]
+                "number": []
             }
         },
         "Semester.check_access": {
@@ -3574,7 +3603,9 @@
         "Semester.get_archive_url": {
             "name": "get_archive_url",
             "location": 247,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3582,7 +3613,9 @@
         "Semester.get_absolute_url": {
             "name": "get_absolute_url",
             "location": 262,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3590,7 +3623,9 @@
         "Semester.__str__": {
             "name": "__str__",
             "location": 272,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3606,7 +3641,9 @@
         "LinkList.__str__": {
             "name": "__str__",
             "location": 338,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3635,7 +3672,9 @@
         "Course.get_admin_url": {
             "name": "get_admin_url",
             "location": 398,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3643,7 +3682,9 @@
         "Course.get_absolute_url": {
             "name": "get_absolute_url",
             "location": 402,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3677,7 +3718,9 @@
         "Course.__str__": {
             "name": "__str__",
             "location": 468,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3713,7 +3756,7 @@
             "name": "__str__",
             "location": 532,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -3744,7 +3787,9 @@
         "CustomLinkCategory.__str__": {
             "name": "__str__",
             "location": 601,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3752,7 +3797,9 @@
         "Link.__str__": {
             "name": "__str__",
             "location": 688,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3781,7 +3828,9 @@
         "CourseLink.__str__": {
             "name": "__str__",
             "location": 728,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3800,7 +3849,9 @@
         "ResourceLink.__str__": {
             "name": "__str__",
             "location": 759,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3835,7 +3886,9 @@
         "Contributor.accessible_study_programs": {
             "name": "accessible_study_programs",
             "location": 847,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3843,7 +3896,9 @@
         "Contributor.accessible_main_profiles": {
             "name": "accessible_main_profiles",
             "location": 853,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3851,7 +3906,9 @@
         "Contributor.accessible_semesters": {
             "name": "accessible_semesters",
             "location": 863,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3859,7 +3916,9 @@
         "Contributor.accessible_courses": {
             "name": "accessible_courses",
             "location": 875,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3867,7 +3926,9 @@
         "Contributor.accessible_resource_link_lists": {
             "name": "accessible_resource_link_lists",
             "location": 894,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3875,7 +3936,9 @@
         "Contributor.accessible_custom_link_categories": {
             "name": "accessible_custom_link_categories",
             "location": 897,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3883,7 +3946,9 @@
         "Contributor.accessible_course_links": {
             "name": "accessible_course_links",
             "location": 900,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3891,7 +3956,9 @@
         "Contributor.accessible_course_uploads": {
             "name": "accessible_course_uploads",
             "location": 903,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3899,7 +3966,9 @@
         "Contributor.accessible_resource_links": {
             "name": "accessible_resource_links",
             "location": 906,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3933,7 +4002,9 @@
         "Options.get_archive_url": {
             "name": "get_archive_url",
             "location": 979,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3960,7 +4031,9 @@
         "Options.get_admin_url": {
             "name": "get_admin_url",
             "location": 996,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3968,7 +4041,9 @@
         "Options.get_absolute_url": {
             "name": "get_absolute_url",
             "location": 1000,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3976,7 +4051,9 @@
         "Options.__str__": {
             "name": "__str__",
             "location": 1003,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -4066,37 +4143,31 @@
                 ],
                 "study_program": [
                     "bool",
-                    "list[dict[str, typing.Any]]",
-                    "dict[str, typing.Any]",
+                    "List[dict[str,Any]]",
+                    "Dict[str,Any]",
                     "zerver.models.UserProfile",
                     "None",
-                    "List[Dict[str, Any]]",
-                    "Optional[Dict[str, Any]]",
+                    "List[Dict[str,Any]]",
+                    "Optional[Dict[str,Any]]",
                     "Optional[users.models.JustfixUser]",
                     "django.http.HttpRequest",
                     "Optional[Iterable[str]]"
                 ],
                 "main_profile": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "None",
                     "str",
-                    "dict[str, typing.Any]",
-                    "Optional[dict]",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict",
+                    "Dict[str,str]",
+                    "Optional[dict]"
                 ],
                 "semester_number": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "None",
                     "str",
-                    "dict[str, typing.Any]",
-                    "Optional[dict]",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict",
+                    "Dict[str,str]",
+                    "Optional[dict]"
                 ],
                 "save_location": [
                     "bool",
@@ -4189,7 +4260,8 @@
                     "django.core.handlers.wsgi.WSGIRequest"
                 ],
                 "course_pk": [
-                    "str"
+                    "str",
+                    "django.http.HttpRequest"
                 ]
             }
         },
@@ -4223,9 +4295,8 @@
             ],
             "arguments": {
                 "request": [
-                    "dict[, ]",
+                    "Dict",
                     "django.http.HttpRequest",
-                    "dict",
                     "http.MITMRequest"
                 ],
                 "course_pk": [
@@ -4271,17 +4342,18 @@
             ],
             "arguments": {
                 "cls": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
+                    "Dict[str,str]",
                     "bytes",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "skip": [
-                    "Set[str]"
+                    "Set[str]",
+                    "Dict",
+                    "Callable",
+                    "List[int]",
+                    "str"
                 ]
             }
         },
@@ -4290,7 +4362,7 @@
             "location": 68,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {
                 "course": [
@@ -4381,10 +4453,9 @@
                 "sender": [
                     "List[str]",
                     "bool",
-                    "list[str]",
                     "str",
-                    "List[Tuple[str, Any]]",
-                    "list[tuple[typing.Union[str,typing.Any]]]"
+                    "List[Tuple[str,Any]]",
+                    "List[tuple[Union[str,Any]]]"
                 ],
                 "instance": [
                     "Dict[str, Any]"
@@ -4392,18 +4463,16 @@
                 "created": [
                     "List[str]",
                     "bool",
-                    "list[str]",
                     "str",
-                    "List[Tuple[str, Any]]",
-                    "list[tuple[typing.Union[str,typing.Any]]]"
+                    "List[Tuple[str,Any]]",
+                    "List[tuple[Union[str,Any]]]"
                 ],
                 "raw": [
                     "List[str]",
                     "bool",
-                    "list[str]",
                     "str",
-                    "List[Tuple[str, Any]]",
-                    "list[tuple[typing.Union[str,typing.Any]]]"
+                    "List[Tuple[str,Any]]",
+                    "List[tuple[Union[str,Any]]]"
                 ]
             }
         },
@@ -4411,45 +4480,37 @@
             "name": "contributor_save",
             "location": 45,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "sender": [
                     "str",
                     "int",
-                    "list[dict[, ]]",
                     "List[dict]",
                     "bool"
                 ],
                 "instance": [
                     "int",
-                    "list",
-                    "list[]",
+                    "List",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ],
                 "created": [
                     "int",
-                    "list",
-                    "list[]",
+                    "List",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ],
                 "raw": [
                     "int",
-                    "list",
-                    "list[]",
+                    "List",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ]
             }
@@ -4458,10 +4519,7 @@
             "name": "set_groups",
             "location": 52,
             "return": [
-                "None",
-                "Union[tuple, list]",
-                "Dict[str, Any]",
-                "bytes"
+                "None"
             ],
             "arguments": {
                 "user": [
@@ -4481,10 +4539,10 @@
             ],
             "arguments": {
                 "request": [
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "django.http.HttpRequest",
                     "zerver.models.UserProfile",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ],
                 "user": [
                     "bool",
@@ -4540,7 +4598,7 @@
                 "MainProfileFactory",
                 "List[str]",
                 "int",
-                "list",
+                "List",
                 "str"
             ],
             "arguments": {}
@@ -4570,9 +4628,8 @@
             "arguments": {
                 "semester": [
                     "int",
-                    "str",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "str",
                     "models.Question"
                 ]
             }
@@ -4582,20 +4639,18 @@
             "location": 45,
             "return": [
                 "ResourceLinkListFactory",
-                "Dict[str, Any]",
-                "dict",
+                "Dict[str,Any]",
+                "Dict",
                 "str",
-                "Callable[[str], T]"
+                "Callable[[str],T]"
             ],
             "arguments": {
                 "study_program": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Callable[[str], T]",
-                    "typing.Callable[str, T]"
+                    "Callable[[str],T]",
+                    "Callable[str,T]"
                 ]
             }
         },
@@ -4605,7 +4660,7 @@
             "return": [
                 "CourseLinkFactory",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "ajapaik.ajapaik.models.Album"
             ],
             "arguments": {}
@@ -4616,7 +4671,7 @@
             "return": [
                 "ResourceLinkFactory",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "ajapaik.ajapaik.models.Album"
             ],
             "arguments": {}
@@ -4652,25 +4707,25 @@
             "location": 61,
             "return": [
                 "None",
-                "Union[tuple, list]",
+                "Union[tuple,list]",
                 "List[int]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
                 "self": [],
                 "create": [
                     "int",
-                    "tuple[typing.Union[int,str]]",
-                    "Tuple[int, str]",
-                    "typing.Iterator",
+                    "Tuple[Union[int,str]]",
+                    "Tuple[int,str]",
+                    "Iterator",
                     "Iterator[int]",
                     "Iterable[int]"
                 ],
                 "extracted": [
-                    "tuple[typing.Union[int,str]]",
+                    "Tuple[Union[int,str]]",
                     "int",
-                    "Tuple[int, str]",
+                    "Tuple[int,str]",
                     "Iterator[int]",
                     "Iterable[int]"
                 ]
@@ -4681,25 +4736,25 @@
             "location": 92,
             "return": [
                 "None",
-                "Union[tuple, list]",
+                "Union[tuple,list]",
                 "List[int]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
                 "self": [],
                 "create": [
                     "int",
-                    "tuple[typing.Union[int,str]]",
-                    "Tuple[int, str]",
-                    "typing.Iterator",
+                    "Tuple[Union[int,str]]",
+                    "Tuple[int,str]",
+                    "Iterator",
                     "Iterator[int]",
                     "Iterable[int]"
                 ],
                 "extracted": [
-                    "tuple[typing.Union[int,str]]",
+                    "Tuple[Union[int,str]]",
                     "int",
-                    "Tuple[int, str]",
+                    "Tuple[int,str]",
                     "Iterator[int]",
                     "Iterable[int]"
                 ]
@@ -4711,7 +4766,6 @@
             "name": "test_basic_properties_of_saving_new_courses_to_db",
             "location": 18,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4735,7 +4789,6 @@
             "name": "test_new_user",
             "location": 48,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4750,7 +4803,6 @@
             "name": "test_user_has_removed_one_of_the_self_chosen_courses",
             "location": 61,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4761,7 +4813,6 @@
             "name": "test_user_has_finished_a_course_since_last_time",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5124,7 +5175,6 @@
             "name": "test_user_which_should_choose_their_courses",
             "location": 18,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5141,7 +5191,6 @@
             "name": "test_user_which_has_already_chosen_their_courses",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5158,7 +5207,6 @@
             "name": "test_not_choosing_courses_based_on_settings",
             "location": 43,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5174,7 +5222,6 @@
             "name": "test_non_superuser_being_refused_access",
             "location": 54,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5186,7 +5233,6 @@
             "name": "test_superuser_being_given_history_access",
             "location": 67,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5198,7 +5244,6 @@
             "name": "test_logged_in_user_visiting_homepage",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5210,7 +5255,6 @@
             "name": "test_user_with_old_visit_to_student_page",
             "location": 98,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5227,7 +5271,6 @@
             "name": "test_user_with_old_visit_to_semester",
             "location": 111,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5244,7 +5287,6 @@
             "name": "test_course_is_removed",
             "location": 129,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5255,7 +5297,6 @@
             "name": "test_removing_course_requires_login",
             "location": 144,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5267,7 +5308,6 @@
             "name": "test_remove_course_which_has_already_been_hidden",
             "location": 153,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

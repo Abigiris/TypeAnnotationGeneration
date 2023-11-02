@@ -8,15 +8,11 @@
             "name": "node_from_tokens",
             "location": 19,
             "return": [
-                "Tuple[(myjson.core.nodes.Node, int)]"
+                "Tuple[(Union[(myjson.core.nodes.MappingNode, myjson.core.nodes.ScalarNode, myjson.core.nodes.SequenceNode)], Any)]"
             ],
             "arguments": {
-                "tokens": [
-                    "List[myjson.loading.tokens.Token]"
-                ],
-                "start": [
-                    "int"
-                ]
+                "tokens": [],
+                "start": []
             }
         },
         "is_mapping": {
@@ -26,27 +22,19 @@
                 "bool"
             ],
             "arguments": {
-                "tokens": [
-                    "List[myjson.loading.tokens.Token]"
-                ],
-                "start": [
-                    "int"
-                ]
+                "tokens": [],
+                "start": []
             }
         },
         "mapping_node_from_tokens": {
             "name": "mapping_node_from_tokens",
             "location": 36,
             "return": [
-                "Tuple[(myjson.core.nodes.MappingNode, int)]"
+                "Tuple[(myjson.core.nodes.MappingNode, Any)]"
             ],
             "arguments": {
-                "tokens": [
-                    "List[myjson.loading.tokens.Token]"
-                ],
-                "start": [
-                    "int"
-                ]
+                "tokens": [],
+                "start": []
             }
         },
         "is_sequence": {
@@ -56,27 +44,19 @@
                 "bool"
             ],
             "arguments": {
-                "tokens": [
-                    "List[myjson.loading.tokens.Token]"
-                ],
-                "start": [
-                    "int"
-                ]
+                "tokens": [],
+                "start": []
             }
         },
         "sequence_node_from_tokens": {
             "name": "sequence_node_from_tokens",
             "location": 58,
             "return": [
-                "Tuple[(myjson.core.nodes.SequenceNode, int)]"
+                "Tuple[(myjson.core.nodes.SequenceNode, Any)]"
             ],
             "arguments": {
-                "tokens": [
-                    "List[myjson.loading.tokens.Token]"
-                ],
-                "start": [
-                    "int"
-                ]
+                "tokens": [],
+                "start": []
             }
         },
         "is_scalar": {
@@ -86,27 +66,19 @@
                 "bool"
             ],
             "arguments": {
-                "tokens": [
-                    "List[myjson.loading.tokens.Token]"
-                ],
-                "start": [
-                    "int"
-                ]
+                "tokens": [],
+                "start": []
             }
         },
         "scalar_node_from_tokens": {
             "name": "scalar_node_from_tokens",
             "location": 77,
             "return": [
-                "Tuple[(myjson.core.nodes.ScalarNode, int)]"
+                "Tuple[(myjson.core.nodes.ScalarNode, Any)]"
             ],
             "arguments": {
-                "tokens": [
-                    "List[myjson.loading.tokens.Token]"
-                ],
-                "start": [
-                    "int"
-                ]
+                "tokens": [],
+                "start": []
             }
         }
     },
@@ -149,51 +121,43 @@
             "name": "tokenize",
             "location": 17,
             "return": [
-                "List[myjson.loading.tokens.Token]"
+                "List[Union[(myjson.loading.tokens.Delimiter, myjson.loading.tokens.MappingEnd, myjson.loading.tokens.MappingStart, myjson.loading.tokens.Separator, myjson.loading.tokens.SequenceEnd, myjson.loading.tokens.SequenceStart)]]"
             ],
             "arguments": {
-                "string": [
-                    "str"
-                ]
+                "string": []
             }
         },
         "State.transition": {
             "name": "transition",
             "location": 29,
             "return": [
-                "Tuple[(State, List[myjson.loading.tokens.Token])]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "inp": [
-                    "str"
-                ]
+                "inp": []
             }
         },
         "Unquoted.transition": {
             "name": "transition",
             "location": 36,
             "return": [
-                "Tuple[(State, List[myjson.loading.tokens.Token])]"
+                "Tuple[(Union[(Quoted, Unquoted)], List[Union[(myjson.loading.tokens.Delimiter, myjson.loading.tokens.MappingEnd, myjson.loading.tokens.MappingStart, myjson.loading.tokens.Separator, myjson.loading.tokens.SequenceEnd, myjson.loading.tokens.SequenceStart)]])]"
             ],
             "arguments": {
                 "self": [],
-                "inp": [
-                    "str"
-                ]
+                "inp": []
             }
         },
         "Quoted.transition": {
             "name": "transition",
             "location": 59,
             "return": [
-                "Tuple[(State, List[myjson.loading.tokens.Token])]"
+                "Tuple[(Union[(Quoted, Unquoted)], List[myjson.loading.tokens.ScalarValue])]"
             ],
             "arguments": {
                 "self": [],
-                "inp": [
-                    "str"
-                ]
+                "inp": []
             }
         }
     },
@@ -202,7 +166,9 @@
         "loads": {
             "name": "loads",
             "location": 8,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "string": []
             }

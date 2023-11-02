@@ -4,7 +4,7 @@
             "name": "generate",
             "location": 33,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, Union[(list, Dict[(Any, list)])])]"
             ],
             "arguments": {}
         },
@@ -12,11 +12,14 @@
             "name": "get_configs",
             "location": 45,
             "return": [
-                "Dict[(str, Dict[(str, Any)])]"
+                "dict"
             ],
             "arguments": {
                 "config_bucket_name": [
-                    "str"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -29,7 +32,10 @@
             "arguments": {
                 "self": [],
                 "bucket_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -42,7 +48,13 @@
             "arguments": {
                 "self": [],
                 "output": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "bool",
+                    "Optional[str]",
+                    "None",
+                    "IO[bytes]",
+                    "IO"
                 ]
             }
         },
@@ -67,7 +79,9 @@
             "arguments": {
                 "self": [],
                 "resource": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -97,7 +111,7 @@
             "name": "help",
             "location": 17,
             "return": [
-                "typing.Optional[builtins.str]",
+                "Optional[str]",
                 "None"
             ],
             "arguments": {
@@ -108,7 +122,7 @@
             "name": "to_json",
             "location": 20,
             "return": [
-                "Dict[(str, Optional[str])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -120,7 +134,12 @@
             "name": "json_decode",
             "location": 6,
             "return": [
-                "Optional[str]"
+                "None",
+                "str",
+                "Optional[str]",
+                "Optional[List[Any]]",
+                "List",
+                "Optional[BaseException]"
             ],
             "arguments": {
                 "o": [
@@ -139,7 +158,9 @@
             ],
             "arguments": {
                 "js": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "str",
+                    "bool"
                 ]
             }
         }
@@ -161,16 +182,14 @@
             ],
             "arguments": {
                 "event": [
-                    "dict",
-                    "dict[, ]",
-                    "Callable[[str, str], bool]",
-                    "typing.Callable[str,str, bool]"
+                    "Dict",
+                    "Callable[[str,str],bool]",
+                    "Callable[str,str,bool]"
                 ],
                 "context": [
-                    "dict",
-                    "dict[, ]",
-                    "Callable[[str, str], bool]",
-                    "typing.Callable[str,str, bool]"
+                    "Dict",
+                    "Callable[[str,str],bool]",
+                    "Callable[str,str,bool]"
                 ]
             }
         },
@@ -195,17 +214,26 @@
             "name": "diff_previous",
             "location": 110,
             "return": [
-                "Tuple[(Set[Tuple[(str, str)]], Set[Tuple[(str, str)]])]"
+                "Tuple[(set, set)]"
             ],
             "arguments": {
                 "latest_output": [
-                    "Output"
+                    "Callable",
+                    "int",
+                    "bool"
                 ],
                 "previous_output": [
-                    "Output"
+                    "Callable",
+                    "int",
+                    "bool"
                 ],
                 "whitelist": [
-                    "Optional[Whitelist]"
+                    "int",
+                    "None",
+                    "bytes",
+                    "BinaryIO",
+                    "Callable",
+                    "List[bool]"
                 ]
             }
         },
@@ -217,7 +245,9 @@
             ],
             "arguments": {
                 "whitelist_json": [
-                    "Dict[(str, List[str])]"
+                    "Dict[str,list[str]]",
+                    "Dict[str,List[str]]",
+                    "str"
                 ]
             }
         },
@@ -229,7 +259,12 @@
             ],
             "arguments": {
                 "config_bucket_name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Union[int,str]",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -237,14 +272,19 @@
             "name": "set_of_issues",
             "location": 156,
             "return": [
-                "Set[Tuple[(str, str)]]"
+                "Set[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "output": [
-                    "Output"
+                    "str",
+                    "List[dict[str,Any]]",
+                    "bool",
+                    "int",
+                    "List[Dict[str,Any]]"
                 ],
                 "whitelist": [
-                    "Optional[Whitelist]"
+                    "str",
+                    "Type[T]"
                 ]
             }
         },
@@ -256,7 +296,12 @@
             ],
             "arguments": {
                 "output": [
-                    "Output"
+                    "str",
+                    "List[int]",
+                    "bytes",
+                    "Type[GenericList]",
+                    "Union[str,bytes]",
+                    "int"
                 ]
             }
         },
@@ -277,7 +322,10 @@
             "arguments": {
                 "self": [],
                 "output_bucket_name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -285,7 +333,7 @@
             "name": "_get_issues",
             "location": 40,
             "return": [
-                "Generator[(dict, None, None)]"
+                "Generator[(Dict[(str, Any)], Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -315,15 +363,25 @@
             "name": "_previous_output_s3",
             "location": 71,
             "return": [
-                "Optional[Output]"
+                "None",
+                "Optional[Dict]",
+                "Optional[int]",
+                "bytes",
+                "Dict"
             ],
             "arguments": {
                 "self": [],
                 "ignore_key": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[str]"
                 ],
                 "hours_in_past_to_search": [
-                    "int"
+                    "int",
+                    "Optional[str]",
+                    "Optional[bool]",
+                    "Optional[List[str]]",
+                    "Optional[float]"
                 ]
             }
         },
@@ -331,18 +389,31 @@
             "name": "diff_previous_s3",
             "location": 93,
             "return": [
-                "Tuple[(Set[Tuple[(str, str)]], Set[Tuple[(str, str)]])]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "latest_output": [
-                    "Output"
+                    "bool",
+                    "List[int]",
+                    "bytes",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ],
                 "whitelist": [
-                    "Optional[Whitelist]"
+                    "bool",
+                    "None",
+                    "str",
+                    "int"
                 ],
                 "hours_in_past_to_search": [
-                    "int"
+                    "int",
+                    "str",
+                    "bytes",
+                    "bool",
+                    "Hashable",
+                    "List[str]"
                 ]
             }
         }
@@ -365,9 +436,9 @@
             "location": 25,
             "return": [
                 "str",
-                "dict[, ]",
+                "Dict",
                 "Tuple[bytes]",
-                "dict[int, typing.Any]",
+                "Dict[int,Any]",
                 "float",
                 "bool"
             ],
@@ -385,7 +456,10 @@
             ],
             "arguments": {
                 "bucket_name": [
-                    "str"
+                    "str",
+                    "Union[Dict[str,Any],None]",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
@@ -432,7 +506,7 @@
             "name": "get_s3_bucket_list",
             "location": 167,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "s3_client": [
@@ -446,7 +520,7 @@
             "name": "keys_in_bucket",
             "location": 172,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "s3_client": [
@@ -454,10 +528,14 @@
                     "botocore.clienBaseClient"
                 ],
                 "bucket_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "max_keys": [
-                    "int"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -465,19 +543,26 @@
             "name": "get_s3_random_files",
             "location": 183,
             "return": [
-                "Dict[(str, List[str])]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "s3_client": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "keys_to_return": [
-                    "int"
+                    "int",
+                    "Dict[str,Any]",
+                    "List",
+                    "Dict[str,List[str]]",
+                    "Dict",
+                    "Set",
+                    "List[str]"
                 ],
                 "keys_to_request": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -485,12 +570,12 @@
             "name": "help",
             "location": 43,
             "return": [
-                "typing.Text",
+                "Text",
                 "List[str]",
                 "str",
                 "List[Dict]",
                 "List[List[Any]]",
-                "Dict[str, str]"
+                "Dict[str,str]"
             ],
             "arguments": {
                 "self": []
@@ -505,7 +590,13 @@
             "arguments": {
                 "self": [],
                 "s3_bucket_list": [
-                    "List[str]"
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "Dict",
+                    "List",
+                    "None",
+                    "Optional[int]",
+                    "int"
                 ]
             }
         },
@@ -513,7 +604,7 @@
             "name": "find_issues",
             "location": 56,
             "return": [
-                "Generator[(issues.Issue, None, None)]"
+                "Generator[(PubliclyListableBucketIssue, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -524,7 +615,7 @@
             "location": 77,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {
                 "self": []
@@ -539,7 +630,13 @@
             "arguments": {
                 "self": [],
                 "s3_bucket_list": [
-                    "List[str]"
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "Dict",
+                    "List",
+                    "None",
+                    "Optional[int]",
+                    "int"
                 ]
             }
         },
@@ -547,7 +644,7 @@
             "name": "find_issues",
             "location": 90,
             "return": [
-                "Generator[(issues.Issue, None, None)]"
+                "Generator[(PubliclyUploadableBucketIssue, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -558,7 +655,7 @@
             "location": 107,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {
                 "self": []
@@ -573,7 +670,13 @@
             "arguments": {
                 "self": [],
                 "s3_bucket_list": [
-                    "List[str]"
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "Dict",
+                    "List",
+                    "None",
+                    "Optional[int]",
+                    "int"
                 ]
             }
         },
@@ -581,7 +684,7 @@
             "name": "find_issues",
             "location": 120,
             "return": [
-                "Generator[(issues.Issue, None, None)]"
+                "Generator[(PubliclyDeletableBucketIssue, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -596,10 +699,16 @@
             "arguments": {
                 "self": [],
                 "bucket_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "key": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "Dict[str,LabwareDefinition]",
+                    "Dict[str,D]"
                 ]
             }
         },
@@ -607,7 +716,7 @@
             "name": "to_json",
             "location": 137,
             "return": [
-                "Dict[(str, Optional[str])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -617,10 +726,10 @@
             "name": "help",
             "location": 141,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "Optional[int]",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "self": []
@@ -635,7 +744,14 @@
             "arguments": {
                 "self": [],
                 "s3_random_files": [
-                    "Dict[(str, List[str])]"
+                    "str",
+                    "Tuple[List[Any],int]",
+                    "bool",
+                    "Tuple[Union[list[Any],int]]",
+                    "Optional[User]",
+                    "None",
+                    "Dict[str,Optional[str]]",
+                    "Dict[str,Union[str,None]]"
                 ]
             }
         },
@@ -643,7 +759,7 @@
             "name": "find_issues",
             "location": 154,
             "return": [
-                "Generator[(issues.Issue, None, None)]"
+                "Generator[(PubliclyReadableFileIssue, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -655,17 +771,25 @@
             "name": "build_message",
             "location": 21,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, List[Dict[(str, Any)]])]"
             ],
             "arguments": {
                 "issue_groups": [
-                    "List[IssueGroup]"
+                    "str",
+                    "Dict",
+                    "int",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "output_bucket_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "output_key": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -677,16 +801,38 @@
             ],
             "arguments": {
                 "new_issues": [
-                    "Set[Tuple[(str, str)]]"
+                    "Set[Tuple[str, str]]",
+                    "int",
+                    "List[str]",
+                    "bool",
+                    "List[int]",
+                    "Set[str]"
                 ],
                 "fixed_issues": [
-                    "Set[Tuple[(str, str)]]"
+                    "Set[Tuple[str, str]]",
+                    "int",
+                    "List[str]",
+                    "Set[str]",
+                    "List[int]",
+                    "List[float]"
                 ],
                 "output_bucket_name": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "bool",
+                    "None",
+                    "int",
+                    "Optional[int]",
+                    "Optional[str]"
                 ],
                 "output_key": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "bool",
+                    "None",
+                    "int",
+                    "Optional[int]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -698,13 +844,24 @@
             ],
             "arguments": {
                 "issues": [
-                    "Set[Tuple[(str, str)]]"
+                    "str",
+                    "Set[Tuple[str, str]]",
+                    "bool",
+                    "int"
                 ],
                 "output_bucket_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Set[tuple[Union[str,str]]]",
+                    "Set[Tuple[str,str]]",
+                    "int"
                 ],
                 "output_key": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Set[tuple[Union[str,str]]]",
+                    "Set[Tuple[str,str]]",
+                    "int"
                 ]
             }
         },
@@ -716,7 +873,11 @@
             ],
             "arguments": {
                 "message": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ]
             }
         }

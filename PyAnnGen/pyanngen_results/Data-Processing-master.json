@@ -14,8 +14,8 @@
                 "rawTemp": [
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -28,7 +28,7 @@
                 "str",
                 "int",
                 "bytes",
-                "dict",
+                "Dict",
                 "bool"
             ],
             "arguments": {
@@ -68,16 +68,25 @@
             "arguments": {
                 "self": [],
                 "coefs": [
-                    "CalibrationCode.customObjs.BME280Coefficents"
+                    "int",
+                    "float",
+                    "str",
+                    "Union[int,float]"
                 ],
                 "uTemp": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "uPres": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]"
                 ],
                 "uHumid": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -89,10 +98,16 @@
             ],
             "arguments": {
                 "uTemp": [
-                    "int"
+                    "int",
+                    "float",
+                    "CalibrationCode.typeAliases.HumidityCoefsType",
+                    "CalibrationCode.typeAliases.TempCoefsType",
+                    "str"
                 ],
                 "tCoefs": [
-                    "Tuple[(int, int, int)]"
+                    "int",
+                    "CalibrationCode.typeAliases.TempCoefsType",
+                    "CalibrationCode.typeAliases.HumidityCoefsType"
                 ]
             }
         },
@@ -104,10 +119,14 @@
             ],
             "arguments": {
                 "uPres": [
-                    "int"
+                    "int",
+                    "numpy.int32"
                 ],
                 "pCoefs": [
-                    "Tuple[(int, int, int, int, int, int, int, int, int)]"
+                    "bytes",
+                    "CalibrationCode.typeAliases.PresCoefsType",
+                    "int",
+                    "bool"
                 ],
                 "tFine": [
                     "int",
@@ -123,10 +142,13 @@
             ],
             "arguments": {
                 "uHumid": [
-                    "int"
+                    "int",
+                    "numpy.int32"
                 ],
                 "hCoefs": [
-                    "Tuple[(int, int, int, int, int, int)]"
+                    "CalibrationCode.typeAliases.HumidityCoefsType",
+                    "int",
+                    "numpy.int32"
                 ],
                 "tFine": [
                     "int",
@@ -143,16 +165,22 @@
             "arguments": {
                 "self": [],
                 "coefs": [
-                    "CalibrationCode.customObjs.BME280Coefficents"
+                    "float",
+                    "int",
+                    "str"
                 ],
                 "uTemp": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "uPres": [
-                    "int"
+                    "float",
+                    "str"
                 ],
                 "uHumid": [
-                    "int"
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -160,14 +188,20 @@
             "name": "compensateTemp",
             "location": 186,
             "return": [
-                "Tuple[(float, float)]"
+                "Tuple[(Any, int)]"
             ],
             "arguments": {
                 "uTemp": [
-                    "int"
+                    "int",
+                    "float",
+                    "CalibrationCode.typeAliases.TempCoefsType",
+                    "Union[float,int]"
                 ],
                 "tCoefs": [
-                    "Tuple[(int, int, int)]"
+                    "int",
+                    "CalibrationCode.typeAliases.TempCoefsType",
+                    "float",
+                    "Union[float, int]"
                 ]
             }
         },
@@ -175,17 +209,27 @@
             "name": "compensatePres",
             "location": 215,
             "return": [
-                "float"
+                "int",
+                "float",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "uPres": [
-                    "int"
+                    "int",
+                    "float",
+                    "Union[float,int]"
                 ],
                 "pCoefs": [
-                    "Tuple[(int, int, int, int, int, int, int, int, int)]"
+                    "CalibrationCode.typeAliases.PresCoefsType",
+                    "float",
+                    "Union[int, float]",
+                    "numpy.ndarray"
                 ],
                 "tFine": [
-                    "int"
+                    "int",
+                    "float",
+                    "Union[float,int]"
                 ]
             }
         },
@@ -193,17 +237,28 @@
             "name": "compensateHumid",
             "location": 256,
             "return": [
-                "float"
+                "int",
+                "float",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "uHumid": [
-                    "int"
+                    "int",
+                    "float",
+                    "Union[float,int]"
                 ],
                 "hCoefs": [
-                    "Tuple[(int, int, int, int, int, int)]"
+                    "CalibrationCode.typeAliases.HumidityCoefsType",
+                    "float",
+                    "int",
+                    "CalibrationCode.typeAliases.PresCoefsType",
+                    "Union[float, int]"
                 ],
                 "tFine": [
-                    "float"
+                    "int",
+                    "float",
+                    "Union[float,int]"
                 ]
             }
         }
@@ -257,7 +312,7 @@
             ],
             "arguments": {
                 "filePath": [
-                    "Union[(str, os.PathLike)]"
+                    "str"
                 ]
             }
         },
@@ -265,11 +320,15 @@
             "name": "splitBytesFile",
             "location": 64,
             "return": [
-                "Tuple[(List[List[str]], bytes)]"
+                "Tuple[(list, Any)]"
             ],
             "arguments": {
                 "bytesFile": [
-                    "bytes"
+                    "str",
+                    "Iterable[str]",
+                    "List[str]",
+                    "Tuple[List[str],int]",
+                    "Dict"
                 ]
             }
         },
@@ -277,11 +336,14 @@
             "name": "extractPresCalCoefs",
             "location": 83,
             "return": [
-                "Dict[(Union[(int, str)], CalibrationCode.customObjs.BME280Coefficents)]"
+                "Dict[(int, CalibrationCode.customObjs.BME280Coefficents)]"
             ],
             "arguments": {
                 "header": [
-                    "List[List[str]]"
+                    "Union[dict,list]",
+                    "Dict",
+                    "Mapping",
+                    "List"
                 ]
             }
         },
@@ -289,11 +351,14 @@
             "name": "splitSensorData",
             "location": 124,
             "return": [
-                "List[bytes]"
+                "list"
             ],
             "arguments": {
                 "dataStream": [
-                    "bytes"
+                    "dict",
+                    "List[List[Any]]",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -301,11 +366,15 @@
             "name": "processPackets",
             "location": 142,
             "return": [
-                "List[Dict[(str, int)]]"
+                "List[Dict[(str, Any)]]"
             ],
             "arguments": {
                 "packets": [
-                    "List[bytes]"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }

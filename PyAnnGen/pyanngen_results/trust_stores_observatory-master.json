@@ -8,7 +8,10 @@
             ],
             "arguments": {
                 "folder_with_certs_to_import": [
-                    "pathlib.Path"
+                    "int",
+                    "float",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -34,7 +37,6 @@
             "name": "test",
             "location": 8,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -139,7 +141,6 @@
             "name": "test_online",
             "location": 129,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -168,6 +169,10 @@
             "arguments": {
                 "self": [],
                 "local_root_path": [
+                    "str",
+                    "Optional[Sequence[str]]",
+                    "list",
+                    "List[str]",
                     "pathlib.Path"
                 ]
             }
@@ -203,10 +208,15 @@
             "arguments": {
                 "self": [],
                 "fingerprint": [
-                    "bytes"
+                    "str",
+                    "list",
+                    "List[Dict]",
+                    "int",
+                    "callable"
                 ],
                 "hash_algorithm": [
-                    "Union[(hashes.SHA1, hashes.SHA256)]"
+                    "Callable",
+                    "List[int]"
                 ]
             }
         },
@@ -219,7 +229,11 @@
             "arguments": {
                 "self": [],
                 "fingerprint": [
-                    "bytes"
+                    "Union[io.TextIO, pathlib.Path]",
+                    "str",
+                    "Dict[str, Any]",
+                    "Set[str]",
+                    "os.PathLike"
                 ]
             }
         },
@@ -227,12 +241,15 @@
             "name": "store_certificate",
             "location": 76,
             "return": [
+                "str",
                 "pathlib.Path"
             ],
             "arguments": {
                 "self": [],
                 "certificate": [
-                    "cryptography.x509.Certificate"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         }
@@ -242,14 +259,16 @@
             "name": "_get_names_with_oid",
             "location": 8,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "name_field": [
-                    "cryptography.x509.Name"
+                    "cryptography.x509.Name",
+                    "str"
                 ],
                 "name_oid": [
-                    "cryptography.x509.ObjectIdentifier"
+                    "str",
+                    "cryptography.x509.Name"
                 ]
             }
         },
@@ -263,13 +282,15 @@
                 "cls": [
                     "str",
                     "bool",
-                    "Union[str, List[Any]]",
-                    "list[typing.Any]",
-                    "List[Tuple[str, str]]",
-                    "list[tuple[typing.Union[str,str]]]"
+                    "Union[str,List[Any]]",
+                    "List[Any]",
+                    "List[Tuple[str,str]]",
+                    "List[tuple[Union[str,str]]]"
                 ],
                 "name_field": [
-                    "cryptography.x509.Name"
+                    "List[str]",
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -277,16 +298,18 @@
             "name": "get_canonical_subject_name",
             "location": 16,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "cls": [
                     "str",
-                    "type",
-                    "typing.Type"
+                    "Type"
                 ],
                 "certificate": [
-                    "cryptography.x509.Certificate"
+                    "bytes",
+                    "str",
+                    "Pattern"
                 ]
             }
         }
@@ -301,10 +324,11 @@
             "arguments": {
                 "self": [],
                 "canonical_subject_name": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ],
                 "sha256_fingerprint": [
-                    "bytes"
+                    "str"
                 ]
             }
         },
@@ -316,9 +340,7 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "object"
-                ]
+                "other": []
             }
         },
         "RootCertificateRecord.__hash__": {
@@ -342,7 +364,8 @@
                     "Type[_TRootCertificateRecord]"
                 ],
                 "certificate": [
-                    "cryptography.x509.Certificate"
+                    "Dict[str, Any]",
+                    "Callable"
                 ]
             }
         },
@@ -357,7 +380,7 @@
                     "Type[_TRootCertificateRecord]"
                 ],
                 "record": [
-                    "trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord"
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -379,14 +402,21 @@
             "name": "_represent_trust_store",
             "location": 121,
             "return": [
-                "yaml.nodes.Node"
+                "Dict[str, Any]",
+                "dict",
+                "int",
+                "Dict[str, str]",
+                "\"TextLine\""
             ],
             "arguments": {
                 "dumper": [
-                    "yaml.dumper.Dumper"
+                    "dict",
+                    "bool",
+                    "Dict[str, Any]",
+                    "Dict[str, int]"
                 ],
                 "store": [
-                    "TrustStore"
+                    "Dict"
                 ]
             }
         },
@@ -394,14 +424,21 @@
             "name": "_represent_root_certificate_entry",
             "location": 145,
             "return": [
-                "yaml.nodes.Node"
+                "dict",
+                "Dict[str, Tuple[str, str]]",
+                "Dict[str, Dict[str, Any]]",
+                "Dict[str, Any]",
+                "Optional[List[str]]"
             ],
             "arguments": {
                 "dumper": [
-                    "yaml.dumper.Dumper"
+                    "Dict[str, Any]",
+                    "list",
+                    "dict"
                 ],
                 "entry": [
-                    "trust_stores_observatory.root_record.RootCertificateRecord"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -414,22 +451,57 @@
             "arguments": {
                 "self": [],
                 "platform": [
-                    "PlatformEnum"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Callable[,bool]",
+                    "Optional[Callable[,bool]]",
+                    "int",
+                    "Callable"
                 ],
                 "version": [
-                    "Optional[str]"
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "bytes",
+                    "Union[None,str,bytes]",
+                    "List[str]",
+                    "Optional[bool]",
+                    "Optional[List[str]]"
                 ],
                 "url": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ],
                 "date_fetched": [
+                    "int",
+                    "List[str]",
+                    "datetime.datetime",
                     "datetime.date"
                 ],
                 "trusted_certificates": [
-                    "Set[trust_stores_observatory.root_record.RootCertificateRecord]"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Callable[,bool]",
+                    "Optional[Callable[,bool]]",
+                    "int",
+                    "Callable"
                 ],
                 "blocked_certificates": [
-                    "Set[trust_stores_observatory.root_record.RootCertificateRecord]"
+                    "List[str]",
+                    "None",
+                    "Optional[List[float]]",
+                    "Callable",
+                    "Optional[Set[str]]",
+                    "List[float]",
+                    "Set[str]",
+                    "Optional[Sequence[int]]",
+                    "Optional[List[str]]",
+                    "Sequence[int]"
                 ]
             }
         },
@@ -442,7 +514,10 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "Union[int,float]",
+                    "AbstractSet",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -472,14 +547,14 @@
             "name": "get_default_for_platform",
             "location": 80,
             "return": [
-                "rustStore"
+                "TrustStore"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TTrustStore]"
                 ],
                 "platform": [
-                    "PlatformEnum"
+                    "str"
                 ]
             }
         },
@@ -487,14 +562,17 @@
             "name": "from_yaml",
             "location": 86,
             "return": [
-                "rustStore"
+                "TrustStore"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TTrustStore]"
                 ],
                 "yaml_file_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -507,7 +585,9 @@
             "arguments": {
                 "self": [],
                 "certs_repository": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "List[List[str]]",
+                    "bool",
+                    "List[list[str]]"
                 ]
             }
         }
@@ -523,6 +603,8 @@
             "arguments": {
                 "self": [],
                 "certs_repo": [
+                    "str",
+                    "bool",
                     "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
                 ],
                 "should_update_repo": [
@@ -538,10 +620,15 @@
             ],
             "arguments": {
                 "parsed_page": [
-                    "bs4.BeautifulSoup"
+                    "str",
+                    "float",
+                    "Mapping[str,Any]"
                 ],
                 "section_id": [
-                    "str"
+                    "str",
+                    "float",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -549,14 +636,13 @@
             "name": "_find_latest_root_certificates_page",
             "location": 75,
             "return": [
-                "Tuple[(str, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "cls": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         }
@@ -571,7 +657,8 @@
             "arguments": {
                 "self": [],
                 "certs_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "dict",
+                    "bool"
                 ],
                 "should_update_repo": [
                     "bool"
@@ -589,10 +676,19 @@
             "arguments": {
                 "self": [],
                 "cert_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "str",
+                    "bool",
+                    "Optional[Callable[...,Any]]",
+                    "Callable[...,Any]",
+                    "Optional[Dict[str,Any]]",
+                    "None",
+                    "Dict[str,Any]"
                 ],
                 "should_update_repo": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "float"
                 ]
             }
         },
@@ -605,14 +701,12 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Mapping[str, str]",
-                    "typing.Mapping",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping",
                     "Type[T]",
-                    "typing.Type",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Type"
                 ]
             }
         }
@@ -627,7 +721,8 @@
             "arguments": {
                 "self": [],
                 "tar_gz_path": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -639,7 +734,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TJdkPackage"
+                    "_TJdkPackage@@JdkPackage@@"
                 ]
             }
         },
@@ -658,10 +753,9 @@
                     "Optional[BaseException]"
                 ],
                 "traceback": [
-                    "typing.Type",
+                    "Type",
                     "Optional[Type[BaseException]]",
                     "None",
-                    "type",
                     "BaseException",
                     "Optional[BaseException]",
                     "Optional[Type]"
@@ -718,14 +812,22 @@
                 "key_store": [
                     "bool",
                     "str",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "should_update_repo": [
-                    "bool"
+                    "bool",
+                    "Optional[bytes]",
+                    "bytes",
+                    "None"
                 ],
                 "cert_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository",
+                    "str",
+                    "bool",
+                    "Dict[str, str]",
+                    "List[Optional[str]]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -737,7 +839,9 @@
             ],
             "arguments": {
                 "blacklisted_certs_content": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Dict[str,str]"
                 ]
             }
         }
@@ -752,7 +856,8 @@
             "arguments": {
                 "self": [],
                 "certs_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "bool",
+                    "str"
                 ],
                 "should_update_repo": [
                     "bool"
@@ -767,7 +872,8 @@
             ],
             "arguments": {
                 "csv_content": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         }
@@ -782,7 +888,9 @@
             "arguments": {
                 "self": [],
                 "certificate": [
-                    "cryptography.x509.Certificate"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -795,13 +903,18 @@
             "arguments": {
                 "self": [],
                 "scraped_subject_name": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ],
                 "trust_enum": [
-                    "_CerdataEntryServerAuthTrustEnum"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "sha_fingerprint": [
-                    "bytes"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -814,7 +927,7 @@
             "arguments": {
                 "self": [],
                 "certs_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "bool"
                 ],
                 "should_update_repo": [
                     "bool"
@@ -825,11 +938,13 @@
             "name": "_scrape_certdata",
             "location": 98,
             "return": [
-                "List[_CertdataEntry]"
+                "List[Union[(_CertdataCertificateEntry, _CertdataTrustEntry)]]"
             ],
             "arguments": {
                 "certdata_content": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Dict[str,Union[str,int]]"
                 ]
             }
         }
@@ -844,10 +959,19 @@
             "arguments": {
                 "self": [],
                 "cert_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "str",
+                    "bool",
+                    "Optional[Callable[...,Any]]",
+                    "Callable[...,Any]",
+                    "Optional[Dict[str,Any]]",
+                    "None",
+                    "Dict[str,Any]"
                 ],
                 "should_update_repo": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "float"
                 ]
             }
         },
@@ -860,14 +984,12 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Mapping[str, str]",
-                    "typing.Mapping",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping",
                     "Type[T]",
-                    "typing.Type",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Type"
                 ]
             }
         }
@@ -881,10 +1003,13 @@
             ],
             "arguments": {
                 "certs_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "Dict[str,Any]"
                 ],
                 "scraped_records": [
-                    "List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord]"
+                    "List[trust_stores_observatory.store_fetcher.scraped_root_record.ScrapedRootCertificateRecord]",
+                    "str",
+                    "bool",
+                    "Iterable[str]"
                 ]
             }
         }
@@ -899,13 +1024,28 @@
             "arguments": {
                 "self": [],
                 "subject_name": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "Optional[str]",
+                    "None"
                 ],
                 "fingerprint": [
-                    "bytes"
+                    "int",
+                    "str",
+                    "Callable",
+                    "List[list[str]]",
+                    "bool",
+                    "List[List[str]]"
                 ],
                 "fingerprint_hash_algorithm": [
-                    "Union[(hashes.SHA1, hashes.SHA256)]"
+                    "bool",
+                    "str",
+                    "Sequence[str]",
+                    "Dict[str,Tuple[str,str,Any]]",
+                    "Set[str]",
+                    "Dict[str,tuple[Union[str,str,Any]]]",
+                    "Optional[Dict[str,Any]]",
+                    "None"
                 ]
             }
         }
@@ -915,12 +1055,13 @@
             "name": "fetch",
             "location": 9,
             "return": [
-                "trust_stores_observatory.trust_store.TrustStore"
+                "trust_stores_observatory.trust_store.TrustStore",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "certs_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "bool"
                 ],
                 "should_update_repo": [
                     "bool"
@@ -938,13 +1079,29 @@
             "arguments": {
                 "self": [],
                 "platform": [
-                    "trust_stores_observatory.trust_store.PlatformEnum"
+                    "bool",
+                    "str",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]",
+                    "Dict",
+                    "Optional[str]",
+                    "None"
                 ],
                 "certs_repo": [
-                    "trust_stores_observatory.certificates_repository.RootCertificatesRepository"
+                    "bool",
+                    "str",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]",
+                    "Dict",
+                    "Optional[str]",
+                    "None"
                 ],
                 "should_update_repo": [
-                    "bool"
+                    "bool",
+                    "List[Dict[str,Any]]",
+                    "Optional[str]",
+                    "str",
+                    "Dict"
                 ]
             }
         }

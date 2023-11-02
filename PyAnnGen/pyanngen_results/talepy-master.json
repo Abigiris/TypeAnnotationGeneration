@@ -9,7 +9,9 @@
             ],
             "arguments": {
                 "step": [
-                    "talepy.steps.Step"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -21,7 +23,9 @@
             ],
             "arguments": {
                 "step": [
-                    "talepy.steps.Step"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -34,7 +38,9 @@
             "arguments": {
                 "self": [],
                 "wrapped_step": [
-                    "talepy.steps.Step"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         }
@@ -50,10 +56,9 @@
                 "self": [],
                 "invalid_definition": [
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable[[Any, Any], bool]",
-                    "typing.Callable[A, bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]",
+                    "Callable[A,bool]"
                 ]
             }
         },
@@ -66,7 +71,10 @@
             "arguments": {
                 "self": [],
                 "failures": [
-                    "List[Exception]"
+                    "str",
+                    "float",
+                    "Optional[List[str]]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -79,7 +87,10 @@
             "arguments": {
                 "self": [],
                 "failures": [
-                    "List[Exception]"
+                    "str",
+                    "float",
+                    "Optional[List[str]]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -92,7 +103,11 @@
             "arguments": {
                 "self": [],
                 "exceptions": [
-                    "List[Exception]"
+                    "str",
+                    "Type",
+                    "Optional[Union[str,Any]]",
+                    "Any",
+                    "None"
                 ]
             }
         },
@@ -126,7 +141,8 @@
             ],
             "arguments": {
                 "func": [
-                    "Callable"
+                    "Callable",
+                    "bool"
                 ]
             }
         },
@@ -150,14 +166,25 @@
             "name": "partition",
             "location": 27,
             "return": [
-                "Tuple[(List[T], List[T])]"
+                "Tuple[(list, list)]"
             ],
             "arguments": {
                 "seq": [
-                    "Iterable[T]"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "condition": [
-                    "Callable[([T], bool)]"
+                    "Callable[T,bool]",
+                    "Dict",
+                    "Callable[[T],bool]",
+                    "int",
+                    "Dict[str,Outcome]",
+                    "Dict[str,set[str]]",
+                    "Dict[str,Set[str]]",
+                    "Iterable[T]"
                 ]
             }
         }
@@ -167,14 +194,17 @@
             "name": "attempt_retries",
             "location": 17,
             "return": [
-                "StepWithRetries"
+                "str",
+                "AutoRetryStep"
             ],
             "arguments": {
                 "step": [
-                    "talepy.steps.Step"
+                    "int",
+                    "float"
                 ],
                 "times": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -188,16 +218,23 @@
             ],
             "arguments": {
                 "state": [
-                    "dict[, ]",
+                    "Dict",
                     "bool",
-                    "dict",
                     "Iterable[bytes]"
                 ],
                 "step": [
-                    "StepWithRetries"
+                    "dict",
+                    "bool",
+                    "Iterable[bytes]"
                 ],
                 "previous_errors": [
-                    "List[Exception]"
+                    "List[Exception]",
+                    "List[int]",
+                    "int",
+                    "Callable",
+                    "Dict",
+                    "Optional[Mapping[str,Any]]",
+                    "Optional[float]"
                 ]
             }
         },
@@ -205,15 +242,16 @@
             "name": "retry",
             "location": 13,
             "return": [
-                "OutputState"
+                "OutputState",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "InputState"
+                    "str"
                 ],
                 "failures": [
-                    "List[Exception]"
+                    "str"
                 ]
             }
         },
@@ -272,12 +310,14 @@
             "name": "retry",
             "location": 31,
             "return": [
-                "OutputState"
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "InputState"
+                    "int",
+                    "Dict[str, Any]",
+                    "dict"
                 ],
                 "_failures": [
                     "str"
@@ -290,11 +330,14 @@
             "name": "build_step",
             "location": 56,
             "return": [
-                "Step"
+                "Union[(LambdaStep, _T0)]"
             ],
             "arguments": {
                 "definition": [
-                    "Union[(Callable[([Any], Any)], Step, Tuple[(Callable[([Any], X)], Callable[([X], Any)])])]"
+                    "List[str]",
+                    "str",
+                    "Mapping",
+                    "int"
                 ]
             }
         },
@@ -302,11 +345,15 @@
             "name": "build_step_list",
             "location": 67,
             "return": [
-                "Iterable[Step]"
+                "Iterator"
             ],
             "arguments": {
                 "step_definitions": [
-                    "Iterable[Union[(Callable[([Any], Any)], Step, Tuple[(Callable[([Any], X)], Callable[([X], Any)])])]]"
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "Tuple[Any,Any,Any]",
+                    "Tuple[Union[Any,Any,Any]]"
                 ]
             }
         },
@@ -314,12 +361,13 @@
             "name": "execute",
             "location": 26,
             "return": [
-                "Union[(Awaitable[OutputState], OutputState)]"
+                "Union[OutputState,Awaitable[OutputState]]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "InputState"
+                    "str"
                 ]
             }
         },
@@ -327,12 +375,13 @@
             "name": "compensate",
             "location": 29,
             "return": [
-                "Optional[Awaitable]"
+                "Union[None,Awaitable[Any]]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "OutputState"
+                    "str"
                 ]
             }
         },
@@ -345,10 +394,19 @@
             "arguments": {
                 "self": [],
                 "execute_lambda": [
-                    "Callable[([X], Y)]"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "compensate_lambda": [
-                    "Callable[([Y], Any)]"
+                    "List",
+                    "None",
+                    "str",
+                    "Tuple[float,float,float]",
+                    "int",
+                    "Tuple[Union[float,float,float]]",
+                    "Callable[...,Awaitable[Any]]",
+                    "Callable[...,collections.abc.Awaitable[Any]]"
                 ]
             }
         },
@@ -362,10 +420,8 @@
                 "self": [],
                 "state": [
                     "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -379,10 +435,8 @@
                 "self": [],
                 "state": [
                     "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         }
@@ -396,24 +450,26 @@
             ],
             "arguments": {
                 "completed_steps": [
-                    "List[Tuple[(talepy.steps.Step, Any)]]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
         "_execute_step": {
             "name": "_execute_step",
             "location": 20,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "state": [
                     "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ],
                 "step": [
-                    "talepy.steps.Step"
+                    "float"
                 ]
             }
         },
@@ -424,20 +480,23 @@
                 "bool",
                 "str",
                 "None",
-                "dict",
+                "Dict",
                 "int",
                 "bytes"
             ],
             "arguments": {
                 "steps": [
-                    "Iterable[Union[(Callable[([Any], Any)], talepy.steps.Step, Tuple[(Callable[([Any], X)], Callable[([X], Any)])])]]"
+                    "int",
+                    "Sequence[Sequence[str]]",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "starting_state": [
                     "str",
                     "None",
                     "int",
                     "bytes",
-                    "Optional[\"libkol.Item\"]",
+                    "Optional[libkol.Item]",
                     "Optional[object]"
                 ]
             }
@@ -465,8 +524,7 @@
                 "counter_state": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -481,9 +539,8 @@
                 "self": [],
                 "counter_state": [
                     "int",
-                    "str",
-                    "list[str]",
-                    "List[str]"
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -508,8 +565,7 @@
                 "counter_state": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -544,9 +600,8 @@
                 "self": [],
                 "counter_state": [
                     "int",
-                    "str",
-                    "list[str]",
-                    "List[str]"
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -569,8 +624,7 @@
             "arguments": {
                 "self": [],
                 "counter_state": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -583,8 +637,7 @@
             "arguments": {
                 "self": [],
                 "counter_state": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -609,8 +662,7 @@
                 "counter_state": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -623,8 +675,7 @@
             "arguments": {
                 "self": [],
                 "counter_state": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -632,15 +683,20 @@
             "name": "retry",
             "location": 100,
             "return": [
-                "int"
+                "int",
+                "Callable",
+                "List[str]",
+                "Dict"
             ],
             "arguments": {
                 "self": [],
                 "state": [
+                    "List",
                     "int"
                 ],
                 "failures": [
-                    "List[Exception]"
+                    "list",
+                    "int"
                 ]
             }
         },
@@ -665,8 +721,7 @@
                 "counter_state": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -679,8 +734,7 @@
             "arguments": {
                 "self": [],
                 "counter_state": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -688,15 +742,21 @@
             "name": "retry",
             "location": 119,
             "return": [
-                "int"
+                "int",
+                "Callable",
+                "List[str]",
+                "Dict"
             ],
             "arguments": {
                 "self": [],
                 "state": [
+                    "List",
                     "int"
                 ],
                 "failures": [
-                    "List[Exception]"
+                    "list",
+                    "Optional[int]",
+                    "List[int]"
                 ]
             }
         },
@@ -721,8 +781,7 @@
                 "counter_state": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -735,8 +794,7 @@
             "arguments": {
                 "self": [],
                 "counter_state": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -744,15 +802,18 @@
             "name": "retry",
             "location": 140,
             "return": [
-                "int"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "state": [
+                    "List",
                     "int"
                 ],
                 "failures": [
-                    "List[Exception]"
+                    "list",
+                    "Optional[int]",
+                    "List[int]"
                 ]
             }
         },
@@ -777,8 +838,7 @@
                 "counter_state": [
                     "str",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -791,8 +851,7 @@
             "arguments": {
                 "self": [],
                 "counter_state": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -843,7 +902,6 @@
             "name": "test_things_that_should_turn_into_steps",
             "location": 33,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -857,7 +915,6 @@
             "name": "test_things_that_should_not_turn_into_steps",
             "location": 48,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -865,10 +922,10 @@
                     "str",
                     "Optional[Iterable[Any]]",
                     "int",
-                    "typing.Iterable[typing.Any]",
-                    "Callable[[List, bool], None]",
+                    "Iterable[Any]",
+                    "Callable[[List,bool],None]",
                     "None",
-                    "typing.Callable[List,bool, None]"
+                    "Callable[List,bool,None]"
                 ]
             }
         },
@@ -876,12 +933,12 @@
             "name": "execute",
             "location": 8,
             "return": [
-                "OutputState"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "InputState"
+                    "str"
                 ]
             }
         },
@@ -894,7 +951,7 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "OutputState"
+                    "str"
                 ]
             }
         }
@@ -905,21 +962,20 @@
             "name": "test_we_can_get_arity_from_functions",
             "location": 9,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "test_func": [
                     "int",
                     "str",
-                    "List[Tuple[int, int, float]]",
-                    "list[tuple[typing.Union[int,int,float]]]"
+                    "List[Tuple[int,int,float]]",
+                    "List[tuple[Union[int,int,float]]]"
                 ],
                 "expected_arity": [
                     "int",
                     "str",
-                    "List[Tuple[int, int, float]]",
-                    "list[tuple[typing.Union[int,int,float]]]"
+                    "List[Tuple[int,int,float]]",
+                    "List[tuple[Union[int,int,float]]]"
                 ]
             }
         },
@@ -927,7 +983,6 @@
             "name": "test_we_can_tell_if_something_is_a_pair_of_functions",
             "location": 28,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -979,7 +1034,6 @@
             "name": "lambda_func",
             "location": 11,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1117,7 +1171,6 @@
             "name": "fail",
             "location": 82,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

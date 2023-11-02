@@ -24,11 +24,14 @@
             "name": "none_parser",
             "location": 6,
             "return": [
-                "Optional[list]"
+                "None"
             ],
             "arguments": {
                 "cards": [
-                    "list"
+                    "List[Dict[str,Any]]",
+                    "bool",
+                    "List[dict[str,Any]]",
+                    "str"
                 ]
             }
         },
@@ -36,14 +39,22 @@
             "name": "custom_parser",
             "location": 15,
             "return": [
-                "Optional[list]"
+                "str",
+                "typing.Callable[dict[, ], typing.Any]",
+                "None"
             ],
             "arguments": {
                 "cards": [
-                    "list"
+                    "str",
+                    "Optional[Callable[[Dict],Any]]",
+                    "Callable[dict,Any]",
+                    "None"
                 ],
                 "parser": [
-                    "Optional[Callable[([list], Optional[list])]]"
+                    "str",
+                    "None",
+                    "Optional[Callable[[Dict],Any]]",
+                    "Callable[dict,Any]"
                 ]
             }
         },
@@ -51,11 +62,13 @@
             "name": "once_parser",
             "location": 26,
             "return": [
-                "Optional[list]"
+                "list"
             ],
             "arguments": {
                 "cards": [
-                    "list"
+                    "Dict",
+                    "Callable",
+                    "bool"
                 ]
             }
         },
@@ -63,11 +76,17 @@
             "name": "multi_parser",
             "location": 39,
             "return": [
-                "Optional[list]"
+                "str",
+                "bool",
+                "int",
+                "List[str]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "cards": [
-                    "list"
+                    "bool",
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -75,11 +94,14 @@
             "name": "mono_parser",
             "location": 45,
             "return": [
-                "Optional[list]"
+                "list"
             ],
             "arguments": {
                 "cards": [
-                    "list"
+                    "str",
+                    "int",
+                    "bool",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -87,11 +109,12 @@
             "name": "unflushable_parser",
             "location": 64,
             "return": [
-                "Optional[list]"
+                "list"
             ],
             "arguments": {
                 "cards": [
-                    "list"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -107,16 +130,32 @@
             "arguments": {
                 "self": [],
                 "network": [
+                    "bytes",
+                    "Union[bytes,str]",
                     "str"
                 ],
                 "privkey": [
-                    "bytearray"
+                    "str",
+                    "None",
+                    "bytearray",
+                    "Optional[str]",
+                    "bytes"
                 ],
                 "from_string": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "bytes",
+                    "bool",
+                    "Optional[Dict[str,str]]",
+                    "Optional[bytes]"
                 ],
                 "from_wif": [
-                    "str"
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -157,10 +196,9 @@
                 "txins": [
                     "bytes",
                     "str",
-                    "list[]",
+                    "List",
                     "int",
-                    "Union[str, int]",
-                    "list"
+                    "Union[str,int]"
                 ],
                 "tx": [
                     "bytes",
@@ -181,7 +219,10 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -189,17 +230,16 @@
             "name": "get_dust_threshold",
             "location": 12,
             "return": [
-                "float"
+                "Union[(float, int)]"
             ],
             "arguments": {
                 "self": [],
                 "size_to_relay_fee": [
                     "bool",
-                    "str",
-                    "list[int]",
                     "List[int]",
-                    "typing.Mapping",
-                    "Mapping[str, str]",
+                    "str",
+                    "Mapping",
+                    "Mapping[str,str]",
                     "None",
                     "int",
                     "Optional[int]"
@@ -217,10 +257,14 @@
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.rpcnode.RpcNode"
+                    "bool",
+                    "List[str]"
                 ],
                 "prod": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List",
+                    "IO[str]"
                 ]
             }
         },
@@ -228,14 +272,21 @@
             "name": "find_tx_sender",
             "location": 48,
             "return": [
+                "int",
+                "set",
                 "str"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "int",
+                    "set",
+                    "str"
                 ],
                 "raw_tx": [
-                    "dict"
+                    "List[int]",
+                    "str",
+                    "int",
+                    "Callable[,str]"
                 ]
             }
         },
@@ -243,14 +294,20 @@
             "name": "find_deck_spawns",
             "location": 57,
             "return": [
-                "Iterable[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "int",
+                    "bool"
                 ],
                 "prod": [
-                    "bool"
+                    "bool",
+                    "List[str]",
+                    "List[object]",
+                    "Sized",
+                    "Optional[List]",
+                    "str"
                 ]
             }
         },
@@ -261,11 +318,11 @@
                 "Optional[pypeerassets.protocol.Deck]"
             ],
             "arguments": {
-                "args": [
-                    "Tuple[(pypeerassets.provider.common.Provider, dict, int, str)]"
-                ],
+                "args": [],
                 "prod": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -273,17 +330,25 @@
             "name": "tx_serialization_order",
             "location": 119,
             "return": [
-                "int"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "str",
+                    "int",
+                    "pypeerassets.provider.Provider"
                 ],
                 "blockhash": [
-                    "str"
+                    "str",
+                    "int",
+                    "pypeerassets.provider.Provider"
                 ],
                 "txid": [
-                    "str"
+                    "str",
+                    "int",
+                    "pypeerassets.provider.Provider"
                 ]
             }
         },
@@ -295,7 +360,9 @@
             ],
             "arguments": {
                 "vout": [
-                    "dict"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -303,14 +370,12 @@
             "name": "deck_issue_mode",
             "location": 144,
             "return": [
-                "Iterable[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "proto": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -318,7 +383,11 @@
             "name": "issue_mode_to_enum",
             "location": 158,
             "return": [
-                "int"
+                "int",
+                "bool",
+                "complex",
+                "Union[AbstractSetIntStr,MappingIntStrAny]",
+                "List"
             ],
             "arguments": {
                 "deck": [
@@ -326,7 +395,10 @@
                     "str"
                 ],
                 "issue_mode": [
-                    "list"
+                    "list",
+                    "Optional[int]",
+                    "Optional[str]",
+                    "List[Tuple[bool, str]]"
                 ]
             }
         },
@@ -334,14 +406,20 @@
             "name": "parse_deckspawn_metainfo",
             "location": 175,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "protobuf": [
-                    "bytes"
+                    "bytes",
+                    "Dict",
+                    "str",
+                    "Dict[str,float]",
+                    "bool"
                 ],
                 "version": [
-                    "int"
+                    "int",
+                    "bytes",
+                    "Callable"
                 ]
             }
         },
@@ -353,13 +431,25 @@
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "rawtx": [
-                    "dict"
+                    "str",
+                    "Dict"
                 ],
                 "p2th": [
-                    "str"
+                    "str",
+                    "float",
+                    "Tuple[str]",
+                    "Optional[int]",
+                    "int",
+                    "pypeerassets.protocol.Deck",
+                    "None"
                 ]
             }
         },
@@ -370,11 +460,10 @@
                 "None"
             ],
             "arguments": {
-                "provider": [
-                    "pypeerassets.provider.rpcnode.RpcNode"
-                ],
+                "provider": [],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -386,10 +475,14 @@
             ],
             "arguments": {
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "Tuple[str]",
+                    "pypeerassets.protocol.Deck",
+                    "str",
+                    "int"
                 ],
                 "vout": [
-                    "dict"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -397,14 +490,24 @@
             "name": "parse_card_transfer_metainfo",
             "location": 245,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "protobuf": [
-                    "bytes"
+                    "bytes",
+                    "Dict",
+                    "str",
+                    "Dict[str,List[Any]]",
+                    "Dict[str,list[Any]]"
                 ],
                 "deck_version": [
-                    "int"
+                    "int",
+                    "Tuple",
+                    "str",
+                    "Optional[Set[str]]",
+                    "Set[str]",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -412,14 +515,19 @@
             "name": "card_postprocess",
             "location": 265,
             "return": [
-                "List[dict]"
+                "list"
             ],
             "arguments": {
                 "card": [
-                    "dict"
+                    "int",
+                    "str"
                 ],
                 "vout": [
-                    "list"
+                    "List",
+                    "str",
+                    "List[str]",
+                    "int",
+                    "Dict"
                 ]
             }
         },
@@ -427,17 +535,20 @@
             "name": "card_bundle_parser",
             "location": 286,
             "return": [
-                "Iterator"
+                "Generator[(pypeerassets.protocol.CardTransfer, Any, None)]"
             ],
             "arguments": {
                 "bundle": [
-                    "pypeerassets.protocol.CardBundle"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "None"
                 ],
                 "debug": [
                     "bool",
                     "str",
                     "List[str]",
-                    "dict"
+                    "Dict"
                 ]
             }
         },
@@ -449,10 +560,14 @@
             ],
             "arguments": {
                 "amount": [
-                    "float"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "number_of_decimals": [
-                    "int"
+                    "int",
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -460,14 +575,23 @@
             "name": "exponent_to_amount",
             "location": 345,
             "return": [
-                "float"
+                "float",
+                "DefaultDict[int,List[Any]]",
+                "int",
+                "bytes",
+                "bool",
+                "OrderedDict"
             ],
             "arguments": {
                 "exponent": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "number_of_decimals": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -482,7 +606,10 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Type",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         }
@@ -492,14 +619,19 @@
             "name": "validate_card_issue_modes",
             "location": 365,
             "return": [
-                "list"
+                "Union[(list, _T1)]"
             ],
             "arguments": {
                 "issue_mode": [
-                    "int"
+                    "int",
+                    "List[Type]",
+                    "str"
                 ],
                 "cards": [
-                    "list"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -512,37 +644,86 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Sequence[Any]]",
+                    "Sequence[Any]",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]"
                 ],
                 "number_of_decimals": [
-                    "int"
+                    "bool",
+                    "str",
+                    "Callable",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "issue_mode": [
+                    "bool",
                     "int"
                 ],
                 "network": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Callable",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "production": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Callable",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "version": [
-                    "int"
+                    "bool",
+                    "str",
+                    "Callable",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "asset_specific_data": [
-                    "bytes"
+                    "str",
+                    "None",
+                    "Any",
+                    "Dict[str,list]",
+                    "bool"
                 ],
                 "issuer": [
-                    "str"
+                    "Text",
+                    "bool",
+                    "int",
+                    "Optional[str]",
+                    "str",
+                    "Callable"
                 ],
                 "issue_time": [
-                    "int"
+                    "int",
+                    "None",
+                    "float",
+                    "str",
+                    "Optional[float]",
+                    "Optional[int]"
                 ],
                 "id": [
-                    "str"
+                    "str",
+                    "None",
+                    "Sequence[Any]",
+                    "Optional[str]"
                 ],
                 "tx_confirmations": [
-                    "int"
+                    "bool",
+                    "None",
+                    "str",
+                    "Callable",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -587,8 +768,8 @@
             "name": "metainfo_to_dict",
             "location": 132,
             "return": [
-                "dict[typing.Text, ]",
-                "Dict[str, Any]",
+                "Dict[Text,]",
+                "Dict[str,Any]",
                 "List[str]",
                 "str",
                 "bool",
@@ -602,7 +783,7 @@
             "name": "to_json",
             "location": 147,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -619,7 +800,8 @@
                     "Type[_TDeck]"
                 ],
                 "json": [
-                    "dict"
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -642,31 +824,50 @@
             "arguments": {
                 "self": [],
                 "deck": [
-                    "Deck"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "sender": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "txid": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "blockhash": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "blocknum": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "blockseq": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "timestamp": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "tx_confirmations": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "vouts": [
-                    "list"
+                    "List",
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -674,7 +875,7 @@
             "name": "to_json",
             "location": 210,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -689,49 +890,121 @@
             "arguments": {
                 "self": [],
                 "deck": [
-                    "Deck"
+                    "int",
+                    "Optional[Union[float,str]]",
+                    "float",
+                    "Optional[Sequence[Any]]",
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Sequence[Any]"
                 ],
                 "receiver": [
-                    "list"
+                    "int",
+                    "List[int]",
+                    "bool",
+                    "List[float]",
+                    "list",
+                    "Sequence[int]"
                 ],
                 "amount": [
-                    "List[int]"
+                    "int",
+                    "Optional[int]",
+                    "List[int]",
+                    "dict",
+                    "Sequence"
                 ],
                 "version": [
-                    "int"
+                    "int",
+                    "float",
+                    "bytes",
+                    "Optional[dict]",
+                    "bool"
                 ],
                 "blockhash": [
-                    "str"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "txid": [
-                    "str"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "sender": [
-                    "str"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "asset_specific_data": [
-                    "bytes"
+                    "int",
+                    "None",
+                    "List[str]",
+                    "str",
+                    "bool"
                 ],
                 "number_of_decimals": [
-                    "int"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "blockseq": [
-                    "int"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "cardseq": [
-                    "int"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "blocknum": [
-                    "int"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "timestamp": [
-                    "int"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "tx_confirmations": [
-                    "int"
+                    "float",
+                    "None",
+                    "bytes",
+                    "bool",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "type": [
-                    "str"
+                    "bool",
+                    "str",
+                    "None",
+                    "Type"
                 ]
             }
         },
@@ -752,8 +1025,8 @@
             "name": "metainfo_to_dict",
             "location": 331,
             "return": [
-                "dict[typing.Text, ]",
-                "Dict[str, Any]",
+                "Dict[Text,]",
+                "Dict[str,Any]",
                 "List[str]",
                 "str",
                 "bool",
@@ -767,7 +1040,7 @@
             "name": "to_json",
             "location": 345,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -784,7 +1057,8 @@
                     "builtins.type[_TCardTransfer]"
                 ],
                 "json": [
-                    "dict"
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -807,7 +1081,9 @@
             "arguments": {
                 "self": [],
                 "cards": [
-                    "generator"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -820,10 +1096,19 @@
             "arguments": {
                 "self": [],
                 "card": [
-                    "dict"
+                    "bytes",
+                    "Callable",
+                    "List[int]",
+                    "str",
+                    "Dict",
+                    "Optional[List[int]]"
                 ],
                 "ctype": [
-                    "str"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -836,10 +1121,14 @@
             "arguments": {
                 "self": [],
                 "amount": [
-                    "int"
+                    "int",
+                    "Optional[Money]",
+                    "None"
                 ],
                 "receiver": [
-                    "str"
+                    "int",
+                    "Optional[Money]",
+                    "None"
                 ]
             }
         },
@@ -852,7 +1141,10 @@
             "arguments": {
                 "self": [],
                 "cards": [
-                    "generator"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Generator",
+                    "int"
                 ]
             }
         },
@@ -876,7 +1168,10 @@
             ],
             "arguments": {
                 "tx_size": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Tuple[int,int]",
+                    "Tuple[int,int,int]"
                 ]
             }
         },
@@ -891,7 +1186,10 @@
             ],
             "arguments": {
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "str",
+                    "List[int]",
+                    "Union[str,bytes]"
                 ]
             }
         },
@@ -906,7 +1204,8 @@
             ],
             "arguments": {
                 "network": [
-                    "str"
+                    "List[str]",
+                    "bool"
                 ],
                 "address": [
                     "str"
@@ -924,7 +1223,8 @@
             ],
             "arguments": {
                 "network": [
-                    "str"
+                    "List[str]",
+                    "bool"
                 ],
                 "address": [
                     "str"
@@ -940,10 +1240,13 @@
             ],
             "arguments": {
                 "network": [
-                    "str"
+                    "bool",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ],
                 "value": [
-                    "decimal.Decimal"
+                    "int"
                 ],
                 "n": [
                     "int"
@@ -961,29 +1264,48 @@
             ],
             "arguments": {
                 "network": [
+                    "bool",
                     "str"
                 ],
                 "inputs": [
-                    "list"
+                    "int",
+                    "List[str]",
+                    "Callable",
+                    "float",
+                    "str",
+                    "bool"
                 ],
                 "outputs": [
-                    "list"
+                    "int",
+                    "List[str]",
+                    "Callable",
+                    "float",
+                    "str",
+                    "bool"
                 ],
                 "locktime": [
                     "int",
-                    "list[str]",
-                    "float",
                     "List[str]",
-                    "str",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "float",
+                    "str",
                     "bool"
                 ],
                 "timestamp": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]",
+                    "Type",
+                    "Optional[Dict]",
+                    "bool"
                 ],
                 "version": [
-                    "int"
+                    "int",
+                    "List[str]",
+                    "Callable",
+                    "bool",
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -998,11 +1320,14 @@
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "Dict",
+                    "Callable",
+                    "IO[str]",
+                    "bool",
+                    "IO"
                 ],
                 "utxo": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[str]",
                     "bytes",
                     "str",
@@ -1015,17 +1340,29 @@
             "name": "sign_transaction",
             "location": 311,
             "return": [
-                "Transaction"
+                "str",
+                "bool",
+                "lib.Path"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "str",
+                    "bytes",
+                    "Dict",
+                    "int",
+                    "Callable[str,Any]",
+                    "Callable[[str],Any]",
+                    "Callable"
                 ],
                 "unsigned": [
-                    "MutableTransaction"
+                    "str",
+                    "bytes"
                 ],
                 "key": [
-                    "pypeerassets.kutil.Kutil"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "bytes"
                 ]
             }
         },
@@ -1038,23 +1375,46 @@
             "arguments": {
                 "self": [],
                 "version": [
+                    "bool",
+                    "Set[str]",
+                    "str",
                     "int"
                 ],
                 "ins": [
-                    "list"
+                    "Tuple[Union[int,int,int,int]]",
+                    "Set",
+                    "Tuple[int,int,int,int]",
+                    "Tuple[int,int,int]",
+                    "Callable[[int],bool]",
+                    "Optional[set]",
+                    "Optional[float]",
+                    "float",
+                    "int"
                 ],
                 "outs": [
-                    "list"
+                    "Tuple[Union[int,int,int,int]]",
+                    "Set",
+                    "Tuple[int,int,int,int]",
+                    "Tuple[int,int,int]",
+                    "Callable[[int],bool]",
+                    "Optional[set]",
+                    "Optional[float]",
+                    "float",
+                    "int"
                 ],
                 "locktime": [
                     "bool",
+                    "Set[str]",
                     "str",
-                    "set[str]",
-                    "int",
-                    "Set[str]"
+                    "int"
                 ],
                 "txid": [
-                    "str"
+                    "int",
+                    "None",
+                    "List[str]",
+                    "bool",
+                    "str",
+                    "List[int]"
                 ],
                 "network": [
                     "bool",
@@ -1063,7 +1423,10 @@
                     "str"
                 ],
                 "timestamp": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Set[str]",
+                    "str"
                 ]
             }
         },
@@ -1114,7 +1477,7 @@
             "name": "from_json",
             "location": 73,
             "return": [
-                "ransaction"
+                "Transaction"
             ],
             "arguments": {
                 "cls": [
@@ -1122,7 +1485,7 @@
                 ],
                 "tx_json": [
                     "str",
-                    "dict"
+                    "Dict"
                 ],
                 "network": [
                     "str",
@@ -1180,13 +1543,29 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "Optional[float]",
+                    "Exception",
+                    "float",
+                    "bool",
+                    "None"
                 ],
                 "ins": [
-                    "list"
+                    "Dict",
+                    "SupportsFloat",
+                    "bool",
+                    "float",
+                    "None",
+                    "Optional[int]"
                 ],
                 "outs": [
-                    "list"
+                    "float",
+                    "Optional[float]",
+                    "Dict",
+                    "None",
+                    "int",
+                    "SupportsFloat",
+                    "Sequence[int]",
+                    "bool"
                 ],
                 "locktime": [
                     "Optional[float]",
@@ -1201,7 +1580,10 @@
                     "bool"
                 ],
                 "timestamp": [
-                    "int"
+                    "int",
+                    "Optional[float]",
+                    "Exception",
+                    "bool"
                 ]
             }
         },
@@ -1237,10 +1619,9 @@
                 "self": [],
                 "n": [
                     "int",
-                    "Collection[\"Issue\"]",
-                    "typing.Collection",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple",
+                    "Collection[Issue]",
+                    "Collection"
                 ]
             }
         },
@@ -1254,7 +1635,7 @@
                 "self": [],
                 "mutable": [
                     "bool",
-                    "Callable[..., Awaitable]",
+                    "Callable[...,Awaitable]",
                     "str"
                 ]
             }
@@ -1269,7 +1650,11 @@
             ],
             "arguments": {
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "Optional[bool]",
+                    "bool",
+                    "Optional[List[str]]",
+                    "None",
+                    "List[str]"
                 ]
             }
         },
@@ -1277,11 +1662,15 @@
             "name": "parse_vote_info",
             "location": 101,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "protobuf": [
-                    "bytes"
+                    "Dict[str,str]",
+                    "Callable",
+                    "str",
+                    "List",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1289,17 +1678,27 @@
             "name": "vote_init",
             "location": 121,
             "return": [
-                "bytes"
+                "bytes",
+                "str",
+                "bool"
             ],
             "arguments": {
                 "vote": [
-                    "Vote"
+                    "str",
+                    "Callable[[str],None]",
+                    "Callable[str,None]"
                 ],
                 "inputs": [
-                    "dict"
+                    "str",
+                    "Optional[dict]",
+                    "int"
                 ],
                 "change_address": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[dict]",
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -1307,14 +1706,17 @@
             "name": "find_vote_inits",
             "location": 143,
             "return": [
-                "Iterable[Vote]"
+                "Generator[(Vote, Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "Callable[[dict], None]",
+                    "str"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "float",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -1322,20 +1724,24 @@
             "name": "vote_cast",
             "location": 160,
             "return": [
-                "bytes"
+                "bytes",
+                "dict"
             ],
             "arguments": {
                 "vote": [
-                    "Vote"
+                    "Dict[str,Any]",
+                    "Dict"
                 ],
                 "choice_index": [
-                    "int"
+                    "str",
+                    "bytes",
+                    "bool"
                 ],
                 "inputs": [
-                    "dict"
+                    "int"
                 ],
                 "change_address": [
-                    "str"
+                    "int"
                 ]
             }
         },
@@ -1343,17 +1749,20 @@
             "name": "find_vote_casts",
             "location": 207,
             "return": [
-                "Iterable[VoteCast]"
+                "Generator[(VoteCast, Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "int"
                 ],
                 "vote": [
-                    "Vote"
+                    "str",
+                    "bool"
                 ],
                 "choice_index": [
-                    "int"
+                    "str",
+                    "bool",
+                    "bytes"
                 ]
             }
         },
@@ -1366,34 +1775,66 @@
             "arguments": {
                 "self": [],
                 "version": [
-                    "int"
+                    "int",
+                    "str",
+                    "None",
+                    "bool",
+                    "Optional[int]"
                 ],
                 "description": [
-                    "str"
+                    "int",
+                    "str",
+                    "None",
+                    "bool",
+                    "Optional[int]"
                 ],
                 "count_mode": [
-                    "str"
+                    "int",
+                    "str",
+                    "float"
                 ],
                 "start_block": [
-                    "int"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "end_block": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "int",
+                    "str",
+                    "None",
+                    "bool",
+                    "Optional[int]"
                 ],
                 "choices": [
-                    "list"
+                    "List",
+                    "int",
+                    "bool",
+                    "Optional[int]",
+                    "str"
                 ],
                 "vote_metainfo": [
+                    "Text",
+                    "int",
+                    "bool",
+                    "Optional[int]",
                     "str"
                 ],
                 "vote_id": [
-                    "str"
+                    "int",
+                    "str",
+                    "None"
                 ],
                 "sender": [
-                    "str"
+                    "int",
+                    "None",
+                    "str",
+                    "bool",
+                    "Optional[int]"
                 ]
             }
         },
@@ -1414,10 +1855,10 @@
             "name": "to_dict",
             "location": 68,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "bool",
                 "int",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
@@ -1428,7 +1869,7 @@
             "name": "vote_choice_address",
             "location": 82,
             "return": [
-                "list[]",
+                "List",
                 "int",
                 "Callable",
                 "str"
@@ -1446,19 +1887,29 @@
             "arguments": {
                 "self": [],
                 "vote": [
-                    "Vote"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "sender": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "blocknum": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "confirmations": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "timestamp": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1479,17 +1930,26 @@
             "name": "find_all_valid_decks",
             "location": 35,
             "return": [
-                "generator"
+                "Generator[(pypeerassets.protocol.Deck, Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "str",
+                    "bool",
+                    "float",
+                    "Dict[str,Union[str,int,bool]]"
                 ],
                 "deck_version": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]",
+                    "bool"
                 ],
                 "prod": [
-                    "bool"
+                    "bool",
+                    "Dict",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1501,16 +1961,32 @@
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
-                ],
-                "key": [
-                    "str"
-                ],
-                "version": [
+                    "str",
+                    "Dict[str, Union[str, int, bool]]",
+                    "bool",
+                    "Dict[str, int]",
+                    "ClassVar",
+                    "Optional[str]",
                     "int"
                 ],
-                "prod": [
+                "key": [
+                    "str",
+                    "Dict[str,Sequence[str]]",
+                    "bytes",
+                    "Dict[str,Sequence[Any]]",
+                    "Union[str,bytes]",
+                    "int",
                     "bool"
+                ],
+                "version": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "prod": [
+                    "bool",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -1518,23 +1994,36 @@
             "name": "deck_spawn",
             "location": 83,
             "return": [
-                "pypeerassets.transactions.Transaction"
+                "pypeerassets.transactions.MutableTransaction"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
-                ],
-                "inputs": [
-                    "dict"
-                ],
-                "change_address": [
+                    "int",
+                    "Set[int]",
                     "str"
                 ],
+                "inputs": [
+                    "str",
+                    "float"
+                ],
+                "change_address": [
+                    "int",
+                    "float",
+                    "bool",
+                    "Union[int,float]"
+                ],
                 "locktime": [
-                    "int"
+                    "int",
+                    "List",
+                    "List[str]"
                 ]
             }
         },
@@ -1542,20 +2031,40 @@
             "name": "deck_transfer",
             "location": 128,
             "return": [
-                "pypeerassets.transactions.Transaction"
+                "NoReturn"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "inputs": [
-                    "list"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "change_address": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1567,13 +2076,19 @@
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "tx": [
-                    "dict"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -1581,14 +2096,25 @@
             "name": "find_card_bundles",
             "location": 156,
             "return": [
-                "Optional[Iterator]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "Union[int,str]",
+                    "int",
+                    "Optional[List[int]]",
+                    "float",
+                    "str",
+                    "List[int]",
+                    "None"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "bool",
+                    "str",
+                    "None",
+                    "List[str]",
+                    "int",
+                    "Optional[int]"
                 ]
             }
         },
@@ -1596,14 +2122,18 @@
             "name": "get_card_bundles",
             "location": 188,
             "return": [
-                "generator"
+                "Generator[(Generator[(pypeerassets.protocol.CardTransfer, Any, None)], Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "str",
+                    "Callable",
+                    "Dict[str,Any]"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "str",
+                    "Callable",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1611,20 +2141,40 @@
             "name": "get_card_transfer",
             "location": 199,
             "return": [
-                "Iterator"
+                "Generator[(pypeerassets.protocol.CardTransfer, Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "pypeerassets.protocol.Deck",
+                    "Optional[str]",
+                    "List[str]",
+                    "str",
+                    "int",
+                    "Optional[int]"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "str",
+                    "pypeerassets.protocol.Deck",
+                    "List[str]",
+                    "None",
+                    "int",
+                    "Optional[str]",
+                    "Optional[int]"
                 ],
                 "txid": [
-                    "str"
+                    "str",
+                    "pypeerassets.protocol.Deck",
+                    "List[str]",
+                    "None",
+                    "int",
+                    "Optional[str]",
+                    "Optional[int]"
                 ],
                 "debug": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "int",
+                    "Union[bool,str]"
                 ]
             }
         },
@@ -1632,14 +2182,17 @@
             "name": "find_all_valid_cards",
             "location": 211,
             "return": [
-                "generator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "TextIO",
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "str"
                 ]
             }
         },
@@ -1647,23 +2200,33 @@
             "name": "card_transfer",
             "location": 222,
             "return": [
-                "pypeerassets.transactions.Transaction"
+                "pypeerassets.transactions.MutableTransaction"
             ],
             "arguments": {
                 "provider": [
-                    "pypeerassets.provider.common.Provider"
+                    "Exception",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ],
                 "card": [
-                    "pypeerassets.protocol.CardTransfer"
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ],
                 "inputs": [
-                    "dict"
+                    "str",
+                    "float"
                 ],
                 "change_address": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Callable[[T],None]",
+                    "Callable[T,None]"
                 ],
                 "locktime": [
-                    "int"
+                    "int",
+                    "List"
                 ]
             }
         }
@@ -1678,7 +2241,9 @@
             "arguments": {
                 "self": [],
                 "network": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1686,12 +2251,14 @@
             "name": "api_fetch",
             "location": 30,
             "return": [
-                "Union[(dict, float, int, str)]"
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "command": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Tuple[bytes,bytes,bytes]"
                 ]
             }
         },
@@ -1699,7 +2266,9 @@
             "name": "getdifficulty",
             "location": 47,
             "return": [
-                "dict"
+                "Dict[str, Any]",
+                "dict",
+                "Dict[str, Dict[str, str]]"
             ],
             "arguments": {
                 "self": []
@@ -1709,7 +2278,8 @@
             "name": "getblockcount",
             "location": 52,
             "return": [
-                "int"
+                "Optional[str]",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -1724,7 +2294,13 @@
             "arguments": {
                 "self": [],
                 "index": [
-                    "int"
+                    "List[int]",
+                    "str",
+                    "int",
+                    "Optional[Any]",
+                    "Any",
+                    "None",
+                    "Union[int,List[int]]"
                 ]
             }
         },
@@ -1737,7 +2313,8 @@
             "arguments": {
                 "self": [],
                 "hash": [
-                    "str"
+                    "Union[Dict, Tuple]",
+                    "T"
                 ]
             }
         },
@@ -1750,10 +2327,17 @@
             "arguments": {
                 "self": [],
                 "txid": [
-                    "str"
+                    "Tuple[cirq.Qid]",
+                    "Dict[str,str]",
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "decrypt": [
-                    "int"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1766,7 +2350,12 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "str",
+                    "Dict[str,float]",
+                    "float",
+                    "List[float]",
+                    "Optional[Tuple[str,...]]",
+                    "Dict"
                 ]
             }
         },
@@ -1774,12 +2363,17 @@
             "name": "listunspent",
             "location": 80,
             "return": [
-                "list"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "str",
+                    "Dict[str,float]",
+                    "float",
+                    "List[float]",
+                    "Optional[Tuple[str,...]]",
+                    "Dict"
                 ]
             }
         },
@@ -1787,15 +2381,20 @@
             "name": "select_inputs",
             "location": 88,
             "return": [
-                "dict"
+                "Dict[(str, Union[(list, decimal.Decimal)])]"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "Tuple[int]",
+                    "int",
+                    "List[int]",
+                    "bool"
                 ],
                 "amount": [
-                    "int"
+                    "int",
+                    "float",
+                    "apps.common.coininfo.CoinInfo"
                 ]
             }
         },
@@ -1808,7 +2407,12 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "str",
+                    "Union[float,int]",
+                    "Union[float,Tuple[float,float]]",
+                    "float",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -1821,7 +2425,13 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "float",
+                    "Union[float,int]",
+                    "int",
+                    "str",
+                    "Union[float,Tuple[float,float]]",
+                    "Tuple[Union[float,float]]",
+                    "bool"
                 ]
             }
         },
@@ -1829,12 +2439,20 @@
             "name": "listtransactions",
             "location": 122,
             "return": [
-                "list"
+                "List[Union[tuple[Union[Any,Any,Any]],None,float]]",
+                "None",
+                "Set[str]",
+                "Dict[int,int]",
+                "Optional[dict]",
+                "List[str]",
+                "List"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "float",
+                    "int",
+                    "List[float]"
                 ]
             }
         }
@@ -1844,7 +2462,7 @@
             "name": "_netname",
             "location": 21,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "name": [
@@ -1905,17 +2523,20 @@
             "name": "sendrawtransaction",
             "location": 62,
             "return": [
-                "str"
+                "bool",
+                "str",
+                "dict"
             ],
             "arguments": {
                 "cls": [
-                    "typing.Type",
-                    "float",
                     "Type",
-                    "type"
+                    "float"
                 ],
                 "rawtxn": [
-                    "str"
+                    "str",
+                    "Optional[Callable]",
+                    "Callable",
+                    "None"
                 ]
             }
         },
@@ -1923,12 +2544,18 @@
             "name": "getblockhash",
             "location": 74,
             "return": [
-                "str"
+                "str",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "blocknum": [
-                    "int"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1936,7 +2563,8 @@
             "name": "getblockcount",
             "location": 79,
             "return": [
-                "int"
+                "int",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -1946,11 +2574,15 @@
             "name": "getblock",
             "location": 84,
             "return": [
-                "dict"
+                "Dict",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "hash": [
+                    "bytes",
+                    "Callable",
+                    "bool",
                     "str"
                 ]
             }
@@ -1959,7 +2591,8 @@
             "name": "getdifficulty",
             "location": 89,
             "return": [
-                "dict"
+                "Dict",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -1969,12 +2602,18 @@
             "name": "getbalance",
             "location": 93,
             "return": [
-                "decimal.Decimal"
+                "decimal.Decimal",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1982,12 +2621,18 @@
             "name": "getreceivedbyaddress",
             "location": 97,
             "return": [
-                "decimal.Decimal"
+                "decimal.Decimal",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1995,12 +2640,18 @@
             "name": "listunspent",
             "location": 101,
             "return": [
-                "list"
+                "List",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -2008,15 +2659,24 @@
             "name": "select_inputs",
             "location": 105,
             "return": [
-                "dict"
+                "Dict",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "int",
+                    "float",
+                    "str",
+                    "Sequence[str]",
+                    "bool"
                 ],
                 "amount": [
-                    "int"
+                    "int",
+                    "float",
+                    "str",
+                    "Sequence[str]",
+                    "bool"
                 ]
             }
         },
@@ -2024,15 +2684,25 @@
             "name": "getrawtransaction",
             "location": 109,
             "return": [
-                "dict"
+                "Dict",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "txid": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "decrypt": [
-                    "int"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -2040,12 +2710,18 @@
             "name": "listtransactions",
             "location": 113,
             "return": [
-                "list"
+                "List",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -2058,7 +2734,10 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "int",
+                    "List[str]",
+                    "str",
+                    "SendCh[trio.abc.Stream]"
                 ]
             }
         }
@@ -2073,7 +2752,9 @@
             "arguments": {
                 "self": [],
                 "network": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -2081,11 +2762,16 @@
             "name": "format_name",
             "location": 33,
             "return": [
-                "str"
+                "str",
+                "IO",
+                "complex",
+                "int"
             ],
             "arguments": {
                 "net": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool"
                 ]
             }
         },
@@ -2093,7 +2779,9 @@
             "name": "get_url",
             "location": 44,
             "return": [
-                "Union[(dict, float, int, str)]"
+                "str",
+                "Tuple[str, str]",
+                "List[Tuple[str, str, int]]"
             ],
             "arguments": {
                 "url": [
@@ -2110,7 +2798,9 @@
             "arguments": {
                 "self": [],
                 "query": [
-                    "str"
+                    "str",
+                    "Optional[int]",
+                    "Hashable"
                 ]
             }
         },
@@ -2133,7 +2823,9 @@
             "arguments": {
                 "self": [],
                 "blockhash": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -2146,7 +2838,10 @@
             "arguments": {
                 "self": [],
                 "blocknum": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict",
+                    "Union[int,str]"
                 ]
             }
         },
@@ -2154,7 +2849,7 @@
             "name": "getdifficulty",
             "location": 78,
             "return": [
-                "dict"
+                "Dict[(str, float)]"
             ],
             "arguments": {
                 "self": []
@@ -2169,7 +2864,9 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -2182,7 +2879,9 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -2190,12 +2889,17 @@
             "name": "listunspent",
             "location": 93,
             "return": [
-                "list"
+                "str",
+                "dict",
+                "Dict[str, Any]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -2203,15 +2907,19 @@
             "name": "select_inputs",
             "location": 98,
             "return": [
-                "dict"
+                "Dict[(str, Union[(list, decimal.Decimal)])]"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Dict"
                 ],
                 "amount": [
-                    "int"
+                    "int",
+                    "float",
+                    "apps.common.coininfo.CoinInfo"
                 ]
             }
         },
@@ -2219,15 +2927,23 @@
             "name": "getrawtransaction",
             "location": 121,
             "return": [
-                "dict"
+                "str",
+                "dict",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "txid": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "decrypt": [
-                    "int"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -2235,12 +2951,19 @@
             "name": "listtransactions",
             "location": 133,
             "return": [
-                "list"
+                "List",
+                "List[Dict[str,Any]]",
+                "frozenset",
+                "str",
+                "List[str]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         }
@@ -2271,8 +2994,8 @@
                 "self": [],
                 "command": [
                     "str",
-                    "Dict[str, Any]",
-                    "Tuple[bytes, bytes, bytes]"
+                    "Dict[str,Any]",
+                    "Tuple[bytes,bytes,bytes]"
                 ]
             }
         },
@@ -2288,7 +3011,7 @@
                 "command": [
                     "str",
                     "bool",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2339,12 +3062,11 @@
                 "index": [
                     "List[int]",
                     "str",
-                    "list[int]",
                     "int",
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "None",
-                    "Union[int, List[int]]"
+                    "Union[int,List[int]]"
                 ]
             }
         },
@@ -2376,18 +3098,16 @@
             "arguments": {
                 "self": [],
                 "txid": [
-                    "tuple['cirq.Qid']",
-                    "Tuple['cirq.Qid']",
+                    "Tuple[cirq.Qid]",
+                    "Dict[str,str]",
                     "str",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ],
                 "decrypt": [
                     "int",
-                    "Tuple['cirq.Qid']",
-                    "Dict[str, str]",
-                    "Dict[str, Any]",
+                    "Tuple[cirq.Qid]",
+                    "Dict[str,str]",
+                    "Dict[str,Any]",
                     "str"
                 ]
             }
@@ -2442,11 +3162,11 @@
                 "self": [],
                 "address": [
                     "str",
-                    "Dict[str, float]",
+                    "Dict[str,float]",
                     "float",
                     "List[float]",
-                    "Optional[Tuple[str, ...]]",
-                    "dict"
+                    "Optional[Tuple[str,...]]",
+                    "Dict"
                 ]
             }
         },
@@ -2463,11 +3183,11 @@
                 "self": [],
                 "address": [
                     "str",
-                    "Dict[str, float]",
+                    "Dict[str,float]",
                     "float",
                     "List[float]",
-                    "Optional[Tuple[str, ...]]",
-                    "dict"
+                    "Optional[Tuple[str,...]]",
+                    "Dict"
                 ]
             }
         },
@@ -2475,7 +3195,7 @@
             "name": "select_inputs",
             "location": 119,
             "return": [
-                "dict[typing.Text, typing.Union[list[TxIn],float]]",
+                "Dict[Text,Union[list[TxIn],float]]",
                 "int",
                 "Callable",
                 "str"
@@ -2483,12 +3203,10 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "tuple[int]",
-                    "int",
                     "Tuple[int]",
-                    "list[int]",
-                    "bool",
-                    "List[int]"
+                    "int",
+                    "List[int]",
+                    "bool"
                 ],
                 "amount": [
                     "int",
@@ -2510,11 +3228,11 @@
                 "self": [],
                 "txid": [
                     "str",
-                    "Dict[str, float]",
+                    "Dict[str,float]",
                     "float",
                     "List[float]",
-                    "Optional[Tuple[str, ...]]",
-                    "dict"
+                    "Optional[Tuple[str,...]]",
+                    "Dict"
                 ]
             }
         },
@@ -2530,8 +3248,8 @@
                 "self": [],
                 "address": [
                     "str",
-                    "Union[float, int]",
-                    "Union[float, Tuple[float, float]]",
+                    "Union[float,int]",
+                    "Union[float,Tuple[float,float]]",
                     "float",
                     "bool",
                     "int"
@@ -2551,11 +3269,11 @@
                 "self": [],
                 "address": [
                     "float",
-                    "Union[float, int]",
+                    "Union[float,int]",
                     "int",
                     "str",
-                    "Union[float, Tuple[float, float]]",
-                    "tuple[typing.Union[float,float]]",
+                    "Union[float,Tuple[float,float]]",
+                    "Tuple[Union[float,float]]",
                     "bool"
                 ]
             }
@@ -2564,12 +3282,11 @@
             "name": "listtransactions",
             "location": 158,
             "return": [
-                "list[]",
+                "List",
                 "None",
                 "List[str]",
                 "Set[str]",
                 "Optional[dict]",
-                "list",
                 "List[int]"
             ],
             "arguments": {
@@ -2577,8 +3294,7 @@
                 "address": [
                     "float",
                     "int",
-                    "List[float]",
-                    "list[float]"
+                    "List[float]"
                 ]
             }
         }
@@ -2588,15 +3304,19 @@
             "name": "select_inputs",
             "location": 21,
             "return": [
-                "dict"
+                "Dict[(str, Union[(list, decimal.Decimal)])]"
             ],
             "arguments": {
                 "self": [],
                 "address": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Dict"
                 ],
                 "amount": [
-                    "int"
+                    "int",
+                    "float",
+                    "apps.common.coininfo.CoinInfo"
                 ]
             }
         },
@@ -2614,7 +3334,7 @@
             "name": "network",
             "location": 59,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -2627,18 +3347,31 @@
             "name": "listunspent",
             "location": 67,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "address": [
+                    "Text",
+                    "int",
+                    "Callable",
                     "str"
                 ],
                 "minconf": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]",
+                    "slice",
+                    "bool"
                 ],
                 "maxconf": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]",
+                    "slice",
+                    "bool"
                 ]
             }
         }
@@ -2709,7 +3442,6 @@
             "name": "test_load_p2th_privkeys_into_local_node",
             "location": 18,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -2718,7 +3450,6 @@
             "name": "test_find_tx_sender",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2729,7 +3460,6 @@
             "name": "test_find_deck_spawns",
             "location": 39,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2740,14 +3470,13 @@
             "name": "test_tx_serialization_order",
             "location": 51,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "prov": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -2771,7 +3500,7 @@
             "name": "test_deck_issue_mode",
             "location": 101,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         },
@@ -2803,7 +3532,6 @@
             "name": "test_load_deck_p2th_into_local_node",
             "location": 153,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -2864,13 +3592,12 @@
             "name": "test_find_deck",
             "location": 11,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "prov": [
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -2886,15 +3613,13 @@
             "name": "test_get_card_bundles",
             "location": 46,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "prov": [
                     "bool",
                     "str",
-                    "Dict[str, float]",
-                    "dict[str, float]"
+                    "Dict[str,float]"
                 ]
             }
         },
@@ -2910,7 +3635,6 @@
             "name": "test_find_all_valid_cards",
             "location": 71,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2995,7 +3719,6 @@
             "name": "test_issue_mode_combos",
             "location": 213,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3008,20 +3731,38 @@
             "name": "few_random_cards",
             "location": 227,
             "return": [
-                "list"
+                "List[pypeerassets.protocol.CardTransfer]"
             ],
             "arguments": {
                 "deck": [
-                    "pypeerassets.protocol.Deck"
+                    "int",
+                    "float",
+                    "Union[float,List[float]]",
+                    "List[float]",
+                    "Optional[int]",
+                    "None"
                 ],
                 "n": [
-                    "int"
+                    "int",
+                    "float",
+                    "Union[float,List[float]]",
+                    "List[float]",
+                    "Optional[int]",
+                    "None"
                 ],
                 "card_type": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "float"
                 ],
                 "amount": [
-                    "int"
+                    "int",
+                    "None",
+                    "str",
+                    "float",
+                    "Union[float,List[float]]",
+                    "List[float]"
                 ]
             }
         },
@@ -3125,7 +3866,6 @@
             "name": "test_validate_wild_two_way_combos",
             "location": 487,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3136,7 +3876,6 @@
             "name": "test_validate_wild_three_way_combos",
             "location": 509,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3159,16 +3898,14 @@
             "name": "test_validateaddress_peercoin",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "provider_cls": [
                     "bytes",
                     "str",
-                    "bool",
                     "Hashable",
-                    "typing.Hashable"
+                    "bool"
                 ]
             }
         },
@@ -3176,16 +3913,14 @@
             "name": "test_validateaddress_peercoin_testnet",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "provider_cls": [
                     "bytes",
                     "str",
-                    "bool",
                     "Hashable",
-                    "typing.Hashable"
+                    "bool"
                 ]
             }
         }
@@ -3365,7 +4100,6 @@
             "name": "test_explorer_getrawtransaction",
             "location": 61,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3422,7 +4156,6 @@
             "name": "test_calculate_transaction_fee",
             "location": 74,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3437,7 +4170,6 @@
             "name": "test_tx_output",
             "location": 85,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3445,7 +4177,7 @@
                     "bool",
                     "float",
                     "str",
-                    "Union[int, float]"
+                    "Union[int,float]"
                 ]
             }
         },

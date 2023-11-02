@@ -46,7 +46,6 @@
             "name": "update_repo",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -55,14 +54,20 @@
             "name": "parse_package_names",
             "location": 22,
             "return": [
-                "Optional[Dict[(str, pathlib.Path)]]"
+                "Optional[dict]"
             ],
             "arguments": {
                 "packages": [
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "str",
+                    "Dict[str,pathlib.Path]",
+                    "pathlib.Path"
                 ],
                 "available": [
-                    "Dict[(str, pathlib.Path)]"
+                    "Iterable[str]",
+                    "str",
+                    "Dict[str,pathlib.Path]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -75,20 +80,15 @@
             "arguments": {
                 "packages": [
                     "Set[str]",
-                    "set[str]",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "List[str]",
-                    "list[str]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "List[str]"
                 ],
                 "reinstall": [
                     "str",
-                    "bool",
-                    "typing.Iterable[pathlib.Path]",
                     "Iterable[pathlib.Path]",
-                    "List[Tuple[str, Any]]",
+                    "bool",
+                    "List[Tuple[str,Any]]",
                     "List[pathlib.Path]"
                 ]
             }
@@ -97,20 +97,17 @@
             "name": "remove",
             "location": 76,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "packages": [
-                    "typing.Sequence[str]",
                     "Sequence[str]",
                     "str",
+                    "Iterable[str]",
                     "Optional[str]",
                     "None",
-                    "typing.Iterable[str]",
                     "pathlib.Path",
-                    "Iterable[str]",
-                    "Tuple[str, str]"
+                    "Tuple[str,str]"
                 ]
             }
         },
@@ -118,7 +115,6 @@
             "name": "list_available",
             "location": 82,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -127,7 +123,6 @@
             "name": "list_installed",
             "location": 102,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -136,7 +131,6 @@
             "name": "delete_cache",
             "location": 120,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -159,8 +153,7 @@
                 "packages": [
                     "bool",
                     "str",
-                    "BinaryIO",
-                    "typing.BinaryIO"
+                    "BinaryIO"
                 ]
             }
         },
@@ -168,23 +161,20 @@
             "name": "cli",
             "location": 170,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "cache": [
                     "str",
                     "bool",
-                    "pathlib.Path",
-                    "typing.Callable[, ]",
-                    "Callable"
+                    "Callable",
+                    "pathlib.Path"
                 ],
                 "version": [
                     "str",
                     "bool",
-                    "pathlib.Path",
-                    "typing.Callable[, ]",
-                    "Callable"
+                    "Callable",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -207,8 +197,7 @@
                     "str",
                     "Optional[str]",
                     "Set[str]",
-                    "None",
-                    "set[str]"
+                    "None"
                 ]
             }
         }
@@ -222,7 +211,9 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Union[str,None]",
+                    "None"
                 ]
             }
         },
@@ -230,11 +221,16 @@
             "name": "_find_executable",
             "location": 12,
             "return": [
-                "str"
+                "Optional[str]"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "List[str]",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         }
@@ -244,7 +240,7 @@
             "name": "get_installed_all",
             "location": 28,
             "return": [
-                "Generator[(Tuple[(str, int)], None, None)]"
+                "Generator[(Tuple[(Any, int)], Any, None)]"
             ],
             "arguments": {}
         },
@@ -256,7 +252,11 @@
             ],
             "arguments": {
                 "d": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "Optional[str]",
+                    "str",
+                    "Callable[..., T]",
+                    "dict"
                 ]
             }
         },
@@ -288,11 +288,17 @@
             "name": "extract_latest_release",
             "location": 69,
             "return": [
-                "int"
+                "Optional[int]"
             ],
             "arguments": {
                 "pspecfile": [
-                    "pathlib.Path"
+                    "int",
+                    "Dict",
+                    "List[str]",
+                    "List[pathlib.Path]",
+                    "Callable",
+                    "Dict[str,Dict]",
+                    "Dict[str,dict]"
                 ]
             }
         },
@@ -300,11 +306,19 @@
             "name": "extract_description",
             "location": 85,
             "return": [
-                "str"
+                "str",
+                "pathlib.Path",
+                "bytes",
+                "int"
             ],
             "arguments": {
                 "pspecfile": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "int",
+                    "Dict",
+                    "Dict[str,int]",
+                    "float"
                 ]
             }
         },
@@ -316,7 +330,11 @@
             ],
             "arguments": {
                 "pspecfile": [
-                    "pathlib.Path"
+                    "str",
+                    "float",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ]
             }
         },
@@ -328,7 +346,11 @@
             ],
             "arguments": {
                 "eopkgfile": [
-                    "pathlib.Path"
+                    "str",
+                    "int",
+                    "pathlib.Path",
+                    "None",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -336,11 +358,12 @@
             "name": "filter_installed",
             "location": 104,
             "return": [
-                "Dict[(str, pathlib.Path)]"
+                "dict"
             ],
             "arguments": {
                 "available": [
-                    "Dict[(str, pathlib.Path)]"
+                    "Dict[str,pathlib.Path]",
+                    "str"
                 ]
             }
         },
@@ -348,11 +371,14 @@
             "name": "filter_outdated",
             "location": 110,
             "return": [
-                "Dict[(str, pathlib.Path)]"
+                "dict"
             ],
             "arguments": {
                 "available": [
-                    "Dict[(str, pathlib.Path)]"
+                    "Dict[str,pathlib.Path]",
+                    "str",
+                    "bool",
+                    "List"
                 ]
             }
         },
@@ -360,7 +386,6 @@
             "name": "_",
             "location": 111,
             "return": [
-                "",
                 "typing.Generator[tuple[]]"
             ],
             "arguments": {}

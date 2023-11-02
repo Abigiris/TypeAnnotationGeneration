@@ -22,8 +22,7 @@
                     "str",
                     "float",
                     "int",
-                    "Dict[str, int]",
-                    "dict[str, int]"
+                    "Dict[str,int]"
                 ]
             }
         },
@@ -37,12 +36,9 @@
                 "self": [],
                 "condition": [
                     "str",
-                    "list",
-                    "list[]",
-                    "tuple",
-                    "tuple[]",
-                    "Callable[[], None]",
-                    "typing.Callable[[], None]"
+                    "List",
+                    "Tuple",
+                    "Callable[,None]"
                 ]
             }
         },
@@ -50,7 +46,7 @@
             "name": "cooldown_fraction",
             "location": 32,
             "return": [
-                "builtins.float",
+                "float",
                 "None"
             ],
             "arguments": {
@@ -81,12 +77,9 @@
                 "self": [],
                 "effect": [
                     "str",
-                    "list",
-                    "list[]",
-                    "tuple",
-                    "tuple[]",
-                    "Callable[[], None]",
-                    "typing.Callable[[], None]"
+                    "List",
+                    "Tuple",
+                    "Callable[,None]"
                 ]
             }
         },
@@ -94,49 +87,75 @@
             "name": "__new__",
             "location": 52,
             "return": [
-                "BaseAbilityData"
+                "AbilityData"
             ],
             "arguments": {
                 "cls": [
+                    "Type[_TAbilityData]"
+                ],
+                "cool_down_time": [
                     "int",
                     "str",
                     "bool"
                 ],
-                "cool_down_time": [
-                    "int"
-                ],
                 "finite_uses": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str"
                 ],
                 "uses_left": [
-                    "int"
-                ],
-                "energy_required": [
-                    "int"
-                ],
-                "sound_on_use": [
-                    "str"
-                ],
-                "kickback": [
-                    "int"
-                ],
-                "spread": [
-                    "int"
-                ],
-                "projectile_count": [
-                    "int"
-                ],
-                "projectile_label": [
-                    "str"
-                ],
-                "muzzle_flash": [
+                    "int",
+                    "str",
                     "bool"
                 ],
+                "energy_required": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "sound_on_use": [
+                    "int",
+                    "None",
+                    "str",
+                    "bool"
+                ],
+                "kickback": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "spread": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "projectile_count": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "projectile_label": [
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "int",
+                    "Optional[float]",
+                    "float"
+                ],
+                "muzzle_flash": [
+                    "bool",
+                    "int",
+                    "str"
+                ],
                 "heal_amount": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "recharge_amount": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -150,8 +169,7 @@
                 "self": [],
                 "other": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -164,7 +182,8 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "AbilityData"
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -189,7 +208,7 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "AbilityData"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -202,7 +221,8 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "AbilityData"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -215,7 +235,9 @@
             "arguments": {
                 "self": [],
                 "ability": [
-                    "Ability"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -230,9 +252,9 @@
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -243,16 +265,17 @@
             "name": "condition_from_data",
             "location": 136,
             "return": [
-                "Condition"
+                "Union[(AlwaysTrue, IsDamaged, IsDead, RandomEventAtRate, TargetClose, _Not)]"
             ],
             "arguments": {
                 "condition_data": [
-                    "dict"
+                    "dict",
+                    "Dict[str, Union[str, bool]]",
+                    "Dict[str, float]"
                 ],
                 "player": [
                     "int",
-                    "Sequence[int]",
-                    "typing.Sequence[int]"
+                    "Sequence[int]"
                 ]
             }
         },
@@ -260,16 +283,16 @@
             "name": "check",
             "location": 22,
             "return": [
-                "bool"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -278,12 +301,10 @@
             "name": "__or__",
             "location": 25,
             "return": [
-                "Condition"
+                "_Or"
             ],
             "arguments": {
-                "self": [
-                    "_TCondition"
-                ],
+                "self": [],
                 "other": [
                     "float",
                     "SupportsInt"
@@ -294,12 +315,10 @@
             "name": "__and__",
             "location": 29,
             "return": [
-                "Condition"
+                "_And"
             ],
             "arguments": {
-                "self": [
-                    "_TCondition"
-                ],
+                "self": [],
                 "other": [
                     "float",
                     "SupportsInt"
@@ -310,12 +329,10 @@
             "name": "__invert__",
             "location": 33,
             "return": [
-                "Condition"
+                "_Not"
             ],
             "arguments": {
-                "self": [
-                    "_TCondition"
-                ]
+                "self": []
             }
         },
         "_Not.__init__": {
@@ -327,7 +344,9 @@
             "arguments": {
                 "self": [],
                 "cond": [
-                    "Condition"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -341,9 +360,8 @@
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -356,10 +374,14 @@
             "arguments": {
                 "self": [],
                 "cond_0": [
-                    "Condition"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "cond_1": [
-                    "Condition"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -367,15 +389,16 @@
             "name": "check",
             "location": 50,
             "return": [
-                "bool"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -388,10 +411,14 @@
             "arguments": {
                 "self": [],
                 "cond_0": [
-                    "Condition"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "cond_1": [
-                    "Condition"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -399,15 +426,16 @@
             "name": "check",
             "location": 59,
             "return": [
-                "bool"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -425,7 +453,9 @@
                     "bool"
                 ],
                 "close_threshold": [
-                    "float"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -433,7 +463,10 @@
             "name": "check",
             "location": 68,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -453,9 +486,9 @@
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -469,7 +502,9 @@
             "arguments": {
                 "self": [],
                 "rate": [
-                    "float"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -482,7 +517,10 @@
             "arguments": {
                 "self": [],
                 "cool_down_time": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[float]",
+                    "None"
                 ]
             }
         },
@@ -505,16 +543,18 @@
             "name": "check",
             "location": 96,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "float"
             ],
             "arguments": {
                 "self": [],
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -536,7 +576,10 @@
             "name": "cooldown_fraction",
             "location": 102,
             "return": [
-                "float"
+                "float",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -551,7 +594,9 @@
             "arguments": {
                 "self": [],
                 "energy_required": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -559,6 +604,7 @@
             "name": "check",
             "location": 111,
             "return": [
+                "str",
                 "bool"
             ],
             "arguments": {
@@ -572,15 +618,16 @@
             "name": "check",
             "location": 116,
             "return": [
-                "bool"
+                "str",
+                "List[Dict[str, Any]]",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
                 "humanoid": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]"
+                    "int"
                 ]
             }
         },
@@ -588,21 +635,24 @@
             "name": "check",
             "location": 121,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "Optional[str]",
+                "Set[str]",
+                "Type[T]"
             ],
             "arguments": {
                 "self": [],
                 "humanoid": [
                     "bool",
-                    "Union[List[str], str]",
-                    "list[str]",
-                    "Mapping[str, Any]",
+                    "Union[List[str],str]",
+                    "List[str]",
+                    "Tuple[int]",
+                    "Mapping[str,Any]",
                     "str",
                     "Optional[List[str]]",
-                    "typing.Mapping",
-                    "Tuple[int]",
-                    "None",
-                    "tuple[int]"
+                    "Mapping",
+                    "None"
                 ]
             }
         },
@@ -616,9 +666,8 @@
                 "self": [],
                 "humanoid": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]"
+                    "int"
                 ]
             }
         },
@@ -633,9 +682,9 @@
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -646,16 +695,16 @@
             "name": "activate",
             "location": 30,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -670,9 +719,8 @@
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -686,9 +734,8 @@
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -732,15 +779,14 @@
                 "self": [],
                 "humanoid": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, List[Any]]",
+                    "Dict[str,Any]",
+                    "Dict[str,List[Any]]",
                     "bool",
-                    "dict[str, list[typing.Any]]",
+                    "Dict[str,list[Any]]",
                     "List[List[str]]",
-                    "list[list[str]]",
+                    "List[list[str]]",
                     "List[List[int]]",
-                    "list[list[int]]"
+                    "List[list[int]]"
                 ]
             }
         },
@@ -753,7 +799,12 @@
             "arguments": {
                 "self": [],
                 "heal_amount": [
-                    "int"
+                    "int",
+                    "List[int]",
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "Iterable[List[str]]",
+                    "Tuple[int]"
                 ]
             }
         },
@@ -767,9 +818,8 @@
                 "self": [],
                 "humanoid": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]"
+                    "int"
                 ]
             }
         },
@@ -782,7 +832,12 @@
             "arguments": {
                 "self": [],
                 "recharge_amount": [
-                    "int"
+                    "int",
+                    "List[int]",
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "Iterable[List[str]]",
+                    "Tuple[int]"
                 ]
             }
         },
@@ -797,10 +852,8 @@
                 "humanoid": [
                     "bool",
                     "str",
-                    "list[str]",
                     "List[str]",
-                    "dict[str, int]",
-                    "Dict[str, int]",
+                    "Dict[str,int]",
                     "int"
                 ]
             }
@@ -814,7 +867,9 @@
             "arguments": {
                 "self": [],
                 "energy_required": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -840,7 +895,14 @@
             "arguments": {
                 "self": [],
                 "sound_file": [
-                    "str"
+                    "str",
+                    "IO",
+                    "TextIO",
+                    "List[str]",
+                    "AsyncGenerator",
+                    "collections.abc.AsyncGenerator",
+                    "Coroutine",
+                    "collections.abc.Coroutine"
                 ]
             }
         },
@@ -855,9 +917,9 @@
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -871,10 +933,18 @@
             "arguments": {
                 "self": [],
                 "to_draw_file": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ],
                 "angled": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "int",
+                    "Mapping[str,Any]"
                 ]
             }
         },
@@ -898,7 +968,14 @@
             "arguments": {
                 "self": [],
                 "sound_files": [
-                    "List[str]"
+                    "str",
+                    "IO",
+                    "TextIO",
+                    "List[str]",
+                    "AsyncGenerator",
+                    "collections.abc.AsyncGenerator",
+                    "Coroutine",
+                    "collections.abc.Coroutine"
                 ]
             }
         },
@@ -913,9 +990,9 @@
                 "humanoid": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -929,7 +1006,9 @@
             "arguments": {
                 "self": [],
                 "kickback": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -943,9 +1022,8 @@
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -959,16 +1037,20 @@
                 "self": [],
                 "projectile_data": [
                     "str",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,str]",
+                    "Dict"
                 ],
                 "spread": [
-                    "int"
+                    "int",
+                    "Optional[Dict]",
+                    "Dict",
+                    "None"
                 ],
                 "projectile_count": [
-                    "int"
+                    "int",
+                    "Optional[Dict]",
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -982,9 +1064,8 @@
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -998,9 +1079,8 @@
                 "self": [],
                 "humanoid": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -1013,7 +1093,14 @@
             "arguments": {
                 "self": [],
                 "item_label": [
-                    "str"
+                    "Dict[str,set[str]]",
+                    "Dict[str,Set[str]]",
+                    "str",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Type",
+                    "Iterable[str]",
+                    "Type[object]"
                 ]
             }
         },
@@ -1084,11 +1171,10 @@
             "arguments": {
                 "self": [],
                 "humanoid": [
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
                     "str",
-                    "tuple[typing.Union[int,int]]",
-                    "Callable[[], object]",
-                    "typing.Callable[[], object]"
+                    "Tuple[Union[int,int]]",
+                    "Callable[,object]"
                 ]
             }
         },
@@ -1113,20 +1199,21 @@
             "name": "__new__",
             "location": 16,
             "return": [
-                "None"
+                "ItemData"
             ],
             "arguments": {
                 "cls": [
-                    "str",
-                    "bool",
-                    "Optional['Directory']",
-                    "None"
+                    "Type[_TItemData]"
                 ],
                 "mod_label": [
+                    "bytes",
                     "str"
                 ],
                 "image_file": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[Directory]",
+                    "None"
                 ]
             }
         },
@@ -1145,10 +1232,9 @@
                 ],
                 "pos": [
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable[[Any, Any], bool]",
-                    "typing.Callable[Any,Any, bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]",
+                    "Callable[Any,Any,bool]"
                 ]
             }
         },
@@ -1178,7 +1264,10 @@
             "name": "_bob_offset",
             "location": 55,
             "return": [
-                "float"
+                "float",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -1215,13 +1304,18 @@
             "arguments": {
                 "self": [],
                 "item_data": [
-                    "ItemData"
+                    "str",
+                    "Type",
+                    "Dict",
+                    "List[str]",
+                    "bool",
+                    "IO[str]",
+                    "IO"
                 ],
                 "pos": [
-                    "typing.Callable[, ]",
+                    "Callable",
                     "str",
-                    "pygame.math.Vector2",
-                    "Callable"
+                    "pygame.math.Vector2"
                 ]
             }
         },
@@ -1282,7 +1376,7 @@
             "name": "_quit",
             "location": 77,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1348,10 +1442,14 @@
             ],
             "arguments": {
                 "groups": [
-                    "Groups"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "timer": [
-                    "Timer"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1359,14 +1457,11 @@
             "name": "__new__",
             "location": 15,
             "return": [
-                "_GroupsBase"
+                "Groups"
             ],
             "arguments": {
                 "cls": [
-                    "str",
-                    "int",
-                    "Type",
-                    "typing.Type"
+                    "Type[_TGroups]"
                 ]
             }
         },
@@ -1442,11 +1537,10 @@
             ],
             "arguments": {
                 "cls": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "groups": [
-                    "Groups"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1471,11 +1565,9 @@
             "arguments": {
                 "self": [],
                 "pos": [
-                    "list[int]",
-                    "int",
                     "List[int]",
-                    "list[]",
-                    "list",
+                    "int",
+                    "List",
                     "pygame.math.Vector2"
                 ]
             }
@@ -1511,15 +1603,19 @@
             "arguments": {
                 "self": [],
                 "top_left": [
-                    "Tuple[float, float, float]",
+                    "Tuple[float,float,float]",
                     "float",
-                    "tuple[typing.Union[float,float,float]]"
+                    "Tuple[Union[float,float,float]]"
                 ],
                 "w": [
-                    "int"
+                    "Tuple[float,float,float]",
+                    "float",
+                    "Tuple[Union[float,float,float]]"
                 ],
                 "h": [
-                    "int"
+                    "Tuple[float,float,float]",
+                    "float",
+                    "Tuple[Union[float,float,float]]"
                 ]
             }
         },
@@ -1532,15 +1628,19 @@
             "arguments": {
                 "self": [],
                 "top_left": [
-                    "Tuple[float, float, float]",
+                    "Tuple[float,float,float]",
                     "float",
-                    "tuple[typing.Union[float,float,float]]"
+                    "Tuple[Union[float,float,float]]"
                 ],
                 "w": [
-                    "int"
+                    "Tuple[float,float,float]",
+                    "float",
+                    "Tuple[Union[float,float,float]]"
                 ],
                 "h": [
-                    "int"
+                    "Tuple[float,float,float]",
+                    "float",
+                    "Tuple[Union[float,float,float]]"
                 ]
             }
         },
@@ -1552,13 +1652,12 @@
             ],
             "arguments": {
                 "cls": [
-                    "typing.Type",
-                    "float",
                     "Type",
-                    "type"
+                    "float"
                 ],
                 "timer": [
-                    "Timer"
+                    "Type",
+                    "float"
                 ]
             }
         },
@@ -1581,38 +1680,58 @@
             "name": "__new__",
             "location": 45,
             "return": [
-                "BaseModData"
+                "ModData"
             ],
             "arguments": {
                 "cls": [
-                    "str",
-                    "bool",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Type[_TModData]"
                 ],
                 "location": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Dict[str,str]"
                 ],
                 "ability_label": [
-                    "str"
-                ],
-                "equipped_image_file": [
-                    "str"
-                ],
-                "backpack_image_file": [
-                    "str"
-                ],
-                "description": [
-                    "str"
-                ],
-                "stackable": [
+                    "str",
+                    "int",
+                    "bytes",
+                    "Dict",
+                    "Optional[dict]",
+                    "None",
+                    "Optional[str]",
                     "bool"
                 ],
+                "equipped_image_file": [
+                    "str",
+                    "bool",
+                    "Dict[str,str]"
+                ],
+                "backpack_image_file": [
+                    "str",
+                    "bool",
+                    "Dict[str,str]"
+                ],
+                "description": [
+                    "str",
+                    "bool",
+                    "Dict[str,str]"
+                ],
+                "stackable": [
+                    "bool",
+                    "str",
+                    "Dict[str,str]"
+                ],
                 "buffs": [
-                    "Set[Buffs]"
+                    "str",
+                    "bool",
+                    "None",
+                    "Dict[str,str]"
                 ],
                 "proficiencies": [
-                    "Set[Proficiencies]"
+                    "str",
+                    "bool",
+                    "None",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -1625,7 +1744,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "ModData"
+                    "int",
+                    "bytes",
+                    "bytearray",
+                    "data.SensorData"
                 ]
             }
         },
@@ -1729,13 +1851,12 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "int",
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
+                    "AbstractSet",
                     "float",
-                    "typing.AbstractSet",
-                    "AbstractSet[T]",
-                    "AbstractSet"
+                    "AbstractSet[T]"
                 ]
             }
         },
@@ -1761,10 +1882,9 @@
                 "self": [],
                 "pos": [
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable[[Any, Any], bool]",
-                    "typing.Callable[Any,Any, bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]",
+                    "Callable[Any,Any,bool]"
                 ],
                 "direction": [
                     "int",
@@ -1772,7 +1892,10 @@
                     "bool"
                 ],
                 "hits_player": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Dict[str,Any]",
+                    "Union[str,int]"
                 ]
             }
         },
@@ -1825,7 +1948,7 @@
             "name": "max_lifetime",
             "location": 55,
             "return": [
-                "builtins.int",
+                "int",
                 "None"
             ],
             "arguments": {
@@ -1836,7 +1959,7 @@
             "name": "speed",
             "location": 59,
             "return": [
-                "builtins.int",
+                "int",
                 "None"
             ],
             "arguments": {
@@ -1847,7 +1970,7 @@
             "name": "damage",
             "location": 63,
             "return": [
-                "builtins.int",
+                "int",
                 "None"
             ],
             "arguments": {
@@ -1858,40 +1981,71 @@
             "name": "__new__",
             "location": 77,
             "return": [
-                "BaseProjectileData"
+                "ProjectileData"
             ],
             "arguments": {
                 "cls": [
+                    "Type[_TProjectileData]"
+                ],
+                "hits_player": [
                     "bool",
                     "str",
                     "int",
-                    "list[typing.Any]",
+                    "List[Any]",
                     "Optional[List[Any]]",
                     "None"
                 ],
-                "hits_player": [
-                    "bool"
-                ],
                 "damage": [
-                    "int"
+                    "bool",
+                    "str",
+                    "int",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None"
                 ],
                 "speed": [
-                    "int"
+                    "bool",
+                    "str",
+                    "int",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None"
                 ],
                 "max_lifetime": [
-                    "int"
+                    "bool",
+                    "str",
+                    "int",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None"
                 ],
                 "image_file": [
-                    "str"
+                    "bool",
+                    "str",
+                    "int",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None"
                 ],
                 "angled_image": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "Optional[List[Any]]"
                 ],
                 "rotating_image": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "Optional[List[Any]]"
                 ],
                 "drops_on_kill": [
-                    "str"
+                    "bool",
+                    "None",
+                    "str",
+                    "int",
+                    "Optional[List[Any]]",
+                    "List[Any]"
                 ]
             }
         },
@@ -1918,7 +2072,12 @@
                     "bankroll.model.Instrument"
                 ],
                 "data": [
-                    "ProjectileData"
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "bytes",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1991,21 +2150,22 @@
                 "pos": [
                     "bytes",
                     "pygame.math.Vector2",
-                    "tuple[int]",
                     "Tuple[int]",
-                    "typing.Any",
+                    "Any",
                     "Optional[Any]",
                     "None"
                 ],
                 "direction": [
                     "str",
                     "Iterable[allennlp.data.instance.Instance]",
-                    "typing.Iterable[allennlp.data.instance.Instance]",
                     "Optional[Iterable[allennlp.data.instance.Instance]]",
                     "None"
                 ],
                 "data": [
-                    "ProjectileData"
+                    "str",
+                    "Iterable[allennlp.data.instance.Instance]",
+                    "Optional[Iterable[allennlp.data.instance.Instance]]",
+                    "None"
                 ]
             }
         },
@@ -2018,7 +2178,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "ProjectileData"
+                    "str",
+                    "bytes",
+                    "List[str]",
+                    "Union[str,bytes]"
                 ],
                 "direction": [
                     "bool",
@@ -2077,7 +2240,13 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "ProjectileData"
+                    "Dict[str,Any]",
+                    "bytes",
+                    "Dict[str,str]",
+                    "List",
+                    "str",
+                    "Optional[Dict[str,Any]]",
+                    "None"
                 ]
             }
         },
@@ -2085,7 +2254,7 @@
             "name": "build",
             "location": 148,
             "return": [
-                "SimpleProjectile"
+                "FancyProjectile"
             ],
             "arguments": {
                 "self": [],
@@ -2109,10 +2278,9 @@
                 "self": [],
                 "pos": [
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable[[Any, Any], bool]",
-                    "typing.Callable[Any,Any, bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]",
+                    "Callable[Any,Any,bool]"
                 ]
             }
         },
@@ -2143,7 +2311,9 @@
             "name": "_fade_out",
             "location": 173,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "int"
             ],
             "arguments": {
                 "self": []
@@ -2184,7 +2354,8 @@
             "arguments": {
                 "self": [],
                 "filename": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -2219,8 +2390,7 @@
                 "surface": [
                     "str",
                     "int",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         },
@@ -2249,9 +2419,7 @@
                 "quit_func": [
                     "float",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -2269,7 +2437,7 @@
             "name": "set_player_data",
             "location": 18,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
@@ -2277,9 +2445,8 @@
                     "int",
                     "bytes",
                     "creatures.humanoids.HumanoidData",
-                    "dict[, ]",
-                    "bool",
-                    "dict"
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -2287,7 +2454,7 @@
             "name": "draw",
             "location": 21,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -2297,7 +2464,7 @@
             "name": "update",
             "location": 24,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -2314,10 +2481,15 @@
             "arguments": {
                 "self": [],
                 "prompt": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ],
                 "decisions": [
-                    "list"
+                    "bool",
+                    "Optional[bool]",
+                    "int"
                 ]
             }
         },
@@ -2350,15 +2522,14 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "typing.Callable[typing.Any, None]",
+                    "Callable[Any,None]",
                     "bytes",
-                    "Callable[[Any], None]",
+                    "Callable[[Any],None]",
+                    "Dict",
                     "int",
-                    "dict[, ]",
-                    "dict",
-                    "list[]",
+                    "List",
                     "T",
-                    "Union[Dict, List]",
+                    "Union[Dict,List]",
                     "Iterable"
                 ]
             }
@@ -2374,7 +2545,11 @@
             "arguments": {
                 "self": [],
                 "map_file": [
-                    "str"
+                    "str",
+                    "TextIO",
+                    "bool",
+                    "List[str]",
+                    "autorecurse.gnumake.data.Makefile"
                 ]
             }
         },
@@ -2417,10 +2592,14 @@
             "arguments": {
                 "self": [],
                 "dungeon": [
-                    "Dungeon"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "resolutions": [
-                    "list"
+                    "List[str]",
+                    "list",
+                    "int"
                 ]
             }
         },
@@ -2463,7 +2642,9 @@
             "name": "_hud_just_clicked",
             "location": 143,
             "return": [
-                "bool"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -2537,7 +2718,7 @@
             "name": "_abs_mouse_pos",
             "location": 216,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -2604,10 +2785,24 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,str]",
+                    "Callable",
+                    "Iterable",
+                    "Type",
+                    "Union[Type,Tuple[Type,...]]",
+                    "Tuple[Union[Type,...]]"
                 ],
                 "bound_func": [
-                    "Callable[(..., None)]"
+                    "int",
+                    "str",
+                    "Dict[str,str]",
+                    "Callable",
+                    "Iterable",
+                    "Type",
+                    "Union[Type,Tuple[Type,...]]",
+                    "Tuple[Union[Type,...]]"
                 ]
             }
         },
@@ -2620,10 +2815,14 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "bound_func": [
-                    "Callable[(..., None)]"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -2636,10 +2835,14 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "bound_func": [
-                    "Callable[(..., None)]"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -2652,7 +2855,11 @@
             "arguments": {
                 "self": [],
                 "allowed_keys": [
-                    "List[int]"
+                    "str",
+                    "None",
+                    "Dict[str,str]",
+                    "float",
+                    "Optional[str]"
                 ]
             }
         },
@@ -2664,13 +2871,21 @@
             ],
             "arguments": {
                 "key_id": [
+                    "str",
+                    "bytes",
                     "int"
                 ],
                 "funcs": [
-                    "Dict[(int, Callable[(..., None)])]"
+                    "str",
+                    "bytes",
+                    "Optional[str]",
+                    "int",
+                    "None"
                 ],
                 "allowed_keys": [
-                    "List[int]"
+                    "str",
+                    "bytes",
+                    "int"
                 ]
             }
         },
@@ -2719,7 +2934,7 @@
             "name": "_just_pressed_keys",
             "location": 87,
             "return": [
-                "List[int]"
+                "List[nothing]"
             ],
             "arguments": {
                 "self": []
@@ -2729,7 +2944,7 @@
             "name": "_just_pressed_mouse",
             "location": 95,
             "return": [
-                "List[int]"
+                "List[nothing]"
             ],
             "arguments": {
                 "self": []
@@ -2739,7 +2954,7 @@
             "name": "_pressed_keys",
             "location": 103,
             "return": [
-                "List[int]"
+                "List[nothing]"
             ],
             "arguments": {
                 "self": []
@@ -2778,7 +2993,9 @@
                     "bool"
                 ],
                 "rating": [
-                    "DifficultyRating"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -2811,15 +3028,14 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "typing.Callable[typing.Any, None]",
+                    "Callable[Any,None]",
                     "bytes",
-                    "Callable[[Any], None]",
+                    "Callable[[Any],None]",
+                    "Dict",
                     "int",
-                    "dict[, ]",
-                    "dict",
-                    "list[]",
+                    "List",
                     "T",
-                    "Union[Dict, List]",
+                    "Union[Dict,List]",
                     "Iterable"
                 ]
             }
@@ -2843,7 +3059,9 @@
                     "bool"
                 ],
                 "rating": [
-                    "DifficultyRating"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -2860,9 +3078,8 @@
                 "data": [
                     "int",
                     "bytes",
-                    "dict[, ]",
-                    "bool",
-                    "dict"
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -2877,22 +3094,21 @@
             "arguments": {
                 "self": [],
                 "description": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "continue_dec": [
                     "bool",
+                    "Dict[str,str]",
                     "str",
-                    "dict[str, str]",
-                    "int",
-                    "Dict[str, str]"
+                    "int"
                 ],
                 "gained_item": [
                     "bool",
                     "None",
+                    "Dict[str,str]",
                     "int",
-                    "str",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "str"
                 ]
             }
         },
@@ -2925,15 +3141,14 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "typing.Callable[typing.Any, None]",
+                    "Callable[Any,None]",
                     "bytes",
-                    "Callable[[Any], None]",
+                    "Callable[[Any],None]",
+                    "Dict",
                     "int",
-                    "dict[, ]",
-                    "dict",
-                    "list[]",
+                    "List",
                     "T",
-                    "Union[Dict, List]",
+                    "Union[Dict,List]",
                     "Iterable"
                 ]
             }
@@ -2949,7 +3164,11 @@
             "arguments": {
                 "self": [],
                 "map_file": [
-                    "str"
+                    "str",
+                    "TextIO",
+                    "bool",
+                    "List[str]",
+                    "autorecurse.gnumake.data.Makefile"
                 ]
             }
         },
@@ -2982,10 +3201,14 @@
             "arguments": {
                 "self": [],
                 "dungeon": [
-                    "TurnBasedDungeon"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "resolutions": [
-                    "list"
+                    "List[str]",
+                    "list",
+                    "int"
                 ]
             }
         },
@@ -3048,7 +3271,7 @@
             "name": "_abs_mouse_pos",
             "location": 111,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -3071,7 +3294,8 @@
             "name": "__new__",
             "location": 34,
             "return": [
-                "BaseEnemyData"
+                "tuple",
+                "bool"
             ],
             "arguments": {
                 "cls": [
@@ -3080,28 +3304,46 @@
                     "str"
                 ],
                 "max_speed": [
-                    "float"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "max_health": [
-                    "int"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "hit_rect_width": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[int]",
+                    "None"
                 ],
                 "hit_rect_height": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[int]",
+                    "None"
                 ],
                 "image_file": [
+                    "int",
+                    "float",
                     "str"
                 ],
                 "damage": [
-                    "int"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "behavior": [
-                    "Dict[(str, Any)]"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "knockback": [
-                    "int"
+                    "int",
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -3109,10 +3351,12 @@
             "name": "replace",
             "location": 43,
             "return": [
-                "BaseEnemyData"
+                "EnemyData"
             ],
             "arguments": {
-                "self": []
+                "self": [
+                    "_TEnemyData@@EnemyData@@"
+                ]
             }
         },
         "Behavior.__init__": {
@@ -3124,13 +3368,12 @@
             "arguments": {
                 "self": [],
                 "behavior_dict": [
-                    "Dict[(str, Any)]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "player": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -3138,7 +3381,9 @@
             "name": "determine_state",
             "location": 74,
             "return": [
-                "str"
+                "int",
+                "Callable",
+                "Sequence[str]"
             ],
             "arguments": {
                 "self": [],
@@ -3146,8 +3391,7 @@
                     "int",
                     "creatures.humanoids.Humanoid",
                     "str",
-                    "dict[str, str]",
-                    "Dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -3162,9 +3406,8 @@
                 "humanoid": [
                     "int",
                     "creatures.humanoids.Humanoid",
-                    "str",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         },
@@ -3177,11 +3420,15 @@
             "arguments": {
                 "self": [],
                 "behavior_dict": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,float]",
+                    "Dict",
+                    "Dict[str,int]",
+                    "Dict[str,Any]",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]"
                 ],
                 "player": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -3194,12 +3441,16 @@
             "arguments": {
                 "self": [],
                 "behavior_dict": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,float]",
+                    "Dict",
+                    "Dict[str,int]",
+                    "Dict[str,Any]",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]"
                 ],
                 "player": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -3210,25 +3461,31 @@
                 "str",
                 "int",
                 "bytes",
-                "list[int]",
-                "dict[str, str]",
+                "List[int]",
+                "Dict[str,str]",
                 "float",
                 "frozenset"
             ],
             "arguments": {
                 "self": [],
                 "effect_data": [
-                    "dict"
+                    "List",
+                    "bool",
+                    "int",
+                    "Dict"
                 ],
                 "effect_label": [
-                    "str"
+                    "Dict",
+                    "Dict[str,float]",
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "player": [
                     "str",
                     "creatures.players.Player",
-                    "int",
-                    "list[]",
-                    "list"
+                    "List",
+                    "int"
                 ]
             }
         },
@@ -3236,11 +3493,18 @@
             "name": "_condition_value_from_data",
             "location": 178,
             "return": [
+                "str",
+                "List[str]",
+                "Tuple[str, str]",
+                "List[decksite.data.deck.Deck]",
                 "int"
             ],
             "arguments": {
                 "condition_data": [
-                    "dict"
+                    "dict",
+                    "Dict[str, float]",
+                    "Dict[str, Union[str, bool]]",
+                    "Optional[Dict[str, Any]]"
                 ]
             }
         },
@@ -3256,18 +3520,19 @@
                     "int",
                     "pygame.math.Vector2",
                     "bytes",
-                    "dict[, ]",
-                    "dict"
+                    "Dict"
                 ],
                 "player": [
                     "str",
+                    "Dict[str,Any]",
                     "bool",
-                    "Dict[str, Any]",
-                    "bytes",
-                    "dict[str, typing.Any]"
+                    "bytes"
                 ],
                 "data": [
-                    "EnemyData"
+                    "str",
+                    "bytes",
+                    "int",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -3299,7 +3564,9 @@
                     "bool"
                 ],
                 "full_width": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -3347,7 +3614,10 @@
             "name": "_target_close",
             "location": 244,
             "return": [
-                "bool"
+                "bool",
+                "Callable",
+                "Tuple[Any,Any,Any]",
+                "str"
             ],
             "arguments": {
                 "target_dist": [
@@ -3374,17 +3644,20 @@
             "name": "collide_hit_rect_with_rect",
             "location": 282,
             "return": [
-                "bool"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "humanoid": [
-                    "Humanoid"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "sprite": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -3405,7 +3678,7 @@
                 "bool",
                 "str",
                 "int",
-                "Tuple[float, float, float]",
+                "Tuple[float,float,float]",
                 "bytes"
             ],
             "arguments": {
@@ -3422,9 +3695,7 @@
                 "self": [],
                 "mod": [
                     "List[str]",
-                    "list[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -3432,7 +3703,9 @@
             "name": "_first_empty_slot",
             "location": 38,
             "return": [
-                "int"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -3448,10 +3721,8 @@
                 "self": [],
                 "mod": [
                     "int",
-                    "list",
-                    "list[]",
-                    "List[int]",
-                    "list[int]"
+                    "List",
+                    "List[int]"
                 ]
             }
         },
@@ -3464,7 +3735,15 @@
             "arguments": {
                 "self": [],
                 "slot": [
-                    "int"
+                    "str",
+                    "List",
+                    "bool",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "None",
+                    "Optional[int]",
+                    "Optional[List[Callable]]",
+                    "List[Callable]"
                 ]
             }
         },
@@ -3479,7 +3758,9 @@
             "arguments": {
                 "self": [],
                 "index": [
-                    "int"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -3541,8 +3822,7 @@
             "arguments": {
                 "self": [],
                 "item_mod": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "Iterable[Any]"
                 ]
             }
@@ -3556,7 +3836,10 @@
             "arguments": {
                 "self": [],
                 "max_health": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -3569,7 +3852,8 @@
             "arguments": {
                 "self": [],
                 "amount": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -3631,8 +3915,7 @@
             "arguments": {
                 "self": [],
                 "hit_rect": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "pos": [
                     "pygame.math.Vector2",
@@ -3641,7 +3924,9 @@
                     "None"
                 ],
                 "max_health": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -3678,7 +3963,7 @@
                 "loc": [
                     "int",
                     "Iterator[T]",
-                    "typing.Iterator"
+                    "Iterator"
                 ]
             }
         },
@@ -3686,16 +3971,16 @@
             "name": "ability_caller",
             "location": 174,
             "return": [
-                "Callable"
+                "Callable[([], Any)]"
             ],
             "arguments": {
                 "self": [],
                 "loc": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -3704,7 +3989,7 @@
             "name": "update",
             "location": 180,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -3736,7 +4021,9 @@
             "arguments": {
                 "self": [],
                 "humanoid": [
-                    "Humanoid"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "timer": [
                     "int",
@@ -3865,7 +4152,10 @@
             "arguments": {
                 "self": [],
                 "x_or_y": [
-                    "str"
+                    "str",
+                    "float",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -3878,10 +4168,14 @@
             "arguments": {
                 "self": [],
                 "max_energy": [
-                    "float"
+                    "int",
+                    "Optional[int]",
+                    "None"
                 ],
                 "recharge_rate": [
-                    "float"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -3930,7 +4224,8 @@
             "arguments": {
                 "self": [],
                 "amount": [
-                    "float"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -3943,7 +4238,7 @@
             "arguments": {
                 "self": [],
                 "amount": [
-                    "float"
+                    "int"
                 ]
             }
         },
@@ -3956,7 +4251,8 @@
             "arguments": {
                 "self": [],
                 "dt": [
-                    "float"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -4009,13 +4305,10 @@
             "arguments": {
                 "self": [],
                 "member": [
-                    "Callable[[], None]",
+                    "Callable[,None]",
                     "str",
-                    "typing.Callable[[], None]",
-                    "list",
-                    "list[]",
-                    "tuple",
-                    "tuple[]"
+                    "List",
+                    "Tuple"
                 ]
             }
         },
@@ -4029,9 +4322,8 @@
                 "self": [],
                 "member": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -4047,12 +4339,19 @@
             "name": "member_is_active",
             "location": 31,
             "return": [
-                "bool"
+                "bool",
+                "Optional[Any]"
             ],
             "arguments": {
                 "self": [],
                 "idx": [
-                    "int"
+                    "float",
+                    "Exception",
+                    "str",
+                    "Dict[str,Any]",
+                    "int",
+                    "Container[str]",
+                    "Container"
                 ]
             }
         },
@@ -4075,7 +4374,8 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "int"
+                    "str",
+                    "T"
                 ],
                 "value": [
                     "str",
@@ -4093,7 +4393,9 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "int"
+                    "str",
+                    "int",
+                    "Hashable"
                 ]
             }
         },
@@ -4106,7 +4408,9 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "int"
+                    "str",
+                    "int",
+                    "Hashable"
                 ]
             }
         },
@@ -4137,12 +4441,15 @@
                 ],
                 "image": [
                     "bool",
-                    "dict[, ]",
-                    "pygame.Surface",
-                    "dict"
+                    "Dict",
+                    "pygame.Surface"
                 ],
                 "speed": [
-                    "int"
+                    "int",
+                    "bytes",
+                    "str",
+                    "List",
+                    "bool"
                 ]
             }
         },
@@ -4184,15 +4491,18 @@
             "name": "can_reach",
             "location": 30,
             "return": [
+                "str",
                 "bool"
             ],
             "arguments": {
                 "self": [],
                 "x": [
-                    "int"
+                    "float",
+                    "str"
                 ],
                 "y": [
-                    "int"
+                    "float",
+                    "str"
                 ]
             }
         }
@@ -4208,10 +4518,9 @@
                 "self": [],
                 "pos": [
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable[[Any, Any], bool]",
-                    "typing.Callable[Any,Any, bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]",
+                    "Callable[Any,Any,bool]"
                 ]
             }
         },
@@ -4307,7 +4616,8 @@
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -4338,8 +4648,8 @@
             "name": "build_map_object",
             "location": 14,
             "return": [
-                "Mapping[str, Any]",
-                "Dict[str, Any]",
+                "Mapping[str,Any]",
+                "Dict[str,Any]",
                 "Enemy",
                 "ItemFromData",
                 "Zone",
@@ -4348,36 +4658,37 @@
             "arguments": {
                 "label": [
                     "str",
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "None",
-                    "Union[str, Iterable[str]]",
+                    "Union[str,Iterable[str]]",
                     "Optional[str]"
                 ],
                 "pos": [
-                    "Union[str, Callable[[], str]]",
+                    "Union[str,Callable[,str]]",
                     "None",
                     "int",
                     "str",
                     "List[allennlp.data.tokenizers.token.Token]",
-                    "typing.Callable[[], str]",
-                    "Union[int, float, None]",
-                    "dict",
-                    "list[T]",
-                    "float",
-                    "dict[, ]"
+                    "Dict",
+                    "Callable[,str]",
+                    "Union[int,float,None]",
+                    "List[T]",
+                    "float"
                 ],
                 "player": [
                     "Sequence[str]",
                     "None",
                     "str",
                     "int",
-                    "typing.Sequence[str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "dimensions": [
-                    "Tuple[(int, int)]"
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "str",
+                    "Collection[int]",
+                    "Optional[str]",
+                    "T"
                 ]
             }
         }
@@ -4387,7 +4698,7 @@
             "name": "load_item_data_kwargs",
             "location": 31,
             "return": [
-                "Dict[(str, Union[(float, int, str)])]"
+                "str"
             ],
             "arguments": {
                 "name": [
@@ -4399,7 +4710,8 @@
             "name": "load_mod_data_kwargs",
             "location": 37,
             "return": [
-                "Dict[(str, Union[(float, int, str)])]"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "name": [
@@ -4411,7 +4723,10 @@
             "name": "load_ability_data_kwargs",
             "location": 43,
             "return": [
-                "Dict[(str, Union[(float, int, str)])]"
+                "bool",
+                "str",
+                "type",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "name": [
@@ -4423,7 +4738,8 @@
             "name": "load_projectile_data_kwargs",
             "location": 50,
             "return": [
-                "Dict[(str, Union[(float, int, str)])]"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "name": [
@@ -4435,7 +4751,8 @@
             "name": "load_npc_data_kwargs",
             "location": 56,
             "return": [
-                "Dict[(str, Union[(float, int, str)])]"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "name": [
@@ -4447,7 +4764,10 @@
             "name": "load_quest_data",
             "location": 62,
             "return": [
-                "Dict[(str, Union[(float, int, str)])]"
+                "dict",
+                "str",
+                "bytes",
+                "Optional[float]"
             ],
             "arguments": {
                 "name": [
@@ -4475,7 +4795,8 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Pattern"
                 ]
             }
         },
@@ -4483,7 +4804,7 @@
             "name": "image_filenames",
             "location": 79,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -4491,7 +4812,7 @@
             "name": "sound_filenames",
             "location": 87,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -4499,7 +4820,7 @@
             "name": "_mod_image_filenames",
             "location": 93,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -4507,7 +4828,7 @@
             "name": "_item_image_filenames",
             "location": 108,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -4515,7 +4836,7 @@
             "name": "_ability_sound_filenames",
             "location": 115,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -4523,7 +4844,7 @@
             "name": "_projectile_image_filenames",
             "location": 125,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -4531,7 +4852,7 @@
             "name": "_npc_image_filenames",
             "location": 132,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -4539,7 +4860,7 @@
             "name": "_npc_sound_filenames",
             "location": 136,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         }
@@ -4555,7 +4876,9 @@
             "arguments": {
                 "self": [],
                 "quest_data": [
-                    "Dict[(str, dict)]"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict"
                 ]
             }
         },
@@ -4580,7 +4903,9 @@
             "arguments": {
                 "self": [],
                 "label": [
-                    "str"
+                    "str",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -4593,7 +4918,9 @@
             "arguments": {
                 "self": [],
                 "quest_data": [
-                    "Dict[(str, dict)]"
+                    "Dict",
+                    "Hashable",
+                    "Optional[Dict]"
                 ]
             }
         },
@@ -4606,10 +4933,18 @@
             "arguments": {
                 "self": [],
                 "quest_data": [
-                    "Dict[(str, dict)]"
+                    "bytes",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,str]"
                 ],
                 "label_scene_map": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "Dict",
+                    "bool",
+                    "List[str]",
+                    "Callable[[Any],str]"
                 ]
             }
         },
@@ -4637,11 +4972,15 @@
                 "self": [],
                 "current_scene": [
                     "str",
-                    "Iterable[int]",
-                    "typing.Iterable[int]"
+                    "Iterable[int]"
                 ],
                 "resolutions": [
-                    "Sequence"
+                    "float",
+                    "str",
+                    "int",
+                    "Tuple",
+                    "List[int]",
+                    "bool"
                 ]
             }
         },
@@ -4651,7 +4990,7 @@
             "return": [
                 "None",
                 "Optional[str]",
-                "list",
+                "List",
                 "str"
             ],
             "arguments": {
@@ -4668,10 +5007,18 @@
             ],
             "arguments": {
                 "label": [
-                    "str"
+                    "pygame.sprite.Group",
+                    "str",
+                    "AnyStr",
+                    "dict",
+                    "Dict[str, Any]"
                 ],
                 "res_data": [
-                    "Dict[(str, Collection)]"
+                    "str",
+                    "pygame.sprite.Group",
+                    "AnyStr",
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "group": [
                     "pygame.sprite.Group",
@@ -4686,11 +5033,15 @@
             "name": "resolution_from_data",
             "location": 178,
             "return": [
-                "Resolution"
+                "Callable[Any,bool]",
+                "str",
+                "int",
+                "bytes"
             ],
             "arguments": {
                 "res_data": [
-                    "Dict[(str, Any)]"
+                    "dict",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -4726,18 +5077,15 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "set[enum.Enum]",
-                    "Type[T]",
                     "Set[enum.Enum]",
+                    "Type[T]",
                     "Type"
                 ],
                 "value": [
                     "str",
-                    "typing.Type",
-                    "Type[T]",
-                    "set[enum.Enum]",
+                    "Type",
                     "Set[enum.Enum]",
-                    "Type"
+                    "Type[T]"
                 ]
             }
         },
@@ -4745,7 +5093,7 @@
             "name": "is_resolved",
             "location": 43,
             "return": [
-                "builtins.bool",
+                "bool",
                 "None"
             ],
             "arguments": {
@@ -4761,7 +5109,14 @@
             "arguments": {
                 "self": [],
                 "sprite_categories": [
-                    "Dict[(str, Collection)]"
+                    "Type",
+                    "int",
+                    "Mapping[str,Any]",
+                    "Mapping",
+                    "List[Tuple[int,int,str]]",
+                    "List[tuple[Union[int,int,str]]]",
+                    "IO[str]",
+                    "IO"
                 ]
             }
         },
@@ -4774,7 +5129,8 @@
             "arguments": {
                 "self": [],
                 "base_resolution": [
-                    "Resolution"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -4785,8 +5141,8 @@
                 "str",
                 "int",
                 "float",
-                "list[]",
-                "list[typing.Callable[[], bool]]"
+                "List",
+                "List[Callable[,bool]]"
             ],
             "arguments": {
                 "self": []
@@ -4813,7 +5169,8 @@
             "arguments": {
                 "self": [],
                 "sprite_categories": [
-                    "Dict[(str, Collection)]"
+                    "bool",
+                    "Dict"
                 ]
             }
         },
@@ -4836,7 +5193,13 @@
             "arguments": {
                 "self": [],
                 "group_label": [
-                    "str"
+                    "bytes",
+                    "str",
+                    "int",
+                    "ByteString",
+                    "IO",
+                    "IO[str]",
+                    "Union[bytes,str]"
                 ]
             }
         },
@@ -4861,7 +5224,12 @@
             "arguments": {
                 "self": [],
                 "sprite_categories": [
-                    "Dict[(str, Collection)]"
+                    "int",
+                    "List[str]",
+                    "Optional[Dict]",
+                    "Sequence[T]",
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -4874,10 +5242,18 @@
             "arguments": {
                 "self": [],
                 "zone_label": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[Callable]",
+                    "Callable",
+                    "None"
                 ],
                 "entering_label": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -4901,7 +5277,7 @@
             "arguments": {
                 "self": [],
                 "sprite_categories": [
-                    "Dict[(str, Collection)]"
+                    "str"
                 ]
             }
         },
@@ -4914,10 +5290,17 @@
             "arguments": {
                 "self": [],
                 "tested_label": [
-                    "str"
+                    "int",
+                    "str",
+                    "Type",
+                    "float",
+                    "Sequence[str]"
                 ],
                 "condition_data": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "str",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -4930,7 +5313,10 @@
             "arguments": {
                 "self": [],
                 "sprite_categories": [
-                    "Dict[(str, Collection)]"
+                    "int",
+                    "Type",
+                    "Set",
+                    "bool"
                 ]
             }
         },
@@ -4954,6 +5340,7 @@
             "arguments": {
                 "self": [],
                 "description": [
+                    "int",
                     "str"
                 ]
             }
@@ -4988,7 +5375,14 @@
             "arguments": {
                 "self": [],
                 "sprite_categories": [
-                    "Dict[(str, Collection)]"
+                    "Type",
+                    "int",
+                    "Mapping[str,Any]",
+                    "Mapping",
+                    "List[Tuple[int,int,str]]",
+                    "List[tuple[Union[int,int,str]]]",
+                    "IO[str]",
+                    "IO"
                 ]
             }
         },
@@ -5014,20 +5408,21 @@
                 "Dict[str, Any]"
             ],
             "arguments": {
-                "scene_data": [
-                    "Dict[(str, Any)]"
-                ]
+                "scene_data": []
             }
         },
         "next_scene_labels": {
             "name": "next_scene_labels",
             "location": 46,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "scene_data": [
-                    "Dict[(str, Any)]"
+                    "List[dict]",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Dict[str,Outcome]"
                 ]
             }
         },
@@ -5048,7 +5443,9 @@
             "name": "scene_constructor",
             "location": 23,
             "return": [
-                "Callable"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -5065,10 +5462,16 @@
             "arguments": {
                 "self": [],
                 "prompt": [
-                    "str"
+                    "Optional[Dict]",
+                    "int",
+                    "Dict",
+                    "None"
                 ],
                 "decision_data": [
-                    "List[Dict[(str, Dict[(str, str)])]]"
+                    "List",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -5076,10 +5479,7 @@
             "name": "make_controller_and_resolutions",
             "location": 15,
             "return": [
-                "tuple[typing.Union[DecisionController,list[MakeDecision]]]",
-                "int",
-                "Callable",
-                "str"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "self": []
@@ -5102,14 +5502,13 @@
                     "None"
                 ],
                 "resolution_datas": [
-                    "list[dict[, ]]",
+                    "List[dict]",
+                    "Dict",
                     "List[Dict]",
                     "str",
-                    "dict[, ]",
                     "int",
-                    "dict",
                     "None",
-                    "Optional[\"TrackingData\"]",
+                    "Optional[TrackingData]",
                     "Iterable[str]"
                 ]
             }
@@ -5118,7 +5517,7 @@
             "name": "make_controller_and_resolutions",
             "location": 14,
             "return": [
-                "tuple[typing.Union[DungeonController,list[]]]",
+                "Tuple[Union[DungeonController,list]]",
                 "int",
                 "Callable",
                 "str"
@@ -5133,7 +5532,7 @@
             "name": "make_controller_and_resolutions",
             "location": 14,
             "return": [
-                "Tuple[(Any, list)]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -5150,13 +5549,24 @@
             "arguments": {
                 "self": [],
                 "success_data": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "bytes",
+                    "Dict[str,str]",
+                    "Optional[Dict[str,Any]]",
+                    "Sequence[str]"
                 ],
                 "failure_data": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "bytes",
+                    "Dict[str,str]",
+                    "Optional[Dict[str,Any]]",
+                    "Sequence[str]"
                 ],
                 "difficulty": [
-                    "str"
+                    "Optional[Dict]",
+                    "int",
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -5164,10 +5574,7 @@
             "name": "make_controller_and_resolutions",
             "location": 16,
             "return": [
-                "tuple[typing.Union[SkillCheckController,list[MakeDecision]]]",
-                "int",
-                "Callable",
-                "str"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "self": []
@@ -5184,10 +5591,17 @@
             "arguments": {
                 "self": [],
                 "description": [
-                    "str"
+                    "bool",
+                    "Dict",
+                    "int",
+                    "None",
+                    "Optional[bool]"
                 ],
                 "gained_item_label": [
-                    "str"
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -5195,10 +5609,7 @@
             "name": "make_controller_and_resolutions",
             "location": 13,
             "return": [
-                "tuple[typing.Union[TransitionController,list[MakeDecision]]]",
-                "int",
-                "Callable",
-                "str"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "self": []
@@ -5215,10 +5626,20 @@
             "arguments": {
                 "self": [],
                 "map_file": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "resolution_datas": [
-                    "List[dict]"
+                    "List[dict]",
+                    "Dict",
+                    "List[Dict]",
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[TrackingData]",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -5226,10 +5647,7 @@
             "name": "make_controller_and_resolutions",
             "location": 14,
             "return": [
-                "tuple[typing.Union[TurnBasedController,list[]]]",
-                "int",
-                "Callable",
-                "str"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "self": []
@@ -5256,9 +5674,8 @@
                 "groups": [
                     "str",
                     "None",
+                    "Set",
                     "bool",
-                    "set",
-                    "set[]",
                     "int",
                     "model.Groups"
                 ],
@@ -5266,11 +5683,9 @@
                     "model.Groups",
                     "str",
                     "None",
-                    "bool",
                     "List[str]",
-                    "list[str]",
-                    "set",
-                    "set[]"
+                    "bool",
+                    "Set"
                 ]
             }
         },
@@ -5283,7 +5698,10 @@
             "arguments": {
                 "self": [],
                 "n_keys": [
-                    "int"
+                    "int",
+                    "str",
+                    "Sequence[int]",
+                    "BinaryIO"
                 ]
             }
         },
@@ -5323,7 +5741,7 @@
             "return": [
                 "None",
                 "int",
-                "list[str]",
+                "List[str]",
                 "str"
             ],
             "arguments": {
@@ -5367,9 +5785,9 @@
                 "int",
                 "Callable",
                 "str",
-                "dict[, ]",
-                "list[int]",
-                "list[list[int]]"
+                "Dict",
+                "List[int]",
+                "List[list[int]]"
             ],
             "arguments": {}
         },
@@ -5397,7 +5815,14 @@
             ],
             "arguments": {
                 "label": [
-                    "str"
+                    "str",
+                    "Tuple",
+                    "bool",
+                    "allennlp.data.tokenizers.token.Token",
+                    "Mapping",
+                    "Dict",
+                    "Dict[str,list[Any]]",
+                    "Dict[str,List[Any]]"
                 ]
             }
         },
@@ -5579,7 +6004,11 @@
             ],
             "arguments": {
                 "tested_fun": [
-                    "Callable"
+                    "Callable",
+                    "bool",
+                    "Dict[str,int]",
+                    "List[Tuple[str,int]]",
+                    "List[tuple[Union[str,int]]]"
                 ]
             }
         },
@@ -5737,7 +6166,12 @@
             "arguments": {
                 "self": [],
                 "b": [
-                    "str"
+                    "float",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "bytes",
+                    "None"
                 ]
             }
         },
@@ -5750,7 +6184,11 @@
             "arguments": {
                 "self": [],
                 "c": [
-                    "str"
+                    "int",
+                    "str",
+                    "Counter",
+                    "Iterable[Tuple[int,int]]",
+                    "Iterable[tuple[Union[int,int]]]"
                 ]
             }
         },
@@ -5763,7 +6201,12 @@
             "arguments": {
                 "self": [],
                 "d": [
-                    "str"
+                    "int",
+                    "Dict",
+                    "bytes",
+                    "str",
+                    "Optional[dict]",
+                    "None"
                 ]
             }
         },
@@ -5776,7 +6219,9 @@
             "arguments": {
                 "self": [],
                 "e": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "float"
                 ]
             }
         },
@@ -5952,16 +6397,14 @@
             "arguments": {
                 "pos_0": [
                     "float",
-                    "pygame.math.Vector2",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "pygame.math.Vector2",
                     "pygame.Surface"
                 ],
                 "pos_1": [
                     "float",
-                    "pygame.math.Vector2",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "pygame.math.Vector2",
                     "pygame.Surface"
                 ]
             }
@@ -6131,8 +6574,8 @@
             "location": 116,
             "return": [
                 "str",
-                "tuple[float]",
-                "tuple[]"
+                "Tuple[float]",
+                "Tuple"
             ],
             "arguments": {
                 "pos": [
@@ -6378,7 +6821,12 @@
             "arguments": {
                 "self": [],
                 "b": [
-                    "str"
+                    "float",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "bytes",
+                    "None"
                 ]
             }
         },
@@ -6391,7 +6839,11 @@
             "arguments": {
                 "self": [],
                 "c": [
-                    "str"
+                    "int",
+                    "str",
+                    "Counter",
+                    "Iterable[Tuple[int,int]]",
+                    "Iterable[tuple[Union[int,int]]]"
                 ]
             }
         },
@@ -6404,7 +6856,12 @@
             "arguments": {
                 "self": [],
                 "d": [
-                    "str"
+                    "int",
+                    "Dict",
+                    "bytes",
+                    "str",
+                    "Optional[dict]",
+                    "None"
                 ]
             }
         },
@@ -6417,7 +6874,9 @@
             "arguments": {
                 "self": [],
                 "e": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "float"
                 ]
             }
         },
@@ -6875,8 +7334,8 @@
                 "self": [],
                 "case": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -7104,10 +7563,18 @@
             "arguments": {
                 "self": [],
                 "width": [
-                    "int"
+                    "int",
+                    "Iterator[int]",
+                    "Iterator",
+                    "Union[int,str]",
+                    "str"
                 ],
                 "height": [
-                    "int"
+                    "int",
+                    "Iterator[int]",
+                    "Iterator",
+                    "Union[int,str]",
+                    "str"
                 ]
             }
         },
@@ -7138,9 +7605,8 @@
                 "self": [],
                 "rect": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -7155,11 +7621,11 @@
                 "target": [
                     "int",
                     "pygame.sprite.Sprite",
-                    "typing.Callable[T, bool]",
+                    "Callable[T,bool]",
                     "str",
-                    "Callable[[T], bool]",
+                    "Callable[[T],bool]",
                     "bool",
-                    "Callable[[int], bool]"
+                    "Callable[[int],bool]"
                 ]
             }
         }
@@ -7173,10 +7639,15 @@
             ],
             "arguments": {
                 "max_chars_per_line": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool",
+                    "List[str]"
                 ],
                 "string": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -7189,13 +7660,23 @@
             "arguments": {
                 "self": [],
                 "prompt": [
-                    "str"
+                    "bool",
+                    "Dict[int,str]",
+                    "Dict[str,tuple[Union[str,int,int]]]",
+                    "str",
+                    "Dict[str,Tuple[str,int,int]]",
+                    "int"
                 ],
                 "options": [
-                    "List[str]"
+                    "str",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "enumerate_options": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "Any"
                 ]
             }
         },
@@ -7226,24 +7707,53 @@
                     "bytes"
                 ],
                 "text": [
-                    "str"
+                    "bool",
+                    "str",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
+                    "None",
+                    "Optional[str]",
+                    "float",
+                    "Optional[CustomerReference]",
+                    "Optional[float]"
                 ],
                 "font_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Tuple[str,List[str],List[str]]",
+                    "Tuple[Union[str,list[str],list[str]]]"
                 ],
                 "size": [
-                    "int"
+                    "str",
+                    "bool",
+                    "Tuple[str,List[str],List[str]]",
+                    "Tuple[Union[str,list[str],list[str]]]"
                 ],
                 "color": [
-                    "tuple"
+                    "bool",
+                    "str",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
+                    "None",
+                    "Optional[str]",
+                    "float",
+                    "Optional[CustomerReference]",
+                    "Optional[float]"
                 ],
                 "x": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "y": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "align": [
+                    "Text",
+                    "int",
+                    "bool",
                     "str"
                 ]
             }
@@ -7269,10 +7779,12 @@
             "arguments": {
                 "self": [],
                 "width": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "height": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -7285,13 +7797,11 @@
             "arguments": {
                 "self": [],
                 "player": [
-                    "dict",
+                    "Dict",
                     "bytes",
-                    "dict[, ]",
                     "str",
-                    "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "tile_map": [
                     "str",
@@ -7326,15 +7836,17 @@
             "name": "_rect_on_screen",
             "location": 88,
             "return": [
-                "bool"
+                "bool",
+                "Optional[Any]",
+                "str",
+                "Callable[..., None]"
             ],
             "arguments": {
                 "self": [],
                 "rect": [
                     "str",
                     "int",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -7358,10 +7870,9 @@
                 "self": [],
                 "player": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "Dict",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -7394,7 +7905,9 @@
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -7407,7 +7920,9 @@
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -7420,7 +7935,11 @@
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "int",
+                    "float",
+                    "Iterable[Iterable[T]]",
+                    "Tuple",
+                    "Tuple[str,str,str]"
                 ]
             }
         },
@@ -7433,10 +7952,14 @@
             "arguments": {
                 "self": [],
                 "rects": [
-                    "list"
+                    "str",
+                    "int",
+                    "Callable"
                 ],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "int",
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -7444,12 +7967,16 @@
             "name": "hud_collide_point",
             "location": 147,
             "return": [
-                "bool"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -7457,7 +7984,9 @@
             "name": "selected_item",
             "location": 150,
             "return": [
-                "int"
+                "int",
+                "str",
+                "List[int]"
             ],
             "arguments": {
                 "self": []
@@ -7470,9 +7999,9 @@
                 "int",
                 "str",
                 "bool",
-                "Callable[[str], T]",
-                "dict",
-                "Tuple[str, str]"
+                "Callable[[str],T]",
+                "Dict",
+                "Tuple[str,str]"
             ],
             "arguments": {
                 "self": []
@@ -7487,7 +8016,10 @@
             "arguments": {
                 "self": [],
                 "idx": [
-                    "int"
+                    "int",
+                    "MutableMapping",
+                    "Dict[int,Dict[int,Any]]",
+                    "Dict[int,dict[int,Any]]"
                 ]
             }
         },
@@ -7523,9 +8055,8 @@
                 "self": [],
                 "player": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -7543,12 +8074,17 @@
             "name": "collide_point",
             "location": 54,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "List[list[int]]",
+                "List[Type]"
             ],
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "int",
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -7584,13 +8120,12 @@
                     "str",
                     "creatures.players.Player",
                     "int",
-                    "list[str]",
-                    "dict[, ]",
                     "List[str]",
-                    "dict"
+                    "Dict"
                 ],
                 "bar_type": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -7604,9 +8139,8 @@
                 "self": [],
                 "player": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -7622,7 +8156,7 @@
             "arguments": {
                 "self": [],
                 "cooldown_fraction": [
-                    "float"
+                    "int"
                 ],
                 "image": [
                     "Callable",
@@ -7639,22 +8173,23 @@
             "arguments": {
                 "self": [],
                 "img_rect": [
-                    "Dict[str, Tuple[int, int]]",
-                    "dict[str, tuple[typing.Union[int,int]]]",
+                    "Dict[str,Tuple[int,int]]",
+                    "Dict[str,tuple[Union[int,int]]]",
                     "int",
+                    "Tuple",
                     "Optional[int]",
-                    "tuple",
-                    "None",
-                    "tuple[]"
+                    "None"
                 ],
                 "mod": [
                     "str",
-                    "mods.Mod",
-                    "typing.OrderedDict",
-                    "OrderedDict"
+                    "OrderedDict",
+                    "mods.Mod"
                 ],
                 "title_font": [
-                    "str"
+                    "str",
+                    "float",
+                    "Iterable[str]",
+                    "bool"
                 ]
             }
         },
@@ -7667,10 +8202,9 @@
             "arguments": {
                 "self": [],
                 "player": [
-                    "typing.Callable[, ]",
+                    "Callable",
                     "int",
-                    "creatures.players.Player",
-                    "Callable"
+                    "creatures.players.Player"
                 ]
             }
         },
@@ -7724,7 +8258,8 @@
             ],
             "arguments": {
                 "image_name": [
-                    "str"
+                    "str",
+                    "List"
                 ]
             }
         },
@@ -7732,11 +8267,13 @@
             "name": "get_font",
             "location": 65,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "font_name": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -7762,7 +8299,9 @@
             ],
             "arguments": {
                 "member_number": [
-                    "int"
+                    "int",
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -7808,12 +8347,17 @@
             "name": "collide_point",
             "location": 37,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "List[list[int]]",
+                "List[Type]"
             ],
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "int",
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -7869,21 +8413,19 @@
                 "cls": [
                     "int",
                     "Optional[int]",
-                    "Callable[..., T]",
+                    "Callable[...,T]",
                     "None",
-                    "typing.Callable[..., T]",
                     "Optional[str]",
                     "str",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "screen": [
                     "pygame.Surface",
                     "None",
-                    "Optional[bytes]",
-                    "bytes",
                     "Iterable",
-                    "typing.Iterable[]"
+                    "Optional[bytes]",
+                    "bytes"
                 ]
             }
         },
@@ -7917,7 +8459,10 @@
             ],
             "arguments": {
                 "sound_name": [
-                    "str"
+                    "str",
+                    "Type",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -7973,10 +8518,12 @@
             "arguments": {
                 "self": [],
                 "width": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "height": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -8011,15 +8558,17 @@
             "name": "_rect_on_screen",
             "location": 81,
             "return": [
-                "bool"
+                "bool",
+                "Optional[Any]",
+                "str",
+                "Callable[..., None]"
             ],
             "arguments": {
                 "self": [],
                 "rect": [
                     "str",
                     "int",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -8035,7 +8584,11 @@
                     "str"
                 ],
                 "red": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict"
                 ]
             }
         },
@@ -8093,21 +8646,19 @@
             "name": "_points_between",
             "location": 145,
             "return": [
-                "List[Tuple[(int, int)]]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "rect1": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "rect2": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -8130,7 +8681,9 @@
             "arguments": {
                 "self": [],
                 "pos": [
-                    "Tuple[(int, int)]"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         }

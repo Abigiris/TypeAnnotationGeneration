@@ -4,7 +4,6 @@
             "name": "cli",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -17,7 +16,6 @@
             "name": "send_events",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -37,12 +35,11 @@
                 ],
                 "accounts": [
                     "str",
-                    "list[\"custom_index\"]",
-                    "Optional[List[\"custom_index\"]]",
+                    "List[custom_index]",
+                    "List[str]",
+                    "Optional[List[custom_index]]",
                     "None",
                     "Optional[str]",
-                    "list[str]",
-                    "List[str]",
                     "int",
                     "Optional[int]",
                     "T"
@@ -77,7 +74,11 @@
             ],
             "arguments": {
                 "items": [
-                    "list"
+                    "list",
+                    "int",
+                    "str",
+                    "List[int]",
+                    "bytes"
                 ]
             }
         },
@@ -94,7 +95,8 @@
             ],
             "arguments": {
                 "account_ids": [
-                    "list"
+                    "List[loading.domain.AccountId]",
+                    "str"
                 ]
             }
         },
@@ -102,11 +104,14 @@
             "name": "random_email",
             "location": 18,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "emails": [
-                    "List[str]"
+                    "List[str]",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -114,14 +119,23 @@
             "name": "random_email_or_nothing",
             "location": 23,
             "return": [
-                "Optional[str]"
+                "None",
+                "Optional[int]",
+                "str",
+                "Optional[str]",
+                "bool",
+                "Optional[Dict]"
             ],
             "arguments": {
                 "emails": [
-                    "List[str]"
+                    "List[str]",
+                    "int",
+                    "str"
                 ],
                 "weighting": [
-                    "int"
+                    "List[str]",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -137,11 +151,18 @@
             "name": "random_url",
             "location": 43,
             "return": [
-                "str"
+                "str",
+                "Union[str, int]",
+                "Optional[str]",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "urls": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -162,11 +183,15 @@
             "name": "random_conversion_id",
             "location": 52,
             "return": [
-                "int"
+                "str",
+                "bool",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "ids": [
-                    "List[int]"
+                    "int",
+                    "List[int]",
+                    "str"
                 ]
             }
         },
@@ -174,11 +199,12 @@
             "name": "generate_account_ids",
             "location": 57,
             "return": [
-                "list"
+                "List[int]"
             ],
             "arguments": {
                 "count": [
-                    "int"
+                    "int",
+                    "List[int]"
                 ]
             }
         },
@@ -190,10 +216,17 @@
             ],
             "arguments": {
                 "count": [
-                    "int"
+                    "int",
+                    "str",
+                    "Union[str,int]",
+                    "Dict[str,Any]"
                 ],
                 "domain": [
-                    "str"
+                    "Text",
+                    "int",
+                    "str",
+                    "Union[str,int]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -201,11 +234,12 @@
             "name": "generate_account_event_keys",
             "location": 65,
             "return": [
-                "Dict[(Any, str)]"
+                "dict"
             ],
             "arguments": {
                 "account_ids": [
-                    "list"
+                    "List[loading.domain.AccountId]",
+                    "str"
                 ]
             }
         },
@@ -221,11 +255,15 @@
             "name": "generate_visit_data",
             "location": 75,
             "return": [
-                "Dict[(str, str)]"
+                "dict"
             ],
             "arguments": {
                 "email": [
-                    "str"
+                    "str",
+                    "Type",
+                    "Tuple[Union[list[str],Any,None]]",
+                    "Tuple[List[str],Optional[Any]]",
+                    "Result"
                 ]
             }
         },
@@ -237,10 +275,16 @@
             ],
             "arguments": {
                 "account_ids": [
-                    "list"
+                    "List[str]",
+                    "List[loading.domain.AccountId]",
+                    "str",
+                    "arxiv.users.domain.Session"
                 ],
                 "emails": [
-                    "List[str]"
+                    "List[str]",
+                    "List[loading.domain.AccountId]",
+                    "str",
+                    "arxiv.users.domain.Session"
                 ]
             }
         },
@@ -251,7 +295,7 @@
                 "Event",
                 "Optional[str]",
                 "int",
-                "dict"
+                "Dict"
             ],
             "arguments": {}
         }
@@ -261,7 +305,8 @@
             "name": "partition_key",
             "location": 27,
             "return": [
-                "str"
+                "str",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -271,7 +316,8 @@
             "name": "data",
             "location": 31,
             "return": [
-                "bytes"
+                "bytes",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -349,8 +395,7 @@
                 "self": [],
                 "stream_client": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -388,11 +433,15 @@
                 "config": [
                     "str",
                     "bool",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "stream_name": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict",
+                    "Callable[[str],str]",
+                    "Callable[str,str]"
                 ]
             }
         },
@@ -406,9 +455,8 @@
             "arguments": {
                 "self": [],
                 "record": [
-                    "dict",
+                    "Dict",
                     "bool",
-                    "dict[, ]",
                     "str"
                 ]
             }

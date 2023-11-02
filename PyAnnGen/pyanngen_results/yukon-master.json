@@ -1,6 +1,6 @@
 {
-    "noxfile.py": {},
-    "setup.py": {
+    "yukon-master/noxfile.py": {},
+    "yukon-master/setup.py": {
         "BuildPy.run": {
             "name": "run",
             "location": 19,
@@ -12,9 +12,9 @@
             }
         }
     },
-    "tests/__init__.py": {},
-    "tests/io/_spoofer.py": {},
-    "yukon/filesystem.py": {
+    "yukon-master/tests/__init__.py": {},
+    "yukon-master/tests/io/_spoofer.py": {},
+    "yukon-master/yukon/filesystem.py": {
         "_prepare": {
             "name": "_prepare",
             "location": 46,
@@ -23,14 +23,21 @@
             ],
             "arguments": {
                 "directory": [
-                    "Union[(str, pathlib.Path)]"
+                    "str",
+                    "List[str]",
+                    "bytes",
+                    "pathlib.Path"
                 ]
             }
         },
         "AppDirs.root": {
             "name": "root",
             "location": 16,
-            "return": [],
+            "return": [
+                "bool",
+                "List[pathlib.Path]",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -38,7 +45,11 @@
         "AppDirs.log": {
             "name": "log",
             "location": 29,
-            "return": [],
+            "return": [
+                "bytes",
+                "List[str]",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -46,7 +57,12 @@
         "AppDirs.version_specific": {
             "name": "version_specific",
             "location": 33,
-            "return": [],
+            "return": [
+                "int",
+                "Mapping[str, Any]",
+                "str",
+                "Optional[Callable[[str], bool]]"
+            ],
             "arguments": {
                 "self": []
             }
@@ -54,14 +70,18 @@
         "AppDirs.compiled_dsdl": {
             "name": "compiled_dsdl",
             "location": 39,
-            "return": [],
+            "return": [
+                "str",
+                "bytes",
+                "int"
+            ],
             "arguments": {
                 "self": []
             }
         }
     },
-    "yukon/__init__.py": {},
-    "yukon/dcs/_node.py": {
+    "yukon-master/yukon/__init__.py": {},
+    "yukon-master/yukon/dcs/_node.py": {
         "Node.__init__": {
             "name": "__init__",
             "location": 22,
@@ -71,14 +91,22 @@
             "arguments": {
                 "self": [],
                 "name_suffix": [
-                    "str"
+                    "bool",
+                    "TextIO",
+                    "Callable[,None]",
+                    "int"
                 ]
             }
         },
         "Node.loop": {
             "name": "loop",
             "location": 44,
-            "return": [],
+            "return": [
+                "str",
+                "Optional[Union[str, Any]]",
+                "Set[str]",
+                "dict"
+            ],
             "arguments": {
                 "self": []
             }
@@ -86,7 +114,11 @@
         "Node.shutdown": {
             "name": "shutdown",
             "location": 50,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "self": []
             }
@@ -94,7 +126,12 @@
         "Node.health": {
             "name": "health",
             "location": 57,
-            "return": [],
+            "return": [
+                "int",
+                "Iterable[str]",
+                "Union[int, slice]",
+                "Set[int]"
+            ],
             "arguments": {
                 "self": []
             }
@@ -102,11 +139,16 @@
         "Node.make_publisher": {
             "name": "make_publisher",
             "location": 60,
-            "return": [],
+            "return": [
+                "float",
+                "type",
+                "bool",
+                "Optional[str]"
+            ],
             "arguments": {
                 "self": [],
                 "dtype": [
-                    "Type[MessageClass]"
+                    "str"
                 ],
                 "port_name": [
                     "str"
@@ -116,11 +158,16 @@
         "Node.make_subscriber": {
             "name": "make_subscriber",
             "location": 63,
-            "return": [],
+            "return": [
+                "float",
+                "type",
+                "bool",
+                "Optional[str]"
+            ],
             "arguments": {
                 "self": [],
                 "dtype": [
-                    "Type[MessageClass]"
+                    "str"
                 ],
                 "port_name": [
                     "str"
@@ -130,28 +177,53 @@
         "Node.make_client": {
             "name": "make_client",
             "location": 66,
-            "return": [],
+            "return": [
+                "str",
+                "Mapping[str, Any]"
+            ],
             "arguments": {
                 "self": [],
                 "dtype": [
-                    "Type[ServiceClass]"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "zerver.models.Client",
+                    "Sequence[str]",
+                    "Union[Sequence[str],Sequence[int]]",
+                    "Sequence[int]"
                 ],
                 "server_node_id": [
-                    "int"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "zerver.models.Client",
+                    "Sequence[str]",
+                    "Union[Sequence[str],Sequence[int]]",
+                    "Sequence[int]"
                 ],
                 "port_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "zerver.models.Client",
+                    "Sequence[str]",
+                    "Union[Sequence[str],Sequence[int]]",
+                    "Sequence[int]"
                 ]
             }
         },
         "Node.get_server": {
             "name": "get_server",
             "location": 69,
-            "return": [],
+            "return": [
+                "str",
+                "bool",
+                "List[str]"
+            ],
             "arguments": {
                 "self": [],
                 "dtype": [
-                    "Type[ServiceClass]"
+                    "str"
                 ],
                 "port_name": [
                     "str"
@@ -179,8 +251,8 @@
             }
         }
     },
-    "yukon/dcs/__init__.py": {},
-    "yukon/io/_captor.py": {
+    "yukon-master/yukon/dcs/__init__.py": {},
+    "yukon-master/yukon/io/_captor.py": {
         "setup_capture_forwarding": {
             "name": "setup_capture_forwarding",
             "location": 16,
@@ -188,39 +260,72 @@
                 "None"
             ],
             "arguments": {
-                "dcs_pub_capture": [],
-                "iface_id": [
+                "dcs_pub_capture": [
+                    "bool",
+                    "str",
                     "int"
                 ],
+                "iface_id": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ],
                 "iface": [
-                    "yukon.io.iface.Iface"
+                    "int",
+                    "str"
                 ]
             }
         },
         "setup_capture_forwarding.handle_capture": {
             "name": "handle_capture",
             "location": 19,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "cap": []
+                "cap": [
+                    "int",
+                    "float",
+                    "Callable"
+                ]
             }
         }
     },
-    "yukon/io/_session.py": {
+    "yukon-master/yukon/io/_session.py": {
         "session_to_dcs": {
             "name": "session_to_dcs",
             "location": 9,
-            "return": [],
+            "return": [
+                "int",
+                "str",
+                "Exception"
+            ],
             "arguments": {
-                "ses": []
+                "ses": [
+                    "str",
+                    "IO[Any]",
+                    "int",
+                    "IO",
+                    "Callable[[str],str]",
+                    "Callable[str,str]"
+                ]
             }
         },
         "session_from_dcs": {
             "name": "session_from_dcs",
             "location": 40,
-            "return": [],
+            "return": [
+                "AlienSessionSpecifier",
+                "Exception",
+                "Callable[[Mapping],Awaitable]",
+                "Callable[,Awaitable[Mapping]]"
+            ],
             "arguments": {
-                "ses": []
+                "ses": [
+                    "str",
+                    "bool",
+                    "List[str]"
+                ]
             }
         },
         "_unittest_session_spec": {
@@ -232,7 +337,7 @@
             "arguments": {}
         }
     },
-    "yukon/io/_spoofer.py": {
+    "yukon-master/yukon/io/_spoofer.py": {
         "Spoofer.__init__": {
             "name": "__init__",
             "location": 32,
@@ -241,13 +346,23 @@
             ],
             "arguments": {
                 "self": [],
-                "dcs_sub_spoof": []
+                "dcs_sub_spoof": [
+                    "int",
+                    "float",
+                    "bool"
+                ]
             }
         },
         "Spoofer.status": {
             "name": "status",
             "location": 40,
-            "return": [],
+            "return": [
+                "Dict",
+                "Dict[str,Any]",
+                "Optional[Dict[str,Any]]",
+                "int",
+                "Dict[int,int]"
+            ],
             "arguments": {
                 "self": []
             }
@@ -261,10 +376,12 @@
             "arguments": {
                 "self": [],
                 "iface_id": [
-                    "int"
+                    "int",
+                    "Dict[str,Any]"
                 ],
                 "iface": [
-                    "yukon.io.iface.Iface"
+                    "int",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -277,7 +394,11 @@
             "arguments": {
                 "self": [],
                 "iface_id": [
-                    "int"
+                    "str",
+                    "int",
+                    "None",
+                    "services.board.transfer.models.TopicID",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -300,14 +421,19 @@
             "arguments": {
                 "self": [],
                 "iface": [
-                    "yukon.io.iface.Iface"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
         "_Inferior.status": {
             "name": "status",
             "location": 93,
-            "return": [],
+            "return": [
+                "str",
+                "List[Dict[str, Any]]"
+            ],
             "arguments": {
                 "self": []
             }
@@ -320,9 +446,15 @@
             ],
             "arguments": {
                 "self": [],
-                "transfer": [],
+                "transfer": [
+                    "int",
+                    "Callable",
+                    "str"
+                ],
                 "monotonic_deadline": [
-                    "float"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -347,34 +479,69 @@
             }
         }
     },
-    "yukon/io/_time.py": {
+    "yukon-master/yukon/io/_time.py": {
         "timestamp_to_dcs": {
             "name": "timestamp_to_dcs",
             "location": 10,
-            "return": [],
+            "return": [
+                "Optional[float]",
+                "bool",
+                "int",
+                "str",
+                "float"
+            ],
             "arguments": {
-                "ts": []
+                "ts": [
+                    "int",
+                    "float",
+                    "Tuple",
+                    "bool"
+                ]
             }
         },
         "timestamp_from_dcs": {
             "name": "timestamp_from_dcs",
             "location": 18,
-            "return": [],
+            "return": [
+                "float",
+                "Sequence[float]",
+                "Tuple[int, int]",
+                "tuple"
+            ],
             "arguments": {
-                "ts": []
+                "ts": [
+                    "str",
+                    "Dict[str,Any]",
+                    "Callable",
+                    "List",
+                    "SupportsInt",
+                    "Tuple[Union[float,float,float]]",
+                    "Tuple[float,float,float]"
+                ]
             }
         }
     },
-    "yukon/io/_worker.py": {
+    "yukon-master/yukon/io/_worker.py": {
         "_initialize_iface": {
             "name": "_initialize_iface",
             "location": 133,
             "return": [
-                "yukon.io.iface.Iface"
+                "Dict",
+                "str",
+                "int",
+                "Callable"
             ],
             "arguments": {
-                "pub_capture": [],
-                "ifc": []
+                "pub_capture": [
+                    "int",
+                    "List[str]",
+                    "Dict",
+                    "float",
+                    "str"
+                ],
+                "ifc": [
+                    "Dict"
+                ]
             }
         },
         "IOWorker.__init__": {
@@ -405,13 +572,16 @@
             ],
             "arguments": {
                 "self": [],
-                "cfg": []
+                "cfg": [
+                    "int",
+                    "str"
+                ]
             }
         }
     },
-    "yukon/io/__init__.py": {},
-    "yukon/io/__main__.py": {},
-    "yukon/io/iface/udp.py": {
+    "yukon-master/yukon/io/__init__.py": {},
+    "yukon-master/yukon/io/__main__.py": {},
+    "yukon-master/yukon/io/iface/udp.py": {
         "UDPIface.__init__": {
             "name": "__init__",
             "location": 23,
@@ -420,7 +590,11 @@
             ],
             "arguments": {
                 "self": [],
-                "transport": []
+                "transport": [
+                    "int",
+                    "float",
+                    "bool"
+                ]
             }
         },
         "UDPIface.new": {
@@ -430,16 +604,31 @@
                 "UDPIface"
             ],
             "arguments": {
-                "cfg": []
+                "cfg": [
+                    "str",
+                    "int"
+                ]
             }
         },
         "UDPIface.capture_from_dcs": {
             "name": "capture_from_dcs",
             "location": 41,
-            "return": [],
+            "return": [
+                "numpy.ndarray",
+                "Dict[str, Any]",
+                "List[str]",
+                "int"
+            ],
             "arguments": {
-                "ts": [],
-                "fr": []
+                "ts": [
+                    "List[cirq.Qid]"
+                ],
+                "fr": [
+                    "Iterable[bytes]",
+                    "int",
+                    "str",
+                    "Tuple[str,str]"
+                ]
             }
         },
         "UDPIface.begin_capture": {
@@ -451,7 +640,10 @@
             "arguments": {
                 "self": [],
                 "handler": [
-                    "Callable[([yukon.io.iface.IfaceCapture], None)]"
+                    "str",
+                    "List",
+                    "List[str]",
+                    "Tuple"
                 ]
             }
         },
@@ -483,13 +675,19 @@
             ],
             "arguments": {
                 "self": [],
-                "cap": []
+                "cap": [
+                    "int",
+                    "Callable",
+                    "str"
+                ]
             }
         },
         "UDPIface.__repr__": {
             "name": "__repr__",
             "location": 109,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
@@ -499,52 +697,88 @@
         "UDPIface._process_capture.mk_addr": {
             "name": "mk_addr",
             "location": 79,
-            "return": [],
+            "return": [
+                "int",
+                "float",
+                "List[int]",
+                "str"
+            ],
             "arguments": {
-                "x": []
+                "x": [
+                    "numpy.ndarray",
+                    "int",
+                    "float",
+                    "str",
+                    "T"
+                ]
             }
         }
     },
-    "yukon/io/iface/__init__.py": {
+    "yukon-master/yukon/io/iface/__init__.py": {
         "Iface.resolve": {
             "name": "resolve",
             "location": 21,
             "return": [
-                "Type[Iface]"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
-                "selector": []
+                "selector": [
+                    "str",
+                    "int",
+                    "bool"
+                ]
             }
         },
         "Iface.new": {
             "name": "new",
             "location": 28,
             "return": [
-                "Iface"
+                "NoReturn"
             ],
             "arguments": {
-                "cfg": []
+                "cfg": [
+                    "int",
+                    "Callable[,None]",
+                    "str",
+                    "bytes",
+                    "bool"
+                ]
             }
         },
         "Iface.capture_from_dcs": {
             "name": "capture_from_dcs",
             "location": 32,
-            "return": [],
+            "return": [
+                "NoReturn"
+            ],
             "arguments": {
-                "ts": [],
-                "fr": []
+                "ts": [
+                    "Exception",
+                    "bool"
+                ],
+                "fr": [
+                    "Exception",
+                    "bool"
+                ]
             }
         },
         "Iface.begin_capture": {
             "name": "begin_capture",
             "location": 35,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "handler": [
-                    "Callable[([IfaceCapture], None)]"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -552,7 +786,7 @@
             "name": "sample_statistics",
             "location": 48,
             "return": [
-                "IfaceStatistics"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -562,7 +796,7 @@
             "name": "close",
             "location": 51,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -572,7 +806,7 @@
             "name": "__repr__",
             "location": 54,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []

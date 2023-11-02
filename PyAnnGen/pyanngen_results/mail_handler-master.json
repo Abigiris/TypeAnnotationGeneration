@@ -17,7 +17,7 @@
             "name": "render_all_content",
             "location": 30,
             "return": [
-                "Dict[(str, str)]"
+                "dict"
             ],
             "arguments": {
                 "template": [
@@ -25,13 +25,21 @@
                     "bool"
                 ],
                 "common_data": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "bytes"
                 ],
                 "unique_data": [
-                    "Sequence[Dict[(str, str)]]"
+                    "bytes",
+                    "Iterable[bytes]",
+                    "str",
+                    "bool"
                 ],
                 "separator": [
-                    "str"
+                    "dict",
+                    "str",
+                    "Optional[Dict[str, Any]]",
+                    "Dict[str, float]"
                 ]
             }
         },
@@ -43,10 +51,21 @@
             ],
             "arguments": {
                 "recv_to_mail": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "Dict[str,bool]",
+                    "Dict[str,dict[str,str]]",
+                    "Dict[str,str]",
+                    "Dict[str,Type]",
+                    "str",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,Type[Any]]",
+                    "Dict[str,int]"
                 ],
                 "output_path": [
-                    "str"
+                    "bool",
+                    "str",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ]
             }
         },
@@ -62,7 +81,7 @@
                     "None",
                     "bool",
                     "Optional[str]",
-                    "list[str]",
+                    "List[str]",
                     "Optional[pathlib.PurePosixPath]",
                     "Optional[List[str]]"
                 ],
@@ -77,19 +96,17 @@
                 "separator": [
                     "str",
                     "List[str]",
-                    "list[str]",
                     "Optional[str]",
                     "None"
                 ],
                 "output_path": [
                     "str",
-                    "Callable[[], str]",
-                    "typing.Callable[[], str]"
+                    "Callable[,str]"
                 ],
                 "unique_csv": [
                     "str",
                     "bool",
-                    "Callable[[str], Any]"
+                    "Callable[[str],Any]"
                 ]
             }
         },
@@ -112,10 +129,12 @@
             "arguments": {
                 "self": [],
                 "tag": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ],
                 "attrs": [
-                    "List[Tuple[(str, Optional[str])]]"
+                    "str",
+                    "List[str]"
                 ]
             }
         }
@@ -125,11 +144,12 @@
             "name": "load_mails",
             "location": 32,
             "return": [
-                "DefaultDict[(str, List[str])]"
+                "collections.defaultdict"
             ],
             "arguments": {
                 "input_dir": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -141,25 +161,45 @@
             ],
             "arguments": {
                 "receiver_addr": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]",
+                    "Optional[int]"
                 ],
                 "mail_content": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Mapping[str,Any]",
+                    "bool",
+                    "Mapping"
                 ],
                 "config": [
-                    "Dict[(str, str)]"
+                    "Dict[str,str]",
+                    "Dict",
+                    "str",
+                    "Iterable[str]"
                 ],
                 "separator": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ],
                 "attachment_file": [
-                    "Optional[str]"
+                    "str",
+                    "pathlib.Path"
                 ],
                 "suffix": [
-                    "str"
+                    "str",
+                    "None",
+                    "pathlib.Path"
                 ],
                 "html": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List",
+                    "Optional[bool]",
+                    "Callable"
                 ]
             }
         },
@@ -171,16 +211,33 @@
             ],
             "arguments": {
                 "mail": [
-                    "email.mime.multipart.MIMEMultipart"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "Dict[str,str]"
                 ],
                 "user": [
-                    "str"
+                    "str",
+                    "bool",
+                    "MutableMapping",
+                    "MutableMapping[str,str]",
+                    "List[dict]",
+                    "List[Dict]",
+                    "int"
                 ],
                 "password": [
-                    "str"
+                    "str",
+                    "bool",
+                    "MutableMapping",
+                    "MutableMapping[str,str]",
+                    "List[dict]",
+                    "List[Dict]",
+                    "int"
                 ],
                 "server_config": [
-                    "MailConfig"
+                    "bool",
+                    "Iterable[str]",
+                    "int"
                 ]
             }
         },
@@ -192,13 +249,24 @@
             ],
             "arguments": {
                 "mail": [
-                    "email.mime.multipart.MIMEMultipart"
+                    "str",
+                    "Optional[str]",
+                    "IO",
+                    "Dict[str,Any]"
                 ],
                 "suffix": [
-                    "Optional[str]"
+                    "bool",
+                    "pathlib.Path",
+                    "str",
+                    "List[list[str]]",
+                    "List[List[str]]"
                 ],
                 "debug_dump_path": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Tuple[str]",
+                    "Iterable[pathlib.Path]",
+                    "bool"
                 ]
             }
         },
@@ -221,7 +289,6 @@
                 "debug": [
                     "str",
                     "bool",
-                    "typing.Iterable[str]",
                     "Iterable[str]",
                     "pathlib.Path",
                     "List[str]"
@@ -245,7 +312,6 @@
             "name": "clean",
             "location": 5,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -256,7 +322,6 @@
             "name": "dist",
             "location": 11,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -270,7 +335,6 @@
             "name": "build",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -286,7 +350,6 @@
             "name": "serve",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -300,7 +363,6 @@
             "name": "deploy",
             "location": 23,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -316,7 +378,6 @@
             "name": "clean",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -330,7 +391,6 @@
             "name": "init",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -344,7 +404,6 @@
             "name": "setup_pre_commit_hook",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -357,7 +416,6 @@
             "name": "init_dev",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -369,7 +427,7 @@
                 ],
                 "no_pre_commit": [
                     "bool",
-                    "list"
+                    "List"
                 ]
             }
         }
@@ -379,7 +437,6 @@
             "name": "commit",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -392,7 +449,6 @@
             "name": "bump",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -411,7 +467,6 @@
             "name": "check_package",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -425,7 +480,6 @@
             "name": "bandit",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -439,7 +493,6 @@
             "name": "run",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -452,7 +505,6 @@
             "name": "flake8",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -466,7 +518,6 @@
             "name": "mypy",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -480,7 +531,6 @@
             "name": "black_check",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -495,7 +545,6 @@
             "name": "isort_check",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -509,7 +558,6 @@
             "name": "commit_check",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -522,7 +570,6 @@
             "name": "pylint",
             "location": 41,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -537,7 +584,6 @@
             "name": "run",
             "location": 47,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -548,7 +594,6 @@
             "name": "black",
             "location": 53,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -563,7 +608,6 @@
             "name": "isort",
             "location": 58,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -577,7 +621,6 @@
             "name": "reformat",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -590,7 +633,6 @@
             "name": "run",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -609,7 +651,6 @@
             "name": "cov",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -664,10 +705,9 @@
             "arguments": {
                 "all_mails_base_no_separator": [
                     "str",
-                    "List[Dict]",
-                    "list[dict[, ]]",
                     "List[int]",
-                    "list[int]"
+                    "List[Dict]",
+                    "List[dict]"
                 ]
             }
         },
@@ -681,7 +721,7 @@
                 "all_mails_base_no_separatorr_and_csv": [
                     "str",
                     "List[Dict]",
-                    "list[dict[, ]]"
+                    "List[dict]"
                 ]
             }
         },
@@ -696,9 +736,7 @@
                     "str",
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -712,8 +750,7 @@
                 "all_mails_base_with_separator_and_csv": [
                     "int",
                     "str",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         }
@@ -728,8 +765,7 @@
             "arguments": {
                 "all_mails_base_no_separator": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -742,8 +778,7 @@
             "arguments": {
                 "all_mails_base_no_separator": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -756,8 +791,7 @@
             "arguments": {
                 "all_mails_base_with_separator": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -770,13 +804,12 @@
             "arguments": {
                 "all_mails_base_with_separator": [
                     "str",
+                    "Dict[str,Any]",
                     "Optional[bool]",
                     "bool",
-                    "Dict[str, Any]",
                     "None",
-                    "Mapping[str, List[str]]",
-                    "dict[str, typing.Any]",
-                    "typing.Mapping"
+                    "Mapping[str,List[str]]",
+                    "Mapping"
                 ]
             }
         }
@@ -791,8 +824,7 @@
             "arguments": {
                 "mails": [
                     "str",
-                    "list[]",
-                    "list",
+                    "List",
                     "Optional[Sequence[str]]"
                 ]
             }
@@ -812,11 +844,11 @@
                 ],
                 "base_prefix": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ],
                 "target_prefix": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ]
             }
         },
@@ -873,13 +905,13 @@
                     "int"
                 ],
                 "target_prefix": [
-                    "typing.Text",
+                    "Text",
                     "bool",
                     "str",
-                    "dict"
+                    "Dict"
                 ],
                 "separator": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]"
                 ]
@@ -894,14 +926,14 @@
             "arguments": {
                 "target": [
                     "str",
-                    "Union[str, float]",
-                    "tuple"
+                    "Union[str,float]",
+                    "Tuple"
                 ],
                 "receivers": [
                     "str",
                     "int",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }

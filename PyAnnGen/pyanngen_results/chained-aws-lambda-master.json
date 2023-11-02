@@ -64,7 +64,7 @@
             "name": "get_clients",
             "location": 22,
             "return": [
-                "MutableMapping[(str, Type[chainedawslambda.base.Task])]"
+                "dict"
             ],
             "arguments": {}
         },
@@ -79,7 +79,7 @@
                     "str"
                 ],
                 "client_class": [
-                    "Type[chainedawslambda.base.Task]"
+                    "str"
                 ]
             }
         },
@@ -91,7 +91,10 @@
             ],
             "arguments": {
                 "task_class": [
-                    "Type[chainedawslambda.base.Task]"
+                    "str",
+                    "int",
+                    "Mapping[str, Any]",
+                    "List[str]"
                 ]
             }
         },
@@ -99,17 +102,26 @@
             "name": "schedule_task",
             "location": 41,
             "return": [
-                "str"
+                "Union[(str, _T2)]"
             ],
             "arguments": {
                 "task_class": [
-                    "Type[chainedawslambda.base.Task[(dict, Any)]]"
+                    "bool",
+                    "List[annofabapi.models.Task]",
+                    "dict",
+                    "Optional[str]",
+                    "str"
                 ],
                 "state": [
-                    "dict"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "bytes"
                 ],
                 "task_id": [
-                    "str"
+                    "Optional[str]",
+                    "Optional[Dict[str, Any]]",
+                    "List[str]"
                 ]
             }
         },
@@ -117,11 +129,11 @@
             "name": "parse_payload",
             "location": 84,
             "return": [
-                "Optional[Tuple[(Any, Any, Type[chainedawslambda.base.Task], Any)]]"
+                "Optional[Tuple[(Any, Any, Any, Any)]]"
             ],
             "arguments": {
                 "payload": [
-                    "dict"
+                    "str"
                 ],
                 "expected_client_name": [
                     "str"
@@ -153,7 +165,7 @@
             "name": "run_one_unit",
             "location": 10,
             "return": [
-                "Optional[TaskResultType]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -163,7 +175,7 @@
             "name": "expected_max_one_unit_runtime_millis",
             "location": 18,
             "return": [
-                "builtins.int",
+                "int",
                 "None"
             ],
             "arguments": {
@@ -174,7 +186,7 @@
             "name": "get_state",
             "location": 22,
             "return": [
-                "TaskStateType"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -184,7 +196,7 @@
             "name": "get_remaining_time_in_millis",
             "location": 34,
             "return": [
-                "int"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -194,24 +206,30 @@
             "name": "schedule_work",
             "location": 42,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "task_class": [
-                    "Type[Task]"
+                    "bool",
+                    "List[int]",
+                    "Dict[str,str]",
+                    "Optional[bool]",
+                    "None"
                 ],
                 "state": [
                     "bool",
                     "List[int]",
-                    "list[int]",
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[bool]",
                     "None"
                 ],
                 "new_task": [
-                    "bool"
+                    "bool",
+                    "List[int]",
+                    "Dict[str,str]",
+                    "Optional[bool]",
+                    "None"
                 ]
             }
         },
@@ -224,7 +242,8 @@
             "arguments": {
                 "self": [],
                 "result": [
-                    "RuntimeResultType"
+                    "bool",
+                    "Exception"
                 ]
             }
         }
@@ -240,10 +259,14 @@
             "arguments": {
                 "self": [],
                 "chainedawslambda": [
-                    "chainedawslambda.base.Task[(RunnerStateType, RunnerResultType)]"
+                    "str",
+                    "bytes",
+                    "Callable"
                 ],
                 "runtime": [
-                    "chainedawslambda.base.Runtime[(RunnerStateType, RunnerResultType)]"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -268,10 +291,14 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "dict"
+                    "bytes",
+                    "int",
+                    "Dict[str,int]"
                 ],
                 "fetch_size": [
-                    "int"
+                    "int",
+                    "Optional[int]",
+                    "bytes"
                 ]
             }
         },
@@ -279,23 +306,38 @@
             "name": "setup_copy_task",
             "location": 50,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "source_bucket": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "source_key": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "destination_bucket": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "destination_key": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "part_size_calculator": [
-                    "Callable[([int], int)]"
+                    "int",
+                    "str",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -303,7 +345,7 @@
             "name": "get_state",
             "location": 86,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -315,7 +357,7 @@
             "return": [
                 "int",
                 "str",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "bool"
             ],
             "arguments": {
@@ -326,8 +368,7 @@
             "name": "run_one_unit",
             "location": 105,
             "return": [
-                "bool",
-                "None"
+                "Optional[bool]"
             ],
             "arguments": {
                 "self": []
@@ -337,7 +378,7 @@
             "name": "calculate_range_for_part",
             "location": 171,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -356,13 +397,21 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "dict"
+                    "bytes",
+                    "str",
+                    "int"
                 ],
                 "runtime": [
-                    "chainedawslambda.base.Runtime"
+                    "int",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ],
                 "fetch_size": [
-                    "int"
+                    "int",
+                    "Tuple[int,int]",
+                    "bool",
+                    "bytes"
                 ]
             }
         },
@@ -370,29 +419,42 @@
             "name": "setup_copy_task",
             "location": 232,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "source_bucket": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "source_key": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "destination_bucket": [
-                    "str"
+                    "str",
+                    "bytes"
                 ],
                 "destination_key": [
-                    "str"
+                    "str",
+                    "bytes"
                 ],
                 "part_size_calculator": [
-                    "Callable[([int], int)]"
+                    "int",
+                    "str",
+                    "float",
+                    "bool"
                 ],
                 "timeout_seconds": [
-                    "int"
+                    "int",
+                    "str"
                 ],
                 "batch_size": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -400,7 +462,7 @@
             "name": "get_state",
             "location": 275,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -412,7 +474,7 @@
             "return": [
                 "int",
                 "str",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "bool"
             ],
             "arguments": {
@@ -423,14 +485,7 @@
             "name": "run_one_unit",
             "location": 297,
             "return": [
-                "typing.Text",
-                "bool",
-                "float",
-                "None",
-                "int",
-                "IO[str]",
-                "str",
-                "bytes"
+                "Optional[Union[(bool, str)]]"
             ],
             "arguments": {
                 "self": []
@@ -445,7 +500,10 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "dict"
+                    "bytes",
+                    "int",
+                    "Tuple[Dict[str,Any],bool]",
+                    "Tuple[Union[dict[str,Any],bool]]"
                 ]
             }
         },
@@ -453,41 +511,51 @@
             "name": "setup_copy_task",
             "location": 419,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "source_bucket": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "source_key": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "source_etag": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "destination_bucket": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "destination_key": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "upload_id": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "size": [
+                    "str",
                     "int"
                 ],
                 "part_size": [
+                    "str",
                     "int"
                 ],
                 "next_part": [
+                    "str",
                     "int"
                 ],
                 "last_part": [
+                    "str",
                     "int"
                 ],
                 "concurrent_requests": [
-                    "int"
+                    "10"
                 ]
             }
         },
@@ -495,7 +563,7 @@
             "name": "get_state",
             "location": 456,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -507,7 +575,7 @@
             "return": [
                 "int",
                 "str",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "bool"
             ],
             "arguments": {
@@ -528,7 +596,7 @@
             "name": "calculate_range_for_part",
             "location": 513,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -542,7 +610,6 @@
             "name": "copy_one_part",
             "location": 477,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -570,10 +637,18 @@
                     "int"
                 ],
                 "client_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "task_id": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "int",
+                    "None",
+                    "bytes"
                 ]
             }
         },
@@ -581,7 +656,12 @@
             "name": "get_remaining_time_in_millis",
             "location": 19,
             "return": [
-                "int"
+                "bool",
+                "Optional[Literal[\"only_clustered\", \"include_clustered\"]]",
+                "Optional[str]",
+                "Optional[bool]",
+                "Callable[[], None]",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -591,18 +671,35 @@
             "name": "schedule_work",
             "location": 22,
             "return": [
-                "str"
+                "str",
+                "bytes",
+                "Type[\"ExtractableWordnet\"]",
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "task_class": [
-                    "Type[chainedawslambda.base.Task[(dict, Any)]]"
+                    "Dict",
+                    "str",
+                    "int",
+                    "float",
+                    "Optional[str]",
+                    "None"
                 ],
                 "state": [
-                    "dict"
+                    "Dict",
+                    "str",
+                    "int",
+                    "float",
+                    "Optional[str]",
+                    "None"
                 ],
                 "new_task": [
-                    "bool"
+                    "bool",
+                    "List[int]",
+                    "Dict[str,str]",
+                    "Optional[bool]",
+                    "None"
                 ]
             }
         },
@@ -615,10 +712,8 @@
             "arguments": {
                 "self": [],
                 "result": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "List[\"DictDataLoader\"]",
-                    "list[\"DictDataLoader\"]"
+                    "Dict[str,Any]",
+                    "List[DictDataLoader]"
                 ]
             }
         },
@@ -650,10 +745,14 @@
             ],
             "arguments": {
                 "client_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ],
                 "task_id": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -669,14 +768,22 @@
                     "str",
                     "Optional[str]",
                     "None",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]"
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "client_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "task_id": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -699,7 +806,7 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "MutableSequence"
+                    "str"
                 ]
             }
         },
@@ -707,7 +814,10 @@
             "name": "get_state",
             "location": 73,
             "return": [
-                "MutableSequence"
+                "str",
+                "bool",
+                "Optional[str]",
+                "Optional[bool]"
             ],
             "arguments": {
                 "self": []
@@ -719,7 +829,7 @@
             "return": [
                 "int",
                 "bool",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "str"
             ],
             "arguments": {
@@ -745,10 +855,10 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "dict"
+                    "str"
                 ],
                 "runtime": [
-                    "chainedawslambda.base.Runtime"
+                    "str"
                 ]
             }
         },
@@ -769,7 +879,10 @@
             "name": "get_state",
             "location": 101,
             "return": [
-                "dict"
+                "str",
+                "bool",
+                "Optional[str]",
+                "Optional[bool]"
             ],
             "arguments": {
                 "self": []
@@ -804,10 +917,12 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "dict"
+                    "Dict",
+                    "bool"
                 ],
                 "runtime": [
-                    "chainedawslambda._awsimpl.AWSRuntime"
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -838,7 +953,7 @@
             "name": "list",
             "location": 29,
             "return": [
-                "Iterator[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": [],
@@ -846,10 +961,14 @@
                     "str"
                 ],
                 "prefix": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]"
                 ],
                 "delimiter": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]"
                 ]
             }
         },
@@ -857,7 +976,9 @@
             "name": "generate_presigned_GET_url",
             "location": 50,
             "return": [
-                "str"
+                "str",
+                "Optional[int]",
+                "dict"
             ],
             "arguments": {
                 "self": [],
@@ -878,13 +999,19 @@
             "arguments": {
                 "self": [],
                 "bucket": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Tuple",
+                    "IO[str]",
+                    "IO"
                 ],
                 "object_name": [
                     "str"
                 ],
                 "method": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -903,7 +1030,7 @@
                     "str"
                 ],
                 "src_file_handle": [
-                    "BinaryIO"
+                    "str"
                 ]
             }
         },
@@ -927,7 +1054,11 @@
             "name": "get",
             "location": 92,
             "return": [
-                "bytes"
+                "bytes",
+                "Dict[str, str]",
+                "Dict[str, Dict[str, Any]]",
+                "bool",
+                "dict"
             ],
             "arguments": {
                 "self": [],
@@ -943,7 +1074,9 @@
             "name": "get_all_metadata",
             "location": 111,
             "return": [
-                "dict"
+                "str",
+                "int",
+                "bool"
             ],
             "arguments": {
                 "self": [],
@@ -959,15 +1092,22 @@
             "name": "get_cloud_checksum",
             "location": 133,
             "return": [
-                "str"
+                "str",
+                "Dict[str,str]",
+                "Dict",
+                "List[Dict[str,Any]]"
             ],
             "arguments": {
                 "self": [],
                 "bucket": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "object_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -975,15 +1115,23 @@
             "name": "get_user_metadata",
             "location": 148,
             "return": [
-                "Dict[(str, str)]"
+                "str",
+                "Callable",
+                "List[List[int]]"
             ],
             "arguments": {
                 "self": [],
                 "bucket": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "object_name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -996,16 +1144,20 @@
             "arguments": {
                 "self": [],
                 "src_bucket": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "src_object_name": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "dst_bucket": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "dst_object_name": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -1013,27 +1165,37 @@
             "name": "find_next_missing_parts",
             "location": 200,
             "return": [
-                "Sequence[int]"
+                "builtins.list[_T4]"
             ],
             "arguments": {
                 "self": [],
                 "bucket": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "key": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "upload_id": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "part_count": [
                     "int"
                 ],
                 "search_start": [
-                    "int"
+                    "int",
+                    "Tuple[float]",
+                    "str",
+                    "bytes"
                 ],
                 "return_count": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         }
@@ -1043,7 +1205,6 @@
             "name": "__init__",
             "location": 6,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1054,7 +1215,7 @@
             "name": "list",
             "location": 9,
             "return": [
-                "typing.Iterator[builtins.str]",
+                "Iterator[str]",
                 "None"
             ],
             "arguments": {
@@ -1076,7 +1237,7 @@
             "name": "generate_presigned_GET_url",
             "location": 21,
             "return": [
-                "builtins.str",
+                "str",
                 "None"
             ],
             "arguments": {
@@ -1095,25 +1256,21 @@
             "name": "upload_file_handle",
             "location": 35,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "bucket": [
                     "str",
-                    "BinaryIO",
-                    "typing.BinaryIO"
+                    "BinaryIO"
                 ],
                 "object_name": [
                     "str",
-                    "BinaryIO",
-                    "typing.BinaryIO"
+                    "BinaryIO"
                 ],
                 "src_file_handle": [
                     "str",
-                    "BinaryIO",
-                    "typing.BinaryIO"
+                    "BinaryIO"
                 ]
             }
         },
@@ -1121,7 +1278,6 @@
             "name": "delete",
             "location": 45,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1138,7 +1294,7 @@
             "name": "get",
             "location": 52,
             "return": [
-                "builtins.bytes",
+                "bytes",
                 "None"
             ],
             "arguments": {
@@ -1155,7 +1311,7 @@
             "name": "get_cloud_checksum",
             "location": 62,
             "return": [
-                "builtins.str",
+                "str",
                 "None"
             ],
             "arguments": {
@@ -1172,7 +1328,7 @@
             "name": "get_user_metadata",
             "location": 75,
             "return": [
-                "typing.Dict[builtins.str, builtins.str]",
+                "Dict[str,str]",
                 "None"
             ],
             "arguments": {
@@ -1191,7 +1347,6 @@
             "name": "copy",
             "location": 90,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1220,7 +1375,6 @@
             "name": "__init__",
             "location": 4,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1253,9 +1407,9 @@
                     "str",
                     "None",
                     "Optional[str]",
-                    "typing.IO",
+                    "IO",
                     "Optional[IO[bytes]]",
-                    "Optional['Directory']"
+                    "Optional[Directory]"
                 ],
                 "fragment": [
                     "str",
@@ -1318,10 +1472,15 @@
                     "str"
                 ],
                 "log_stream_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "message": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1331,7 +1490,7 @@
             "return": [
                 "None",
                 "bool",
-                "Optional[Dict[str, Any]]",
+                "Optional[Dict[str,Any]]",
                 "Optional[List[str]]"
             ],
             "arguments": {}
@@ -1358,12 +1517,11 @@
             "name": "__getattr__",
             "location": 8,
             "return": [
-                "list[]",
+                "List",
                 "None",
                 "List[int]",
                 "List[Dict]",
                 "str",
-                "list",
                 "List[str]"
             ],
             "arguments": {
@@ -1380,7 +1538,6 @@
             "name": "send_sns_msg",
             "location": 33,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1389,10 +1546,8 @@
                 ],
                 "message": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "Optional[float]",
                     "float",
                     "None"
@@ -1403,15 +1558,14 @@
             "name": "__init__",
             "location": 10,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "arn": [
-                    "typing.Text",
-                    "dict",
-                    "Dict[str, bool]",
+                    "Text",
+                    "Dict",
+                    "Dict[str,bool]",
                     "Callable"
                 ]
             }
@@ -1427,13 +1581,12 @@
             "arguments": {
                 "cls": [
                     "str",
+                    "Dict",
                     "int",
-                    "dict",
-                    "dict[, ]",
                     "Optional[dict]",
                     "None",
                     "Optional[Any]",
-                    "typing.Any"
+                    "Any"
                 ]
             }
         },
@@ -1450,10 +1603,9 @@
                 "cls": [
                     "str",
                     "Optional[str]",
-                    "dict",
+                    "Dict",
                     "int",
-                    "None",
-                    "dict[, ]"
+                    "None"
                 ]
             }
         },
@@ -1482,31 +1634,52 @@
             ],
             "arguments": {
                 "initial_task": [
-                    "Type[chainedawslambda.base.Task]"
+                    "Dict",
+                    "Callable",
+                    "Dict[str,bool]",
+                    "List",
+                    "List[List[Any]]",
+                    "List[list[Any]]"
                 ],
                 "initial_state": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "Dict[str, bool]",
-                    "dict[str, bool]",
-                    "list",
-                    "list[]",
+                    "Dict[str,bool]",
+                    "List",
                     "List[List[Any]]",
-                    "list[list[typing.Any]]"
+                    "List[list[Any]]"
                 ],
                 "runtime_builder": [
-                    "Callable[([Mapping[(str, Any)]], chainedawslambda.base.Runtime)]"
+                    "Dict[str,Any]",
+                    "bool",
+                    "List[int]",
+                    "Optional[str]",
+                    "str",
+                    "List[List[str]]",
+                    "None",
+                    "List[list[str]]",
+                    "int"
                 ],
                 "task_builder": [
-                    "Callable[([Type[chainedawslambda.base.Task], Any, chainedawslambda.base.Runtime], chainedawslambda.base.Task)]"
+                    "int"
                 ],
                 "runtime_result_getter": [
-                    "Callable[([chainedawslambda.base.Runtime], Any)]"
+                    "int",
+                    "Dict",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ],
                 "runtime_scheduled_getter": [
-                    "Callable[([chainedawslambda.base.Runtime], List[Tuple[(Type[chainedawslambda.base.Task], Any, Optional[str])]])]"
+                    "Dict[str,Any]",
+                    "bool",
+                    "List[int]",
+                    "Optional[str]",
+                    "str",
+                    "List[List[str]]",
+                    "None",
+                    "List[list[str]]",
+                    "int"
                 ]
             }
         },
@@ -1519,10 +1692,25 @@
             "arguments": {
                 "self": [],
                 "global_results": [
-                    "Mapping[(str, Any)]"
+                    "int",
+                    "float",
+                    "List[List[int]]",
+                    "List[list[int]]",
+                    "Callable[[str,str],float]",
+                    "Callable[str,str,float]"
                 ],
                 "seq": [
-                    "Optional[Iterable[int]]"
+                    "Optional[float]",
+                    "None",
+                    "Optional[int]",
+                    "float",
+                    "List[Optional[str]]",
+                    "bool",
+                    "int",
+                    "Optional[List[Any]]",
+                    "List[Any]",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ]
             }
         },
@@ -1530,7 +1718,10 @@
             "name": "get_remaining_time_in_millis",
             "location": 23,
             "return": [
-                "int"
+                "str",
+                "Dict[str, Any]",
+                "bool",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": []
@@ -1540,25 +1731,31 @@
             "name": "schedule_work",
             "location": 26,
             "return": [
-                "str"
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
                 "task_class": [
-                    "Type[chainedawslambda.base.Task]"
+                    "bool",
+                    "Dict",
+                    "str",
+                    "List[str]",
+                    "Optional[Iterable[T]]",
+                    "None"
                 ],
                 "state": [
                     "Optional[List[Any]]",
-                    "list[typing.Any]",
-                    "Optional[List[str]]",
-                    "None",
+                    "List[Any]",
                     "List[str]",
-                    "list[str]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Optional[List[str]]",
+                    "Dict[str,str]",
+                    "None"
                 ],
                 "new_task": [
-                    "bool"
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1571,7 +1768,7 @@
             "arguments": {
                 "self": [],
                 "result": [
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "int",
                     "float"
                 ]
@@ -1619,10 +1816,19 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "Tuple[(int, int, int)]"
+                    "str",
+                    "int",
+                    "bytes",
+                    "None",
+                    "Optional[int]",
+                    "Tuple[Union[int,int,int]]",
+                    "Tuple[int,int,int]",
+                    "Iterable[T]"
                 ],
                 "expected_max_one_unit_runtime_millis": [
-                    "int"
+                    "str",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -1642,9 +1848,7 @@
             "name": "get_state",
             "location": 37,
             "return": [
-                "tuple[]",
-                "str",
-                "int"
+                "Tuple[(Any, Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -1654,7 +1858,7 @@
             "name": "run_one_unit",
             "location": 40,
             "return": [
-                "Optional[Tuple[(int, int)]]"
+                "Optional[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "self": []
@@ -1689,7 +1893,10 @@
             "arguments": {
                 "self": [],
                 "timeout_seconds": [
-                    "int"
+                    "int",
+                    "tests.basilisp.helpers.CompileFn",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -1735,7 +1942,8 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "Tuple[(int, int, int)]"
+                    "dict",
+                    "bool"
                 ],
                 "runtime": [
                     "dict",

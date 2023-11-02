@@ -4,7 +4,6 @@
             "name": "sensa_app_init",
             "location": 118,
             "return": [
-                "'ImGui[None]'",
                 "None"
             ],
             "arguments": {}
@@ -21,7 +20,7 @@
             "name": "draw_and_log_actions",
             "location": 199,
             "return": [
-                "util.types.IO_[None]"
+                "None"
             ],
             "arguments": {}
         },
@@ -29,7 +28,7 @@
             "name": "sensa_post_frame",
             "location": 211,
             "return": [
-                "util.types.IO_[Optional[str]]"
+                "Optional[str]"
             ],
             "arguments": {}
         },
@@ -37,7 +36,8 @@
             "name": "update_state_with_actions_and_run_effects",
             "location": 259,
             "return": [
-                "util.types.IO_[AppControl]"
+                "dict",
+                "Callable"
             ],
             "arguments": {
                 "user_actions": [
@@ -51,7 +51,7 @@
             "name": "handle_app_state_effect",
             "location": 579,
             "return": [
-                "util.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "command": [
@@ -65,20 +65,32 @@
             "name": "update_link_selection",
             "location": 635,
             "return": [
-                "LinkSelection"
+                "LinkSelection",
+                "Dict",
+                "bytes",
+                "Dict[str,str]",
+                "Optional[Dict[str,str]]",
+                "str"
             ],
             "arguments": {
                 "state": [
-                    "LinkSelection"
+                    "str",
+                    "Union[str,Callable[,str]]",
+                    "Dict",
+                    "Callable[,str]",
+                    "Optional[UtilityFunction]",
+                    "None"
                 ],
                 "graph": [
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "int",
-                    "Dict[str, str]",
                     "raiden.utils.List[str]"
                 ],
                 "action": [
-                    "LinkSelectionAction"
+                    "Optional[Any]",
+                    "str",
+                    "Any",
+                    "None"
                 ]
             }
         },
@@ -130,18 +142,21 @@
             ],
             "arguments": {
                 "cause": [
+                    "AppControl"
+                ],
+                "origin": [
                     "Exception",
                     "str",
                     "int",
-                    "list[str]",
                     "List[str]",
                     "bool"
                 ],
-                "origin": [
-                    "str"
-                ],
                 "exception": [
-                    "Exception"
+                    "Exception",
+                    "str",
+                    "int",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -153,7 +168,7 @@
             ],
             "arguments": {
                 "command": [
-                    "AppStateEffect"
+                    "AppControl"
                 ]
             }
         },
@@ -165,7 +180,7 @@
             ],
             "arguments": {
                 "command": [
-                    "AppRunnerEffect"
+                    "AppControl"
                 ]
             }
         },
@@ -177,7 +192,7 @@
             ],
             "arguments": {
                 "slot": [
-                    "ng.OutputSlotId"
+                    "LinkSelectionAction"
                 ]
             }
         },
@@ -189,7 +204,7 @@
             ],
             "arguments": {
                 "slot": [
-                    "ng.InputSlotId"
+                    "LinkSelectionAction"
                 ]
             }
         },
@@ -235,11 +250,15 @@
             "name": "debug_log_time",
             "location": 76,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "point_id": [
-                    "PointId"
+                    "List[str]",
+                    "str",
+                    "Union[list, str]",
+                    "List[List[Any]]",
+                    "int"
                 ],
                 "time_s": [
                     "int",
@@ -255,14 +274,18 @@
             "name": "debug_log",
             "location": 97,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Sequence[utils.types.A]",
+                    "List[str]"
                 ],
                 "val": [
-                    "A"
+                    "str",
+                    "Sequence[utils.types.A]",
+                    "List[str]"
                 ]
             }
         },
@@ -270,14 +293,18 @@
             "name": "debug_log_dict",
             "location": 104,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Sequence[utils.types.A]",
+                    "List[str]"
                 ],
                 "dictionary": [
-                    "Dict[(A, Any)]"
+                    "str",
+                    "Sequence[utils.types.A]",
+                    "List[str]"
                 ]
             }
         },
@@ -285,14 +312,18 @@
             "name": "debug_log_seq",
             "location": 110,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Sequence[utils.types.A]",
+                    "List[str]"
                 ],
                 "seq": [
-                    "Sequence[A]"
+                    "str",
+                    "Sequence[utils.types.A]",
+                    "List[str]"
                 ]
             }
         },
@@ -300,11 +331,15 @@
             "name": "debug_log_crash",
             "location": 115,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "origin": [
-                    "str"
+                    "str",
+                    "Exception",
+                    "Dict[str, Any]",
+                    "Iterator[Tuple[Any, Any]]",
+                    "List[str]"
                 ],
                 "cause": [
                     "str",
@@ -314,7 +349,11 @@
                     "List[str]"
                 ],
                 "exception": [
-                    "Exception"
+                    "str",
+                    "Exception",
+                    "Dict[str, Any]",
+                    "Iterator[Tuple[Any, Any]]",
+                    "List[str]"
                 ]
             }
         },
@@ -322,7 +361,7 @@
             "name": "debug_window",
             "location": 121,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {}
         },
@@ -330,7 +369,7 @@
             "name": "debug_post_frame",
             "location": 185,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {}
         },
@@ -338,7 +377,7 @@
             "name": "_debug_clear_times",
             "location": 203,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {}
         },
@@ -346,7 +385,7 @@
             "name": "show_avg_durations_of_recorded_ranges",
             "location": 208,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {}
         },
@@ -354,11 +393,13 @@
             "name": "show_durations",
             "location": 215,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "durations_ms": [
-                    "utils.types.OrderedDict_[(str, float)]"
+                    "str",
+                    "dict",
+                    "Dict[str, List]"
                 ]
             }
         },
@@ -370,7 +411,9 @@
             ],
             "arguments": {
                 "len": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -378,14 +421,18 @@
             "name": "debug_set_type_format_string",
             "location": 235,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "t": [
-                    "type"
+                    "str",
+                    "type",
+                    "List[str]"
                 ],
                 "fmt_string": [
-                    "str"
+                    "str",
+                    "type",
+                    "List[str]"
                 ]
             }
         },
@@ -393,11 +440,12 @@
             "name": "show_varied_dict",
             "location": 245,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str, str]"
                 ],
                 "key_format_string_for_len": [
                     "str",
@@ -421,7 +469,9 @@
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(A, Any)]"
+                    "str",
+                    "float",
+                    "int"
                 ],
                 "key_format_string_for_len": [
                     "str",
@@ -443,11 +493,13 @@
             "name": "show_uniform_dict",
             "location": 303,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(str, A)]"
+                    "str",
+                    "Dict[str, utils.types.A]",
+                    "Optional[str]"
                 ],
                 "key_format_string_for_len": [
                     "str",
@@ -455,7 +507,9 @@
                     "Optional[str]"
                 ],
                 "value_format_string": [
-                    "str"
+                    "str",
+                    "Dict[str, utils.types.A]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -467,14 +521,19 @@
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(str, A)]"
+                    "str",
+                    "Optional[str]",
+                    "Optional[Pattern]"
                 ],
                 "key_format_string_for_len": [
                     "str",
                     "Optional[str]"
                 ],
                 "value_format_string": [
-                    "str"
+                    "str",
+                    "Dict[str, utils.types.A]",
+                    "Optional[str]",
+                    "utils.types.Fun[[int], str]"
                 ]
             }
         },
@@ -482,14 +541,18 @@
             "name": "show_sequence",
             "location": 342,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "seq": [
-                    "Sequence[A]"
+                    "str",
+                    "bool"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[Union[Any, Any]]",
+                    "Optional[str]",
+                    "List[str]"
                 ]
             }
         },
@@ -501,7 +564,10 @@
             ],
             "arguments": {
                 "seq": [
-                    "Sequence[A]"
+                    "str",
+                    "bool",
+                    "Type",
+                    "Optional[List[str]]"
                 ],
                 "value_format_string": [
                     "str"
@@ -512,14 +578,19 @@
             "name": "name_and_multiline_str",
             "location": 369,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Union[None, int, str]",
+                    "Optional[str]"
                 ],
                 "multiline_str": [
-                    "str"
+                    "str",
+                    "Union[None, int, str]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -534,7 +605,8 @@
                     "str"
                 ],
                 "indent": [
-                    "int"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -546,10 +618,14 @@
             ],
             "arguments": {
                 "multiline_str": [
-                    "str"
+                    "str",
+                    "list",
+                    "List[str]"
                 ],
                 "indent": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -557,11 +633,13 @@
             "name": "logged_times_to_durations",
             "location": 388,
             "return": [
-                "utils.types.OrderedDict_[(str, Tuple[(float, float)])]"
+                "collections.OrderedDict"
             ],
             "arguments": {
                 "fresh_logged_times": [
-                    "utils.types.OrderedDict_[(Tuple[(str, str)], float)]"
+                    "dict",
+                    "django.utils.safestring.SafeText",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -569,14 +647,22 @@
             "name": "update_stored_durations",
             "location": 403,
             "return": [
-                "utils.types.IO_[List[str]]"
+                "list"
             ],
             "arguments": {
                 "durations_ms": [
-                    "utils.types.IO_[Dict[(str, Optional[Deque[float]])]]"
+                    "Optional[str]",
+                    "str",
+                    "bool",
+                    "Dict[str, Any]"
                 ],
                 "fresh_logged_durations": [
-                    "utils.types.OrderedDict_[(str, Tuple[(float, float)])]"
+                    "Dict[str, Any]",
+                    "dict",
+                    "Set[str]",
+                    "List[str]",
+                    "Dict[str, Dict[str, Any]]",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -584,11 +670,14 @@
             "name": "average_durations",
             "location": 438,
             "return": [
-                "Dict[(str, float)]"
+                "Dict[(Any, float)]"
             ],
             "arguments": {
                 "range_duration_histories_ms": [
-                    "Dict[(str, Sequence[float])]"
+                    "List[str]",
+                    "str",
+                    "Counter[str]",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -696,7 +785,9 @@
             ],
             "arguments": {
                 "x": [
-                    "_T0"
+                    "list",
+                    "int",
+                    "snorkel.types.DataPoint"
                 ]
             }
         },
@@ -708,7 +799,12 @@
             ],
             "arguments": {
                 "d": [
-                    "_T0"
+                    "dict",
+                    "raiden.utils.List[str]",
+                    "List[str]",
+                    "bytes",
+                    "List[int]",
+                    "list"
                 ]
             }
         },
@@ -731,11 +827,15 @@
             "name": "order_dict_by_key",
             "location": 500,
             "return": [
-                "collections.OrderedDict[(str, nothing)]"
+                "collections.OrderedDict"
             ],
             "arguments": {
                 "d": [
-                    "Dict[(str, A)]"
+                    "Dict[str, utils.types.A]",
+                    "dict",
+                    "Dict[str, Any]",
+                    "Callable",
+                    "Dict[str, str]"
                 ]
             }
         }
@@ -752,15 +852,16 @@
                     "Signal"
                 ],
                 "signal_info": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "bool"
                 ],
                 "data": [
                     "bytes",
+                    "Tuple",
                     "str",
-                    "tuple",
-                    "tuple[]",
                     "Optional[List[Any]]",
-                    "list[typing.Any]",
+                    "List[Any]",
                     "None"
                 ]
             }
@@ -776,9 +877,8 @@
             "arguments": {
                 "sig": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -793,9 +893,8 @@
             "arguments": {
                 "sig": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -833,11 +932,13 @@
             "name": "run_eff",
             "location": 75,
             "return": [
-                "Tuple[(A, dict)]"
+                "Tuple[(Any, Dict[(str, Any)])]"
             ],
             "arguments": {
                 "comp": [
-                    "Eff"
+                    "str",
+                    "raiden.utils.Optional[str]",
+                    "List[Callable]"
                 ]
             }
         },
@@ -845,11 +946,18 @@
             "name": "effectful",
             "location": 98,
             "return": [
-                "_T0"
+                "int",
+                "str",
+                "Optional[str]",
+                "Exception",
+                "Sequence[T]"
             ],
             "arguments": {
                 "f": [
-                    "_T0"
+                    "int",
+                    "T",
+                    "Exception",
+                    "Sequence[T]"
                 ]
             }
         },
@@ -857,15 +965,17 @@
             "name": "is_decorated_generator_coroutine",
             "location": 121,
             "return": [
-                "bool"
+                "bool",
+                "List[int]",
+                "Iterable[str]",
+                "str"
             ],
             "arguments": {
                 "f": [
                     "int",
                     "str",
-                    "float",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple",
+                    "float"
                 ]
             }
         },
@@ -889,12 +999,11 @@
             "name": "emit",
             "location": 153,
             "return": [
-                "coroutine"
+                "Coroutine[(Any, Any, None)]"
             ],
             "arguments": {
                 "action": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "T"
                 ]
             }
@@ -903,17 +1012,14 @@
             "name": "emit_effect",
             "location": 160,
             "return": [
-                "coroutine"
+                "Coroutine[(Any, Any, None)]"
             ],
             "arguments": {
                 "cmd": [
                     "str",
-                    "list",
-                    "list[]",
-                    "tuple",
-                    "tuple[]",
-                    "Callable[[], None]",
-                    "typing.Callable[[], None]"
+                    "List",
+                    "Tuple",
+                    "Callable[,None]"
                 ]
             }
         },
@@ -928,7 +1034,10 @@
                     "Eff"
                 ],
                 "items": [
-                    "Tuple[(List[str], type)]"
+                    "Dict",
+                    "Dict[str,str]",
+                    "int",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -964,15 +1073,13 @@
             "name": "mk_get_id",
             "location": 39,
             "return": [
-                "Callable[([], EffVal[int])]"
+                "Callable[([], Any)]"
             ],
             "arguments": {
                 "state_dict": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "Dict[str, Any]",
                     "bool",
-                    "list[T]",
                     "List[T]",
                     "raiden.utils.List[raiden.transfer.state.NettingChannelState]"
                 ]
@@ -986,11 +1093,10 @@
             ],
             "arguments": {
                 "state_dict": [
-                    "Dict[str, object]",
-                    "dict[str, object]",
+                    "Dict[str,object]",
                     "bool",
                     "Optional[IO[bytes]]",
-                    "typing.IO",
+                    "IO",
                     "None"
                 ]
             }
@@ -999,16 +1105,15 @@
             "name": "mk_get_signal_id",
             "location": 53,
             "return": [
-                "Callable[([], EffVal[int])]"
+                "Callable[([], Any)]"
             ],
             "arguments": {
                 "state_dict": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool",
-                    "dict[str, typing.Any]",
                     "str",
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "int",
                     "None"
                 ]
@@ -1022,11 +1127,10 @@
             ],
             "arguments": {
                 "state_dict": [
-                    "Dict[str, object]",
-                    "dict[str, object]",
+                    "Dict[str,object]",
                     "bool",
                     "Optional[IO[bytes]]",
-                    "typing.IO",
+                    "IO",
                     "None"
                 ]
             }
@@ -1049,21 +1153,13 @@
             "name": "run_eff",
             "location": 102,
             "return": [
-                "str",
-                "int",
-                "Set[str]",
-                "Mapping[str, int]",
-                "bool",
-                "\"Parameter\""
+                "Callable"
             ],
             "arguments": {
                 "f": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -1104,14 +1200,13 @@
             "name": "get_signal_ids",
             "location": 192,
             "return": [
-                "EffVal[List[int]]"
+                "list"
             ],
             "arguments": {
                 "n": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         },
@@ -1119,7 +1214,7 @@
             "name": "get_ids",
             "location": 203,
             "return": [
-                "EffVal[List[int]]"
+                "list"
             ],
             "arguments": {
                 "n": [
@@ -1132,7 +1227,7 @@
             "name": "f",
             "location": 215,
             "return": [
-                "EffVal[Dict[(str, int)]]"
+                "dict"
             ],
             "arguments": {}
         },
@@ -1140,7 +1235,7 @@
             "name": "f2",
             "location": 222,
             "return": [
-                "EffVal[Dict[(str, int)]]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {}
         },
@@ -1213,7 +1308,7 @@
             "name": "result_fn",
             "location": 113,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "bool",
                 "str",
                 "int",
@@ -1265,7 +1360,7 @@
             "name": "load_edf",
             "location": 67,
             "return": [
-                "utils.types.IO_[Dict[(str, eeg_signal.Signal)]]"
+                "Dict[(Any, eeg_signal.Signal)]"
             ],
             "arguments": {
                 "filename": [
@@ -1281,7 +1376,7 @@
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "FileAction"
                 ]
             }
         },
@@ -1293,7 +1388,7 @@
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "FileEffect"
                 ]
             }
         }
@@ -1303,23 +1398,32 @@
             "name": "butter_lowpass_coeffs",
             "location": 20,
             "return": [
-                "Tuple[(Sequence[float], Sequence[float])]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "cutoff_freq": [
-                    "float"
+                    "bool",
+                    "float",
+                    "int",
+                    "str"
                 ],
                 "sampling_freq": [
-                    "float"
+                    "bool",
+                    "float",
+                    "int",
+                    "str"
                 ],
                 "type": [
-                    "str"
+                    "str",
+                    "float",
+                    "Callable[[int],Any]",
+                    "Callable[int,Any]"
                 ],
                 "order": [
                     "int",
                     "str",
                     "float",
-                    "Callable[[int], Any]"
+                    "Callable[[int],Any]"
                 ]
             }
         },
@@ -1327,26 +1431,47 @@
             "name": "simple_filter_raw",
             "location": 27,
             "return": [
-                "Sequence[float]"
+                "str",
+                "Dict",
+                "Mapping[str,Sequence[str]]",
+                "int",
+                "Dict[str,tuple[Union[Any,Any]]]",
+                "Mapping",
+                "Pattern",
+                "List[str]"
             ],
             "arguments": {
                 "data": [
-                    "Sequence[float]"
+                    "Tuple[int,int]",
+                    "int",
+                    "Tuple[Union[int,int]]",
+                    "Dict[str,Any]",
+                    "Callable[[str,str],float]",
+                    "Callable[str,str,float]"
                 ],
                 "cutoff_freq": [
-                    "float"
+                    "float",
+                    "str",
+                    "Union[int,float]",
+                    "int"
                 ],
                 "sampling_freq": [
-                    "float"
+                    "float",
+                    "str",
+                    "Union[int,float]",
+                    "int"
                 ],
                 "type": [
-                    "str"
+                    "float",
+                    "str",
+                    "Union[int,float]",
+                    "int"
                 ],
                 "order": [
                     "int",
                     "float",
                     "str",
-                    "Union[int, float]"
+                    "Union[int,float]"
                 ]
             }
         },
@@ -1358,13 +1483,15 @@
             ],
             "arguments": {
                 "signal": [
-                    "eeg_signal.Signal"
+                    "str"
                 ],
                 "cutoff_freq": [
-                    "float"
+                    "List[str]",
+                    "int"
                 ],
                 "type": [
-                    "str"
+                    "List[str]",
+                    "int"
                 ]
             }
         }
@@ -1374,11 +1501,7 @@
             "name": "eval_node",
             "location": 64,
             "return": [
-                "int",
-                "trezor.utils.Writer",
-                "bool",
-                "str",
-                "Optional[str]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "filter_box": [
@@ -1390,11 +1513,13 @@
             "name": "transformation",
             "location": 70,
             "return": [
-                "eeg_signal.Signal"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "filter_state": [
-                    "FilterState"
+                    "DefaultDict[int,List[int]]",
+                    "str",
+                    "DefaultDict"
                 ]
             }
         },
@@ -1414,11 +1539,13 @@
             "name": "is_filter_box_full",
             "location": 95,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "raiden.utils.Tuple[raiden.utils.Tuple[raiden.utils.TokenAddress, raiden.utils.ProportionalFeeAmount], ...]"
             ],
             "arguments": {
                 "state": [
-                    "FilterBoxState"
+                    "T"
                 ]
             }
         },
@@ -1426,14 +1553,21 @@
             "name": "update_filter_box",
             "location": 112,
             "return": [
-                "FilterBoxState"
+                "None",
+                "bool",
+                "int",
+                "util.freefocus.sql.Group",
+                "str"
             ],
             "arguments": {
                 "filter_box_state": [
-                    "FilterBoxState"
+                    "Union[int,None]",
+                    "int",
+                    "None"
                 ],
                 "action": [
-                    "FilterAction"
+                    "str",
+                    "Optional[\"Texte\"]"
                 ]
             }
         },
@@ -1445,13 +1579,12 @@
             ],
             "arguments": {
                 "filter_id": [
-                    "str"
+                    "FilterState"
                 ],
                 "params": [
                     "str",
                     "int",
-                    "list",
-                    "list[]",
+                    "List",
                     "Optional[cmk.utils.type_defs.UserId]",
                     "None"
                 ]
@@ -1465,13 +1598,21 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "FilterAction"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "float",
+                    "bool",
+                    "utils.types.Id",
+                    "int"
                 ],
                 "value": [
-                    "float"
+                    "str",
+                    "float",
+                    "bool",
+                    "utils.types.Id",
+                    "int"
                 ]
             }
         }
@@ -1509,8 +1650,8 @@
                     "List[str]"
                 ],
                 "no_reload": [
-                    "dict",
-                    "tuple[]"
+                    "Dict",
+                    "Tuple"
                 ]
             }
         },
@@ -1525,18 +1666,16 @@
                     "str",
                     "None",
                     "float",
-                    "int",
                     "Callable",
-                    "typing.Callable[, ]",
+                    "int",
                     "bool"
                 ],
                 "pre_frame": [
                     "str",
                     "None",
                     "float",
-                    "int",
                     "Callable",
-                    "typing.Callable[, ]",
+                    "int",
                     "bool"
                 ],
                 "draw": [
@@ -1550,25 +1689,28 @@
                     "str",
                     "None",
                     "float",
-                    "int",
                     "Callable",
-                    "typing.Callable[, ]",
+                    "int",
                     "bool"
                 ],
                 "app_shutdown": [
                     "str",
                     "None",
                     "float",
-                    "int",
                     "Callable",
-                    "typing.Callable[, ]",
+                    "int",
                     "bool"
                 ],
                 "window_title": [
-                    "str"
+                    "Text",
+                    "str",
+                    "float",
+                    "Callable",
+                    "int",
+                    "bool"
                 ],
                 "window_size": [
-                    "tuple[int]",
+                    "Tuple[int]",
                     "str",
                     "float",
                     "Callable",
@@ -1576,7 +1718,11 @@
                     "bool"
                 ],
                 "target_framerate": [
-                    "float"
+                    "float",
+                    "str",
+                    "Callable",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1595,13 +1741,13 @@
                     "Optional[int]",
                     "float",
                     "None",
-                    "Optional[Union[int, float]]"
+                    "Optional[Union[int,float]]"
                 ],
                 "window_size": [
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "str",
                     "int",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -1619,8 +1765,8 @@
             "return": [
                 "bool",
                 "str",
-                "dict",
-                "set",
+                "Dict",
+                "Set",
                 "List[str]"
             ],
             "arguments": {}
@@ -1638,7 +1784,9 @@
                     "MultiSignal"
                 ],
                 "signals": [
-                    "Sequence[eeg_signal.Signal]"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1647,16 +1795,15 @@
             "location": 14,
             "return": [
                 "int",
-                "Dict[str, int]",
+                "Dict[str,int]",
                 "str",
                 "float"
             ],
             "arguments": {
                 "msig": [
                     "str",
-                    "bytes",
                     "Tuple[bytes]",
-                    "tuple[bytes]"
+                    "bytes"
                 ]
             }
         },
@@ -1694,7 +1841,7 @@
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "int"
                 ]
             }
         },
@@ -1702,11 +1849,11 @@
             "name": "used_output_slots",
             "location": 129,
             "return": [
-                "Set[OutputSlotId]"
+                "set"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "str"
                 ]
             }
         },
@@ -1714,11 +1861,14 @@
             "name": "input_slots",
             "location": 134,
             "return": [
-                "Set[OutputSlotId]"
+                "Set[InputSlotId]"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "int",
+                    "float",
+                    "Union[int,slice]",
+                    "utils.Node"
                 ]
             }
         },
@@ -1726,11 +1876,14 @@
             "name": "filled_input_slots",
             "location": 138,
             "return": [
-                "Set[InputSlotId]"
+                "set"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1738,11 +1891,15 @@
             "name": "free_input_slots",
             "location": 142,
             "return": [
-                "Set[InputSlotId]"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1754,10 +1911,12 @@
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "str",
+                    "int"
                 ],
                 "input_slot": [
-                    "InputSlotId"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1769,10 +1928,12 @@
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "str",
+                    "int"
                 ],
                 "input_slot": [
-                    "InputSlotId"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1780,14 +1941,18 @@
             "name": "parent_nodes",
             "location": 151,
             "return": [
-                "List[int]"
+                "list"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "int",
+                    "utils.types.Id",
+                    "itsim.types.Address"
                 ],
                 "node_id": [
-                    "int"
+                    "int",
+                    "utils.types.Id",
+                    "itsim.types.Address"
                 ]
             }
         },
@@ -1795,14 +1960,21 @@
             "name": "slot_sources",
             "location": 158,
             "return": [
-                "List[utils.maybe.Maybe[OutputSlotId]]"
+                "list"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "str",
+                    "int",
+                    "float",
+                    "Dict",
+                    "Optional[int]",
+                    "None"
                 ],
                 "node_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "cmk.utils.type_defs.HostName"
                 ]
             }
         },
@@ -1814,7 +1986,9 @@
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "Optional[Callable]",
+                    "Callable",
+                    "None"
                 ]
             }
         },
@@ -1836,17 +2010,21 @@
             "name": "eval_outputs",
             "location": 198,
             "return": [
-                "Dict[(int, List[utils.maybe.Maybe[eeg_signal.Signal]])]"
+                "bool"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "Dict"
                 ],
                 "source_signals": [
-                    "Dict[(int, eeg_signal.Signal)]"
+                    "str",
+                    "int"
                 ],
                 "boxes": [
-                    "Dict[(int, Any)]"
+                    "Mapping",
+                    "int",
+                    "Mapping[str,Any]",
+                    "raiden.utils.BlockIdentifier"
                 ]
             }
         },
@@ -1854,14 +2032,30 @@
             "name": "get_inputs",
             "location": 275,
             "return": [
-                "Dict[(int, List[utils.maybe.Maybe[eeg_signal.Signal]])]"
+                "dict"
             ],
             "arguments": {
                 "graph": [
-                    "Graph"
+                    "Dict[utils.types.Id,List[Any]]",
+                    "str",
+                    "Dict[utils.types.Id,list[Any]]",
+                    "int",
+                    "Callable[[None],bool]",
+                    "bytes",
+                    "Callable[None,bool]",
+                    "List[Tuple[str,Any]]",
+                    "List[tuple[Union[str,Any]]]"
                 ],
                 "output_values": [
-                    "Dict[(int, List[utils.maybe.Maybe[eeg_signal.Signal]])]"
+                    "Dict[utils.types.Id,List[Any]]",
+                    "str",
+                    "Dict[utils.types.Id,list[Any]]",
+                    "int",
+                    "Callable[[None],bool]",
+                    "bytes",
+                    "Callable[None,bool]",
+                    "List[Tuple[str,Any]]",
+                    "List[tuple[Union[str,Any]]]"
                 ]
             }
         },
@@ -1869,7 +2063,8 @@
             "name": "handle_graph_effect",
             "location": 412,
             "return": [
-                "Optional[Dict[(int, List[utils.maybe.Maybe[eeg_signal.Signal]])]]"
+                "str",
+                "Optional[str]"
             ],
             "arguments": {
                 "graph": [
@@ -1888,7 +2083,11 @@
                     "None"
                 ],
                 "command": [
-                    "GraphEffect"
+                    "int",
+                    "str",
+                    "List[Tuple[int, int]]",
+                    "float",
+                    "Optional[str]"
                 ]
             }
         },
@@ -1900,10 +2099,14 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "GraphAction"
                 ],
                 "node": [
-                    "Node"
+                    "int",
+                    "str",
+                    "utils.types.Id",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1915,7 +2118,7 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "GraphAction"
                 ]
             }
         },
@@ -1927,10 +2130,17 @@
             ],
             "arguments": {
                 "source_slot": [
-                    "OutputSlotId"
+                    "GraphAction"
                 ],
                 "dest_slot": [
-                    "InputSlotId"
+                    "str",
+                    "Union[str,bytes]",
+                    "bytes",
+                    "Union[str,bytes,IO[bytes]]",
+                    "IO",
+                    "Optional[Tuple[Any,Any]]",
+                    "Tuple[Union[Any,Any]]",
+                    "None"
                 ]
             }
         },
@@ -1942,10 +2152,17 @@
             ],
             "arguments": {
                 "source_slot": [
-                    "OutputSlotId"
+                    "GraphAction"
                 ],
                 "dest_slot": [
-                    "InputSlotId"
+                    "str",
+                    "Union[str,bytes]",
+                    "bytes",
+                    "Union[str,bytes,IO[bytes]]",
+                    "IO",
+                    "Optional[Tuple[Any,Any]]",
+                    "Tuple[Union[Any,Any]]",
+                    "None"
                 ]
             }
         },
@@ -1963,22 +2180,23 @@
             "name": "dump_all",
             "location": 12,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "objs": [
-                    "Iterable"
+                    "Iterable[Any]",
+                    "List[str]",
+                    "Sequence[str]",
+                    "bool",
+                    "List[Dict[str, Any]]"
                 ],
                 "file": [
                     "str",
                     "TextIO",
-                    "typing.TextIO",
                     "BinaryIO",
-                    "typing.BinaryIO",
-                    "IO[bytes]",
-                    "typing.IO",
                     "List[str]",
-                    "list[str]"
+                    "IO[bytes]",
+                    "IO"
                 ]
             }
         },
@@ -1986,22 +2204,18 @@
             "name": "dump_append",
             "location": 23,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "obj": [
-                    "Dict[str, int]",
-                    "int",
-                    "dict[str, int]"
+                    "Dict[str,int]",
+                    "int"
                 ],
                 "file": [
                     "BinaryIO",
-                    "typing.BinaryIO",
-                    "bytes",
                     "List[str]",
-                    "list[str]",
-                    "List[int]",
-                    "list[int]"
+                    "bytes",
+                    "List[int]"
                 ]
             }
         },
@@ -2009,19 +2223,15 @@
             "name": "load_all",
             "location": 31,
             "return": [
-                "Iterable[utils.types.IO_]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "file": [
                     "BinaryIO",
                     "str",
-                    "typing.BinaryIO",
                     "List[str]",
-                    "list[str]",
                     "List[int]",
-                    "list[int]",
-                    "TextIO",
-                    "typing.TextIO"
+                    "TextIO"
                 ]
             }
         }
@@ -2031,8 +2241,7 @@
             "name": "eval_node",
             "location": 109,
             "return": [
-                "raiden.utils.Dict",
-                "typing.Callable[, ]"
+                "Union[(Callable[([Any], Any)], Type[utils.maybe.Just])]"
             ],
             "arguments": {
                 "plot_box_state": [
@@ -2056,14 +2265,24 @@
             "name": "update_plot_box",
             "location": 154,
             "return": [
-                "PlotBoxState"
+                "str",
+                "int",
+                "None",
+                "List",
+                "Generator[Union[Any,None,None]]",
+                "Tuple",
+                "Dict"
             ],
             "arguments": {
                 "plot_box_state": [
-                    "PlotBoxState"
+                    "raiden.utils.TokenNetworkAddress",
+                    "raiden.utils.BlockNumber"
                 ],
                 "action": [
-                    "Union[(DragAction, PlotAction)]"
+                    "int",
+                    "str",
+                    "raiden.utils.PaymentID",
+                    "types.ModuleType"
                 ]
             }
         },
@@ -2071,17 +2290,26 @@
             "name": "time_range_after_drag",
             "location": 330,
             "return": [
-                "time_range.TimeRange"
+                "Union[(time_range.TimeRange, _T0)]"
             ],
             "arguments": {
                 "time_range_before_drag": [
-                    "time_range.TimeRange"
+                    "Tuple",
+                    "Dict",
+                    "time_range.TimeRange",
+                    "raiden.utils.List[RouteState]",
+                    "raiden.utils.Dict",
+                    "TimeRange"
                 ],
                 "signal": [
-                    "eeg_signal.Signal"
+                    "str",
+                    "int",
+                    "Dict"
                 ],
                 "plot_draw_area": [
-                    "utils.rect.Rect"
+                    "List[float]",
+                    "Dict",
+                    "numpy.ndarray"
                 ],
                 "drag_origin": [
                     "float",
@@ -2099,36 +2327,46 @@
             "name": "show_full_plot",
             "location": 412,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "plot_box_state": [
-                    "PlotState"
+                    "raiden.utils.SecreHash",
+                    "raiden.utils.InitiatorAddress",
+                    "raiden.utils.TargetAddress",
+                    "raiden.utils.TokenNetworkID",
+                    "raiden.utils.FeeAmount",
+                    "raiden.utils.PaymentID",
+                    "raiden.utils.PaymentAmount",
+                    "raiden.utils.PaymentHashInvoice"
                 ],
                 "signal": [
-                    "eeg_signal.Signal"
+                    "bool",
+                    "numpy.ndarray",
+                    "int"
                 ],
                 "plot_draw_area": [
-                    "utils.rect.Rect"
+                    "int",
+                    "str",
+                    "numpy.ndarray",
+                    "bool"
                 ],
                 "draw_list": [
                     "int",
                     "str",
+                    "Dict",
                     "types.transports.ProducerT",
                     "None",
-                    "dict[, ]",
                     "raiden.utils.PrivateKey",
-                    "raiden.utils.Optional[raiden.utils.Address]",
-                    "dict"
+                    "raiden.utils.Optional[raiden.utils.Address]"
                 ],
                 "ui_settings": [
                     "str",
                     "numpy.ndarray",
-                    "list[typing.Any]",
-                    "list[numpy.ndarray]",
+                    "List[Any]",
+                    "List[numpy.ndarray]",
                     "Optional[str]",
                     "Optional[List[Any]]",
-                    "List[numpy.ndarray]",
                     "float",
                     "int"
                 ]
@@ -2138,29 +2376,46 @@
             "name": "show_empty_plot",
             "location": 594,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "plot_state": [
-                    "PlotState"
+                    "str",
+                    "bool",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]",
+                    "int",
+                    "None"
                 ],
                 "text": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[bool]",
+                    "None",
+                    "Mapping[Union[str,starfish.types.Coordinates],starfish.types.CoordinateValue]",
+                    "Mapping"
                 ],
                 "plot_draw_area": [
-                    "utils.rect.Rect"
+                    "bool",
+                    "utils.Rect",
+                    "Callable[T,bool]",
+                    "List[int]",
+                    "List[E]",
+                    "str",
+                    "int",
+                    "Callable[[Type,str],bool]",
+                    "List[Entity]"
                 ],
                 "draw_list": [
                     "bool",
                     "utils.Rect",
-                    "typing.Callable[T, bool]",
-                    "list[E]",
+                    "Callable[T,bool]",
+                    "List[int]",
+                    "List[E]",
                     "str",
-                    "list[int]",
                     "int",
-                    "Callable[[Type, str], bool]",
-                    "List['Entity']",
-                    "List[int]"
+                    "Callable[[Type,str],bool]",
+                    "List[Entity]"
                 ]
             }
         },
@@ -2168,26 +2423,37 @@
             "name": "show_imgui_plot",
             "location": 603,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "plot_box_state": [
-                    "PlotState"
+                    "float",
+                    "List[D]",
+                    "List[raiden.utils.ChannelID]",
+                    "raiden.utils.TokenAddress",
+                    "raiden.utils.TokenNetworkRegistryAddress"
                 ],
                 "signal": [
-                    "eeg_signal.Signal"
+                    "int",
+                    "List[int]",
+                    "bool",
+                    "Iterable[str]"
                 ],
                 "width": [
-                    "int"
+                    "int",
+                    "bool",
+                    "utils.Rect",
+                    "float"
                 ],
                 "height": [
-                    "int"
+                    "int",
+                    "Tuple[int,int]",
+                    "bool"
                 ],
                 "ui_settings": [
                     "str",
-                    "float",
-                    "list[int]",
                     "List[int]",
+                    "float",
                     "int"
                 ]
             }
@@ -2196,20 +2462,41 @@
             "name": "slice_signal",
             "location": 644,
             "return": [
-                "utils.types.NDArray[float]"
+                "str",
+                "bool",
+                "List",
+                "int",
+                "Optional[float]",
+                "Dict",
+                "List[Dict[str,Any]]",
+                "List[None]",
+                "Dict[str,str]"
             ],
             "arguments": {
                 "signal": [
-                    "eeg_signal.Signal"
+                    "int",
+                    "Dict",
+                    "eeg_signal.Signal",
+                    "float",
+                    "numpy.ndarray"
                 ],
                 "time_range": [
-                    "time_range.TimeRange"
+                    "int",
+                    "float",
+                    "time_range.TimeRange",
+                    "bool"
                 ],
                 "n_points_needed": [
-                    "int"
+                    "int",
+                    "None",
+                    "float",
+                    "Optional[int]",
+                    "Collection",
+                    "numpy.ndarray",
+                    "Collection[int]"
                 ],
                 "variant": [
-                    "typing.Text",
+                    "Text",
                     "int",
                     "Type[Exception]",
                     "bool",
@@ -2222,11 +2509,17 @@
             "name": "amplitude",
             "location": 692,
             "return": [
-                "float"
+                "Optional[int]",
+                "utils.Node",
+                "Tuple[Tuple[int, Any]]",
+                "cmk.utils.type_defs.ServiceName",
+                "cmk.utils.type_defs.HostName"
             ],
             "arguments": {
                 "data": [
-                    "utils.types.NDArray[float]"
+                    "int",
+                    "bytes",
+                    "numpy.ndarray"
                 ]
             }
         },
@@ -2234,14 +2527,30 @@
             "name": "downsample",
             "location": 700,
             "return": [
-                "utils.types.NDArray[float]"
+                "int",
+                "Callable",
+                "str",
+                "List",
+                "List[list[Any]]",
+                "float",
+                "Dict[str,Any]",
+                "Dict"
             ],
             "arguments": {
                 "data": [
-                    "utils.types.NDArray[float]"
+                    "int",
+                    "str",
+                    "utils.types.NDArray[float]",
+                    "Callable",
+                    "numpy.ndarray"
                 ],
                 "n_samples": [
-                    "int"
+                    "int",
+                    "Callable",
+                    "str",
+                    "bytes",
+                    "utils.types.NDArray[float]",
+                    "numpy.ndarray"
                 ]
             }
         },
@@ -2249,14 +2558,22 @@
             "name": "crude_downsample",
             "location": 710,
             "return": [
-                "utils.types.NDArray[float]"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "data": [
-                    "utils.types.NDArray[float]"
+                    "int",
+                    "utils.types.NDArray[float]",
+                    "numpy.ndarray",
+                    "Callable"
                 ],
                 "n_samples": [
-                    "int"
+                    "int",
+                    "Callable",
+                    "utils.types.NDArray[float]",
+                    "numpy.ndarray"
                 ]
             }
         },
@@ -2264,17 +2581,28 @@
             "name": "n_indexes_from_range",
             "location": 731,
             "return": [
-                "List[int]"
+                "list"
             ],
             "arguments": {
                 "first_ix": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[Union[int,slice]]",
+                    "str",
+                    "numpy.ndarray",
+                    "Collection[int]"
                 ],
                 "last_ix": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[Union[int,slice]]",
+                    "numpy.ndarray",
+                    "str",
+                    "List[Tuple[int,int]]"
                 ],
                 "n": [
-                    "int"
+                    "int",
+                    "List[int]"
                 ]
             }
         },
@@ -2286,9 +2614,19 @@
             ],
             "arguments": {
                 "time_range": [
-                    "time_range.TimeRange"
+                    "str",
+                    "int",
+                    "time_range.TimeRange",
+                    "float",
+                    "None",
+                    "Optional[int]",
+                    "TimeRange",
+                    "bool",
+                    "Union[int,float]"
                 ],
                 "signal": [
+                    "str",
+                    "int",
                     "eeg_signal.Signal"
                 ]
             }
@@ -2309,7 +2647,7 @@
             ],
             "arguments": {
                 "time_range_before_drag": [
-                    "time_range.TimeRange"
+                    "DragState"
                 ]
             }
         },
@@ -2321,7 +2659,7 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "DragAction"
                 ]
             }
         },
@@ -2333,7 +2671,7 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "DragAction"
                 ]
             }
         },
@@ -2353,7 +2691,7 @@
             ],
             "arguments": {
                 "time_range": [
-                    "time_range.TimeRange"
+                    "PlotState"
                 ]
             }
         },
@@ -2365,10 +2703,14 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "PlotAction"
                 ],
                 "time_range": [
-                    "time_range.TimeRange"
+                    "int",
+                    "str",
+                    "utils.types.Id",
+                    "time_range.TimeRange",
+                    "bool"
                 ]
             }
         },
@@ -2380,7 +2722,7 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "PlotAction"
                 ]
             }
         }
@@ -2390,12 +2732,10 @@
             "name": "read_edf",
             "location": 15,
             "return": [
-                "Tuple[(Dict[(str, Any)], Dict[(str, Sequence[float])])]"
+                "Tuple[(Any, dict)]"
             ],
             "arguments": {
-                "path": [
-                    "str"
-                ],
+                "path": [],
                 "immutable": [
                     "str",
                     "bool"
@@ -2413,13 +2753,19 @@
             ],
             "arguments": {
                 "physical_max": [
-                    "float"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "digital_max": [
-                    "float"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "signal": [
-                    "Sequence[float]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -2431,7 +2777,9 @@
             ],
             "arguments": {
                 "data_file": [
-                    "BinaryIO"
+                    "BinaryIO",
+                    "str",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -2439,24 +2787,27 @@
             "name": "read_signals",
             "location": 161,
             "return": [
-                "Dict[(str, Sequence[float])]"
+                "dict"
             ],
             "arguments": {
                 "data_file": [
-                    "BinaryIO"
+                    "str",
+                    "bytes",
+                    "int",
+                    "Optional[str]",
+                    "Union[bytes, str]"
                 ],
                 "hdr": [
-                    "list[]",
+                    "List",
                     "str",
                     "int",
                     "Optional[int]",
-                    "list",
                     "bool"
                 ],
                 "immutable": [
                     "bool",
                     "str",
-                    "list"
+                    "List"
                 ]
             }
         },
@@ -2546,13 +2897,34 @@
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "str",
+                    "Optional[List[str]]",
+                    "bool",
+                    "List[str]",
+                    "Callable[[str],Any]",
+                    "None",
+                    "Callable[str,Any]"
                 ],
                 "dir": [
-                    "pathlib.Path"
+                    "bool",
+                    "List[str]",
+                    "float",
+                    "str",
+                    "List",
+                    "Optional[list]",
+                    "None",
+                    "Optional[List[Any]]",
+                    "slice"
                 ],
                 "excluded": [
-                    "Sequence[str]"
+                    "Tuple",
+                    "bool",
+                    "List[str]",
+                    "float",
+                    "Optional[list]",
+                    "str",
+                    "Optional[List[Any]]",
+                    "slice"
                 ],
                 "verbose": [
                     "bool",
@@ -2578,14 +2950,22 @@
             "name": "direct_deps",
             "location": 109,
             "return": [
-                "Set[module]"
+                "set"
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "str"
                 ],
                 "dir": [
-                    "pathlib.Path"
+                    "Optional[List[str]]",
+                    "None",
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "Tuple[str,str]",
+                    "Tuple[Union[str,str]]",
+                    "Optional[bytes]",
+                    "bytes"
                 ]
             }
         },
@@ -2593,18 +2973,20 @@
             "name": "all_deps",
             "location": 137,
             "return": [
-                "Set[module]"
+                "set"
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "int",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "float"
                 ],
                 "dir": [
                     "Iterable[Any]",
                     "None",
                     "float",
-                    "typing.Iterable[typing.Any]",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2616,10 +2998,16 @@
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "str",
+                    "Type",
+                    "List[List[str]]",
+                    "List[list[str]]"
                 ],
                 "directory": [
-                    "pathlib.Path"
+                    "str",
+                    "Type",
+                    "List[List[str]]",
+                    "List[list[str]]"
                 ]
             }
         },
@@ -2627,11 +3015,16 @@
             "name": "module_dirpath",
             "location": 160,
             "return": [
-                "Optional[pathlib.Path]"
+                "pathlib.Path"
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "int",
+                    "Callable",
+                    "str",
+                    "List[tuple[Union[str,str]]]",
+                    "bool",
+                    "List[Tuple[str,str]]"
                 ]
             }
         },
@@ -2643,7 +3036,7 @@
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "str"
                 ]
             }
         },
@@ -2667,11 +3060,22 @@
             "name": "union_all",
             "location": 189,
             "return": [
-                "Set[A]"
+                "Callable",
+                "MutableMapping[str, Any]",
+                "str",
+                "bool",
+                "Mapping[str, Any]"
             ],
             "arguments": {
                 "sets": [
-                    "Iterable[Set[A]]"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Union[tuple,list]",
+                    "Tuple",
+                    "List"
                 ]
             }
         },
@@ -2681,19 +3085,18 @@
             "return": [
                 "None",
                 "Optional[T]",
-                "type",
+                "Type",
                 "str",
                 "List[str]"
             ],
             "arguments": {
                 "expr": [
                     "bool",
+                    "List",
                     "None",
                     "str",
                     "Optional[bool]",
-                    "list[]",
-                    "int",
-                    "list"
+                    "int"
                 ]
             }
         },
@@ -2705,9 +3108,7 @@
             ],
             "arguments": {
                 "f": [
-                    "typing.Iterable[str]",
                     "Iterable[str]",
-                    "typing.Callable[, ]",
                     "Callable",
                     "T"
                 ]
@@ -2725,11 +3126,11 @@
                     "None",
                     "str",
                     "Optional[List[str]]",
-                    "list[str]",
-                    "Optional[Union[Any, Any]]",
-                    "typing.Any",
+                    "List[str]",
+                    "Optional[Union[Any,Any]]",
+                    "Any",
                     "Optional[IO[bytes]]",
-                    "typing.IO",
+                    "IO",
                     "Optional[bool]",
                     "bool"
                 ]
@@ -2760,7 +3161,7 @@
             "return": [
                 "None",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int"
             ],
             "arguments": {}
@@ -2774,8 +3175,8 @@
                 "str",
                 "bool",
                 "None",
-                "set[int]",
-                "tuple[typing.Union[str,str]]",
+                "Set[int]",
+                "Tuple[Union[str,str]]",
                 "raiden.utils.PaymentNetworkID",
                 "raiden.utils.TokenAddress",
                 "int",
@@ -2791,10 +3192,9 @@
             ],
             "arguments": {
                 "xs": [
-                    "list[T]",
+                    "List[T]",
                     "str",
                     "Hashable",
-                    "List[T]",
                     "Optional[int]",
                     "bool"
                 ],
@@ -2811,14 +3211,20 @@
             "name": "update_source",
             "location": 62,
             "return": [
-                "SourceState"
+                "str",
+                "Callable",
+                "Dict[str,Any]",
+                "int",
+                "List[str]"
             ],
             "arguments": {
                 "source_state": [
-                    "SourceState"
+                    "str",
+                    "Callable"
                 ],
                 "action": [
-                    "SourceAction"
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -2830,7 +3236,7 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "SourceState"
                 ]
             }
         },
@@ -2842,10 +3248,14 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "SourceState"
                 ],
                 "signal_id": [
-                    "int"
+                    "int",
+                    "utils.types.Id",
+                    "None",
+                    "Optional[int]",
+                    "meerkadomain.posvalue_objects.Id"
                 ]
             }
         },
@@ -2853,10 +3263,7 @@
             "name": "eval_node",
             "location": 38,
             "return": [
-                "typing.Callable[, ]",
-                "str",
-                "Optional[cmk.utils.type_defs.HostAddress]",
-                "bool"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "src": [
@@ -2884,7 +3291,7 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "SourceAction"
                 ]
             }
         },
@@ -2896,10 +3303,14 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "SourceAction"
                 ],
                 "signal_id": [
-                    "int"
+                    "int",
+                    "utils.types.Id",
+                    "None",
+                    "Optional[int]",
+                    "meerkadomain.posvalue_objects.Id"
                 ]
             }
         }
@@ -2940,7 +3351,6 @@
             "name": "get_n_ids_sync",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2948,7 +3358,7 @@
                     "int",
                     "str",
                     "List[List[int]]",
-                    "list[list[int]]"
+                    "List[list[int]]"
                 ]
             }
         },
@@ -2979,7 +3389,11 @@
                     "bool"
                 ],
                 "id_": [
-                    "_T1"
+                    "int",
+                    "str",
+                    "Optional[int]",
+                    "Optional[Dict[str,Any]]",
+                    "bool"
                 ]
             }
         }
@@ -2989,17 +3403,23 @@
             "name": "clamp_time_range",
             "location": 8,
             "return": [
-                "TimeRange"
+                "Union[(TimeRange, _T1)]"
             ],
             "arguments": {
                 "min_t": [
-                    "float"
+                    "int",
+                    "List[int]"
                 ],
                 "time_range": [
-                    "TimeRange"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "max_t": [
-                    "float"
+                    "float",
+                    "int",
+                    "str",
+                    "List[float]"
                 ]
             }
         },
@@ -3007,26 +3427,41 @@
             "name": "scale_at_point_limited",
             "location": 30,
             "return": [
-                "TimeRange"
+                "Union[(TimeRange, _T0)]"
             ],
             "arguments": {
                 "time_range": [
-                    "TimeRange"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "scaling_factor": [
-                    "float"
+                    "str",
+                    "int",
+                    "None",
+                    "torch.utils.data.DataLoader",
+                    "Optional[str]"
                 ],
                 "point": [
-                    "float"
+                    "int"
                 ],
                 "min_len": [
+                    "int",
                     "float"
                 ],
                 "min_t": [
-                    "float"
+                    "bool",
+                    "float",
+                    "int",
+                    "Tuple[int,int]",
+                    "Optional[int]"
                 ],
                 "max_t": [
-                    "float"
+                    "bool",
+                    "float",
+                    "int",
+                    "Tuple[int,int]",
+                    "Optional[int]"
                 ]
             }
         },
@@ -3034,20 +3469,25 @@
             "name": "scale_by_limited",
             "location": 82,
             "return": [
-                "TimeRange"
+                "Union[(TimeRange, _T1)]"
             ],
             "arguments": {
                 "scaling_factor": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "time_range": [
-                    "TimeRange"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "min_len": [
-                    "float"
+                    "float",
+                    "int"
                 ],
                 "max_len": [
-                    "float"
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -3059,10 +3499,16 @@
             ],
             "arguments": {
                 "scaling_factor": [
-                    "float"
+                    "int",
+                    "Optional[int]",
+                    "float",
+                    "Union[int,float]",
+                    "recidiviz.calculator.pipeline.utils.time_range_utils.TimeRange"
                 ],
                 "time_range": [
-                    "TimeRange"
+                    "float",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -3070,17 +3516,25 @@
             "name": "is_time_range_length_between",
             "location": 108,
             "return": [
-                "bool"
+                "bool",
+                "Union[str,int]",
+                "Callable",
+                "int"
             ],
             "arguments": {
                 "min_len": [
-                    "float"
+                    "float",
+                    "int",
+                    "Optional[Union[int,float]]"
                 ],
                 "max_len": [
-                    "float"
+                    "float",
+                    "int",
+                    "Optional[Union[int,float]]"
                 ],
                 "time_range": [
-                    "TimeRange"
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -3088,11 +3542,17 @@
             "name": "time_range_middle",
             "location": 120,
             "return": [
-                "float"
+                "float",
+                "str",
+                "int",
+                "Union[List[str],List[Any]]",
+                "List[None]"
             ],
             "arguments": {
                 "time_range": [
-                    "TimeRange"
+                    "int",
+                    "Iterable[T]",
+                    "bytes"
                 ]
             }
         },
@@ -3104,10 +3564,16 @@
             ],
             "arguments": {
                 "time_range": [
-                    "TimeRange"
+                    "int",
+                    "Sequence",
+                    "None",
+                    "Optional[int]",
+                    "T"
                 ],
                 "offset": [
-                    "float"
+                    "float",
+                    "ByteString",
+                    "str"
                 ]
             }
         },
@@ -3119,10 +3585,14 @@
             ],
             "arguments": {
                 "time_range": [
-                    "TimeRange"
+                    "int",
+                    "Iterable[T]",
+                    "bytes"
                 ],
                 "offset": [
-                    "float"
+                    "float",
+                    "bool",
+                    "ByteString"
                 ]
             }
         },
@@ -3130,11 +3600,14 @@
             "name": "time_range_length",
             "location": 144,
             "return": [
-                "float"
+                "int",
+                "str"
             ],
             "arguments": {
                 "time_range": [
-                    "TimeRange"
+                    "int",
+                    "Iterable[T]",
+                    "bytes"
                 ]
             }
         }
@@ -3149,21 +3622,33 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "OrderedDict",
+                    "str",
+                    "bool",
+                    "Optional[Sequence[Any]]",
+                    "Sequence[Any]",
+                    "None",
+                    "Optional[str]"
                 ],
                 "func": [
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "int",
                     "None",
-                    "Optional[str]",
                     "Callable",
+                    "Optional[str]",
                     "str",
-                    "bool",
-                    "typing.Callable[, ]"
+                    "bool"
                 ],
                 "func_sig": [
-                    "Sequence[str]"
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "int",
+                    "None",
+                    "Callable",
+                    "Optional[str]",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -3171,15 +3656,25 @@
             "name": "__call__",
             "location": 32,
             "return": [
-                "eeg_signal.Signal"
+                "int",
+                "Union[int, slice]",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "signal": [
-                    "eeg_signal.Signal"
+                    "Callable",
+                    "int",
+                    "starlette.types.Receive",
+                    "float",
+                    "starlette.types.Send"
                 ],
                 "params": [
-                    "utils.types.PMap_[(str, Any)]"
+                    "Callable",
+                    "int",
+                    "starlette.types.Receive",
+                    "float",
+                    "starlette.types.Send"
                 ]
             }
         },
@@ -3192,7 +3687,9 @@
             "arguments": {
                 "self": [],
                 "params": [
-                    "utils.types.PMap_[(str, Any)]"
+                    "str",
+                    "int",
+                    "List[Dict[str, Any]]"
                 ]
             }
         },
@@ -3200,7 +3697,8 @@
             "name": "__repr__",
             "location": 38,
             "return": [
-                "str"
+                "str",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": []
@@ -3213,14 +3711,18 @@
             "name": "double_click_listbox",
             "location": 8,
             "return": [
-                "Tuple[(bool, bool, tuple)]"
+                "Tuple[(Any, Any, Union[(tuple, _T0)])]"
             ],
             "arguments": {
                 "state": [
-                    "tuple"
+                    "List"
                 ],
                 "options": [
-                    "Sequence[str]"
+                    "str",
+                    "Sequence[str]",
+                    "float",
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -3231,7 +3733,7 @@
             "location": 13,
             "return": [
                 "bool",
-                "typing.Generator[tuple[typing.Union[int,str,list[],tuple[typing.Union[float,float]],dict[str, int]]]]"
+                "Generator[tuple[Union[int,str,list,tuple[Union[float,float]],dict[str,int]]]]"
             ],
             "arguments": {
                 "name": [
@@ -3247,7 +3749,7 @@
                     "None",
                     "Optional[Type]",
                     "float",
-                    "typing.Type"
+                    "Type"
                 ],
                 "width": [
                     "str",
@@ -3273,6 +3775,11 @@
             ],
             "arguments": {
                 "cond": [
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -3286,10 +3793,16 @@
             "arguments": {
                 "self": [],
                 "begin": [
-                    "Callable[(..., A)]"
+                    "int",
+                    "float",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ],
                 "end": [
-                    "Callable[([], Any)]"
+                    "int",
+                    "float",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ]
             }
         },
@@ -3297,7 +3810,9 @@
             "name": "__enter__",
             "location": 29,
             "return": [
-                "utils.types.IO_[A]"
+                "mypy.types.Type",
+                "types.Resolver",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -3307,7 +3822,7 @@
             "name": "__exit__",
             "location": 32,
             "return": [
-                "utils.types.IO_[Optional[bool]]"
+                "Optional[bool]"
             ],
             "arguments": {
                 "self": [],
@@ -3316,17 +3831,16 @@
                     "Optional[BaseException]",
                     "int",
                     "BaseException",
-                    "Union[int, str]",
-                    "float",
-                    "None",
                     "Type",
-                    "typing.Type"
+                    "Union[int,str]",
+                    "float",
+                    "None"
                 ],
                 "exc": [
                     "None",
                     "Optional[types.TracebackType]",
                     "str",
-                    "typing.Type",
+                    "Type",
                     "BaseException",
                     "Optional[Type[BaseException]]",
                     "Exception",
@@ -3337,7 +3851,7 @@
                     "None",
                     "Optional[types.TracebackType]",
                     "str",
-                    "typing.Type",
+                    "Type",
                     "BaseException",
                     "Optional[Type[BaseException]]",
                     "Exception",
@@ -3352,20 +3866,34 @@
             "name": "str_combo",
             "location": 14,
             "return": [
-                "utils.types.IO_[Tuple[(bool, str)]]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "List[str]"
                 ],
                 "current_option": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "int",
+                    "dict",
+                    "Optional[Sequence[Any]]"
                 ],
                 "options": [
-                    "Sequence[str]"
+                    "str",
+                    "bytes",
+                    "int",
+                    "Union[str,bytes]",
+                    "Dict[str,str]"
                 ],
                 "label_left": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -3373,27 +3901,46 @@
             "name": "str_combo_with_none",
             "location": 42,
             "return": [
-                "utils.types.IO_[Tuple[(bool, Optional[str])]]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "name": [
-                    "str"
-                ],
-                "o_current_option": [
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Dict",
+                    "int",
+                    "None",
                     "Optional[str]"
                 ],
+                "o_current_option": [
+                    "Optional[str]",
+                    "str",
+                    "Optional[Dict[str,Any]]",
+                    "None",
+                    "Dict[str,Any]"
+                ],
                 "options": [
-                    "Sequence[str]"
+                    "List[str]",
+                    "Sequence[str]",
+                    "Type",
+                    "str",
+                    "Optional[str]"
                 ],
                 "nothing_text": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "types.ModuleType",
                     "Optional[List[str]]"
                 ],
                 "label_left": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "int",
+                    "Dict",
+                    "Optional[str]"
                 ]
             }
         },
@@ -3401,11 +3948,15 @@
             "name": "ordered_dict_to_list",
             "location": 87,
             "return": [
-                "Sequence[Tuple[(K, A)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "odict": [
-                    "utils.types.OrderedDict_[(K, A)]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "utils.types.OrderedDict_[utils.types.K,utils.types.A]",
+                    "int",
+                    "cmk.utils.type_defs.HostName"
                 ]
             }
         },
@@ -3413,11 +3964,13 @@
             "name": "ordered_dict_keys",
             "location": 90,
             "return": [
-                "Sequence[K]"
+                "list"
             ],
             "arguments": {
                 "odict": [
-                    "utils.types.OrderedDict_[(K, A)]"
+                    "Dict",
+                    "utils.types.OrderedDict_[utils.types.K,utils.types.A]",
+                    "str"
                 ]
             }
         },
@@ -3425,11 +3978,13 @@
             "name": "ordered_dict_values",
             "location": 93,
             "return": [
-                "Sequence[K]"
+                "list"
             ],
             "arguments": {
                 "odict": [
-                    "utils.types.OrderedDict_[(K, A)]"
+                    "utils.types.OrderedDict_[utils.types.K, utils.types.A]",
+                    "bool",
+                    "int"
                 ]
             }
         }
@@ -3439,17 +3994,20 @@
             "name": "str_listbox",
             "location": 12,
             "return": [
-                "utils.types.IO_[Tuple[(bool, str)]]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "label": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "current_option": [
-                    "str"
+                    "str",
+                    "Callable[...,T]"
                 ],
                 "options": [
-                    "Sequence[str]"
+                    "str",
+                    "Mapping[str,Any]"
                 ]
             }
         }
@@ -3476,7 +4034,7 @@
             "name": "__enter__",
             "location": 14,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "imc": [
@@ -3488,7 +4046,7 @@
             "name": "__exit__",
             "location": 18,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "imc": [
@@ -3518,7 +4076,7 @@
             "name": "__enter__",
             "location": 29,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "ims": [
@@ -3530,7 +4088,7 @@
             "name": "__exit__",
             "location": 33,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "ims": [
@@ -3540,1496 +4098,6 @@
         }
     },
     "sensa-master/components/__init__.py": {},
-    "sensa-master/mypy_stubs/mypy-data/numpy-mypy/numpy/__init__.py": {
-        "array": {
-            "name": "array",
-            "location": 441,
-            "return": [],
-            "arguments": {
-                "object": [],
-                "dtype": [],
-                "copy": [],
-                "order": [],
-                "subok": [],
-                "ndmin": []
-            }
-        },
-        "asarray": {
-            "name": "asarray",
-            "location": 444,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "dtype": [],
-                "order": []
-            }
-        },
-        "asanyarray": {
-            "name": "asanyarray",
-            "location": 445,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "dtype": [],
-                "order": []
-            }
-        },
-        "asmatrix": {
-            "name": "asmatrix",
-            "location": 446,
-            "return": [],
-            "arguments": {
-                "data": [],
-                "dtype": []
-            }
-        },
-        "ascontiguousarray": {
-            "name": "ascontiguousarray",
-            "location": 447,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "dtype": []
-            }
-        },
-        "copy": {
-            "name": "copy",
-            "location": 448,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "order": []
-            }
-        },
-        "empty": {
-            "name": "empty",
-            "location": 449,
-            "return": [],
-            "arguments": {
-                "shape": [],
-                "dtype": [],
-                "order": []
-            }
-        },
-        "empty_like": {
-            "name": "empty_like",
-            "location": 450,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "dtype": [],
-                "order": [],
-                "subok": []
-            }
-        },
-        "eye": {
-            "name": "eye",
-            "location": 451,
-            "return": [],
-            "arguments": {
-                "N": [],
-                "M": [],
-                "k": [],
-                "dtype": []
-            }
-        },
-        "frombuffer": {
-            "name": "frombuffer",
-            "location": 452,
-            "return": [],
-            "arguments": {
-                "buffer": [],
-                "dtype": [],
-                "count": [],
-                "offset": []
-            }
-        },
-        "fromfile": {
-            "name": "fromfile",
-            "location": 454,
-            "return": [],
-            "arguments": {
-                "file": [],
-                "dtype": [],
-                "count": [],
-                "sep": []
-            }
-        },
-        "full": {
-            "name": "full",
-            "location": 455,
-            "return": [],
-            "arguments": {
-                "shape": [],
-                "fill_value": [],
-                "dtype": [],
-                "order": []
-            }
-        },
-        "full_like": {
-            "name": "full_like",
-            "location": 457,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "fill_value": [],
-                "dtype": [],
-                "order": [],
-                "subok": []
-            }
-        },
-        "fromfunction": {
-            "name": "fromfunction",
-            "location": 459,
-            "return": [],
-            "arguments": {
-                "function": [],
-                "shape": [],
-                "dtype": []
-            }
-        },
-        "fromiter": {
-            "name": "fromiter",
-            "location": 460,
-            "return": [],
-            "arguments": {
-                "iterable": [],
-                "dytpe": [],
-                "count": []
-            }
-        },
-        "fromstring": {
-            "name": "fromstring",
-            "location": 461,
-            "return": [],
-            "arguments": {
-                "string": [],
-                "dtype": [],
-                "count": [],
-                "sep": []
-            }
-        },
-        "identity": {
-            "name": "identity",
-            "location": 462,
-            "return": [],
-            "arguments": {
-                "n": [],
-                "dtype": []
-            }
-        },
-        "loadtxt": {
-            "name": "loadtxt",
-            "location": 463,
-            "return": [],
-            "arguments": {
-                "fname": [],
-                "dtype": [],
-                "comments": [],
-                "delimiter": [],
-                "converters": [],
-                "skiprows": [],
-                "usecols": [],
-                "unpack": [],
-                "ndmin": []
-            }
-        },
-        "ones": {
-            "name": "ones",
-            "location": 467,
-            "return": [],
-            "arguments": {
-                "shape": [],
-                "dtype": [],
-                "order": []
-            }
-        },
-        "ones_like": {
-            "name": "ones_like",
-            "location": 468,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "dtype": [],
-                "order": [],
-                "subok": []
-            }
-        },
-        "zeros": {
-            "name": "zeros",
-            "location": 469,
-            "return": [],
-            "arguments": {
-                "shape": [],
-                "dtype": [],
-                "order": []
-            }
-        },
-        "zeros_like": {
-            "name": "zeros_like",
-            "location": 470,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "dtype": [],
-                "order": [],
-                "subok": []
-            }
-        },
-        "flagsobj.__getitem__": {
-            "name": "__getitem__",
-            "location": 28,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "item": []
-            }
-        },
-        "flagsobj.__setitem__": {
-            "name": "__setitem__",
-            "location": 29,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "item": [],
-                "value": []
-            }
-        },
-        "flatiter.copy": {
-            "name": "copy",
-            "location": 50,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.all": {
-            "name": "all",
-            "location": 83,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "out": [],
-                "keepdims": []
-            }
-        },
-        "_ArrayLike.any": {
-            "name": "any",
-            "location": 86,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "out": [],
-                "keepdims": []
-            }
-        },
-        "_ArrayLike.argmax": {
-            "name": "argmax",
-            "location": 89,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.argmin": {
-            "name": "argmin",
-            "location": 92,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.argpartition": {
-            "name": "argpartition",
-            "location": 95,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "kth": [],
-                "axis": [],
-                "kind": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.argsort": {
-            "name": "argsort",
-            "location": 98,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "kind": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.astype": {
-            "name": "astype",
-            "location": 101,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "dtype": [],
-                "order": [],
-                "casting": [],
-                "subok": [],
-                "copy": []
-            }
-        },
-        "_ArrayLike.byteswap": {
-            "name": "byteswap",
-            "location": 104,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "inplace": []
-            }
-        },
-        "_ArrayLike.choose": {
-            "name": "choose",
-            "location": 106,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "choices": [],
-                "out": [],
-                "mode": []
-            }
-        },
-        "_ArrayLike.clip": {
-            "name": "clip",
-            "location": 109,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "a_min": [],
-                "a_max": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.compress": {
-            "name": "compress",
-            "location": 112,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "condition": [],
-                "axis": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.conj": {
-            "name": "conj",
-            "location": 115,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.conjugate": {
-            "name": "conjugate",
-            "location": 117,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.copy": {
-            "name": "copy",
-            "location": 119,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.cumprod": {
-            "name": "cumprod",
-            "location": 121,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "dtype": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.cumsum": {
-            "name": "cumsum",
-            "location": 124,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "dtype": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.diagonal": {
-            "name": "diagonal",
-            "location": 127,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "offset": [],
-                "axis1": [],
-                "axis2": []
-            }
-        },
-        "_ArrayLike.dot": {
-            "name": "dot",
-            "location": 129,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "b": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.dump": {
-            "name": "dump",
-            "location": 131,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "file": []
-            }
-        },
-        "_ArrayLike.dumps": {
-            "name": "dumps",
-            "location": 133,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.fill": {
-            "name": "fill",
-            "location": 135,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.flatten": {
-            "name": "flatten",
-            "location": 137,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.getfield": {
-            "name": "getfield",
-            "location": 139,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "dtype": [],
-                "offset": []
-            }
-        },
-        "_ArrayLike.item": {
-            "name": "item",
-            "location": 141,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "args": []
-            }
-        },
-        "_ArrayLike.itemset": {
-            "name": "itemset",
-            "location": 143,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "arg0": [],
-                "arg1": []
-            }
-        },
-        "_ArrayLike.max": {
-            "name": "max",
-            "location": 145,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.mean": {
-            "name": "mean",
-            "location": 148,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "dtype": [],
-                "out": [],
-                "keepdims": []
-            }
-        },
-        "_ArrayLike.min": {
-            "name": "min",
-            "location": 151,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.newbyteorder": {
-            "name": "newbyteorder",
-            "location": 154,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "new_order": []
-            }
-        },
-        "_ArrayLike.nonzero": {
-            "name": "nonzero",
-            "location": 156,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.partition": {
-            "name": "partition",
-            "location": 158,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "kth": [],
-                "axis": [],
-                "kind": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.prod": {
-            "name": "prod",
-            "location": 161,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "dtype": [],
-                "out": [],
-                "keepdims": []
-            }
-        },
-        "_ArrayLike.ptp": {
-            "name": "ptp",
-            "location": 164,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.put": {
-            "name": "put",
-            "location": 167,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "ind": [],
-                "v": [],
-                "mode": []
-            }
-        },
-        "_ArrayLike.ravel": {
-            "name": "ravel",
-            "location": 169,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.repeat": {
-            "name": "repeat",
-            "location": 171,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "repeats": [],
-                "axis": []
-            }
-        },
-        "_ArrayLike.reshape": {
-            "name": "reshape",
-            "location": 174,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "newshape": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.resize": {
-            "name": "resize",
-            "location": 177,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "new_shape": [],
-                "refcheck": []
-            }
-        },
-        "_ArrayLike.round": {
-            "name": "round",
-            "location": 179,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "decimals": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.searchsorted": {
-            "name": "searchsorted",
-            "location": 182,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "v": [],
-                "side": [],
-                "sorter": []
-            }
-        },
-        "_ArrayLike.setfield": {
-            "name": "setfield",
-            "location": 185,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "val": [],
-                "dtype": [],
-                "offset": []
-            }
-        },
-        "_ArrayLike.setflags": {
-            "name": "setflags",
-            "location": 187,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "write": [],
-                "align": [],
-                "uic": []
-            }
-        },
-        "_ArrayLike.sort": {
-            "name": "sort",
-            "location": 190,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "kind": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.squeeze": {
-            "name": "squeeze",
-            "location": 192,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": []
-            }
-        },
-        "_ArrayLike.std": {
-            "name": "std",
-            "location": 194,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "dtype": [],
-                "out": [],
-                "ddof": [],
-                "keepdims": []
-            }
-        },
-        "_ArrayLike.sum": {
-            "name": "sum",
-            "location": 197,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "dtype": [],
-                "out": [],
-                "keepdims": []
-            }
-        },
-        "_ArrayLike.swapaxes": {
-            "name": "swapaxes",
-            "location": 201,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis1": [],
-                "axis2": []
-            }
-        },
-        "_ArrayLike.take": {
-            "name": "take",
-            "location": 203,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "indices": [],
-                "axis": [],
-                "out": [],
-                "mode": []
-            }
-        },
-        "_ArrayLike.tobytes": {
-            "name": "tobytes",
-            "location": 207,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.tofile": {
-            "name": "tofile",
-            "location": 209,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "fid": [],
-                "sep": [],
-                "format": []
-            }
-        },
-        "_ArrayLike.tolist": {
-            "name": "tolist",
-            "location": 212,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.tostring": {
-            "name": "tostring",
-            "location": 214,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "order": []
-            }
-        },
-        "_ArrayLike.trace": {
-            "name": "trace",
-            "location": 216,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "offset": [],
-                "axis1": [],
-                "axis2": [],
-                "dtype": [],
-                "out": []
-            }
-        },
-        "_ArrayLike.transpose": {
-            "name": "transpose",
-            "location": 219,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axes": []
-            }
-        },
-        "_ArrayLike.var": {
-            "name": "var",
-            "location": 221,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "axis": [],
-                "dtype": [],
-                "out": [],
-                "ddof": [],
-                "keepdims": []
-            }
-        },
-        "_ArrayLike.view": {
-            "name": "view",
-            "location": 224,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "dtype": [],
-                "type": []
-            }
-        },
-        "_ArrayLike.__abs__": {
-            "name": "__abs__",
-            "location": 231,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__add__": {
-            "name": "__add__",
-            "location": 233,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__and__": {
-            "name": "__and__",
-            "location": 235,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__array__": {
-            "name": "__array__",
-            "location": 237,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "dtype": []
-            }
-        },
-        "_ArrayLike.__array_prepare__": {
-            "name": "__array_prepare__",
-            "location": 239,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "context": []
-            }
-        },
-        "_ArrayLike.__array_wrap__": {
-            "name": "__array_wrap__",
-            "location": 241,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "context": []
-            }
-        },
-        "_ArrayLike.__bool__": {
-            "name": "__bool__",
-            "location": 243,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__complex__": {
-            "name": "__complex__",
-            "location": 245,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__contains__": {
-            "name": "__contains__",
-            "location": 247,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "key": []
-            }
-        },
-        "_ArrayLike.__copy__": {
-            "name": "__copy__",
-            "location": 249,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__deepcopy__": {
-            "name": "__deepcopy__",
-            "location": 251,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__delattr__": {
-            "name": "__delattr__",
-            "location": 253,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "name": []
-            }
-        },
-        "_ArrayLike.__delitem__": {
-            "name": "__delitem__",
-            "location": 255,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "key": []
-            }
-        },
-        "_ArrayLike.__dir__": {
-            "name": "__dir__",
-            "location": 257,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__divmod__": {
-            "name": "__divmod__",
-            "location": 259,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__eq__": {
-            "name": "__eq__",
-            "location": 261,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__float__": {
-            "name": "__float__",
-            "location": 263,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__floordiv__": {
-            "name": "__floordiv__",
-            "location": 265,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__ge__": {
-            "name": "__ge__",
-            "location": 267,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__getattribute__": {
-            "name": "__getattribute__",
-            "location": 269,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "name": []
-            }
-        },
-        "_ArrayLike.__getitem__": {
-            "name": "__getitem__",
-            "location": 271,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "key": []
-            }
-        },
-        "_ArrayLike.__gt__": {
-            "name": "__gt__",
-            "location": 273,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__iadd__": {
-            "name": "__iadd__",
-            "location": 275,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__iand__": {
-            "name": "__iand__",
-            "location": 277,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__ifloordiv__": {
-            "name": "__ifloordiv__",
-            "location": 279,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__ilshift__": {
-            "name": "__ilshift__",
-            "location": 281,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__imatmul__": {
-            "name": "__imatmul__",
-            "location": 283,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__imod__": {
-            "name": "__imod__",
-            "location": 285,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__imul__": {
-            "name": "__imul__",
-            "location": 287,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__index__": {
-            "name": "__index__",
-            "location": 289,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__int__": {
-            "name": "__int__",
-            "location": 291,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__invert__": {
-            "name": "__invert__",
-            "location": 293,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__ior__": {
-            "name": "__ior__",
-            "location": 295,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__ipow__": {
-            "name": "__ipow__",
-            "location": 297,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__irshift__": {
-            "name": "__irshift__",
-            "location": 299,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__isub__": {
-            "name": "__isub__",
-            "location": 301,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__iter__": {
-            "name": "__iter__",
-            "location": 303,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__itruediv__": {
-            "name": "__itruediv__",
-            "location": 305,
-            "return": [],
-            "arguments": {
-                "sel": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__ixor__": {
-            "name": "__ixor__",
-            "location": 307,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__le__": {
-            "name": "__le__",
-            "location": 309,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__len__": {
-            "name": "__len__",
-            "location": 311,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__lshift__": {
-            "name": "__lshift__",
-            "location": 313,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__lt__": {
-            "name": "__lt__",
-            "location": 315,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__matmul__": {
-            "name": "__matmul__",
-            "location": 317,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__mod__": {
-            "name": "__mod__",
-            "location": 319,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__mul__": {
-            "name": "__mul__",
-            "location": 321,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__ne__": {
-            "name": "__ne__",
-            "location": 323,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__neg__": {
-            "name": "__neg__",
-            "location": 325,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__or__": {
-            "name": "__or__",
-            "location": 327,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__pos__": {
-            "name": "__pos__",
-            "location": 329,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__pow__": {
-            "name": "__pow__",
-            "location": 331,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__radd__": {
-            "name": "__radd__",
-            "location": 333,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rand__": {
-            "name": "__rand__",
-            "location": 335,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rdivmod__": {
-            "name": "__rdivmod__",
-            "location": 337,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rfloordiv__": {
-            "name": "__rfloordiv__",
-            "location": 339,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rlshift__": {
-            "name": "__rlshift__",
-            "location": 341,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rmatmul__": {
-            "name": "__rmatmul__",
-            "location": 343,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rmod__": {
-            "name": "__rmod__",
-            "location": 345,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rmul__": {
-            "name": "__rmul__",
-            "location": 347,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__ror__": {
-            "name": "__ror__",
-            "location": 349,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rpow__": {
-            "name": "__rpow__",
-            "location": 351,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rrshift__": {
-            "name": "__rrshift__",
-            "location": 353,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rshift__": {
-            "name": "__rshift__",
-            "location": 355,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rsub__": {
-            "name": "__rsub__",
-            "location": 357,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rtruediv__": {
-            "name": "__rtruediv__",
-            "location": 359,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__rxor__": {
-            "name": "__rxor__",
-            "location": 361,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__setattr__": {
-            "name": "__setattr__",
-            "location": 363,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "name": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__setitem__": {
-            "name": "__setitem__",
-            "location": 365,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "key": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__str__": {
-            "name": "__str__",
-            "location": 367,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "_ArrayLike.__sub__": {
-            "name": "__sub__",
-            "location": 369,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__truediv__": {
-            "name": "__truediv__",
-            "location": 371,
-            "return": [],
-            "arguments": {
-                "sel": [],
-                "value": []
-            }
-        },
-        "_ArrayLike.__xor__": {
-            "name": "__xor__",
-            "location": 373,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "ndarray.__init__": {
-            "name": "__init__",
-            "location": 433,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "shape": [],
-                "dtype": [],
-                "buffer": [],
-                "offset": [],
-                "strides": [],
-                "order": []
-            }
-        }
-    },
     "sensa-master/utils/actions.py": {
         "err_unsupported_action": {
             "name": "err_unsupported_action",
@@ -5062,11 +4130,20 @@
             "name": "uniform_dict_type",
             "location": 21,
             "return": [
-                "type"
+                "Type",
+                "mypy.types.Type",
+                "str"
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(K, A)]"
+                    "Dict[str,Any]",
+                    "Dict[str,set[str]]",
+                    "Dict",
+                    "Dict[str,Set[str]]",
+                    "Union[str,dict]",
+                    "Optional[int]",
+                    "mypy.types.Overloaded",
+                    "Optional[Union[str,Any,Any,Any]]"
                 ]
             }
         },
@@ -5074,14 +4151,21 @@
             "name": "only_keys",
             "location": 31,
             "return": [
-                "Dict[(K, A)]"
+                "dict"
             ],
             "arguments": {
                 "dict": [
-                    "Dict[(K, A)]"
+                    "str",
+                    "int",
+                    "VT",
+                    "KT",
+                    "Union[str,int]"
                 ],
                 "keys": [
-                    "Iterable[K]"
+                    "str",
+                    "VT",
+                    "KT",
+                    "Union[str,int]"
                 ]
             }
         },
@@ -5089,15 +4173,12 @@
             "name": "dict_to_function",
             "location": 36,
             "return": [
-                "typing.Callable[, ]",
-                "bool",
-                "mypy.types.CallableType",
-                "Dict[str, Any]",
-                "str"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(K, A)]"
+                    "int",
+                    "mypy.types.Type"
                 ]
             }
         },
@@ -5109,7 +4190,10 @@
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(K, Any)]"
+                    "dict",
+                    "Dict[str, Any]",
+                    "Dict[Hashable, Any]",
+                    "Dict[str, \"Outcome\"]"
                 ]
             }
         }
@@ -5119,11 +4203,20 @@
             "name": "either",
             "location": 42,
             "return": [
-                "R"
+                "bool",
+                "int",
+                "Optional[Any]",
+                "str"
             ],
             "arguments": {
                 "e": [
-                    "Either[(A, B)]"
+                    "bool",
+                    "str",
+                    "None",
+                    "mypy.types.Type",
+                    "mypy.types.CallableType",
+                    "Optional[str]",
+                    "int"
                 ],
                 "l_fn": [
                     "bool",
@@ -5157,10 +4250,9 @@
                 ],
                 "val": [
                     "int",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "bool"
                 ]
             }
@@ -5203,9 +4295,8 @@
                 "left": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5214,17 +4305,15 @@
             "name": "res_val",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "left": [
                     "bool",
                     "str",
-                    "list",
-                    "list[]",
+                    "List",
                     "IO[str]",
-                    "typing.IO"
+                    "IO"
                 ]
             }
         },
@@ -5252,10 +4341,9 @@
                 ],
                 "val": [
                     "int",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "bool"
                 ]
             }
@@ -5290,16 +4378,14 @@
             "name": "err_val",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "right": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5315,10 +4401,9 @@
                 "right": [
                     "bool",
                     "str",
-                    "list",
-                    "list[]",
+                    "List",
                     "IO[str]",
-                    "typing.IO"
+                    "IO"
                 ]
             }
         },
@@ -5409,7 +4494,7 @@
             "name": "iterate",
             "location": 50,
             "return": [
-                "Iterable[A]"
+                "Generator[(_T1, Any, Any)]"
             ],
             "arguments": {
                 "f": [
@@ -5418,7 +4503,8 @@
                     "str"
                 ],
                 "seed": [
-                    "A"
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -5426,14 +4512,14 @@
             "name": "take",
             "location": 57,
             "return": [
-                "List[A]"
+                "list"
             ],
             "arguments": {
                 "n": [
                     "int"
                 ],
                 "iterable": [
-                    "Iterable[A]"
+                    "int"
                 ]
             }
         },
@@ -5448,9 +4534,7 @@
         "sequence.chained": {
             "name": "chained",
             "location": 36,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {}
         }
     },
@@ -5459,7 +4543,9 @@
             "name": "get_mouse_position",
             "location": 11,
             "return": [
-                "utils.types.IO_"
+                "str",
+                "int",
+                "BinaryIO"
             ],
             "arguments": {}
         },
@@ -5467,7 +4553,7 @@
             "name": "get_window_rect",
             "location": 15,
             "return": [
-                "utils.types.IO_[utils.rect.Rect]"
+                "utils.rect.Rect"
             ],
             "arguments": {}
         },
@@ -5475,7 +4561,7 @@
             "name": "get_window_content_rect",
             "location": 24,
             "return": [
-                "utils.types.IO_[utils.rect.Rect]"
+                "utils.rect.Rect"
             ],
             "arguments": {}
         },
@@ -5483,7 +4569,7 @@
             "name": "get_item_rect",
             "location": 34,
             "return": [
-                "utils.types.IO_[utils.rect.Rect]"
+                "utils.rect.Rect"
             ],
             "arguments": {}
         },
@@ -5491,26 +4577,25 @@
             "name": "add_rect_coords",
             "location": 38,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "draw_list": [
                     "bool"
                 ],
                 "top_left": [
-                    "Union[int, \"BitVec\"]",
+                    "Union[int,BitVec]",
                     "int"
                 ],
                 "bottom_right": [
-                    "Union[int, \"BitVec\"]",
+                    "Union[int,BitVec]",
                     "int"
                 ],
                 "color": [
                     "int",
+                    "List",
                     "List[List[int]]",
-                    "list[list[int]]",
-                    "list",
-                    "list[]"
+                    "List[list[int]]"
                 ]
             }
         },
@@ -5518,33 +4603,33 @@
             "name": "add_rect",
             "location": 50,
             "return": [
-                "utils.types.IO_[None]"
+                "None"
             ],
             "arguments": {
                 "draw_list": [
-                    "list[]",
-                    "list",
-                    "list[float]",
+                    "List",
                     "List[float]",
                     "int",
-                    "list[list[typing.Any]]",
+                    "List[list[Any]]",
                     "Iterable[str]",
-                    "list[list[T]]",
+                    "List[list[T]]",
                     "List[List[Any]]",
                     "List[List[T]]"
                 ],
                 "rect": [
-                    "utils.rect.Rect"
+                    "int",
+                    "float",
+                    "List[List[T]]",
+                    "str",
+                    "List[list[T]]"
                 ],
                 "color": [
-                    "list[]",
-                    "list",
-                    "list[float]",
+                    "List",
                     "List[float]",
                     "int",
-                    "list[list[typing.Any]]",
+                    "List[list[Any]]",
                     "Iterable[str]",
-                    "list[list[T]]",
+                    "List[list[T]]",
                     "List[List[Any]]",
                     "List[List[T]]"
                 ]
@@ -5618,16 +4703,14 @@
             "name": "val",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "nothing": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5657,9 +4740,8 @@
                 "fn": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5677,9 +4759,8 @@
                 "fn": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5708,10 +4789,9 @@
                 ],
                 "val": [
                     "int",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "bool"
                 ]
             }
@@ -5778,9 +4858,8 @@
                 "just": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5811,9 +4890,8 @@
                 "fn": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5833,9 +4911,8 @@
                 "fn": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5872,14 +4949,18 @@
             "name": "limit_upper",
             "location": 20,
             "return": [
-                "A"
+                "str",
+                "Iterable[Any]",
+                "int"
             ],
             "arguments": {
                 "x": [
-                    "A"
+                    "str",
+                    "int"
                 ],
                 "high": [
-                    "A"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -5887,14 +4968,25 @@
             "name": "limit_lower",
             "location": 23,
             "return": [
-                "A"
+                "bool",
+                "Set[str]",
+                "str",
+                "int"
             ],
             "arguments": {
                 "x": [
-                    "A"
+                    "int",
+                    "Set[str]",
+                    "str",
+                    "Callable[[None],bool]",
+                    "Callable[None,bool]"
                 ],
                 "low": [
-                    "A"
+                    "int",
+                    "Set[str]",
+                    "str",
+                    "Callable[[None],bool]",
+                    "Callable[None,bool]"
                 ]
             }
         },
@@ -5929,16 +5021,14 @@
                 "a": [
                     "int",
                     "imgui.Vec2",
-                    "str",
-                    "typing.Sequence[int]",
-                    "Sequence[int]"
+                    "Sequence[int]",
+                    "str"
                 ],
                 "offset": [
                     "int",
                     "imgui.Vec2",
-                    "str",
-                    "typing.Sequence[int]",
-                    "Sequence[int]"
+                    "Sequence[int]",
+                    "str"
                 ]
             }
         },
@@ -5954,16 +5044,14 @@
                 "a": [
                     "int",
                     "imgui.Vec2",
-                    "str",
-                    "typing.Sequence[int]",
-                    "Sequence[int]"
+                    "Sequence[int]",
+                    "str"
                 ],
                 "offset": [
                     "int",
                     "imgui.Vec2",
-                    "str",
-                    "typing.Sequence[int]",
-                    "Sequence[int]"
+                    "Sequence[int]",
+                    "str"
                 ]
             }
         },
@@ -5971,17 +5059,23 @@
             "name": "range_incl",
             "location": 40,
             "return": [
-                "Iterable[int]"
+                "range"
             ],
             "arguments": {
                 "first": [
-                    "int"
+                    "int",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "None"
                 ],
                 "last": [
-                    "int"
+                    "int",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ],
                 "step": [
-                    "int"
+                    "int",
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -5989,14 +5083,23 @@
             "name": "get_in",
             "location": 50,
             "return": [
-                "B"
+                "str",
+                "bytes",
+                "Union[int,float,complex]",
+                "Dict"
             ],
             "arguments": {
                 "path": [
-                    "Iterable"
+                    "Iterable[Any]",
+                    "int",
+                    "bool",
+                    "str"
                 ],
                 "x": [
-                    "A"
+                    "str",
+                    "int",
+                    "bool",
+                    "Optional[int]"
                 ]
             }
         }
@@ -6006,11 +5109,19 @@
             "name": "invert",
             "location": 19,
             "return": [
-                "utils.types.PMap_[(B, A)]"
+                "float",
+                "Dict[str, str]",
+                "bool",
+                "tuple",
+                "int",
+                "Dict[str, Any]",
+                "Iterable[int]"
             ],
             "arguments": {
                 "d": [
-                    "utils.types.PMap_[(A, B)]"
+                    "Dict",
+                    "int",
+                    "Machine"
                 ]
             }
         },
@@ -6022,7 +5133,8 @@
             ],
             "arguments": {
                 "map": [
-                    "utils.types.PMap_[(K, A)]"
+                    "str",
+                    "List[str]"
                 ]
             }
         }
@@ -6036,16 +5148,22 @@
             ],
             "arguments": {
                 "xs": [
-                    "Sequence[A]"
+                    "List[cirq.Qid]",
+                    "List[str]",
+                    "List[float]",
+                    "bool"
                 ],
                 "pred": [
                     "str",
                     "int",
                     "Match[str]",
-                    "typing.Match"
+                    "Match"
                 ],
                 "msg": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int",
+                    "Match[str]"
                 ]
             }
         },
@@ -6057,10 +5175,14 @@
             ],
             "arguments": {
                 "x": [
-                    "A"
+                    "int",
+                    "str",
+                    "snorkel.types.DataPoint"
                 ],
                 "preds": [
-                    "Sequence"
+                    "str",
+                    "int",
+                    "snorkel.types.DataPoint"
                 ]
             }
         },
@@ -6068,11 +5190,14 @@
             "name": "one_is_true",
             "location": 23,
             "return": [
-                "bool"
+                "bool",
+                "Optional[int]",
+                "int",
+                "Optional[bool]"
             ],
             "arguments": {
                 "bools": [
-                    "Sequence[bool]"
+                    "bool"
                 ]
             }
         }
@@ -6082,11 +5207,14 @@
             "name": "rect_width",
             "location": 7,
             "return": [
-                "float"
+                "int",
+                "List[int]",
+                "str"
             ],
             "arguments": {
                 "rect": [
-                    "Rect"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -6094,11 +5222,15 @@
             "name": "rect_height",
             "location": 11,
             "return": [
-                "float"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "rect": [
-                    "Rect"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -6110,7 +5242,9 @@
             ],
             "arguments": {
                 "rect": [
-                    "Rect"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -6118,14 +5252,18 @@
             "name": "is_in_rect",
             "location": 20,
             "return": [
-                "bool"
+                "bool",
+                "Optional[int]",
+                "str",
+                "Optional[List[int]]"
             ],
             "arguments": {
                 "point": [
                     "imgui.Vec2"
                 ],
                 "rect": [
-                    "Rect"
+                    "Callable[[T],bool]",
+                    "Callable[T,bool]"
                 ]
             }
         }
@@ -6139,7 +5277,9 @@
             ],
             "arguments": {
                 "seq": [
-                    "Sequence[A]"
+                    "str",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -6151,7 +5291,7 @@
             ],
             "arguments": {
                 "seq": [
-                    "Sequence"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -6159,11 +5299,12 @@
             "name": "sequence_type",
             "location": 34,
             "return": [
-                "utils.either.Either[(int, type)]"
+                "Union[(utils.either.Left, utils.either.Right)]"
             ],
             "arguments": {
                 "seq": [
-                    "Sequence"
+                    "str",
+                    "Optional[List[\"custom_index\"]]"
                 ]
             }
         },
@@ -6171,11 +5312,12 @@
             "name": "uniform_sequence_type",
             "location": 53,
             "return": [
-                "type"
+                "typing.Type"
             ],
             "arguments": {
                 "seq": [
-                    "Sequence[A]"
+                    "str",
+                    "Exception"
                 ]
             }
         },
@@ -6187,7 +5329,7 @@
             ],
             "arguments": {
                 "seq": [
-                    "Sequence[A]"
+                    "Type['Frame']"
                 ]
             }
         },
@@ -6195,14 +5337,18 @@
             "name": "optional_index",
             "location": 75,
             "return": [
-                "Optional[int]"
+                "None",
+                "Optional[str]",
+                "str",
+                "Optional[List[Any]]"
             ],
             "arguments": {
                 "seq": [
-                    "Sequence[A]"
+                    "int",
+                    "T"
                 ],
                 "of": [
-                    "A"
+                    "int"
                 ]
             }
         },
@@ -6210,14 +5356,14 @@
             "name": "parts_of_len",
             "location": 91,
             "return": [
-                "List[List[A]]"
+                "list"
             ],
             "arguments": {
-                "xs": [
-                    "Sequence[A]"
-                ],
+                "xs": [],
                 "len": [
-                    "int"
+                    "int",
+                    "Sequence[T]",
+                    "str"
                 ]
             }
         }
@@ -6227,17 +5373,20 @@
             "name": "set_in_tuple",
             "location": 14,
             "return": [
-                "tuple"
+                "int",
+                "str",
+                "bytes",
+                "bool"
             ],
             "arguments": {
                 "path": [
                     "str"
                 ],
                 "val": [
-                    "B"
+                    "str"
                 ],
                 "tup": [
-                    "tuple"
+                    "str"
                 ]
             }
         },
@@ -6245,7 +5394,7 @@
             "name": "modify_in_tuple",
             "location": 27,
             "return": [
-                "tuple"
+                "str"
             ],
             "arguments": {
                 "path": [
@@ -6255,7 +5404,9 @@
                     "str"
                 ],
                 "tup": [
-                    "tuple"
+                    "str",
+                    "int",
+                    "types.Path"
                 ]
             }
         },
@@ -6267,7 +5418,9 @@
             ],
             "arguments": {
                 "x": [
-                    "A"
+                    "str",
+                    "List",
+                    "bool"
                 ]
             }
         }

@@ -6,14 +6,21 @@
             "name": "ceil_division",
             "location": 10,
             "return": [
-                "int"
+                "None",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "dividend": [
-                    "int"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "divisor": [
-                    "int"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         }
@@ -23,11 +30,15 @@
             "name": "sifter",
             "location": 15,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[Iterator]"
             ],
             "arguments": {
                 "predicate": [
-                    "Callable[([Domain], bool)]"
+                    "float",
+                    "int",
+                    "None",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -35,11 +46,14 @@
             "name": "scavenger",
             "location": 35,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[itertools.filterfalse]"
             ],
             "arguments": {
                 "predicate": [
-                    "Callable[([Domain], bool)]"
+                    "int",
+                    "Callable",
+                    "None",
+                    "str"
                 ]
             }
         },
@@ -47,11 +61,16 @@
             "name": "separator",
             "location": 55,
             "return": [
-                "Callable[([Iterable[Domain]], Tuple[(Iterable[Domain], Iterable[Domain])])]"
+                "Union[(lz.functional.Composition, Callable)]"
             ],
             "arguments": {
                 "predicate": [
-                    "Callable[([Domain], bool)]"
+                    "None",
+                    "Optional[Iterable[str]]",
+                    "Iterable[str]",
+                    "Iterator[T]",
+                    "List[str]",
+                    "Generator"
                 ]
             }
         },
@@ -59,11 +78,17 @@
             "name": "grabber",
             "location": 78,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[itertools.takewhile]"
             ],
             "arguments": {
                 "predicate": [
-                    "Callable[([Domain], bool)]"
+                    "None",
+                    "bool",
+                    "Optional[bool]",
+                    "Dict[str,Any]",
+                    "int",
+                    "Optional[int]",
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -71,11 +96,17 @@
             "name": "kicker",
             "location": 100,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[itertools.dropwhile]"
             ],
             "arguments": {
                 "predicate": [
-                    "Callable[([Domain], bool)]"
+                    "None",
+                    "bool",
+                    "Optional[bool]",
+                    "Dict[str,Any]",
+                    "int",
+                    "Optional[int]",
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         }
@@ -85,11 +116,19 @@
             "name": "identity",
             "location": 27,
             "return": [
-                "Domain"
+                "int",
+                "str",
+                "Callable",
+                "Iterable[C]"
             ],
             "arguments": {
                 "argument": [
-                    "Domain"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -97,11 +136,14 @@
             "name": "compose",
             "location": 37,
             "return": [
-                "Callable[(..., Range)]"
+                "Union[(Composition, Callable)]"
             ],
             "arguments": {
                 "last_function": [
-                    "Callable[([Any], Range)]"
+                    "Callable",
+                    "int",
+                    "bytes",
+                    "float"
                 ]
             }
         },
@@ -116,9 +158,9 @@
                 "object_": [
                     "int",
                     "float",
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "hints.Domain",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -126,7 +168,10 @@
             "name": "_compose",
             "location": 111,
             "return": [
-                "Callable[(..., Range)]"
+                "str",
+                "float",
+                "mypy.types.TupleType",
+                "Type"
             ],
             "arguments": {}
         },
@@ -134,7 +179,7 @@
             "name": "combine",
             "location": 176,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Range])]"
+                "Combination"
             ],
             "arguments": {}
         },
@@ -146,7 +191,10 @@
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "List",
+                    "Dict[str,Any]",
+                    "str",
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -154,11 +202,16 @@
             "name": "pack",
             "location": 277,
             "return": [
-                "Callable[([Iterable[Domain]], Range)]"
+                "functools.partial"
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "Iterable[D]",
+                    "Callable[[str],bool]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[hints.Domain]"
                 ]
             }
         },
@@ -166,17 +219,19 @@
             "name": "apply",
             "location": 291,
             "return": [
-                "Range"
+                "str",
+                "Iterable[str]"
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "Dict[str,Any]",
+                    "hints.Domain",
+                    "Iterable[hints.Domain]"
                 ],
-                "args": [
-                    "Iterable[Domain]"
-                ],
+                "args": [],
                 "kwargs": [
-                    "Dict[(str, Any)]"
+                    "MappingProxyType"
                 ]
             }
         },
@@ -184,11 +239,14 @@
             "name": "to_constant",
             "location": 300,
             "return": [
-                "Callable[(..., Domain)]"
+                "Constant"
             ],
             "arguments": {
                 "object_": [
-                    "Domain"
+                    "float",
+                    "Dict",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -196,11 +254,16 @@
             "name": "flip",
             "location": 330,
             "return": [
-                "Callable[(..., Range)]"
+                "functools.partial"
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "Iterable[D]",
+                    "Callable[[str],bool]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[hints.Domain]"
                 ]
             }
         },
@@ -208,11 +271,15 @@
             "name": "call_flipped",
             "location": 341,
             "return": [
-                "Range"
+                "int"
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "Dict[str,Any]",
+                    "hints.Domain",
+                    "Iterable[hints.Domain]",
+                    "Callable"
                 ]
             }
         },
@@ -220,7 +287,7 @@
             "name": "cleave",
             "location": 350,
             "return": [
-                "Callable[(..., Iterable[Range])]"
+                "Cleavage"
             ],
             "arguments": {}
         },
@@ -228,11 +295,16 @@
             "name": "flatmap",
             "location": 380,
             "return": [
-                "Iterable[Range]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "function": [
-                    "Callable[([Domain], Iterable[Range])]"
+                    "Iterable[D]",
+                    "Iterable[hints.Domain]",
+                    "Callable[D,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -240,18 +312,15 @@
             "name": "__new__",
             "location": 54,
             "return": [
-                "Union[(Composition, Callable[(..., Range)])]"
+                "Union[(Composition, Callable)]"
             ],
             "arguments": {
                 "cls": [
                     "int",
-                    "str",
                     "Sequence[str]",
-                    "typing.Sequence[str]",
+                    "str",
                     "List[T]",
-                    "list[T]",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         },
@@ -292,7 +361,7 @@
             "name": "__call__",
             "location": 94,
             "return": [
-                "Range"
+                "int"
             ],
             "arguments": {
                 "self": []
@@ -302,15 +371,21 @@
             "name": "__get__",
             "location": 97,
             "return": [
-                "Callable[(..., Range)]"
+                "types.MethodType"
             ],
             "arguments": {
                 "self": [],
                 "instance": [
-                    "Domain"
+                    "Type",
+                    "str",
+                    "Callable",
+                    "List[int]",
+                    "List[str]"
                 ],
                 "owner": [
-                    "Type[Domain]"
+                    "Type",
+                    "Type[Signature]",
+                    "Type[Any]"
                 ]
             }
         },
@@ -318,9 +393,9 @@
             "name": "function_to_unique_name",
             "location": 125,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
-                "Sequence[Union[str, Any]]"
+                "Sequence[Union[str,Any]]"
             ],
             "arguments": {
                 "function": [
@@ -381,12 +456,16 @@
             "name": "__call__",
             "location": 191,
             "return": [
-                "Iterable[Range]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "arguments": [
-                    "Iterable[Domain]"
+                    "Callable",
+                    "int",
+                    "starlette.types.Receive",
+                    "float",
+                    "starlette.types.Send"
                 ]
             }
         },
@@ -399,7 +478,7 @@
             "arguments": {
                 "self": [],
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable"
                 ]
             }
         },
@@ -450,18 +529,16 @@
             "arguments": {
                 "self": [],
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "hints.Domain"
                 ],
                 "signature": [
                     "str",
-                    "Optional[List[str]]",
-                    "list[str]",
-                    "Dict[int, int]",
-                    "None",
                     "List[str]",
-                    "dict[int, int]",
+                    "Dict[int,int]",
+                    "Optional[List[str]]",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "None"
                 ]
             }
         },
@@ -469,7 +546,9 @@
             "name": "__call__",
             "location": 240,
             "return": [
-                "Union[(Curry, Range)]"
+                "Type[object]",
+                "int",
+                "Optional[List[float]]"
             ],
             "arguments": {
                 "self": []
@@ -484,7 +563,10 @@
             "arguments": {
                 "self": [],
                 "object_": [
-                    "Domain"
+                    "int",
+                    "float",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ]
             }
         },
@@ -492,7 +574,11 @@
             "name": "__call__",
             "location": 319,
             "return": [
-                "Domain"
+                "starlette.types.Receive",
+                "Callable",
+                "starlette.types.Send",
+                "int",
+                "float"
             ],
             "arguments": {
                 "self": []
@@ -512,7 +598,7 @@
             "name": "__call__",
             "location": 368,
             "return": [
-                "Iterable[Range]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -522,8 +608,8 @@
             "name": "flatten",
             "location": 64,
             "return": [
-                "typing.Iterable[typing.Callable[..., typing.Any]]",
-                "typing.Generator[]"
+                "Iterable[Callable[...,Any]]",
+                "Generator"
             ],
             "arguments": {
                 "function": [
@@ -538,12 +624,15 @@
             "name": "__lt__",
             "location": 20,
             "return": [
-                "bool"
+                "builtins.bool"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "Sortable"
+                    "SupportsFloat",
+                    "List[str]",
+                    "Union[int, float]",
+                    "AbstractSet[T]"
                 ]
             }
         },
@@ -583,9 +672,8 @@
             "arguments": {
                 "iterable": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -610,11 +698,14 @@
             "name": "first",
             "location": 49,
             "return": [
-                "Domain"
+                "set",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Domain]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -622,11 +713,15 @@
             "name": "last",
             "location": 62,
             "return": [
-                "Domain"
+                "Iterable[hints.Domain]",
+                "str",
+                "int"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Domain]"
+                    "Iterable[hints.Domain]",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -634,11 +729,16 @@
             "name": "cut",
             "location": 76,
             "return": [
-                "Iterable[Domain]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Domain]"
+                    "Iterable[hints.Domain]",
+                    "str",
+                    "slice",
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -646,11 +746,14 @@
             "name": "cutter",
             "location": 91,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial"
             ],
             "arguments": {
                 "slice_": [
-                    "slice"
+                    "bool",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -662,7 +765,10 @@
             ],
             "arguments": {
                 "slice_": [
-                    "slice"
+                    "Collection[T]",
+                    "List[int]",
+                    "Collection",
+                    "str"
                 ]
             }
         },
@@ -670,11 +776,12 @@
             "name": "chopper",
             "location": 134,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Sequence[Domain]])]"
+                "functools.partial[nothing]"
             ],
             "arguments": {
                 "size": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -682,17 +789,16 @@
             "name": "chop",
             "location": 150,
             "return": [
-                "typing.Iterable[typing.Sequence[hints.Domain]]",
-                "typing.Generator[]"
+                "Iterable[Sequence[hints.Domain]]",
+                "Generator"
             ],
             "arguments": {
                 "iterable": [
                     "int",
-                    "typing.Iterable[hints.Domain]",
+                    "Iterable[hints.Domain]",
                     "str",
                     "Iterable",
-                    "Iterable[hints.Domain]",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -700,11 +806,18 @@
             "name": "slide",
             "location": 181,
             "return": [
-                "Iterable[Tuple[(Domain, ...)]]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Domain]"
+                    "int",
+                    "Callable",
+                    "Optional[Callable]",
+                    "None",
+                    "bool",
+                    "Tuple[Union[int,int]]",
+                    "Optional[int]",
+                    "Union[int,Tuple[int,int]]"
                 ]
             }
         },
@@ -712,11 +825,12 @@
             "name": "slider",
             "location": 198,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Tuple[(Domain, ...)]])]"
+                "functools.partial"
             ],
             "arguments": {
                 "size": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -724,11 +838,14 @@
             "name": "header",
             "location": 218,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial"
             ],
             "arguments": {
                 "size": [
-                    "int"
+                    "int",
+                    "List",
+                    "bytes",
+                    "str"
                 ]
             }
         },
@@ -741,11 +858,10 @@
             "arguments": {
                 "iterable": [
                     "int",
-                    "typing.Iterable[hints.Domain]",
+                    "Iterable[hints.Domain]",
                     "str",
                     "Iterable",
-                    "Iterable[hints.Domain]",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -753,11 +869,12 @@
             "name": "trailer",
             "location": 260,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[nothing]"
             ],
             "arguments": {
                 "size": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -765,11 +882,13 @@
             "name": "mapper",
             "location": 276,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Range])]"
+                "functools.partial[Iterator]"
             ],
             "arguments": {
                 "map_": [
-                    "Callable[([Domain], Range)]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -777,11 +896,13 @@
             "name": "flatmapper",
             "location": 287,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Range])]"
+                "functools.partial[Generator[(nothing, Any, None)]]"
             ],
             "arguments": {
                 "map_": [
-                    "Callable[([Domain], Iterable[Range])]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -789,11 +910,15 @@
             "name": "group_by",
             "location": 303,
             "return": [
-                "Iterable[Tuple[(Hashable, Iterable[Domain])]]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Domain]"
+                    "str",
+                    "Iterable[hints.Domain]",
+                    "Dict[str,Any]",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -801,11 +926,14 @@
             "name": "grouper",
             "location": 316,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Tuple[(Hashable, Iterable[Domain])]])]"
+                "functools.partial"
             ],
             "arguments": {
                 "key": [
-                    "Callable[([Domain], Hashable)]"
+                    "Type[MutableMapping]",
+                    "str",
+                    "Type",
+                    "int"
                 ]
             }
         },
@@ -813,11 +941,15 @@
             "name": "expand",
             "location": 338,
             "return": [
-                "Iterable[Domain]"
+                "Generator[(_T0, Any, None)]"
             ],
             "arguments": {
                 "object_": [
-                    "Domain"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -825,11 +957,13 @@
             "name": "flatten",
             "location": 348,
             "return": [
-                "Iterable[Domain]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Iterable[Domain]]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -837,11 +971,13 @@
             "name": "interleave",
             "location": 358,
             "return": [
-                "Iterable[Domain]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Iterable[Domain]]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -872,14 +1008,24 @@
             "name": "accumulator",
             "location": 14,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Range])]"
+                "functools.partial"
             ],
             "arguments": {
                 "function": [
-                    "Callable[([Range, Domain], Range)]"
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "Iterable[hints.Domain]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]",
+                    "tests.hints.Function"
                 ],
                 "initial": [
-                    "Range"
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "Iterable[hints.Domain]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]",
+                    "tests.hints.Function"
                 ]
             }
         },
@@ -887,17 +1033,32 @@
             "name": "accumulate",
             "location": 31,
             "return": [
-                "Iterable[Range]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Domain]"
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "Iterable[hints.Domain]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Callable[...,hints.Range]",
+                    "Callable[[str],bool]"
                 ],
                 "function": [
-                    "Callable[([Range, Domain], Range)]"
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "Iterable[hints.Domain]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Callable[...,hints.Range]",
+                    "Callable[[str],bool]"
                 ],
                 "initial": [
-                    "Range"
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "Iterable[hints.Domain]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Callable[...,hints.Range]",
+                    "Callable[[str],bool]"
                 ]
             }
         },
@@ -905,11 +1066,12 @@
             "name": "attacher",
             "location": 41,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[nothing]"
             ],
             "arguments": {
                 "object_": [
-                    "Domain"
+                    "Iterable[hints.Domain]",
+                    "hints.Domain"
                 ]
             }
         },
@@ -917,17 +1079,15 @@
             "name": "attach",
             "location": 54,
             "return": [
-                "typing.Iterable[hints.Domain]",
-                "typing.Generator[]"
+                "Iterable[hints.Domain]",
+                "Generator"
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[hints.Domain]",
                     "Iterable[hints.Domain]",
                     "hints.Domain"
                 ],
                 "object_": [
-                    "typing.Iterable[hints.Domain]",
                     "Iterable[hints.Domain]",
                     "hints.Domain"
                 ]
@@ -949,9 +1109,8 @@
                 ],
                 "object_": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -959,14 +1118,24 @@
             "name": "folder",
             "location": 80,
             "return": [
-                "Callable[([Iterable[Domain]], Range)]"
+                "functools.partial"
             ],
             "arguments": {
                 "function": [
-                    "Callable[([Range, Domain], Range)]"
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "Iterable[hints.Domain]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]",
+                    "tests.hints.Function"
                 ],
                 "initial": [
-                    "Range"
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "Iterable[hints.Domain]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]",
+                    "tests.hints.Function"
                 ]
             }
         },
@@ -974,17 +1143,30 @@
             "name": "fold",
             "location": 95,
             "return": [
-                "Range"
+                "int",
+                "str"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Domain]"
+                    "Iterable[hints.Domain]",
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Callable"
                 ],
                 "function": [
-                    "Callable[([Range, Domain], Range)]"
+                    "Iterable[hints.Domain]",
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Callable"
                 ],
                 "initial": [
-                    "Range"
+                    "Iterable[hints.Domain]",
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Callable"
                 ]
             }
         },
@@ -992,11 +1174,12 @@
             "name": "applier",
             "location": 108,
             "return": [
-                "Callable[(..., Range)]"
+                "functools.partial"
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "hints.Domain"
                 ]
             }
         }
@@ -1006,7 +1189,7 @@
             "name": "conjoin",
             "location": 10,
             "return": [
-                "Callable[([Domain], bool)]"
+                "Union[(lz.functional.Composition, Callable)]"
             ],
             "arguments": {}
         },
@@ -1014,7 +1197,7 @@
             "name": "disjoin",
             "location": 23,
             "return": [
-                "Callable[([Domain], bool)]"
+                "Union[(lz.functional.Composition, Callable)]"
             ],
             "arguments": {}
         },
@@ -1022,7 +1205,7 @@
             "name": "exclusive_disjoin",
             "location": 38,
             "return": [
-                "Callable[([Domain], bool)]"
+                "Union[(lz.functional.Composition, Callable)]"
             ],
             "arguments": {}
         },
@@ -1030,11 +1213,13 @@
             "name": "negate",
             "location": 56,
             "return": [
-                "Callable[([Domain], bool)]"
+                "Union[(lz.functional.Composition, Callable)]"
             ],
             "arguments": {
                 "predicate": [
-                    "Callable[([Domain], bool)]"
+                    "int",
+                    "List",
+                    "str"
                 ]
             }
         }
@@ -1044,16 +1229,15 @@
             "name": "replicate",
             "location": 13,
             "return": [
-                "typing.Iterable[hints.Domain]",
+                "Iterable[hints.Domain]",
                 "None"
             ],
             "arguments": {
                 "object_": [
-                    "hints.Domain",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "hints.Domain",
                     "str",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes"
                 ]
             }
@@ -1067,11 +1251,10 @@
             "arguments": {
                 "object_": [
                     "int",
-                    "str",
                     "Tuple[hints.Domain]",
-                    "tuple[hints.Domain]",
-                    "List[Tuple[int, float, float]]",
-                    "list[tuple[typing.Union[int,float,float]]]"
+                    "str",
+                    "List[Tuple[int,float,float]]",
+                    "List[tuple[Union[int,float,float]]]"
                 ]
             }
         },
@@ -1079,16 +1262,15 @@
             "name": "_replicate_iterable",
             "location": 41,
             "return": [
-                "typing.Iterable[typing.Iterable[hints.Domain]]",
-                "typing.Generator[]"
+                "Iterable[Iterable[hints.Domain]]",
+                "Generator"
             ],
             "arguments": {
                 "object_": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -1097,11 +1279,13 @@
             "name": "replicator",
             "location": 74,
             "return": [
-                "Callable[([Domain], Iterable[Domain])]"
+                "functools.partial[nothing]"
             ],
             "arguments": {
                 "count": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -1110,10 +1294,10 @@
             "location": 50,
             "return": [
                 "None",
-                "Union[tuple, list]",
-                "typing.Generator[]",
+                "Union[tuple,list]",
+                "Generator",
                 "List[int]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
@@ -1135,11 +1319,10 @@
             ],
             "arguments": {
                 "object_": [
-                    "hints.Domain",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "hints.Domain",
                     "str",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes"
                 ]
             }
@@ -1150,9 +1333,9 @@
             "return": [
                 "bytes",
                 "str",
-                "Union[tuple, list]",
+                "Union[tuple,list]",
                 "List[int]",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "object_": [
@@ -1207,14 +1390,22 @@
             "name": "accumulator",
             "location": 25,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Iterable[Range]])]"
+                "Union[(lz.functional.Composition, Callable)]"
             ],
             "arguments": {
                 "function": [
-                    "Callable[([Domain, Range], Range)]"
+                    "Iterable[hints.Domain]",
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]"
                 ],
                 "initial": [
-                    "Range"
+                    "Iterable[hints.Domain]",
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -1222,11 +1413,12 @@
             "name": "attacher",
             "location": 45,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[nothing]"
             ],
             "arguments": {
                 "object_": [
-                    "Domain"
+                    "Iterable[hints.Domain]",
+                    "hints.Domain"
                 ]
             }
         },
@@ -1234,21 +1426,19 @@
             "name": "attach",
             "location": 58,
             "return": [
-                "typing.Iterable[hints.Domain]",
-                "typing.Generator[]"
+                "Iterable[hints.Domain]",
+                "Generator"
             ],
             "arguments": {
                 "iterable": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "object_": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -1277,14 +1467,22 @@
             "name": "folder",
             "location": 84,
             "return": [
-                "Callable[([Iterable[Domain]], Range)]"
+                "Union[(lz.functional.Composition, Callable)]"
             ],
             "arguments": {
                 "function": [
-                    "Callable[([Domain, Range], Range)]"
+                    "Iterable[hints.Domain]",
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]"
                 ],
                 "initial": [
-                    "Range"
+                    "Iterable[hints.Domain]",
+                    "Callable[hints.Range,hints.Domain,hints.Range]",
+                    "hints.Range",
+                    "Callable[[hints.Range,hints.Domain],hints.Range]",
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -1297,9 +1495,8 @@
             ],
             "arguments": {
                 "signature": [
-                    "set[str]",
-                    "paradigm.models.Base",
-                    "Set[str]"
+                    "Set[str]",
+                    "paradigm.models.Base"
                 ],
                 "args": []
             }
@@ -1308,11 +1505,12 @@
             "name": "applier",
             "location": 188,
             "return": [
-                "Callable[(..., Range)]"
+                "Applier"
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "hints.Domain"
                 ]
             }
         },
@@ -1325,7 +1523,8 @@
             "arguments": {
                 "self": [],
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Callable[...,hints.Range]",
+                    "hints.Domain"
                 ]
             }
         },
@@ -1333,7 +1532,11 @@
             "name": "__call__",
             "location": 104,
             "return": [
-                "Range"
+                "bool",
+                "int",
+                "Mapping[str, str]",
+                "Optional[Dict[str, str]]",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": []
@@ -1345,11 +1548,16 @@
             "name": "search_implementation",
             "location": 22,
             "return": [
-                "Callable[(..., Iterable[Domain])]"
+                "int",
+                "list",
+                "str"
             ],
             "arguments": {
                 "algorithm": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Type[T]",
+                    "Type"
                 ]
             }
         },
@@ -1357,14 +1565,24 @@
             "name": "register_implementation",
             "location": 34,
             "return": [
-                "Callable[(..., Union[(Callable[(..., Iterable[Domain])], Iterable[Domain])])]"
+                "Union[(functools.partial, _T1)]"
             ],
             "arguments": {
                 "algorithm": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Dict",
+                    "bytearray"
                 ],
                 "implementation": [
-                    "Optional[Callable[(..., Iterable[Domain])]]"
+                    "Optional[str]",
+                    "None",
+                    "Optional[int]",
+                    "str",
+                    "Optional[float]",
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -1372,7 +1590,7 @@
             "name": "sorter",
             "location": 74,
             "return": [
-                "Callable[([Iterable[Domain]], Iterable[Domain])]"
+                "functools.partial[nothing]"
             ],
             "arguments": {}
         }
@@ -1382,11 +1600,20 @@
             "name": "read_batch_from_end",
             "location": 5,
             "return": [
+                "str",
+                "bytearray",
+                "bool",
+                "int",
+                "Union[bytes, bytearray]",
                 "bytes"
             ],
             "arguments": {
                 "byte_stream": [
-                    "BinaryIO"
+                    "int",
+                    "bytes",
+                    "Optional[Callable]",
+                    "Optional[int]",
+                    "str"
                 ]
             }
         }
@@ -1403,9 +1630,9 @@
                 "object_": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -1414,15 +1641,14 @@
             "name": "_",
             "location": 66,
             "return": [
-                "typing.Iterable[hints.FiniteIterable[hints.Domain]]",
-                "tuple[]"
+                "Iterable[hints.FiniteIterable[hints.Domain]]",
+                "Tuple"
             ],
             "arguments": {
                 "object_": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -1431,10 +1657,10 @@
             "location": 51,
             "return": [
                 "None",
-                "Dict[str, Dict[str, int]]",
-                "typing.Generator[]",
-                "Dict[str, Any]",
-                "Union[tuple, list]",
+                "Dict[str,Dict[str,int]]",
+                "Generator",
+                "Dict[str,Any]",
+                "Union[tuple,list]",
                 "str"
             ],
             "arguments": {
@@ -1452,7 +1678,7 @@
             "name": "instance_of",
             "location": 8,
             "return": [
-                "Callable[([Domain], bool)]"
+                "functools.partial"
             ],
             "arguments": {}
         },
@@ -1460,7 +1686,7 @@
             "name": "subclass_of",
             "location": 31,
             "return": [
-                "Callable[([Domain], bool)]"
+                "functools.partial"
             ],
             "arguments": {}
         },
@@ -1474,15 +1700,18 @@
                 "object_": [
                     "Tuple[type]",
                     "str",
-                    "tuple[typing.Type]",
-                    "int",
+                    "Tuple[Type]",
                     "List[str]",
-                    "list[str]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "int",
+                    "Dict[str,str]"
                 ],
                 "types": [
-                    "Tuple[(type, ...)]"
+                    "Tuple[type]",
+                    "str",
+                    "Tuple[Type]",
+                    "List[str]",
+                    "int",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -1494,10 +1723,16 @@
             ],
             "arguments": {
                 "type_": [
-                    "type"
+                    "str",
+                    "Type",
+                    "Tuple[type]",
+                    "Tuple[Type]"
                 ],
                 "types": [
-                    "Tuple[(type, ...)]"
+                    "str",
+                    "Type",
+                    "Tuple[type]",
+                    "Tuple[Type]"
                 ]
             }
         }
@@ -1602,10 +1837,12 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable"
+                    "str",
+                    "float"
                 ],
                 "prefix": [
-                    "Iterable"
+                    "str",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -1617,10 +1854,14 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable"
+                    "[[]]",
+                    "Set[int]",
+                    "Optional[int]"
                 ],
                 "suffix": [
-                    "Iterable"
+                    "Optional[bool]",
+                    "Sequence[T]",
+                    "Callable[[T], bool]"
                 ]
             }
         },
@@ -1632,10 +1873,14 @@
             ],
             "arguments": {
                 "left_iterable": [
-                    "Iterable"
+                    "Iterable[Any]",
+                    "int",
+                    "Tuple[int, int, int, int]"
                 ],
                 "right_iterable": [
-                    "Iterable"
+                    "Iterable[Any]",
+                    "int",
+                    "Tuple[int, int, int, int]"
                 ]
             }
         },
@@ -1647,10 +1892,15 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable"
+                    "Iterable[Any]",
+                    "int",
+                    "str",
+                    "List[str]"
                 ],
                 "target": [
-                    "Iterable"
+                    "Iterable[Any]",
+                    "int",
+                    "set"
                 ]
             }
         },
@@ -1749,7 +1999,8 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1757,11 +2008,15 @@
             "name": "flatmap",
             "location": 213,
             "return": [
-                "Iterable[Range]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "function": [
-                    "Callable[([Domain], Iterable[Range])]"
+                    "Iterable[lz.hints.Domain]",
+                    "Iterable[hints.Domain]",
+                    "Callable[[hints.Range, hints.Domain], hints.Range]",
+                    "hints.Range",
+                    "Callable"
                 ]
             }
         },
@@ -1773,10 +2028,20 @@
             ],
             "arguments": {
                 "left_statement": [
-                    "bool"
+                    "bool",
+                    "float",
+                    "List[str]",
+                    "int",
+                    "FrozenSet[Any]",
+                    "bytes"
                 ],
                 "right_statement": [
-                    "bool"
+                    "bool",
+                    "float",
+                    "List[str]",
+                    "int",
+                    "FrozenSet[Any]",
+                    "bytes"
                 ]
             }
         },
@@ -1784,14 +2049,18 @@
             "name": "implication",
             "location": 222,
             "return": [
-                "bool"
+                "Union[(bool, _T1)]"
             ],
             "arguments": {
                 "antecedent": [
-                    "bool"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "consequent": [
-                    "bool"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1841,11 +2110,16 @@
             "name": "to_stream_contents",
             "location": 247,
             "return": [
-                "AnyStr"
+                "str",
+                "bool",
+                "Tuple[int, Dict[str, Any]]",
+                "List[object]",
+                "List[str]"
             ],
             "arguments": {
                 "stream": [
-                    "IO[AnyStr]"
+                    "bytes",
+                    "TextIO"
                 ]
             }
         },
@@ -1853,11 +2127,16 @@
             "name": "to_stream_size",
             "location": 253,
             "return": [
-                "int"
+                "bool",
+                "Tuple[int, Dict[str, Any]]",
+                "Dict[str, Tuple[int, int]]"
             ],
             "arguments": {
                 "stream": [
-                    "IO[AnyStr]"
+                    "Callable",
+                    "int",
+                    "Optional[bool]",
+                    "str"
                 ]
             }
         }
@@ -1886,11 +2165,9 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -1902,8 +2179,7 @@
             ],
             "arguments": {
                 "iterable": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "false_predicate": []
             }
@@ -1916,19 +2192,15 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "typing.Callable[, ]",
-                    "Iterable[Any]",
                     "Sequence[Any]",
                     "Callable",
+                    "Iterable[Any]",
                     "hypothesis.strategies.SearchStrategy[str]"
                 ],
                 "true_predicate": [
-                    "list[int]",
-                    "int",
                     "List[int]",
+                    "int",
                     "tests.conftesWorker",
                     "bool",
                     "tests.basilisp.helpers.CompileFn"
@@ -1945,11 +2217,9 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -1961,14 +2231,11 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "str",
                     "Sequence[Any]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
-                    "Iterable[Any]",
-                    "Iterable[lz.hints.FiniteIterable[Any]]"
+                    "Iterable[lz.hints.FiniteIterable[Any]]",
+                    "str",
+                    "Iterable[Any]"
                 ],
                 "false_predicate": []
             }
@@ -1982,13 +2249,11 @@
             "arguments": {
                 "iterable": [
                     "bool",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "true_predicate": [
-                    "list[int]",
-                    "int",
                     "List[int]",
+                    "int",
                     "tests.conftesWorker",
                     "bool",
                     "tests.basilisp.helpers.CompileFn"
@@ -2005,8 +2270,7 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -2018,7 +2282,6 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
@@ -2037,9 +2300,8 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Any]",
-                    "bool",
                     "Iterable[Any]",
+                    "bool",
                     "cli_ui.tests.MessageRecorder"
                 ]
             }
@@ -2073,8 +2335,7 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -2086,7 +2347,6 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
@@ -2188,7 +2448,9 @@
             ],
             "arguments": {
                 "maps_sequence": [
-                    "Sequence[Callable[([Domain], Range)]]"
+                    "int",
+                    "float",
+                    "str"
                 ]
             }
         }
@@ -2202,8 +2464,7 @@
             ],
             "arguments": {
                 "positional_arguments": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -2216,13 +2477,12 @@
             "arguments": {
                 "combination_call": [
                     "str",
+                    "List[str]",
                     "None",
                     "int",
                     "Optional[str]",
-                    "list[str]",
-                    "List[str]",
-                    "tuple[typing.Union[int,int]]",
-                    "Tuple[int, int]",
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
                     "raiden.utils.TransactionHash"
                 ]
             }
@@ -2236,13 +2496,12 @@
             "arguments": {
                 "combination_call": [
                     "str",
+                    "List[str]",
                     "None",
                     "int",
                     "Optional[str]",
-                    "list[str]",
-                    "List[str]",
-                    "tuple[typing.Union[int,int]]",
-                    "Tuple[int, int]",
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
                     "raiden.utils.TransactionHash"
                 ]
             }
@@ -2295,31 +2554,29 @@
                 "class_name": [
                     "str",
                     "bool",
-                    "Tuple[int, int]",
-                    "Dict[mypy.nodes.Expression, mypy.types.Type]",
-                    "type",
-                    "Callable[..., Awaitable]"
+                    "Tuple[int,int]",
+                    "Dict[mypy.nodes.Expression,mypy.types.Type]",
+                    "Type",
+                    "Callable[...,Awaitable]"
                 ],
                 "class_bases": [
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "bool",
                     "str",
-                    "Tuple[int, int]",
-                    "Dict[mypy.nodes.Expression, mypy.types.Type]",
-                    "type",
-                    "Callable[..., Awaitable]"
+                    "Tuple[int,int]",
+                    "Dict[mypy.nodes.Expression,mypy.types.Type]",
+                    "Type",
+                    "Callable[...,Awaitable]"
                 ],
                 "method_name": [
                     "bool",
                     "utils.types.Vec3D",
                     "str",
+                    "Dict",
                     "None",
-                    "dict[, ]",
+                    "Any",
                     "Optional[str]",
-                    "typing.Any",
-                    "mypy.types.Type",
-                    "dict",
-                    "Any"
+                    "mypy.types.Type"
                 ],
                 "maps_chain_call": [
                     "bool",
@@ -2332,12 +2589,20 @@
             "name": "ignore_self",
             "location": 33,
             "return": [
-                "Domain"
+                "int",
+                "str",
+                "Callable",
+                "Iterable[C]"
             ],
             "arguments": {
                 "self": [],
                 "argument": [
-                    "Domain"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -2378,9 +2643,8 @@
             "arguments": {
                 "callable_": [
                     "bool",
-                    "dict[str, float]",
+                    "Dict[str,float]",
                     "str",
-                    "Dict[str, float]",
                     "Iterable[Any]",
                     "int"
                 ]
@@ -2394,9 +2658,8 @@
             ],
             "arguments": {
                 "maps_chain_call": [
-                    "typing.Iterable[str]",
-                    "tests.hints.CompositionCall",
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "tests.hints.CompositionCall"
                 ]
             }
         }
@@ -2424,9 +2687,8 @@
             ],
             "arguments": {
                 "map_call": [
-                    "typing.Container",
-                    "tests.hints.CompositionCall",
-                    "Container"
+                    "Container",
+                    "tests.hints.CompositionCall"
                 ]
             }
         },
@@ -2438,9 +2700,8 @@
             ],
             "arguments": {
                 "maps_triplet_call": [
-                    "typing.Iterable[str]",
-                    "tests.hints.CompositionCall",
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "tests.hints.CompositionCall"
                 ]
             }
         },
@@ -2452,9 +2713,8 @@
             ],
             "arguments": {
                 "maps_chain_call": [
-                    "typing.Iterable[str]",
-                    "tests.hints.CompositionCall",
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "tests.hints.CompositionCall"
                 ]
             }
         }
@@ -2469,74 +2729,60 @@
             ],
             "arguments": {
                 "built_in_function": [
-                    "typing.Type",
-                    "type",
-                    "typing.Callable[, ]",
+                    "Type",
+                    "Callable",
                     "bool",
                     "types.FunctionType",
                     "types.MethodType",
-                    "functools.partial",
-                    "Callable"
+                    "functools.partial"
                 ],
                 "class_": [
-                    "typing.Type",
-                    "type",
-                    "typing.Callable[, ]",
+                    "Type",
+                    "Callable",
                     "bool",
                     "types.FunctionType",
                     "types.MethodType",
-                    "functools.partial",
-                    "Callable"
+                    "functools.partial"
                 ],
                 "function": [
-                    "typing.Type",
-                    "type",
-                    "typing.Callable[, ]",
+                    "Type",
+                    "Callable",
                     "bool",
                     "types.FunctionType",
                     "types.MethodType",
-                    "functools.partial",
-                    "Callable"
+                    "functools.partial"
                 ],
                 "method": [
-                    "typing.Type",
-                    "type",
-                    "typing.Callable[, ]",
+                    "Type",
+                    "Callable",
                     "bool",
                     "types.FunctionType",
                     "types.MethodType",
-                    "functools.partial",
-                    "Callable"
+                    "functools.partial"
                 ],
                 "method_descriptor": [
-                    "typing.Type",
-                    "type",
-                    "typing.Callable[, ]",
+                    "Type",
+                    "Callable",
                     "bool",
                     "types.FunctionType",
                     "types.MethodType",
-                    "functools.partial",
-                    "Callable"
+                    "functools.partial"
                 ],
                 "partial_callable": [
-                    "typing.Type",
-                    "type",
-                    "typing.Callable[, ]",
+                    "Type",
+                    "Callable",
                     "bool",
                     "types.FunctionType",
                     "types.MethodType",
-                    "functools.partial",
-                    "Callable"
+                    "functools.partial"
                 ],
                 "wrapper_descriptor": [
-                    "typing.Type",
-                    "type",
-                    "typing.Callable[, ]",
+                    "Type",
+                    "Callable",
                     "bool",
                     "types.FunctionType",
                     "types.MethodType",
-                    "functools.partial",
-                    "Callable"
+                    "functools.partial"
                 ]
             }
         }
@@ -2569,9 +2815,7 @@
                     "bool",
                     "tests.hints.Function",
                     "str",
-                    "typing.Type",
-                    "typing.Callable[, ]",
-                    "type",
+                    "Type",
                     "Callable"
                 ]
             }
@@ -2584,10 +2828,9 @@
             ],
             "arguments": {
                 "function_call": [
-                    "typing.Callable[, ]",
+                    "Callable",
                     "tests.hints.Function.Call",
-                    "tests.hints.FunctionCall",
-                    "Callable"
+                    "tests.hints.FunctionCall"
                 ]
             }
         },
@@ -2792,9 +3035,8 @@
             ],
             "arguments": {
                 "object_": [
-                    "set[]",
-                    "tests.basilisp.helpers.CompileFn",
-                    "set"
+                    "Set",
+                    "tests.basilisp.helpers.CompileFn"
                 ],
                 "positional_arguments": [],
                 "keyword_arguments": []
@@ -2836,13 +3078,11 @@
                 ],
                 "positional_arguments": [
                     "str",
-                    "Container",
-                    "typing.Container"
+                    "Container"
                 ],
                 "keyword_arguments": [
                     "str",
-                    "Container",
-                    "typing.Container"
+                    "Container"
                 ]
             }
         }
@@ -2857,8 +3097,7 @@
             ],
             "arguments": {
                 "empty_iterable": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -2870,11 +3109,9 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ],
                 "object_": [
                     "str",
@@ -2892,11 +3129,9 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ],
                 "object_": [
                     "str",
@@ -2931,13 +3166,9 @@
             "arguments": {
                 "non_empty_iterable": [
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Sequence[Any]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[lz.hints.Domain]",
-                    "typing.Iterable[lz.hints.Domain]"
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -2966,8 +3197,7 @@
             ],
             "arguments": {
                 "empty_iterable": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -2979,16 +3209,13 @@
             ],
             "arguments": {
                 "nested_iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -3000,16 +3227,13 @@
             ],
             "arguments": {
                 "nested_iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         }
@@ -3023,16 +3247,13 @@
             ],
             "arguments": {
                 "empty_iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
                 "nested_iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -3044,20 +3265,15 @@
             ],
             "arguments": {
                 "nested_iterable": [
-                    "typing.Iterable[typing.Iterable[typing.Any]]",
-                    "bool",
                     "Iterable[Iterable[Any]]",
+                    "bool",
                     "tests.basilisp.helpers.CompileFn"
                 ],
                 "non_empty_iterable": [
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ]
             }
         }
@@ -3071,7 +3287,6 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
@@ -3108,10 +3323,8 @@
                 "iterable": [
                     "bool",
                     "str",
-                    "list[str]",
                     "List[str]",
-                    "dict[str, int]",
-                    "Dict[str, int]",
+                    "Dict[str,int]",
                     "int"
                 ],
                 "size": [
@@ -3128,17 +3341,14 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
+                    "Iterable[lz.hints.Sortable]",
                     "str",
-                    "typing.Iterable[lz.hints.Sortable]",
-                    "Set[str]",
-                    "Iterable[lz.hints.Sortable]"
+                    "Set[str]"
                 ],
                 "size": [
                     "int",
                     "str",
-                    "list[str]",
                     "List[str]",
                     "bool"
                 ]
@@ -3154,16 +3364,13 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Any]",
-                    "str",
                     "Iterable[Any]",
-                    "typing.Iterable[lz.hints.Sortable]",
+                    "str",
                     "Iterable[lz.hints.Sortable]",
-                    "typing.Iterable[typing.Hashable]",
                     "Iterable[Hashable]",
-                    "typing.Callable[..., collections.abc.AsyncIterator]",
+                    "Callable[...,collections.abc.AsyncIterator]",
                     "List[str]",
-                    "Callable[..., AsyncIterator[T]]"
+                    "Callable[...,AsyncIterator[T]]"
                 ],
                 "size": [
                     "str",
@@ -3186,7 +3393,6 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
@@ -3206,11 +3412,8 @@
             "arguments": {
                 "iterable": [
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Iterable[lz.hints.Domain]",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ],
                 "slice_": [
                     "float",
@@ -3222,11 +3425,18 @@
             "name": "slice_to_size",
             "location": 37,
             "return": [
-                "int"
+                "int",
+                "str",
+                "Optional[str]",
+                "Dict[str,Any]",
+                "Iterable[int]"
             ],
             "arguments": {
                 "slice_": [
-                    "slice"
+                    "int",
+                    "slice",
+                    "float",
+                    "Dict[str,str]"
                 ]
             }
         }
@@ -3240,11 +3450,9 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ],
                 "slice_": [
                     "str",
@@ -3261,14 +3469,24 @@
             "name": "grouper_key",
             "location": 12,
             "return": [
-                "Hashable"
+                "int",
+                "str",
+                "Dict[str,int]"
             ],
             "arguments": {
                 "object_": [
-                    "Hashable"
+                    "int",
+                    "Hashable",
+                    "str",
+                    "bool",
+                    "Iterable[Union[Any, int]]"
                 ],
                 "odd_order": [
-                    "int"
+                    "int",
+                    "Hashable",
+                    "str",
+                    "bool",
+                    "Iterable[Union[Any,int]]"
                 ]
             }
         },
@@ -3276,11 +3494,15 @@
             "name": "to_key_function",
             "location": 17,
             "return": [
-                "Callable[([Hashable], Hashable)]"
+                "functools.partial"
             ],
             "arguments": {
                 "odd_order": [
-                    "int"
+                    "int",
+                    "str",
+                    "Iterable",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -3292,7 +3514,8 @@
             ],
             "arguments": {
                 "number": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         }
@@ -3306,17 +3529,15 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Hashable]",
-                    "str",
                     "Iterable[Hashable]",
-                    "dict",
+                    "str",
+                    "Dict",
                     "List[str]"
                 ],
                 "key_function": [
                     "str",
-                    "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "int"
                 ]
             }
         }
@@ -3330,20 +3551,17 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Hashable]",
-                    "str",
                     "Iterable[Hashable]",
-                    "dict",
+                    "str",
+                    "Dict",
                     "List[str]"
                 ],
                 "key_function": [
                     "str",
-                    "Optional[List[str]]",
-                    "list[str]",
-                    "Tuple[str]",
-                    "None",
                     "List[str]",
-                    "tuple[str]"
+                    "Tuple[str]",
+                    "Optional[List[str]]",
+                    "None"
                 ]
             }
         }
@@ -3358,15 +3576,11 @@
             ],
             "arguments": {
                 "non_empty_iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Sequence[Any]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Sequence[str]",
-                    "dict",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "Dict"
                 ],
                 "size": [
                     "str",
@@ -3383,15 +3597,11 @@
             ],
             "arguments": {
                 "non_empty_iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Sequence[Any]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "Callable"
+                    "Callable",
+                    "Dict"
                 ],
                 "size": [
                     "str",
@@ -3409,15 +3619,11 @@
             ],
             "arguments": {
                 "non_empty_iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Sequence[Any]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Sequence[str]",
-                    "dict",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "Dict"
                 ],
                 "size": [
                     "str",
@@ -3438,15 +3644,13 @@
             "arguments": {
                 "map_": [
                     "bool",
-                    "dict[str, float]",
+                    "Dict[str,float]",
                     "str",
-                    "Dict[str, float]",
                     "Iterable[Any]",
                     "int"
                 ],
                 "empty_iterable": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -3459,11 +3663,9 @@
             "arguments": {
                 "map_": [],
                 "arguments": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -3476,11 +3678,9 @@
             "arguments": {
                 "map_": [],
                 "arguments": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         }
@@ -3500,11 +3700,9 @@
                     "tests.async_mock.Mock"
                 ],
                 "arguments": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         }
@@ -3520,8 +3718,7 @@
             "arguments": {
                 "iterable": [
                     "str",
-                    "dict[str, float]",
-                    "Dict[str, float]",
+                    "Dict[str,float]",
                     "cli_ui.tests.MessageRecorder"
                 ]
             }
@@ -3535,10 +3732,9 @@
             "arguments": {
                 "iterable": [
                     "str",
-                    "dict[, ]",
+                    "Dict",
                     "tests.basilisp.helpers.CompileFn",
-                    "tests.async_mock.Mock",
-                    "dict"
+                    "tests.async_mock.Mock"
                 ]
             }
         },
@@ -3550,12 +3746,10 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
+                    "Iterable[lz.hints.Sortable]",
                     "str",
-                    "typing.Iterable[lz.hints.Sortable]",
-                    "Set[str]",
-                    "Iterable[lz.hints.Sortable]"
+                    "Set[str]"
                 ],
                 "size": [
                     "int",
@@ -3573,10 +3767,8 @@
                 "iterable": [
                     "bool",
                     "str",
-                    "list[str]",
                     "List[str]",
-                    "dict[str, int]",
-                    "Dict[str, int]",
+                    "Dict[str,int]",
                     "int"
                 ],
                 "size": [
@@ -3594,18 +3786,15 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
                     "str",
-                    "Set[str]",
-                    "typing.Iterable[lz.hints.Sortable]",
-                    "Iterable[lz.hints.Sortable]"
+                    "Iterable[lz.hints.Sortable]",
+                    "Set[str]"
                 ],
                 "size": [
-                    "list[str]",
+                    "List[str]",
                     "int",
                     "str",
-                    "List[str]",
                     "bool",
                     "bytes",
                     "torch.nn.utils.rnn.PackedSequence"
@@ -3620,12 +3809,11 @@
             ],
             "arguments": {
                 "empty_iterable": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "size": [
                     "int",
-                    "list[int]",
                     "List[int]",
                     "str"
                 ]
@@ -3639,12 +3827,11 @@
             ],
             "arguments": {
                 "empty_iterable": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "size": [
                     "int",
-                    "list[int]",
                     "List[int]",
                     "str"
                 ]
@@ -3658,23 +3845,19 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ],
                 "object_": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "size": [
                     "int",
-                    "list[int]",
-                    "str",
-                    "List[int]"
+                    "List[int]",
+                    "str"
                 ]
             }
         },
@@ -3686,19 +3869,18 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "object_": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "size": [
                     "int",
-                    "tuple[typing.Union[int,...]]",
-                    "Optional[Tuple[int, ...]]",
+                    "Tuple[Union[int,...]]",
+                    "Optional[Tuple[int,...]]",
                     "bool"
                 ]
             }
@@ -3711,21 +3893,20 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "object_": [
                     "int",
                     "str",
-                    "typing.Iterable[tuple[typing.Union[int,int]]]",
-                    "Iterable[Tuple[int, int]]",
+                    "Iterable[tuple[Union[int,int]]]",
+                    "Iterable[Tuple[int,int]]",
                     "List[List[Any]]"
                 ],
                 "size": [
                     "int",
-                    "list[int]",
-                    "str",
-                    "List[int]"
+                    "List[int]",
+                    "str"
                 ]
             }
         },
@@ -3737,23 +3918,19 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ],
                 "object_": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "size": [
                     "int",
-                    "list[int]",
-                    "str",
-                    "List[int]"
+                    "List[int]",
+                    "str"
                 ]
             }
         },
@@ -3765,19 +3942,18 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "object_": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "size": [
                     "int",
-                    "tuple[typing.Union[int,...]]",
-                    "Optional[Tuple[int, ...]]",
+                    "Tuple[Union[int,...]]",
+                    "Optional[Tuple[int,...]]",
                     "bool"
                 ]
             }
@@ -3790,21 +3966,20 @@
             ],
             "arguments": {
                 "iterable": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "object_": [
                     "int",
                     "str",
-                    "typing.Iterable[tuple[typing.Union[int,int]]]",
-                    "Iterable[Tuple[int, int]]",
+                    "Iterable[tuple[Union[int,int]]]",
+                    "Iterable[Tuple[int,int]]",
                     "List[List[Any]]"
                 ],
                 "size": [
                     "int",
-                    "list[int]",
-                    "str",
-                    "List[int]"
+                    "List[int]",
+                    "str"
                 ]
             }
         }
@@ -3818,16 +3993,13 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[typing.Any]",
-                    "str",
                     "Iterable[Any]",
-                    "typing.Iterable[lz.hints.Sortable]",
+                    "str",
                     "Iterable[lz.hints.Sortable]",
-                    "typing.Iterable[typing.Hashable]",
                     "Iterable[Hashable]",
-                    "typing.Callable[..., collections.abc.AsyncIterator]",
+                    "Callable[...,collections.abc.AsyncIterator]",
                     "List[str]",
-                    "Callable[..., AsyncIterator[T]]"
+                    "Callable[...,AsyncIterator[T]]"
                 ],
                 "size": [
                     "str",
@@ -3849,19 +4021,14 @@
             ],
             "arguments": {
                 "non_empty_iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Sequence[Any]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Sequence[str]",
-                    "dict",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "Dict"
                 ],
                 "size": [
-                    "set",
-                    "set[]"
+                    "Set"
                 ]
             }
         },
@@ -3873,15 +4040,11 @@
             ],
             "arguments": {
                 "non_empty_iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Sequence[Any]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "Callable"
+                    "Callable",
+                    "Dict"
                 ],
                 "size": [
                     "str",
@@ -3899,15 +4062,11 @@
             ],
             "arguments": {
                 "non_empty_iterable": [
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Sequence[Any]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Sequence[str]",
-                    "dict",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "Dict"
                 ],
                 "size": [
                     "str",
@@ -3923,11 +4082,18 @@
             "name": "to_accumulator_calls",
             "location": 12,
             "return": [
-                "Tuple[(Callable[([Range, Domain], Range)], Range, Iterable[Domain])]"
+                "Sequence[Sequence[str]]",
+                "Sequence[str]",
+                "Union[str, Callable]",
+                "Iterable[str]",
+                "str"
             ],
             "arguments": {
                 "projector": [
-                    "Callable[([Range, Domain], Range)]"
+                    "List",
+                    "str",
+                    "Union[str,int]",
+                    "int"
                 ]
             }
         },
@@ -4007,8 +4173,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -4020,11 +4185,10 @@
             ],
             "arguments": {
                 "function_call": [
-                    "set[str]",
+                    "Set[str]",
                     "tests.hints.FunctionCall",
                     "str",
-                    "bool",
-                    "Set[str]"
+                    "bool"
                 ]
             }
         },
@@ -4053,8 +4217,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -4069,8 +4232,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -4085,8 +4247,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -4099,8 +4260,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -4115,16 +4275,13 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
                 "object_": [
-                    "set[]",
-                    "tests.e2e.Helper",
-                    "dict[str, typing.Any]",
-                    "set",
-                    "Dict[str, Any]"
+                    "Set",
+                    "Dict[str,Any]",
+                    "tests.e2e.Helper"
                 ]
             }
         }
@@ -4138,11 +4295,9 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ],
                 "object_": [
                     "str",
@@ -4159,11 +4314,15 @@
             "name": "to_folder_calls",
             "location": 15,
             "return": [
-                "Tuple[(Callable[([Range, Domain], Range)], Range, Iterable[Domain])]"
+                "NoReturn"
             ],
             "arguments": {
                 "projector": [
-                    "Callable[([Range, Domain], Range)]"
+                    "int",
+                    "List[int]",
+                    "None",
+                    "Optional[List[Any]]",
+                    "bool"
                 ]
             }
         },
@@ -4242,10 +4401,8 @@
             ],
             "arguments": {
                 "predicate": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ],
                 "predicate_argument": []
             }
@@ -4288,10 +4445,8 @@
                     "tests.components.withings.common.ComponentFactory"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4316,10 +4471,8 @@
                     "tests.async_mock.Mock"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4350,10 +4503,8 @@
                     "tests.async_mock.Mock"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4368,10 +4519,8 @@
             ],
             "arguments": {
                 "predicate": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ],
                 "predicate_argument": []
             }
@@ -4395,10 +4544,8 @@
                     "lz.sorting.Implementation"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4442,10 +4589,8 @@
                     "tests.async_mock.Mock"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4465,11 +4610,11 @@
                 ],
                 "mid_predicate": [
                     "str",
-                    "typing.Mapping",
+                    "Mapping",
                     "tests.basilisp.helpers.CompileFn",
                     "tests.async_mock.MagicMock",
                     "tests.async_mock.Mock",
-                    "Mapping[str, Any]"
+                    "Mapping[str,Any]"
                 ],
                 "right_predicate": [
                     "str",
@@ -4478,10 +4623,8 @@
                     "tests.async_mock.Mock"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4537,10 +4680,8 @@
                     "tests.async_mock.Mock"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4560,11 +4701,11 @@
                 ],
                 "mid_predicate": [
                     "str",
-                    "typing.Mapping",
+                    "Mapping",
                     "tests.basilisp.helpers.CompileFn",
                     "tests.async_mock.MagicMock",
                     "tests.async_mock.Mock",
-                    "Mapping[str, Any]"
+                    "Mapping[str,Any]"
                 ],
                 "right_predicate": [
                     "str",
@@ -4573,10 +4714,8 @@
                     "tests.async_mock.Mock"
                 ],
                 "predicate_argument": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "tests.setup.SetupTest"
                 ]
             }
@@ -4592,28 +4731,24 @@
             "arguments": {
                 "false_predicate": [
                     "bool",
-                    "dict",
-                    "dict[, ]",
-                    "Tuple[int, int, bool]",
-                    "tuple[typing.Union[int,int,bool]]"
+                    "Dict",
+                    "Tuple[int,int,bool]",
+                    "Tuple[Union[int,int,bool]]"
                 ],
                 "true_predicate": [
                     "bool",
-                    "dict[, ]",
-                    "dict",
-                    "tuple[typing.Union[int,int,bool]]",
-                    "Tuple[int, int, bool]",
+                    "Dict",
+                    "Tuple[Union[int,int,bool]]",
+                    "Tuple[int,int,bool]",
                     "None",
                     "lz.hints.Domain",
                     "Optional[int]"
                 ],
                 "positional_arguments": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "keyword_arguments": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -4626,10 +4761,9 @@
             "arguments": {
                 "false_predicate": [
                     "bool",
-                    "dict[, ]",
-                    "dict",
-                    "tuple[typing.Union[int,int,bool]]",
-                    "Tuple[int, int, bool]",
+                    "Dict",
+                    "Tuple[Union[int,int,bool]]",
+                    "Tuple[int,int,bool]",
                     "lz.hints.Domain"
                 ],
                 "true_predicate": [
@@ -4663,17 +4797,15 @@
             "arguments": {
                 "object_": [
                     "bool",
-                    "dict[str, float]",
+                    "Dict[str,float]",
                     "str",
-                    "Dict[str, float]",
                     "Iterable[Any]",
                     "int"
                 ],
                 "iterable": [
                     "bool",
-                    "dict[str, float]",
+                    "Dict[str,float]",
                     "str",
-                    "Dict[str, float]",
                     "Iterable[Any]",
                     "int"
                 ]
@@ -4689,14 +4821,12 @@
                 "object_": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "iterable": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "size": [
                     "int",
@@ -4718,14 +4848,12 @@
                 "object_": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "iterable": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "size": [
                     "int",
@@ -4747,7 +4875,8 @@
             ],
             "arguments": {
                 "min_size": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -4759,7 +4888,14 @@
             ],
             "arguments": {
                 "stream": [
-                    "IO"
+                    "Iterable[Any]",
+                    "memoryview",
+                    "int",
+                    "Iterable[T]",
+                    "Optional[str]",
+                    "str",
+                    "Iterator[Any]",
+                    "None"
                 ]
             }
         },
@@ -4774,7 +4910,10 @@
             ],
             "arguments": {
                 "any_string": [
-                    "AnyStr"
+                    "AnyStr",
+                    "str",
+                    "Dict[str, Any]",
+                    "int"
                 ]
             }
         },
@@ -4800,7 +4939,6 @@
             ],
             "arguments": {
                 "empty_sequence": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ]
@@ -4815,13 +4953,9 @@
             "arguments": {
                 "non_empty_sequence": [
                     "Sequence[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
-                    "Iterable[lz.hints.Domain]",
-                    "typing.Iterable[lz.hints.Domain]"
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -4834,13 +4968,9 @@
             "arguments": {
                 "non_empty_sequence": [
                     "Sequence[Any]",
-                    "typing.Sequence[typing.Any]",
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
-                    "Iterable[lz.hints.Domain]",
-                    "typing.Iterable[lz.hints.Domain]"
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -4852,11 +4982,9 @@
             ],
             "arguments": {
                 "sequence": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -4887,11 +5015,19 @@
             "name": "remove_newline_characters_from_byte_sequence",
             "location": 92,
             "return": [
-                "str"
+                "str",
+                "int",
+                "bool",
+                "bytearray",
+                "Union[bytes,bytearray]",
+                "bytes"
             ],
             "arguments": {
                 "byte_sequence": [
-                    "bytes"
+                    "str",
+                    "List[int]",
+                    "bool",
+                    "Callable"
                 ]
             }
         },
@@ -4899,7 +5035,10 @@
             "name": "remove_newline_characters_from_string",
             "location": 97,
             "return": [
-                "str"
+                "str",
+                "bool",
+                "Optional[str]",
+                "Callable"
             ],
             "arguments": {
                 "string": [
@@ -4915,9 +5054,8 @@
             ],
             "arguments": {
                 "object_": [
-                    "typing.Type",
-                    "tests.conftesWorker",
-                    "Type"
+                    "Type",
+                    "tests.conftesWorker"
                 ]
             }
         }
@@ -4929,11 +5067,18 @@
             "name": "to_accumulator_calls",
             "location": 12,
             "return": [
-                "Tuple[(Callable[([Range, Domain], Range)], Range, Sequence[Domain])]"
+                "Sequence[Sequence[str]]",
+                "Sequence[str]",
+                "Union[str, Callable]",
+                "Iterable[str]",
+                "str"
             ],
             "arguments": {
                 "projector": [
-                    "Callable[([Domain, Range], Range)]"
+                    "List",
+                    "str",
+                    "Union[str,int]",
+                    "int"
                 ]
             }
         },
@@ -5013,8 +5158,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -5026,11 +5170,10 @@
             ],
             "arguments": {
                 "function_call": [
-                    "set[str]",
+                    "Set[str]",
                     "tests.hints.FunctionCall",
                     "str",
-                    "bool",
-                    "Set[str]"
+                    "bool"
                 ]
             }
         },
@@ -5059,8 +5202,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -5075,8 +5217,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -5091,8 +5232,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -5105,8 +5245,7 @@
             "arguments": {
                 "partitioned_function_call": [
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -5121,16 +5260,13 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
                 "object_": [
-                    "set[]",
-                    "tests.e2e.Helper",
-                    "dict[str, typing.Any]",
-                    "set",
-                    "Dict[str, Any]"
+                    "Set",
+                    "Dict[str,Any]",
+                    "tests.e2e.Helper"
                 ]
             }
         }
@@ -5144,11 +5280,9 @@
             ],
             "arguments": {
                 "iterable": [
-                    "typing.Iterable[lz.hints.Domain]",
                     "Iterable[lz.hints.Domain]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[Any]",
-                    "Sequence[Any]"
+                    "Sequence[Any]",
+                    "Iterable[Any]"
                 ],
                 "object_": [
                     "str",
@@ -5165,11 +5299,15 @@
             "name": "to_folder_calls",
             "location": 15,
             "return": [
-                "Tuple[(Callable[([Domain, Range], Range)], Range, Sequence[Domain])]"
+                "NoReturn"
             ],
             "arguments": {
                 "projector": [
-                    "Callable[([Domain, Range], Range)]"
+                    "int",
+                    "List[int]",
+                    "None",
+                    "Optional[List[Any]]",
+                    "bool"
                 ]
             }
         },
@@ -5248,7 +5386,8 @@
             ],
             "arguments": {
                 "algorithm": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -5262,7 +5401,6 @@
             ],
             "arguments": {
                 "unregistered_sorting_algorithm": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "cli_ui.tests.MessageRecorder"
                 ],
@@ -5320,7 +5458,8 @@
             ],
             "arguments": {
                 "algorithm": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -5334,8 +5473,7 @@
             ],
             "arguments": {
                 "registered_sorting_algorithm": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -5350,8 +5488,8 @@
                     "str",
                     "int",
                     "float",
-                    "Tuple[float, float, float, float, float]",
-                    "tuple[typing.Union[float,float,float,float,float]]"
+                    "Tuple[float,float,float,float,float]",
+                    "Tuple[Union[float,float,float,float,float]]"
                 ]
             }
         }
@@ -5369,37 +5507,32 @@
             "arguments": {
                 "sortable_iterable": [
                     "bool",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "dict",
-                    "tuple[tuple[typing.Union[int,int]]]",
+                    "Tuple[tuple[Union[int,int]]]",
                     "int",
                     "None",
-                    "Tuple[Tuple[int, int]]",
+                    "Tuple[Tuple[int,int]]",
                     "Optional[str]"
                 ],
                 "registered_sorting_algorithm": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bytearray",
+                    "Dict[str,Any]",
                     "List[List[int]]",
-                    "list[list[int]]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Union[str, bytes]",
+                    "List[list[int]]",
+                    "Union[str,bytes]",
                     "bytes"
                 ],
                 "sorting_key": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bytearray",
+                    "Dict[str,Any]",
                     "List[List[int]]",
-                    "list[list[int]]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Union[str, bytes]",
+                    "List[list[int]]",
+                    "Union[str,bytes]",
                     "bytes"
                 ]
             }
@@ -5408,14 +5541,22 @@
             "name": "objects_are_partially_ordered",
             "location": 40,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "str"
             ],
             "arguments": {
                 "left_object": [
-                    "lz.hints.Sortable"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "int"
                 ],
                 "right_object": [
-                    "lz.hints.Sortable"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -5427,36 +5568,30 @@
             ],
             "arguments": {
                 "sortable_iterable": [
-                    "typing.Iterable[lz.hints.Sortable]",
-                    "typing.Callable[, ]",
                     "Iterable[lz.hints.Sortable]",
+                    "Callable",
                     "List[str]",
                     "Iterable[Any]",
-                    "T",
-                    "Callable"
+                    "T"
                 ],
                 "registered_sorting_algorithm": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bytearray",
+                    "Dict[str,Any]",
                     "List[List[int]]",
-                    "list[list[int]]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Union[str, bytes]",
+                    "List[list[int]]",
+                    "Union[str,bytes]",
                     "bytes"
                 ],
                 "sorting_key": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bytearray",
+                    "Dict[str,Any]",
                     "List[List[int]]",
-                    "list[list[int]]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Union[str, bytes]",
+                    "List[list[int]]",
+                    "Union[str,bytes]",
                     "bytes"
                 ]
             }
@@ -5469,32 +5604,25 @@
             ],
             "arguments": {
                 "sortable_iterable": [
-                    "typing.Iterable[lz.hints.Sortable]",
-                    "str",
                     "Iterable[lz.hints.Sortable]",
+                    "str",
                     "Iterable[Any]"
                 ],
                 "registered_sorting_algorithm": [
                     "str",
+                    "Dict",
                     "bytearray",
-                    "dict",
-                    "dict[, ]",
-                    "bytes",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "tuple",
-                    "tuple[]"
+                    "Dict[str,Any]",
+                    "Tuple",
+                    "bytes"
                 ],
                 "sorting_key": [
                     "str",
+                    "Dict",
                     "bytearray",
-                    "dict",
-                    "dict[, ]",
-                    "bytes",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "tuple",
-                    "tuple[]"
+                    "Dict[str,Any]",
+                    "Tuple",
+                    "bytes"
                 ]
             }
         }
@@ -5509,7 +5637,9 @@
             ],
             "arguments": {
                 "class_": [
-                    "type"
+                    "Type",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -5523,9 +5653,7 @@
                 "object_": [
                     "str",
                     "Type",
-                    "typing.Type",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -5547,11 +5675,16 @@
             "name": "module_to_classes",
             "location": 66,
             "return": [
-                "List[type]"
+                "list"
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "str",
+                    "types.ModuleType",
+                    "Any",
+                    "None",
+                    "django.db.models.fields.Field",
+                    "Optional[Any]"
                 ]
             }
         },
@@ -5567,9 +5700,8 @@
             "arguments": {
                 "maps_tuples": [
                     "int",
-                    "str",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "str",
                     "models.Question"
                 ]
             }
@@ -5582,7 +5714,8 @@
             ],
             "arguments": {
                 "sequence": [
-                    "Sequence"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -5595,7 +5728,9 @@
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "tests.hints.Function",
+                    "mypy.types.Type",
+                    "wemake_python_styleguide.types.AnyFunctionDef"
                 ]
             }
         },
@@ -5608,7 +5743,10 @@
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "Type",
+                    "Exception",
+                    "tests.hints.Function",
+                    "mypy.types.Instance"
                 ]
             }
         },
@@ -5621,17 +5759,25 @@
             ],
             "arguments": {
                 "function": [
-                    "Callable[(..., Range)]"
+                    "tests.hints.Function",
+                    "wemake_python_styleguide.types.AnyFunctionDef",
+                    "mypy.types.Type"
                 ]
             }
         },
         "partition_call": {
             "name": "partition_call",
             "location": 226,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "call": [
-                    "Tuple[(Callable[(..., Range)], Tuple[(Domain, ...)], Dict[(str, Domain)])]"
+                    "Callable",
+                    "tests.hints.Function.Call",
+                    "Exception",
+                    "List[D]",
+                    "List[mypy.types.Type.VarDef]"
                 ]
             }
         },
@@ -5646,7 +5792,11 @@
             ],
             "arguments": {
                 "function": [
-                    "Callable"
+                    "int",
+                    "str",
+                    "Type",
+                    "faustypes.models.IsInstanceArgT",
+                    "bool"
                 ]
             }
         },
@@ -5663,7 +5813,12 @@
             ],
             "arguments": {
                 "function": [
-                    "Callable"
+                    "str",
+                    "Type",
+                    "int",
+                    "float",
+                    "faustypes.models.IsInstanceArgT",
+                    "raiden.utils.BlockExpiration"
                 ]
             }
         },
@@ -5671,7 +5826,7 @@
             "name": "signature_to_max_positionals_count",
             "location": 274,
             "return": [
-                "builtins.int",
+                "int",
                 "None"
             ],
             "arguments": {
@@ -5688,19 +5843,18 @@
             "return": [
                 "int",
                 "str",
-                "set",
-                "dict",
+                "Set",
+                "Dict",
                 "bytes"
             ],
             "arguments": {
                 "signature": [
                     "float",
                     "models.Trip",
+                    "Dict[str,Any]",
                     "None",
                     "bool",
                     "Optional[float]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
                     "int",
                     "models.Route"
                 ]
@@ -5716,9 +5870,8 @@
                 "signature": [
                     "int",
                     "paradigm.models.Overloaded",
-                    "bytes",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "bytes"
                 ]
             }
         },
@@ -5726,7 +5879,7 @@
             "name": "signature_to_keywords_union",
             "location": 296,
             "return": [
-                "typing.Dict[builtins.str, paradigm.models.Parameter]",
+                "Dict[str,paradigm.models.Parameter]",
                 "None"
             ],
             "arguments": {
@@ -5750,14 +5903,13 @@
                 "signature": [
                     "float",
                     "Optional[float]",
+                    "Dict[str,Any]",
                     "None",
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
                     "models.Trip",
                     "str",
                     "int",
-                    "Union[int, str]"
+                    "Union[int,str]"
                 ]
             }
         },
@@ -5765,7 +5917,7 @@
             "name": "overloaded_signature_to_keywords_union",
             "location": 313,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "esm.models.service_type.ServiceType",
                 "str"
             ],
@@ -5794,11 +5946,11 @@
             "name": "partition_args",
             "location": 229,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "Optional[int]",
                 "float",
                 "Callable",
-                "Optional[Tuple[int, int]]",
+                "Optional[Tuple[int,int]]",
                 "int"
             ],
             "arguments": {
@@ -5811,13 +5963,13 @@
             "name": "partition_kwargs",
             "location": 232,
             "return": [
-                "tuple[dict[, ]]",
-                "dict",
-                "Dict[str, float]",
-                "tuple",
-                "Dict[str, str]",
-                "Mapping[starfish.types.Axes, Union[int, slice]]",
-                "Dict[str, bool]"
+                "Tuple[dict]",
+                "Dict",
+                "Dict[str,float]",
+                "Tuple",
+                "Dict[str,str]",
+                "Mapping[starfish.types.Axes,Union[int,slice]]",
+                "Dict[str,bool]"
             ],
             "arguments": {
                 "first_keys": [
@@ -5833,7 +5985,7 @@
             "name": "unite",
             "location": 318,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "int",
                 "Callable",
                 "models.Question",
@@ -5868,12 +6020,11 @@
             "arguments": {
                 "children": [
                     "int",
-                    "typing.Callable[T, T]",
+                    "Set[str]",
+                    "Callable[T,T]",
                     "str",
-                    "Callable[[T], T]",
-                    "set[str]",
-                    "T",
-                    "Set[str]"
+                    "Callable[[T],T]",
+                    "T"
                 ]
             }
         },
@@ -5886,7 +6037,8 @@
             ],
             "arguments": {
                 "min_size": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -5947,7 +6099,9 @@
             ],
             "arguments": {
                 "factory": [
-                    "Callable"
+                    "int",
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -6061,7 +6215,10 @@
             ],
             "arguments": {
                 "encoding": [
-                    "str"
+                    "str",
+                    "int",
+                    "torch.utils.data.DataLoader",
+                    "Optional[int]"
                 ]
             }
         },
@@ -6119,9 +6276,9 @@
                     "int",
                     "None",
                     "Optional[tests.hints.Strategy[lz.hints.Domain]]",
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "Optional[int]",
-                    "Tuple[int, int]"
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -6163,14 +6320,23 @@
             "name": "strings_sizes_to_bytes_sizes",
             "location": 336,
             "return": [
-                "Tuple[(int, Optional[int])]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "min_size": [
-                    "int"
+                    "str",
+                    "int",
+                    "Tuple[int,int,int,int]",
+                    "Tuple[Union[int,int,int,int]]"
                 ],
                 "max_size": [
-                    "Optional[int]"
+                    "int",
+                    "Optional[int]",
+                    "float",
+                    "None",
+                    "List",
+                    "Callable[[int],str]",
+                    "Callable[int,str]"
                 ]
             }
         },
@@ -6190,10 +6356,9 @@
                     "Optional[tests.hints.Strategy[lz.hints.Domain]]",
                     "int",
                     "None",
-                    "Optional[Any]",
-                    "typing.Any",
                     "List[int]",
-                    "list[int]"
+                    "Optional[Any]",
+                    "Any"
                 ]
             }
         },
@@ -6227,11 +6392,11 @@
             "location": 141,
             "return": [
                 "bool",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "Optional[str]",
-                "Dict[str, Dict[str, Any]]",
+                "Dict[str,Dict[str,Any]]",
                 "Mapping"
             ],
             "arguments": {
@@ -6260,7 +6425,12 @@
             "arguments": {
                 "self": [],
                 "object_": [
-                    "Domain"
+                    "Callable",
+                    "str",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Callable[[str],None]",
+                    "cmk.utils.type_defs.HostName"
                 ]
             }
         },
@@ -6288,11 +6458,11 @@
             "return": [
                 "bool",
                 "str",
-                "set",
+                "Set",
                 "List[str]",
                 "Type",
-                "List[Dict[str, str]]",
-                "list"
+                "List[Dict[str,str]]",
+                "List"
             ],
             "arguments": {
                 "string": [
@@ -6319,7 +6489,9 @@
             ],
             "arguments": {
                 "byte_stream": [
-                    "BinaryIO"
+                    "bytes",
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -6333,8 +6505,7 @@
             ],
             "arguments": {
                 "stream_with_batch_parameters": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -6352,7 +6523,10 @@
             ],
             "arguments": {
                 "size": [
-                    "int"
+                    "int",
+                    "List[str]",
+                    "Sequence[T]",
+                    "tests.hints.Strategy[lz.hints.Domain]"
                 ]
             }
         },
@@ -6366,7 +6540,11 @@
             ],
             "arguments": {
                 "size": [
-                    "int"
+                    "int",
+                    "float",
+                    "str",
+                    "tests.hints.Strategy[lz.hints.Domain]",
+                    "adbts.hints.Int"
                 ]
             }
         }
@@ -6380,8 +6558,7 @@
             ],
             "arguments": {
                 "empty_iterable": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -6395,13 +6572,11 @@
                 "transposable_iterable": [
                     "Iterable[lz.hints.FiniteIterable[Any]]",
                     "str",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "bool",
                     "Container[T]",
-                    "typing.Container"
+                    "Container"
                 ],
                 "transposable_iterable_element": [
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
                     "str",
                     "Optional[str]",
@@ -6420,13 +6595,11 @@
                 "transposable_iterable": [
                     "Iterable[lz.hints.FiniteIterable[Any]]",
                     "str",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "bool",
                     "Container[T]",
-                    "typing.Container"
+                    "Container"
                 ],
                 "transposable_iterable_element": [
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
                     "str",
                     "Optional[str]",
@@ -6444,13 +6617,9 @@
             "arguments": {
                 "non_empty_transposable_iterable": [
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
                     "Iterable[lz.hints.FiniteIterable[Any]]",
-                    "typing.Iterable[lz.hints.FiniteIterable[Any]]",
                     "Sequence[Any]",
-                    "typing.Sequence[typing.Any]",
-                    "Iterable[lz.hints.Domain]",
-                    "typing.Iterable[lz.hints.Domain]"
+                    "Iterable[lz.hints.Domain]"
                 ]
             }
         },
@@ -6462,9 +6631,8 @@
             ],
             "arguments": {
                 "object_": [
-                    "typing.Type",
-                    "tests.conftesWorker",
-                    "Type"
+                    "Type",
+                    "tests.conftesWorker"
                 ]
             }
         }
@@ -6480,7 +6648,13 @@
             ],
             "arguments": {
                 "class_": [
-                    "type"
+                    "Type",
+                    "Optional[T]",
+                    "None",
+                    "Optional[Callable[[bool],None]]",
+                    "Callable[bool,None]",
+                    "Tuple[List[str],Optional[str]]",
+                    "Tuple[Union[list[str],str,None]]"
                 ]
             }
         }
@@ -6494,8 +6668,7 @@
             ],
             "arguments": {
                 "object_": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -6507,18 +6680,16 @@
             ],
             "arguments": {
                 "classes": [
-                    "typing.Callable[..., None]",
+                    "Callable[...,None]",
                     "bool",
-                    "Callable[..., None]",
                     "Callable"
                 ],
                 "class_": [
                     "bool",
                     "str",
-                    "type",
-                    "typing.Type",
-                    "Union[str, List[str]]",
-                    "list[str]"
+                    "Type",
+                    "Union[str,List[str]]",
+                    "List[str]"
                 ],
                 "object_": [
                     "Optional[int]",
@@ -6537,16 +6708,14 @@
             ],
             "arguments": {
                 "pickleable_classes": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "tests.hints.CleavageCall",
                     "tests.hints.RightAccumulatorCall",
-                    "tests.hints.LeftAccumulatorCall",
-                    "Dict[str, Any]"
+                    "tests.hints.LeftAccumulatorCall"
                 ],
                 "object_": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "typing.Type",
+                    "Type",
                     "Type[Any]",
                     "raiden.utils.TokenAmount"
                 ]
@@ -6564,13 +6733,12 @@
                 "class_": [
                     "int",
                     "str",
-                    "T",
-                    "list[typing.Type]",
                     "List[Type]",
-                    "typing.Sequence[]",
-                    "Union[Sequence, 'SweepFixedValues']",
-                    "typing.Any",
-                    "Optional[Union[str, Any]]",
+                    "T",
+                    "Sequence",
+                    "Union[Sequence,SweepFixedValues]",
+                    "Any",
+                    "Optional[Union[str,Any]]",
                     "None"
                 ]
             }
@@ -6584,19 +6752,18 @@
             "arguments": {
                 "class_": [
                     "bool",
+                    "Callable",
                     "str",
-                    "typing.Callable[, ]",
-                    "tests.hints.Function",
-                    "Callable"
+                    "tests.hints.Function"
                 ],
                 "object_": [
-                    "Union[Type[Any], Tuple[Any, ...]]",
-                    "typing.Type",
+                    "Union[Type[Any],Tuple[Any,...]]",
+                    "Type",
                     "str",
                     "bool",
-                    "tuple[typing.Union[typing.Any,...]]",
-                    "AbstractSet[\"TemplatePropertyVariable\"]",
-                    "typing.AbstractSet"
+                    "Tuple[Union[Any,...]]",
+                    "AbstractSet[TemplatePropertyVariable]",
+                    "AbstractSet"
                 ]
             }
         },
@@ -6620,36 +6787,29 @@
             ],
             "arguments": {
                 "class_": [
-                    "list[str]",
-                    "str",
                     "List[str]",
+                    "str",
                     "bool",
+                    "Hashable",
+                    "Set[str]",
                     "Optional[bool]",
                     "None",
-                    "typing.Hashable",
-                    "Hashable",
-                    "set[str]",
-                    "Set[str]",
                     "T"
                 ],
                 "other_class": [
-                    "list[str]",
-                    "str",
                     "List[str]",
+                    "str",
                     "bool",
+                    "Hashable",
+                    "Set[str]",
                     "Optional[bool]",
                     "None",
-                    "typing.Hashable",
-                    "Hashable",
-                    "set[str]",
-                    "Set[str]",
                     "T"
                 ],
                 "object_": [
                     "List[str]",
-                    "list[str]",
-                    "Tuple[str, Any]",
-                    "tuple[typing.Union[str,typing.Any]]"
+                    "Tuple[str,Any]",
+                    "Tuple[Union[str,Any]]"
                 ]
             }
         }
@@ -6664,7 +6824,13 @@
             ],
             "arguments": {
                 "class_": [
-                    "type"
+                    "Type",
+                    "Optional[T]",
+                    "None",
+                    "Optional[Callable[[bool],None]]",
+                    "Callable[bool,None]",
+                    "Tuple[List[str],Optional[str]]",
+                    "Tuple[Union[list[str],str,None]]"
                 ]
             }
         }
@@ -6678,14 +6844,12 @@
             ],
             "arguments": {
                 "class_": [
-                    "typing.Type",
+                    "Type",
                     "bool",
-                    "type",
-                    "dict[, ]",
-                    "dict",
-                    "typing.Callable[dict[, ], None]",
+                    "Dict",
+                    "Callable[dict,None]",
                     "Type[Exception]",
-                    "Callable[[Dict], None]"
+                    "Callable[[Dict],None]"
                 ]
             }
         },
@@ -6697,29 +6861,25 @@
             ],
             "arguments": {
                 "classes": [
-                    "typing.Callable[..., None]",
+                    "Callable[...,None]",
                     "bool",
                     "tests.hints.FunctionCall",
-                    "Callable[..., None]",
                     "Callable",
                     "tests.hints.Function.Call"
                 ],
                 "class_": [
                     "bool",
+                    "Type",
                     "str",
-                    "type",
-                    "typing.Type",
                     "bytes",
-                    "Union[str, List[str]]",
-                    "list[str]"
+                    "Union[str,List[str]]",
+                    "List[str]"
                 ],
                 "other_class": [
                     "bool",
                     "str",
-                    "type",
-                    "typing.Type",
-                    "Tuple[int]",
-                    "tuple[int]"
+                    "Type",
+                    "Tuple[int]"
                 ]
             }
         }
@@ -6734,16 +6894,14 @@
             "arguments": {
                 "pickleable_classes": [
                     "str",
+                    "Set[str]",
                     "int",
-                    "set[str]",
-                    "tests.conftesWorker",
-                    "Set[str]"
+                    "tests.conftesWorker"
                 ],
                 "class_": [
                     "bool",
                     "str",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         }
@@ -6759,13 +6917,12 @@
                 "class_": [
                     "int",
                     "str",
-                    "T",
-                    "list[typing.Type]",
                     "List[Type]",
-                    "typing.Sequence[]",
-                    "Union[Sequence, 'SweepFixedValues']",
-                    "typing.Any",
-                    "Optional[Union[str, Any]]",
+                    "T",
+                    "Sequence",
+                    "Union[Sequence,SweepFixedValues]",
+                    "Any",
+                    "Optional[Union[str,Any]]",
                     "None"
                 ]
             }
@@ -6779,18 +6936,14 @@
             "arguments": {
                 "class_": [
                     "str",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "typing.Callable[, ]",
+                    "Dict[str,Any]",
                     "Callable",
                     "tests.conftesWorker"
                 ],
                 "other_class": [
                     "str",
-                    "type",
-                    "typing.Type",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Type",
+                    "Callable"
                 ]
             }
         },
@@ -6802,12 +6955,9 @@
             ],
             "arguments": {
                 "class_": [
-                    "typing.MutableMapping",
-                    "MutableMapping[str, str]",
-                    "typing.Type",
                     "Type",
-                    "typing.Callable[, ]",
-                    "type",
+                    "MutableMapping",
+                    "MutableMapping[str,str]",
                     "Callable"
                 ]
             }
@@ -6821,19 +6971,13 @@
             "arguments": {
                 "class_": [
                     "List[str]",
-                    "list[str]",
                     "Set[str]",
-                    "set[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "other_class": [
                     "List[str]",
-                    "list[str]",
                     "Set[str]",
-                    "set[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "another_class": [
                     "str"

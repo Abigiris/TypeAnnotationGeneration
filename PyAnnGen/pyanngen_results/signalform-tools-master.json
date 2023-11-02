@@ -1,11 +1,11 @@
 {
-    "setup.py": {},
-    "signalform_tools/preflight.py": {
+    "signalform-tools-master/setup.py": {},
+    "signalform-tools-master/signalform_tools/preflight.py": {
         "get_sfx_token": {
             "name": "get_sfx_token",
             "location": 31,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {}
         },
@@ -13,12 +13,10 @@
             "name": "read_conf",
             "location": 37,
             "return": [
-                "str"
+                "typing.Text"
             ],
             "arguments": {
-                "filename": [
-                    "str"
-                ]
+                "filename": []
             }
         },
         "extract_program_text": {
@@ -28,9 +26,7 @@
                 "List[str]"
             ],
             "arguments": {
-                "filename": [
-                    "str"
-                ]
+                "filename": []
             }
         },
         "send_to_sfx": {
@@ -40,15 +36,9 @@
                 "Tuple[(int, str)]"
             ],
             "arguments": {
-                "program_text": [
-                    "str"
-                ],
-                "start": [
-                    "int"
-                ],
-                "stop": [
-                    "int"
-                ]
+                "program_text": [],
+                "start": [],
+                "stop": []
             }
         },
         "extract_events": {
@@ -58,9 +48,7 @@
                 "Tuple[(list, list)]"
             ],
             "arguments": {
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "display_events": {
@@ -70,9 +58,7 @@
                 "None"
             ],
             "arguments": {
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "parse_sfx_now": {
@@ -82,9 +68,7 @@
                 "int"
             ],
             "arguments": {
-                "input_time": [
-                    "str"
-                ]
+                "input_time": []
             }
         },
         "parse_sfx_relative_time": {
@@ -94,9 +78,7 @@
                 "int"
             ],
             "arguments": {
-                "input_time": [
-                    "str"
-                ]
+                "input_time": []
             }
         },
         "parse_timestamp": {
@@ -106,9 +88,7 @@
                 "int"
             ],
             "arguments": {
-                "input_time": [
-                    "str"
-                ]
+                "input_time": []
             }
         },
         "parse_date": {
@@ -118,28 +98,24 @@
                 "int"
             ],
             "arguments": {
-                "input_time": [
-                    "str"
-                ]
+                "input_time": []
             }
         },
         "extract_timestamp": {
             "name": "extract_timestamp",
             "location": 148,
             "return": [
-                "int"
+                "Optional[int]"
             ],
             "arguments": {
-                "input_time": [
-                    "str"
-                ]
+                "input_time": []
             }
         },
         "interpret_interval": {
             "name": "interpret_interval",
             "location": 165,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "args": []
@@ -169,7 +145,7 @@
             }
         }
     },
-    "signalform_tools/show.py": {
+    "signalform-tools-master/signalform_tools/show.py": {
         "show": {
             "name": "show",
             "location": 22,
@@ -177,7 +153,10 @@
                 "None"
             ],
             "arguments": {
-                "resource": []
+                "resource": [
+                    "Set[str]",
+                    "int"
+                ]
             }
         },
         "parse_resources": {
@@ -187,7 +166,10 @@
                 "itertools.chain"
             ],
             "arguments": {
-                "state": []
+                "state": [
+                    "Type[T]",
+                    "Callable"
+                ]
             }
         },
         "parse_state": {
@@ -209,7 +191,7 @@
             }
         }
     },
-    "signalform_tools/signalform.py": {
+    "signalform-tools-master/signalform_tools/signalform.py": {
         "parse_args": {
             "name": "parse_args",
             "location": 11,
@@ -227,11 +209,13 @@
             "arguments": {}
         }
     },
-    "signalform_tools/utils.py": {
+    "signalform-tools-master/signalform_tools/utils.py": {
         "download_tfstate": {
             "name": "download_tfstate",
             "location": 11,
-            "return": [],
+            "return": [
+                "typing.Generator[]"
+            ],
             "arguments": {}
         },
         "extract_s3_path": {
@@ -241,23 +225,34 @@
                 "Optional[Dict[(str, str)]]"
             ],
             "arguments": {
-                "d": []
+                "d": [
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "Optional[float]",
+                    "Exception"
+                ]
             }
         }
     },
-    "signalform_tools/validate.py": {
+    "signalform-tools-master/signalform_tools/validate.py": {
         "parse": {
             "name": "parse",
             "location": 31,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "list"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "List[str]",
+                    "str",
+                    "Iterator[str]",
+                    "Iterator"
                 ],
                 "rules": [
-                    "Iterable[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                    "List[str]",
+                    "str",
+                    "Iterator[str]"
                 ]
             }
         },
@@ -269,10 +264,14 @@
             ],
             "arguments": {
                 "resource": [
-                    "T"
+                    "int",
+                    "Dict",
+                    "str"
                 ],
                 "rules": [
-                    "Iterable[Callable[([T], Optional[str])]]"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -280,11 +279,12 @@
             "name": "parse_type",
             "location": 298,
             "return": [
-                "str"
+                "Optional[str]"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -292,7 +292,7 @@
             "name": "register_parsing_rule",
             "location": 304,
             "return": [
-                "Callable[([Callable[([str], Optional[Tuple[(str, Any)]])]], Callable[([str], Optional[Tuple[(str, Any)]])])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {}
         },
@@ -300,7 +300,7 @@
             "name": "register_validation_rule",
             "location": 314,
             "return": [
-                "Callable[([Callable[([T], Optional[str])]], Callable[([T], Optional[str])])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {}
         },
@@ -308,7 +308,7 @@
             "name": "get_kv_config",
             "location": 326,
             "return": [
-                "Tuple[(str, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "line": [
@@ -319,92 +319,8 @@
         "parse_name": {
             "name": "parse_name",
             "location": 335,
-            "return": [],
-            "arguments": {
-                "line": []
-            }
-        },
-        "parse_program_text": {
-            "name": "parse_program_text",
-            "location": 344,
-            "return": [],
-            "arguments": {
-                "line": []
-            }
-        },
-        "validate_parentheses": {
-            "name": "validate_parentheses",
-            "location": 352,
-            "return": [],
-            "arguments": {
-                "resource": []
-            }
-        },
-        "parse_max_delay": {
-            "name": "parse_max_delay",
-            "location": 369,
-            "return": [],
-            "arguments": {
-                "line": []
-            }
-        },
-        "validate_max_delay": {
-            "name": "validate_max_delay",
-            "location": 378,
-            "return": [],
-            "arguments": {
-                "resource": []
-            }
-        },
-        "parse_detect_label": {
-            "name": "parse_detect_label",
-            "location": 388,
-            "return": [],
-            "arguments": {
-                "line": []
-            }
-        },
-        "parse_runbook_url": {
-            "name": "parse_runbook_url",
-            "location": 396,
-            "return": [],
-            "arguments": {
-                "line": []
-            }
-        },
-        "validate_detect_labels": {
-            "name": "validate_detect_labels",
-            "location": 404,
-            "return": [],
-            "arguments": {
-                "resource": []
-            }
-        },
-        "validate_runbook_url": {
-            "name": "validate_runbook_url",
-            "location": 415,
-            "return": [],
-            "arguments": {
-                "resource": []
-            }
-        },
-        "compact_heredoc": {
-            "name": "compact_heredoc",
-            "location": 438,
             "return": [
-                "List[str]"
-            ],
-            "arguments": {
-                "lines": [
-                    "List[str]"
-                ]
-            }
-        },
-        "strip_comments": {
-            "name": "strip_comments",
-            "location": 482,
-            "return": [
-                "str"
+                "Optional[Tuple[(str, str)]]"
             ],
             "arguments": {
                 "line": [
@@ -412,15 +328,164 @@
                 ]
             }
         },
+        "parse_program_text": {
+            "name": "parse_program_text",
+            "location": 344,
+            "return": [
+                "Optional[Tuple[(Any, Any)]]"
+            ],
+            "arguments": {
+                "line": [
+                    "str"
+                ]
+            }
+        },
+        "validate_parentheses": {
+            "name": "validate_parentheses",
+            "location": 352,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "resource": [
+                    "int",
+                    "Sequence[int]",
+                    "List[List[str]]",
+                    "List[list[str]]"
+                ]
+            }
+        },
+        "parse_max_delay": {
+            "name": "parse_max_delay",
+            "location": 369,
+            "return": [
+                "Optional[Tuple[(Any, int)]]"
+            ],
+            "arguments": {
+                "line": [
+                    "str",
+                    "List[str]",
+                    "Iterable[str]"
+                ]
+            }
+        },
+        "validate_max_delay": {
+            "name": "validate_max_delay",
+            "location": 378,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "resource": [
+                    "int",
+                    "str"
+                ]
+            }
+        },
+        "parse_detect_label": {
+            "name": "parse_detect_label",
+            "location": 388,
+            "return": [
+                "Optional[Tuple[(Any, Any)]]"
+            ],
+            "arguments": {
+                "line": [
+                    "str",
+                    "bytes"
+                ]
+            }
+        },
+        "parse_runbook_url": {
+            "name": "parse_runbook_url",
+            "location": 396,
+            "return": [
+                "Optional[Tuple[(Any, Any)]]"
+            ],
+            "arguments": {
+                "line": [
+                    "str"
+                ]
+            }
+        },
+        "validate_detect_labels": {
+            "name": "validate_detect_labels",
+            "location": 404,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "resource": [
+                    "str",
+                    "List[str]"
+                ]
+            }
+        },
+        "validate_runbook_url": {
+            "name": "validate_runbook_url",
+            "location": 415,
+            "return": [
+                "Optional[str]"
+            ],
+            "arguments": {
+                "resource": [
+                    "List",
+                    "bytes",
+                    "str",
+                    "List[List[str]]",
+                    "List[list[str]]"
+                ]
+            }
+        },
+        "compact_heredoc": {
+            "name": "compact_heredoc",
+            "location": 438,
+            "return": [
+                "str"
+            ],
+            "arguments": {
+                "lines": [
+                    "str",
+                    "List[Dict[str, Any]]",
+                    "dict",
+                    "list"
+                ]
+            }
+        },
+        "strip_comments": {
+            "name": "strip_comments",
+            "location": 482,
+            "return": [
+                "Text",
+                "str",
+                "int",
+                "bool",
+                "float",
+                "List[Tuple[str,str]]",
+                "List[str]"
+            ],
+            "arguments": {
+                "line": [
+                    "str",
+                    "Iterator[str]"
+                ]
+            }
+        },
         "clean_conf": {
             "name": "clean_conf",
             "location": 497,
             "return": [
-                "List[str]"
+                "List[bytes]",
+                "str",
+                "frozenset",
+                "List[str]",
+                "List",
+                "Sequence[str]",
+                "Set[str]"
             ],
             "arguments": {
                 "tf_conf": [
-                    "IO"
+                    "str",
+                    "List[int]"
                 ]
             }
         },
@@ -428,14 +493,15 @@
             "name": "parse_resources",
             "location": 507,
             "return": [
-                "List[Resource]"
+                "list"
             ],
             "arguments": {
                 "tf_conf": [
-                    "IO"
+                    "str",
+                    "List[int]"
                 ],
                 "available_resources": [
-                    "Dict[(str, Type[Resource])]"
+                    "List[str]"
                 ]
             }
         },
@@ -447,10 +513,16 @@
             ],
             "arguments": {
                 "tf_conf": [
-                    "IO"
+                    "str",
+                    "bool",
+                    "float",
+                    "int"
                 ],
                 "available_resources": [
-                    "Dict[(str, Type[Resource])]"
+                    "str",
+                    "bool",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -465,7 +537,9 @@
                     "str"
                 ],
                 "available_resources": [
-                    "Dict[(str, Type[Resource])]"
+                    "str",
+                    "bool",
+                    "bytes"
                 ]
             }
         },
@@ -473,7 +547,7 @@
             "name": "list_filenames",
             "location": 539,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "directory": [
@@ -500,10 +574,15 @@
             "arguments": {
                 "self": [],
                 "type": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -511,14 +590,18 @@
             "name": "from_config",
             "location": 57,
             "return": [
-                "Resource"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [
-                    "builtins.type[_TResource]"
+                    "builtins.type[Resource]"
                 ],
                 "config": [
-                    "List[str]"
+                    "bool",
+                    "List[dict]",
+                    "Type[T]",
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -533,7 +616,13 @@
                     "builtins.type[Resource]"
                 ],
                 "rule": [
-                    "Callable[([str], Optional[Tuple[(str, Any)]])]"
+                    "complex",
+                    "bytes",
+                    "str",
+                    "Optional[int]",
+                    "int",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -541,7 +630,8 @@
             "name": "get_parsing_rules",
             "location": 65,
             "return": [
-                "Set[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "cls": [
@@ -560,7 +650,13 @@
                     "builtins.type[Resource]"
                 ],
                 "rule": [
-                    "Callable[([T], Optional[str])]"
+                    "complex",
+                    "bytes",
+                    "str",
+                    "Optional[int]",
+                    "int",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -568,7 +664,7 @@
             "name": "get_validation_rules",
             "location": 72,
             "return": [
-                "Set[Callable[([T], Optional[str])]]"
+                "Set[Callable[([Any], Any)]]"
             ],
             "arguments": {
                 "self": []
@@ -578,14 +674,18 @@
             "name": "parse",
             "location": 76,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "Dict[str, Any]",
+                "str"
             ],
             "arguments": {
                 "cls": [
                     "builtins.type[Resource]"
                 ],
                 "line": [
-                    "str"
+                    "str",
+                    "int",
+                    "Union[str,List[str]]",
+                    "List[str]"
                 ]
             }
         },
@@ -593,14 +693,16 @@
             "name": "parse_config",
             "location": 80,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "list"
             ],
             "arguments": {
                 "cls": [
                     "builtins.type[Resource]"
                 ],
                 "config": [
-                    "List[str]"
+                    "str",
+                    "Dict",
+                    "Iterable"
                 ]
             }
         },
@@ -623,16 +725,28 @@
             "arguments": {
                 "self": [],
                 "type": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "program_text": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,str]",
+                    "Union[int,str]",
+                    "None",
+                    "Optional[int]"
                 ],
                 "max_delay": [
-                    "Optional[int]"
+                    "int",
+                    "None",
+                    "Union[float,int]",
+                    "float"
                 ]
             }
         },
@@ -640,14 +754,18 @@
             "name": "from_config",
             "location": 97,
             "return": [
-                "SignalFlowResource"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [
-                    "builtins.type[_TSignalFlowResource]"
+                    "builtins.type[SignalFlowResource]"
                 ],
                 "config": [
-                    "List[str]"
+                    "bool",
+                    "List[dict]",
+                    "Type[T]",
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -655,7 +773,9 @@
             "name": "get_parsing_rules",
             "location": 101,
             "return": [
-                "Set[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                "str",
+                "int",
+                "bool"
             ],
             "arguments": {
                 "cls": [
@@ -667,7 +787,9 @@
             "name": "get_validation_rules",
             "location": 104,
             "return": [
-                "Set[Callable[([T], Optional[str])]]"
+                "str",
+                "int",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -677,7 +799,10 @@
             "name": "parse",
             "location": 108,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "int",
+                "Optional[str]",
+                "float",
+                "str"
             ],
             "arguments": {
                 "cls": [
@@ -707,19 +832,44 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "float",
+                    "None",
+                    "Optional[RoundingMode]",
+                    "Optional[str]",
+                    "Optional[TaxCalculationMode]"
                 ],
                 "program_text": [
-                    "str"
+                    "str",
+                    "float",
+                    "None",
+                    "Optional[RoundingMode]",
+                    "Optional[str]",
+                    "Optional[TaxCalculationMode]"
                 ],
                 "max_delay": [
-                    "Optional[int]"
+                    "str",
+                    "None",
+                    "float",
+                    "Optional[RoundingMode]",
+                    "Optional[str]",
+                    "Optional[TaxCalculationMode]"
                 ],
                 "detect_labels": [
-                    "Optional[Set[str]]"
+                    "str",
+                    "None",
+                    "bool",
+                    "Callable",
+                    "List[Tuple[str,Any]]",
+                    "Optional[List[str]]",
+                    "List[tuple[Union[str,Any]]]",
+                    "Optional[str]",
+                    "List[str]"
                 ],
                 "runbook_urls": [
-                    "Optional[List[str]]"
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -734,7 +884,10 @@
                     "builtins.type[_TDetector]"
                 ],
                 "config": [
-                    "List[str]"
+                    "str",
+                    "Optional[str]",
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -742,7 +895,7 @@
             "name": "get_parsing_rules",
             "location": 149,
             "return": [
-                "Set[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                "set"
             ],
             "arguments": {
                 "cls": [
@@ -754,7 +907,7 @@
             "name": "get_validation_rules",
             "location": 152,
             "return": [
-                "Set[Callable[([T], Optional[str])]]"
+                "set"
             ],
             "arguments": {
                 "self": []
@@ -764,7 +917,10 @@
             "name": "parse",
             "location": 156,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "int",
+                "Optional[str]",
+                "float",
+                "str"
             ],
             "arguments": {
                 "cls": [
@@ -800,7 +956,8 @@
                     "str"
                 ],
                 "max_delay": [
-                    "Optional[int]"
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -815,7 +972,11 @@
                     "builtins.type[_TChart]"
                 ],
                 "config": [
-                    "List[str]"
+                    "int",
+                    "Dict[str,str]",
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -823,7 +984,7 @@
             "name": "get_parsing_rules",
             "location": 179,
             "return": [
-                "Set[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                "set"
             ],
             "arguments": {
                 "cls": [
@@ -835,7 +996,7 @@
             "name": "get_validation_rules",
             "location": 182,
             "return": [
-                "Set[Callable[([T], Optional[str])]]"
+                "set"
             ],
             "arguments": {
                 "self": []
@@ -845,7 +1006,10 @@
             "name": "parse",
             "location": 186,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "int",
+                "Optional[str]",
+                "float",
+                "str"
             ],
             "arguments": {
                 "cls": [
@@ -875,7 +1039,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -883,14 +1049,18 @@
             "name": "from_config",
             "location": 201,
             "return": [
-                "extNote"
+                "TextNote"
             ],
             "arguments": {
                 "cls": [
                     "builtins.type[_TTextNote]"
                 ],
                 "config": [
-                    "List[str]"
+                    "int",
+                    "Dict[str,str]",
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -898,7 +1068,8 @@
             "name": "get_parsing_rules",
             "location": 209,
             "return": [
-                "Set[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                "str",
+                "bytes"
             ],
             "arguments": {
                 "cls": [
@@ -910,7 +1081,8 @@
             "name": "get_validation_rules",
             "location": 212,
             "return": [
-                "Set[Callable[([T], Optional[str])]]"
+                "str",
+                "bytes"
             ],
             "arguments": {
                 "self": []
@@ -920,7 +1092,10 @@
             "name": "parse",
             "location": 216,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "int",
+                "Optional[str]",
+                "float",
+                "str"
             ],
             "arguments": {
                 "cls": [
@@ -950,7 +1125,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -965,7 +1142,11 @@
                     "builtins.type[_TDashboard]"
                 ],
                 "config": [
-                    "List[str]"
+                    "int",
+                    "Dict[str,str]",
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -973,7 +1154,9 @@
             "name": "get_parsing_rules",
             "location": 239,
             "return": [
-                "Set[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                "str",
+                "List[int]",
+                "bool"
             ],
             "arguments": {
                 "cls": [
@@ -985,7 +1168,7 @@
             "name": "get_validation_rules",
             "location": 242,
             "return": [
-                "Set[Callable[([T], Optional[str])]]"
+                "Set[Callable[([Any], Any)]]"
             ],
             "arguments": {
                 "self": []
@@ -995,7 +1178,10 @@
             "name": "parse",
             "location": 246,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "int",
+                "Optional[str]",
+                "float",
+                "str"
             ],
             "arguments": {
                 "cls": [
@@ -1025,7 +1211,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1040,7 +1228,11 @@
                     "builtins.type[_TDashboardGroup]"
                 ],
                 "config": [
-                    "List[str]"
+                    "int",
+                    "Dict[str,str]",
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1048,7 +1240,10 @@
             "name": "get_parsing_rules",
             "location": 269,
             "return": [
-                "Set[Callable[([str], Optional[Tuple[(str, Any)]])]]"
+                "Optional[bool]",
+                "Optional[int]",
+                "str",
+                "List[int]"
             ],
             "arguments": {
                 "cls": [
@@ -1060,7 +1255,7 @@
             "name": "get_validation_rules",
             "location": 272,
             "return": [
-                "Set[Callable[([T], Optional[str])]]"
+                "Set[Callable[([Any], Any)]]"
             ],
             "arguments": {
                 "self": []
@@ -1070,7 +1265,10 @@
             "name": "parse",
             "location": 276,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "int",
+                "Optional[str]",
+                "float",
+                "str"
             ],
             "arguments": {
                 "cls": [
@@ -1102,49 +1300,99 @@
         "register_validation_rule.decorator": {
             "name": "decorator",
             "location": 316,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
-                "rule": []
+                "rule": [
+                    "int",
+                    "Callable",
+                    "str"
+                ]
             }
         },
         "validate_parentheses.count": {
             "name": "count",
             "location": 356,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
-                "char": []
+                "char": [
+                    "str",
+                    "Set[str]",
+                    "bool",
+                    "dict"
+                ]
             }
         },
         "compact_heredoc.find_end": {
             "name": "find_end",
             "location": 445,
-            "return": [],
+            "return": [
+                "str",
+                "type",
+                "Type[T]"
+            ],
             "arguments": {
-                "eof": [],
-                "start": []
+                "eof": [
+                    "str"
+                ],
+                "start": [
+                    "int",
+                    "float",
+                    "Union[str, int]",
+                    "str",
+                    "Union[str, list]"
+                ]
             }
         },
         "compact_heredoc.heredoc_where": {
             "name": "heredoc_where",
             "location": 454,
-            "return": [],
+            "return": [
+                "str",
+                "int",
+                "Dict[str, Any]",
+                "float"
+            ],
             "arguments": {
-                "index": []
+                "index": [
+                    "str",
+                    "T",
+                    "int"
+                ]
             }
         },
         "compact_heredoc.compact": {
             "name": "compact",
             "location": 466,
-            "return": [],
+            "return": [
+                "float",
+                "bool",
+                "Optional[int]",
+                "int"
+            ],
             "arguments": {
-                "compacted": [],
-                "indexed_line": []
+                "compacted": [
+                    "str",
+                    "Optional[int]"
+                ],
+                "indexed_line": [
+                    "str",
+                    "int",
+                    "Union[str, List[str]]"
+                ]
             }
         }
     },
-    "signalform_tools/__about__.py": {},
-    "signalform_tools/__init__.py": {},
-    "tests/preflight_test.py": {
+    "signalform-tools-master/signalform_tools/__about__.py": {},
+    "signalform-tools-master/signalform_tools/__init__.py": {},
+    "signalform-tools-master/tests/preflight_test.py": {
         "test_foo": {
             "name": "test_foo",
             "location": 1,

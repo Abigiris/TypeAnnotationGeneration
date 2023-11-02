@@ -1,5 +1,5 @@
 {
-    "cx_setup.py": {
+    "pyimgvalidate-master/cx_setup.py": {
         "create_msi_tablename": {
             "name": "create_msi_tablename",
             "location": 13,
@@ -7,8 +7,13 @@
                 "str"
             ],
             "arguments": {
-                "python_name": [],
-                "fullname": []
+                "python_name": [
+                    "str"
+                ],
+                "fullname": [
+                    "bool",
+                    "str"
+                ]
             }
         },
         "get_tests": {
@@ -20,7 +25,7 @@
             "arguments": {}
         }
     },
-    "setup.py": {
+    "pyimgvalidate-master/setup.py": {
         "get_project_metadata": {
             "name": "get_project_metadata",
             "location": 5,
@@ -30,7 +35,7 @@
             "arguments": {}
         }
     },
-    "docs/source/conf.py": {
+    "pyimgvalidate-master/docs/source/conf.py": {
         "get_project_metadata": {
             "name": "get_project_metadata",
             "location": 26,
@@ -40,13 +45,19 @@
             "arguments": {}
         }
     },
-    "imgvalidator/cli.py": {
+    "pyimgvalidate-master/imgvalidator/cli.py": {
         "source": {
             "name": "source",
             "location": 9,
-            "return": [],
+            "return": [
+                "str",
+                "bool",
+                "List[str]"
+            ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str"
+                ]
             }
         },
         "get_parser": {
@@ -69,12 +80,19 @@
             "name": "locate_files",
             "location": 65,
             "return": [
-                "Generator[(str, None, None)]"
+                "Generator[(str, Any, Any)]"
             ],
             "arguments": {
-                "source": [],
+                "source": [
+                    "str"
+                ],
                 "profile": [
-                    "validation_profile.ValidationProfile"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "None",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -85,8 +103,19 @@
                 "Generator[(report.ValidationData, Any, None)]"
             ],
             "arguments": {
-                "files": [],
-                "profile": []
+                "files": [
+                    "List[str]",
+                    "IO[str]",
+                    "IO[Any]",
+                    "Sequence[str]"
+                ],
+                "profile": [
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "int",
+                    "os.DirEntry",
+                    "bool"
+                ]
             }
         },
         "get_files": {
@@ -96,12 +125,17 @@
                 "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "path": [],
-                "extension": []
+                "path": [
+                    "str"
+                ],
+                "extension": [
+                    "str",
+                    "Dict"
+                ]
             }
         }
     },
-    "imgvalidator/profiles.py": {
+    "pyimgvalidate-master/imgvalidator/profiles.py": {
         "DSHathiAccessTiff.set_embedded_metadata_profile": {
             "name": "set_embedded_metadata_profile",
             "location": 6,
@@ -163,7 +197,7 @@
             }
         }
     },
-    "imgvalidator/report.py": {
+    "pyimgvalidate-master/imgvalidator/report.py": {
         "ValidationData.__init__": {
             "name": "__init__",
             "location": 2,
@@ -172,7 +206,11 @@
             ],
             "arguments": {
                 "self": [],
-                "filename": []
+                "filename": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         },
         "ValidationData.__str__": {
@@ -186,7 +224,7 @@
             }
         }
     },
-    "imgvalidator/utils.py": {
+    "pyimgvalidate-master/imgvalidator/utils.py": {
         "get_profiles": {
             "name": "get_profiles",
             "location": 5,
@@ -196,7 +234,7 @@
             "arguments": {}
         }
     },
-    "imgvalidator/validate.py": {
+    "pyimgvalidate-master/imgvalidator/validate.py": {
         "validate_value": {
             "name": "validate_value",
             "location": 5,
@@ -204,9 +242,18 @@
                 "Optional[str]"
             ],
             "arguments": {
-                "test_name": [],
-                "value": [],
-                "expected_value": []
+                "test_name": [
+                    "str",
+                    "Sequence[str]"
+                ],
+                "value": [
+                    "str",
+                    "Sequence[str]"
+                ],
+                "expected_value": [
+                    "str",
+                    "Sequence[str]"
+                ]
             }
         },
         "find_icc_errors": {
@@ -216,8 +263,17 @@
                 "Generator[(str, Any, None)]"
             ],
             "arguments": {
-                "image_file": [],
-                "expected_icc_profile_type": []
+                "image_file": [
+                    "str",
+                    "Dict[str, Any]",
+                    "py3exiv2bind.Image",
+                    "List[str]"
+                ],
+                "expected_icc_profile_type": [
+                    "str",
+                    "bytes",
+                    "int"
+                ]
             }
         },
         "validate_file": {
@@ -227,9 +283,11 @@
                 "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
-                "file_name": [],
+                "file_name": [
+                    "str"
+                ],
                 "validation_profile": [
-                    "validation_profile.ValidationProfile"
+                    "str"
                 ]
             }
         },
@@ -240,28 +298,48 @@
                 "Generator[(str, Any, None)]"
             ],
             "arguments": {
-                "image_file": [],
-                "embedded_metadata_profile": []
+                "image_file": [
+                    "str",
+                    "Union[str,BinaryIO]",
+                    "BinaryIO"
+                ],
+                "embedded_metadata_profile": [
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "Mapping[str,Any]",
+                    "Tuple",
+                    "List[str]",
+                    "str"
+                ]
             }
         }
     },
-    "imgvalidator/validation_profile.py": {
+    "pyimgvalidate-master/imgvalidator/validation_profile.py": {
         "identify_icc_profile": {
             "name": "identify_icc_profile",
             "location": 45,
             "return": [
-                "IccProfileType"
+                "str"
             ],
             "arguments": {
-                "profile": []
+                "profile": [
+                    "str",
+                    "int",
+                    "slice"
+                ]
             }
         },
         "get_profile_builder": {
             "name": "get_profile_builder",
             "location": 66,
-            "return": [],
+            "return": [
+                "str"
+            ],
             "arguments": {
-                "name": []
+                "name": [
+                    "str"
+                ]
             }
         },
         "ValidationProfile.__init__": {
@@ -297,7 +375,9 @@
         "AbsProfileBuilder.set_embedded_metadata_profile": {
             "name": "set_embedded_metadata_profile",
             "location": 30,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": []
             }
@@ -305,7 +385,9 @@
         "AbsProfileBuilder.set_icc_profile_type": {
             "name": "set_icc_profile_type",
             "location": 34,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": []
             }
@@ -323,7 +405,9 @@
         "AbsProfileBuilder.set_file_extension": {
             "name": "set_file_extension",
             "location": 41,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": []
             }
@@ -337,7 +421,12 @@
             "arguments": {
                 "self": [],
                 "profile_builder": [
-                    "AbsProfileBuilder"
+                    "str",
+                    "Callable",
+                    "Optional[List]",
+                    "List",
+                    "None",
+                    "T"
                 ]
             }
         },
@@ -345,15 +434,18 @@
             "name": "build_profile",
             "location": 58,
             "return": [
-                "ValidationProfile"
+                "str",
+                "cmk.utils.type_defs.UserId",
+                "List[Tuple[str, int]]",
+                "int"
             ],
             "arguments": {
                 "self": []
             }
         }
     },
-    "imgvalidator/__init__.py": {},
-    "imgvalidator/__main__.py": {
+    "pyimgvalidate-master/imgvalidator/__init__.py": {},
+    "pyimgvalidate-master/imgvalidator/__main__.py": {
         "main": {
             "name": "main",
             "location": 4,
@@ -363,8 +455,8 @@
             "arguments": {}
         }
     },
-    "imgvalidator/__version__.py": {},
-    "tests/test_profile.py": {
+    "pyimgvalidate-master/imgvalidator/__version__.py": {},
+    "pyimgvalidate-master/tests/test_profile.py": {
         "test_DSPreservationTiff_profile": {
             "name": "test_DSPreservationTiff_profile",
             "location": 4,
@@ -390,6 +482,6 @@
             "arguments": {}
         }
     },
-    "tests/test_validate.py": {},
-    "tests/__init__.py": {}
+    "pyimgvalidate-master/tests/test_validate.py": {},
+    "pyimgvalidate-master/tests/__init__.py": {}
 }

@@ -17,16 +17,13 @@
             "arguments": {
                 "self": [],
                 "led_state": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "dict[, ]",
+                    "Dict",
+                    "List[Callable]",
                     "str",
-                    "dict",
-                    "list[typing.Callable[, ]]",
                     "bool",
                     "Iterable[Any]",
-                    "Iterable[float]",
-                    "List[Callable]"
+                    "Iterable[float]"
                 ]
             }
         },
@@ -34,7 +31,10 @@
             "name": "get_adc_values",
             "location": 37,
             "return": [
-                "list"
+                "Dict[str, Any]",
+                "Dict[str, Tuple[Any, Any]]",
+                "Optional[Dict[str, Any]]",
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -89,7 +89,11 @@
             "name": "get_all_vals",
             "location": 45,
             "return": [
-                "list"
+                "Dict[str, Any]",
+                "Dict[str, Tuple[Any, Any]]",
+                "str",
+                "bool",
+                "Dict[str, Dict[str, str]]"
             ],
             "arguments": {
                 "self": []
@@ -104,7 +108,9 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "oatmeal.protocol.OatmealMsg"
+                    "str",
+                    "int",
+                    "oatmeal.OatmealMsg"
                 ]
             }
         }
@@ -127,16 +133,13 @@
             "arguments": {
                 "self": [],
                 "led_state": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "dict[, ]",
+                    "Dict",
+                    "List[Callable]",
                     "str",
-                    "dict",
-                    "list[typing.Callable[, ]]",
                     "bool",
                     "Iterable[Any]",
-                    "Iterable[float]",
-                    "List[Callable]"
+                    "Iterable[float]"
                 ]
             }
         },
@@ -144,7 +147,10 @@
             "name": "get_adc_values",
             "location": 35,
             "return": [
-                "list"
+                "Dict[str, Any]",
+                "Dict[str, Tuple[Any, Any]]",
+                "Optional[Dict[str, Any]]",
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -158,14 +164,16 @@
             "name": "open_device",
             "location": 233,
             "return": [
-                "Optional[OatmealDevice_T]"
+                "None"
             ],
             "arguments": {
                 "uart_path": [
-                    "str"
+                    "str",
+                    "int",
+                    "dict[, ]"
                 ],
                 "device_map": [
-                    "Dict[(str, Type[OatmealDevice_T])]"
+                    "str"
                 ]
             }
         },
@@ -185,11 +193,11 @@
             "name": "_device_list_to_map",
             "location": 305,
             "return": [
-                "Dict[(str, Type[OatmealDevice_T])]"
+                "dict"
             ],
             "arguments": {
                 "device_list": [
-                    "List[Type[OatmealDevice_T]]"
+                    "str"
                 ]
             }
         },
@@ -197,11 +205,14 @@
             "name": "detect_all_devices",
             "location": 319,
             "return": [
-                "Dict[(str, List[OatmealDevice_T])]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "device_list": [
-                    "List[Type[OatmealDevice_T]]"
+                    "bytes",
+                    "bool",
+                    "str",
+                    "list[tuple[typing.Union[str,int]]]"
                 ]
             }
         },
@@ -209,11 +220,16 @@
             "name": "find_devices",
             "location": 384,
             "return": [
-                "Dict[(str, OatmealDevice_T)]"
+                "dict"
             ],
             "arguments": {
                 "device_list": [
-                    "List[Type[OatmealDevice_T]]"
+                    "list[]",
+                    "list[typing.Union[int,float]]",
+                    "list[list[typing.Any]]",
+                    "list[list[T]]",
+                    "list[float]",
+                    "int"
                 ]
             }
         },
@@ -239,17 +255,19 @@
             "name": "create",
             "location": 64,
             "return": [
-                "OatmealDevice_T"
+                "OatmealDevice"
             ],
             "arguments": {
                 "cls": [
-                    "Type[OatmealDevice_T]"
+                    "Type[_TOatmealDevice]"
                 ],
                 "uart_path": [
                     "str"
                 ],
                 "details": [
-                    "oatmeal.protocol.OatmealDeviceDetails"
+                    "bool",
+                    "str",
+                    "list[str]"
                 ]
             }
         },
@@ -257,7 +275,7 @@
             "name": "get_path",
             "location": 82,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -282,7 +300,7 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "oatmeal.protocol.OatmealMsg"
+                    "str"
                 ]
             }
         },
@@ -290,62 +308,62 @@
             "name": "send_and_ack",
             "location": 98,
             "return": [
-                "oatmeal.protocol.OatmealMsg"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "msg": [
-                    "oatmeal.protocol.OatmealMsg"
+                    "bool",
+                    "str",
+                    "None",
+                    "tuple[typing.Union[int,int]]"
                 ],
                 "ackcode": [
-                    "str"
+                    "None",
+                    "bool",
+                    "str",
+                    "tuple[typing.Union[int,int]]"
                 ],
-                "timeout": [
-                    "float"
-                ],
-                "n_retries": [
-                    "int"
-                ]
+                "timeout": [],
+                "n_retries": []
             }
         },
         "OatmealDevice.send_and_done": {
             "name": "send_and_done",
             "location": 108,
             "return": [
-                "Tuple[(oatmeal.protocol.OatmealMsg, oatmeal.protocol.OatmealMsg)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "msg": [
-                    "oatmeal.protocol.OatmealMsg"
+                    "int"
                 ],
                 "ackcode": [
-                    "str"
+                    "None",
+                    "int"
                 ],
                 "donecode": [
-                    "str"
-                ],
-                "ack_timeout": [
-                    "float"
-                ],
-                "done_timeout": [
-                    "float"
-                ],
-                "n_ack_retries": [
+                    "None",
                     "int"
-                ]
+                ],
+                "ack_timeout": [],
+                "done_timeout": [],
+                "n_ack_retries": []
             }
         },
         "OatmealDevice.read": {
             "name": "read",
             "location": 119,
             "return": [
-                "oatmeal.protocol.OatmealMsg"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "None",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -353,12 +371,13 @@
             "name": "try_read",
             "location": 123,
             "return": [
-                "Optional[oatmeal.protocol.OatmealMsg]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "None",
+                    "bool"
                 ]
             }
         },
@@ -391,7 +410,7 @@
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "int"
                 ],
                 "n_retries": [
                     "int"
@@ -417,7 +436,9 @@
             "arguments": {
                 "self": [],
                 "send_heartbeats": [
-                    "bool"
+                    "int",
+                    "typing.Callable[, ]",
+                    "str"
                 ]
             }
         },
@@ -437,11 +458,13 @@
             "name": "find",
             "location": 183,
             "return": [
-                "Optional[OatmealDevice_T]"
+                "None"
             ],
             "arguments": {
                 "cls": [
-                    "Type[OatmealDevice_T]"
+                    "str",
+                    "Exception",
+                    "typing.Type"
                 ]
             }
         },
@@ -449,11 +472,14 @@
             "name": "find_all",
             "location": 208,
             "return": [
-                "List[OatmealDevice_T]"
+                "list"
             ],
             "arguments": {
                 "cls": [
-                    "Type[OatmealDevice_T]"
+                    "str",
+                    "Exception",
+                    "set[str]",
+                    "typing.Type"
                 ]
             }
         },
@@ -474,11 +500,12 @@
                 "list"
             ],
             "arguments": {
-                "arr": [
-                    "Sequence"
-                ],
+                "arr": [],
                 "k": [
-                    "int"
+                    "int",
+                    "typing.Sequence[]",
+                    "list[int]",
+                    "str"
                 ]
             }
         },
@@ -486,11 +513,15 @@
             "name": "_max_frame_hard_limit",
             "location": 73,
             "return": [
-                "int"
+                "int",
+                "str",
+                "typing.Iterable[C]"
             ],
             "arguments": {
                 "max_frame_len": [
-                    "int"
+                    "int",
+                    "str",
+                    "typing.Iterable[C]"
                 ]
             }
         },
@@ -503,6 +534,8 @@
             "arguments": {
                 "self": [],
                 "opcode": [
+                    "typing.Sequence[]",
+                    "list[str]",
                     "str"
                 ]
             }
@@ -511,12 +544,10 @@
             "name": "_traverse_args",
             "location": 153,
             "return": [
-                "Iterator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "args": [
-                    "Iterable"
-                ]
+                "args": []
             }
         },
         "OatmealMsg.traverse_args": {
@@ -569,11 +600,13 @@
             "name": "_parse_heartbeat",
             "location": 198,
             "return": [
-                "Optional[Dict[(str, Any)]]"
+                "None"
             ],
             "arguments": {
                 "msg": [
-                    "OatmealMsg"
+                    "str",
+                    "typing.Callable[, ]",
+                    "typing.Iterator"
                 ]
             }
         },
@@ -593,11 +626,13 @@
             "name": "length_checksum",
             "location": 227,
             "return": [
-                "int"
+                "Any"
             ],
             "arguments": {
                 "frame_len": [
-                    "int"
+                    "int",
+                    "str",
+                    "bytearray"
                 ]
             }
         },
@@ -605,12 +640,10 @@
             "name": "calc_checksum",
             "location": 242,
             "return": [
-                "int"
+                "Any"
             ],
             "arguments": {
-                "frame": [
-                    "Sequence[int]"
-                ]
+                "frame": []
             }
         },
         "OatmealMsg.is_valid_token": {
@@ -620,9 +653,7 @@
                 "bool"
             ],
             "arguments": {
-                "token": [
-                    "str"
-                ]
+                "token": []
             }
         },
         "OatmealMsg.is_valid_opcode": {
@@ -632,9 +663,7 @@
                 "bool"
             ],
             "arguments": {
-                "opcode": [
-                    "str"
-                ]
+                "opcode": []
             }
         },
         "OatmealMsg.is_valid_dict_key": {
@@ -645,7 +674,8 @@
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "str",
+                    "typing.Sequence[str]"
                 ]
             }
         },
@@ -657,7 +687,8 @@
             ],
             "arguments": {
                 "buf": [
-                    "bytes"
+                    "str",
+                    "dict[, ]"
                 ]
             }
         },
@@ -668,23 +699,18 @@
                 "Tuple[(bytearray, int)]"
             ],
             "arguments": {
-                "buf": [
-                    "bytes"
-                ]
+                "buf": []
             }
         },
         "OatmealMsg._decode_str": {
             "name": "_decode_str",
             "location": 334,
             "return": [
-                "int",
-                "float",
-                "bool",
-                "None"
+                "Optional[Union[(float, int, _T0)]]"
             ],
             "arguments": {
                 "s": [
-                    "str"
+                    "_T0@@"
                 ]
             }
         },
@@ -695,44 +721,40 @@
                 "Tuple[(Any, int)]"
             ],
             "arguments": {
-                "buf": [
-                    "bytes"
-                ]
+                "buf": []
             }
         },
         "OatmealMsg._parse_dict": {
             "name": "_parse_dict",
             "location": 397,
             "return": [
-                "Tuple[(Dict[(str, Any)], int)]"
+                "Tuple[(dict, Any)]"
             ],
             "arguments": {
-                "b": [
-                    "bytes"
-                ]
+                "b": []
             }
         },
         "OatmealMsg._parse_list": {
             "name": "_parse_list",
             "location": 441,
             "return": [
-                "Tuple[(list, int)]"
+                "Tuple[(list, Any)]"
             ],
             "arguments": {
-                "b": [
-                    "bytes"
-                ]
+                "b": []
             }
         },
         "OatmealMsg._parse_arg": {
             "name": "_parse_arg",
             "location": 474,
             "return": [
-                "Tuple[(Any, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "buf": [
-                    "bytes"
+                    "bytes",
+                    "str",
+                    "list[list[int]]"
                 ]
             }
         },
@@ -743,24 +765,20 @@
                 "list"
             ],
             "arguments": {
-                "buf": [
-                    "bytes"
-                ]
+                "buf": []
             }
         },
         "OatmealMsg.decode": {
             "name": "decode",
             "location": 516,
             "return": [
-                "S"
+                "OatmealMsg"
             ],
             "arguments": {
                 "cls": [
-                    "Type[S]"
+                    "Type[_TOatmealMsg]"
                 ],
-                "frame": [
-                    "bytearray"
-                ],
+                "frame": [],
                 "has_checksums": [
                     "bool"
                 ]
@@ -781,7 +799,7 @@
             "name": "encode",
             "location": 569,
             "return": [
-                "bytearray"
+                "list[]"
             ],
             "arguments": {
                 "self": []
@@ -850,9 +868,7 @@
             ],
             "arguments": {
                 "self": [],
-                "level": [
-                    "int"
-                ]
+                "level": []
             }
         },
         "OatmealDataMirror.incoming_data": {
@@ -864,7 +880,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "str",
+                    "list[list[typing.Any]]",
+                    "bool"
                 ]
             }
         },
@@ -877,7 +896,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "str",
+                    "list[list[typing.Any]]",
+                    "bool"
                 ]
             }
         },
@@ -900,10 +922,16 @@
             "arguments": {
                 "self": [],
                 "udp_addr_in": [
-                    "Optional[Tuple[(str, int)]]"
+                    "int",
+                    "None",
+                    "str",
+                    "list[int]"
                 ],
                 "udp_addr_out": [
-                    "Optional[Tuple[(str, int)]]"
+                    "int",
+                    "None",
+                    "str",
+                    "list[int]"
                 ]
             }
         },
@@ -916,7 +944,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "dict[str, typing.Any]",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -929,7 +960,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "dict[str, typing.Any]",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -950,14 +984,15 @@
                 "Optional[OatmealMsg]"
             ],
             "arguments": {
-                "frame": [
-                    "bytearray"
-                ],
+                "frame": [],
                 "stats": [
-                    "OatmealStats"
+                    "int",
+                    "None",
+                    "str"
                 ],
                 "max_frame_len": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -965,28 +1000,24 @@
             "name": "read_frame_loop",
             "location": 807,
             "return": [
-                "Iterator[OatmealMsg]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "serial_port": [
                     "float",
                     "bytes"
                 ],
-                "exit_token": [
-                    "threading.Event"
-                ],
-                "outgoing_msg_pipe": [
-                    "multiprocessing.connection.Connection"
-                ],
+                "exit_token": [],
+                "outgoing_msg_pipe": [],
                 "data_mirror": [
-                    "OatmealDataMirror"
+                    "None"
                 ],
                 "stats": [
-                    "OatmealStats"
+                    "None",
+                    "float",
+                    "dict[str, typing.Any]"
                 ],
-                "max_frame_len": [
-                    "int"
-                ]
+                "max_frame_len": []
             }
         },
         "_OatmealPortThread.__init__": {
@@ -1010,12 +1041,8 @@
             ],
             "arguments": {
                 "serial_port": [],
-                "exit_token": [
-                    "threading.Event"
-                ],
-                "msg_pipe": [
-                    "multiprocessing.connection.Connection"
-                ]
+                "exit_token": [],
+                "msg_pipe": []
             }
         },
         "_OatmealPortThread.start": {
@@ -1042,12 +1069,14 @@
             "name": "read_background_msg",
             "location": 1010,
             "return": [
-                "Optional[OatmealMsg]"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "None",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -1055,12 +1084,16 @@
             "name": "read_msg",
             "location": 1037,
             "return": [
-                "Optional[OatmealMsg]"
+                "int",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "None",
+                    "float",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1073,7 +1106,7 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "str"
                 ]
             }
         },
@@ -1096,7 +1129,10 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "str",
+                    "bytes",
+                    "None",
+                    "dict[, ]"
                 ]
             }
         },
@@ -1109,7 +1145,11 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "int",
+                    "typing.Match",
+                    "list[dict[, ]]",
+                    "list[str]",
+                    "str"
                 ]
             }
         },
@@ -1122,7 +1162,11 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "str",
+                    "int",
+                    "typing.Sequence[str]",
+                    "typing.Sequence[int]",
+                    "float"
                 ]
             }
         },
@@ -1135,7 +1179,10 @@
             "arguments": {
                 "self": [],
                 "time_passed_sec": [
-                    "float"
+                    "float",
+                    "int",
+                    "str",
+                    "typing.Sequence[str]"
                 ]
             }
         },
@@ -1158,7 +1205,9 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "str",
+                    "list[str]",
+                    "bytes"
                 ]
             }
         },
@@ -1171,7 +1220,9 @@
             "arguments": {
                 "self": [],
                 "time_passed_sec": [
-                    "float"
+                    "float",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1184,7 +1235,10 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "list[]",
+                    "str",
+                    "list[str]",
+                    "dict[, ]"
                 ]
             }
         },
@@ -1197,7 +1251,9 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "str",
+                    "int",
+                    "Exception"
                 ]
             }
         },
@@ -1210,16 +1266,25 @@
             "arguments": {
                 "self": [],
                 "role": [
-                    "str"
+                    "str",
+                    "int",
+                    "dict[, ]"
                 ],
                 "instance_idx": [
-                    "int"
+                    "int",
+                    "str",
+                    "typing.Any",
+                    "None"
                 ],
                 "hardware_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "None"
                 ],
                 "version": [
-                    "str"
+                    "str",
+                    "int",
+                    "dict[, ]"
                 ]
             }
         },
@@ -1227,7 +1292,7 @@
             "name": "items",
             "location": 1166,
             "return": [
-                "ItemsView[(str, Any)]"
+                "dict_items"
             ],
             "arguments": {
                 "self": []
@@ -1293,7 +1358,7 @@
             "name": "get_path",
             "location": 1301,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1326,18 +1391,10 @@
                 "None"
             ],
             "arguments": {
-                "stop_token": [
-                    "threading.Event"
-                ],
-                "uart_port": [
-                    "_OatmealPortThread"
-                ],
-                "expect_heartbeats_token": [
-                    "threading.Event"
-                ],
-                "bg_msg_handler": [
-                    "OatmealBgMsgHandler"
-                ]
+                "stop_token": [],
+                "uart_port": [],
+                "expect_heartbeats_token": [],
+                "bg_msg_handler": []
             }
         },
         "OatmealPort.send": {
@@ -1349,7 +1406,12 @@
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "int",
+                    "str",
+                    "dict[str, dict[str, int]]",
+                    "typing.Callable[int, None]",
+                    "dict[, ]",
+                    "list[str]"
                 ]
             }
         },
@@ -1357,62 +1419,64 @@
             "name": "send_and_ack",
             "location": 1385,
             "return": [
-                "OatmealMsg"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "bool",
+                    "tuple[typing.Union[int,int]]"
                 ],
                 "ackcode": [
+                    "None",
+                    "float",
                     "str"
                 ],
-                "timeout": [
-                    "float"
-                ],
-                "n_retries": [
-                    "int"
-                ]
+                "timeout": [],
+                "n_retries": []
             }
         },
         "OatmealPort.send_and_done": {
             "name": "send_and_done",
             "location": 1430,
             "return": [
-                "Tuple[(OatmealMsg, OatmealMsg)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "msg": [
-                    "OatmealMsg"
+                    "bool"
                 ],
                 "ackcode": [
-                    "str"
+                    "None",
+                    "tuple[int]",
+                    "int"
                 ],
                 "donecode": [
+                    "None",
+                    "int",
                     "str"
                 ],
-                "ack_timeout": [
-                    "float"
-                ],
-                "done_timeout": [
-                    "float"
-                ],
-                "n_ack_retries": [
-                    "int"
-                ]
+                "ack_timeout": [],
+                "done_timeout": [],
+                "n_ack_retries": []
             }
         },
         "OatmealPort.read": {
             "name": "read",
             "location": 1471,
             "return": [
-                "OatmealMsg"
+                "str",
+                "typing.Counter",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "None",
+                    "float",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -1420,12 +1484,14 @@
             "name": "try_read",
             "location": 1487,
             "return": [
-                "Optional[OatmealMsg]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "None",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1433,12 +1499,17 @@
             "name": "read_bg_msg",
             "location": 1496,
             "return": [
-                "Optional[OatmealMsg]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "None",
+                    "str",
+                    "typing.IO",
+                    "int",
+                    "float",
+                    "tuple[typing.Union[int,int,int]]"
                 ]
             }
         },
@@ -1456,18 +1527,30 @@
             "name": "expect",
             "location": 1517,
             "return": [
-                "OatmealMsg"
+                "dict[str, int]",
+                "dict[, ]"
             ],
             "arguments": {
                 "self": [],
                 "opcode": [
-                    "str"
+                    "str",
+                    "bool",
+                    "dict[int, int]",
+                    "float",
+                    "dict[, ]"
                 ],
                 "error_dict": [
-                    "Dict[(str, Exception)]"
+                    "None",
+                    "dict[str, Exception]",
+                    "typing.Callable[, ]",
+                    "bool",
+                    "typing.Hashable",
+                    "str"
                 ],
                 "timeout": [
-                    "float"
+                    "None",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -1493,7 +1576,7 @@
             "arguments": {
                 "self": [],
                 "timeout": [
-                    "float"
+                    "int"
                 ],
                 "n_retries": [
                     "int"
@@ -1510,9 +1593,7 @@
                 "str"
             ],
             "arguments": {
-                "n": [
-                    "int"
-                ]
+                "n": []
             }
         },
         "random_bytearray": {
@@ -1522,9 +1603,7 @@
                 "bytearray"
             ],
             "arguments": {
-                "n": [
-                    "int"
-                ]
+                "n": []
             }
         },
         "TestOatmealProtocol._assert_valid_frame": {
@@ -1535,9 +1614,7 @@
             ],
             "arguments": {
                 "self": [],
-                "frame": [
-                    "bytes"
-                ]
+                "frame": []
             }
         },
         "TestOatmealProtocol._test_encode_decode": {
@@ -1548,9 +1625,7 @@
             ],
             "arguments": {
                 "self": [],
-                "msg": [
-                    "oatmeal.protocol.OatmealMsg"
-                ]
+                "msg": []
             }
         },
         "TestOatmealProtocol._test_args": {
@@ -1681,12 +1756,8 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "str"
-                ],
-                "expected_res": [
-                    "list"
-                ]
+                "args": [],
+                "expected_res": []
             }
         },
         "TestOatmealProtocol._test_parse_args_fails": {
@@ -1697,9 +1768,7 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "str"
-                ]
+                "args": []
             }
         },
         "TestOatmealProtocol.test_arg_decoding": {

@@ -23,11 +23,15 @@
             "name": "get_cols",
             "location": 13,
             "return": [
-                "List[str]"
+                "int",
+                "str",
+                "pandas.DataFrame",
+                "List[List[int]]"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -39,10 +43,20 @@
             ],
             "arguments": {
                 "party": [
-                    "str"
+                    "List[str]",
+                    "bool",
+                    "List[Union[int,float]]",
+                    "pandas.DataFrame",
+                    "Type",
+                    "List[dict]",
+                    "List[Dict]",
+                    "int"
                 ],
                 "status": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[bool]",
+                    "None"
                 ]
             }
         },
@@ -50,26 +64,25 @@
             "name": "get_args",
             "location": 36,
             "return": [
-                "Tuple[(str, str, str, str, str)]"
+                "Tuple[(Any, Any, Any, Any, Any)]"
             ],
             "arguments": {
-                "args": [
-                    "Dict[(str, str)]"
-                ]
+                "args": []
             }
         },
         "get_voters_where": {
             "name": "get_voters_where",
             "location": 45,
             "return": [
-                "str"
+                "str",
+                "int"
             ],
             "arguments": {
-                "args": [
-                    "Dict[(str, str)]"
-                ],
+                "args": [],
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "bool",
+                    "dict",
+                    "flask.Request"
                 ]
             }
         }
@@ -96,82 +109,6 @@
             "arguments": {}
         }
     },
-    "dpflask-master/stubs/flask.py": {
-        "jsonify": {
-            "name": "jsonify",
-            "location": 16,
-            "return": [],
-            "arguments": {}
-        },
-        "abort": {
-            "name": "abort",
-            "location": 17,
-            "return": [],
-            "arguments": {
-                "code": []
-            }
-        },
-        "FlaskClient.__init__": {
-            "name": "__init__",
-            "location": 5,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "FlaskClient.get": {
-            "name": "get",
-            "location": 6,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "endpoint": []
-            }
-        },
-        "Flask.__init__": {
-            "name": "__init__",
-            "location": 11,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "import_name": []
-            }
-        },
-        "Flask.test_client": {
-            "name": "test_client",
-            "location": 13,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
-    "dpflask-master/stubs/pandas.py": {
-        "read_json": {
-            "name": "read_json",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "url": []
-            }
-        },
-        "DataFrame.__init__": {
-            "name": "__init__",
-            "location": 4,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "DataFrame.iterrows": {
-            "name": "iterrows",
-            "location": 5,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
     "dpflask-master/tests/test_api.py": {
         "test_gvw_endpoint_ok": {
             "name": "test_gvw_endpoint_ok",
@@ -185,7 +122,6 @@
             "name": "test_endpoint_cab",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -198,7 +134,6 @@
             "name": "test_gvw_endpoint_graceful",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -211,17 +146,15 @@
             "name": "test_valid_ep",
             "location": 35,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "req_dict": [
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[str, dict[str, typing.Any]]",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[int, Dict[str, Any]]",
-                    "dict[int, dict[str, typing.Any]]"
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[int,Dict[str,Any]]",
+                    "Dict[int,dict[str,Any]]"
                 ]
             }
         },
@@ -229,13 +162,12 @@
             "name": "test_sql_inj",
             "location": 52,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "string": [
                     "str",
-                    "Optional[Dict[str, Any]]"
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         }
@@ -245,19 +177,15 @@
             "name": "test_db",
             "location": 10,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "column": [
                     "Callable",
-                    "typing.Callable[, ]",
-                    "List[dict]",
-                    "list[dict[, ]]"
+                    "List[dict]"
                 ],
                 "index": [
-                    "set",
-                    "set[]"
+                    "Set"
                 ]
             }
         },
@@ -265,7 +193,6 @@
             "name": "test_filtercols",
             "location": 30,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -273,16 +200,16 @@
                     "bytes",
                     "str",
                     "int",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
                     "None"
                 ],
                 "status": [
                     "bytes",
                     "str",
                     "int",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
                     "None"
                 ]
             }

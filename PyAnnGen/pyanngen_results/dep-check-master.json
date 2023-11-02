@@ -5,17 +5,25 @@
             "name": "check_dependency",
             "location": 26,
             "return": [
-                "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                "Set[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "parser": [
-                    "dep_check.dependency_finder.IParser"
+                    "Optional[\"Game\"]",
+                    "models.Project",
+                    "models.User",
+                    "str"
                 ],
                 "dependency": [
-                    "dep_check.models.Dependency"
+                    "str",
+                    "dict",
+                    "models.Project",
+                    "models.User"
                 ],
                 "rules": [
-                    "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                    "dep_check.models.Rules",
+                    "docker.models.networks.Network",
+                    "app.models.Game"
                 ]
             }
         },
@@ -23,17 +31,18 @@
             "name": "check_import_from_dependency",
             "location": 43,
             "return": [
-                "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                "Set[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "parser": [
-                    "dep_check.dependency_finder.IParser"
+                    "str"
                 ],
                 "dependency": [
-                    "dep_check.models.Dependency"
+                    "dict"
                 ],
                 "rules": [
-                    "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                    "dep_check.models.Rules",
+                    "ddionrails.data.models.Variable"
                 ]
             }
         },
@@ -46,10 +55,13 @@
             "arguments": {
                 "self": [],
                 "dependency": [
-                    "dep_check.models.Module"
+                    "str",
+                    "Sequence[str]",
+                    "bool"
                 ],
                 "authorized_modules": [
-                    "List[dep_check.models.ModuleWildcard]"
+                    "str",
+                    "Sequence[str]"
                 ]
             }
         }
@@ -59,14 +71,26 @@
             "name": "get_dependencies",
             "location": 30,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "List[str]",
+                "str",
+                "Tuple[Any, Any, Any]",
+                "dict",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "source_file": [
-                    "dep_check.models.SourceFile"
+                    "dep_check.models.SourceFile",
+                    "dict",
+                    "Dict[str, Any]",
+                    "str",
+                    "Optional[type]"
                 ],
                 "parser": [
-                    "IParser"
+                    "dep_check.models.SourceFile",
+                    "dict",
+                    "Dict[str, Any]",
+                    "str",
+                    "Optional[type]"
                 ]
             }
         },
@@ -74,14 +98,21 @@
             "name": "get_import_from_dependencies",
             "location": 34,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "list",
+                "str",
+                "float",
+                "List[Dict]"
             ],
             "arguments": {
                 "source_file": [
-                    "dep_check.models.SourceFile"
+                    "dep_check.models.SourceFile",
+                    "Optional[str]",
+                    "str"
                 ],
                 "parser": [
-                    "IParser"
+                    "dep_check.models.SourceFile",
+                    "Optional[str]",
+                    "str"
                 ]
             }
         },
@@ -89,12 +120,15 @@
             "name": "wildcard_to_regex",
             "location": 12,
             "return": [
-                "str"
+                "str",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "module": [
-                    "dep_check.models.ModuleWildcard"
+                    "dep_check.models.ModuleWildcard",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -102,12 +136,17 @@
             "name": "find_dependencies",
             "location": 18,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "dep_check.models.Dependencies",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "source_file": [
-                    "dep_check.models.SourceFile"
+                    "dep_check.models.SourceFile",
+                    "List[str]",
+                    "BinaryIO",
+                    "Iterable[Optional[Any]]",
+                    "bool"
                 ]
             }
         },
@@ -115,12 +154,16 @@
             "name": "find_import_from_dependencies",
             "location": 24,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "dep_check.models.Dependencies",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "source_file": [
-                    "dep_check.models.SourceFile"
+                    "dep_check.models.SourceFile",
+                    "List[str]",
+                    "str",
+                    "BinaryIO"
                 ]
             }
         }
@@ -202,7 +245,7 @@
             ],
             "arguments": {
                 "module": [
-                    "Module"
+                    "str"
                 ]
             }
         },
@@ -210,11 +253,14 @@
             "name": "iter_all_modules",
             "location": 45,
             "return": [
-                "Iterator[Module]"
+                "setiterator"
             ],
             "arguments": {
                 "global_dep": [
-                    "Dict[(Module, Set[Dependency])]"
+                    "List[int]",
+                    "list",
+                    "Dict[str, Dict[str, int]]",
+                    "str"
                 ]
             }
         },
@@ -222,9 +268,9 @@
             "name": "iter_",
             "location": 46,
             "return": [
-                "typing.Iterator[Module]",
-                "typing.Generator[]",
-                "typing.Generator[typing.Generator[]]"
+                "Iterator[Module]",
+                "Generator",
+                "Generator[Generator]"
             ],
             "arguments": {
                 "global_dep": [
@@ -245,10 +291,17 @@
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "str",
+                    "List[str]",
+                    "Sequence[str]",
+                    "pathlib.Path",
+                    "os.PathLike",
+                    "norfs.fs.base.Path",
+                    "path.Path"
                 ],
                 "separator": [
-                    "str"
+                    "str",
+                    "norfs.fs.base.Path"
                 ]
             }
         },
@@ -256,8 +309,8 @@
             "name": "_change_dir",
             "location": 21,
             "return": [
-                "typing.Iterator[None]",
-                "typing.Generator[]"
+                "Iterator[None]",
+                "Generator"
             ],
             "arguments": {
                 "directory": [
@@ -277,7 +330,9 @@
             ],
             "arguments": {
                 "root_dir": [
-                    "str"
+                    "str",
+                    "Union[str, pathlib.Path]",
+                    "IO[Any]"
                 ]
             }
         },
@@ -285,7 +340,7 @@
             "name": "source_file_iterator",
             "location": 50,
             "return": [
-                "Iterator[dep_check.models.SourceFile]"
+                "Generator[(dep_check.models.SourceFile, Any, None)]"
             ],
             "arguments": {
                 "root_dir": [
@@ -299,11 +354,12 @@
             "name": "read_graph_config",
             "location": 152,
             "return": [
-                "dict"
+                "int"
             ],
             "arguments": {
                 "conf_path": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -316,7 +372,10 @@
             "arguments": {
                 "self": [],
                 "config_path": [
-                    "str"
+                    "str",
+                    "pathlib.Path",
+                    "path.Path",
+                    "pathlib2.Path"
                 ]
             }
         },
@@ -329,7 +388,10 @@
             "arguments": {
                 "self": [],
                 "configuration": [
-                    "dep_check.use_cases.interfaces.Configuration"
+                    "dep_check.use_cases.interfaces.Configuration",
+                    "dict",
+                    "Optional[int]",
+                    "type"
                 ]
             }
         },
@@ -352,7 +414,9 @@
             "arguments": {
                 "self": [],
                 "dep_errors": [
-                    "List[dep_check.use_cases.check.DependencyError]"
+                    "str",
+                    "bool",
+                    "Exception"
                 ]
             }
         },
@@ -365,7 +429,10 @@
             "arguments": {
                 "self": [],
                 "unused_rules": [
-                    "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                    "int",
+                    "Callable",
+                    "models.Question",
+                    "str"
                 ]
             }
         },
@@ -378,13 +445,19 @@
             "arguments": {
                 "self": [],
                 "errors": [
-                    "List[dep_check.use_cases.check.DependencyError]"
+                    "str",
+                    "T",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "unused_rules": [
-                    "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                    "List[Tuple[Any, int, int, str, str]]",
+                    "str"
                 ],
                 "nb_files": [
-                    "int"
+                    "int",
+                    "bytes",
+                    "bool"
                 ]
             }
         },
@@ -400,7 +473,10 @@
                     "str"
                 ],
                 "graph_config": [
-                    "Optional[dict]"
+                    "None",
+                    "str",
+                    "Optional[Dict]",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -413,7 +489,8 @@
             "arguments": {
                 "self": [],
                 "graph": [
-                    "Graph"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -421,12 +498,16 @@
             "name": "_iter_layer_modules",
             "location": 201,
             "return": [
-                "Iterator[Tuple[(str, Iterable[dep_check.models.Module])]]"
+                "Generator[(Tuple[(Any, list)], Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "global_dep": [
-                    "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                    "dict",
+                    "str",
+                    "bool",
+                    "audio_profiling.models.AudioPage",
+                    "Callable[..., Awaitable]"
                 ]
             }
         },
@@ -439,7 +520,7 @@
             "arguments": {
                 "self": [],
                 "global_dep": [
-                    "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                    "str"
                 ]
             }
         },
@@ -462,7 +543,10 @@
             "arguments": {
                 "self": [],
                 "global_dep": [
-                    "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                    "int",
+                    "Callable",
+                    "models.Question",
+                    "str"
                 ]
             }
         }
@@ -477,7 +561,8 @@
             "arguments": {
                 "self": [],
                 "current_module": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -514,7 +599,8 @@
             "arguments": {
                 "self": [],
                 "current_module": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -546,12 +632,18 @@
             "name": "wildcard_to_regex",
             "location": 86,
             "return": [
-                "str"
+                "bool",
+                "int",
+                "Tuple[int, int]"
             ],
             "arguments": {
                 "self": [],
                 "module": [
-                    "dep_check.models.ModuleWildcard"
+                    "dep_check.models.ModuleWildcard",
+                    "str",
+                    "Union[int, str]",
+                    "List[str]",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -559,12 +651,14 @@
             "name": "find_dependencies",
             "location": 97,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "set"
             ],
             "arguments": {
                 "self": [],
                 "source_file": [
-                    "dep_check.models.SourceFile"
+                    "Tuple[int, int]",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -572,12 +666,14 @@
             "name": "find_import_from_dependencies",
             "location": 106,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "set"
             ],
             "arguments": {
                 "self": [],
                 "source_file": [
-                    "dep_check.models.SourceFile"
+                    "Tuple[int, int]",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         }
@@ -587,12 +683,17 @@
             "name": "filter",
             "location": 334,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "str",
+                "Tuple[int, int]",
+                "bool",
+                "Sequence['cirq.Qid']",
+                "Mapping[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "dependencies": [
-                    "Set[dep_check.models.Dependency]"
+                    "dep_check.models.Dependencies",
+                    "str"
                 ]
             }
         }
@@ -613,7 +714,10 @@
                     "T"
                 ],
                 "configuration": [
-                    "AppConfiguration"
+                    "List[int]",
+                    "int",
+                    "dict",
+                    "str"
                 ]
             }
         },
@@ -621,7 +725,8 @@
             "name": "get_instance",
             "location": 46,
             "return": [
-                "AppConfiguration"
+                "str",
+                "int"
             ],
             "arguments": {
                 "cls": [
@@ -644,7 +749,11 @@
             "arguments": {
                 "self": [],
                 "configuration": [
-                    "dep_check.use_cases.interfaces.Configuration"
+                    "int",
+                    "str",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
                 ]
             }
         },
@@ -657,13 +766,20 @@
             "arguments": {
                 "self": [],
                 "printer": [
-                    "IConfigurationWriter"
+                    "dict",
+                    "str",
+                    "Sequence[str]"
                 ],
                 "parser": [
-                    "dep_check.dependency_finder.IParser"
+                    "str",
+                    "Dict[str, str]",
+                    "Iterator[dep_check.models.SourceFile]"
                 ],
                 "source_files": [
-                    "Iterator[dep_check.models.SourceFile]"
+                    "str",
+                    "Optional[str]",
+                    "Iterator[dep_check.models.SourceFile]",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -688,7 +804,7 @@
             "arguments": {
                 "self": [],
                 "dep_errors": [
-                    "List[DependencyError]"
+                    "bool"
                 ]
             }
         },
@@ -701,7 +817,11 @@
             "arguments": {
                 "self": [],
                 "unused_rules": [
-                    "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                    "int",
+                    "str",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
                 ]
             }
         },
@@ -714,13 +834,25 @@
             "arguments": {
                 "self": [],
                 "errors": [
-                    "List[DependencyError]"
+                    "int",
+                    "dep_check.models.Rules",
+                    "bool",
+                    "List[Tuple[bytes, bytes]]",
+                    "list"
                 ],
                 "unused_rules": [
-                    "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                    "int",
+                    "dep_check.models.Rules",
+                    "bool",
+                    "List[Tuple[bytes, bytes]]",
+                    "list"
                 ],
                 "nb_files": [
-                    "int"
+                    "int",
+                    "dep_check.models.Rules",
+                    "bool",
+                    "List[Tuple[bytes, bytes]]",
+                    "list"
                 ]
             }
         },
@@ -733,16 +865,23 @@
             "arguments": {
                 "self": [],
                 "configuration": [
-                    "dep_check.use_cases.interfaces.Configuration"
+                    "bool",
+                    "List[float]",
+                    "int"
                 ],
                 "report_printer": [
-                    "IReportPrinter"
+                    "bool",
+                    "List[float]",
+                    "int"
                 ],
                 "parser": [
-                    "dep_check.dependency_finder.IParser"
+                    "str",
+                    "bool",
+                    "List[str]"
                 ],
                 "source_files": [
-                    "Iterator[dep_check.models.SourceFile]"
+                    "Optional[str]",
+                    "IO"
                 ]
             }
         },
@@ -750,12 +889,12 @@
             "name": "_get_rules",
             "location": 91,
             "return": [
-                "Set[Tuple[(dep_check.models.ModuleWildcard, dep_check.models.ModuleWildcard)]]"
+                "Set[Tuple[(dep_check.models.ModuleWildcard, Any)]]"
             ],
             "arguments": {
                 "self": [],
                 "module": [
-                    "dep_check.models.Module"
+                    "str"
                 ]
             }
         },
@@ -763,12 +902,13 @@
             "name": "_iter_error",
             "location": 107,
             "return": [
-                "Iterator[DependencyError]"
+                "Generator[(DependencyError, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "source_file": [
-                    "dep_check.models.SourceFile"
+                    "str",
+                    "list"
                 ]
             }
         },
@@ -788,14 +928,20 @@
             "name": "_fold_dep",
             "location": 32,
             "return": [
-                "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                "collections.defaultdict"
             ],
             "arguments": {
                 "global_dep": [
-                    "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                    "dep_check.models.GlobalDependencies",
+                    "Dict[str, Any]",
+                    "Dict[str, Dict[str, float]]",
+                    "Optional[Dict[str, Any]]",
+                    "Dict[str, Dict[str, Any]]"
                 ],
                 "fold_module": [
-                    "dep_check.models.Module"
+                    "str",
+                    "int",
+                    "List[int]"
                 ]
             }
         },
@@ -803,12 +949,17 @@
             "name": "write",
             "location": 26,
             "return": [
-                "bool"
+                "bool",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "global_dep": [
-                    "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                    "int",
+                    "str",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
                 ]
             }
         },
@@ -821,16 +972,23 @@
             "arguments": {
                 "self": [],
                 "drawer": [
-                    "IGraphDrawer"
+                    "str",
+                    "Optional[str]",
+                    "dict"
                 ],
                 "parser": [
-                    "dep_check.dependency_finder.IParser"
+                    "str",
+                    "Dict[str, str]"
                 ],
                 "source_files": [
+                    "str",
                     "Iterator[dep_check.models.SourceFile]"
                 ],
                 "config": [
-                    "Optional[dict]"
+                    "None",
+                    "Callable",
+                    "List[str]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -838,12 +996,14 @@
             "name": "_hide",
             "location": 66,
             "return": [
-                "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                "Union[(Dict[(Any, set)], _T0)]"
             ],
             "arguments": {
                 "self": [],
                 "global_dep": [
-                    "Dict[(dep_check.models.Module, Set[dep_check.models.Dependency])]"
+                    "dict",
+                    "Dict[Tuple[int, ...], float]",
+                    "dep_check.models.GlobalDependencies"
                 ]
             }
         },
@@ -863,12 +1023,15 @@
             "name": "filter",
             "location": 27,
             "return": [
-                "Set[dep_check.models.Dependency]"
+                "dep_check.models.Dependencies",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "dependencies": [
-                    "Set[dep_check.models.Dependency]"
+                    "str",
+                    "bool",
+                    "list"
                 ]
             }
         }
@@ -887,9 +1050,9 @@
             "name": "source_files",
             "location": 25,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "str",
-                "Dict[str, Dict[str, Any]]"
+                "Dict[str,Dict[str,Any]]"
             ],
             "arguments": {}
         }

@@ -40,7 +40,8 @@
             ],
             "arguments": {
                 "error": [
-                    "KeyError"
+                    "bool",
+                    "Iterable[Issue]"
                 ]
             }
         },
@@ -52,7 +53,8 @@
             ],
             "arguments": {
                 "message": [
-                    "str"
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -60,7 +62,8 @@
             "name": "asdict",
             "location": 19,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[str,Any]",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -70,7 +73,7 @@
             "name": "fromdict",
             "location": 23,
             "return": [
-                "'DTO'",
+                "DTO",
                 "None"
             ],
             "arguments": {
@@ -78,9 +81,8 @@
                 "raw": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -116,7 +118,11 @@
                     "Type[_TSubject]"
                 ],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "Union[int,str]",
+                    "Callable",
+                    "Optional[Dict]"
                 ]
             }
         },
@@ -141,7 +147,8 @@
                     "Type[_TReferer]"
                 ],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -176,7 +183,11 @@
                     "Type[_TArticle]"
                 ],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "Mapping[str,Optional[datetime.datetime]]",
+                    "Dict"
                 ]
             }
         },
@@ -221,7 +232,9 @@
                     "Type[_TScrapeTarget]"
                 ],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "BinaryIO"
                 ]
             }
         },
@@ -246,7 +259,9 @@
                     "Type[_TScrapedArticle]"
                 ],
                 "raw": [
-                    "Dict[(str, Any)]"
+                    "Type",
+                    "float",
+                    "type"
                 ]
             }
         }
@@ -260,10 +275,17 @@
             ],
             "arguments": {
                 "error": [
-                    "Exception"
+                    "Exception",
+                    "int",
+                    "str",
+                    "bytes",
+                    "bool"
                 ],
                 "id": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "Optional[str]",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -271,11 +293,14 @@
             "name": "date_to_str",
             "location": 26,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "date": [
-                    "_datetime.datetime"
+                    "str",
+                    "datetime.datetime",
+                    "datetime.date"
                 ]
             }
         },
@@ -302,13 +327,17 @@
             "arguments": {
                 "self": [],
                 "scraper": [
-                    "app.service.scraping_service.ScrapingService"
+                    "bool",
+                    "float",
+                    "telethon.tl.types.Channel"
                 ],
                 "scorer": [
-                    "app.service.scoring_service.ScoringService"
+                    "bool",
+                    "float",
+                    "telethon.tl.types.Channel"
                 ],
                 "mq_client": [
-                    "app.service.mq_clients.MQClient"
+                    "Callable"
                 ]
             }
         },
@@ -321,14 +350,15 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "app.models.ScrapeTarget"
+                    "int",
+                    "bool"
                 ],
                 "channel": [
                     "bool",
                     "str",
                     "None",
                     "zerver.models.Realm",
-                    "list[dict[, ]]",
+                    "List[dict]",
                     "Optional[str]",
                     "List[Dict]"
                 ],
@@ -337,7 +367,7 @@
                     "str",
                     "None",
                     "zerver.models.Realm",
-                    "list[dict[, ]]",
+                    "List[dict]",
                     "Optional[str]",
                     "List[Dict]"
                 ]
@@ -352,7 +382,7 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "app.models.ScrapeTarget"
+                    "str"
                 ]
             }
         }
@@ -367,7 +397,8 @@
             ],
             "arguments": {
                 "checker": [
-                    "app.service.mq_clients.MQConnectionChecker"
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -379,10 +410,20 @@
             ],
             "arguments": {
                 "config": [
-                    "app.config.HealthCheckConfig"
+                    "str",
+                    "app.config.HealthCheckConfig",
+                    "Mapping",
+                    "Dict[str,str]",
+                    "Mapping[str,Any]",
+                    "app.config.MQConfig"
                 ],
                 "checker": [
-                    "app.service.mq_clients.MQConnectionChecker"
+                    "Dict[str,Any]",
+                    "str",
+                    "None",
+                    "Optional[pathlib.Path]",
+                    "pyramid.config.Configurator",
+                    "Optional[str]"
                 ]
             }
         }
@@ -397,7 +438,13 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "app.models.ScrapeTarget"
+                    "bool",
+                    "str",
+                    "pika.spec.Basic.Deliver",
+                    "float",
+                    "pika.channel.Channel",
+                    "app.models.ScrapeTarget",
+                    "int"
                 ],
                 "channel": [
                     "bool",
@@ -428,20 +475,21 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "app.config.MQConfig"
+                    "Dict",
+                    "int",
+                    "sphinx.config.Config",
+                    "virgene.config.Config"
                 ],
                 "channel": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "Optional[int]",
                     "int",
                     "config.Config",
                     "None",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -454,7 +502,9 @@
             "arguments": {
                 "self": [],
                 "scraped_article": [
-                    "app.models.ScrapedArticle"
+                    "Optional[Dict]",
+                    "str",
+                    "dict"
                 ]
             }
         },
@@ -489,16 +539,14 @@
             "arguments": {
                 "self": [],
                 "channel": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "pika.spec.Basic.Deliver",
-                    "pika.channel.Channel",
-                    "Dict[str, Any]"
+                    "pika.channel.Channel"
                 ],
                 "method": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "pika.spec.Basic.Deliver",
-                    "pika.channel.Channel",
-                    "Dict[str, Any]"
+                    "pika.channel.Channel"
                 ]
             }
         },
@@ -511,23 +559,32 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "app.config.MQConfig"
+                    "Dict",
+                    "int",
+                    "sphinx.config.Config",
+                    "virgene.config.Config"
                 ],
                 "channel": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "Optional[int]",
                     "int",
                     "config.Config",
                     "None",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "handler": [
-                    "MessageHandler"
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Optional[int]",
+                    "int",
+                    "config.Config",
+                    "None",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -554,17 +611,15 @@
                     "str"
                 ],
                 "method": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
                     "eth.abc.MessageAPI"
                 ],
                 "properties": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "body": [
-                    "bytes"
+                    "Dict"
                 ]
             }
         },
@@ -578,9 +633,8 @@
                 "self": [],
                 "method": [
                     "int",
-                    "float",
                     "Iterable[bytes]",
-                    "typing.Iterable[bytes]"
+                    "float"
                 ]
             }
         },
@@ -588,12 +642,13 @@
             "name": "is_connected",
             "location": 99,
             "return": [
-                "bool"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "health_target": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -606,7 +661,11 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "app.config.MQConfig"
+                    "Dict[str, Any]",
+                    "str",
+                    "pricemonitor.config.Config",
+                    "jumeaux.domain.config.vo.Config",
+                    "jumeaux.models.Reqs2ReqsAddOnPayload"
                 ]
             }
         },
@@ -643,7 +702,9 @@
             "arguments": {
                 "self": [],
                 "health_target": [
-                    "str"
+                    "float",
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -657,7 +718,10 @@
             ],
             "arguments": {
                 "base_list": [
-                    "List[list]"
+                    "List[List]",
+                    "bool",
+                    "List[list]",
+                    "Dict"
                 ]
             }
         },
@@ -669,7 +733,9 @@
             ],
             "arguments": {
                 "words": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -687,15 +753,31 @@
             "name": "score",
             "location": 29,
             "return": [
-                "List[app.models.Subject]"
+                "int",
+                "str",
+                "Callable",
+                "models.Question",
+                "Any",
+                "None",
+                "Dict[str,T]",
+                "List[int]"
             ],
             "arguments": {
                 "self": [],
                 "article": [
-                    "app.models.Article"
+                    "int",
+                    "Callable",
+                    "str",
+                    "models.Question"
                 ],
                 "subjects": [
-                    "List[app.models.Subject]"
+                    "Optional[Union[str,Any]]",
+                    "Dict[str,T]",
+                    "str",
+                    "int",
+                    "List[int]",
+                    "Any",
+                    "None"
                 ]
             }
         },
@@ -708,10 +790,15 @@
             "arguments": {
                 "self": [],
                 "article": [
-                    "app.models.Article"
+                    "str",
+                    "bool",
+                    "Iterable[str]",
+                    "int"
                 ],
                 "subjects": [
-                    "List[app.models.Subject]"
+                    "bytes",
+                    "Set[int]",
+                    "int"
                 ]
             }
         },
@@ -724,10 +811,13 @@
             "arguments": {
                 "self": [],
                 "article": [
-                    "app.models.Article"
+                    "bool"
                 ],
                 "subjects": [
-                    "List[app.models.Subject]"
+                    "Dict[str,str]",
+                    "str",
+                    "models.characters.mods_base.SlotTypes",
+                    "float"
                 ]
             }
         },
@@ -735,7 +825,7 @@
             "name": "read",
             "location": 75,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -745,7 +835,8 @@
             "name": "get_stopwords",
             "location": 83,
             "return": [
-                "List[str]"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -760,7 +851,8 @@
             "arguments": {
                 "self": [],
                 "fileid": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -768,7 +860,8 @@
             "name": "_get_brown_fileids",
             "location": 102,
             "return": [
-                "List[str]"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -780,12 +873,18 @@
             "name": "get_article",
             "location": 16,
             "return": [
-                "app.models.Article"
+                "Article",
+                "int",
+                "str",
+                "salon.models.Stylist"
             ],
             "arguments": {
                 "self": [],
                 "target": [
-                    "app.models.ScrapeTarget"
+                    "str",
+                    "bytes",
+                    "bool",
+                    "dict"
                 ]
             }
         }

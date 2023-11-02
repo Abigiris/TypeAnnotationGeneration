@@ -57,7 +57,7 @@
             "name": "register",
             "location": 58,
             "return": [
-                "Callable"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -71,7 +71,9 @@
             "name": "__contains__",
             "location": 73,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
@@ -123,7 +125,9 @@
             ],
             "arguments": {
                 "obj_or_type": [
-                    "object"
+                    "Optional[List[custom_index]]",
+                    "List[custom_index]",
+                    "None"
                 ]
             }
         },
@@ -135,7 +139,8 @@
             ],
             "arguments": {
                 "obj_or_type": [
-                    "object"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -143,22 +148,19 @@
             "name": "json_hook",
             "location": 174,
             "return": [
-                "dict",
-                "str",
+                "Dict",
                 "List[str]",
-                "dict[, ]",
-                "Dict[str, Any]",
-                "list[str]",
+                "str",
+                "Dict[str,Any]",
                 "bool"
             ],
             "arguments": {
                 "primitive": [
                     "str",
-                    "Union[str, dict]",
-                    "bool",
-                    "dict[, ]",
                     "List[str]",
-                    "list[str]"
+                    "Union[str,dict]",
+                    "bool",
+                    "Dict"
                 ]
             }
         },
@@ -166,21 +168,21 @@
             "name": "maybe_convert_to_obj",
             "location": 188,
             "return": [
-                "dict",
+                "Dict",
                 "List[str]",
-                "dict[, ]",
                 "Optional[str]",
                 "str",
-                "dict[str, typing.Any]",
-                "dict[str, str]",
-                "tuple[typing.Union[typing.Any,typing.Any,typing.Any]]",
-                "dict[str, list[]]",
-                "None",
-                "list[str]"
+                "Dict[str,Any]",
+                "Dict[str,str]",
+                "Tuple[Union[Any,Any,Any]]",
+                "Dict[str,list]",
+                "None"
             ],
             "arguments": {
                 "data": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -188,7 +190,6 @@
             "name": "to_dict",
             "location": 22,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -199,23 +200,26 @@
             "name": "from_dict",
             "location": 27,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "cls": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
                     "Type[T]",
-                    "typing.Type",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "Type",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "data_dict": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "Type[T]",
+                    "Type",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -228,14 +232,13 @@
             "arguments": {
                 "cls": [
                     "Callable",
-                    "typing.Callable[, ]",
                     "Type",
-                    "typing.Type",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "other_cls": [
-                    "type"
+                    "int",
+                    "Type",
+                    "bool"
                 ]
             }
         },
@@ -243,7 +246,6 @@
             "name": "to_str",
             "location": 45,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -254,17 +256,18 @@
             "name": "from_str",
             "location": 50,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "cls": [
                     "str",
-                    "Union[str, Pattern[str]]",
-                    "typing.Pattern"
+                    "Union[str,Pattern[str]]",
+                    "Pattern"
                 ],
                 "json_str": [
-                    "str"
+                    "str",
+                    "Union[str,Pattern[str]]",
+                    "Pattern"
                 ]
             }
         },
@@ -277,14 +280,13 @@
             "arguments": {
                 "cls": [
                     "Callable",
-                    "typing.Callable[, ]",
                     "Type",
-                    "typing.Type",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "other_cls": [
-                    "type"
+                    "int",
+                    "Type",
+                    "bool"
                 ]
             }
         },
@@ -297,14 +299,17 @@
             "arguments": {
                 "cls": [
                     "Callable",
-                    "typing.Callable[, ]",
                     "Type",
-                    "typing.Type",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "other_cls": [
-                    "type"
+                    "Type",
+                    "str",
+                    "List[str]",
+                    "Optional[Union[str,Any]]",
+                    "Any",
+                    "Type[T]",
+                    "None"
                 ]
             }
         },
@@ -312,22 +317,21 @@
             "name": "default",
             "location": 147,
             "return": [
-                "dict[typing.Text, typing.Union[None,str,tuple[typing.Union[typing.Type,typing.Type]],int,dict[str, str],dict[, ],list[dict[str, typing.Any]],tuple[dict[, ]],list[tuple[typing.Union[int,int]]]]]",
-                "Dict[str, Any]",
-                "dict[typing.Text, ]",
-                "dict",
-                "Dict[str, Dict[str, Any]]",
-                "Dict[str, float]"
+                "Dict[Text,Union[None,str,tuple[Union[Type,Type]],int,dict[str,str],dict,list[dict[str,Any]],tuple[dict],list[tuple[Union[int,int]]]]]",
+                "Dict[str,Any]",
+                "Dict[Text,]",
+                "Dict",
+                "Dict[str,Dict[str,Any]]",
+                "Dict[str,float]"
             ],
             "arguments": {
                 "self": [],
                 "obj": [
                     "FrozenSet[int]",
+                    "Sequence[Mapping]",
                     "frozenset",
                     "bool",
-                    "Sequence[Mapping]",
-                    "str",
-                    "typing.Sequence[typing.Mapping]"
+                    "str"
                 ]
             }
         }
@@ -733,7 +737,11 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "Union[str,Date]",
+                    "str",
+                    "Type",
+                    "Tuple[float,float]",
+                    "Tuple[Union[float,float]]"
                 ]
             }
         },
@@ -741,7 +749,7 @@
             "name": "to_dict",
             "location": 116,
             "return": [
-                "dict"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "self": []
@@ -758,7 +766,12 @@
                     "Type[_TDummyDictConvertible]"
                 ],
                 "d": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Type",
+                    "Callable",
+                    "Type[T]",
+                    "T"
                 ]
             }
         },
@@ -783,7 +796,9 @@
                     "Type[_TDummyStrConvertible]"
                 ],
                 "s": [
-                    "str"
+                    "str",
+                    "bool",
+                    "bytes"
                 ]
             }
         },
@@ -1031,7 +1046,7 @@
             "name": "encode",
             "location": 180,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -1093,7 +1108,7 @@
             "name": "to_dict",
             "location": 59,
             "return": [
-                "dict"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "self": []
@@ -1107,16 +1122,14 @@
             ],
             "arguments": {
                 "self": [],
-                "d": [
-                    "dict"
-                ]
+                "d": []
             }
         },
         "TestDictConvertible.test_000_dict_convertible.A.to_dict": {
             "name": "to_dict",
             "location": 78,
             "return": [
-                "dict"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "self": []
@@ -1133,7 +1146,11 @@
                     "Type[_TDummyDictConvertible]"
                 ],
                 "d": [
-                    "dict"
+                    "dict",
+                    "Type[T]",
+                    "Dict[str, Any]",
+                    "T",
+                    "Callable"
                 ]
             }
         },
@@ -1158,7 +1175,9 @@
                     "Type[_TDummyStrConvertible]"
                 ],
                 "s": [
-                    "str"
+                    "str",
+                    "bool",
+                    "bytes"
                 ]
             }
         }

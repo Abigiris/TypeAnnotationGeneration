@@ -41,6 +41,7 @@
             ],
             "arguments": {
                 "contents": [
+                    "List[str]",
                     "str"
                 ]
             }
@@ -49,11 +50,12 @@
             "name": "string_document",
             "location": 50,
             "return": [
-                "IO[str]"
+                "io.StringIO"
             ],
             "arguments": {
                 "contents": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -154,10 +156,13 @@
             "name": "_load",
             "location": 17,
             "return": [
-                "Tuple[(dict, str)]"
+                "Tuple[(Any, str)]"
             ],
             "arguments": {
                 "stream": [
+                    "str",
+                    "List",
+                    "bool",
                     "IO[str]"
                 ]
             }
@@ -166,14 +171,17 @@
             "name": "_is_yaml_start",
             "location": 37,
             "return": [
-                "bool"
+                "int",
+                "str",
+                "tuple",
+                "Callable[..., Awaitable]"
             ],
             "arguments": {
                 "line": [
                     "str"
                 ],
                 "yml_buffer": [
-                    "Buffer"
+                    "str"
                 ]
             }
         },
@@ -181,14 +189,17 @@
             "name": "_is_yaml_end",
             "location": 40,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Optional[str]",
+                "str"
             ],
             "arguments": {
                 "line": [
                     "str"
                 ],
                 "yml_buffer": [
-                    "Buffer"
+                    "str"
                 ]
             }
         },
@@ -200,7 +211,9 @@
             ],
             "arguments": {
                 "yml": [
-                    "dict"
+                    "str",
+                    "Dict[str,str]",
+                    "int"
                 ],
                 "markdown": [
                     "str"
@@ -209,8 +222,8 @@
                     "bool",
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict"
+                    "Iterable[Context]",
+                    "Dict"
                 ]
             }
         },
@@ -233,7 +246,8 @@
             "arguments": {
                 "self": [],
                 "contents": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -253,11 +267,17 @@
             "name": "load",
             "location": 5,
             "return": [
-                "Tuple[(dict, str)]"
+                "Tuple[(Any, str)]"
             ],
             "arguments": {
                 "stream": [
-                    "IO[str]"
+                    "str",
+                    "Union[str,IO]",
+                    "Dict[str,Any]",
+                    "IO",
+                    "Callable",
+                    "IO[str]",
+                    "bytes"
                 ]
             }
         },
@@ -269,14 +289,24 @@
             ],
             "arguments": {
                 "yml": [
-                    "dict"
+                    "Dict",
+                    "str",
+                    "T",
+                    "int",
+                    "Optional[int]",
+                    "None"
                 ],
                 "md": [
-                    "str"
+                    "Dict",
+                    "str",
+                    "T",
+                    "int",
+                    "Optional[int]",
+                    "None"
                 ],
                 "yamlfirst": [
                     "bool",
-                    "dict",
+                    "Dict",
                     "str",
                     "T",
                     "Optional[int]"

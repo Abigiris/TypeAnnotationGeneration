@@ -4,11 +4,12 @@
             "name": "email_extractor",
             "location": 11,
             "return": [
-                "Iterable[Match]"
+                "Generator[(Match[str], Any, None)]"
             ],
             "arguments": {
                 "text": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         }
@@ -30,7 +31,9 @@
             "name": "fix_text",
             "location": 8,
             "return": [
-                "str"
+                "str",
+                "dict",
+                "Iterable[int]"
             ],
             "arguments": {
                 "text": [
@@ -42,11 +45,13 @@
             "name": "create_ngrams",
             "location": 12,
             "return": [
-                "List[List[str]]"
+                "list"
             ],
             "arguments": {
                 "tokens": [
-                    "Union[(str, Iterable[str])]"
+                    "str",
+                    "List[str]",
+                    "int"
                 ],
                 "min_len": [
                     "int"
@@ -65,10 +70,9 @@
             "arguments": {
                 "tokens": [
                     "List[str]",
-                    "list[str]",
                     "str",
-                    "MutableMapping[Any, Any]",
-                    "typing.MutableMapping"
+                    "MutableMapping[Any,Any]",
+                    "MutableMapping"
                 ],
                 "min_len": [
                     "int"
@@ -87,8 +91,7 @@
             "arguments": {
                 "tokens": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "min_len": [
                     "int"
@@ -107,11 +110,10 @@
             "arguments": {
                 "sequence": [
                     "int",
-                    "Tuple[int, int, int]",
-                    "str",
-                    "tuple[typing.Union[int,int,int]]",
                     "List[int]",
-                    "list[int]"
+                    "Tuple[int,int,int]",
+                    "str",
+                    "Tuple[Union[int,int,int]]"
                 ],
                 "min_len": [
                     "int",
@@ -146,14 +148,30 @@
             "name": "run_batch_gridsearch",
             "location": 16,
             "return": [
-                "Iterable"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "input_column": [
-                    "Iterable[str]"
+                    "Iterable[Union[int,str]]",
+                    "Iterable[str]",
+                    "str",
+                    "int",
+                    "None",
+                    "float",
+                    "Optional[str]",
+                    "Optional[int]",
+                    "Dict[str,Any]"
                 ],
                 "labels": [
-                    "Iterable[Union[(int, str)]]"
+                    "Iterable[Union[int,str]]",
+                    "Iterable[str]",
+                    "str",
+                    "int",
+                    "None",
+                    "float",
+                    "Optional[str]",
+                    "Optional[int]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -166,13 +184,22 @@
             ],
             "arguments": {
                 "input_column": [
-                    "Iterable[str]"
+                    "Iterable[Union[int,str]]",
+                    "Iterable[str]",
+                    "int",
+                    "str"
                 ],
                 "labels": [
-                    "Iterable[Union[(int, str)]]"
+                    "Iterable[Union[int,str]]",
+                    "Iterable[str]",
+                    "int",
+                    "str"
                 ],
                 "filename": [
-                    "str"
+                    "str",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ]
             }
         },
@@ -186,23 +213,34 @@
             ],
             "arguments": {
                 "gs": [
-                    "typing.Iterable[typing.Union[int,str]]",
+                    "Iterable[Union[int,str]]",
                     "int",
                     "sklearn.model_selection.GridSearchCV",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "Iterable[str]",
-                    "Iterable[Union[int, str]]",
-                    "List[Tuple[pathlib.Path, str]]",
-                    "Callable"
+                    "List[Tuple[pathlib.Path,str]]"
                 ],
                 "input_column": [
-                    "Iterable[str]"
+                    "Iterable[Union[int,str]]",
+                    "int",
+                    "sklearn.model_selection.GridSearchCV",
+                    "Callable",
+                    "Iterable[str]",
+                    "List[Tuple[pathlib.Path,str]]"
                 ],
                 "labels": [
-                    "Iterable[Union[(int, str)]]"
+                    "Iterable[Union[int,str]]",
+                    "int",
+                    "sklearn.model_selection.GridSearchCV",
+                    "Callable",
+                    "Iterable[str]",
+                    "List[Tuple[pathlib.Path,str]]"
                 ],
                 "filename": [
-                    "str"
+                    "str",
+                    "pandas.DataFrame",
+                    "Optional[pathlib.Path]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -212,13 +250,14 @@
             "return": [
                 "None",
                 "str",
-                "Optional[\"permissions_doc\"]",
+                "Optional[permissions_doc]",
                 "bytes",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -236,16 +275,21 @@
             "arguments": {
                 "df": [
                     "str",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "preds": [
-                    "Iterable[int]"
+                    "str",
+                    "Dict[str,str]",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "filename": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Union[str, pathlib.Path]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -260,10 +304,14 @@
             ],
             "arguments": {
                 "input_column": [
+                    "Iterable[Union[int,str]]",
+                    "bytes",
                     "Iterable[str]"
                 ],
                 "labels": [
-                    "Iterable[Union[(int, str)]]"
+                    "Iterable[Union[int,str]]",
+                    "bytes",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -278,10 +326,14 @@
             ],
             "arguments": {
                 "input_column": [
+                    "Iterable[Union[int,str]]",
+                    "bytes",
                     "Iterable[str]"
                 ],
                 "labels": [
-                    "Iterable[Union[(int, str)]]"
+                    "Iterable[Union[int,str]]",
+                    "bytes",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -296,10 +348,14 @@
             ],
             "arguments": {
                 "input_column": [
+                    "Iterable[Union[int,str]]",
+                    "bytes",
                     "Iterable[str]"
                 ],
                 "labels": [
-                    "Iterable[Union[(int, str)]]"
+                    "Iterable[Union[int,str]]",
+                    "bytes",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -314,10 +370,14 @@
             ],
             "arguments": {
                 "input_column": [
+                    "Iterable[Union[int,str]]",
+                    "bytes",
                     "Iterable[str]"
                 ],
                 "labels": [
-                    "Iterable[Union[(int, str)]]"
+                    "Iterable[Union[int,str]]",
+                    "bytes",
+                    "Iterable[str]"
                 ]
             }
         }
@@ -327,14 +387,17 @@
             "name": "get_vocab_counts",
             "location": 8,
             "return": [
-                "Dict[(str, int)]"
+                "dict"
             ],
             "arguments": {
                 "texts": [
-                    "Collection"
+                    "int",
+                    "str",
+                    "List[int]"
                 ],
                 "max_ngrams": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -342,17 +405,26 @@
             "name": "get_fuzzy_matches",
             "location": 28,
             "return": [
-                "List[Tuple[(str, int)]]"
+                "list"
             ],
             "arguments": {
                 "search_term": [
-                    "str"
+                    "int",
+                    "str",
+                    "Dict[str,int]",
+                    "bool"
                 ],
                 "term_counts": [
-                    "Dict[(str, int)]"
+                    "Dict[str,int]",
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "cutoff_score": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,int]",
+                    "bool"
                 ]
             }
         },
@@ -360,14 +432,22 @@
             "name": "drop_ngrams_with_keyword",
             "location": 46,
             "return": [
-                "Collection"
+                "str",
+                "Set[str]",
+                "List[str]",
+                "bool"
             ],
             "arguments": {
                 "texts": [
-                    "Collection[str]"
+                    "str",
+                    "Set[str]",
+                    "List[str]",
+                    "bool"
                 ],
                 "term": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -406,12 +486,12 @@
                 "GPy.models.GPRegression",
                 "str",
                 "allennlp.models.model.Model",
-                "dict[, ]",
-                "list[str]"
+                "Dict",
+                "List[str]"
             ],
             "arguments": {
                 "ft_model": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "bool",
@@ -428,9 +508,8 @@
             "arguments": {
                 "corpus": [
                     "str",
-                    "list[]",
-                    "bool",
-                    "list"
+                    "List",
+                    "bool"
                 ],
                 "model": [
                     "str",
@@ -445,7 +524,7 @@
             "name": "parse_conll2002",
             "location": 9,
             "return": [
-                "Token"
+                "Generator[(Token, Any, None)]"
             ],
             "arguments": {
                 "max_items": [
@@ -459,7 +538,7 @@
             "name": "prep_sentences",
             "location": 21,
             "return": [
-                "dict"
+                "Generator[(Dict[(str, Union[(str, List[NamedEntity])])], Any, None)]"
             ],
             "arguments": {
                 "max_items": [
@@ -475,12 +554,17 @@
             "name": "convert_document",
             "location": 10,
             "return": [
-                "NamedTuple"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "fp": [
-                    "pathlib.Path"
+                    "str",
+                    "int",
+                    "float",
+                    "IO",
+                    "pypi2nix.path.Path",
+                    "Union[str,IO[bytes]]"
                 ]
             }
         }
@@ -495,8 +579,8 @@
             "arguments": {
                 "value": [
                     "str",
-                    "dict",
-                    "Dict[str, str]",
+                    "Dict",
+                    "Dict[str,str]",
                     "List[str]"
                 ]
             }
@@ -518,12 +602,16 @@
             "arguments": {
                 "self": [],
                 "document_location": [
-                    "str"
+                    "bool",
+                    "Path"
                 ],
                 "document_extension": [
-                    "str"
+                    "bool",
+                    "Text"
                 ],
                 "atticus_zip": [
+                    "Text",
+                    "bool",
                     "str"
                 ]
             }
@@ -532,12 +620,14 @@
             "name": "convert_document",
             "location": 28,
             "return": [
-                "NamedTuple"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "fp": [
-                    "pathlib.Path"
+                    "str",
+                    "int",
+                    "bytes"
                 ]
             }
         },
@@ -545,12 +635,23 @@
             "name": "convert_data_types",
             "location": 42,
             "return": [
-                "dict"
+                "bytes",
+                "str",
+                "Exception",
+                "ForwardRef",
+                "bool",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "self": [],
                 "record": [
-                    "dict"
+                    "bytes",
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Union[int,bytes]",
+                    "Type",
+                    "int"
                 ]
             }
         },
@@ -591,7 +692,9 @@
                     "str"
                 ],
                 "date_format": [
-                    "Optional[str]"
+                    "str",
+                    "List[str]",
+                    "None"
                 ]
             }
         },
@@ -599,12 +702,15 @@
             "name": "convert_document",
             "location": 26,
             "return": [
-                "NamedTuple"
+                "NamedTuple",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "fp": [
-                    "pathlib.Path"
+                    "bytes",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -612,7 +718,7 @@
             "name": "data_iterator",
             "location": 37,
             "return": [
-                "NamedTuple"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -627,7 +733,10 @@
             "arguments": {
                 "self": [],
                 "date_value": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "datetime.date",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -639,7 +748,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TDatasetReader"
+                    "_TDatasetReader@@DatasetReader@@"
                 ]
             }
         },
@@ -647,7 +756,9 @@
             "name": "__next__",
             "location": 62,
             "return": [
-                "NamedTuple"
+                "str",
+                "Optional[float]",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -664,13 +775,19 @@
             "arguments": {
                 "self": [],
                 "document_location": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int"
                 ],
                 "document_extension": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int"
                 ],
                 "date_format": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -678,13 +795,13 @@
             "name": "convert_document",
             "location": 23,
             "return": [
-                "data_structures.russian_tweet_data.RussianTweetData",
-                "typing.Generator[RussianTweetData]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "fp": [
-                    "pathlib.Path"
+                    "bytes",
+                    "AbstractSet[str]"
                 ]
             }
         },
@@ -692,12 +809,19 @@
             "name": "convert_data_types",
             "location": 42,
             "return": [
-                "dict"
+                "str",
+                "Dict[str,Any]",
+                "Iterable[Tuple[str,str]]",
+                "List[str]",
+                "bool",
+                "Union[str,pathlib.Path]"
             ],
             "arguments": {
                 "self": [],
                 "tweet_data": [
-                    "dict"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict"
                 ]
             }
         }
@@ -713,7 +837,7 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "int",
                     "float"
                 ]
@@ -728,9 +852,8 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "dict[, ]",
-                    "dict",
-                    "typing.AbstractSet",
+                    "Dict",
+                    "AbstractSet",
                     "AbstractSet[T]",
                     "AbstractSet[T_co]"
                 ]
@@ -747,7 +870,7 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "int",
                     "float"
                 ]
@@ -762,9 +885,8 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "dict[, ]",
-                    "dict",
-                    "typing.AbstractSet",
+                    "Dict",
+                    "AbstractSet",
                     "AbstractSet[T]",
                     "AbstractSet[T_co]"
                 ]
@@ -789,7 +911,7 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "int",
                     "float"
                 ]
@@ -804,9 +926,8 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "dict[, ]",
-                    "dict",
-                    "typing.AbstractSet",
+                    "Dict",
+                    "AbstractSet",
                     "AbstractSet[T]",
                     "AbstractSet[T_co]"
                 ]
@@ -838,10 +959,12 @@
             "name": "ocr_document",
             "location": 7,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "pdf_path": [
+                    "str",
+                    "int",
                     "pathlib.Path"
                 ]
             }
@@ -856,10 +979,19 @@
             ],
             "arguments": {
                 "filter_language": [
+                    "Text",
+                    "int",
+                    "float",
                     "str"
                 ],
                 "convert_dates": [
-                    "bool"
+                    "bool",
+                    "List[Dict[str,str]]",
+                    "datetime.date",
+                    "int",
+                    "datetime.datetime",
+                    "List",
+                    "str"
                 ]
             }
         },
@@ -871,18 +1003,19 @@
             ],
             "arguments": {
                 "df": [
-                    "tuple[typing.Union[int,int]]",
-                    "pandas.DataFrame",
-                    "list[int]",
-                    "list[]",
-                    "Tuple[int, int]",
-                    "int",
-                    "numpy.ndarray",
+                    "Tuple[Union[int,int]]",
                     "List[int]",
-                    "list"
+                    "pandas.DataFrame",
+                    "List",
+                    "Tuple[int,int]",
+                    "int",
+                    "numpy.ndarray"
                 ],
                 "sample_size": [
-                    "int"
+                    "int",
+                    "Match",
+                    "numpy.ndarray",
+                    "Sequence[float]"
                 ]
             }
         },
@@ -890,7 +1023,7 @@
             "name": "load_json_data",
             "location": 105,
             "return": [
-                "dict"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {}
         },
@@ -898,7 +1031,7 @@
             "name": "flatten_tweets",
             "location": 117,
             "return": [
-                "dict"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {}
         },
@@ -919,7 +1052,13 @@
             ],
             "arguments": {
                 "dir_path": [
-                    "pathlib.Path"
+                    "str",
+                    "bool",
+                    "pathlib.Path",
+                    "Dict[str,pathlib.Path]",
+                    "None",
+                    "Union[str,pathlib.Path]",
+                    "Optional[str]"
                 ]
             }
         }
@@ -929,11 +1068,14 @@
             "name": "parse_xmls",
             "location": 22,
             "return": [
-                "Iterator[Dict[(str, Any)]]"
+                "Generator[(dict, Any, None)]"
             ],
             "arguments": {
                 "xml_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "bool",
+                    "Union[None, str, bytes]",
+                    "pathlib.PurePosixPath"
                 ]
             }
         },
@@ -947,12 +1089,11 @@
             ],
             "arguments": {
                 "text": [
-                    "Dict[(str, Any)]"
+                    "str"
                 ],
                 "model": [
                     "str",
-                    "type",
-                    "typing.Type",
+                    "Type",
                     "Optional[str]",
                     "None"
                 ]
@@ -980,7 +1121,8 @@
             ],
             "arguments": {
                 "chunk_size": [
-                    "int"
+                    "int",
+                    "List[int]"
                 ]
             }
         },
@@ -992,13 +1134,23 @@
             ],
             "arguments": {
                 "year": [
-                    "str"
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "bool",
+                    "None",
+                    "Optional[datetime.tzinfo]"
                 ],
                 "month": [
-                    "str"
+                    "int",
+                    "Sequence[str]",
+                    "slice"
                 ],
                 "refetch": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Dict[str,List[int]]",
+                    "Dict",
+                    "Optional[float]"
                 ]
             }
         },
@@ -1010,10 +1162,14 @@
             ],
             "arguments": {
                 "year": [
-                    "str"
+                    "str",
+                    "List",
+                    "pathlib.Path",
+                    "int",
+                    "Union[int,str]"
                 ],
                 "month": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "pathlib.Path"
                 ],
@@ -1022,7 +1178,12 @@
                     "float"
                 ],
                 "unlink": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Iterator[int]",
+                    "Iterable[str]",
+                    "Iterable[Union[int,str]]",
+                    "Tuple[int]"
                 ]
             }
         },
@@ -1034,6 +1195,7 @@
             ],
             "arguments": {
                 "file_id": [
+                    "int",
                     "str"
                 ]
             }
@@ -1052,7 +1214,7 @@
             "name": "xml_docs",
             "location": 10,
             "return": [
-                "Generator[(str, None, None)]"
+                "Generator[(str, Any, None)]"
             ],
             "arguments": {}
         },
@@ -1060,11 +1222,13 @@
             "name": "create_spacy_objects",
             "location": 24,
             "return": [
-                "Generator[(Any, None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "texts": [
-                    "Collection[str]"
+                    "str",
+                    "Collection[str]",
+                    "bool"
                 ]
             }
         }
@@ -1074,7 +1238,7 @@
             "name": "joined_texts",
             "location": 8,
             "return": [
-                "Iterator[str]"
+                "Generator[(str, Any, None)]"
             ],
             "arguments": {}
         },
@@ -1096,10 +1260,16 @@
             ],
             "arguments": {
                 "sequence": [
-                    "Iterator"
+                    "int",
+                    "List",
+                    "List[int]",
+                    "Sequence[Sequence[float]]",
+                    "Collection[int]",
+                    "Collection"
                 ],
                 "reservoir_size": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1111,10 +1281,18 @@
             ],
             "arguments": {
                 "sequence": [
-                    "Iterator"
+                    "int",
+                    "List",
+                    "List[int]",
+                    "Sequence[Sequence[float]]",
+                    "Collection[int]",
+                    "Collection"
                 ],
                 "reservoir_size": [
-                    "int"
+                    "int",
+                    "bool",
+                    "List",
+                    "float"
                 ]
             }
         }
@@ -1149,11 +1327,17 @@
             ],
             "arguments": {
                 "sentences": [
-                    "Collection[str]"
+                    "Collection",
+                    "int",
+                    "Collection[str]",
+                    "str",
+                    "esm.models.last_operation.LastOperation",
+                    "tonga.models.records.command.command.BaseCommand",
+                    "bool"
                 ],
                 "save_path": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ]
             }
         },
@@ -1166,7 +1350,7 @@
             "arguments": {
                 "load_path": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ]
             }
         },
@@ -1178,7 +1362,10 @@
             ],
             "arguments": {
                 "training_pages": [
-                    "Iterator[str]"
+                    "str",
+                    "Iterator[str]",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -1192,7 +1379,11 @@
             ],
             "arguments": {
                 "page": [
-                    "str"
+                    "str",
+                    "bool",
+                    "float",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "ft_model": [
                     "str",
@@ -1208,21 +1399,17 @@
             ],
             "arguments": {
                 "pages": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
                     "models.Model",
                     "Callable",
                     "int",
                     "bool"
                 ],
                 "ft_model": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "List[str]",
-                    "list[str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1234,7 +1421,10 @@
             ],
             "arguments": {
                 "html_pages": [
-                    "Collection[str]"
+                    "str",
+                    "Collection[str]",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1251,9 +1441,8 @@
                     "str"
                 ],
                 "ft_model": [
-                    "Callable[[], Any]",
-                    "bool",
-                    "typing.Callable[[], typing.Any]"
+                    "Callable[,Any]",
+                    "bool"
                 ]
             }
         }
@@ -1263,7 +1452,6 @@
             "name": "test_email_extractor",
             "location": 23,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1271,29 +1459,23 @@
                 "text": [
                     "str",
                     "bool",
-                    "typing.Sequence[int]",
                     "Sequence[int]",
-                    "list[str]",
-                    "Union[str, List[str]]",
-                    "List[str]"
+                    "List[str]",
+                    "Union[str,List[str]]"
                 ],
                 "email": [
                     "str",
                     "bool",
-                    "typing.Sequence[int]",
                     "Sequence[int]",
-                    "list[str]",
-                    "Union[str, List[str]]",
-                    "List[str]"
+                    "List[str]",
+                    "Union[str,List[str]]"
                 ],
                 "expected": [
                     "str",
                     "bool",
-                    "typing.Sequence[int]",
                     "Sequence[int]",
-                    "list[str]",
-                    "Union[str, List[str]]",
-                    "List[str]"
+                    "List[str]",
+                    "Union[str,List[str]]"
                 ]
             }
         }

@@ -144,12 +144,12 @@
         "git_get_default_branch_from_remote": {
             "name": "git_get_default_branch_from_remote",
             "location": 113,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "c": [],
-                "repo": [
-                    "pathlib.Path"
-                ],
+                "repo": [],
                 "remote": [
                     "typing.Text"
                 ]
@@ -158,12 +158,12 @@
         "git_get_default_branch": {
             "name": "git_get_default_branch",
             "location": 131,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "c": [],
-                "repo": [
-                    "pathlib.Path"
-                ],
+                "repo": [],
                 "remote": [
                     "typing.Text"
                 ]
@@ -177,9 +177,7 @@
             ],
             "arguments": {
                 "c": [],
-                "repo": [
-                    "pathlib.Path"
-                ],
+                "repo": [],
                 "branch": [
                     "None"
                 ],
@@ -204,7 +202,6 @@
             "name": "background_services",
             "location": 266,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -214,10 +211,9 @@
                 ],
                 "docker_compose_folder": [
                     "str",
-                    "float",
-                    "typing.Iterable[str]",
-                    "int",
                     "Iterable[str]",
+                    "float",
+                    "int",
                     "pathlib.Path"
                 ],
                 "clean": [
@@ -232,7 +228,6 @@
             "name": "blank_context",
             "location": 288,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -279,31 +274,32 @@
                     "bool",
                     "Optional[str]",
                     "str",
-                    "Union[int, float]",
+                    "Callable",
+                    "Union[int,float]",
                     "None",
                     "Optional[bool]",
-                    "float",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "float"
                 ],
                 "docker_compose_folder": [
-                    "Union[(str, os.PathLike)]"
+                    "Callable[[List,bool],None]",
+                    "str",
+                    "Callable[L,None]"
                 ],
                 "docker_arg": [
-                    "typing.Text",
+                    "Text",
                     "Set[str]",
                     "pathlib.Path",
-                    "Union[pathlib.Path, str, None]",
+                    "Union[pathlib.Path,str,None]",
                     "Optional[str]",
                     "TextIO",
                     "str"
                 ],
                 "log_name": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "bool",
-                    "Union[str, os.PathLike]",
+                    "Union[str,os.PathLike]",
                     "int"
                 ]
             }
@@ -312,11 +308,12 @@
             "name": "_get_docker_compose_filepaths",
             "location": 59,
             "return": [
-                "List[Union[(str, os.PathLike)]]"
+                "List[pathlib.Path]"
             ],
             "arguments": {
                 "docker_compose_folder": [
-                    "Union[(str, os.PathLike)]"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -324,14 +321,21 @@
             "name": "_get_docker_compose_command",
             "location": 69,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "docker_compose_filepaths": [
-                    "Sequence[Union[(str, os.PathLike)]]"
+                    "Dict[str,str]",
+                    "List[tuple[Union[str,str]]]",
+                    "List[Tuple[str,str]]",
+                    "int"
                 ],
                 "docker_args": [
-                    "Sequence[str]"
+                    "List[str]",
+                    "Sequence[str]",
+                    "str",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -346,7 +350,7 @@
                     "str"
                 ],
                 "docker_compose_filepaths": [
-                    "Sequence[Union[(str, os.PathLike)]]"
+                    "str"
                 ]
             }
         },
@@ -407,7 +411,7 @@
                 "check_once": [
                     "bool",
                     "str",
-                    "dict"
+                    "Dict"
                 ]
             }
         },
@@ -430,10 +434,9 @@
             "arguments": {
                 "self": [],
                 "shutdown_event": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "int",
-                    "dict[str, typing.Any]",
-                    "Optional[\"NetworkManager\"]",
+                    "Optional[NetworkManager]",
                     "None"
                 ]
             }
@@ -454,9 +457,9 @@
             "return": [
                 "int",
                 "Callable",
-                "tuple[typing.Union[typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal,typing.Literal]]",
+                "Tuple[Union[Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal]]",
                 "str",
-                "typing.Type"
+                "Type"
             ],
             "arguments": {
                 "self": [],
@@ -464,8 +467,8 @@
                     "bool",
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict"
+                    "Iterable[Context]",
+                    "Dict"
                 ]
             }
         },
@@ -479,14 +482,12 @@
                 "self": [],
                 "app": [
                     "str",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "logger": [
                     "bool",
-                    "str",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "str",
                     "int"
                 ],
                 "app_command": [
@@ -559,7 +560,9 @@
         "DMProcess.wait": {
             "name": "wait",
             "location": 372,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -575,19 +578,30 @@
             "arguments": {
                 "self": [],
                 "command": [
-                    "str"
+                    "str",
+                    "Iterable[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "rebuild": [
-                    "bool"
+                    "str",
+                    "bool",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ],
                 "config_path": [
-                    "str"
-                ],
-                "nix": [
+                    "str",
                     "bool"
                 ],
+                "nix": [
+                    "bool",
+                    "str",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
+                ],
                 "settings_path": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -610,7 +624,7 @@
                 "int",
                 "bool",
                 "str",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "self": []
@@ -633,12 +647,12 @@
             "location": 170,
             "return": [
                 "str",
-                "Dict[str, Any]",
-                "tuple[]",
+                "Dict[str,Any]",
+                "Tuple",
                 "None",
                 "float",
-                "\"Step\"",
-                "dict"
+                "Step",
+                "Dict"
             ],
             "arguments": {
                 "self": []
@@ -673,7 +687,14 @@
             "arguments": {
                 "self": [],
                 "repository": [
-                    "str"
+                    "str",
+                    "Union[str,Path]",
+                    "Callable[Any,None]",
+                    "None",
+                    "Optional[Callable[[Any],None]]",
+                    "pathlib.Path",
+                    "cmk.utils.type_defs.HostName",
+                    "Optional[pathlib.Path]"
                 ]
             }
         },
@@ -681,15 +702,23 @@
             "name": "_app_name_completer",
             "location": 250,
             "return": [
-                "Optional[str]"
+                "None",
+                "Dict",
+                "Optional[str]",
+                "Optional[dict]"
             ],
             "arguments": {
                 "self": [],
                 "text": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "Dict",
+                    "Dict[str,LabwareDefinition]",
+                    "Dict[str,D]"
                 ],
                 "state": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -727,9 +756,8 @@
                 "self": [],
                 "repository_names": [
                     "str",
-                    "list[str]",
-                    "Optional[str]",
                     "List[str]",
+                    "Optional[str]",
                     "Iterable[float]",
                     "Any",
                     "Optional[Callable]",
@@ -762,9 +790,8 @@
                 ],
                 "log_attach": [
                     "str",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "None"
                 ],
                 "end": [
                     "str"
@@ -775,12 +802,18 @@
             "name": "_find_matching_apps",
             "location": 352,
             "return": [
-                "Tuple[(str, ...)]"
+                "tuple"
             ],
             "arguments": {
                 "self": [],
                 "selectors": [
-                    "Optional[list]"
+                    "List[str]",
+                    "List[object]",
+                    "str",
+                    "bool",
+                    "List",
+                    "Sized",
+                    "Optional[List]"
                 ]
             }
         },
@@ -864,7 +897,10 @@
             "arguments": {
                 "self": [],
                 "selectors": [
-                    "list"
+                    "Dict",
+                    "bool",
+                    "List",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -897,10 +933,19 @@
             "arguments": {
                 "self": [],
                 "selectors": [
-                    "list"
+                    "Callable[...,None]",
+                    "List",
+                    "Sequence[str]",
+                    "str",
+                    "Callable",
+                    "Iterable[str]"
                 ],
                 "rebuild": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "int",
+                    "Callable",
+                    "bytes"
                 ]
             }
         },
@@ -913,10 +958,14 @@
             "arguments": {
                 "self": [],
                 "selectors": [
-                    "Optional[list]"
+                    "None"
                 ],
                 "silent_fail": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict"
                 ]
             }
         },
@@ -939,7 +988,9 @@
             "arguments": {
                 "self": [],
                 "selectors": [
-                    "Optional[list]"
+                    "bool",
+                    "None",
+                    "qutebrowser.utils.usertypes.Backend"
                 ]
             }
         },
@@ -952,13 +1003,17 @@
             "arguments": {
                 "self": [],
                 "command": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Union[List[str],str]"
                 ],
                 "value": [
-                    "str"
+                    "str",
+                    "Type",
+                    "bool"
                 ]
             }
         },
@@ -1015,8 +1070,7 @@
                     "int"
                 ],
                 "config": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "Optional[Dict]",
                     "Optional[dict]",
                     "List[str]"
@@ -1088,14 +1142,12 @@
             ],
             "arguments": {
                 "logger": [
-                    "dict",
-                    "dict[, ]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Dict",
+                    "Callable"
                 ],
                 "config": [
                     "str",
-                    "dict"
+                    "Dict"
                 ],
                 "settings": [
                     "Dict[str, Any]",
@@ -1137,8 +1189,8 @@
                     "Optional[str]",
                     "pathlib.Path",
                     "Optional[pathlib.Path]",
-                    "Union[str, pathlib.Path]",
-                    "Optional[Union[str, pathlib.Path]]",
+                    "Union[str,pathlib.Path]",
+                    "Optional[Union[str,pathlib.Path]]",
                     "bool",
                     "IO"
                 ],
@@ -1157,17 +1209,21 @@
                 "int",
                 "str",
                 "Callable",
-                "dict[str, typing.Union[typing.Any,typing.Any,typing.Any,typing.Any]]"
+                "Dict[str,Union[Any,Any,Any,Any]]"
             ],
             "arguments": {
                 "logger": [
-                    "Callable"
+                    "Callable",
+                    "Dict"
                 ],
                 "config": [
-                    "dict"
+                    "str",
+                    "Dict"
                 ],
                 "settings": [
-                    "dict"
+                    "purplship.providers.fedex.utils.Settings",
+                    "Dict[str, Any]",
+                    "Optional[Exception]"
                 ]
             }
         },
@@ -1181,10 +1237,13 @@
             ],
             "arguments": {
                 "logger": [
-                    "Callable"
+                    "Callable",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "MutableMapping"
                 ],
                 "config": [
-                    "dict"
+                    "Dict"
                 ],
                 "settings": [
                     "dict"
@@ -1199,13 +1258,19 @@
             ],
             "arguments": {
                 "logger": [
-                    "Callable"
+                    "Dict",
+                    "Callable",
+                    "bool"
                 ],
                 "config": [
-                    "dict"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Dict[str,str]"
                 ],
                 "settings": [
-                    "dict"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -1213,23 +1278,38 @@
             "name": "setup_and_check_requirements",
             "location": 476,
             "return": [
-                "Tuple[(Any, bool, dict)]"
+                "Tuple[(Any, bool, _T1)]"
             ],
             "arguments": {
                 "logger": [
-                    "Callable"
+                    "Callable",
+                    "str",
+                    "bool"
                 ],
                 "config": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Optional[dict]"
                 ],
                 "config_path": [
-                    "str"
+                    "str",
+                    "Optional[IO[str]]",
+                    "IO",
+                    "None"
                 ],
                 "settings": [
-                    "dict"
+                    "dict",
+                    "pathlib.Path",
+                    "bool"
                 ],
                 "command": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Dict[str,Any]",
+                    "None",
+                    "Optional[str]",
+                    "raiden.utils.Address",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -1308,24 +1388,22 @@
             "name": "get_yes_no_input",
             "location": 51,
             "return": [
-                "set",
+                "Set",
                 "str",
                 "int",
                 "Callable",
                 "None",
                 "bool",
-                "dict[str, str]",
-                "typing.Callable[, ]",
-                "list[tuple[typing.Union[str,typing.Any]]]"
+                "Dict[str,str]",
+                "List[tuple[Union[str,Any]]]"
             ],
             "arguments": {
                 "logger": [
                     "str",
                     "int",
                     "Optional[str]",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "None"
                 ],
                 "text": [
                     "str",
@@ -1333,9 +1411,8 @@
                 ],
                 "default": [
                     "str",
-                    "None",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "None"
                 ]
             }
         },
@@ -1343,14 +1420,25 @@
             "name": "group_by_key",
             "location": 76,
             "return": [
-                "List[List[str]]"
+                "list"
             ],
             "arguments": {
                 "dictionary": [
-                    "Dict[(str, Dict[(str, dict)])]"
+                    "Dict[str,str]",
+                    "Dict",
+                    "List[Dict[str,str]]",
+                    "str",
+                    "Match",
+                    "bool"
                 ],
                 "key": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Dict[str,str]",
+                    "List[Union[int,Any]]",
+                    "List",
+                    "Union[str,list]",
+                    "int"
                 ],
                 "include_missing": [
                     "bool",
@@ -1366,7 +1454,9 @@
             "name": "get_app_info",
             "location": 91,
             "return": [
-                "_T3"
+                "str",
+                "Optional[str]",
+                "Tuple[int, int]"
             ],
             "arguments": {
                 "repo_name": [
@@ -1377,10 +1467,10 @@
                 ],
                 "settings": [
                     "str",
-                    "Dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "container": [
-                    "_T3"
+                    "str"
                 ]
             }
         },
@@ -1396,7 +1486,7 @@
             "name": "load_config",
             "location": 110,
             "return": [
-                "Tuple[(int, dict)]"
+                "Tuple[(int, Any)]"
             ],
             "arguments": {
                 "config_path": [
@@ -1418,10 +1508,9 @@
             "arguments": {
                 "config": [
                     "str",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "Dict[str,str]",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "config_path": [
                     "str"

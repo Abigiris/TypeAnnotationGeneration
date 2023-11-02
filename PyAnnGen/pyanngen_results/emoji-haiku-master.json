@@ -5,7 +5,7 @@
             "name": "_load_resources",
             "location": 10,
             "return": [
-                "Tuple[(Dict[(emoji.core.Emoji, str)], List[str])]"
+                "Tuple[(dict, list)]"
             ],
             "arguments": {}
         },
@@ -13,11 +13,14 @@
             "name": "_map_description_to_emoji_and_syllable_count",
             "location": 24,
             "return": [
-                "Dict[(int, List[Tuple[(emoji.core.Emoji, str)]])]"
+                "Dict[(Any, List[Tuple[(Any, Any)]])]"
             ],
             "arguments": {
                 "emoji_desc_pairs": [
-                    "Iterable[Tuple[(emoji.core.Emoji, str)]]"
+                    "str",
+                    "List[str]",
+                    "Dict[str, int]",
+                    "bool"
                 ]
             }
         },
@@ -25,11 +28,12 @@
             "name": "_make_line",
             "location": 46,
             "return": [
-                "Tuple[(List[emoji.core.Emoji], List[str])]"
+                "Tuple[(List[nothing], List[nothing])]"
             ],
             "arguments": {
                 "syllable_count": [
-                    "int"
+                    "int",
+                    "Iterator[T]"
                 ]
             }
         },
@@ -37,14 +41,15 @@
             "name": "_choose_modifier",
             "location": 85,
             "return": [
-                "Optional[str]"
+                "Optional[_T1]"
             ],
             "arguments": {
                 "emoji": [
-                    "emoji.core.Emoji"
+                    "int",
+                    "bool"
                 ],
                 "force_modifier": [
-                    "Optional[str]"
+                    "bool"
                 ]
             }
         },
@@ -52,14 +57,20 @@
             "name": "_choose_gender",
             "location": 93,
             "return": [
-                "emoji.core.Gender"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "emoji": [
-                    "emoji.core.Emoji"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "force_gender": [
-                    "RenderGender"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -67,17 +78,25 @@
             "name": "_render_emoji",
             "location": 110,
             "return": [
-                "str"
+                "bool",
+                "str",
+                "Dict[str, Any]",
+                "gluonts.core.componenDType"
             ],
             "arguments": {
                 "emoji": [
-                    "emoji.core.Emoji"
+                    "bool",
+                    "Optional[float]",
+                    "int"
                 ],
                 "force_gender": [
-                    "RenderGender"
+                    "bool",
+                    "int",
+                    "Optional[float]"
                 ],
                 "force_modifier": [
-                    "Optional[str]"
+                    "Tuple[int]",
+                    "int"
                 ]
             }
         },
@@ -89,10 +108,19 @@
             ],
             "arguments": {
                 "force_gender": [
-                    "RenderGender"
+                    "str",
+                    "bool",
+                    "float",
+                    "Union[int, str]",
+                    "int"
                 ],
                 "force_modifier": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "bool",
+                    "float",
+                    "Union[int,str]",
+                    "int"
                 ]
             }
         },
@@ -105,10 +133,16 @@
             "arguments": {
                 "self": [],
                 "force_gender": [
-                    "RenderGender"
+                    "int",
+                    "str",
+                    "Callable[..., None]",
+                    "bool"
                 ],
                 "force_modifier": [
-                    "Optional[str]"
+                    "int",
+                    "str",
+                    "Callable[..., None]",
+                    "bool"
                 ]
             }
         }
@@ -118,7 +152,7 @@
             "name": "_load_vowels",
             "location": 65,
             "return": [
-                "Iterable[str]"
+                "Generator[(str, Any, None)]"
             ],
             "arguments": {}
         },
@@ -126,7 +160,7 @@
             "name": "_load_syllables_per_word_cmu",
             "location": 73,
             "return": [
-                "Dict[(str, Set[int])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {}
         },
@@ -134,27 +168,21 @@
             "name": "_apply_overrides",
             "location": 101,
             "return": [
-                "Dict[(str, Set[int])]"
+                "dict"
             ],
             "arguments": {
-                "source_dict": [
-                    "Dict[(str, Set[int])]"
-                ],
-                "overrides": [
-                    "Dict[(str, int)]"
-                ]
+                "source_dict": [],
+                "overrides": []
             }
         },
         "count_syllables": {
             "name": "count_syllables",
             "location": 115,
             "return": [
-                "Set[int]"
+                "set"
             ],
             "arguments": {
-                "input": [
-                    "str"
-                ]
+                "input": []
             }
         },
         "_clean_text": {
@@ -164,9 +192,7 @@
                 "str"
             ],
             "arguments": {
-                "word": [
-                    "str"
-                ]
+                "word": []
             }
         }
     },
@@ -175,7 +201,7 @@
             "name": "get_remaining_time_in_millis",
             "location": 44,
             "return": [
-                "int"
+                "None"
             ],
             "arguments": {}
         }
@@ -185,15 +211,13 @@
             "name": "_http400",
             "location": 14,
             "return": [
-                "dict[typing.Text, typing.Union[bool,dict[typing.Text, typing.Text]]]",
-                "bool",
-                "dict",
-                "Optional[str]",
-                "int"
+                "Dict[(str, Union[(int, str, Dict[(str, str)])])]"
             ],
             "arguments": {
                 "message": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Callable[[str], T]"
                 ]
             }
         },
@@ -201,10 +225,7 @@
             "name": "haiku_handler",
             "location": 25,
             "return": [
-                "dict[typing.Text, typing.Union[bool,dict[typing.Text, typing.Text]]]",
-                "int",
-                "bytes",
-                "str"
+                "Dict[(str, Union[(int, str, Dict[(str, str)])])]"
             ],
             "arguments": {
                 "event": [
@@ -212,7 +233,7 @@
                     "Dict[str, bool]"
                 ],
                 "context": [
-                    "api.aws.LambdaContext"
+                    "str"
                 ]
             }
         }
@@ -233,7 +254,6 @@
             "name": "tweet_handler",
             "location": 18,
             "return": [
-                "typing.Any",
                 "None"
             ],
             "arguments": {
@@ -241,7 +261,7 @@
                     "str"
                 ],
                 "context": [
-                    "api.aws.LambdaContext"
+                    "str"
                 ]
             }
         },
@@ -249,7 +269,6 @@
             "name": "test_print",
             "location": 25,
             "return": [
-                "typing.Any",
                 "None"
             ],
             "arguments": {
@@ -258,7 +277,8 @@
                     "str"
                 ],
                 "context": [
-                    "api.aws.LambdaContext"
+                    "bool",
+                    "str"
                 ]
             }
         }
@@ -272,9 +292,7 @@
                 "str"
             ],
             "arguments": {
-                "data": [
-                    "str"
-                ]
+                "data": []
             }
         },
         "Emoji.__init__": {
@@ -285,18 +303,10 @@
             ],
             "arguments": {
                 "self": [],
-                "codepoint": [
-                    "int"
-                ],
-                "defaults_to_text": [
-                    "bool"
-                ],
-                "supports_modification": [
-                    "bool"
-                ],
-                "gender_mode": [
-                    "GenderMode"
-                ]
+                "codepoint": [],
+                "defaults_to_text": [],
+                "supports_modification": [],
+                "gender_mode": []
             }
         },
         "Emoji.char": {
@@ -308,18 +318,16 @@
             "arguments": {
                 "self": [],
                 "modifier": [
-                    "str"
+                    "None"
                 ],
-                "gender": [
-                    "Gender"
-                ]
+                "gender": []
             }
         },
         "Emoji._tuple": {
             "name": "_tuple",
             "location": 117,
             "return": [
-                "tuple"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -382,7 +390,7 @@
             "name": "_load_cps_and_tts_from_file",
             "location": 13,
             "return": [
-                "Iterable[EmojiAndDescription]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {}
         },
@@ -390,12 +398,10 @@
             "name": "load_descriptions_for_emojis",
             "location": 20,
             "return": [
-                "Iterable[Optional[str]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "emojis": [
-                    "Iterable"
-                ]
+                "emojis": []
             }
         }
     },
@@ -405,7 +411,13 @@
             "name": "_make_cpi",
             "location": 35,
             "return": [
-                "_CodePointInfo"
+                "_CodePointInfo",
+                "str",
+                "Dict[str,str]",
+                "bool",
+                "int",
+                "Optional[float]",
+                "MutableMapping[str,Any]"
             ],
             "arguments": {}
         },
@@ -413,11 +425,14 @@
             "name": "_load_codepoints",
             "location": 39,
             "return": [
-                "Dict[(int, _CodePointInfo)]"
+                "collections.defaultdict[(int, Any)]"
             ],
             "arguments": {
                 "data_directory": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "bool",
+                    "Optional[bytes]"
                 ]
             }
         },
@@ -425,11 +440,12 @@
             "name": "_scan_codepoints_file",
             "location": 58,
             "return": [
-                "Iterable[Tuple[(str, str, Optional[str])]]"
+                "Generator[(Tuple[(str, str, Optional[str])], Any, None)]"
             ],
             "arguments": {
                 "data_directory": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -437,11 +453,12 @@
             "name": "_remove_comment",
             "location": 80,
             "return": [
-                "Tuple[(str, Optional[str])]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -449,11 +466,11 @@
             "name": "_get_gender_mode",
             "location": 90,
             "return": [
-                "emoji.core.GenderMode"
+                "str"
             ],
             "arguments": {
                 "codepoint": [
-                    "int"
+                    "str"
                 ]
             }
         },
@@ -461,7 +478,10 @@
             "name": "load_emoji_and_modifiers",
             "location": 99,
             "return": [
-                "EmojiData"
+                "EmojiData",
+                "int",
+                "str",
+                "List[str]"
             ],
             "arguments": {}
         }
@@ -486,14 +506,17 @@
             "name": "yield_lines",
             "location": 17,
             "return": [
-                "Iterable[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "emoji": [
-                    "list"
+                    "int",
+                    "bool",
+                    "Callable",
+                    "List[object]"
                 ],
                 "mods": [
-                    "list"
+                    "int"
                 ]
             }
         },
@@ -527,7 +550,10 @@
             ],
             "arguments": {
                 "codepoints": [
-                    "str"
+                    "str",
+                    "int",
+                    "List",
+                    "Tuple[bytes,bytes]"
                 ]
             }
         },

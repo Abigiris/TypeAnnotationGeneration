@@ -20,18 +20,12 @@
             "name": "calculate_credentials",
             "location": 44,
             "return": [
-                "List[Dict[(str, Union[(int, str)])]]"
+                "List[Dict[(str, Any)]]"
             ],
             "arguments": {
-                "mnemonic": [
-                    "str"
-                ],
-                "password": [
-                    "str"
-                ],
-                "num_validators": [
-                    "int"
-                ]
+                "mnemonic": [],
+                "password": [],
+                "num_validators": []
             }
         },
         "save_keystores": {
@@ -41,11 +35,9 @@
                 "None"
             ],
             "arguments": {
-                "credentials": [
-                    "List[Dict[(str, Union[(int, str)])]]"
-                ],
+                "credentials": [],
                 "folder": [
-                    "str"
+                    "typing.Text"
                 ],
                 "save_withdrawal_keys": [
                     "bool"
@@ -59,11 +51,9 @@
                 "None"
             ],
             "arguments": {
-                "credentials": [
-                    "List[Dict[(str, Union[(int, str)])]]"
-                ],
+                "credentials": [],
                 "file": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
@@ -95,7 +85,8 @@
             ],
             "arguments": {
                 "obj": [
-                    "_T0"
+                    "str",
+                    "IO"
                 ]
             }
         },
@@ -129,16 +120,18 @@
                 "cls": [
                     "Type[_TKeystoreCrypto]"
                 ],
-                "json_dict": [
-                    "dict"
-                ]
+                "json_dict": []
             }
         },
         "Keystore.kdf": {
             "name": "kdf",
             "location": 70,
             "return": [
-                "bytes"
+                "bool",
+                "Optional[int]",
+                "int",
+                "str",
+                "Optional[bool]"
             ],
             "arguments": {
                 "self": []
@@ -153,7 +146,8 @@
             "arguments": {
                 "self": [],
                 "file": [
-                    "str"
+                    "str",
+                    "IO[str]"
                 ]
             }
         },
@@ -168,7 +162,10 @@
                     "Type[_TKeystore]"
                 ],
                 "file": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "IO[bytes]",
+                    "dict"
                 ]
             }
         },
@@ -183,7 +180,8 @@
                     "Type[_TKeystore]"
                 ],
                 "json_str": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -203,12 +201,19 @@
             "name": "decrypt",
             "location": 107,
             "return": [
-                "bytes"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "password": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Optional[str]",
+                    "List[str]",
+                    "Sequence[str]",
+                    "int"
                 ]
             }
         }
@@ -218,11 +223,19 @@
             "name": "get_word",
             "location": 13,
             "return": [
-                "str"
+                "List[str]",
+                "bytes",
+                "Optional[str]",
+                "List[float]",
+                "str",
+                "List[torch.nn.utils.rnn.PackedSequence]"
             ],
             "arguments": {
                 "index": [
-                    "int"
+                    "int",
+                    "float",
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -230,7 +243,10 @@
             "name": "get_seed",
             "location": 18,
             "return": [
-                "bytes"
+                "str",
+                "bool",
+                "Callable",
+                "\"Point\""
             ],
             "arguments": {}
         },
@@ -242,7 +258,12 @@
             ],
             "arguments": {
                 "entropy": [
-                    "Optional[bytes]"
+                    "None",
+                    "bytes",
+                    "bool",
+                    "str",
+                    "List[bytes]",
+                    "int"
                 ]
             }
         }
@@ -264,7 +285,9 @@
             "name": "mnemonic_and_path_to_key",
             "location": 18,
             "return": [
-                "int"
+                "Tuple[Union[Literal,Literal,Literal]]",
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "mnemonic": [
@@ -284,11 +307,17 @@
             "name": "flip_bits",
             "location": 9,
             "return": [
-                "int"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "input": [
-                    "int"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -296,7 +325,7 @@
             "name": "IKM_to_lamport_SK",
             "location": 13,
             "return": [
-                "List[bytes]"
+                "list"
             ],
             "arguments": {}
         },
@@ -304,7 +333,11 @@
             "name": "parent_SK_to_lamport_PK",
             "location": 19,
             "return": [
-                "bytes"
+                "str",
+                "int",
+                "float",
+                "List",
+                "List[str]"
             ],
             "arguments": {}
         },
@@ -312,7 +345,12 @@
             "name": "HKDF_mod_r",
             "location": 31,
             "return": [
-                "int"
+                "int",
+                "Dict",
+                "Dict[str,Any]",
+                "bytes",
+                "OrderedDict[str,Any]",
+                "str"
             ],
             "arguments": {}
         },
@@ -320,7 +358,9 @@
             "name": "derive_child_SK",
             "location": 36,
             "return": [
-                "int"
+                "Optional[int]",
+                "str",
+                "trezor.utils.Writer"
             ],
             "arguments": {}
         },
@@ -328,11 +368,17 @@
             "name": "derive_master_SK",
             "location": 42,
             "return": [
-                "int"
+                "Optional[int]",
+                "str",
+                "trezor.utils.Writer"
             ],
             "arguments": {
                 "seed": [
-                    "bytes"
+                    "bytes",
+                    "IO",
+                    "int",
+                    "Callable",
+                    "trezor.utils.Writer"
                 ]
             }
         }
@@ -453,10 +499,17 @@
             ],
             "arguments": {
                 "domain_type": [
-                    "utils.typing.DomainType"
+                    "DomainType",
+                    "str",
+                    "bool",
+                    "Dict",
+                    "List"
                 ],
                 "fork_version": [
-                    "utils.typing.Version"
+                    "str",
+                    "bool",
+                    "dict",
+                    "list"
                 ]
             }
         },
@@ -464,7 +517,9 @@
             "name": "compute_signing_root",
             "location": 34,
             "return": [
-                "utils.typing.Root"
+                "str",
+                "Callable",
+                "bool"
             ],
             "arguments": {
                 "ssz_object": [
@@ -474,7 +529,10 @@
                     "Dict[str, str]"
                 ],
                 "domain": [
-                    "utils.typing.Domain"
+                    "str",
+                    "bytes",
+                    "Exception",
+                    "Dict[str,str]"
                 ]
             }
         }
@@ -499,7 +557,9 @@
             "name": "scrypt",
             "location": 19,
             "return": [
-                "bytes"
+                "bytes",
+                "str",
+                "int"
             ],
             "arguments": {}
         },
@@ -507,7 +567,10 @@
             "name": "PBKDF2",
             "location": 25,
             "return": [
-                "bytes"
+                "str",
+                "bytes",
+                "int",
+                "Tuple[Union[int,Any]]"
             ],
             "arguments": {}
         },
@@ -515,7 +578,9 @@
             "name": "HKDF",
             "location": 32,
             "return": [
-                "bytes"
+                "str",
+                "bytes",
+                "int"
             ],
             "arguments": {}
         },
@@ -548,14 +613,21 @@
                     "List[List[Any]]"
                 ],
                 "layer_count": [
-                    "int"
+                    "int",
+                    "List[Tuple[int,float]]",
+                    "str",
+                    "bool",
+                    "float",
+                    "Iterable[T]"
                 ]
             }
         },
         "get_merkle_root": {
             "name": "get_merkle_root",
             "location": 22,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "values": [
                     "Optional[str]",
@@ -564,7 +636,10 @@
                     "float"
                 ],
                 "pad_to": [
-                    "int"
+                    "int",
+                    "Optional[bool]",
+                    "Optional[float]",
+                    "float"
                 ]
             }
         },
@@ -582,6 +657,7 @@
                     "Set[cmk.utils.type_defs.HostName]"
                 ],
                 "item_index": [
+                    "bool",
                     "int"
                 ]
             }
@@ -601,7 +677,13 @@
                     "float"
                 ],
                 "pad_to": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool",
+                    "Dict[int,str]",
+                    "Iterable[cirq.Operation]",
+                    "Counter",
+                    "float"
                 ]
             }
         },
@@ -609,7 +691,6 @@
             "name": "merge",
             "location": 43,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

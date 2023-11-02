@@ -9,9 +9,9 @@
                 "str",
                 "Callable",
                 "None",
-                "set[]",
-                "set[str]",
-                "dict[str, typing.Any]"
+                "Set",
+                "Set[str]",
+                "Dict[str,Any]"
             ],
             "arguments": {}
         },
@@ -29,16 +29,18 @@
             "location": 62,
             "return": [
                 "Optional[str]",
-                "dict[str, typing.Type]",
-                "list",
+                "Dict[str,Type]",
+                "List",
                 "str",
-                "Tuple[int, int]",
-                "dict[str, dict[str, bool]]",
+                "Tuple[int,int]",
+                "Dict[str,dict[str,bool]]",
                 "bytes",
-                "list[str]"
+                "List[str]"
             ],
             "arguments": {
                 "table_name": [
+                    "str",
+                    "None",
                     "Optional[str]"
                 ]
             }
@@ -51,7 +53,10 @@
             ],
             "arguments": {
                 "key": [
-                    "dict"
+                    "str",
+                    "int",
+                    "bytes",
+                    "KT"
                 ]
             }
         }
@@ -61,18 +66,23 @@
         "client": {
             "name": "client",
             "location": 20,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {}
         },
         "parse_uri": {
             "name": "parse_uri",
             "location": 41,
             "return": [
-                "Tuple[(str, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "uri": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -84,10 +94,16 @@
             ],
             "arguments": {
                 "bucket": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Type[RuntimeError]",
+                    "Type"
                 ],
                 "key": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Type[RuntimeError]",
+                    "Type"
                 ]
             }
         },
@@ -95,17 +111,26 @@
             "name": "default_path",
             "location": 69,
             "return": [
-                "Tuple[(str, str)]"
+                "Tuple[(Union[(str, _T1)], Any)]"
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Optional[str]",
+                    "Dict"
                 ],
                 "bucket": [
-                    "Optional[str]"
+                    "str",
+                    "Dict",
+                    "None",
+                    "Dict[str,Any]"
                 ],
                 "key_prefix": [
-                    "Optional[str]"
+                    "str",
+                    "Dict",
+                    "None",
+                    "bytes"
                 ]
             }
         },
@@ -117,10 +142,12 @@
             ],
             "arguments": {
                 "bucket": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "key": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -128,7 +155,9 @@
             "name": "get_size",
             "location": 133,
             "return": [
-                "int"
+                "str",
+                "defaultdict",
+                "Dict"
             ],
             "arguments": {
                 "bucket": [
@@ -143,7 +172,9 @@
             "name": "get_bytes",
             "location": 147,
             "return": [
-                "bytes"
+                "str",
+                "dict",
+                "Dict[str, int]"
             ],
             "arguments": {
                 "bucket": [
@@ -173,23 +204,32 @@
             "name": "put_bytes",
             "location": 188,
             "return": [
-                "Tuple[(str, str, int)]"
+                "Tuple[(_T1, _T2, int)]"
             ],
             "arguments": {
                 "buf": [
-                    "bytes"
-                ],
-                "bucket": [
-                    "str"
-                ],
-                "key": [
-                    "str"
-                ],
-                "tags": [
+                    "str",
+                    "bytes",
                     "dict"
                 ],
+                "bucket": [
+                    "str",
+                    "bytes",
+                    "Dict"
+                ],
+                "key": [
+                    "str",
+                    "bytes",
+                    "Dict"
+                ],
+                "tags": [
+                    "Dict",
+                    "str",
+                    "Union[str,int]"
+                ],
                 "acl": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         }
@@ -198,33 +238,52 @@
         "client": {
             "name": "client",
             "location": 20,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {}
         },
         "publish": {
             "name": "publish",
             "location": 41,
             "return": [
+                "str",
                 "int"
             ],
             "arguments": {
                 "topic_arn": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Union[BinaryIO,str]",
+                    "BinaryIO",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "context": [
                     "str",
                     "bool",
                     "Type[Any]",
-                    "typing.Type"
+                    "Type"
                 ],
                 "payload": [
-                    "dict"
+                    "str",
+                    "Dict",
+                    "Union[BinaryIO,str]",
+                    "BinaryIO",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "extra_attributes": [
-                    "dict"
+                    "Dict",
+                    "bytes",
+                    "str",
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "subject": [
-                    "Optional[str]"
+                    "Dict",
+                    "Dict[str,str]",
+                    "None"
                 ]
             }
         },
@@ -232,23 +291,34 @@
             "name": "publish_to_bus",
             "location": 77,
             "return": [
-                "int"
+                "bytes",
+                "int",
+                "IO",
+                "List[str]",
+                "str"
             ],
             "arguments": {
                 "context": [
                     "bool",
-                    "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "payload": [
-                    "dict"
+                    "bool",
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "extra_attributes": [
-                    "dict"
+                    "Dict",
+                    "bool",
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "subject": [
-                    "Optional[str]"
+                    "bool",
+                    "Dict[str,Any]",
+                    "None",
+                    "str"
                 ]
             }
         }
@@ -257,18 +327,23 @@
         "client": {
             "name": "client",
             "location": 18,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {}
         },
         "parse_event": {
             "name": "parse_event",
             "location": 39,
             "return": [
-                "generator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "event": [
-                    "dict"
+                    "str",
+                    "bool",
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -277,21 +352,29 @@
         "client": {
             "name": "client",
             "location": 16,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {}
         },
         "get_param_value": {
             "name": "get_param_value",
             "location": 37,
             "return": [
-                "str"
+                "str",
+                "bool",
+                "Optional[str]"
             ],
             "arguments": {
                 "param": [
-                    "str"
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "decrypt": [
-                    "bool"
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -403,8 +486,8 @@
             "name": "bucket",
             "location": 12,
             "return": [
-                "typing.Text",
-                "dict",
+                "Text",
+                "Dict",
                 "str",
                 "bool"
             ],
@@ -414,7 +497,7 @@
             "name": "key",
             "location": 17,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "Optional[str]",
                 "bytes",
@@ -551,13 +634,11 @@
             "arguments": {
                 "bucket": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "key": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -570,17 +651,13 @@
             "arguments": {
                 "bucket": [
                     "List[str]",
-                    "list[str]",
-                    "str",
                     "TextIO",
-                    "typing.TextIO"
+                    "str"
                 ],
                 "key": [
                     "List[str]",
-                    "list[str]",
-                    "str",
                     "TextIO",
-                    "typing.TextIO"
+                    "str"
                 ]
             }
         }
@@ -616,11 +693,11 @@
             ],
             "arguments": {
                 "context": [
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "subject": [
-                    "_T1"
+                    "Tuple[cirq.Qid]",
+                    "int"
                 ]
             }
         },
@@ -628,7 +705,6 @@
             "name": "test_publish",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -640,7 +716,6 @@
             "name": "test_publish_to_bus",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

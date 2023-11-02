@@ -21,11 +21,15 @@
             "name": "from_var",
             "location": 49,
             "return": [
-                "Dict[(str, Any)]"
+                "str",
+                "MutableMapping[str, Any]"
             ],
             "arguments": {
                 "r": [
-                    "str"
+                    "str",
+                    "int",
+                    "Tuple",
+                    "Tuple[int,int,int]"
                 ]
             }
         },
@@ -37,7 +41,8 @@
             ],
             "arguments": {
                 "s": [
-                    "busboy.model.StopId"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -45,7 +50,7 @@
             "name": "stop_ids",
             "location": 62,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -53,11 +58,14 @@
             "name": "routes_at_stop",
             "location": 67,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {
                 "stop": [
-                    "str"
+                    "str",
+                    "int",
+                    "Tuple[str,int]",
+                    "Tuple[Union[str,int]]"
                 ]
             }
         },
@@ -65,7 +73,7 @@
             "name": "routes_at_stops",
             "location": 76,
             "return": [
-                "Dict[(str, Set[str])]"
+                "dict"
             ],
             "arguments": {}
         },
@@ -82,19 +90,16 @@
             "arguments": {
                 "params": [
                     "int",
+                    "Dict[str,str]",
                     "str",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "\"Task\"",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "Task"
                 ],
                 "timeout": [
                     "bytes",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "datetime.timedelta",
-                    "dict"
+                    "datetime.timedelta"
                 ]
             }
         },
@@ -149,7 +154,9 @@
             "name": "web_timetables",
             "location": 110,
             "return": [
-                "Iterable[WebTimetable]"
+                "str",
+                "int",
+                "Union[str, Dict]"
             ],
             "arguments": {
                 "route_name": [
@@ -161,14 +168,18 @@
             "name": "timetables",
             "location": 122,
             "return": [
-                "Generator[(Timetable, None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "route_name": [
-                    "str"
+                    "str",
+                    "Dict[str,busboy.model.Stop]",
+                    "int"
                 ],
                 "stops_by_name": [
-                    "Dict[(str, busboy.model.Stop)]"
+                    "str",
+                    "Dict[str,busboy.model.Stop]",
+                    "int"
                 ]
             }
         },
@@ -180,7 +191,7 @@
             ],
             "arguments": {
                 "rs": [
-                    "bs4.element.ResultSet"
+                    "str"
                 ]
             }
         },
@@ -192,14 +203,13 @@
             ],
             "arguments": {
                 "stops": [
-                    "dict[, ]",
-                    "Union[Dict, List]",
+                    "Dict",
+                    "Union[Dict,List]",
                     "BaseException",
-                    "list[]",
+                    "List",
                     "cdp.util.T_JSON_DICT",
-                    "dict[int, dict[int, typing.Any]]",
-                    "dict",
-                    "Dict[int, Dict[int, Any]]"
+                    "Dict[int,dict[int,Any]]",
+                    "Dict[int,Dict[int,Any]]"
                 ]
             }
         },
@@ -207,14 +217,20 @@
             "name": "stops_from_names",
             "location": 258,
             "return": [
-                "Iterable[busboy.util.Maybe[busboy.model.Stop]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "names": [
-                    "Iterable[str]"
+                    "Dict[str,busboy.model.Stop]",
+                    "str",
+                    "Iterable[str]",
+                    "Iterable"
                 ],
                 "sbn": [
-                    "Dict[(str, busboy.model.Stop)]"
+                    "Dict[str,busboy.model.Stop]",
+                    "str",
+                    "Iterable[str]",
+                    "Iterable"
                 ]
             }
         },
@@ -222,14 +238,20 @@
             "name": "match_stop_name",
             "location": 264,
             "return": [
-                "busboy.util.Maybe[busboy.model.Stop]"
+                "Union[(busboy.util.Just[nothing], busboy.util.Nothing[nothing])]"
             ],
             "arguments": {
                 "stops": [
-                    "Dict[(str, busboy.model.Stop)]"
+                    "str",
+                    "List",
+                    "Dict[str,busboy.model.Stop]",
+                    "int",
+                    "Dict"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Container[Taxon]",
+                    "Optional[int]"
                 ]
             }
         },
@@ -237,11 +259,15 @@
             "name": "from_page",
             "location": 137,
             "return": [
-                "Iterable[WebTimetable]"
+                "Generator[(WebTimetable, Any, None)]"
             ],
             "arguments": {
                 "soup": [
-                    "bs4.BeautifulSoup"
+                    "str",
+                    "bs4.BeautifulSoup",
+                    "Dict",
+                    "List[str]",
+                    "bytes"
                 ]
             }
         },
@@ -249,7 +275,7 @@
             "name": "routes",
             "location": 143,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {
                 "self": []
@@ -259,7 +285,7 @@
             "name": "stop_names",
             "location": 150,
             "return": [
-                "Iterable[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -269,7 +295,7 @@
             "name": "columns",
             "location": 153,
             "return": [
-                "Iterable[Iterable[bs4.element.Tag]]"
+                "itertools.zip_longest"
             ],
             "arguments": {
                 "self": []
@@ -279,7 +305,7 @@
             "name": "times",
             "location": 158,
             "return": [
-                "List[List[busboy.util.Maybe[datetime.time]]]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -289,7 +315,7 @@
             "name": "_times",
             "location": 161,
             "return": [
-                "Iterable[Iterable[busboy.util.Maybe[datetime.time]]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -299,7 +325,7 @@
             "name": "stop_times",
             "location": 164,
             "return": [
-                "List[List[Tuple[(str, busboy.util.Maybe[datetime.time])]]]"
+                "List[List[Tuple[(Any, Any)]]]"
             ],
             "arguments": {
                 "self": []
@@ -309,7 +335,7 @@
             "name": "_stop_times",
             "location": 167,
             "return": [
-                "Iterable[Iterable[Tuple[(str, busboy.util.Maybe[datetime.time])]]]"
+                "Generator[(Iterator[Tuple[(Any, Any)]], Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -319,7 +345,7 @@
             "name": "variants",
             "location": 170,
             "return": [
-                "Set[Tuple[(str, Tuple[(str, ...)])]]"
+                "Set[Tuple[(Any, Tuple[(nothing, ...)])]]"
             ],
             "arguments": {
                 "self": []
@@ -329,11 +355,15 @@
             "name": "cell_time",
             "location": 184,
             "return": [
-                "busboy.util.Maybe[datetime.time]"
+                "Union[(busboy.util.Just[nothing], busboy.util.Nothing[nothing])]"
             ],
             "arguments": {
                 "t": [
-                    "bs4.element.Tag"
+                    "List[str]",
+                    "bs4.elemenTag",
+                    "List[dict]",
+                    "int",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -360,7 +390,7 @@
             "name": "routes",
             "location": 223,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {
                 "self": []
@@ -374,10 +404,16 @@
             ],
             "arguments": {
                 "wt": [
-                    "WebTimetable"
+                    "str",
+                    "tuple"
                 ],
                 "stops_by_name": [
-                    "Dict[(str, busboy.model.Stop)]"
+                    "str",
+                    "int",
+                    "List[str]",
+                    "None",
+                    "Tag",
+                    "Optional[Iterable]"
                 ],
                 "route_name": [
                     "str"
@@ -388,11 +424,11 @@
             "name": "unique_variants",
             "location": 240,
             "return": [
-                "Iterable[TimetableVariant]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "ts": [
-                    "Iterable[Timetable]"
+                    "int"
                 ]
             }
         },
@@ -454,65 +490,100 @@
             "name": "snapshots",
             "location": 33,
             "return": [
-                "List[BusSnapshot]"
+                "list"
             ],
             "arguments": {
                 "connection": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "float",
+                    "dict[, ]",
+                    "int",
+                    "str"
                 ],
                 "r": [
-                    "Optional[m.RouteId]"
+                    "None",
+                    "str",
+                    "bool",
+                    "list[typing.Any]"
                 ],
                 "d": [
-                    "Optional[dt.date]"
+                    "None",
+                    "int",
+                    "str",
+                    "typing.Iterable[str]"
                 ],
                 "date_span": [
-                    "Optional[Tuple[(dt.date, dt.date)]]"
+                    "None",
+                    "str"
                 ]
             }
         },
         "snapshots_df": {
             "name": "snapshots_df",
             "location": 62,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "connection": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "str",
+                    "int",
+                    "tuple[typing.Union[str,str]]"
                 ],
                 "route": [
-                    "Optional[m.RouteId]"
+                    "None",
+                    "str",
+                    "int",
+                    "tuple[typing.Union[str,str]]"
                 ],
                 "day": [
-                    "Optional[dt.date]"
+                    "None",
+                    "str",
+                    "int",
+                    "tuple[typing.Union[str,str]]"
                 ],
                 "date_span": [
-                    "Optional[Tuple[(dt.date, dt.date)]]"
+                    "None",
+                    "str",
+                    "int",
+                    "tuple[typing.Union[str,str]]"
                 ]
             }
         },
         "poll_times_df": {
             "name": "poll_times_df",
             "location": 72,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "connection": [
-                    "busboy.util.Maybe[pp2._psycopg.connection]"
+                    "Nothing"
                 ]
             }
         },
         "data_gdf": {
             "name": "data_gdf",
             "location": 81,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "connection": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "float",
+                    "bool"
                 ],
                 "r": [
-                    "Optional[m.RouteId]"
+                    "None",
+                    "float",
+                    "bool"
                 ],
                 "d": [
-                    "Optional[dt.date]"
+                    "None",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -524,10 +595,13 @@
             ],
             "arguments": {
                 "r": [
-                    "m.Route"
+                    "tuple[typing.Union[int,int]]"
                 ],
                 "conn": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "bool",
+                    "typing.AnyStr",
+                    "typing.Any"
                 ]
             }
         },
@@ -539,10 +613,13 @@
             ],
             "arguments": {
                 "r": [
-                    "m.Stop"
+                    "dict[str, int]"
                 ],
                 "conn": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "bool",
+                    "typing.AnyStr",
+                    "typing.Any"
                 ]
             }
         },
@@ -554,13 +631,17 @@
             ],
             "arguments": {
                 "p": [
-                    "m.Passage"
+                    "float",
+                    "int"
                 ],
                 "poll_time": [
-                    "dt.datetime"
+                    "float",
+                    "int"
                 ],
                 "connection": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -580,13 +661,20 @@
             ],
             "arguments": {
                 "timetable": [
-                    "api.Timetable"
+                    "int",
+                    "str",
+                    "None",
+                    "tuple[typing.Union[str,int]]",
+                    "bytearray"
                 ],
                 "route": [
-                    "m.RouteId"
+                    "str",
+                    "dict[str, str]"
                 ],
                 "conn": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -594,14 +682,16 @@
             "name": "timetables",
             "location": 229,
             "return": [
-                "Iterator[busboy.util.Either[(str, api.Timetable)]]"
+                "Generator[(Union[(busboy.util.Left[(nothing, nothing)], busboy.util.Right[(nothing, nothing)])], Any, None)]"
             ],
             "arguments": {
                 "route": [
-                    "m.RouteId"
+                    "int",
+                    "typing.Callable[, ]",
+                    "str"
                 ],
                 "connection": [
-                    "busboy.util.Maybe[pp2._psycopg.connection]"
+                    "Nothing"
                 ]
             }
         },
@@ -609,14 +699,16 @@
             "name": "timetable",
             "location": 246,
             "return": [
-                "busboy.util.Either[(str, api.Timetable)]"
+                "Union[(busboy.util.Left[(nothing, nothing)], busboy.util.Right[(nothing, nothing)])]"
             ],
             "arguments": {
                 "timetable_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "list[str]"
                 ],
                 "connection": [
-                    "busboy.util.Maybe[pp2._psycopg.connection]"
+                    "Nothing"
                 ]
             }
         },
@@ -624,14 +716,16 @@
             "name": "timetable_variant",
             "location": 277,
             "return": [
-                "busboy.util.Either[(str, api.TimetableVariant)]"
+                "Union[(busboy.util.Left[(nothing, nothing)], busboy.util.Right[(nothing, nothing)])]"
             ],
             "arguments": {
                 "variant_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "list[str]"
                 ],
                 "connection": [
-                    "busboy.util.Maybe[pp2._psycopg.connection]"
+                    "Nothing"
                 ]
             }
         },
@@ -655,7 +749,7 @@
             "name": "routes_by_name",
             "location": 334,
             "return": [
-                "Dict[(str, m.Route)]"
+                "Dict[(Any, m.Route)]"
             ],
             "arguments": {}
         },
@@ -663,7 +757,7 @@
             "name": "routes_by_id",
             "location": 338,
             "return": [
-                "Dict[(m.RouteId, m.Route)]"
+                "Dict[(Any, m.Route)]"
             ],
             "arguments": {}
         },
@@ -674,11 +768,13 @@
                 "TripPoints"
             ],
             "arguments": {
-                "connection": [
-                    "pp2._psycopg.connection"
-                ],
+                "connection": [],
                 "t": [
-                    "m.TripId"
+                    "tuple[typing.Union[int,int]]",
+                    "typing.Sequence[typing.Any]",
+                    "None",
+                    "typing.Callable[str, str]",
+                    "str"
                 ]
             }
         },
@@ -689,14 +785,17 @@
                 "Set[m.TripId]"
             ],
             "arguments": {
-                "c": [
-                    "pp2._psycopg.connection"
-                ],
+                "c": [],
                 "d": [
-                    "dt.date"
+                    "float",
+                    "str",
+                    "bool",
+                    "None"
                 ],
                 "r": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -708,7 +807,7 @@
             ],
             "arguments": {
                 "dates": [
-                    "List[dt.date]"
+                    "str"
                 ]
             }
         },
@@ -719,11 +818,11 @@
                 "List[m.Stop]"
             ],
             "arguments": {
-                "c": [
-                    "pp2._psycopg.connection"
-                ],
+                "c": [],
                 "route": [
-                    "str"
+                    "str",
+                    "list[str]",
+                    "dict[str, M]"
                 ]
             }
         },
@@ -735,7 +834,8 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -743,14 +843,14 @@
             "name": "stop_by_id",
             "location": 508,
             "return": [
-                "busboy.util.Maybe[m.Stop]"
+                "Any"
             ],
             "arguments": {
-                "c": [
-                    "pp2._psycopg.connection"
-                ],
+                "c": [],
                 "s": [
-                    "m.StopId"
+                    "str",
+                    "typing.Callable[..., T]",
+                    "dict[, ]"
                 ]
             }
         },
@@ -762,7 +862,8 @@
             ],
             "arguments": {
                 "c": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "typing.IO"
                 ]
             }
         },
@@ -770,11 +871,14 @@
             "name": "stops_by_name",
             "location": 529,
             "return": [
-                "Dict[(str, m.Stop)]"
+                "Dict[(Any, m.Stop)]"
             ],
             "arguments": {
                 "c": [
-                    "Optional[pp2._psycopg.connection]"
+                    "None",
+                    "int",
+                    "str",
+                    "list[str]"
                 ]
             }
         },
@@ -806,7 +910,9 @@
             ],
             "arguments": {
                 "row": [
-                    "tuple"
+                    "tuple[]",
+                    "bytes",
+                    "str"
                 ]
             }
         },
@@ -828,10 +934,17 @@
             ],
             "arguments": {
                 "passage": [
-                    "m.Passage"
+                    "int",
+                    "tuple[]",
+                    "list[]",
+                    "str"
                 ],
                 "time": [
-                    "dt.datetime"
+                    "bool",
+                    "None",
+                    "typing.Callable[, ]",
+                    "str",
+                    "list[tuple[typing.Union[typing.Any,str]]]"
                 ]
             }
         }
@@ -848,8 +961,8 @@
                 "t": [
                     "float",
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -865,10 +978,9 @@
             "arguments": {
                 "point": [
                     "float",
+                    "Dict",
                     "str",
-                    "dict",
-                    "int",
-                    "dict[, ]"
+                    "int"
                 ]
             }
         },
@@ -888,7 +1000,7 @@
                     "float",
                     "str",
                     "T",
-                    "list[int]",
+                    "List[int]",
                     "Optional[List[int]]",
                     "None"
                 ]
@@ -898,7 +1010,7 @@
             "name": "buffer",
             "location": 51,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "float",
                 "int",
                 "T",
@@ -909,7 +1021,7 @@
                     "int",
                     "float",
                     "Optional[List[int]]",
-                    "list[int]",
+                    "List[int]",
                     "str",
                     "None",
                     "T"
@@ -925,24 +1037,24 @@
             "name": "nearby_road_segment",
             "location": 57,
             "return": [
-                "dict[tuple[], list[tuple[]]]",
+                "Dict[tuple,list[tuple]]",
                 "bool",
                 "str",
-                "dict",
-                "Dict[str, str]"
+                "Dict",
+                "Dict[str,str]"
             ],
             "arguments": {
                 "t": [
                     "float",
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "distance": [
                     "float",
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         }
@@ -966,7 +1078,7 @@
             ],
             "arguments": {
                 "route_json": [
-                    "Dict[(str, Any)]"
+                    "str"
                 ]
             }
         },
@@ -1001,7 +1113,8 @@
                     "Type[_TStop]"
                 ],
                 "stop_json": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "list[dict[str, typing.Any]]"
                 ]
             }
         },
@@ -1013,7 +1126,9 @@
             ],
             "arguments": {
                 "r": [
-                    "tuple"
+                    "tuple[]",
+                    "str",
+                    "list[dict[str, typing.Any]]"
                 ]
             }
         },
@@ -1025,7 +1140,7 @@
             ],
             "arguments": {
                 "json": [
-                    "Dict[(str, Any)]"
+                    "str"
                 ]
             }
         },
@@ -1037,7 +1152,8 @@
             ],
             "arguments": {
                 "j": [
-                    "Dict[(str, List[Dict[(str, Optional[Union[(float, str, Dict[(str, Optional[Dict[(str, Optional[Union[(int, str)]])]])])]])]])]"
+                    "str",
+                    "list[str]"
                 ]
             }
         },
@@ -1045,7 +1161,7 @@
             "name": "to_json",
             "location": 155,
             "return": [
-                "Dict[(str, List[Dict[(str, Optional[Union[(float, str, Dict[(str, Optional[Dict[(str, Optional[Union[(int, str)]])]])])]])]])]"
+                "Dict[(str, list)]"
             ],
             "arguments": {
                 "self": []
@@ -1055,7 +1171,7 @@
             "name": "trip_ids",
             "location": 158,
             "return": [
-                "List[busboy.util.Maybe[TripId]]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -1069,10 +1185,12 @@
             ],
             "arguments": {
                 "self": [
-                    "_TStopPassageResponse"
+                    "_TStopPassageResponse@@StopPassageResponse@@"
                 ],
                 "f": [
-                    "Callable[([Passage], bool)]"
+                    "typing.Collection",
+                    "typing.Callable[, ]",
+                    "set[str]"
                 ]
             }
         },
@@ -1085,7 +1203,7 @@
             "arguments": {
                 "self": [],
                 "t": [
-                    "Optional[TripId]"
+                    "float"
                 ]
             }
         },
@@ -1093,7 +1211,7 @@
             "name": "positions",
             "location": 167,
             "return": [
-                "Iterable[busboy.util.Maybe[Tuple[(Any, Any)]]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -1102,7 +1220,9 @@
         "StopPassageResponse.dataframe": {
             "name": "dataframe",
             "location": 170,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -1123,7 +1243,8 @@
             ],
             "arguments": {
                 "json": [
-                    "Dict[(str, Any)]"
+                    "dict[, ]",
+                    "dict[str, typing.Any]"
                 ]
             }
         },
@@ -1131,7 +1252,7 @@
             "name": "to_json",
             "location": 258,
             "return": [
-                "Dict[(str, Optional[Union[(float, str, Dict[(str, Optional[Dict[(str, Optional[Union[(int, str)]])]])])]])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -1145,7 +1266,7 @@
             ],
             "arguments": {
                 "j": [
-                    "Dict[(str, Optional[Union[(float, str, Dict[(str, Optional[Dict[(str, Optional[Union[(int, str)]])]])])]])]"
+                    "str"
                 ]
             }
         },
@@ -1167,7 +1288,10 @@
             ],
             "arguments": {
                 "json": [
-                    "Dict[(str, Any)]"
+                    "dict[str, typing.Any]",
+                    "str",
+                    "int",
+                    "tuple[typing.Union[str,int]]"
                 ]
             }
         },
@@ -1175,7 +1299,7 @@
             "name": "to_json",
             "location": 365,
             "return": [
-                "Dict[(str, Optional[Dict[(str, Optional[Union[(int, str)]])]])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -1189,7 +1313,9 @@
             ],
             "arguments": {
                 "j": [
-                    "Dict[(str, Optional[Dict[(str, Optional[Union[(int, str)]])]])]"
+                    "dict[str, typing.Any]",
+                    "bool",
+                    "tuple[typing.Union[str,int]]"
                 ]
             }
         },
@@ -1197,7 +1323,7 @@
             "name": "flatten",
             "location": 382,
             "return": [
-                "Tuple[(Optional[_datetime.datetime], Optional[_datetime.datetime], Optional[_datetime.datetime], Optional[_datetime.datetime])]"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -1207,14 +1333,14 @@
             "name": "from_json",
             "location": 412,
             "return": [
-                "T"
+                "ArrivalDeparture"
             ],
             "arguments": {
                 "cls": [
-                    "builtins.type[T]"
+                    "Type[_TArrivalDeparture]"
                 ],
                 "json": [
-                    "Dict[(str, Any)]"
+                    "dict[str, typing.Any]"
                 ]
             }
         },
@@ -1222,7 +1348,7 @@
             "name": "to_json",
             "location": 431,
             "return": [
-                "Dict[(str, Optional[Union[(int, str)]])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -1232,14 +1358,14 @@
             "name": "from_my_json",
             "location": 443,
             "return": [
-                "T"
+                "ArrivalDeparture"
             ],
             "arguments": {
                 "cls": [
-                    "builtins.type[T]"
+                    "Type[_TArrivalDeparture]"
                 ],
                 "j": [
-                    "Dict[(str, Optional[Union[(int, str)]])]"
+                    "dict[, ]"
                 ]
             }
         }
@@ -1306,38 +1432,30 @@
                 "None"
             ],
             "arguments": {
-                "stop_id": [
-                    "busboy.model.StopId"
-                ]
+                "stop_id": []
             }
         },
         "evaluate_predictions": {
             "name": "evaluate_predictions",
             "location": 211,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "responses": [
-                    "Deque"
-                ],
-                "passage": [
-                    "busboy.model.Passage"
-                ],
-                "arrival_time": [
-                    "_datetime.datetime"
-                ]
+                "responses": [],
+                "passage": [],
+                "arrival_time": []
             }
         },
         "train_average_predictors": {
             "name": "train_average_predictors",
             "location": 269,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "journeys": [],
-                "target": [
-                    "str"
-                ]
+                "target": []
             }
         },
         "train_average_predictor": {
@@ -1349,44 +1467,32 @@
             ],
             "arguments": {
                 "journeys": [],
-                "last": [
-                    "str"
-                ],
-                "target": [
-                    "str"
-                ]
+                "last": [],
+                "target": []
             }
         },
         "train_day_binned_predictors": {
             "name": "train_day_binned_predictors",
             "location": 295,
             "return": [
-                "Callable[([str, _datetime.datetime], Any)]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "journeys": [],
-                "target": [
-                    "str"
-                ],
-                "bins": [
-                    "List[_datetime.time]"
-                ]
+                "target": [],
+                "bins": []
             }
         },
         "train_binned_average_predictors": {
             "name": "train_binned_average_predictors",
             "location": 347,
             "return": [
-                "Callable[([str, _datetime.time], Any)]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "journeys": [],
-                "target": [
-                    "str"
-                ],
-                "bins": [
-                    "List[_datetime.time]"
-                ]
+                "target": [],
+                "bins": []
             }
         },
         "to_time": {
@@ -1416,9 +1522,7 @@
                 "str"
             ],
             "arguments": {
-                "passage": [
-                    "busboy.model.Passage"
-                ]
+                "passage": []
             }
         },
         "containing_sections": {
@@ -1428,9 +1532,7 @@
                 "Set[int]"
             ],
             "arguments": {
-                "sections": [
-                    "List[Union[(prediction.RoadSection, prediction.StopCircle)]]"
-                ],
+                "sections": [],
                 "longitude": [],
                 "latitude": []
             }
@@ -1503,27 +1605,21 @@
             "name": "poll_continuously",
             "location": 18,
             "return": [
-                "List[busboy.experiments.types.PollResult[busboy.util.Either[(Exception, m.StopPassageResponse)]]]"
+                "List[busboy.experiments.types.PollResult[nothing]]"
             ],
             "arguments": {
-                "stops": [
-                    "List[m.StopId]"
-                ],
-                "interval": [
-                    "float"
-                ]
+                "stops": [],
+                "interval": []
             }
         },
         "poll_stops": {
             "name": "poll_stops",
             "location": 35,
             "return": [
-                "Dict[(m.StopId, busboy.util.Either[(Exception, m.StopPassageResponse)])]"
+                "Dict[(Any, Union[(busboy.util.Left[(nothing, nothing)], busboy.util.Right[(nothing, nothing)])])]"
             ],
             "arguments": {
-                "stops": [
-                    "List[m.StopId]"
-                ]
+                "stops": []
             }
         },
         "check_many_stops": {
@@ -1538,7 +1634,7 @@
             "name": "two_second",
             "location": 61,
             "return": [
-                "List[busboy.experiments.types.PollResult[busboy.util.Either[(Exception, m.StopPassageResponse)]]]"
+                "List[busboy.experiments.types.PollResult[nothing]]"
             ],
             "arguments": {}
         },
@@ -1549,9 +1645,7 @@
                 "None"
             ],
             "arguments": {
-                "filename": [
-                    "str"
-                ]
+                "filename": []
             }
         }
     },
@@ -1560,12 +1654,18 @@
             "name": "filter",
             "location": 25,
             "return": [
-                "PollResult[T]"
+                "PollResult"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([T], bool)]"
+                    "IO",
+                    "Callable",
+                    "IO[bytes]",
+                    "Mapping",
+                    "str",
+                    "T",
+                    "markdown.util.etree.Element"
                 ]
             }
         },
@@ -1573,12 +1673,14 @@
             "name": "map",
             "location": 30,
             "return": [
-                "PollResult[U]"
+                "PollResult[nothing]"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([T], U)]"
+                    "Callable",
+                    "Dict[str,str]",
+                    "Callable[,Any]"
                 ]
             }
         },
@@ -1590,7 +1692,10 @@
             ],
             "arguments": {
                 "pr": [
-                    "PollResult"
+                    "bytes",
+                    "List[cirq.Qid]",
+                    "Union[str,bytes]",
+                    "str"
                 ]
             }
         },
@@ -1598,11 +1703,13 @@
             "name": "from_json",
             "location": 48,
             "return": [
-                "PollResult"
+                "PollResult[nothing]"
             ],
             "arguments": {
                 "j": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "float",
+                    "Dict"
                 ]
             }
         },
@@ -1610,11 +1717,17 @@
             "name": "trips",
             "location": 57,
             "return": [
-                "PollResult[set]"
+                "int",
+                "str",
+                "list",
+                "List[T]",
+                "List[float]"
             ],
             "arguments": {
                 "pr": [
-                    "PollResult"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1622,11 +1735,13 @@
             "name": "all_trips",
             "location": 63,
             "return": [
-                "Set[busboy.util.Maybe[m.TripId]]"
+                "set"
             ],
             "arguments": {
                 "pr": [
-                    "PollResult"
+                    "bytes",
+                    "str",
+                    "PollResult[busboy.model.StopPassageResponse]"
                 ]
             }
         },
@@ -1634,11 +1749,17 @@
             "name": "all_passages",
             "location": 67,
             "return": [
-                "Set[m.Passage]"
+                "set"
             ],
             "arguments": {
                 "pr": [
-                    "PollResult"
+                    "Dict",
+                    "PollResult[busboy.model.StopPassageResponse]",
+                    "Callable",
+                    "int",
+                    "static_frame.core.util.UFunc",
+                    "Set[T]",
+                    "Set[VT]"
                 ]
             }
         },
@@ -1650,7 +1771,10 @@
             ],
             "arguments": {
                 "p": [
-                    "m.Passage"
+                    "str",
+                    "Callable",
+                    "Callable[[None,None],bool]",
+                    "busboy.model.Passage"
                 ]
             }
         }
@@ -1660,7 +1784,7 @@
             "name": "many_stops_data",
             "location": 50,
             "return": [
-                "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                "Any"
             ],
             "arguments": {}
         },
@@ -1668,7 +1792,7 @@
             "name": "two_second_data",
             "location": 54,
             "return": [
-                "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                "Any"
             ],
             "arguments": {}
         },
@@ -1676,7 +1800,7 @@
             "name": "poll_result_data",
             "location": 58,
             "return": [
-                "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                "List[busboy.experiments.types.PollResult[nothing]]"
             ],
             "arguments": {
                 "path": [
@@ -1688,7 +1812,7 @@
             "name": "poll_shelve_data",
             "location": 64,
             "return": [
-                "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                "list"
             ],
             "arguments": {
                 "path": [
@@ -1700,26 +1824,26 @@
             "name": "trip_presences",
             "location": 69,
             "return": [
-                "Dict[(busboy.experiments.types.PassageTrip, busboy.experiments.types.PollResult[bool])]"
+                "Dict[(busboy.experiments.types.PassageTrip, Any)]"
             ],
             "arguments": {
-                "pr": [
-                    "busboy.experiments.types.PollResult[m.StopPassageResponse]"
-                ]
+                "pr": []
             }
         },
         "spr_trip_time": {
             "name": "spr_trip_time",
             "location": 74,
             "return": [
-                "u.Either[(str, _datetime.datetime)]"
+                "Left"
             ],
             "arguments": {
                 "spr": [
-                    "m.StopPassageResponse"
+                    "int",
+                    "float"
                 ],
                 "t": [
-                    "m.TripId"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -1731,13 +1855,19 @@
             ],
             "arguments": {
                 "pd": [
-                    "Dict[(busboy.experiments.types.PassageTrip, busboy.experiments.types.PollResult[bool])]"
+                    "dict[, ]"
                 ],
                 "stops": [
-                    "Dict[(str, m.Stop)]"
+                    "dict[, ]",
+                    "dict[str, typing.Any]",
+                    "dict[str, str]",
+                    "str"
                 ],
                 "routes": [
-                    "Dict[(str, m.Route)]"
+                    "dict[, ]",
+                    "int",
+                    "float",
+                    "None"
                 ]
             }
         },
@@ -1745,11 +1875,15 @@
             "name": "trip_stops",
             "location": 110,
             "return": [
-                "Dict[(u.Maybe[m.TripId], Set[m.StopId])]"
+                "Dict[(Any, set)]"
             ],
             "arguments": {
                 "pr": [
-                    "busboy.experiments.types.PollResult[m.StopPassageResponse]"
+                    "dict[, ]",
+                    "dict[str, O]",
+                    "int",
+                    "typing.Mapping",
+                    "dict[typing.Hashable, typing.Any]"
                 ]
             }
         },
@@ -1757,11 +1891,12 @@
             "name": "route_cover",
             "location": 121,
             "return": [
-                "Optional[Set[m.StopId]]"
+                "set[]",
+                "None"
             ],
             "arguments": {
                 "d": [
-                    "Dict[(m.TripId, Set[m.StopId])]"
+                    "dict[, ]"
                 ]
             }
         },
@@ -1773,7 +1908,7 @@
             ],
             "arguments": {
                 "d": [
-                    "Dict[(m.TripId, Set[m.StopId])]"
+                    "dict[, ]"
                 ]
             }
         },
@@ -1785,7 +1920,10 @@
             ],
             "arguments": {
                 "pr": [
-                    "busboy.experiments.types.PollResult[m.StopPassageResponse]"
+                    "str",
+                    "typing.Callable[, ]",
+                    "None",
+                    "int"
                 ]
             }
         },
@@ -1813,11 +1951,11 @@
             "name": "route_ids",
             "location": 173,
             "return": [
-                "Set[u.Maybe[m.RouteId]]"
+                "set"
             ],
             "arguments": {
                 "prs": [
-                    "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                    "str"
                 ]
             }
         },
@@ -1825,11 +1963,11 @@
             "name": "updates",
             "location": 183,
             "return": [
-                "Dict[(u.Maybe[m.TripId], List[m.Passage])]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "prs": [
-                    "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                    "str"
                 ]
             }
         },
@@ -1837,11 +1975,11 @@
             "name": "update_times",
             "location": 193,
             "return": [
-                "Dict[(u.Maybe[m.TripId], List[u.Maybe[_datetime.datetime]])]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "prs": [
-                    "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                    "str"
                 ]
             }
         },
@@ -1849,11 +1987,12 @@
             "name": "vehicle_updates",
             "location": 199,
             "return": [
-                "Dict[(u.Maybe[m.VehicleId], Dict[(_datetime.datetime, Dict[(m.StopId, List[m.Passage])])])]"
+                "Dict[(Any, Dict[(Any, Dict[(Any, list)])])]"
             ],
             "arguments": {
                 "prs": [
-                    "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                    "dict[, ]",
+                    "list[]"
                 ]
             }
         },
@@ -1864,9 +2003,7 @@
                 "None"
             ],
             "arguments": {
-                "uts": [
-                    "Dict[(Any, List[Optional[_datetime.datetime]])]"
-                ]
+                "uts": []
             }
         },
         "display_updates": {
@@ -1876,9 +2013,7 @@
                 "None"
             ],
             "arguments": {
-                "uts": [
-                    "Dict[(Any, List[Tuple[(_datetime.datetime, m.Passage)]])]"
-                ]
+                "uts": []
             }
         },
         "display_vehicle_updates": {
@@ -1889,7 +2024,9 @@
             ],
             "arguments": {
                 "updates": [
-                    "Dict[(u.Maybe[m.VehicleId], Dict[(_datetime.datetime, Dict[(m.StopId, List[m.Passage])])])]"
+                    "dict[, ]",
+                    "dict[str, float]",
+                    "dict[str, dict[, ]]"
                 ]
             }
         },
@@ -1901,7 +2038,9 @@
             ],
             "arguments": {
                 "updates": [
-                    "Dict[(u.Maybe[m.VehicleId], Dict[(_datetime.datetime, Dict[(m.StopId, List[m.Passage])])])]"
+                    "dict[bytes, bytes]",
+                    "dict[str, typing.Any]",
+                    "dict[, ]"
                 ]
             }
         },
@@ -1912,32 +2051,29 @@
                 "None"
             ],
             "arguments": {
-                "prs": [
-                    "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
-                ]
+                "prs": []
             }
         },
         "positions": {
             "name": "positions",
             "location": 274,
             "return": [
-                "Dict[(m.VehicleId, List[Tuple[(_datetime.datetime, Any)]])]"
+                "Dict[(Any, List[Tuple[(Any, Tuple[(Any, Any)])]])]"
             ],
             "arguments": {
-                "uts": [
-                    "Dict[(m.VehicleId, List[Tuple[(_datetime.datetime, m.Passage)]])]"
-                ]
+                "uts": []
             }
         },
         "old_unique_results": {
             "name": "old_unique_results",
             "location": 292,
             "return": [
-                "Dict[(m.StopId, Set[Tuple[(_datetime.datetime, m.StopPassageResponse)]])]"
+                "Dict[(Any, Set[Tuple[(Any, Any)]])]"
             ],
             "arguments": {
                 "prs": [
-                    "List[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                    "list[str]",
+                    "str"
                 ]
             }
         },
@@ -1945,11 +2081,11 @@
             "name": "results",
             "location": 303,
             "return": [
-                "Iterable[Tuple[(_datetime.datetime, m.StopId, m.StopPassageResponse)]]"
+                "Generator[(Tuple[(Any, Any, Any)], Any, None)]"
             ],
             "arguments": {
                 "prs": [
-                    "Iterable[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                    "str"
                 ]
             }
         },
@@ -1957,11 +2093,15 @@
             "name": "unique_results",
             "location": 311,
             "return": [
-                "Iterable[Tuple[(_datetime.datetime, m.StopId, m.StopPassageResponse)]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "rs": [
-                    "Iterable[Tuple[(_datetime.datetime, m.StopId, m.StopPassageResponse)]]"
+                    "str",
+                    "typing.Mapping",
+                    "typing.Callable[, ]",
+                    "collections.abc.Coroutine",
+                    "dict[str, typing.Any]"
                 ]
             }
         },
@@ -1969,11 +2109,11 @@
             "name": "unique_positions",
             "location": 317,
             "return": [
-                "Iterable[Tuple[(_datetime.datetime, m.StopId, Iterable[u.Maybe[Tuple[(Any, Any)]]])]]"
+                "Generator[(Tuple[(Any, Any, Any)], Any, None)]"
             ],
             "arguments": {
                 "prs": [
-                    "Iterable[busboy.experiments.types.PollResult[m.StopPassageResponse]]"
+                    "int"
                 ]
             }
         }
@@ -1984,7 +2124,7 @@
             "location": 12,
             "return": [
                 "Map",
-                "Callable[[Mapping], T]",
+                "Callable[[Mapping],T]",
                 "int",
                 "float"
             ],
@@ -2000,10 +2140,9 @@
                 "tps": [
                     "float",
                     "str",
-                    "int",
-                    "typing.Iterable[str]",
                     "Iterable[str]",
-                    "dict"
+                    "int",
+                    "Dict"
                 ]
             }
         },
@@ -2027,7 +2166,6 @@
             "name": "road_cover",
             "location": 116,
             "return": [
-                "pandas.DataFrame",
                 "None"
             ],
             "arguments": {
@@ -2037,7 +2175,8 @@
                     "str"
                 ],
                 "interval": [
-                    "float"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -2065,8 +2204,7 @@
             "arguments": {
                 "self": [],
                 "tps": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[dict]",
                     "None"
                 ]
@@ -2104,7 +2242,7 @@
             "arguments": {
                 "self": [],
                 "t": [
-                    "m.TripId"
+                    "float"
                 ]
             }
         },
@@ -2118,8 +2256,7 @@
                 "self": [],
                 "tps": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -2132,9 +2269,8 @@
             "arguments": {
                 "self": [],
                 "df": [
-                    "dict[str, typing.Any]",
-                    "pandas.DataFrame",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "pandas.DataFrame"
                 ]
             }
         },
@@ -2148,13 +2284,26 @@
             "arguments": {
                 "self": [],
                 "x": [
-                    "float"
+                    "int",
+                    "float",
+                    "Position",
+                    "bool",
+                    "PondTensor"
                 ],
                 "y": [
-                    "float"
+                    "int",
+                    "float",
+                    "Position",
+                    "bool",
+                    "PondTensor"
                 ],
                 "tooltip": [
-                    "str"
+                    "Text",
+                    "int",
+                    "Position",
+                    "bool",
+                    "PondTensor",
+                    "float"
                 ]
             }
         },
@@ -2170,10 +2319,14 @@
                     "bool",
                     "bytearray",
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "tooltip": [
+                    "Text",
+                    "bool",
+                    "bytearray",
+                    "Tuple[int,int]",
                     "str"
                 ]
             }
@@ -2192,7 +2345,10 @@
                     "pandas.DataFrame"
                 ],
                 "colour": [
-                    "str"
+                    "Text",
+                    "str",
+                    "pandas.DataFrame",
+                    "float"
                 ]
             }
         },
@@ -2211,7 +2367,7 @@
                     "pandas.DataFrame",
                     "None",
                     "Tuple[FrozenSet[int]]",
-                    "tuple[frozenset]"
+                    "Tuple[frozenset]"
                 ]
             }
         },
@@ -2224,12 +2380,10 @@
             "arguments": {
                 "self": [],
                 "l": [
-                    "list",
+                    "List",
                     "str",
-                    "list[]",
                     "int",
-                    "set",
-                    "set[]"
+                    "Set"
                 ]
             }
         },
@@ -2250,26 +2404,40 @@
             "name": "travel_times",
             "location": 7,
             "return": [
-                "np.ndarray"
+                "int",
+                "tuple",
+                "str",
+                "numpy.ndarray",
+                "List[int]",
+                "bool"
             ],
             "arguments": {
                 "journeys": [
                     "str",
                     "int",
-                    "tuple[typing.Union[int,int,int]]",
-                    "list[str]",
-                    "Tuple[int, int, int]",
+                    "Tuple[Union[int,int,int]]",
                     "List[str]",
+                    "Tuple[int,int,int]",
                     "bool"
                 ],
                 "stops": [
-                    "List[str]"
+                    "List[str]",
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "last_known_column": [
-                    "str"
+                    "int",
+                    "bool",
+                    "float",
+                    "pandas.DataFrame"
                 ],
                 "target_column": [
-                    "str"
+                    "int",
+                    "str",
+                    "Tuple[int,int,int]",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -2284,17 +2452,24 @@
             "arguments": {
                 "journeys": [
                     "str",
-                    "list[float]",
+                    "List[float]",
                     "pandas.DataFrame",
                     "int",
+                    "float"
+                ],
+                "last_known_column": [
+                    "int",
+                    "str",
+                    "pandas.DataFrame",
                     "float",
                     "List[float]"
                 ],
-                "last_known_column": [
-                    "str"
-                ],
                 "target_column": [
-                    "str"
+                    "int",
+                    "str",
+                    "pandas.DataFrame",
+                    "float",
+                    "List[float]"
                 ]
             }
         }
@@ -2304,17 +2479,25 @@
             "name": "journeys",
             "location": 17,
             "return": [
-                "Dict[(api.TimetableVariant, Any)]"
+                "dict"
             ],
             "arguments": {
                 "snapshots": [
-                    "list"
+                    "Set"
                 ],
                 "timetable_variants": [
-                    "Set[api.TimetableVariant]"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "route_sections": [
-                    "Dict[(api.TimetableVariant, List[Union[(prediction.RoadSection, prediction.StopCircle)]])]"
+                    "str",
+                    "int",
+                    "List[List[Any]]",
+                    "List[list[Any]]"
                 ]
             }
         },
@@ -2322,11 +2505,13 @@
             "name": "join_journeys",
             "location": 45,
             "return": [
-                "Dict[(api.TimetableVariant, Any)]"
+                "dict"
             ],
             "arguments": {
                 "journeys": [
-                    "List[Dict[(api.TimetableVariant, Any)]]"
+                    "Dict[str,float]",
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -2336,30 +2521,30 @@
             "name": "pd_stop_distance",
             "location": 43,
             "return": [
-                "float"
+                "Any"
             ],
             "arguments": {
                 "r": [],
-                "stop": [
-                    "Tuple[(Any, Any)]"
-                ]
+                "stop": []
             }
         },
         "pd_stop_distances": {
             "name": "pd_stop_distances",
             "location": 47,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": [],
-                "stop": [
-                    "Tuple[(Any, Any)]"
-                ]
+                "stop": []
             }
         },
         "stop_times_220": {
             "name": "stop_times_220",
             "location": 53,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": []
             }
@@ -2367,66 +2552,60 @@
         "closest_stops_220": {
             "name": "closest_stops_220",
             "location": 65,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "df": []
+                "df": [
+                    "_T0@@"
+                ]
             }
         },
         "closest_stop_gpd": {
             "name": "closest_stop_gpd",
             "location": 74,
             "return": [
-                "m.Stop"
+                "int"
             ],
             "arguments": {
-                "latitude": [
-                    "float"
-                ],
-                "longitude": [
-                    "float"
-                ],
-                "stops": [
-                    "List[m.Stop]"
-                ]
+                "latitude": [],
+                "longitude": [],
+                "stops": []
             }
         },
         "include_stop": {
             "name": "include_stop",
             "location": 81,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "df": [],
-                "s": [
-                    "m.Stop"
-                ]
+                "df": [
+                    "_T0@@"
+                ],
+                "s": []
             }
         },
         "new_stop_distance": {
             "name": "new_stop_distance",
             "location": 87,
             "return": [
-                "float"
+                "Any"
             ],
             "arguments": {
                 "e": [],
-                "s": [
-                    "m.Stop"
-                ]
+                "s": []
             }
         },
         "new_stop_distances": {
             "name": "new_stop_distances",
             "location": 91,
             "return": [
-                "List[float]"
+                "list"
             ],
             "arguments": {
-                "es": [
-                    "list"
-                ],
-                "s": [
-                    "m.Stop"
-                ]
+                "es": [],
+                "s": []
             }
         },
         "distance_vector": {
@@ -2436,18 +2615,16 @@
                 "DistanceVector"
             ],
             "arguments": {
-                "c1": [
-                    "Tuple[(Any, Any)]"
-                ],
-                "c2": [
-                    "Tuple[(Any, Any)]"
-                ]
+                "c1": [],
+                "c2": []
             }
         },
         "unit_vector": {
             "name": "unit_vector",
             "location": 111,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "vector": []
             }
@@ -2456,15 +2633,11 @@
             "name": "angle_between",
             "location": 119,
             "return": [
-                "float"
+                "Any"
             ],
             "arguments": {
-                "v1": [
-                    "DistanceVector"
-                ],
-                "v2": [
-                    "DistanceVector"
-                ]
+                "v1": [],
+                "v2": []
             }
         },
         "cached_contains": {
@@ -2481,7 +2654,7 @@
             "name": "hash_polygon",
             "location": 160,
             "return": [
-                "int"
+                "Any"
             ],
             "arguments": {
                 "polygon": []
@@ -2490,9 +2663,13 @@
         "monkey_patch_polygon": {
             "name": "monkey_patch_polygon",
             "location": 169,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "polygon": []
+                "polygon": [
+                    "_T0@@"
+                ]
             }
         },
         "make_circle": {
@@ -2522,12 +2699,10 @@
             "name": "route_sections",
             "location": 199,
             "return": [
-                "Iterator[Union[(RoadSection, StopCircle)]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "stops": [
-                    "Iterable[m.Stop]"
-                ],
+                "stops": [],
                 "rectangle_width": [
                     "float"
                 ],
@@ -2539,79 +2714,67 @@
         "widen_line": {
             "name": "widen_line",
             "location": 227,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "linestring": [],
-                "width": [
-                    "float"
-                ]
+                "width": []
             }
         },
         "assign_region": {
             "name": "assign_region",
             "location": 236,
             "return": [
-                "Tuple[(Any, List[Union[(RoadSection, StopCircle)]])]"
+                "Tuple[(_T1, list)]"
             ],
             "arguments": {
-                "sections": [
-                    "Iterable[Union[(RoadSection, StopCircle)]]"
-                ],
-                "e": []
+                "sections": [],
+                "e": [
+                    "_T1@@"
+                ]
             }
         },
         "assign_regions": {
             "name": "assign_regions",
             "location": 242,
             "return": [
-                "Generator[(Tuple[(Any, List[Union[(RoadSection, StopCircle)]])], None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "rs": [
-                    "Iterable[Union[(RoadSection, StopCircle)]]"
-                ],
-                "es": [
-                    "Iterable"
-                ]
+                "rs": [],
+                "es": []
             }
         },
         "most_recent_stops": {
             "name": "most_recent_stops",
             "location": 248,
             "return": [
-                "Iterable[Tuple[(Any, u.Maybe[m.Stop])]]"
+                "Generator[(Tuple[(Any, Any)], Any, None)]"
             ],
             "arguments": {
-                "ts": [
-                    "Iterable[Tuple[(Any, List[Union[(RoadSection, StopCircle)]])]]"
-                ]
+                "ts": []
             }
         },
         "possible_variants": {
             "name": "possible_variants",
             "location": 264,
             "return": [
-                "Iterable[Tuple[(Any, Set[Tuple[(api.TimetableVariant, int)]])]]"
+                "Generator[(Tuple[(Any, Set[Tuple[(Any, int)]])], Any, None)]"
             ],
             "arguments": {
-                "snapshots": [
-                    "Iterable"
-                ],
-                "sections": [
-                    "Dict[(api.TimetableVariant, List[Union[(RoadSection, StopCircle)]])]"
-                ]
+                "snapshots": [],
+                "sections": []
             }
         },
         "check_variant_order": {
             "name": "check_variant_order",
             "location": 277,
             "return": [
-                "Iterable[Tuple[(Any, Set[Tuple[(api.TimetableVariant, int)]])]]"
+                "Generator[(Tuple[(Any, Set[Tuple[(Any, Any)]])], Any, None)]"
             ],
             "arguments": {
-                "snapshots": [
-                    "List[Tuple[(Any, Set[Tuple[(api.TimetableVariant, int)]])]]"
-                ]
+                "snapshots": []
             }
         },
         "duplicate_positions": {
@@ -2629,110 +2792,86 @@
             "name": "drop_duplicate_positions",
             "location": 308,
             "return": [
-                "Iterator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "snapshots": [
-                    "Iterable"
-                ],
-                "duplicates": [
-                    "Callable[([Any, Any], bool)]"
-                ]
+                "snapshots": [],
+                "duplicates": []
             }
         },
         "section_times": {
             "name": "section_times",
             "location": 324,
             "return": [
-                "Dict[(api.TimetableVariant, List[SectionTime])]"
+                "collections.defaultdict"
             ],
             "arguments": {
-                "snapshots": [
-                    "List[Tuple[(Any, Dict[(api.TimetableVariant, Set[int])])]]"
-                ],
-                "sections": [
-                    "Dict[(api.TimetableVariant, List[Union[(RoadSection, StopCircle)]])]"
-                ]
+                "snapshots": [],
+                "sections": []
             }
         },
         "journeys": {
             "name": "journeys",
             "location": 378,
             "return": [
-                "Dict[(api.TimetableVariant, List[List[SectionTime]])]"
+                "dict"
             ],
             "arguments": {
-                "section_times": [
-                    "Dict[(api.TimetableVariant, List[SectionTime])]"
-                ]
+                "section_times": []
             }
         },
         "pad_journeys": {
             "name": "pad_journeys",
             "location": 413,
             "return": [
-                "Dict[(api.TimetableVariant, List[List[SectionTime]])]"
+                "Dict[(Any, List[list])]"
             ],
             "arguments": {
-                "variant_journeys": [
-                    "Dict[(api.TimetableVariant, List[List[SectionTime]])]"
-                ]
+                "variant_journeys": []
             }
         },
         "stop_times": {
             "name": "stop_times",
             "location": 461,
             "return": [
-                "Dict[(api.TimetableVariant, List[List[Union[(NotSeenAtStop, SeenAtStop)]]])]"
+                "Dict[(Any, List[List[Union[(NotSeenAtStop, SeenAtStop)]]])]"
             ],
             "arguments": {
-                "snapshots": [
-                    "List[Tuple[(Any, Dict[(api.TimetableVariant, Set[int])])]]"
-                ],
-                "sections": [
-                    "Dict[(api.TimetableVariant, List[Union[(RoadSection, StopCircle)]])]"
-                ]
+                "snapshots": [],
+                "sections": []
             }
         },
         "journeys_dataframe": {
             "name": "journeys_dataframe",
             "location": 487,
             "return": [
-                "Iterator[Tuple[(api.TimetableVariant, Any)]]"
+                "Generator[(Tuple[(Any, Any)], Any, None)]"
             ],
             "arguments": {
-                "journeys": [
-                    "Iterable[Tuple[(api.TimetableVariant, List[List[Optional[Tuple[(_datetime.datetime, _datetime.datetime)]]]])]]"
-                ]
+                "journeys": []
             }
         },
         "estimate_arrival": {
             "name": "estimate_arrival",
             "location": 510,
             "return": [
-                "Iterator[Tuple[(api.TimetableVariant, List[List[Optional[Tuple[(_datetime.datetime, _datetime.datetime)]]]])]]"
+                "Generator[(Tuple[(Any, list)], Any, None)]"
             ],
             "arguments": {
-                "variant_journeys": [
-                    "Iterable[Tuple[(api.TimetableVariant, List[List[Union[(NotSeenAtStop, SeenAtStop)]]])]]"
-                ]
+                "variant_journeys": []
             }
         },
         "stop_times_proximity": {
             "name": "stop_times_proximity",
             "location": 530,
             "return": [
-                "Iterator[Tuple[(m.Stop, _datetime.datetime)]]"
+                "Generator[(Tuple[(Any, Any)], Any, None)]"
             ],
             "arguments": {
-                "snapshots": [
-                    "Iterable"
-                ],
-                "stops": [
-                    "Iterable[m.Stop]"
-                ],
+                "snapshots": [],
+                "stops": [],
                 "distance_limit": [
-                    "float"
+                    "int"
                 ]
             }
         },
@@ -2740,20 +2879,18 @@
             "name": "stop_distance_geopandas",
             "location": 542,
             "return": [
-                "float"
+                "Any"
             ],
             "arguments": {
                 "snapshot": [],
-                "stop": [
-                    "m.Stop"
-                ]
+                "stop": []
             }
         },
         "AbstractRouteSection.contains": {
             "name": "contains",
             "location": 141,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -2765,13 +2902,11 @@
             "name": "difference",
             "location": 147,
             "return": [
-                "u.Maybe[RoadSection]"
+                "Union[(u.Just[nothing], u.Nothing[nothing])]"
             ],
             "arguments": {
                 "self": [],
-                "circle": [
-                    "StopCircle"
-                ]
+                "circle": []
             }
         },
         "route_sections.shapes": {
@@ -2830,10 +2965,14 @@
             ],
             "arguments": {
                 "stop": [
-                    "busboy.model.StopId"
+                    "int"
                 ],
                 "record": [
-                    "RouteRecord"
+                    "Optional[str]",
+                    "int",
+                    "str",
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -2841,7 +2980,7 @@
             "name": "to_json",
             "location": 35,
             "return": [
-                "Dict[(str, List[Tuple[(str, Any)]])]"
+                "Dict[(Any, List[Tuple[(Any, Any)]])]"
             ],
             "arguments": {
                 "self": []
@@ -2851,7 +2990,7 @@
             "name": "entries",
             "location": 47,
             "return": [
-                "Iterator[Tuple[(Optional[str], str, Any)]]"
+                "Generator[(Tuple[(Any, Any, Any)], Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -2866,11 +3005,9 @@
                 "None"
             ],
             "arguments": {
-                "stops": [
-                    "Iterable[str]"
-                ],
+                "stops": [],
                 "interval": [
-                    "float"
+                    "int"
                 ]
             }
         },
@@ -2881,75 +3018,53 @@
                 "None"
             ],
             "arguments": {
-                "f": [
-                    "Callable[([A], A)]"
-                ],
-                "a": [
-                    "A"
-                ],
-                "interval": [
-                    "float"
-                ]
+                "f": [],
+                "a": [],
+                "interval": []
             }
         },
         "new_loop": {
             "name": "new_loop",
             "location": 41,
             "return": [
-                "Dict[(m.PassageId, m.Passage)]"
+                "dict"
             ],
             "arguments": {
-                "pool": [
-                    "concurrent.futures.thread.ThreadPoolExecutor"
-                ],
-                "stops": [
-                    "Iterable[m.StopId]"
-                ],
-                "state": [
-                    "Dict[(m.PassageId, m.Passage)]"
-                ]
+                "pool": [],
+                "stops": [],
+                "state": []
             }
         },
         "call_stops": {
             "name": "call_stops",
             "location": 58,
             "return": [
-                "Dict[(concurrent.futures._base.Future[m.StopPassageResponse], m.StopId)]"
+                "dict"
             ],
             "arguments": {
-                "pool": [
-                    "concurrent.futures.thread.ThreadPoolExecutor"
-                ],
-                "stops": [
-                    "Iterable[m.StopId]"
-                ]
+                "pool": [],
+                "stops": []
             }
         },
         "current_state": {
             "name": "current_state",
             "location": 64,
             "return": [
-                "Generator[(Tuple[(m.PassageId, m.Passage)], None, None)]"
+                "Generator[(Tuple[(Any, Any)], Any, None)]"
             ],
             "arguments": {
-                "spr": [
-                    "m.StopPassageResponse"
-                ]
+                "spr": []
             }
         },
         "updated_state": {
             "name": "updated_state",
             "location": 72,
             "return": [
-                "Dict[(m.PassageId, m.Passage)]"
+                "dict"
             ],
             "arguments": {
-                "last": [
-                    "Dict[(m.PassageId, m.Passage)]"
-                ],
-                "current": [
-                    "Dict[(m.PassageId, m.Passage)]"
-                ]
+                "last": [],
+                "current": []
             }
         },
         "store_state": {
@@ -2959,15 +3074,9 @@
                 "None"
             ],
             "arguments": {
-                "s": [
-                    "Dict[(m.PassageId, m.Passage)]"
-                ],
-                "poll_time": [
-                    "dt.datetime"
-                ],
-                "c": [
-                    "pp2._psycopg.connection"
-                ]
+                "s": [],
+                "poll_time": [],
+                "c": []
             }
         }
     },
@@ -2983,10 +3092,9 @@
             ],
             "arguments": {
                 "entry": [
-                    "typing.Callable[, ]",
+                    "Callable",
                     "bool",
-                    "busboy.database.BusSnapshot",
-                    "Callable"
+                    "busboy.database.BusSnapshot"
                 ]
             }
         },
@@ -2998,22 +3106,35 @@
             ],
             "arguments": {
                 "m": [
-                    "busboy.map.map.Map"
+                    "busboy.map.map.Map",
+                    "bool",
+                    "int"
                 ],
                 "snapshots": [
-                    "list"
+                    "List[busboy.database.BusSnapshot]",
+                    "Dict[str,Any]",
+                    "bool",
+                    "Union[AbstractSetIntStr,MappingIntStrAny]"
                 ],
                 "interval": [
-                    "float"
+                    "float",
+                    "bool",
+                    "str",
+                    "List[Tuple[int,int]]"
                 ],
                 "initial_delay": [
-                    "float"
+                    "float",
+                    "bool",
+                    "str",
+                    "List[Tuple[int,int]]"
                 ],
-                "snapshot_to_layer": [
-                    "Callable[([Any], Any)]"
-                ],
+                "snapshot_to_layer": [],
                 "clear": [
-                    "bool"
+                    "bool",
+                    "Optional[int]",
+                    "str",
+                    "int",
+                    "List[int]"
                 ]
             }
         },
@@ -3025,18 +3146,28 @@
             ],
             "arguments": {
                 "m": [
-                    "busboy.map.map.Map"
+                    "busboy.map.map.Map",
+                    "int",
+                    "float",
+                    "Collection[str]"
                 ],
                 "snapshots": [
-                    "list"
+                    "List[busboy.database.BusSnapshot]",
+                    "Dict",
+                    "int",
+                    "float",
+                    "Optional[bool]"
                 ],
                 "trail_size": [
-                    "int"
-                ],
-                "interval": [
+                    "int",
                     "float"
                 ],
+                "interval": [
+                    "float",
+                    "int"
+                ],
                 "initial_delay": [
+                    "int",
                     "float"
                 ]
             }
@@ -3049,10 +3180,13 @@
             ],
             "arguments": {
                 "map": [
+                    "Dict",
                     "busboy.map.map.Map"
                 ],
                 "timetables": [
-                    "List[busboy.apis.Timetable]"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -3060,7 +3194,7 @@
             "name": "read_preprocessed_data",
             "location": 103,
             "return": [
-                "List[Tuple[(busboy.apis.TimetableVariant, Any)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "route_name": [
@@ -3072,10 +3206,11 @@
             "name": "column_names",
             "location": 129,
             "return": [
-                "Iterator[str]"
+                "Generator[(str, Any, None)]"
             ],
             "arguments": {
                 "stop_names": [
+                    "str",
                     "Iterable[str]"
                 ]
             }
@@ -3087,11 +3222,12 @@
             "name": "swap",
             "location": 31,
             "return": [
-                "Tuple[(B, A)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "t": [
-                    "Tuple[(A, B)]"
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -3099,14 +3235,20 @@
             "name": "omap",
             "location": 35,
             "return": [
-                "Optional[B]"
+                "None",
+                "Optional[str]",
+                "Optional[int]"
             ],
             "arguments": {
                 "f": [
-                    "Callable[([A], B)]"
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ],
                 "x": [
-                    "Optional[A]"
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -3114,14 +3256,16 @@
             "name": "oget",
             "location": 39,
             "return": [
-                "A"
+                "Union[(_T0, _T1)]"
             ],
             "arguments": {
                 "x": [
-                    "Optional[A]"
+                    "float",
+                    "int"
                 ],
                 "a": [
-                    "A"
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -3129,11 +3273,12 @@
             "name": "pairwise",
             "location": 43,
             "return": [
-                "Iterable[Tuple[(A, A)]]"
+                "Iterator[nothing]"
             ],
             "arguments": {
                 "xs": [
-                    "Iterable[A]"
+                    "int",
+                    "Dict"
                 ]
             }
         },
@@ -3141,14 +3286,16 @@
             "name": "sliding_window",
             "location": 50,
             "return": [
-                "Iterator[Tuple[(A, ...)]]"
+                "Iterator"
             ],
             "arguments": {
                 "size": [
-                    "int"
+                    "int",
+                    "Sequence[Any]"
                 ],
                 "xs": [
-                    "Iterable[A]"
+                    "int",
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -3156,17 +3303,32 @@
             "name": "tuplewise_padded",
             "location": 58,
             "return": [
-                "Iterator[Tuple[(Union[(A, B)], ...)]]"
+                "Iterator"
             ],
             "arguments": {
                 "n": [
-                    "int"
+                    "int",
+                    "float",
+                    "Dict",
+                    "datetime.datetime",
+                    "bool",
+                    "List[int]"
                 ],
                 "xs": [
-                    "Iterable[A]"
+                    "int",
+                    "float",
+                    "None",
+                    "Callable",
+                    "Optional[int]",
+                    "datetime.datetime"
                 ],
                 "pad_value": [
-                    "B"
+                    "None",
+                    "float",
+                    "datetime.datetime",
+                    "str",
+                    "int",
+                    "Optional[datetime.datetime]"
                 ]
             }
         },
@@ -3174,14 +3336,14 @@
             "name": "take",
             "location": 65,
             "return": [
-                "Iterable[A]"
+                "itertools.islice"
             ],
             "arguments": {
                 "n": [
                     "int"
                 ],
                 "iterable": [
-                    "Iterable[A]"
+                    "int"
                 ]
             }
         },
@@ -3189,14 +3351,18 @@
             "name": "index",
             "location": 70,
             "return": [
-                "Maybe[A]"
+                "Union[(Nothing, Just[nothing])]"
             ],
             "arguments": {
                 "n": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "xs": [
-                    "Iterable[A]"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -3204,11 +3370,16 @@
             "name": "first",
             "location": 75,
             "return": [
-                "Maybe[A]"
+                "Union[(Nothing, Just[nothing])]"
             ],
             "arguments": {
                 "xs": [
-                    "Iterable[A]"
+                    "int",
+                    "Optional[List[str]]",
+                    "Tuple",
+                    "List[str]",
+                    "T",
+                    "None"
                 ]
             }
         },
@@ -3216,14 +3387,14 @@
             "name": "drop",
             "location": 83,
             "return": [
-                "Iterable[A]"
+                "itertools.islice"
             ],
             "arguments": {
                 "n": [
                     "int"
                 ],
                 "iterable": [
-                    "Iterable[A]"
+                    "int"
                 ]
             }
         },
@@ -3231,14 +3402,19 @@
             "name": "unique",
             "location": 88,
             "return": [
-                "Iterable[A]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[A]"
+                    "str",
+                    "bool",
+                    "int",
+                    "Callable"
                 ],
                 "key": [
-                    "Optional[Callable[([A], B)]]"
+                    "str",
+                    "None",
+                    "Optional[str]"
                 ]
             }
         },
@@ -3246,17 +3422,17 @@
             "name": "unique_justseen",
             "location": 108,
             "return": [
-                "Iterable[A]"
+                "Iterator[nothing]"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[A]"
+                    "str",
+                    "Dict"
                 ],
                 "key": [
                     "str",
-                    "None",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -3268,10 +3444,10 @@
             ],
             "arguments": {
                 "f": [
-                    "Callable[([A], A)]"
+                    "int"
                 ],
                 "a": [
-                    "A"
+                    "int"
                 ]
             }
         },
@@ -3283,7 +3459,10 @@
             ],
             "arguments": {
                 "i": [
-                    "float"
+                    "int",
+                    "Sequence[int]",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -3291,14 +3470,16 @@
             "name": "combine_dictionaries",
             "location": 131,
             "return": [
-                "Dict[(A, List[B])]"
+                "collections.defaultdict"
             ],
             "arguments": {
                 "xs": [
-                    "Dict[(A, B)]"
+                    "int",
+                    "T"
                 ],
                 "ys": [
-                    "Dict[(A, B)]"
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -3306,14 +3487,20 @@
             "name": "dict_collect_list",
             "location": 138,
             "return": [
-                "Dict[(B, List[A])]"
+                "dict"
             ],
             "arguments": {
                 "xs": [
-                    "Iterable[A]"
+                    "str",
+                    "Callable",
+                    "FrozenSet[int]",
+                    "frozenset"
                 ],
                 "key": [
-                    "Callable[([A], B)]"
+                    "str",
+                    "Callable",
+                    "FrozenSet[int]",
+                    "frozenset"
                 ]
             }
         },
@@ -3321,14 +3508,22 @@
             "name": "dict_collect_set",
             "location": 142,
             "return": [
-                "Dict[(B, Set[A])]"
+                "dict"
             ],
             "arguments": {
                 "xs": [
-                    "Iterable[A]"
+                    "bool",
+                    "str",
+                    "List[int]",
+                    "List",
+                    "Union[str,list]"
                 ],
                 "key": [
-                    "Callable[([A], B)]"
+                    "bool",
+                    "str",
+                    "List[int]",
+                    "List",
+                    "Union[str,list]"
                 ]
             }
         },
@@ -3336,20 +3531,35 @@
             "name": "dict_collect",
             "location": 146,
             "return": [
-                "Dict[(B, C)]"
+                "dict"
             ],
             "arguments": {
                 "xs": [
-                    "Iterable[A]"
+                    "str",
+                    "bool",
+                    "int"
                 ],
                 "key": [
-                    "Callable[([A], B)]"
+                    "Dict",
+                    "int",
+                    "MutableMapping[Any,Any]",
+                    "bytes",
+                    "MutableMapping",
+                    "float",
+                    "str"
                 ],
                 "join": [
-                    "Callable[([C, A], None)]"
+                    "Dict",
+                    "int",
+                    "MutableMapping[Any,Any]",
+                    "bytes",
+                    "MutableMapping",
+                    "float",
+                    "str"
                 ],
                 "empty": [
-                    "Callable[([], C)]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -3357,7 +3567,7 @@
             "name": "__iter__",
             "location": 159,
             "return": [
-                "Iterator[A]"
+                "listiterator[nothing]"
             ],
             "arguments": {
                 "self": []
@@ -3367,12 +3577,20 @@
             "name": "map",
             "location": 165,
             "return": [
-                "Maybe[B]"
+                "Just",
+                "str",
+                "Callable",
+                "Dict"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A], B)]"
+                    "Callable[,Any]",
+                    "T",
+                    "IO",
+                    "Tuple",
+                    "util.Unary[V,N]",
+                    "IO[bytes]"
                 ]
             }
         },
@@ -3380,12 +3598,14 @@
             "name": "bind",
             "location": 171,
             "return": [
-                "Maybe[B]"
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A], Maybe[B])]"
+                    "Mapping[str,Dict[str,Any]]",
+                    "str",
+                    "Mapping"
                 ]
             }
         },
@@ -3393,12 +3613,14 @@
             "name": "bind_optional",
             "location": 177,
             "return": [
-                "Maybe[B]"
+                "int",
+                "List[int]",
+                "Tuple[Tuple[int, Any]]"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A], Optional[B])]"
+                    "int"
                 ]
             }
         },
@@ -3406,15 +3628,20 @@
             "name": "lift",
             "location": 180,
             "return": [
-                "Maybe[C]"
+                "int",
+                "Union[bytes, bytearray]",
+                "bytearray",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A, B], C)]"
+                    "int",
+                    "List"
                 ],
                 "b": [
-                    "Maybe[B]"
+                    "int",
+                    "List"
                 ]
             }
         },
@@ -3422,12 +3649,15 @@
             "name": "ap",
             "location": 183,
             "return": [
-                "Maybe[B]"
+                "bool",
+                "List[str]",
+                "Optional[str]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Maybe[Callable[([A], B)]]"
+                    "int"
                 ]
             }
         },
@@ -3435,11 +3665,16 @@
             "name": "of",
             "location": 187,
             "return": [
-                "Maybe[A]"
+                "Union[(Nothing, Just[nothing])]"
             ],
             "arguments": {
                 "x": [
-                    "Optional[A]"
+                    "int",
+                    "List[int]",
+                    "None",
+                    "List",
+                    "Optional[T]",
+                    "Optional[int]"
                 ]
             }
         },
@@ -3447,12 +3682,21 @@
             "name": "or_else",
             "location": 193,
             "return": [
-                "Union[(A, B)]"
+                "bytes",
+                "str",
+                "bool",
+                "int",
+                "Optional[float]",
+                "Dict[Tuple[str,str],Tuple[float,float]]"
             ],
             "arguments": {
                 "self": [],
                 "default": [
-                    "B"
+                    "bytes",
+                    "str",
+                    "datetime.datetime",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -3460,12 +3704,20 @@
             "name": "or_else_lazy",
             "location": 199,
             "return": [
-                "Union[(A, B)]"
+                "int",
+                "bool",
+                "Optional[float]",
+                "str",
+                "Dict[Tuple[str, str], Tuple[float, float]]"
             ],
             "arguments": {
                 "self": [],
                 "default": [
-                    "Callable[([], B)]"
+                    "bytes",
+                    "str",
+                    "datetime.datetime",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -3473,7 +3725,11 @@
             "name": "optional",
             "location": 205,
             "return": [
-                "Optional[A]"
+                "str",
+                "Optional[str]",
+                "Optional[List[Any]]",
+                "list",
+                "Optional[BaseException]"
             ],
             "arguments": {
                 "self": []
@@ -3483,12 +3739,12 @@
             "name": "either",
             "location": 208,
             "return": [
-                "Either[(E, A)]"
+                "Left[(nothing, nothing)]"
             ],
             "arguments": {
                 "self": [],
                 "default": [
-                    "E"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -3516,11 +3772,15 @@
             "name": "justs",
             "location": 221,
             "return": [
-                "Iterable[A]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "ms": [
-                    "Iterable[Maybe[A]]"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -3528,12 +3788,21 @@
             "name": "map",
             "location": 238,
             "return": [
-                "Either[(E, B)]"
+                "Right",
+                "str",
+                "IO[str]",
+                "Callable",
+                "Iterable[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A], B)]"
+                    "Callable",
+                    "Iterable[Any]",
+                    "bool",
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -3541,12 +3810,14 @@
             "name": "bind",
             "location": 244,
             "return": [
-                "Either[(E, B)]"
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A], Either[(E, B)])]"
+                    "Mapping[str,Dict[str,Any]]",
+                    "str",
+                    "Mapping"
                 ]
             }
         },
@@ -3554,426 +3825,21 @@
             "name": "ap",
             "location": 250,
             "return": [
-                "Either[(E, B)]"
+                "Left",
+                "str",
+                "int",
+                "bool",
+                "Mapping"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Either[(E, Callable[([A], B)])]"
+                    "Callable[,Any]",
+                    "int",
+                    "Dict",
+                    "Callable"
                 ]
             }
         }
-    },
-    "busboy-master/stubs/geopandas.py": {
-        "GeoSeries.__init__": {
-            "name": "__init__",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "GeoSeries.to_crs": {
-            "name": "to_crs",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "crs": []
-            }
-        },
-        "GeoSeries.buffer": {
-            "name": "buffer",
-            "location": 10,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "distance": [],
-                "resolution": []
-            }
-        }
-    },
-    "busboy-master/stubs/ipyleaflet.py": {
-        "Map.add_layer": {
-            "name": "add_layer",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "l": []
-            }
-        },
-        "Map.remove_layer": {
-            "name": "remove_layer",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "l": []
-            }
-        },
-        "Map.add_control": {
-            "name": "add_control",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "control": []
-            }
-        }
-    },
-    "busboy-master/stubs/numpy.py": {},
-    "busboy-master/stubs/pandas.py": {
-        "concat": {
-            "name": "concat",
-            "location": 28,
-            "return": [],
-            "arguments": {
-                "dfs": []
-            }
-        },
-        "read_csv": {
-            "name": "read_csv",
-            "location": 29,
-            "return": [],
-            "arguments": {
-                "filepath_or_buffer": []
-            }
-        },
-        "DataFrame.__getitem__": {
-            "name": "__getitem__",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "index": []
-            }
-        },
-        "DataFrame.__setitem__": {
-            "name": "__setitem__",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "index": [],
-                "value": []
-            }
-        },
-        "DataFrame.__init__": {
-            "name": "__init__",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "data": []
-            }
-        },
-        "DataFrame.copy": {
-            "name": "copy",
-            "location": 12,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "DataFrame.itertuples": {
-            "name": "itertuples",
-            "location": 13,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "DataFrame.set_index": {
-            "name": "set_index",
-            "location": 14,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "keys": []
-            }
-        },
-        "DataFrame.to_csv": {
-            "name": "to_csv",
-            "location": 15,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "filepath_or_buffer": [],
-                "mode": [],
-                "header": [],
-                "index": []
-            }
-        },
-        "DataFrame.fillna": {
-            "name": "fillna",
-            "location": 22,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "value": []
-            }
-        },
-        "DataFrame.notna": {
-            "name": "notna",
-            "location": 23,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Series.__getitem__": {
-            "name": "__getitem__",
-            "location": 35,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "index": []
-            }
-        }
-    },
-    "busboy-master/stubs/bs4/element.py": {
-        "Tag.__getitem__": {
-            "name": "__getitem__",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "index": []
-            }
-        },
-        "Tag.__getattribute__": {
-            "name": "__getattribute__",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "tag": []
-            }
-        },
-        "Tag.find_all": {
-            "name": "find_all",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "name": [],
-                "attrs": [],
-                "recursive": []
-            }
-        }
-    },
-    "busboy-master/stubs/bs4/__init__.py": {
-        "BeautifulSoup.__init__": {
-            "name": "__init__",
-            "location": 6,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "markup": [],
-                "features": []
-            }
-        }
-    },
-    "busboy-master/stubs/psycopg2/extensions.py": {
-        "cursor.__enter__": {
-            "name": "__enter__",
-            "location": 4,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "cursor.__exit__": {
-            "name": "__exit__",
-            "location": 5,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "cursor.mogrify": {
-            "name": "mogrify",
-            "location": 6,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "query": [],
-                "items": []
-            }
-        },
-        "cursor.execute": {
-            "name": "execute",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "query": [],
-                "values": []
-            }
-        },
-        "cursor.fetchall": {
-            "name": "fetchall",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "cursor.fetchone": {
-            "name": "fetchone",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "connection.__enter__": {
-            "name": "__enter__",
-            "location": 14,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "connection.__exit__": {
-            "name": "__exit__",
-            "location": 15,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "connection.close": {
-            "name": "close",
-            "location": 16,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "connection.cursor": {
-            "name": "cursor",
-            "location": 17,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
-    "busboy-master/stubs/psycopg2/__init__.py": {
-        "connect": {
-            "name": "connect",
-            "location": 5,
-            "return": [],
-            "arguments": {
-                "s": [],
-                "dbname": [],
-                "user": []
-            }
-        }
-    },
-    "busboy-master/stubs/shapely/__init__.py": {},
-    "busboy-master/stubs/shapely/geometry/base.py": {
-        "BaseGeometry.almost_equals": {
-            "name": "almost_equals",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "other": [],
-                "decimal": []
-            }
-        },
-        "BaseGeometry.buffer": {
-            "name": "buffer",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "distance": [],
-                "resolution": [],
-                "quadsegs": [],
-                "cap_style": [],
-                "join_style": [],
-                "mitre_limit": []
-            }
-        },
-        "BaseGeometry.contains": {
-            "name": "contains",
-            "location": 17,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "other": []
-            }
-        },
-        "BaseGeometry.distance": {
-            "name": "distance",
-            "location": 18,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "other": []
-            }
-        },
-        "BaseGeometry.difference": {
-            "name": "difference",
-            "location": 19,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "other": []
-            }
-        }
-    },
-    "busboy-master/stubs/shapely/geometry/linestring.py": {
-        "LineString.parallel_offset": {
-            "name": "parallel_offset",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "distance": [],
-                "side": [],
-                "resolution": [],
-                "join_style": [],
-                "mitre_limit": []
-            }
-        }
-    },
-    "busboy-master/stubs/shapely/geometry/multilinestring.py": {
-        "MultiLineString.__init__": {
-            "name": "__init__",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "lines": []
-            }
-        }
-    },
-    "busboy-master/stubs/shapely/geometry/point.py": {
-        "Point.__init__": {
-            "name": "__init__",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
-    "busboy-master/stubs/shapely/geometry/__init__.py": {
-        "MultiPoint.__init__": {
-            "name": "__init__",
-            "location": 13,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "points": []
-            }
-        }
-    },
-    "busboy-master/stubs/sklearn/base.py": {},
-    "busboy-master/stubs/sklearn/__init__.py": {}
+    }
 }

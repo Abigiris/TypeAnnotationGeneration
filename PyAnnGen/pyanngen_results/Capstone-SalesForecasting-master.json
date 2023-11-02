@@ -61,12 +61,10 @@
             "name": "import_csvs",
             "location": 10,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
-                "directory": [
-                    "str"
-                ]
+                "directory": []
             }
         },
         "convert_to_snake_case": {
@@ -76,23 +74,27 @@
                 "str"
             ],
             "arguments": {
-                "string": [
-                    "str"
-                ]
+                "string": []
             }
         },
         "clean_other_dfs": {
             "name": "clean_other_dfs",
             "location": 58,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "df": []
+                "df": [
+                    "_T0@@"
+                ]
             }
         },
         "clean_googletrend_csv": {
             "name": "clean_googletrend_csv",
             "location": 67,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": []
             }
@@ -100,29 +102,35 @@
         "clean_store_csv": {
             "name": "clean_store_csv",
             "location": 121,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "df": []
+                "df": [
+                    "_T0@@"
+                ]
             }
         },
         "clean_weather_csv": {
             "name": "clean_weather_csv",
             "location": 137,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "df": []
+                "df": [
+                    "_T0@@"
+                ]
             }
         },
         "merge_dfs": {
             "name": "merge_dfs",
             "location": 158,
             "return": [
-                "Tuple[(Any, Dict[(str, Any)])]"
+                "Tuple[(Any, dict)]"
             ],
             "arguments": {
-                "raw_dfs_dict": [
-                    "Dict[(str, Any)]"
-                ]
+                "raw_dfs_dict": []
             }
         }
     },
@@ -143,6 +151,7 @@
                     "pandas.Series"
                 ],
                 "path": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -159,7 +168,7 @@
             "name": "predict",
             "location": 74,
             "return": [
-                "str"
+                "Optional[str]"
             ],
             "arguments": {
                 "data_path": [
@@ -171,7 +180,7 @@
                 "models_path": [
                     "Path",
                     "str",
-                    "Union[pathlib.Path, str]",
+                    "Union[pathlib.Path,str]",
                     "pathlib.Path"
                 ]
             }
@@ -198,7 +207,7 @@
             "name": "gather_args",
             "location": 38,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, Union[(list, str, pathlib.Path)])]"
             ],
             "arguments": {
                 "df": [
@@ -217,7 +226,9 @@
             "name": "rmspe",
             "location": 30,
             "return": [
-                "float"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "predicted": [
@@ -238,18 +249,21 @@
             "name": "get_pred_new_data_old_model",
             "location": 35,
             "return": [
-                "Tuple[(Any, float)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "valid_df": [
                     "int",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "pathlib.Path",
-                    "dict"
+                    "pathlib.Path"
                 ],
                 "path": [
-                    "pathlib.Path"
+                    "Path",
+                    "pathlib.Path",
+                    "str",
+                    "Optional[Union[pathlib.Path,str]]",
+                    "path.Path"
                 ]
             }
         },
@@ -257,7 +271,7 @@
             "name": "get_new_model_and_pred",
             "location": 63,
             "return": [
-                "Tuple[(Any, float)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "train": [
@@ -275,7 +289,9 @@
                     "pathlib.Path"
                 ],
                 "path": [
-                    "pathlib.Path"
+                    "Path",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]"
                 ]
             }
         },
@@ -287,24 +303,26 @@
             ],
             "arguments": {
                 "model0": [
-                    "_T0"
+                    "str",
+                    "List[Tuple[int,int,float]]",
+                    "List[tuple[Union[int,int,float]]]"
                 ],
                 "rmspe0": [
-                    "list[Exception]",
-                    "int",
                     "List[Exception]",
+                    "int",
                     "str",
                     "float",
                     "pandas.DataFrame",
                     "Optional[float]"
                 ],
                 "model1": [
-                    "_T2"
+                    "str",
+                    "List[Tuple[int,int,float]]",
+                    "List[tuple[Union[int,int,float]]]"
                 ],
                 "rmspe1": [
-                    "list[Exception]",
-                    "int",
                     "List[Exception]",
+                    "int",
                     "str",
                     "float",
                     "pandas.DataFrame",
@@ -342,7 +360,6 @@
             "name": "test_convert_to_snake_case",
             "location": 92,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -513,7 +530,6 @@
             "name": "test_merged_csv_has_google_states_names_store_train_and_weather",
             "location": 257,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -554,7 +570,6 @@
             "name": "test_wrangled_csv_correct",
             "location": 307,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -763,7 +778,6 @@
             "name": "test_get_pred_new_data_old_model_calls_pt1",
             "location": 115,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -778,7 +792,6 @@
             "name": "test_get_pred_new_data_old_model_calls_pt2",
             "location": 131,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -791,7 +804,6 @@
             "name": "test_get_pred_new_model_calls_fns",
             "location": 145,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -824,7 +836,6 @@
             "name": "test_save_models",
             "location": 181,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

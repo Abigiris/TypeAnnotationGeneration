@@ -5,11 +5,16 @@
             "name": "make_partial",
             "location": 16,
             "return": [
-                "Callable[([Callable[([Any], Awaitable[T])]], Type[codep.partial.Partial[T]])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "depends": [
-                    "Sequence[Type[codep.partial.Partial]]"
+                    "Tuple",
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -45,20 +50,21 @@
             "name": "value",
             "location": 28,
             "return": [
-                "R"
+                "str",
+                "dict",
+                "Iterable[str]"
             ],
             "arguments": {
                 "cls": [
                     "Type[Partial]"
                 ],
                 "state": [
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
+                    "Tuple",
                     "immutables.Map",
-                    "tuple[]",
                     "str",
                     "int",
-                    "List[Dict[str, Any]]",
-                    "tuple"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -66,7 +72,7 @@
             "name": "applied",
             "location": 37,
             "return": [
-                "FrozenSet[Type[Partial]]"
+                "frozenset"
             ],
             "arguments": {
                 "state": [
@@ -79,7 +85,7 @@
             "name": "missing",
             "location": 41,
             "return": [
-                "FrozenSet[Type[Partial]]"
+                "FrozenSet[nothing]"
             ],
             "arguments": {
                 "cls": [
@@ -87,9 +93,8 @@
                 ],
                 "state": [
                     "str",
-                    "immutables.Map",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "immutables.Map"
                 ]
             }
         },
@@ -97,7 +102,7 @@
             "name": "runnable_dependencies",
             "location": 45,
             "return": [
-                "Iterable[Type[Partial]]"
+                "Generator[(Type[Partial], Any, None)]"
             ],
             "arguments": {
                 "cls": [
@@ -112,7 +117,7 @@
             "name": "run",
             "location": 37,
             "return": [
-                "Iterable[T]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {}
         }

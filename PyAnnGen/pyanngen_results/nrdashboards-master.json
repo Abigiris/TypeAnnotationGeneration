@@ -5,7 +5,6 @@
             "name": "main",
             "location": 8,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -14,7 +13,6 @@
             "name": "build",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -24,13 +22,11 @@
                 ],
                 "api_key": [
                     "str",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "account_id": [
                     "str",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -38,7 +34,6 @@
             "name": "lint",
             "location": 33,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -61,7 +56,9 @@
             ],
             "arguments": {
                 "str_value": [
-                    "str"
+                    "str",
+                    "Union[int,float]",
+                    "bool"
                 ]
             }
         },
@@ -86,10 +83,13 @@
             "arguments": {
                 "self": [],
                 "api_key": [
-                    "str"
+                    "str",
+                    "Dict[Any,list]",
+                    "ks.Series"
                 ],
                 "account_id": [
-                    "int"
+                    "str",
+                    "transfer.models.ShopID"
                 ]
             }
         },
@@ -102,7 +102,8 @@
             "arguments": {
                 "self": [],
                 "dashboard": [
-                    "nrdash.models.Dashboard"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -110,12 +111,23 @@
             "name": "get_dashboard_id_by_title",
             "location": 25,
             "return": [
-                "Optional[int]"
+                "None",
+                "Optional[str]",
+                "str",
+                "Optional[int]",
+                "Optional[List[str]]"
             ],
             "arguments": {
                 "self": [],
                 "dashboard_title": [
-                    "str"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "MutableMapping[str,Any]",
+                    "MutableMapping",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -128,10 +140,10 @@
             "arguments": {
                 "self": [],
                 "dashboard_id": [
-                    "int"
+                    "str"
                 ],
                 "dashboard": [
-                    "nrdash.models.Dashboard"
+                    "str"
                 ]
             }
         },
@@ -139,7 +151,7 @@
             "name": "_auth_headers",
             "location": 62,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -149,12 +161,20 @@
             "name": "_dashboard_to_dict",
             "location": 66,
             "return": [
-                "dict"
+                "Dict[(str, Dict[(str, Any)])]"
             ],
             "arguments": {
                 "self": [],
                 "dashboard": [
-                    "nrdash.models.Dashboard"
+                    "Dict",
+                    "zerver.models.Message",
+                    "Dict[str,float]",
+                    "float",
+                    "List[float]",
+                    "str",
+                    "List[str]",
+                    "Optional[List[str]]",
+                    "None"
                 ]
             }
         },
@@ -167,30 +187,22 @@
             "arguments": {
                 "self": [],
                 "http_call": [
-                    "dict",
-                    "dict[, ]",
-                    "bytes",
+                    "Dict",
                     "List[int]",
-                    "list[int]",
-                    "Exception",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "bytes",
+                    "Dict[str,Any]",
+                    "Exception"
                 ],
                 "url": [
-                    "dict",
-                    "dict[, ]",
-                    "bytes",
+                    "Dict",
                     "List[int]",
-                    "list[int]",
-                    "Exception",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "bytes",
+                    "Dict[str,Any]",
+                    "Exception"
                 ],
                 "dashboard": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -198,12 +210,15 @@
             "name": "_widget_to_dict",
             "location": 91,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "widget": [
-                    "nrdash.models.Widget"
+                    "bool",
+                    "audiopyle.lib.models.compressed_feature.CompressedFeatureDTO",
+                    "allennlp.models.model.Model",
+                    "corporate.models.CustomerPlan"
                 ]
             }
         }
@@ -213,11 +228,13 @@
             "name": "parse_conditions",
             "location": 41,
             "return": [
-                "Dict[(str, nrdash.models.QueryCondition)]"
+                "dict"
             ],
             "arguments": {
                 "config": [
-                    "dict"
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "str"
                 ]
             }
         },
@@ -225,11 +242,13 @@
             "name": "parse_dashboards",
             "location": 60,
             "return": [
-                "Dict[(str, nrdash.models.Dashboard)]"
+                "Dict[(Any, nrdash.models.Dashboard)]"
             ],
             "arguments": {
                 "config": [
-                    "dict"
+                    "Dict[str,Any]",
+                    "Optional[Dict]",
+                    "Dict"
                 ]
             }
         },
@@ -237,11 +256,13 @@
             "name": "parse_displays",
             "location": 80,
             "return": [
-                "Dict[(str, nrdash.models.QueryDisplay)]"
+                "Dict[(Any, nrdash.models.QueryDisplay)]"
             ],
             "arguments": {
                 "config": [
-                    "dict"
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "str"
                 ]
             }
         },
@@ -249,7 +270,7 @@
             "name": "parse_file",
             "location": 97,
             "return": [
-                "Dict[(str, nrdash.models.Dashboard)]"
+                "Dict[(Any, nrdash.models.Dashboard)]"
             ],
             "arguments": {
                 "file_path": [
@@ -261,14 +282,15 @@
             "name": "parse_output_selections",
             "location": 105,
             "return": [
-                "Dict[(str, nrdash.models.QueryOutputSelection)]"
+                "Dict[(Any, nrdash.models.QueryOutputSelection)]"
             ],
             "arguments": {
                 "config": [
-                    "dict"
+                    "Dict"
                 ],
                 "conditions": [
-                    "Dict[(str, nrdash.models.QueryCondition)]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -276,11 +298,11 @@
             "name": "parse_queries",
             "location": 140,
             "return": [
-                "Dict[(str, nrdash.models.Query)]"
+                "dict"
             ],
             "arguments": {
                 "config": [
-                    "dict"
+                    "Optional[Iterable[str]]"
                 ]
             }
         },
@@ -318,13 +340,13 @@
                 ],
                 "conditions": [
                     "str",
-                    "list[dict[, ]]",
+                    "List[dict]",
                     "int",
                     "Sequence[str]",
-                    "type",
+                    "Type",
                     "List[Dict]",
                     "bool",
-                    "MutableMapping[str, str]"
+                    "MutableMapping[str,str]"
                 ]
             }
         },
@@ -345,13 +367,12 @@
                     "bool",
                     "str",
                     "audiopyle.lib.models.file_meta.CompressedAudioFileMeta",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "zerver.models.CustomProfileField"
                 ],
                 "component_dict": [
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "str",
-                    "Dict[str, str]",
                     "bool",
                     "Awaitable",
                     "List[str]"
@@ -370,9 +391,8 @@
             "arguments": {
                 "query_name": [
                     "str",
+                    "Dict[str,Any]",
                     "int",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
                     "django.db.models.Model"
                 ],
                 "query_config": [
@@ -383,24 +403,22 @@
                 ],
                 "conditions": [
                     "str",
-                    "Mapping[str, T]",
-                    "typing.Mapping",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "Mapping[str,T]",
+                    "Mapping"
                 ],
                 "output_selections": [
                     "str",
                     "int",
                     "float",
                     "bool",
-                    "Union[int, float]"
+                    "Union[int,float]"
                 ],
                 "displays": [
                     "str",
-                    "Mapping[str, T]",
-                    "typing.Mapping",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "Mapping[str,T]",
+                    "Mapping"
                 ]
             }
         },
@@ -413,16 +431,14 @@
             "arguments": {
                 "condition_name": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Dict[str,Any]",
+                    "Callable"
                 ],
                 "condition_config": [
                     "str",
                     "bool",
                     "NamedTuple",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -434,13 +450,10 @@
             ],
             "arguments": {
                 "query_name": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "query_config": [
                     "dict",
@@ -458,13 +471,13 @@
             ],
             "arguments": {
                 "output_config": [
-                    "_T0"
+                    "str",
+                    "int"
                 ],
                 "conditions": [
                     "int",
-                    "list[typing.Optional[str]]",
-                    "bool",
-                    "List[Optional[str]]"
+                    "List[Optional[str]]",
+                    "bool"
                 ]
             }
         },
@@ -507,22 +520,22 @@
             "arguments": {
                 "widget_config": [
                     "str",
-                    "dict",
+                    "Dict",
                     "Type[T]",
                     "Callable"
                 ],
                 "dashboard_name": [
                     "Type[T]",
                     "str",
-                    "typing.Type"
+                    "Type"
                 ],
                 "queries": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "Optional[Dict]",
-                    "Optional[Dict[str, Any]]",
-                    "Tuple[int, int]"
+                    "Optional[Dict[str,Any]]",
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -530,11 +543,19 @@
             "name": "_resolve_all_extending_conditions",
             "location": 349,
             "return": [
-                "_T0"
+                "str",
+                "Callable[,str]",
+                "bool",
+                "Tuple",
+                "Dict"
             ],
             "arguments": {
                 "base_conditions": [
-                    "_T0"
+                    "str",
+                    "bool",
+                    "Dict",
+                    "django.db.models.Model",
+                    "ulauncher.search.Query.Query"
                 ],
                 "extending_conditions": [
                     "str",
@@ -553,12 +574,9 @@
             "arguments": {
                 "base_conditions": [
                     "str",
-                    "list",
-                    "list[]",
+                    "List",
                     "List[float]",
-                    "list[float]",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "extending_condition": [
                     "str"
@@ -575,14 +593,12 @@
                 "exception": [
                     "str",
                     "Set[str]",
-                    "set[str]",
                     "Optional[str]",
                     "None"
                 ],
                 "config_type": [
                     "str",
                     "Set[str]",
-                    "set[str]",
                     "Optional[str]",
                     "None"
                 ],
@@ -601,7 +617,6 @@
                 "config_name": [
                     "str",
                     "Set[str]",
-                    "set[str]",
                     "Optional[str]",
                     "None"
                 ]
@@ -663,7 +678,6 @@
             "name": "test_widget_visualization_from_string",
             "location": 11,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -675,10 +689,9 @@
                 "expected": [
                     "str",
                     "bool",
-                    "Optional[str]",
-                    "None",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -731,10 +744,8 @@
             "arguments": {
                 "nrql": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "List[str]",
-                    "list[str]"
+                    "Dict",
+                    "List[str]"
                 ]
             }
         },
@@ -763,9 +774,8 @@
             "arguments": {
                 "nrql": [
                     "str",
-                    "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -778,31 +788,27 @@
             "arguments": {
                 "event": [
                     "bytes",
-                    "float",
                     "Tuple[int]",
-                    "str",
-                    "tuple[int]"
+                    "float",
+                    "str"
                 ],
                 "condition": [
                     "bytes",
-                    "float",
                     "Tuple[int]",
-                    "str",
-                    "tuple[int]"
+                    "float",
+                    "str"
                 ],
                 "output": [
                     "bytes",
-                    "float",
                     "Tuple[int]",
-                    "str",
-                    "tuple[int]"
+                    "float",
+                    "str"
                 ],
                 "display": [
                     "str",
+                    "Dict[str,str]",
                     "None",
-                    "bool",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "bool"
                 ]
             }
         }
@@ -812,7 +818,6 @@
             "name": "test_create_dashboard",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -821,7 +826,6 @@
             "name": "test_create_dashboard_error",
             "location": 28,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -830,7 +834,6 @@
             "name": "test_get_dashboard_id_by_title_error",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -839,7 +842,6 @@
             "name": "test_get_dashboard_id_by_title_multiple_exact_matches",
             "location": 44,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -848,7 +850,6 @@
             "name": "test_get_dashboard_id_by_title_multiple_matches_with_single_exact_match",
             "location": 58,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -857,7 +858,6 @@
             "name": "test_get_dashboard_id_by_title_no_matches",
             "location": 74,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -866,7 +866,6 @@
             "name": "test_get_dashboard_id_by_title_single_exact_match",
             "location": 87,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -875,7 +874,6 @@
             "name": "test_update_dashboard",
             "location": 102,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -884,7 +882,6 @@
             "name": "test_update_dashboard_error",
             "location": 111,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -898,7 +895,7 @@
             "arguments": {
                 "api_key": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ],
                 "account_id": [
                     "str",
@@ -926,7 +923,11 @@
             "name": "_get_dashboard_id_by_title",
             "location": 146,
             "return": [
-                "Optional[int]"
+                "str",
+                "dict",
+                "bool",
+                "int",
+                "Optional[str]"
             ],
             "arguments": {
                 "title": [
@@ -958,19 +959,17 @@
             "arguments": {
                 "status": [
                     "int",
-                    "dict",
+                    "Dict",
                     "Optional[float]",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ],
                 "dashboard_responses": [
-                    "dict",
+                    "Dict",
                     "None",
-                    "Optional[\"TrackingData\"]",
-                    "dict[, ]",
-                    "Optional[Mapping[str, Any]]",
-                    "typing.Mapping",
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Optional[TrackingData]",
+                    "Dict[str,str]",
+                    "Optional[Mapping[str,Any]]",
+                    "Mapping",
                     "Optional[int]",
                     "int"
                 ]
@@ -985,9 +984,8 @@
             "arguments": {
                 "status": [
                     "str",
+                    "Dict[str,Any]",
                     "bool",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
                     "None",
                     "int",
                     "Optional[int]"
@@ -1331,7 +1329,7 @@
             "name": "_parse_conditions",
             "location": 339,
             "return": [
-                "Dict[(str, models.QueryCondition)]"
+                "dict"
             ],
             "arguments": {
                 "file_name": [
@@ -1345,7 +1343,7 @@
             "name": "_parse_dashboards",
             "location": 344,
             "return": [
-                "Dict[(str, models.Dashboard)]"
+                "Dict[(Any, models.Dashboard)]"
             ],
             "arguments": {
                 "file_name": [
@@ -1359,7 +1357,7 @@
             "name": "_parse_displays",
             "location": 349,
             "return": [
-                "Dict[(str, models.QueryDisplay)]"
+                "Dict[(Any, models.QueryDisplay)]"
             ],
             "arguments": {
                 "file_name": [
@@ -1373,7 +1371,7 @@
             "name": "_parse_output_selections",
             "location": 354,
             "return": [
-                "Dict[(str, models.QueryOutputSelection)]"
+                "Dict[(Any, models.QueryOutputSelection)]"
             ],
             "arguments": {
                 "file_name": [
@@ -1385,7 +1383,7 @@
             "name": "_parse_queries",
             "location": 360,
             "return": [
-                "Dict[(str, models.Query)]"
+                "dict"
             ],
             "arguments": {
                 "file_name": [

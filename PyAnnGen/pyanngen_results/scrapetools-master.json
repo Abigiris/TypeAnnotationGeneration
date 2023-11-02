@@ -5,11 +5,12 @@
             "name": "download",
             "location": 22,
             "return": [
-                "Awaitable[None]"
+                "Callable"
             ],
             "arguments": {
                 "urls": [
-                    "Union[(str, Dict[(str, str)], Iterable[str])]"
+                    "str",
+                    "Optional[object]"
                 ],
                 "path": [
                     "str"
@@ -18,10 +19,14 @@
                     "str"
                 ],
                 "show_progress": [
-                    "bool"
+                    "str"
                 ],
                 "max_concurrent": [
-                    "int"
+                    "Iterable[str]",
+                    "list",
+                    "List[str]",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -29,7 +34,10 @@
             "name": "download_sync",
             "location": 36,
             "return": [
-                "None"
+                "int",
+                "List[str]",
+                "Optional[Any]",
+                "bool"
             ],
             "arguments": {}
         },
@@ -37,13 +45,21 @@
             "name": "download_one",
             "location": 42,
             "return": [
-                "Awaitable[None]"
+                "coroutine"
             ],
             "arguments": {
                 "url": [
+                    "Iterable[str]",
+                    "list",
+                    "List[str]",
+                    "bool",
                     "str"
                 ],
                 "path": [
+                    "Iterable[str]",
+                    "list",
+                    "List[str]",
+                    "bool",
                     "str"
                 ],
                 "session": [
@@ -54,7 +70,11 @@
                     "str"
                 ],
                 "show_progress": [
-                    "bool"
+                    "Iterable[str]",
+                    "list",
+                    "List[str]",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -62,14 +82,22 @@
             "name": "download_all",
             "location": 93,
             "return": [
-                "Awaitable[None]"
+                "coroutine"
             ],
             "arguments": {
                 "urls": [
-                    "Union[(Dict[(str, str)], Iterable[str])]"
+                    "dict",
+                    "Union[Dict, List]",
+                    "\"HexpySession\"",
+                    "Union[str, dict]",
+                    "Dict[int, Dict[int, Any]]",
+                    "str",
+                    "Optional[Container[str]]"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Optional[Dict]"
                 ],
                 "session": [
                     "Iterable[str]",
@@ -77,10 +105,14 @@
                     "bool"
                 ],
                 "show_progress": [
+                    "Iterable[str]",
+                    "List[str]",
                     "bool"
                 ],
                 "max_concurrent": [
-                    "int"
+                    "Iterable[str]",
+                    "List[str]",
+                    "bool"
                 ]
             }
         }
@@ -90,11 +122,14 @@
             "name": "fetch",
             "location": 32,
             "return": [
-                "Awaitable[Union[(scrapetools.response.Response, List[scrapetools.response.Response])]]"
+                "int"
             ],
             "arguments": {
                 "urls": [
-                    "Union[(str, Iterable[str])]"
+                    "Union[str, Iterable[str]]",
+                    "str",
+                    "aiohttp.ClientSession",
+                    "int"
                 ],
                 "session": [
                     "aiohttp.ClientSession",
@@ -103,10 +138,14 @@
                     "int"
                 ],
                 "show_progress": [
-                    "bool"
+                    "int",
+                    "bool",
+                    "List[str]"
                 ],
                 "max_concurrent": [
-                    "int"
+                    "int",
+                    "bool",
+                    "List[str]"
                 ]
             }
         },
@@ -114,7 +153,10 @@
             "name": "fetch_sync",
             "location": 43,
             "return": [
-                "Union[(scrapetools.response.Response, List[scrapetools.response.Response])]"
+                "int",
+                "List[str]",
+                "Optional[Any]",
+                "bool"
             ],
             "arguments": {}
         },
@@ -122,11 +164,13 @@
             "name": "responsify",
             "location": 50,
             "return": [
-                "Callable[(..., Awaitable[scrapetools.response.Response[A]])]"
+                "Callable"
             ],
             "arguments": {
                 "f": [
-                    "Callable[(..., Awaitable[A])]"
+                    "Iterable[str]",
+                    "Callable",
+                    "T"
                 ]
             }
         },
@@ -134,9 +178,7 @@
             "name": "fetch_one",
             "location": 66,
             "return": [
-                "str",
-                "List[Callable]",
-                "bool"
+                "Coroutine[(Any, Any, scrapetools.response.Response)]"
             ],
             "arguments": {
                 "url": [
@@ -159,11 +201,15 @@
             "name": "fetch_all",
             "location": 95,
             "return": [
-                "Awaitable[List[scrapetools.response.Response]]"
+                "coroutine"
             ],
             "arguments": {
                 "urls": [
-                    "List[str]"
+                    "bool",
+                    "int",
+                    "aiohttp.ClientSession",
+                    "List[str]",
+                    "tqdm.tqdm"
                 ],
                 "session": [
                     "bool",
@@ -173,10 +219,18 @@
                     "tqdm.tqdm"
                 ],
                 "show_progress": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "aiohttp.ClientSession",
+                    "List[str]",
+                    "tqdm.tqdm"
                 ],
                 "max_concurrent": [
-                    "int"
+                    "bool",
+                    "int",
+                    "aiohttp.ClientSession",
+                    "List[str]",
+                    "tqdm.tqdm"
                 ]
             }
         }
@@ -186,14 +240,15 @@
             "name": "compose",
             "location": 15,
             "return": [
-                "Callable[(..., B)]"
+                "Union[(functools.partial, Callable)]"
             ],
             "arguments": {
                 "f": [
-                    "Callable[([A], B)]"
+                    "Callable"
                 ],
                 "g": [
-                    "Callable[(..., A)]"
+                    "Callable",
+                    "None"
                 ]
             }
         },
@@ -201,23 +256,20 @@
             "name": "fmap",
             "location": 23,
             "return": [
-                "Callable",
-                "bool",
-                "str",
-                "Tuple[int, int]"
+                "functools.partial"
             ],
             "arguments": {
                 "f": [
-                    "Callable"
+                    "Callable",
+                    "Callable[...,T]"
                 ],
                 "obj": [
                     "None",
                     "Optional[int]",
                     "str",
+                    "Dict[str,str]",
                     "int",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "Optional[Dict[str, str]]",
+                    "Optional[Dict[str,str]]",
                     "Optional[str]"
                 ]
             }
@@ -248,26 +300,21 @@
             "name": "_",
             "location": 71,
             "return": [
-                "list[]",
+                "List",
                 "str",
                 "int",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "obj": [
-                    "list[]",
-                    "callable",
-                    "list",
+                    "List",
                     "Callable",
-                    "Callable[..., None]"
+                    "Callable[...,None]"
                 ],
                 "f": [
-                    "typing.Callable[, ]",
-                    "callable",
-                    "list[]",
-                    "list",
                     "Callable",
-                    "Callable[..., None]"
+                    "List",
+                    "Callable[...,None]"
                 ]
             }
         }
@@ -277,19 +324,11 @@
             "name": "__new__",
             "location": 21,
             "return": [
-                "str",
-                "int",
-                "list[str]",
-                "typing.Callable[, ]",
-                "None",
-                "dict[, ]"
+                "Show"
             ],
             "arguments": {
                 "cls": [
-                    "dict",
-                    "str",
-                    "dict[, ]",
-                    "bytes"
+                    "Type[_TShow]"
                 ]
             }
         },
@@ -314,13 +353,23 @@
             "arguments": {
                 "self": [],
                 "url": [
-                    "str"
+                    "bool",
+                    "str",
+                    "int"
                 ],
                 "result": [
-                    "A"
+                    "bool",
+                    "None",
+                    "Dict[str,Any]",
+                    "Counter",
+                    "Callable",
+                    "int"
                 ],
                 "error": [
-                    "Exception"
+                    "bool",
+                    "None",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -328,7 +377,7 @@
             "name": "__iter__",
             "location": 26,
             "return": [
-                "Iterator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -338,12 +387,13 @@
             "name": "fmap",
             "location": 31,
             "return": [
-                "Response[Union[(A, B)]]"
+                "Response"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A], B)]"
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -351,12 +401,15 @@
             "name": "bind",
             "location": 38,
             "return": [
-                "Response[Union[(A, B)]]"
+                "Response",
+                "str",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
                 "f": [
-                    "Callable[([A], Response[B])]"
+                    "TextIO",
+                    "bool"
                 ]
             }
         },
@@ -364,15 +417,36 @@
             "name": "fold",
             "location": 45,
             "return": [
-                "Union[(Exception, A, B)]"
+                "Optional[Union[str, Any, Any, Any]]",
+                "Dict[str, Set[str]]",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "on_result": [
-                    "Callable[([A], B)]"
+                    "Optional[float]",
+                    "None",
+                    "str",
+                    "Optional[str]",
+                    "float",
+                    "Optional[Callable[[Any],bool]]",
+                    "Callable[Any,bool]",
+                    "Optional[Tuple[float,float]]",
+                    "Tuple[Union[float,float]]",
+                    "Optional[Dict]",
+                    "Dict"
                 ],
                 "on_error": [
-                    "Callable[([Exception], B)]"
+                    "Union[List,Dict,None]",
+                    "None",
+                    "Optional[str]",
+                    "Optional[int]",
+                    "List",
+                    "Optional[float]",
+                    "Dict",
+                    "str",
+                    "int",
+                    "float"
                 ]
             }
         }
@@ -382,28 +456,39 @@
             "name": "scrape",
             "location": 17,
             "return": [
-                "Union[(list, functools.partial)]"
+                "List",
+                "str",
+                "Callable"
             ],
             "arguments": {
                 "data": [
                     "str",
                     "None",
                     "bool",
-                    "dict",
-                    "Optional[str]",
-                    "dict[, ]"
+                    "Dict",
+                    "Optional[str]"
                 ],
                 "css": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None"
                 ],
                 "xpath": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None"
                 ],
                 "base_url": [
-                    "str"
+                    "str",
+                    "None",
+                    "BinaryIO",
+                    "Dict[str,Any]",
+                    "bytes",
+                    "Union[str,bytes]"
                 ],
                 "flatten": [
-                    "bool"
+                    "bool",
+                    "str"
                 ]
             }
         }
@@ -413,11 +498,16 @@
             "name": "run",
             "location": 13,
             "return": [
-                "A"
+                "Any"
             ],
             "arguments": {
                 "coro": [
-                    "Awaitable[A]"
+                    "collections.abc.Coroutine",
+                    "Coroutine",
+                    "str",
+                    "asyncio.AbstractEventLoop",
+                    "None",
+                    "Optional[asyncio.AbstractEventLoop]"
                 ]
             }
         },
@@ -432,7 +522,9 @@
                     "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "None"
                 ]
             }
         },
@@ -440,7 +532,8 @@
             "name": "url_basename",
             "location": 32,
             "return": [
-                "str"
+                "str",
+                "Tuple[str, str]"
             ],
             "arguments": {
                 "url": [
@@ -467,7 +560,6 @@
             "name": "server",
             "location": 33,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -476,7 +568,6 @@
             "name": "download_dir",
             "location": 40,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -485,7 +576,6 @@
             "name": "test_download_one",
             "location": 47,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -505,7 +595,6 @@
             "name": "test_download_all",
             "location": 60,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -525,7 +614,6 @@
             "name": "test_download_all_return",
             "location": 73,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -547,27 +635,23 @@
             "name": "test_download_all_dict_named",
             "location": 84,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "server": [
-                    "dict[str, typing.Sequence[str]]",
-                    "path.Path",
-                    "Dict[str, Sequence[str]]"
+                    "Dict[str,Sequence[str]]",
+                    "path.Path"
                 ],
                 "download_dir": [
-                    "dict[str, typing.Sequence[str]]",
-                    "path.Path",
-                    "Dict[str, Sequence[str]]"
+                    "Dict[str,Sequence[str]]",
+                    "path.Path"
                 ],
                 "show_progress": [
                     "str",
                     "int",
-                    "DefaultDict[str, List[Any]]",
-                    "typing.DefaultDict",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "DefaultDict[str,List[Any]]",
+                    "DefaultDict"
                 ]
             }
         },
@@ -575,7 +659,6 @@
             "name": "test_download_all_empty",
             "location": 99,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -596,7 +679,6 @@
             "name": "server",
             "location": 10,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -610,8 +692,8 @@
             "arguments": {
                 "server": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -649,7 +731,6 @@
             "name": "__ini__",
             "location": 6,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -673,7 +754,6 @@
             "name": "server",
             "location": 9,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -724,19 +804,16 @@
             "name": "test_url_basename",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "url": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "expected": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -744,7 +821,6 @@
             "name": "test_sensible_download_path",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

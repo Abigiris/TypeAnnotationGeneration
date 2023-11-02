@@ -17,20 +17,29 @@
             "name": "generate_shard_data",
             "location": 17,
             "return": [
-                "Tuple[(np.ndarray, list)]"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "id_prefix": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ],
                 "dimension": [
-                    "int"
+                    "int",
+                    "Optional[int]"
                 ],
                 "count": [
-                    "int"
+                    "int",
+                    "bytes",
+                    "bool",
+                    "float"
                 ],
                 "seed": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -43,7 +52,8 @@
             ],
             "arguments": {
                 "X": [
-                    "np.ndarray"
+                    "str",
+                    "Dict[str,float]"
                 ]
             }
         },
@@ -56,10 +66,14 @@
             ],
             "arguments": {
                 "collection_name": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes"
                 ]
             }
         },
@@ -72,12 +86,15 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "shards": [
-                    "list"
+                    "str",
+                    "int"
                 ],
                 "replication_factor": [
+                    "str",
                     "int"
                 ]
             }
@@ -90,10 +107,14 @@
             ],
             "arguments": {
                 "collection": [
-                    "str"
+                    "str",
+                    "Type[T]",
+                    "Type"
                 ],
                 "shard": [
-                    "str"
+                    "str",
+                    "Type[T]",
+                    "Type"
                 ]
             }
         },
@@ -105,7 +126,9 @@
             ],
             "arguments": {
                 "collection": [
-                    "str"
+                    "str",
+                    "Type[T]",
+                    "Type"
                 ]
             }
         },
@@ -123,7 +146,7 @@
             "name": "main",
             "location": 15,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         }
@@ -133,7 +156,7 @@
             "name": "main",
             "location": 15,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         }
@@ -145,7 +168,7 @@
             "name": "create_faiss_index_shard",
             "location": 14,
             "return": [
-                "needlestack.indices.index.BaseIndex"
+                "needlestack.indices.faiss_indices.FaissIndex"
             ],
             "arguments": {
                 "faiss_index": [
@@ -153,7 +176,8 @@
                     "float"
                 ],
                 "metadatas": [
-                    "list"
+                    "bool",
+                    "float"
                 ]
             }
         }
@@ -171,16 +195,27 @@
             ],
             "arguments": {
                 "X": [
-                    "list[]",
+                    "List",
                     "int",
-                    "list",
-                    "Union[pandas.DataFrame, numpy.ndarray]"
+                    "Union[pandas.DataFrame,numpy.ndarray]"
                 ],
                 "dtype": [
-                    "Optional[str]"
+                    "None",
+                    "Optional[str]",
+                    "str",
+                    "float",
+                    "Optional[Tuple]",
+                    "Tuple",
+                    "Union[pandas.DataFrame,numpy.ndarray]",
+                    "numpy.ndarray"
                 ],
                 "shape": [
-                    "Optional[tuple]"
+                    "None",
+                    "Optional[Tuple]",
+                    "int",
+                    "Tuple",
+                    "Optional[numpy.ndarray]",
+                    "T"
                 ]
             }
         },
@@ -188,16 +223,18 @@
             "name": "proto_to_ndarray",
             "location": 62,
             "return": [
-                "np.ndarray"
+                "str",
+                "List[dict]",
+                "float",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "proto": [
                     "str",
                     "bool",
-                    "dict",
-                    "dict[, ]",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Dict",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -209,16 +246,44 @@
             ],
             "arguments": {
                 "ids": [
-                    "List[str]"
+                    "Optional[Tuple[str]]",
+                    "Tuple[str]",
+                    "List[str]",
+                    "int",
+                    "None",
+                    "str",
+                    "List[Tuple]",
+                    "List[tuple]"
                 ],
                 "fields_list": [
+                    "Optional[Tuple[str]]",
+                    "Tuple[str]",
+                    "List[str]",
+                    "int",
+                    "None",
+                    "str",
+                    "List[Tuple]",
                     "List[tuple]"
                 ],
                 "fieldtypes": [
-                    "Optional[Tuple[str]]"
+                    "Optional[Tuple[str]]",
+                    "None",
+                    "List[str]",
+                    "int",
+                    "Tuple[str]",
+                    "str",
+                    "List[Tuple]",
+                    "List[tuple]"
                 ],
                 "fieldnames": [
-                    "Optional[Tuple[str]]"
+                    "Optional[Tuple[str]]",
+                    "None",
+                    "List[str]",
+                    "int",
+                    "Tuple[str]",
+                    "str",
+                    "List[Tuple]",
+                    "List[tuple]"
                 ]
             }
         },
@@ -230,16 +295,37 @@
             ],
             "arguments": {
                 "id": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "fields": [
-                    "tuple"
+                    "str",
+                    "Optional[str]",
+                    "int"
                 ],
                 "fieldtypes": [
-                    "Optional[Tuple[str]]"
+                    "Optional[str]",
+                    "None",
+                    "Optional[int]",
+                    "str",
+                    "Optional[float]",
+                    "int",
+                    "Optional[Dict[str,Any]]",
+                    "float",
+                    "Optional[Iterable[int]]",
+                    "Dict[str,Any]"
                 ],
                 "fieldnames": [
-                    "Optional[Tuple[str]]"
+                    "Optional[str]",
+                    "None",
+                    "Optional[int]",
+                    "str",
+                    "Optional[float]",
+                    "int",
+                    "Optional[Dict[str,Any]]",
+                    "float",
+                    "Optional[Iterable[int]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -251,14 +337,16 @@
                 "List[int]"
             ],
             "arguments": {
-                "field": [
-                    "Union[(float, str)]"
-                ],
+                "field": [],
                 "fieldtype": [
-                    "Optional[str]"
+                    "str",
+                    "None"
                 ],
                 "fieldname": [
-                    "Optional[str]"
+                    "str",
+                    "List",
+                    "None",
+                    "Sequence[str]"
                 ]
             }
         }
@@ -274,12 +362,10 @@
             "arguments": {
                 "self": [],
                 "items": [
-                    "list[]",
-                    "list",
-                    "dict[, ]",
-                    "Union[Dict, List]",
-                    "T",
-                    "dict"
+                    "List",
+                    "Dict",
+                    "Union[Dict,List]",
+                    "T"
                 ],
                 "knapsacks": [
                     "str",
@@ -297,20 +383,31 @@
             "name": "calculate_add",
             "location": 96,
             "return": [
-                "list"
+                "List",
+                "str",
+                "Tuple[int,int]",
+                "bool",
+                "List[int]",
+                "Sequence[cirq.Qid]"
             ],
             "arguments": {
                 "nodes": [
-                    "list"
+                    "list",
+                    "int"
                 ],
                 "current_collections": [
-                    "list"
+                    "bool",
+                    "int"
                 ],
                 "add_collections": [
-                    "list"
+                    "List[str]"
                 ],
                 "algorithm": [
-                    "Algorithm"
+                    "str",
+                    "Optional[str]",
+                    "Set[int]",
+                    "Set[str]",
+                    "None"
                 ]
             }
         },
@@ -318,17 +415,13 @@
             "name": "calculate_rebalance",
             "location": 126,
             "return": [
-                "list"
+                "Any"
             ],
             "arguments": {
-                "nodes": [
-                    "list"
-                ],
-                "current_collections": [
-                    "list"
-                ],
+                "nodes": [],
+                "current_collections": [],
                 "algorithm": [
-                    "Algorithm"
+                    "str"
                 ]
             }
         },
@@ -336,14 +429,17 @@
             "name": "_collections_to_knapsacks",
             "location": 136,
             "return": [
-                "List[Knapsack]"
+                "list"
             ],
             "arguments": {
                 "nodes": [
-                    "list"
+                    "str"
                 ],
                 "collections": [
-                    "list"
+                    "List[needlestack.apis.collections_pb2.Collection]",
+                    "str",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -355,7 +451,8 @@
             ],
             "arguments": {
                 "knapsacks": [
-                    "List[Knapsack]"
+                    "Callable",
+                    "int"
                 ]
             }
         },
@@ -384,7 +481,7 @@
             "location": 32,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {
                 "self": []
@@ -435,13 +532,17 @@
                 "node": [
                     "str",
                     "int",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]",
-                    "Callable[..., T]",
-                    "typing.Callable[..., T]"
+                    "List[Dict[str,Any]]",
+                    "Callable[...,T]",
+                    "List[dict[str,Any]]"
                 ],
                 "capacity": [
-                    "Optional[float]"
+                    "str",
+                    "None",
+                    "int",
+                    "List[Dict[str,Any]]",
+                    "Callable[...,T]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -466,7 +567,11 @@
             "arguments": {
                 "self": [],
                 "item": [
-                    "Item"
+                    "Dict",
+                    "List[T]",
+                    "int",
+                    "Union[int,slice]",
+                    "Iterable[T]"
                 ]
             }
         },
@@ -489,10 +594,14 @@
             "arguments": {
                 "self": [],
                 "items": [
-                    "List[Item]"
+                    "str",
+                    "int",
+                    "T"
                 ],
                 "knapsacks": [
-                    "List[Knapsack]"
+                    "str",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -505,7 +614,11 @@
             "arguments": {
                 "self": [],
                 "knapsacks": [
-                    "List[Knapsack]"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -566,7 +679,7 @@
             "name": "set_state",
             "location": 24,
             "return": [
-                "bool"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
@@ -574,20 +687,33 @@
                     "str",
                     "Optional[str]",
                     "bool",
+                    "Dict[str,Any]",
                     "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "collection_name": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "str",
+                    "Dict[str,Any]",
+                    "List"
                 ],
                 "shard_name": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "str",
+                    "Dict[str,Any]",
+                    "List"
                 ],
                 "hostport": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "bool",
+                    "str",
+                    "Dict[str,Any]",
+                    "List"
                 ]
             }
         },
@@ -595,7 +721,7 @@
             "name": "set_local_state",
             "location": 34,
             "return": [
-                "bool"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
@@ -606,10 +732,16 @@
                     "None"
                 ],
                 "collection_name": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "bool"
                 ],
                 "shard_name": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "bool"
                 ]
             }
         },
@@ -617,12 +749,14 @@
             "name": "add_collections",
             "location": 43,
             "return": [
-                "list"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "collections": [
-                    "list"
+                    "str",
+                    "bytes",
+                    "List[str]"
                 ]
             }
         },
@@ -630,12 +764,17 @@
             "name": "delete_collections",
             "location": 48,
             "return": [
-                "List[str]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "collection_names": [
-                    "List[str]"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "List[AnyStr]"
                 ]
             }
         },
@@ -643,7 +782,7 @@
             "name": "list_nodes",
             "location": 51,
             "return": [
-                "list"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -653,15 +792,34 @@
             "name": "list_collections",
             "location": 54,
             "return": [
-                "list"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "collection_names": [
-                    "Optional[List[str]]"
+                    "None",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "str",
+                    "Optional[bool]",
+                    "bool",
+                    "Literal",
+                    "Sequence[str]",
+                    "List[list[str]]",
+                    "List[List[str]]",
+                    "List[dict]",
+                    "Optional[List[dict]]"
                 ],
                 "include_state": [
-                    "bool"
+                    "bool",
+                    "Optional[List[str]]",
+                    "Optional[bool]",
+                    "Literal",
+                    "str",
+                    "List[List[str]]",
+                    "List[str]",
+                    "Optional[List[dict]]",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -669,12 +827,14 @@
             "name": "list_local_collections",
             "location": 61,
             "return": [
-                "list"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "include_state": [
-                    "bool"
+                    "bool",
+                    "Optional[bool]",
+                    "str"
                 ]
             }
         },
@@ -682,14 +842,22 @@
             "name": "get_searchers",
             "location": 66,
             "return": [
-                "List[Tuple[(str, List[str])]]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "collection_name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "Optional[List[str]]",
+                    "None"
                 ],
                 "shard_names": [
+                    "str",
+                    "None",
+                    "bool",
+                    "List[str]",
                     "Optional[List[str]]"
                 ]
             }
@@ -705,16 +873,29 @@
             "arguments": {
                 "self": [],
                 "cluster_name": [
-                    "str"
-                ],
-                "hostport": [
-                    "str"
-                ],
-                "hosts": [
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "Dict[str, Any]",
                     "List[str]"
                 ],
+                "hostport": [
+                    "int",
+                    "str",
+                    "Optional[Mapping]",
+                    "Optional[str]"
+                ],
+                "hosts": [
+                    "str",
+                    "int",
+                    "bool",
+                    "TextIO",
+                    "Optional[List[str]]"
+                ],
                 "zookeeper_root": [
-                    "str"
+                    "str",
+                    "bool",
+                    "dict"
                 ]
             }
         },
@@ -784,10 +965,12 @@
             "arguments": {
                 "self": [],
                 "collection_name": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "shard_name": [
-                    "str"
+                    "str",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -800,13 +983,22 @@
             "arguments": {
                 "self": [],
                 "collection_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]"
                 ],
                 "shard_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]"
                 ],
                 "hostport": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool",
+                    "Dict[str, Any]",
+                    "Optional[str]",
+                    "List[int]"
                 ]
             }
         },
@@ -960,7 +1152,9 @@
             "arguments": {
                 "self": [],
                 "collections": [
-                    "_T0"
+                    "str",
+                    "bytes",
+                    "List[str]"
                 ]
             }
         },
@@ -973,7 +1167,11 @@
             "arguments": {
                 "self": [],
                 "collection_names": [
-                    "_T0"
+                    "str",
+                    "Optional[str]",
+                    "List[str]",
+                    "bool",
+                    "List[AnyStr]"
                 ]
             }
         },
@@ -1029,13 +1227,25 @@
             "arguments": {
                 "self": [],
                 "collection_names": [
-                    "Optional[List[str]]"
+                    "str",
+                    "float",
+                    "int",
+                    "bool"
                 ],
                 "hostport": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "bool",
+                    "Type",
+                    "Optional[float]"
                 ],
                 "load_replica": [
-                    "bool"
+                    "Optional[bool]",
+                    "int",
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -1043,7 +1253,7 @@
             "name": "get_searchers",
             "location": 291,
             "return": [
-                "List[Tuple[(Any, List[str])]]"
+                "List[Tuple[(Any, list)]]"
             ],
             "arguments": {
                 "self": [],
@@ -1062,18 +1272,24 @@
             "name": "_get_searchers_for_shard",
             "location": 310,
             "return": [
-                "List[str]"
+                "str",
+                "bytes"
             ],
             "arguments": {
                 "self": [],
                 "collection_name": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "shard_name": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "active": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ]
             }
         },
@@ -1108,8 +1324,7 @@
                 ],
                 "proto": [
                     "str",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -1177,7 +1392,9 @@
             "arguments": {
                 "self": [],
                 "shard": [
-                    "needlestack.collections.shard.Shard"
+                    "str",
+                    "int",
+                    "numpy.ndarray"
                 ]
             }
         },
@@ -1203,13 +1420,21 @@
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "str",
+                    "Sequence[Any]",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "k": [
-                    "int"
+                    "str",
+                    "Sequence[Any]",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "shard_names": [
-                    "List[str]"
+                    "str",
+                    "Mapping[str,Any]",
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1217,10 +1442,6 @@
             "name": "retrieve",
             "location": 87,
             "return": [
-                "Optional[str]",
-                "list[]",
-                "str",
-                "dict[, ]",
                 "None"
             ],
             "arguments": {
@@ -1229,7 +1450,10 @@
                     "str"
                 ],
                 "shard_names": [
-                    "List[str]"
+                    "str",
+                    "bool",
+                    "int",
+                    "float"
                 ]
             }
         }
@@ -1247,8 +1471,7 @@
                 ],
                 "proto": [
                     "str",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -1262,8 +1485,7 @@
                 "self": [],
                 "proto": [
                     "List[str]",
-                    "str",
-                    "list[str]"
+                    "str"
                 ]
             }
         },
@@ -1271,7 +1493,7 @@
             "name": "load",
             "location": 37,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -1296,10 +1518,20 @@
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "Tuple[Union[int,int]]",
+                    "int",
+                    "Tuple[int,int]",
+                    "str",
+                    "float",
+                    "numpy.ndarray"
                 ],
                 "metadatas": [
-                    "list"
+                    "Tuple[Union[int,int]]",
+                    "int",
+                    "Tuple[int,int]",
+                    "str",
+                    "float",
+                    "numpy.ndarray"
                 ]
             }
         },
@@ -1307,15 +1539,22 @@
             "name": "add_vectors",
             "location": 47,
             "return": [
-                "NoReturn"
+                "bool",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "int",
+                    "List[int]",
+                    "T",
+                    "numpy.ndarray"
                 ],
                 "metadatas": [
-                    "list"
+                    "int",
+                    "List[int]",
+                    "T",
+                    "numpy.ndarray"
                 ]
             }
         },
@@ -1323,15 +1562,23 @@
             "name": "query",
             "location": 50,
             "return": [
-                "list"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "int",
+                    "str",
+                    "Optional[Sequence[T]]",
+                    "Sequence[T]",
+                    "None"
                 ],
                 "k": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[Sequence[T]]",
+                    "Sequence[T]",
+                    "None"
                 ]
             }
         },
@@ -1339,13 +1586,14 @@
             "name": "retrieve",
             "location": 53,
             "return": [
-                "int",
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "id": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -1408,8 +1656,7 @@
                 "self": [],
                 "proto": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1417,7 +1664,6 @@
             "name": "local_filename",
             "location": 48,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -1428,13 +1674,12 @@
             "name": "get_content",
             "location": 54,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "self": [],
                 "mode": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "bool",
                     "List[int]"
@@ -1463,13 +1708,11 @@
                 "self": [],
                 "proto": [
                     "str",
-                    "Union[str, IO]",
-                    "typing.IO",
-                    "bool",
-                    "IO[str]",
-                    "dict[str, typing.Any]",
+                    "Union[str,IO]",
                     "IO",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "bool",
+                    "IO[str]"
                 ]
             }
         },
@@ -1477,7 +1720,6 @@
             "name": "local_filename",
             "location": 25,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -1488,14 +1730,13 @@
             "name": "get_content",
             "location": 29,
             "return": [
-                "",
                 "typing.Generator[typing.IO]"
             ],
             "arguments": {
                 "self": [],
                 "mode": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ]
             }
         }
@@ -1505,7 +1746,7 @@
             "name": "from_proto",
             "location": 12,
             "return": [
-                "DataSource"
+                "Union[(needlestack.data_sources.gcs.GcsDataSource, needlestack.data_sources.local.LocalDataSource)]"
             ],
             "arguments": {
                 "proto": [
@@ -1517,7 +1758,7 @@
             "name": "last_modified",
             "location": 37,
             "return": [
-                "builtins.float",
+                "float",
                 "None"
             ],
             "arguments": {
@@ -1539,7 +1780,6 @@
             "name": "local_filename",
             "location": 50,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1550,7 +1790,6 @@
             "name": "get_content",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1558,8 +1797,7 @@
                 "mode": [
                     "str",
                     "bool",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         }
@@ -1603,8 +1841,8 @@
                     "str",
                     "Optional[str]",
                     "None",
-                    "Mapping[str, str]",
-                    "typing.Mapping"
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -1617,8 +1855,7 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "str",
                     "int"
                 ]
@@ -1666,7 +1903,12 @@
             "arguments": {
                 "self": [],
                 "enable": [
-                    "bool"
+                    "bool",
+                    "Iterable[Any]",
+                    "Iterable[dict]",
+                    "str",
+                    "Dict",
+                    "List[dict]"
                 ]
             }
         },
@@ -1680,8 +1922,7 @@
                 "self": [],
                 "i": [
                     "int",
-                    "Iterator",
-                    "typing.Iterator"
+                    "Iterator"
                 ]
             }
         },
@@ -1698,8 +1939,7 @@
                 "self": [],
                 "i": [
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -1707,18 +1947,16 @@
             "name": "_get_index_by_id",
             "location": 103,
             "return": [
-                "Optional[int]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "id": [
                     "str",
+                    "Dict[str,str]",
                     "int",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "dict[int, str]",
-                    "Dict[int, str]",
-                    "Dict[Any, str]"
+                    "Dict[int,str]",
+                    "Dict[Any,str]"
                 ]
             }
         },
@@ -1753,7 +1991,7 @@
             "name": "from_proto",
             "location": 17,
             "return": [
-                "BaseIndex"
+                "needlestack.indices.faiss_indices.FaissIndex"
             ],
             "arguments": {
                 "proto": [
@@ -1767,7 +2005,7 @@
             "name": "dimension",
             "location": 37,
             "return": [
-                "builtins.int",
+                "int",
                 "None"
             ],
             "arguments": {
@@ -1778,7 +2016,7 @@
             "name": "count",
             "location": 42,
             "return": [
-                "builtins.int",
+                "int",
                 "None"
             ],
             "arguments": {
@@ -1807,7 +2045,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "dict"
+                    "int",
+                    "bytes",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1860,10 +2101,20 @@
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "List[needlestack.apis.indices_pb2.Metadata]",
+                    "numpy.ndarray",
+                    "int",
+                    "List[T]",
+                    "str",
+                    "float"
                 ],
                 "metadatas": [
-                    "list"
+                    "List[needlestack.apis.indices_pb2.Metadata]",
+                    "numpy.ndarray",
+                    "int",
+                    "List[T]",
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -1876,10 +2127,20 @@
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "List[needlestack.apis.indices_pb2.Metadata]",
+                    "int",
+                    "numpy.ndarray",
+                    "str",
+                    "List[float]",
+                    "bool"
                 ],
                 "metadatas": [
-                    "list"
+                    "List[needlestack.apis.indices_pb2.Metadata]",
+                    "int",
+                    "numpy.ndarray",
+                    "str",
+                    "List[float]",
+                    "bool"
                 ]
             }
         },
@@ -1887,13 +2148,13 @@
             "name": "_get_metadata_by_index",
             "location": 88,
             "return": [
-                "needlestack.apis.indices_pb2.Metadata",
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "i": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1901,12 +2162,13 @@
             "name": "_get_vector_by_index",
             "location": 91,
             "return": [
-                "np.ndarray"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "i": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1914,12 +2176,14 @@
             "name": "_get_index_by_id",
             "location": 94,
             "return": [
-                "int"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Set[str]"
                 ]
             }
         },
@@ -1927,15 +2191,25 @@
             "name": "knn_search",
             "location": 97,
             "return": [
-                "Tuple[(np.ndarray, np.ndarray)]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "int",
+                    "float",
+                    "Type",
+                    "List",
+                    "numpy.ndarray",
+                    "Type[Exception]"
                 ],
                 "k": [
-                    "int"
+                    "int",
+                    "float",
+                    "Type",
+                    "List",
+                    "numpy.ndarray",
+                    "Type[Exception]"
                 ]
             }
         },
@@ -1943,12 +2217,17 @@
             "name": "get_vector_and_metadata",
             "location": 106,
             "return": [
-                "Tuple[(np.ndarray, Any)]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "id": [
-                    "str"
+                    "int",
+                    "str",
+                    "None",
+                    "bool",
+                    "Union[int,str]",
+                    "Optional[int]"
                 ]
             }
         },
@@ -1956,10 +2235,7 @@
             "name": "retrieve",
             "location": 122,
             "return": [
-                "numpy.array",
-                "int",
-                "str",
-                "dict"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
@@ -1972,15 +2248,19 @@
             "name": "query",
             "location": 127,
             "return": [
-                "List[list]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "X": [
-                    "np.ndarray"
+                    "int",
+                    "str",
+                    "numpy.ndarray"
                 ],
                 "k": [
-                    "int"
+                    "int",
+                    "str",
+                    "numpy.ndarray"
                 ]
             }
         }
@@ -1995,20 +2275,19 @@
                 "float"
             ],
             "arguments": {
-                "config": [
-                    "needlestack.servicers.settings.BaseConfig"
-                ]
+                "config": []
             }
         },
         "create_zookeeper_cluster_manager": {
             "name": "create_zookeeper_cluster_manager",
             "location": 35,
             "return": [
-                "needlestack.cluster_managers.manager.ClusterManager"
+                "needlestack.cluster_managers.zookeeper.ZookeeperClusterManager"
             ],
             "arguments": {
                 "config": [
-                    "needlestack.servicers.settings.BaseConfig"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -2016,7 +2295,6 @@
             "name": "serve",
             "location": 51,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2039,7 +2317,10 @@
             ],
             "arguments": {
                 "config": [
-                    "needlestack.servicers.settings.BaseConfig"
+                    "Dict[str,Any]",
+                    "needlestack.servicers.settings.BaseConfig",
+                    "Type",
+                    "Type[T]"
                 ]
             }
         },
@@ -2072,13 +2353,19 @@
                     "str"
                 ],
                 "log_file": [
-                    "str"
+                    "int",
+                    "str",
+                    "float"
                 ],
                 "max_bytes": [
-                    "int"
+                    "int",
+                    "str",
+                    "float"
                 ],
                 "backup_count": [
-                    "int"
+                    "int",
+                    "str",
+                    "float"
                 ]
             }
         }
@@ -2088,16 +2375,17 @@
             "name": "__init__",
             "location": 25,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "config": [
-                    "needlestack.servicers.settings.BaseConfig"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
-                "cluster_manager": [
-                    "needlestack.cluster_managers.manager.ClusterManager"
-                ]
+                "cluster_manager": []
             }
         },
         "MergerServicer.Search": {
@@ -2112,8 +2400,7 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "context": [
                     "dict",
@@ -2166,9 +2453,8 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
+                    "Optional[Dict[str,Any]]",
                     "None"
                 ],
                 "context": []
@@ -2202,8 +2488,7 @@
                 "self": [],
                 "request": [
                     "Exception",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "context": [
                     "grpc.ServicerContext"
@@ -2214,7 +2499,8 @@
             "name": "collections_load",
             "location": 159,
             "return": [
-                "bool"
+                "bool",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -2224,15 +2510,20 @@
             "name": "get_searcher_hostports",
             "location": 179,
             "return": [
-                "List[Tuple[(str, List[str])]]"
+                "List[Tuple[(Any, list)]]"
             ],
             "arguments": {
                 "self": [],
                 "collection_name": [
-                    "str"
+                    "str",
+                    "int",
+                    "raiden.network.rpc.clienJSONRPCClient"
                 ],
                 "shard_names": [
-                    "List[str]"
+                    "str",
+                    "None",
+                    "int",
+                    "raiden.network.rpc.clienJSONRPCClient"
                 ]
             }
         },
@@ -2248,7 +2539,12 @@
             "arguments": {
                 "self": [],
                 "hostport": [
-                    "str"
+                    "bytes",
+                    "Dict",
+                    "bool",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ]
             }
         }
@@ -2258,16 +2554,14 @@
             "name": "__init__",
             "location": 26,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "config": [
-                    "needlestack.servicers.settings.BaseConfig"
+                    "BaseConfig"
                 ],
-                "cluster_manager": [
-                    "needlestack.cluster_managers.manager.ClusterManager"
-                ]
+                "cluster_manager": []
             }
         },
         "SearcherServicer.Search": {
@@ -2352,14 +2646,13 @@
                 "proto": [
                     "Exception",
                     "needlestack.apis.collections_pb2.Collection",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "None",
                     "Optional[logging.Logger]",
-                    "dict[str, list[str]]",
-                    "Dict[str, List[str]]",
+                    "Dict[str,list[str]]",
+                    "Dict[str,List[str]]",
                     "int",
-                    "Union[None, int, str]",
+                    "Union[None,int,str]",
                     "str"
                 ]
             }
@@ -2397,7 +2690,7 @@
             "name": "hostport",
             "location": 77,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "Optional[str]",
                 "int"
@@ -2523,7 +2816,7 @@
             "name": "ssl_channel_credentials",
             "location": 134,
             "return": [
-                "dict",
+                "Dict",
                 "None"
             ],
             "arguments": {
@@ -2534,12 +2827,24 @@
             "name": "_get_credential",
             "location": 144,
             "return": [
-                "Optional[bytes]"
+                "str",
+                "bool",
+                "Dict",
+                "List[str]",
+                "Dict[str,Any]",
+                "Dict[str,object]",
+                "Tuple[Union[int,int,int,int,int,int]]",
+                "bytes",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Sequence[str]",
+                    "Optional[object]",
+                    "Iterable[str]",
+                    "None"
                 ]
             }
         }
@@ -2550,11 +2855,16 @@
             "name": "unhandled_exception_rpc",
             "location": 10,
             "return": [
-                "Callable[([Callable], Callable)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "response_type": [
-                    "type"
+                    "type",
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Optional[str]",
+                    "float"
                 ]
             }
         },
@@ -2602,16 +2912,16 @@
                 "Path",
                 "str",
                 "pathlib.Path",
-                "tuple",
+                "Tuple",
                 "mtg_ssm.containers.collection.MagicCollection"
             ],
             "arguments": {
                 "tmpdir": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -2643,16 +2953,16 @@
                 "Path",
                 "str",
                 "pathlib.Path",
-                "tuple",
+                "Tuple",
                 "mtg_ssm.containers.collection.MagicCollection"
             ],
             "arguments": {
                 "tmpdir": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -2666,7 +2976,7 @@
                 "pathlib.Path",
                 "path.Path",
                 "Optional[pathlib.Path]",
-                "list"
+                "List"
             ],
             "arguments": {
                 "tmpdir": [
@@ -2694,7 +3004,6 @@
             "name": "faiss_index_4d",
             "location": 47,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -2708,7 +3017,6 @@
             "name": "shard_3d",
             "location": 56,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -2723,7 +3031,6 @@
             "name": "collection_2shards_2d",
             "location": 67,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -2758,8 +3065,7 @@
                     "pathlib.Path"
                 ],
                 "channel_private_key": [
-                    "list[]",
-                    "list",
+                    "List",
                     "bool",
                     "None",
                     "bytes",
@@ -2769,9 +3075,8 @@
                 ],
                 "channel_certificate": [
                     "str",
-                    "int",
-                    "list[str]",
                     "List[str]",
+                    "int",
                     "Iterable[str]"
                 ]
             }
@@ -2780,7 +3085,6 @@
             "name": "gcs_blob",
             "location": 122,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -2789,15 +3093,13 @@
             "name": "gcs_bucket",
             "location": 137,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "gcs_blob": [
-                    "typing.IO",
+                    "IO",
                     "int",
-                    "numpy.ndarray",
-                    "IO"
+                    "numpy.ndarray"
                 ]
             }
         },
@@ -2805,7 +3107,6 @@
             "name": "gcs_storage_client",
             "location": 147,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -2827,29 +3128,26 @@
             "name": "gen_random_vectors_and_metadatas",
             "location": 159,
             "return": [
-                "Tuple[(Any, Any)]"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "dimension": [
                     "int",
-                    "Tuple[int]",
-                    "tuple[int]"
+                    "Tuple[int]"
                 ],
                 "size": [
                     "int",
+                    "List[int]",
                     "List[List[int]]",
                     "bytes",
-                    "list[list[int]]",
-                    "List[int]",
-                    "list[int]"
+                    "List[list[int]]"
                 ],
                 "dtype": [
                     "int",
-                    "Tuple[int]",
-                    "tuple[int]"
+                    "Tuple[int]"
                 ],
                 "id_prefix": [
-                    "typing.Text",
+                    "Text",
                     "int",
                     "str"
                 ],
@@ -2863,29 +3161,32 @@
             "name": "gen_faiss_index_proto",
             "location": 174,
             "return": [
-                "NoReturn"
+                "BaseIndex",
+                "str",
+                "Callable",
+                "float",
+                "numpy.ndarray"
             ],
             "arguments": {
                 "tmpdir": [
                     "str",
                     "bytes",
-                    "Union[str, bytes]",
-                    "Union[pathlib.Path, str]"
+                    "Union[str,bytes]",
+                    "Union[pathlib.Path,str]"
                 ],
                 "X": [
                     "Set[str]",
-                    "str",
-                    "set[str]"
+                    "str"
                 ],
                 "metadatas": [
                     "bool",
                     "str"
                 ],
                 "name": [
-                    "typing.Text",
+                    "Text",
                     "str",
-                    "Union[str, bytes]",
-                    "Union[pathlib.Path, str]"
+                    "Union[str,bytes]",
+                    "Union[pathlib.Path,str]"
                 ]
             }
         },
@@ -2893,7 +3194,6 @@
             "name": "download_to_file",
             "location": 123,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2912,7 +3212,7 @@
                 "bytes",
                 "str",
                 "int",
-                "Union[int, str]",
+                "Union[int,str]",
                 "bool"
             ],
             "arguments": {}
@@ -2959,17 +3259,14 @@
             "name": "test_proto_to_ndarray_numpy",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "X": [
                     "float",
                     "numpy.ndarray",
-                    "typing.Sequence['cirq.Qid']",
-                    "dict[, ]",
-                    "Sequence['cirq.Qid']",
-                    "dict"
+                    "Sequence[cirq.Qid]",
+                    "Dict"
                 ]
             }
         },
@@ -2977,7 +3274,6 @@
             "name": "test_proto_to_ndarray",
             "location": 51,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3002,21 +3298,18 @@
             "name": "test_proto_to_ndarray_missing_info",
             "location": 84,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "proto": [
                     "str",
-                    "Iterable[Any]",
-                    "typing.Iterable[typing.Any]"
+                    "Iterable[Any]"
                 ],
                 "error": [
                     "str",
+                    "Type",
                     "bool",
-                    "typing.Type",
-                    "Type[Any]",
-                    "Type"
+                    "Type[Any]"
                 ]
             }
         },
@@ -3024,34 +3317,28 @@
             "name": "test_ndarray_to_proto_unsupported_input",
             "location": 101,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "X": [
                     "Callable",
                     "float",
-                    "typing.Callable[, ]",
                     "int"
                 ],
                 "dtype": [
                     "Callable",
                     "float",
-                    "typing.Callable[, ]",
                     "int"
                 ],
                 "shape": [
                     "Callable",
                     "float",
-                    "typing.Callable[, ]",
                     "int"
                 ],
                 "error": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Sequence[Sequence[str]]",
-                    "typing.Sequence[typing.Sequence[str]]"
+                    "Dict[str,Any]",
+                    "Sequence[Sequence[str]]"
                 ]
             }
         },
@@ -3067,42 +3354,35 @@
             "name": "test_metadata_to_proto",
             "location": 126,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "id": [
                     "str",
-                    "Dict[str, List[str]]",
-                    "dict[str, list[str]]",
+                    "Dict[str,List[str]]",
+                    "Tuple",
+                    "Dict[str,list[str]]",
                     "Optional[str]",
-                    "None",
-                    "tuple",
-                    "tuple[]"
+                    "None"
                 ],
                 "fields": [
                     "str",
-                    "tuple[]",
-                    "tuple",
+                    "Tuple",
                     "Iterable[str]"
                 ],
                 "fieldtypes": [
                     "str",
                     "Optional[str]",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "Set[str]",
-                    "set[str]"
+                    "None"
                 ],
                 "fieldnames": [
                     "str",
                     "Optional[str]",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "Set[str]",
-                    "set[str]"
+                    "None"
                 ]
             }
         },
@@ -3110,7 +3390,6 @@
             "name": "test_metadata_field_to_proto",
             "location": 149,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3121,21 +3400,16 @@
                     "str",
                     "float",
                     "int",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "fieldname": [
-                    "dict",
-                    "dict[, ]",
-                    "MutableMapping[str, Any]",
-                    "typing.MutableMapping",
+                    "Dict",
                     "Callable",
-                    "float",
-                    "typing.Callable[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "MutableMapping[str,Any]",
+                    "Dict[str,Any]",
+                    "MutableMapping",
                     "Set[str]",
-                    "set[str]"
+                    "float"
                 ]
             }
         },
@@ -3143,30 +3417,23 @@
             "name": "test_metadata_field_to_proto_not_serializable",
             "location": 162,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "field": [
                     "List[str]",
                     "str",
-                    "list[str]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "fieldtype": [
                     "List[str]",
                     "str",
-                    "list[str]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "fieldname": [
                     "List[str]",
                     "str",
-                    "list[str]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         }
@@ -3228,7 +3495,6 @@
             "name": "test_query",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3238,20 +3504,18 @@
                     "bool"
                 ],
                 "X": [
-                    "typing.Callable[numpy.ndarray, float]",
-                    "Callable[[numpy.ndarray], float]",
-                    "typing.OrderedDict",
+                    "Callable[numpy.ndarray,float]",
+                    "OrderedDict",
+                    "Callable[[numpy.ndarray],float]",
                     "reader_server.types.Feed",
-                    "reader_server.types.Subscription",
-                    "OrderedDict"
+                    "reader_server.types.Subscription"
                 ],
                 "k": [
-                    "typing.Callable[numpy.ndarray, float]",
-                    "Callable[[numpy.ndarray], float]",
-                    "typing.OrderedDict",
+                    "Callable[numpy.ndarray,float]",
+                    "OrderedDict",
+                    "Callable[[numpy.ndarray],float]",
                     "reader_server.types.Feed",
-                    "reader_server.types.Subscription",
-                    "OrderedDict"
+                    "reader_server.types.Subscription"
                 ]
             }
         },
@@ -3259,7 +3523,6 @@
             "name": "test_retrieve",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3273,9 +3536,7 @@
                     "int",
                     "str",
                     "Sequence[int]",
-                    "typing.Sequence[int]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -3285,7 +3546,6 @@
             "name": "test_query",
             "location": 15,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3298,24 +3558,19 @@
                 ],
                 "X": [
                     "List[int]",
-                    "list[int]",
                     "OrderedDict",
-                    "typing.OrderedDict",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "Dict[int, Dict[str, Any]]",
-                    "dict[int, dict[str, typing.Any]]",
                     "List[str]",
-                    "list[str]"
+                    "Dict[int,Dict[str,Any]]",
+                    "Dict[int,dict[str,Any]]"
                 ],
                 "k": [
                     "List[Dict]",
-                    "list[dict[, ]]",
-                    "Dict[int, Dict[str, Any]]",
-                    "int",
-                    "dict[int, dict[str, typing.Any]]",
+                    "List[dict]",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "Dict[int,Dict[str,Any]]",
+                    "int",
+                    "Dict[int,dict[str,Any]]"
                 ]
             }
         },
@@ -3323,7 +3578,6 @@
             "name": "test_retrieve",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3350,9 +3604,8 @@
             ],
             "arguments": {
                 "gcs_storage_client": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ]
             }
         },
@@ -3364,9 +3617,8 @@
             ],
             "arguments": {
                 "gcs_storage_client": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ]
             }
         },
@@ -3378,8 +3630,7 @@
             ],
             "arguments": {
                 "gcs_storage_client": [
-                    "Callable[[], int]",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]"
                 ]
             }
         }
@@ -3429,7 +3680,6 @@
             "name": "test_query",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3439,15 +3689,11 @@
                 ],
                 "X": [
                     "OrderedDict",
-                    "typing.OrderedDict",
-                    "Sequence[Hashable]",
-                    "typing.Sequence[typing.Hashable]"
+                    "Sequence[Hashable]"
                 ],
                 "k": [
                     "OrderedDict",
-                    "typing.OrderedDict",
-                    "Sequence[Hashable]",
-                    "typing.Sequence[typing.Hashable]"
+                    "Sequence[Hashable]"
                 ]
             }
         },
@@ -3455,7 +3701,6 @@
             "name": "test_knn_search",
             "location": 41,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3470,9 +3715,9 @@
                 ],
                 "k": [
                     "int",
-                    "tuple[int]",
+                    "Tuple[int]",
                     "numpy.dtype",
-                    "Union[Tuple[int], Tuple[int, int]]"
+                    "Union[Tuple[int],Tuple[int,int]]"
                 ]
             }
         },
@@ -3480,7 +3725,6 @@
             "name": "test_knn_search_bad_shape",
             "location": 56,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3492,14 +3736,12 @@
                 "X": [
                     "float",
                     "int",
-                    "List[float]",
-                    "list[float]"
+                    "List[float]"
                 ],
                 "k": [
                     "float",
                     "int",
-                    "List[float]",
-                    "list[float]"
+                    "List[float]"
                 ]
             }
         },
@@ -3507,7 +3749,6 @@
             "name": "test_retrieve",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3517,9 +3758,8 @@
                 ],
                 "index": [
                     "str",
-                    "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "bool"
                 ]
             }
         },
@@ -3527,7 +3767,6 @@
             "name": "test_retrieve_none",
             "location": 73,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3542,8 +3781,7 @@
                 "id": [
                     "str",
                     "bytes",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -3564,7 +3802,6 @@
             "name": "test_get_metadata_by_index",
             "location": 89,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3643,8 +3880,7 @@
             ],
             "arguments": {
                 "test_servicer_tls_config": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -3685,7 +3921,6 @@
             "name": "raise_exception",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

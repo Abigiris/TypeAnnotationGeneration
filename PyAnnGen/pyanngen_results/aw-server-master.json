@@ -66,7 +66,7 @@
             "name": "get_info",
             "location": 56,
             "return": [
-                "Dict[(str, dict)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -76,7 +76,7 @@
             "name": "get_buckets",
             "location": 66,
             "return": [
-                "Dict[(str, dict)]"
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -86,7 +86,7 @@
             "name": "get_bucket_metadata",
             "location": 80,
             "return": [
-                "Dict[(str, Any)]"
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -102,7 +102,9 @@
             "name": "export_bucket",
             "location": 86,
             "return": [
-                "Dict[(str, Any)]"
+                "List[str]",
+                "Optional[datetime.datetime]",
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -118,7 +120,7 @@
             "name": "export_all",
             "location": 95,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -150,7 +152,11 @@
             "arguments": {
                 "self": [],
                 "buckets": [
-                    "Dict[(str, Any)]"
+                    "Dict[str, Any]",
+                    "Dict[str, str]",
+                    "Mapping[str, Dict[str, Any]]",
+                    "Dict[str, Dict[str, str]]",
+                    "dict"
                 ]
             }
         },
@@ -163,7 +169,10 @@
             "arguments": {
                 "self": [],
                 "bucket_id": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Dict[str, str]",
+                    "List[str]"
                 ],
                 "event_type": [
                     "str"
@@ -175,7 +184,12 @@
                     "str"
                 ],
                 "created": [
-                    "Optional[_datetime.datetime]"
+                    "str",
+                    "int",
+                    "float",
+                    "Optional[str]",
+                    "datetime.datetime",
+                    "Optional[uuid.UUID]"
                 ]
             }
         },
@@ -198,7 +212,9 @@
         "ServerAPI.get_event": {
             "name": "get_event",
             "location": 160,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
                 "bucket_id": [
@@ -215,7 +231,10 @@
             "name": "get_events",
             "location": 173,
             "return": [
-                "list"
+                "str",
+                "app.models.dto.ClientInfo",
+                "int",
+                "app.models.Game"
             ],
             "arguments": {
                 "self": [],
@@ -277,7 +296,10 @@
             "name": "get_eventcount",
             "location": 197,
             "return": [
-                "int"
+                "str",
+                "zerver.models.Realm",
+                "bool",
+                "Optional[dict]"
             ],
             "arguments": {
                 "self": [],
@@ -304,6 +326,8 @@
             "name": "delete_event",
             "location": 207,
             "return": [
+                "str",
+                "zerver.models.Realm",
                 "bool"
             ],
             "arguments": {
@@ -409,9 +433,8 @@
                 "custom_static_directories": [
                     "bool",
                     "str",
-                    "dict[, ]",
-                    "T",
-                    "dict"
+                    "Dict",
+                    "T"
                 ]
             }
         },
@@ -431,14 +454,14 @@
             "name": "custom_static_pages",
             "location": 40,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "str",
-                "Tuple[str, int, Dict[str, str]]",
+                "Tuple[str,int,Dict[str,str]]",
                 "Optional[str]",
                 "List[str]",
                 "flask.Response",
-                "Tuple[str, Optional[int]]",
-                "Dict[str, Any]"
+                "Tuple[str,Optional[int]]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "name": [
@@ -464,10 +487,13 @@
             "arguments": {
                 "self": [],
                 "type": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "message": [
-                    "str"
+                    "str",
+                    "Sequence[int]",
+                    "bool"
                 ]
             }
         },
@@ -480,10 +506,13 @@
             "arguments": {
                 "self": [],
                 "type": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "message": [
-                    "str"
+                    "str",
+                    "Sequence[int]",
+                    "bool"
                 ]
             }
         },
@@ -496,10 +525,13 @@
             "arguments": {
                 "self": [],
                 "type": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "message": [
-                    "str"
+                    "str",
+                    "Sequence[int]",
+                    "bool"
                 ]
             }
         }
@@ -525,13 +557,11 @@
                 "self": [],
                 "levelname": [
                     "Callable",
-                    "str",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "message": [
                     "Callable",
-                    "str",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         }
@@ -563,9 +593,9 @@
                 "str_value": [
                     "str",
                     "bool",
-                    "Tuple[str, str]",
-                    "Union[List[str], str]",
-                    "Dict[str, Any]",
+                    "Tuple[str,str]",
+                    "Union[List[str],str]",
+                    "Dict[str,Any]",
                     "List[str]"
                 ]
             }
@@ -582,7 +612,6 @@
                 "f": [
                     "Callable",
                     "str",
-                    "typing.Callable[, ]",
                     "T",
                     "bool",
                     "Optional[bool]",
@@ -599,11 +628,9 @@
             "arguments": {
                 "api_method": [
                     "str",
-                    "typing.Callable[, ]",
-                    "resource.Resource",
-                    "list[str]",
                     "Callable",
-                    "List[str]"
+                    "List[str]",
+                    "resource.Resource"
                 ]
             }
         },
@@ -639,9 +666,8 @@
                     "str",
                     "float",
                     "int",
+                    "Dict[str,str]",
                     "datetime.timedelta",
-                    "dict[str, str]",
-                    "Dict[str, str]",
                     "datetime.datetime"
                 ]
             }
@@ -650,9 +676,9 @@
             "name": "format",
             "location": 67,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "bool",
-                "Union[int, Tuple[int, ...]]",
+                "Union[int,Tuple[int,...]]",
                 "Optional[float]",
                 "int",
                 "str"
@@ -660,13 +686,10 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "dict",
-                    "dict[, ]",
-                    "list",
-                    "str",
-                    "list[]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "List",
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         },
@@ -674,7 +697,7 @@
             "name": "decorator",
             "location": 119,
             "return": [
-                "tuple[typing.Union[dict[typing.Text, typing.Text],int]]",
+                "Tuple[Union[dict[Text,Text],int]]",
                 "str",
                 "Optional[str]",
                 "int"
@@ -732,9 +755,9 @@
             "name": "post",
             "location": 157,
             "return": [
-                "tuple[typing.Union[dict[, ],int]]",
+                "Tuple[Union[dict,int]]",
                 "Optional[Type]",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "self": [],
@@ -748,7 +771,7 @@
             "name": "delete",
             "location": 172,
             "return": [
-                "tuple[typing.Union[dict[, ],int]]",
+                "Tuple[Union[dict,int]]",
                 "str",
                 "int"
             ],
@@ -763,7 +786,7 @@
             "name": "get",
             "location": 196,
             "return": [
-                "tuple[typing.Union[str,list[],int]]",
+                "Tuple[Union[str,list,int]]",
                 "str",
                 "app.models.dto.ClientInfo",
                 "app.models.Game",
@@ -786,7 +809,7 @@
             "location": 210,
             "return": [
                 "django.contrib.auth.models.User",
-                "tuple[typing.Optional[int]]"
+                "Tuple[Optional[int]]"
             ],
             "arguments": {
                 "self": [],
@@ -802,7 +825,7 @@
             "name": "get",
             "location": 235,
             "return": [
-                "tuple[typing.Union[str,int]]",
+                "Tuple[Union[str,int]]",
                 "str",
                 "app.models.dto.ClientInfo",
                 "app.models.Game",
@@ -814,10 +837,9 @@
                     "str",
                     "int",
                     "None",
+                    "List[str]",
                     "transfer.models.SnippetID",
-                    "Optional[str]",
-                    "list[str]",
-                    "List[str]"
+                    "Optional[str]"
                 ]
             }
         },
@@ -825,9 +847,9 @@
             "name": "get",
             "location": 248,
             "return": [
-                "tuple[typing.Union[str,bool]]",
+                "Tuple[Union[str,bool]]",
                 "bool",
-                "tuple[typing.Optional[int]]",
+                "Tuple[Optional[int]]",
                 "int",
                 "Optional[Dict]"
             ],
@@ -845,7 +867,7 @@
             "name": "delete",
             "location": 259,
             "return": [
-                "tuple[typing.Union[dict[typing.Text, typing.Union[int,str,list[],dict[typing.Any, str]]],int]]",
+                "Tuple[Union[dict[Text,Union[int,str,list,dict[Any,str]]],int]]",
                 "str",
                 "int"
             ],
@@ -854,16 +876,14 @@
                 "bucket_id": [
                     "str",
                     "int",
-                    "bytes",
-                    "Dict[str, bool]",
-                    "dict[str, bool]"
+                    "Dict[str,bool]",
+                    "bytes"
                 ],
                 "event_id": [
                     "str",
                     "int",
-                    "bytes",
-                    "Dict[str, bool]",
-                    "dict[str, bool]"
+                    "Dict[str,bool]",
+                    "bytes"
                 ]
             }
         },
@@ -872,7 +892,7 @@
             "location": 276,
             "return": [
                 "bool",
-                "tuple[int]"
+                "Tuple[int]"
             ],
             "arguments": {
                 "self": [],
@@ -886,8 +906,8 @@
             "name": "post",
             "location": 296,
             "return": [
-                "tuple[typing.Union[dict[typing.Text, str],int]]",
-                "dict",
+                "Tuple[Union[dict[Text,str],int]]",
+                "Dict",
                 "gardnr.models.Metric",
                 "Sequence[Any]",
                 "str"
@@ -927,7 +947,7 @@
             "name": "post",
             "location": 349,
             "return": [
-                "tuple[typing.Optional[int]]",
+                "Tuple[Optional[int]]",
                 "Optional[int]",
                 "Optional[bool]",
                 "Optional[str]"
@@ -940,10 +960,10 @@
             "name": "get",
             "location": 370,
             "return": [
-                "tuple[int]",
+                "Tuple[int]",
                 "str",
                 "bool",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "float"
             ],
             "arguments": {
@@ -960,12 +980,15 @@
             ],
             "arguments": {
                 "host": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "testing": [
                     "bool",
                     "str",
-                    "Mapping[str, Any]",
+                    "Mapping[str,Any]",
                     "Optional[str]"
                 ],
                 "storage_method": [
@@ -974,17 +997,17 @@
                     "str"
                 ],
                 "cors_origins": [
-                    "list[]",
+                    "List",
                     "Optional[bool]",
                     "str",
-                    "dict",
+                    "Dict",
                     "int"
                 ],
                 "custom_static": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
                     "int",
-                    "Mapping[str, Any]"
+                    "Mapping[str,Any]"
                 ]
             }
         },
@@ -1040,10 +1063,14 @@
             ],
             "arguments": {
                 "cors_origins": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "int",
+                    "Dict[str,Any]"
                 ],
                 "testing": [
-                    "bool"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -1060,19 +1087,31 @@
                     "float"
                 ],
                 "host": [
-                    "str"
-                ],
-                "port": [
-                    "int"
-                ],
-                "testing": [
+                    "str",
+                    "int",
                     "bool"
                 ],
+                "port": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "testing": [
+                    "bool",
+                    "str",
+                    "int"
+                ],
                 "cors_origins": [
-                    "List[str]"
+                    "List",
+                    "str",
+                    "int",
+                    "float"
                 ],
                 "custom_static": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "str",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -1086,13 +1125,12 @@
                 "self": [],
                 "name": [
                     "str",
-                    "Optional[Any]",
-                    "typing.Any",
-                    "int",
                     "Callable",
+                    "Optional[Any]",
+                    "Any",
+                    "int",
                     "None",
-                    "Optional[int]",
-                    "typing.Callable[, ]"
+                    "Optional[int]"
                 ]
             }
         }
@@ -1185,7 +1223,6 @@
             "name": "flask_client",
             "location": 16,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -1200,7 +1237,6 @@
             "name": "aw_client",
             "location": 20,
             "return": [
-                "",
                 "typing.Generator[ActivityWatchClient]"
             ],
             "arguments": {}
@@ -1209,7 +1245,6 @@
             "name": "bucket",
             "location": 35,
             "return": [
-                "",
                 "typing.Generator[typing.Text]"
             ],
             "arguments": {
@@ -1226,7 +1261,6 @@
             "name": "queued_bucket",
             "location": 46,
             "return": [
-                "",
                 "typing.Generator[typing.Optional[str]]"
             ],
             "arguments": {
@@ -1408,8 +1442,7 @@
                     "dict"
                 ],
                 "bucket": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1432,7 +1465,10 @@
             ],
             "arguments": {
                 "td": [
-                    "_datetime.timedelta"
+                    "int",
+                    "Callable",
+                    "models.Question",
+                    "str"
                 ]
             }
         },
@@ -1442,7 +1478,7 @@
             "return": [
                 "int",
                 "str",
-                "dict",
+                "Dict",
                 "bool",
                 "Optional[str]"
             ],
@@ -1496,7 +1532,6 @@
             "name": "bucket",
             "location": 8,
             "return": [
-                "",
                 "typing.Generator[typing.Text]"
             ],
             "arguments": {
@@ -1563,7 +1598,6 @@
             "name": "list_buckets",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1572,7 +1606,6 @@
             "name": "heartbeat",
             "location": 43,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1581,7 +1614,6 @@
             "name": "get_events",
             "location": 64,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}

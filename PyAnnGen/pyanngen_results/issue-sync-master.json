@@ -11,17 +11,14 @@
             ],
             "arguments": {
                 "environ": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[str, str]",
-                    "Dict[str, str]",
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
                     "Callable",
                     "bytes"
                 ],
                 "start_response": [
                     "Callable",
-                    "bytes",
-                    "typing.Callable[, ]"
+                    "bytes"
                 ]
             }
         }
@@ -32,11 +29,15 @@
             "name": "handle_issuesevent",
             "location": 14,
             "return": [
-                "None"
+                "Tuple[(Dict[(str, Any)], Any, Dict[(nothing, nothing)])]"
             ],
             "arguments": {
                 "raw": [
-                    "Optional[dict]"
+                    "Dict",
+                    "Optional[dict]",
+                    "bool",
+                    "float",
+                    "None"
                 ]
             }
         },
@@ -44,11 +45,13 @@
             "name": "handle_issuecommentevent",
             "location": 21,
             "return": [
-                "None"
+                "Tuple[(Dict[(str, Any)], Any, Dict[(nothing, nothing)])]"
             ],
             "arguments": {
                 "raw": [
-                    "dict"
+                    "dict",
+                    "Callable",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -56,14 +59,18 @@
             "name": "_handle_event",
             "location": 28,
             "return": [
-                "None"
+                "Tuple[(Dict[(str, Any)], Any, Dict[(nothing, nothing)])]"
             ],
             "arguments": {
                 "event_type": [
-                    "domain.GithubEventType"
+                    "str",
+                    "bool"
                 ],
                 "raw": [
-                    "dict"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -77,7 +84,7 @@
             ],
             "arguments": {
                 "jira_event": [
-                    "JiraEvent"
+                    "str"
                 ]
             }
         },
@@ -89,7 +96,11 @@
             ],
             "arguments": {
                 "gh_event": [
-                    "GithubEvent"
+                    "Dict",
+                    "str",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -101,7 +112,9 @@
             ],
             "arguments": {
                 "gh_event": [
-                    "GithubEvent"
+                    "Dict[str,Any]",
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -125,11 +138,9 @@
             ],
             "arguments": {
                 "gh_event": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -197,7 +208,9 @@
             ],
             "arguments": {
                 "value": [
-                    "str"
+                    "str",
+                    "Sequence[str]",
+                    "int"
                 ]
             }
         },
@@ -205,14 +218,21 @@
             "name": "parse_github_event",
             "location": 16,
             "return": [
-                "domain.GithubEvent"
+                "dict",
+                "int",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "event_type": [
-                    "domain.GithubEventType"
+                    "str",
+                    "Dict[str,Any]",
+                    "ebl.corpus.domain.texText"
                 ],
                 "event": [
-                    "dict"
+                    "Dict[str, Any]",
+                    "Dict[str, object]",
+                    "dict",
+                    "ebl.corpus.domain.texText"
                 ]
             }
         }
@@ -222,17 +242,37 @@
             "name": "translate",
             "location": 20,
             "return": [
-                "Optional[sync.domain.JiraEvent]"
+                "Optional[Dict[(str, Any)]]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "str",
+                    "Optional[str]",
+                    "bytes",
+                    "Optional[int]",
+                    "Optional[bytes]",
+                    "bool"
                 ],
                 "issue_key": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "str",
+                    "Optional[int]",
+                    "Optional[Any]",
+                    "int",
+                    "Any"
                 ],
                 "comment_id": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "Dict[cirq.Qid,str]",
+                    "Dict[str,str]",
+                    "str",
+                    "Optional[List[str]]",
+                    "Optional[int]",
+                    "List[str]",
+                    "Optional[bool]",
+                    "int"
                 ]
             }
         },
@@ -243,9 +283,7 @@
                 "str"
             ],
             "arguments": {
-                "gh_event": [
-                    "sync.domain.GithubEvent"
-                ]
+                "gh_event": []
             }
         },
         "_make_comment_body": {
@@ -256,7 +294,7 @@
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "int"
                 ]
             }
         },
@@ -268,10 +306,10 @@
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "float"
                 ],
                 "value": [
-                    "str"
+                    "float"
                 ]
             }
         },
@@ -279,11 +317,14 @@
             "name": "_get_components",
             "location": 53,
             "return": [
-                "List[Dict[(str, int)]]"
+                "List[Dict[(str, Any)]]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "set",
+                    "dict",
+                    "domain.Thing",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -291,23 +332,21 @@
             "name": "translate_issue_opened",
             "location": 61,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "gh_event": [
-                    "sync.domain.GithubEvent"
-                ]
+                "gh_event": []
             }
         },
         "translate_issue_edited": {
             "name": "translate_issue_edited",
             "location": 76,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "bool"
                 ]
             }
         },
@@ -315,11 +354,14 @@
             "name": "translate_issue_closed",
             "location": 90,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "str",
+                    "int",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -327,11 +369,14 @@
             "name": "translate_issue_reopened",
             "location": 100,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "str",
+                    "int",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -339,11 +384,14 @@
             "name": "translate_issue_deleted",
             "location": 110,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "str",
+                    "int",
+                    "List[Tuple[str,Callable]]",
+                    "List[tuple[Union[str,Callable]]]"
                 ]
             }
         },
@@ -351,11 +399,12 @@
             "name": "translate_comment_created",
             "location": 119,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -363,11 +412,14 @@
             "name": "translate_comment_deleted",
             "location": 127,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "str",
+                    "int",
+                    "List[Tuple[str,Callable]]",
+                    "List[tuple[Union[str,Callable]]]"
                 ]
             }
         },
@@ -375,11 +427,14 @@
             "name": "translate_comment_edited",
             "location": 134,
             "return": [
-                "sync.domain.JiraEvent"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "List[dict[str,Any]]",
+                    "Dict",
+                    "Optional[models.LTI1p3Provider]",
+                    "List[Dict[str,Any]]"
                 ]
             }
         }
@@ -429,16 +484,18 @@
             "name": "default",
             "location": 10,
             "return": [
-                "Union[(list, str)]"
+                "List",
+                "int",
+                "List[int]",
+                "bool",
+                "Dict[Tuple[str,str],Tuple[float,float]]"
             ],
             "arguments": {
                 "self": [],
                 "obj": [
-                    "dict[, ]",
-                    "dict",
-                    "str",
-                    "list[util.Block]",
+                    "Dict",
                     "List[util.Block]",
+                    "str",
                     "util.XYZ"
                 ]
             }
@@ -470,11 +527,16 @@
             "name": "get_jira_issue_key",
             "location": 85,
             "return": [
-                "Optional[str]"
+                "None",
+                "Optional[str]",
+                "Optional[bool]",
+                "int",
+                "Optional[int]"
             ],
             "arguments": {
                 "github_issue_id": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -482,11 +544,14 @@
             "name": "get_jira_comment_id",
             "location": 94,
             "return": [
-                "Optional[str]"
+                "None",
+                "Optional[str]",
+                "Optional[bool]"
             ],
             "arguments": {
                 "github_comment_id": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -494,11 +559,13 @@
             "name": "store_github_event",
             "location": 103,
             "return": [
-                "sync.domain.GithubEvent"
+                "str"
             ],
             "arguments": {
                 "gh_event": [
-                    "sync.domain.GithubEvent"
+                    "str",
+                    "domain.GithubEvent",
+                    "domain.evenEvent"
                 ]
             }
         },
@@ -510,10 +577,16 @@
             ],
             "arguments": {
                 "gh_comment_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[int]",
+                    "Set[int]"
                 ],
                 "jira_comment_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[int]",
+                    "Set[int]"
                 ]
             }
         },
@@ -525,10 +598,16 @@
             ],
             "arguments": {
                 "gh_issue_id": [
-                    "int"
+                    "str",
+                    "int",
+                    "Set[int]",
+                    "bytes"
                 ],
                 "jira_issue_key": [
-                    "str"
+                    "str",
+                    "int",
+                    "Set[int]",
+                    "bytes"
                 ]
             }
         },
@@ -536,15 +615,24 @@
             "name": "process_bind_param",
             "location": 28,
             "return": [
-                "Optional[str]"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "self": [],
                 "obj": [
-                    "Optional[dict]"
+                    "Optional[dict]",
+                    "Dict",
+                    "str",
+                    "None",
+                    "Optional[str]"
                 ],
                 "dialect": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -552,15 +640,26 @@
             "name": "process_result_value",
             "location": 36,
             "return": [
-                "Optional[dict]"
+                "None",
+                "Optional[str]",
+                "Optional[int]",
+                "Optional[float]"
             ],
             "arguments": {
                 "self": [],
                 "value": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ],
                 "dialect": [
-                    "str"
+                    "str",
+                    "Tuple[Union[Any,Any]]",
+                    "Callable",
+                    "sqlalchemy.engine.interfaces.Dialect",
+                    "Dict",
+                    "None",
+                    "Optional[Tuple[Any,Any]]",
+                    "Iterable[Any]"
                 ]
             }
         }
@@ -570,11 +669,19 @@
             "name": "propagate",
             "location": 77,
             "return": [
-                "sync.domain.JiraEvent"
+                "str",
+                "bool",
+                "List[Any]",
+                "Callable",
+                "List[int]"
             ],
             "arguments": {
                 "jira_event": [
-                    "sync.domain.JiraEvent"
+                    "str",
+                    "List[Any]",
+                    "domain.JiraEvent",
+                    "Optional[List[Any]]",
+                    "domain.evenEvent"
                 ]
             }
         },
@@ -601,13 +708,21 @@
             "arguments": {
                 "self": [],
                 "endpoint": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Sequence"
                 ],
                 "username": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Sequence"
                 ],
                 "token": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "List[str]",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -622,13 +737,19 @@
             ],
             "arguments": {
                 "endpoint": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "float"
                 ],
                 "username": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "float"
                 ],
                 "token": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "float"
                 ]
             }
         },
@@ -636,12 +757,14 @@
             "name": "create_ticket",
             "location": 24,
             "return": [
-                "sync.domain.JiraEvent"
+                "dict",
+                "str",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "sync.domain.JiraEvent"
+                    "dict"
                 ]
             }
         },
@@ -649,12 +772,15 @@
             "name": "update_ticket",
             "location": 29,
             "return": [
-                "sync.domain.JiraEvent"
+                "str",
+                "dict",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "sync.domain.JiraEvent"
+                    "Dict[str, Any]",
+                    "dict"
                 ]
             }
         },
@@ -662,12 +788,15 @@
             "name": "transition_ticket",
             "location": 37,
             "return": [
-                "None"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "sync.domain.JiraEvent"
+                    "str",
+                    "Dict",
+                    "Dict[str,object]"
                 ]
             }
         },
@@ -675,12 +804,16 @@
             "name": "create_comment",
             "location": 45,
             "return": [
-                "sync.domain.JiraEvent"
+                "dict",
+                "str",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "sync.domain.JiraEvent"
+                    "dict",
+                    "Dict[Any, dict]",
+                    "Optional[Dict]"
                 ]
             }
         },
@@ -688,12 +821,15 @@
             "name": "update_comment",
             "location": 53,
             "return": [
-                "sync.domain.JiraEvent"
+                "str",
+                "dict",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "sync.domain.JiraEvent"
+                    "dict",
+                    "bool"
                 ]
             }
         },
@@ -701,12 +837,14 @@
             "name": "delete_comment",
             "location": 64,
             "return": [
-                "sync.domain.JiraEvent"
+                "str",
+                "Tuple"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "sync.domain.JiraEvent"
+                    "Tuple",
+                    "Dict"
                 ]
             }
         }
@@ -727,7 +865,6 @@
             "name": "test_handle_event",
             "location": 23,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -736,8 +873,8 @@
                     "mock.MagicMock"
                 ],
                 "mock_database": [
-                    "Tuple[str, mock.Mock]",
-                    "tuple[typing.Union[str,mock.Mock]]"
+                    "Tuple[str,mock.Mock]",
+                    "Tuple[Union[str,mock.Mock]]"
                 ]
             }
         }

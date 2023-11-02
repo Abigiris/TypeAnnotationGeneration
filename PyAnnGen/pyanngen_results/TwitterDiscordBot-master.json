@@ -212,14 +212,13 @@
             "name": "_get_medias_from_twitter_status",
             "location": 26,
             "return": [
-                "Optional[List[Dict[(str, Dict[(str, str)])]]]"
+                "Optional[List[Dict[(str, Dict[(str, Any)])]]]"
             ],
             "arguments": {
                 "cls": [
                     "int",
-                    "str",
                     "List[int]",
-                    "list[int]"
+                    "str"
                 ],
                 "status": [
                     "str",
@@ -240,7 +239,10 @@
                     "Type[_TDiscordPost]"
                 ],
                 "user": [
-                    "twitter_discord_bot.twitter_api.TwitterUserWrapper"
+                    "int",
+                    "str",
+                    "List[int]",
+                    "tweepy.Status"
                 ],
                 "status": [
                     "float",
@@ -262,7 +264,9 @@
                     "str"
                 ],
                 "sleep_seconds": [
-                    "float"
+                    "float",
+                    "str",
+                    "bool"
                 ]
             }
         }
@@ -273,7 +277,7 @@
             "name": "get_twitter_users_infos",
             "location": 95,
             "return": [
-                "Dict[(str, TwitterUserWrapper)]"
+                "Dict[(Any, TwitterUserWrapper)]"
             ],
             "arguments": {
                 "api": [
@@ -281,7 +285,10 @@
                     "asgard.models.accounAccount"
                 ],
                 "twitter_accounts": [
-                    "List[twitter_discord_bot.models.TwitterAccount]"
+                    "Literal",
+                    "bool",
+                    "app.models.user.User.InDB",
+                    "str"
                 ]
             }
         },
@@ -289,23 +296,31 @@
             "name": "get_twitter_user_timeline",
             "location": 111,
             "return": [
-                "list"
+                "str",
+                "django.db.models.query.QuerySet",
+                "int"
             ],
             "arguments": {
                 "api": [
                     "str",
-                    "Optional[dict]",
-                    "dict[, ]",
                     "Dict[str,str]",
+                    "Optional[dict]",
+                    "Dict",
                     "None",
-                    "grouper.models.group.Group",
-                    "dict[str, str]"
+                    "grouper.models.group.Group"
                 ],
                 "user": [
-                    "TwitterUserWrapper"
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[dict]",
+                    "Dict",
+                    "None",
+                    "grouper.models.group.Group"
                 ],
                 "since_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -323,7 +338,9 @@
                     "bool"
                 ],
                 "screen_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -335,16 +352,39 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "screen_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "Optional[List[SoftwareApplication]]",
+                    "List[SoftwareApplication]"
                 ],
                 "user_id": [
-                    "int"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "profile_image_url": [
-                    "str"
+                    "str",
+                    "Pattern[str]",
+                    "Pattern",
+                    "Union[Literal[False],str]",
+                    "int",
+                    "bytearray",
+                    "float",
+                    "Union[bytearray,bytes]",
+                    "bytes",
+                    "Tuple[Literal,Literal]",
+                    "Tuple[Union[Literal,Literal]]"
                 ]
             }
         },
@@ -423,7 +463,8 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -447,13 +488,22 @@
             ],
             "arguments": {
                 "user": [
-                    "twitter_discord_bot.twitter_api.TwitterUserWrapper"
+                    "str",
+                    "int",
+                    "Dict"
                 ],
                 "statuses": [
-                    "list"
+                    "int",
+                    "str",
+                    "esm.models.LastOperation",
+                    "bool"
                 ],
                 "webhook_url": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Dict",
+                    "FrozenSet",
+                    "frozenset"
                 ]
             }
         },
@@ -461,7 +511,11 @@
             "name": "_fetch_and_post",
             "location": 93,
             "return": [
-                "Dict[(str, int)]"
+                "Optional[str]",
+                "str",
+                "dict",
+                "zerver.models.Realm",
+                "List[Dict[str, Any]]"
             ],
             "arguments": {
                 "twitter_api": [
@@ -469,14 +523,15 @@
                     "str",
                     "None"
                 ],
-                "twitter_accounts": [
-                    "List[twitter_discord_bot.models.TwitterAccount]"
-                ],
+                "twitter_accounts": [],
                 "discord_webhooks": [
-                    "Mapping[(str, str)]"
+                    "str"
                 ],
                 "last_fetched_posts": [
-                    "Dict[(str, int)]"
+                    "str",
+                    "int",
+                    "ddionrails.studies.models.Study",
+                    "bool"
                 ]
             }
         },
@@ -488,7 +543,8 @@
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -500,10 +556,16 @@
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "bytes",
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "TextIO"
                 ],
                 "last_fetched_ids": [
-                    "Dict[(str, int)]"
+                    "Dict[int,int]",
+                    "Dict",
+                    "str"
                 ]
             }
         },

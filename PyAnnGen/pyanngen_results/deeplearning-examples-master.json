@@ -27,10 +27,14 @@
             "arguments": {
                 "self": [],
                 "n_inputs": [
-                    "int"
+                    "int",
+                    "bytes"
                 ],
                 "n_outputs": [
-                    "int"
+                    "int",
+                    "bytearray",
+                    "torch.LongTensor",
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -41,19 +45,17 @@
                 "int",
                 "str",
                 "bytes",
-                "Optional[Union[str, Any]]",
+                "Optional[Union[str,Any]]",
                 "float",
                 "Set[str]",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "self": [],
                 "x": [
-                    "typing.Callable[, ]",
-                    "T",
-                    "list[]",
                     "Callable",
-                    "list",
+                    "List",
+                    "T",
                     "numpy.ndarray"
                 ]
             }
@@ -67,16 +69,40 @@
             "arguments": {
                 "self": [],
                 "train_features": [
-                    "np.ndarray"
+                    "int",
+                    "bytes",
+                    "str",
+                    "float",
+                    "None",
+                    "Optional[int]",
+                    "bool"
                 ],
                 "train_labels": [
-                    "np.ndarray"
+                    "int",
+                    "Sequence[int]",
+                    "Sequence[str]",
+                    "None",
+                    "numpy.ndarray",
+                    "Optional[Sequence[int]]",
+                    "raiden.utils.TokenAmount"
                 ],
                 "test_features": [
-                    "np.ndarray"
+                    "int",
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[List[str]]",
+                    "Optional[str]"
                 ],
                 "test_labels": [
-                    "np.ndarray"
+                    "int",
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[List[str]]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -124,12 +150,14 @@
             "name": "train",
             "location": 91,
             "return": [
-                "float"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "epochs": [
-                    "int"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         }
@@ -145,7 +173,9 @@
             "arguments": {
                 "self": [],
                 "features": [
-                    "Union[(str, Iterable[str])]"
+                    "dict",
+                    "pandas.DataFrame",
+                    "int"
                 ]
             }
         },
@@ -167,10 +197,9 @@
             "name": "all_features",
             "location": 58,
             "return": [
-                "list[]",
+                "List",
                 "List[str]",
-                "List[Dict[str, Any]]",
-                "list"
+                "List[Dict[str,Any]]"
             ],
             "arguments": {
                 "self": []
@@ -185,7 +214,10 @@
             "arguments": {
                 "self": [],
                 "features": [
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "bool",
+                    "List",
+                    "Dict"
                 ]
             }
         },
@@ -193,12 +225,15 @@
             "name": "_get_feat_meta",
             "location": 86,
             "return": [
-                "Dict[(str, str)]"
+                "collections.OrderedDict"
             ],
             "arguments": {
                 "self": [],
                 "features": [
-                    "Iterable[str]"
+                    "str",
+                    "Dict",
+                    "bool",
+                    "T"
                 ]
             }
         },
@@ -206,12 +241,16 @@
             "name": "encode_features",
             "location": 107,
             "return": [
-                "Tuple[(np.ndarray, np.ndarray)]"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "features": [
-                    "Iterable[str]"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -219,12 +258,17 @@
             "name": "split_data",
             "location": 114,
             "return": [
-                "Sequence[np.ndarray]"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "features": [
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "bool",
+                    "Callable",
+                    "List[str]",
+                    "int",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -249,11 +293,9 @@
             "arguments": {
                 "self": [],
                 "metadata": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[, ]",
-                    "dict",
-                    "Optional[Dict[str, Any]]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -261,7 +303,7 @@
             "name": "_encode_x",
             "location": 37,
             "return": [
-                "tuple[typing.Union[int,str,list[str]]]",
+                "Tuple[Union[int,str,list[str]]]",
                 "float",
                 "int",
                 "Optional[int]"
@@ -271,13 +313,11 @@
                 "train": [
                     "int",
                     "numpy.ndarray",
+                    "Tuple",
                     "None",
-                    "Optional[int]",
-                    "tuple[]",
-                    "tuple",
-                    "typing.Generator[]",
-                    "str",
                     "Generator",
+                    "Optional[int]",
+                    "str",
                     "Optional[str]"
                 ],
                 "test": [
@@ -290,7 +330,7 @@
             "name": "_encode_y",
             "location": 59,
             "return": [
-                "tuple[typing.Union[int,dict[str, typing.Union[float,str]],str,tuple[],list[float],list[],typing.NamedTuple]]",
+                "Tuple[Union[int,dict[str,Union[float,str]],str,tuple,list[float],list,NamedTuple]]",
                 "bool",
                 "int",
                 "Optional[float]",
@@ -302,16 +342,15 @@
                 "train": [
                     "int",
                     "pandas.DataFrame",
-                    "list[str]",
+                    "List[str]",
                     "None",
                     "Optional[List[str]]",
                     "str",
                     "float",
-                    "tuple[typing.Union[int,int]]",
-                    "List[str]",
-                    "list[tuple[typing.Union[int,int]]]",
-                    "Tuple[int, int]",
-                    "List[Tuple[int, int]]"
+                    "Tuple[Union[int,int]]",
+                    "List[tuple[Union[int,int]]]",
+                    "Tuple[int,int]",
+                    "List[Tuple[int,int]]"
                 ],
                 "test": [
                     "str",
@@ -324,7 +363,7 @@
             "name": "encode",
             "location": 80,
             "return": [
-                "tuple[typing.Union[int,str,float,dict[str, typing.Callable[..., typing.Any]],dict[str, bool],typing.Callable[..., None],list[int],list[str],typing.Type]]",
+                "Tuple[Union[int,str,float,dict[str,Callable[...,Any]],dict[str,bool],Callable[...,None],list[int],list[str],Type]]",
                 "int",
                 "float",
                 "str",
@@ -333,27 +372,25 @@
             "arguments": {
                 "self": [],
                 "train_data": [
-                    "list[str]",
                     "List[str]",
                     "int",
-                    "Dict[str, str]",
-                    "Union[numpy.ndarray, pandas.DataFrame, None]",
+                    "Dict[str,str]",
+                    "Union[numpy.ndarray,pandas.DataFrame,None]",
                     "Optional[List[str]]"
                 ],
                 "test_data": [
-                    "list[str]",
+                    "List[str]",
                     "Optional[int]",
                     "Optional[List[str]]"
                 ],
                 "target_label": [
                     "float",
+                    "List",
                     "int",
-                    "list[]",
-                    "list",
                     "str",
-                    "typing.Callable[str,str, float]",
-                    "Callable[[str, str], float]",
-                    "Union[str, int]"
+                    "Callable[str,str,float]",
+                    "Callable[[str,str],float]",
+                    "Union[str,int]"
                 ]
             }
         }
@@ -364,26 +401,41 @@
             "name": "hold_out",
             "location": 12,
             "return": [
-                "Tuple[(Any, Any)]"
+                "bool",
+                "dict"
             ],
             "arguments": {
                 "data_set": [
                     "bool",
                     "float",
-                    "typing.Iterable[]",
+                    "Iterable",
                     "Optional[Iterable]",
                     "None",
                     "pandas.DataFrame",
                     "int"
                 ],
                 "frac": [
-                    "float"
+                    "float",
+                    "bool",
+                    "Optional[Iterable]",
+                    "pandas.DataFrame",
+                    "int"
                 ],
                 "shuffle": [
-                    "bool"
+                    "bool",
+                    "float",
+                    "Optional[Iterable]",
+                    "pandas.DataFrame",
+                    "int"
                 ],
                 "stratify": [
-                    "Optional[Iterable]"
+                    "bool",
+                    "None",
+                    "float",
+                    "Optional[Iterable]",
+                    "Iterable",
+                    "pandas.DataFrame",
+                    "int"
                 ]
             }
         }
@@ -395,7 +447,6 @@
             "name": "response",
             "location": 15,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -409,9 +460,7 @@
             "arguments": {
                 "response": [
                     "List[str]",
-                    "list[str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },

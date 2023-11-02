@@ -4,11 +4,14 @@
             "name": "clean",
             "location": 34,
             "return": [
-                "str"
+                "str",
+                "int",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "value": [
-                    "Union[(str, List[str])]"
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -16,11 +19,17 @@
             "name": "parse_address",
             "location": 43,
             "return": [
-                "ParsedAddress"
+                "ParsedAddress",
+                "Optional[int]",
+                "str",
+                "Optional[List[int]]"
             ],
             "arguments": {
                 "raw": [
-                    "str"
+                    "str",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "None"
                 ]
             }
         },
@@ -28,7 +37,7 @@
             "name": "parse_landlord_addresses",
             "location": 67,
             "return": [
-                "Iterator[LandlordParseResult]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {}
         },
@@ -58,21 +67,18 @@
             "name": "test_parse_address_works",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "raw": [
                     "str",
-                    "bool",
                     "Tuple[str]",
-                    "tuple[str]"
+                    "bool"
                 ],
                 "expected": [
                     "str",
-                    "bool",
                     "Tuple[str]",
-                    "tuple[str]"
+                    "bool"
                 ]
             }
         },
@@ -96,23 +102,20 @@
             "name": "test_clean_works",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "value": [
                     "str",
-                    "Tuple[bytes, bytes, bytes]",
-                    "tuple[typing.Union[bytes,bytes,bytes]]",
                     "Set[str]",
-                    "set[str]"
+                    "Tuple[bytes,bytes,bytes]",
+                    "Tuple[Union[bytes,bytes,bytes]]"
                 ],
                 "expected": [
                     "str",
-                    "Tuple[bytes, bytes, bytes]",
-                    "tuple[typing.Union[bytes,bytes,bytes]]",
                     "Set[str]",
-                    "set[str]"
+                    "Tuple[bytes,bytes,bytes]",
+                    "Tuple[Union[bytes,bytes,bytes]]"
                 ]
             }
         }
@@ -122,11 +125,14 @@
             "name": "get_verification",
             "location": 24,
             "return": [
-                "Dict[(str, Any)]"
+                "bool",
+                "Optional[str]",
+                "Optional[Mapping[str, Any]]",
+                "int"
             ],
             "arguments": {
                 "addr": [
-                    "parseaddrs.ParsedAddress"
+                    "int"
                 ]
             }
         },
@@ -134,10 +140,17 @@
             "name": "get_cached_verification",
             "location": 36,
             "return": [
-                "Dict[(str, Any)]"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "addr": [
+                    "bool",
+                    "Optional[bool]",
+                    "List[int]",
+                    "None",
+                    "str",
+                    "Optional[int]",
                     "parseaddrs.ParsedAddress"
                 ]
             }
@@ -146,7 +159,10 @@
             "name": "load_from_cache",
             "location": 47,
             "return": [
-                "Dict[(parseaddrs.ParsedAddress, Dict[(str, Any)])]"
+                "bytes",
+                "bool",
+                "str",
+                "Dict[str, Dict[str, str]]"
             ],
             "arguments": {}
         },
@@ -158,7 +174,9 @@
             ],
             "arguments": {
                 "vmap": [
-                    "Dict[(parseaddrs.ParsedAddress, Dict[(str, Any)])]"
+                    "bytes",
+                    "str",
+                    "int"
                 ]
             }
         }

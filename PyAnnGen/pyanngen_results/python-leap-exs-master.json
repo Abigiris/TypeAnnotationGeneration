@@ -44,7 +44,7 @@
             "name": "add_batch",
             "location": 19,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "int",
                 "Optional[str]",
                 "datetime.datetime"
@@ -56,9 +56,9 @@
             "location": 31,
             "return": [
                 "str",
-                "tuple[int]",
+                "Tuple[int]",
                 "bytes",
-                "tuple[typing.Union[typing.Text,int]]"
+                "Tuple[Union[Text,int]]"
             ],
             "arguments": {}
         },
@@ -66,9 +66,9 @@
             "name": "allocations_view_endpoint",
             "location": 44,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "str",
-                "tuple[int]",
+                "Tuple[int]",
                 "int",
                 "Iterable[T]",
                 "float"
@@ -76,10 +76,9 @@
             "arguments": {
                 "orderid": [
                     "str",
-                    "typing.Callable[, ]",
-                    "Union[Callable, Coroutine]",
-                    "collections.abc.Coroutine",
                     "Callable",
+                    "Union[Callable,Coroutine]",
+                    "collections.abc.Coroutine",
                     "guillotina.db.orm.interfaces.IBaseObject"
                 ]
             }
@@ -94,10 +93,13 @@
             ],
             "arguments": {
                 "event": [
-                    "commands.CreateBatch"
+                    "raiden_libs.events.Event",
+                    "allocation.unit_of_work.AbstractUnitOfWork"
                 ],
                 "uow": [
-                    "unit_of_work.AbstractUnitOfWork"
+                    "allocation.unit_of_work.AbstractUnitOfWork",
+                    "dict",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -109,10 +111,13 @@
             ],
             "arguments": {
                 "event": [
-                    "commands.Allocate"
+                    "Dict",
+                    "app.model.team.Team"
                 ],
                 "uow": [
-                    "unit_of_work.AbstractUnitOfWork"
+                    "allocation.unit_of_work.AbstractUnitOfWork",
+                    "dict",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -124,10 +129,14 @@
             ],
             "arguments": {
                 "event": [
-                    "commands.ChangeBatchQuantity"
+                    "allocation.unit_of_work.AbstractUnitOfWork",
+                    "raiden_libs.events.Event",
+                    "relay.events.Event"
                 ],
                 "uow": [
-                    "unit_of_work.AbstractUnitOfWork"
+                    "allocation.unit_of_work.AbstractUnitOfWork",
+                    "raiden_libs.events.Event",
+                    "relay.events.Event"
                 ]
             }
         },
@@ -139,10 +148,14 @@
             ],
             "arguments": {
                 "event": [
-                    "events.OutOfStock"
+                    "Callable",
+                    "str",
+                    "aioquic.quic.events.QuicEvent"
                 ],
                 "send_mail": [
-                    "Callable"
+                    "Callable",
+                    "str",
+                    "aioquic.quic.events.QuicEvent"
                 ]
             }
         },
@@ -154,10 +167,14 @@
             ],
             "arguments": {
                 "event": [
-                    "events.Allocated"
+                    "Callable",
+                    "Dict[str,Any]",
+                    "keras.models.Sequential"
                 ],
                 "publish": [
-                    "Callable"
+                    "Callable",
+                    "Dict[str,Any]",
+                    "keras.models.Sequential"
                 ]
             }
         },
@@ -169,10 +186,12 @@
             ],
             "arguments": {
                 "event": [
-                    "events.Allocated"
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "uow": [
-                    "unit_of_work.SqlAlchemyUnitOfWork"
+                    "str",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -184,10 +203,12 @@
             ],
             "arguments": {
                 "event": [
-                    "events.Deallocated"
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "uow": [
-                    "unit_of_work.SqlAlchemyUnitOfWork"
+                    "str",
+                    "Dict[str, Any]"
                 ]
             }
         }
@@ -202,13 +223,19 @@
             "arguments": {
                 "self": [],
                 "uow": [
-                    "unit_of_work.AbstractUnitOfWork"
+                    "str",
+                    "bool",
+                    "Dict"
                 ],
                 "send_mail": [
-                    "Callable"
+                    "str",
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "publish": [
-                    "Callable"
+                    "str",
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -221,7 +248,8 @@
             "arguments": {
                 "self": [],
                 "message_queue": [
-                    "List[Union[(commands.Command, events.Event)]]"
+                    "asyncio.events.AbstractEventLoop",
+                    "Mapping[str, Any]"
                 ]
             }
         },
@@ -234,7 +262,9 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "events.Event"
+                    "watchdog.events.FileSystemEvent",
+                    "raiden_libs.events.Event",
+                    "apscheduler.events.JobExecutionEvent"
                 ]
             }
         },
@@ -252,7 +282,10 @@
             "arguments": {
                 "self": [],
                 "command": [
-                    "commands.Command"
+                    "str",
+                    "int",
+                    "BaseException",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -267,10 +300,14 @@
             "arguments": {
                 "self": [],
                 "handler": [
-                    "Callable"
+                    "int",
+                    "bytes"
                 ],
                 "message": [
-                    "Union[(commands.Command, events.Event)]"
+                    "str",
+                    "bool",
+                    "Callable",
+                    "int"
                 ]
             }
         }
@@ -285,13 +322,27 @@
             "arguments": {
                 "self": [],
                 "sku": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None",
+                    "int",
+                    "Optional[str]"
                 ],
                 "batches": [
-                    "List[Batch]"
+                    "str",
+                    "bool",
+                    "None",
+                    "int",
+                    "Optional[str]"
                 ],
                 "version_number": [
-                    "int"
+                    "int",
+                    "Dict",
+                    "Any",
+                    "Dict[str,List[str]]",
+                    "Mapping[str,str]",
+                    "str",
+                    "Union[bool,str]"
                 ]
             }
         },
@@ -299,12 +350,23 @@
             "name": "allocate",
             "location": 16,
             "return": [
-                "str"
+                "None",
+                "str",
+                "Optional[Iterable[Any]]",
+                "List[str]",
+                "Optional[BaseException]",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "line": [
-                    "OrderLine"
+                    "Counter[str]",
+                    "str",
+                    "Counter",
+                    "List",
+                    "List[str]",
+                    "Dict[str,List[str]]",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -320,7 +382,9 @@
                     "str"
                 ],
                 "qty": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -333,16 +397,28 @@
             "arguments": {
                 "self": [],
                 "ref": [
-                    "str"
+                    "Callable",
+                    "str",
+                    "Type",
+                    "Sequence"
                 ],
                 "sku": [
-                    "str"
+                    "Callable",
+                    "str",
+                    "Type",
+                    "Sequence"
                 ],
                 "qty": [
-                    "int"
+                    "Callable",
+                    "str",
+                    "Type",
+                    "Sequence"
                 ],
                 "eta": [
-                    "Optional[datetime.date]"
+                    "Callable",
+                    "str",
+                    "Type",
+                    "Sequence"
                 ]
             }
         },
@@ -406,7 +482,11 @@
             "arguments": {
                 "self": [],
                 "line": [
-                    "OrderLine"
+                    "str",
+                    "Set[int]",
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "Tuple[Literal,Literal]"
                 ]
             }
         },
@@ -414,7 +494,9 @@
             "name": "deallocate_one",
             "location": 79,
             "return": [
-                "OrderLine"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -449,12 +531,16 @@
             "name": "can_allocate",
             "location": 90,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "List[List[str]]"
             ],
             "arguments": {
                 "self": [],
                 "line": [
-                    "OrderLine"
+                    "str",
+                    "List[str]",
+                    "int"
                 ]
             }
         }
@@ -472,7 +558,6 @@
             "name": "receive_load",
             "location": 64,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -485,7 +570,6 @@
                     "str",
                     "int",
                     "Iterable[str]",
-                    "typing.Iterable[str]",
                     "Optional[str]",
                     "None"
                 ]
@@ -508,7 +592,6 @@
             "name": "main",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -517,7 +600,6 @@
             "name": "handle_change_batch_quantity",
             "location": 28,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -536,19 +618,16 @@
             "name": "publish",
             "location": 35,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "channel": [
                     "str",
-                    "typing.Callable[, ]",
                     "Callable",
                     "pyramid.config.Configurator"
                 ],
                 "event": [
                     "str",
-                    "typing.Callable[, ]",
                     "Callable",
                     "pyramid.config.Configurator"
                 ]
@@ -576,9 +655,7 @@
                 "self": [],
                 "product": [
                     "Callable",
-                    "typing.Callable[, ]",
-                    "Type",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -588,13 +665,13 @@
             "return": [
                 "str",
                 "bool",
-                "typing.ValuesView",
-                "list[int]",
-                "list[]",
-                "set[]",
-                "set[int]",
-                "typing.DefaultDict",
-                "list[list[typing.Any]]"
+                "ValuesView",
+                "List[int]",
+                "List",
+                "Set",
+                "Set[int]",
+                "DefaultDict",
+                "List[list[Any]]"
             ],
             "arguments": {
                 "self": [],
@@ -612,7 +689,7 @@
                 "str",
                 "int",
                 "bool",
-                "list[tuple[typing.Union[int,int,int,int,int,int]]]"
+                "List[tuple[Union[int,int,int,int,int,int]]]"
             ],
             "arguments": {
                 "self": [],
@@ -626,17 +703,15 @@
             "name": "_add",
             "location": 28,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "product": [
-                    "dict[, ]",
+                    "Dict",
                     "bool",
                     "allocation.domain.model.Product",
                     "str",
-                    "dict",
                     "int"
                 ]
             }
@@ -645,7 +720,6 @@
             "name": "_get",
             "location": 32,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -653,9 +727,8 @@
                 "sku": [
                     "bool",
                     "str",
-                    "dict[, ]",
-                    "T",
-                    "dict"
+                    "Dict",
+                    "T"
                 ]
             }
         },
@@ -663,7 +736,6 @@
             "name": "_get_by_batchid",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -671,9 +743,8 @@
                 "batchid": [
                     "bool",
                     "str",
-                    "dict[, ]",
-                    "T",
-                    "dict"
+                    "Dict",
+                    "T"
                 ]
             }
         },
@@ -687,11 +758,9 @@
                 "self": [],
                 "session": [
                     "str",
-                    "list[str]",
-                    "bool",
                     "List[str]",
-                    "typing.Sequence[str]",
                     "Sequence[str]",
+                    "bool",
                     "sqlalchemy.orm.Session"
                 ]
             }
@@ -708,9 +777,9 @@
                     "collections.abc.AsyncIterable",
                     "allocation.domain.model.Product",
                     "bool",
-                    "typing.Iterable[typing.Any]",
-                    "Union[AsyncIterable[Any], Iterable[Any]]",
-                    "Tuple[float, float]"
+                    "Iterable[Any]",
+                    "Union[AsyncIterable[Any],Iterable[Any]]",
+                    "Tuple[float,float]"
                 ]
             }
         },
@@ -762,7 +831,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TAbstractUnitOfWork"
+                    "_TAbstractUnitOfWork@@AbstractUnitOfWork@@"
                 ]
             }
         },
@@ -790,7 +859,6 @@
             "name": "_commit",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -801,7 +869,6 @@
             "name": "rollback",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -812,7 +879,7 @@
             "name": "collect_events",
             "location": 32,
             "return": [
-                "Generator[(allocation.events.Event, Any, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -827,7 +894,9 @@
             "arguments": {
                 "self": [],
                 "products": [
-                    "repository.AbstractRepository"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -891,10 +960,24 @@
             ],
             "arguments": {
                 "orderid": [
-                    "str"
+                    "Dict",
+                    "List[Dict]",
+                    "Callable",
+                    "List[dict]",
+                    "Dict[str,Any]",
+                    "Optional[Tuple[str,...]]",
+                    "Tuple[Union[str,...]]",
+                    "None"
                 ],
                 "uow": [
-                    "unit_of_work.SqlAlchemyUnitOfWork"
+                    "Dict",
+                    "List[Dict]",
+                    "Callable",
+                    "List[dict]",
+                    "Dict[str,Any]",
+                    "Optional[Tuple[str,...]]",
+                    "Tuple[Union[str,...]]",
+                    "None"
                 ]
             }
         }
@@ -906,8 +989,8 @@
             "return": [
                 "str",
                 "int",
-                "list[dict[str, typing.Any]]",
-                "dict[str, dict[str, int]]",
+                "List[dict[str,Any]]",
+                "Dict[str,dict[str,int]]",
                 "float"
             ],
             "arguments": {}
@@ -916,13 +999,11 @@
             "name": "sqlite_session_factory",
             "location": 27,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "in_memory_sqlite_db": [
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "bool",
                     "Optional[str]",
                     "str",
@@ -982,14 +1063,12 @@
             "name": "postgres_session_factory",
             "location": 73,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "postgres_db": [
-                    "set[str]",
-                    "int",
                     "Set[str]",
+                    "int",
                     "abilian.core.sqlalchemy.SQLAlchemy",
                     "sqlalchemy.engine.base.Engine",
                     "sqlalchemy.orm.session.Session"
@@ -1011,7 +1090,7 @@
                     "str",
                     "bool",
                     "None",
-                    "Optional['SparkSession']",
+                    "Optional[SparkSession]",
                     "Optional[int]"
                 ]
             }
@@ -1020,7 +1099,6 @@
             "name": "restart_api",
             "location": 84,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1030,9 +1108,9 @@
             "location": 90,
             "return": [
                 "None",
-                "Union[tuple, list]",
+                "Union[tuple,list]",
                 "List[int]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {}
@@ -1050,8 +1128,7 @@
             "arguments": {
                 "prefix": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -1065,38 +1142,34 @@
                 "ref": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "sku": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "qty": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "eta": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1116,7 +1189,6 @@
             "name": "test_happy_path_returns_202_and_batch_is_allocated",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1125,7 +1197,6 @@
             "name": "test_unhappy_path_returns_400_and_error_message",
             "location": 49,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1143,8 +1214,7 @@
             "arguments": {
                 "prefix": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -1152,45 +1222,40 @@
             "name": "post_to_add_batch",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "ref": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "sku": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "qty": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "eta": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1198,7 +1263,6 @@
             "name": "post_to_allocate",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1206,22 +1270,22 @@
                     "str",
                     "Optional[str]",
                     "None",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "sku": [
                     "str",
                     "Optional[str]",
                     "None",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "qty": [
                     "str",
                     "Optional[str]",
                     "None",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ],
                 "expected_batch": [
                     "bool",
@@ -1260,12 +1324,11 @@
                 "fn": [
                     "str",
                     "bool",
-                    "list[str]",
-                    "int",
-                    "tuple[typing.Union[int,int]]",
                     "List[str]",
+                    "int",
+                    "Tuple[Union[int,int]]",
                     "None",
-                    "Union[int, Tuple[int, int]]",
+                    "Union[int,Tuple[int,int]]",
                     "Optional[int]"
                 ]
             }
@@ -1291,7 +1354,6 @@
             "name": "test_change_batch_quantity_leading_to_reallocation",
             "location": 62,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1300,7 +1362,6 @@
             "name": "check_messages",
             "location": 79,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1317,7 +1378,7 @@
                 "sqlite_session_factory": [
                     "str",
                     "None",
-                    "Union[None, str]",
+                    "Union[None,str]",
                     "Optional[str]"
                 ]
             }
@@ -1335,8 +1396,7 @@
             "arguments": {
                 "prefix": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -1350,51 +1410,45 @@
                 "session": [
                     "int",
                     "str",
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[str, dict[str, typing.Any]]"
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]"
                 ],
                 "ref": [
                     "str",
-                    "dict[, ]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "int",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
                     "None",
-                    "Optional[Dict[str, Any]]",
+                    "Optional[Dict[str,Any]]",
                     "Literal"
                 ],
                 "sku": [
                     "int",
                     "str",
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[str, dict[str, typing.Any]]"
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]"
                 ],
                 "qty": [
                     "str",
-                    "dict[, ]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "int",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
                     "None",
-                    "Optional[Dict[str, Any]]",
+                    "Optional[Dict[str,Any]]",
                     "Literal"
                 ],
                 "eta": [
                     "str",
-                    "dict[, ]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "int",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
                     "None",
-                    "Optional[Dict[str, Any]]",
+                    "Optional[Dict[str,Any]]",
                     "Literal"
                 ],
                 "product_version": [
                     "int",
-                    "dict",
+                    "Dict",
                     "str"
                 ]
             }
@@ -1423,12 +1477,11 @@
             "arguments": {
                 "sqlite_session_factory": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Mapping[str, Any]",
-                    "typing.Mapping",
+                    "Dict[str,Any]",
+                    "Mapping[str,Any]",
+                    "Mapping",
                     "Optional[Dict]",
-                    "dict[, ]",
+                    "Dict",
                     "None"
                 ]
             }
@@ -1472,23 +1525,20 @@
                     "int"
                 ],
                 "sku": [
-                    "Dict[str, Any]",
-                    "str",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "exceptions": [
-                    "list[bytes]",
+                    "List[bytes]",
                     "Callable",
                     "int",
                     "str",
-                    "float",
-                    "List[bytes]"
+                    "float"
                 ],
                 "session_factory": [
                     "int",
+                    "List[Outcome]",
                     "bytes",
-                    "list[\"Outcome\"]",
-                    "List[\"Outcome\"]",
                     "bool"
                 ]
             }
@@ -1501,9 +1551,8 @@
             ],
             "arguments": {
                 "postgres_session_factory": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "dict[str, typing.Any]",
                     "Optional[str]",
                     "None"
                 ]
@@ -1521,8 +1570,7 @@
             ],
             "arguments": {
                 "sqlite_session_factory": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1560,7 +1608,7 @@
             "name": "make_batch_and_line",
             "location": 13,
             "return": [
-                "Tuple[(allocation.model.Batch, allocation.model.OrderLine)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "sku": [
@@ -1627,9 +1675,8 @@
                 "products": [
                     "str",
                     "bytes",
-                    "set[int]",
-                    "float",
-                    "Set[int]"
+                    "Set[int]",
+                    "float"
                 ]
             }
         },
@@ -1645,9 +1692,9 @@
                     "collections.abc.AsyncIterable",
                     "allocation.domain.model.Product",
                     "bool",
-                    "typing.Iterable[typing.Any]",
-                    "Union[AsyncIterable[Any], Iterable[Any]]",
-                    "Tuple[float, float]"
+                    "Iterable[Any]",
+                    "Union[AsyncIterable[Any],Iterable[Any]]",
+                    "Tuple[float,float]"
                 ]
             }
         },
@@ -1666,9 +1713,8 @@
                 "self": [],
                 "sku": [
                     "bool",
-                    "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         },
@@ -1686,8 +1732,7 @@
                 "batchid": [
                     "int",
                     "str",
-                    "Dict[int, dict]",
-                    "dict[int, dict[, ]]"
+                    "Dict[int,dict]"
                 ]
             }
         },
@@ -1825,7 +1870,7 @@
             "name": "test_records_out_of_stock_event_if_cannot_allocate",
             "location": 46,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         },
@@ -1833,7 +1878,7 @@
             "name": "test_increments_version_number",
             "location": 56,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         }

@@ -29,7 +29,7 @@
             "return": [
                 "str",
                 "Set[str]",
-                "list",
+                "List",
                 "List[str]"
             ],
             "arguments": {
@@ -55,7 +55,6 @@
                 "basename": [
                     "str",
                     "int",
-                    "typing.Iterable[]",
                     "Iterable",
                     "None",
                     "bool",
@@ -81,10 +80,14 @@
             "arguments": {
                 "self": [],
                 "command_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "coin": [
-                    "Optional[minerstat.miners.base.IMiner]"
+                    "bool",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -254,7 +257,10 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "minerstat.utils.Config"
+                    "sphinx.config.Config",
+                    "model.Config",
+                    "virgene.config.Config",
+                    "config.Config"
                 ],
                 "remote": [
                     "Dict[str, Any]",
@@ -291,9 +297,7 @@
         "Rig.miner_ended": {
             "name": "miner_ended",
             "location": 213,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "status": [
@@ -314,7 +318,9 @@
             "arguments": {
                 "self": [],
                 "rig": [
-                    "minerstat.rig.Rig"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -322,7 +328,7 @@
             "name": "startService",
             "location": 10,
             "return": [
-                "None"
+                "Callable"
             ],
             "arguments": {
                 "self": []
@@ -332,7 +338,9 @@
             "name": "stopService",
             "location": 13,
             "return": [
-                "None"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -349,22 +357,41 @@
             "arguments": {
                 "self": [],
                 "client": [
+                    "bool",
+                    "Sequence[str]",
+                    "Dict",
                     "str"
                 ],
                 "accesskey": [
+                    "bool",
+                    "Sequence[str]",
+                    "Dict",
                     "str"
                 ],
                 "worker": [
+                    "bool",
+                    "Sequence[str]",
+                    "Dict",
                     "str"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "db": [
-                    "Optional[str]"
+                    "bool",
+                    "None",
+                    "Sequence[str]",
+                    "Dict",
+                    "str"
                 ],
                 "api_base": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bytes",
+                    "Dict"
                 ]
             }
         },
@@ -378,12 +405,8 @@
                 "cls": [
                     "Type[_TConfig]"
                 ],
-                "parser": [
-                    "configparser.ConfigParser"
-                ],
-                "section": [
-                    "str"
-                ]
+                "parser": [],
+                "section": []
             }
         },
         "Config.from_path": {
@@ -397,7 +420,8 @@
                     "Type[_TConfig]"
                 ],
                 "path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "section": [
                     "str"
@@ -436,10 +460,15 @@
             "arguments": {
                 "self": [],
                 "coin": [
-                    "IMiner"
+                    "Dict",
+                    "str",
+                    "List"
                 ],
                 "config": [
-                    "minerstat.utils.Config"
+                    "Dict",
+                    "sphinx.config.Config",
+                    "model.Config",
+                    "virgene.config.Config"
                 ]
             }
         },
@@ -490,16 +519,18 @@
             "name": "make_request",
             "location": 21,
             "return": [
-                "Awaitable"
+                "Dict[str, Union[int, str]]",
+                "dict",
+                "Dict[str, Any]",
+                "Optional[Dict[str, Any]]",
+                "Optional[Dict[str, str]]"
             ],
             "arguments": {
                 "self": [],
                 "request": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "str",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "str"
                 ]
             }
         },
@@ -512,7 +543,9 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -536,9 +569,8 @@
                 "self": [],
                 "reason": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         }
@@ -558,16 +590,18 @@
             "name": "make_request",
             "location": 20,
             "return": [
-                "Awaitable"
+                "Dict[str, Union[int, str]]",
+                "dict",
+                "Dict[str, Any]",
+                "Optional[Dict[str, Any]]",
+                "Optional[Dict[str, str]]"
             ],
             "arguments": {
                 "self": [],
                 "request": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Exception",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Exception"
                 ]
             }
         }
@@ -598,7 +632,6 @@
             "name": "test_start_stop",
             "location": 38,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -752,11 +785,9 @@
             "arguments": {
                 "self": [],
                 "options": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[str, int]",
-                    "str",
-                    "Dict[str, int]"
+                    "Dict[str,Any]",
+                    "Dict[str,int]",
+                    "str"
                 ]
             }
         }

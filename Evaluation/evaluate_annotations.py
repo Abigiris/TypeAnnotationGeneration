@@ -30,7 +30,6 @@ TOP_N = 1
 TYPE_LIMIT = (TypeCategory.Elementary, TypeCategory.Parametric, TypeCategory.Union,
               TypeCategory.Dynamic, TypeCategory.Variable, TypeCategory.UserDefined)
 
-
 category_results = {
     'ret': {
         'points': 0,
@@ -57,9 +56,9 @@ category_results = {
 }
 
 
-GenericType = ('list', 'tuple', 'dict', 'set', 'callable', 'generator', 'sequence', 'iterable', 'collection')
-ElementaryType = ('int', 'float', 'bool', 'str', 'bytes', 'None')
-ParametricType = ('list', 'tuple', 'dict', 'set', 'callable', 'generator')
+ElementaryType = ('int', 'float', 'bool', 'str', 'bytes', 'None', 'NoneType', 'NoReturn')
+ParametricType = ('list', 'tuple', 'dict', 'set', 'callable', 'generator', 'sequence', 'iterable', 'iterator',
+                  'collection', 'mapping', 'type')
 
 
 def classify_a_type(t):
@@ -68,19 +67,32 @@ def classify_a_type(t):
         std_t = t.replace('"', '').replace("'", "")
         std_t = std_t.replace('builtin.', '').replace('typing.', '')
         return std_t
-    if t in ('Any', 'typing.Any', 't.Any'):
+    t = t.replace('"', '').replace("'", "")
+    if t in ('Any', 'typing.Any', 't.Any', 'any', 'object', 'builtins.object'):
         return TypeCategory.Dynamic
-    if t.startswith('_T'):
+    if t.startswith('_T') or '@@' in t:
         return TypeCategory.Variable
     if t.startswith(('Union', 'Optional', 'typing.Union', 'typing.Optional', 't.Union', 't.Optional')):
         return TypeCategory.Union
-    if t.startswith('builtins.'):
-        t = t.split('.', maxsplit=1)[1]
-    if t in dir(__builtins__) and t not in ParametricType:
+    if t in ElementaryType or t.replace('builtins.', '').replace('typing.', '') in ElementaryType:
         return TypeCategory.Elementary
-    if '[' in t or t.lower() in ParametricType:
+    if t.replace('builtins.', '').replace('typing.', '').lower() in ParametricType:
+        return TypeCategory.Parametric
+    if (t.startswith('[') and t.endswith(']')) or (t.startswith('(') and t.endswith(')')) or (t.startswith('{') and t.endswith('}')):
+        return TypeCategory.Parametric
+    if '[' in t and t.endswith(']'):
         return TypeCategory.Parametric
     return TypeCategory.UserDefined
+
+
+
+def parse_annotation_basic(type_str):
+    type_str = type_str.replace('\'', '').replace('\"', '').replace(' ', '')
+    type_str = type_str.replace('[,]', '')
+    if type_str.endswith('[]') and type_str.count(']') == 1:
+        type_str = type_str.replace('[]', '')
+    # type_str = type_str.replace('[]', '')
+    return type_str
 
 
 def normalize_one_type_basic(type_str):
@@ -89,8 +101,12 @@ def normalize_one_type_basic(type_str):
         s = type_str.lower()
         s = s.replace(' ', '').replace('\t', '').replace('\n', '')
         s = s.replace('\'', '').replace('\"', '')
-        if s == ('noreturn', 'nonetype'):
+        if s in ('noreturn', 'nonetype'):
             s = 'none'
+        if s in ('function', 'builtins.function'):
+            s = 'callable'
+        if s in ('builtins.object', 'object'):
+            s = 'any'
         return s
     except:
         return type_str
@@ -101,13 +117,13 @@ def normalize_one_type_advanced(type_str, has_basic_normalized=False):
     if not has_basic_normalized:
         s = normalize_one_type_basic(s)
     basic_str = s
+
     while True:
         pattern = re.findall(r'([a-z0-9_]+\.[a-z0-9_]+)', s)
         if not pattern:
             break
         for g in pattern:
             s = s.replace(g, g.split('.')[-1])
-
     # if s != basic_str:
     if '...' not in s and '.' in s:
         # print(type_str + ' === ' + basic_str + ' === ' + s)
@@ -162,6 +178,10 @@ def split_type(type_str):
 
 
 def is_similar_match(gt_type, res_list):
+    gt = normalize_one_type_basic(gt_type)
+    l = [normalize_one_type_basic(x) for x in res_list]
+    if gt in l:
+        return Metric.Similar
     gt = normalize_one_type_advanced(gt_type)
     l = [normalize_one_type_advanced(x) for x in res_list]
     if gt in l:
@@ -170,10 +190,8 @@ def is_similar_match(gt_type, res_list):
 
 
 def is_parametric(type_str):
-    # param_type_match = r'(.+?)\[(.+)\]'
-    # return re.match(param_type_match, type_str)
     type_str = type_str.lower()
-    for generic in GenericType:
+    for generic in ParametricType:
         if type_str == generic or type_str.startswith(generic + '['):
             return True
     if '[' in type_str:
@@ -228,10 +246,30 @@ def is_dynamic_match(gt_type, res_list):
 
 
 def is_variable_match(gt_type, res_list):
-    # gt_type = normalize_one_type_advanced(gt_type)
-    # res_list = [normalize_one_type_advanced(x) for x in res_list]
-    if '_T' + gt_type in res_list:
+    if gt_type.count('@@') == 1:
+        for res in res_list:
+            if res.count('@@') == 1:
+                return Metric.Match
         return Metric.Variable
+
+    if gt_type.count('@@') > 1:
+        gt_list = gt_type.split('@@')
+        may_match = [x for x in gt_list if x in res_list]
+        if len(may_match) > 0:
+            return Metric.Variable
+        return Metric.Different
+
+    for res in res_list:
+        if res.count('@@') == 0:
+            continue
+        elif res.count('@@') == 1:
+            return Metric.Variable
+        else:
+            gt = normalize_one_type_advanced(gt_type)
+            tv_list = res.split('@@')
+            if gt in [normalize_one_type_advanced(x) for x in tv_list]:
+                return Metric.Variable
+
     return Metric.Different
 
 
@@ -242,16 +280,19 @@ def evaluate_point(res_list, gt_list):
 
     res_list = res_list[:TOP_N]
     gt_type = gt_list[0]
-    res_list = [x.strip("'").strip('"') for x in res_list]
-    gt_type = gt_type.strip("'").strip('"')
+    res_list = [parse_annotation_basic(x) for x in res_list]
+    gt_type = parse_annotation_basic(gt_type)
 
     if gt_type in res_list:
         return Metric.Match
+
     if is_similar_match(gt_type, list(res_list)) == Metric.Similar:
         return Metric.Similar
+
     ''' Top-N '''
     if is_partial_match(gt_type, list(res_list)) == Metric.Similar:
         return Metric.Similar
+
     for single_res in res_list:
         new_res_list = []
         new_res_list.append(single_res)
@@ -261,8 +302,10 @@ def evaluate_point(res_list, gt_list):
             return Metric.Partial
         if is_dynamic_match(gt_type, list(new_res_list)) == Metric.Dynamic:
             return Metric.Dynamic
-        if is_variable_match(gt_type, list(new_res_list)) == Metric.Variable:
-            return Metric.Variable
+        var_match_res = is_variable_match(gt_type, list(new_res_list))
+        if var_match_res != Metric.Different:
+            return var_match_res
+
     return Metric.Different
 
 
@@ -349,7 +392,7 @@ if __name__ == '__main__':
             res_dict = json.load(f)
         with open(gt_path) as f:
             gt_dict = json.load(f)
-        metric = evaluate_project(res_dict, gt_dict)
+        metric = evaluate_project(res_dict, gt_dict)  # metric is the 'total' category, no use
 
     with open(output_path, 'w') as f:
         json.dump(standardize_results(category_results), f, indent=4)

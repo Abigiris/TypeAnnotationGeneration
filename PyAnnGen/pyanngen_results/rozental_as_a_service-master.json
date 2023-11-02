@@ -30,12 +30,10 @@
             "name": "prepare_arguments",
             "location": 66,
             "return": [
-                "rozental_as_a_service.common_types.RozentalOptions"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "argparse_args": [
-                    "argparse.Namespace"
-                ]
+                "argparse_args": []
             }
         }
     },
@@ -44,11 +42,12 @@
             "name": "extract_all_constants_from_ast",
             "location": 6,
             "return": [
-                "List[str]"
+                "List[nothing]"
             ],
             "arguments": {
                 "ast_tree": [
-                    "_ast.AST"
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -60,11 +59,13 @@
             "name": "get_params_from_config",
             "location": 7,
             "return": [
-                "Mapping[(str, Any)]"
+                "Dict[(str, Union[(int, str, List[str])])]"
             ],
             "arguments": {
                 "config_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -78,10 +79,17 @@
             ],
             "arguments": {
                 "speller_result": [
-                    "List[List[Mapping[(str, Any)]]]"
+                    "str",
+                    "Optional[str]",
+                    "List[int]",
+                    "bool",
+                    "None",
+                    "int",
+                    "Iterable[Union[Any,int]]"
                 ],
                 "words": [
-                    "List[str]"
+                    "str",
+                    "Dict[Hashable,Any]"
                 ],
                 "db_path": [
                     "str"
@@ -92,11 +100,21 @@
             "name": "get_ya_speller_cache_from_db",
             "location": 24,
             "return": [
-                "Dict[(str, Optional[List[str]])]"
+                "Dict",
+                "bool",
+                "Dict[str,Any]",
+                "str"
             ],
             "arguments": {
                 "words": [
-                    "List[str]"
+                    "str",
+                    "List[str]",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "None",
+                    "Optional[Any]",
+                    "Any"
                 ],
                 "db_path": [
                     "str"
@@ -111,7 +129,9 @@
             ],
             "arguments": {
                 "db_path": [
-                    "str"
+                    "str",
+                    "List[int]",
+                    "os.PathLike"
                 ]
             }
         },
@@ -119,14 +139,18 @@
             "name": "get_existing_words_in_db",
             "location": 42,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "words": [
-                    "List[str]"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "bytes",
+                    "List[str]"
                 ]
             }
         },
@@ -134,14 +158,20 @@
             "name": "fetch_words_info_from_db",
             "location": 51,
             "return": [
-                "Dict[(str, Optional[List[str]])]"
+                "dict"
             ],
             "arguments": {
                 "words": [
-                    "List[str]"
+                    "str",
+                    "Dict[str,str]",
+                    "Union[List,str]",
+                    "int",
+                    "List"
                 ],
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "bool",
+                    "Sequence[str]",
+                    "str"
                 ]
             }
         },
@@ -153,10 +183,21 @@
             ],
             "arguments": {
                 "data": [
-                    "List[Tuple[(str, Optional[Mapping])]]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "bytes",
+                    "str",
+                    "Optional[Dict]",
+                    "Iterable",
+                    "Callable"
                 ],
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "Dict[str, Any]",
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "dict",
+                    "Callable"
                 ]
             }
         },
@@ -168,7 +209,9 @@
             ],
             "arguments": {
                 "db_path": [
-                    "str"
+                    "str",
+                    "Union[str,bytes]",
+                    "bytes"
                 ],
                 "table_name": [
                     "str"
@@ -183,7 +226,9 @@
             ],
             "arguments": {
                 "db_path": [
-                    "str"
+                    "str",
+                    "List[int]",
+                    "os.PathLike"
                 ]
             }
         },
@@ -207,10 +252,13 @@
             ],
             "arguments": {
                 "db_path": [
-                    "str"
+                    "str",
+                    "List[int]"
                 ],
                 "obscene_words": [
-                    "List[str]"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict"
                 ]
             }
         },
@@ -218,11 +266,13 @@
             "name": "load_obscene_words",
             "location": 104,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {
                 "db_path": [
-                    "str"
+                    "str",
+                    "List[int]",
+                    "os.PathLike"
                 ]
             }
         }
@@ -235,9 +285,7 @@
                 "List[str]"
             ],
             "arguments": {
-                "raw_constants": [
-                    "List[str]"
-                ],
+                "raw_constants": [],
                 "min_word_length": [
                     "int"
                 ],
@@ -253,27 +301,21 @@
             "name": "process_raw_constant",
             "location": 48,
             "return": [
-                "Tuple[(List[str], List[str])]"
+                "Tuple[(list, list)]"
             ],
             "arguments": {
-                "constant": [
-                    "str"
-                ],
-                "min_word_length": [
-                    "int"
-                ]
+                "constant": [],
+                "min_word_length": []
             }
         },
         "process_camelcased_words": {
             "name": "process_camelcased_words",
             "location": 64,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
-                "raw_camelcase_words": [
-                    "List[str]"
-                ]
+                "raw_camelcase_words": []
             }
         }
     },
@@ -286,10 +328,16 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "exclude": [
-                    "List[str]"
+                    "str",
+                    "List[str]",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ]
             }
         },
@@ -301,13 +349,23 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "pathlib.Path"
                 ],
                 "exclude": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "bytes"
                 ],
                 "extension": [
-                    "str"
+                    "str",
+                    "pathlib.Path",
+                    "Sequence[str]",
+                    "None",
+                    "Optional[str]",
+                    "List",
+                    "Union[str,pathlib.Path]",
+                    "path.Path",
+                    "Union[List,str]"
                 ]
             }
         },
@@ -322,7 +380,12 @@
                     "str"
                 ],
                 "guess_encoding": [
-                    "bool"
+                    "bool",
+                    "List[str]",
+                    "pathlib.Path",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -330,14 +393,18 @@
             "name": "get_config_path",
             "location": 38,
             "return": [
-                "Optional[str]"
+                "Optional[Union[(str, _T1)]]"
             ],
             "arguments": {
                 "base_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "config_path": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]"
                 ]
             }
         }
@@ -347,14 +414,24 @@
             "name": "chunks",
             "location": 4,
             "return": [
-                "generator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "some_list": [
-                    "list"
+                    "int",
+                    "list",
+                    "List[int]",
+                    "List[Tuple[str, int]]",
+                    "List[List[int]]"
                 ],
                 "chunk_size": [
-                    "int"
+                    "int",
+                    "List",
+                    "List[int]",
+                    "List[Tuple[str,int]]",
+                    "List[tuple[Union[str,int]]]",
+                    "List[List[int]]",
+                    "List[list[int]]"
                 ]
             }
         },
@@ -366,7 +443,12 @@
             ],
             "arguments": {
                 "some_list": [
-                    "List[list]"
+                    "List[List]",
+                    "str",
+                    "List[list]",
+                    "List",
+                    "List[Tuple[int,int,int]]",
+                    "List[tuple[Union[int,int,int]]]"
                 ]
             }
         }
@@ -380,13 +462,19 @@
             ],
             "arguments": {
                 "verbosity": [
-                    "int"
+                    "int",
+                    "logging.Logger",
+                    "str"
                 ],
                 "logger": [
-                    "logging.Logger"
+                    "int",
+                    "logging.Logger",
+                    "str"
                 ],
                 "max_logging": [
-                    "int"
+                    "int",
+                    "logging.Logger",
+                    "str"
                 ]
             }
         }
@@ -418,19 +506,13 @@
             "name": "extract_all_constants_from_path",
             "location": 47,
             "return": [
-                "list[]"
+                "list"
             ],
             "arguments": {
-                "path": [
-                    "str"
-                ],
+                "path": [],
                 "exclude": [],
-                "process_dots": [
-                    "bool"
-                ],
-                "processes_amount": [
-                    "int"
-                ],
+                "process_dots": [],
+                "processes_amount": [],
                 "verbosity": [
                     "int"
                 ]
@@ -440,7 +522,7 @@
             "name": "extract_all_constants_from_files",
             "location": 92,
             "return": [
-                "list[]"
+                "List[str]"
             ],
             "arguments": {
                 "files_pathes": [],
@@ -454,7 +536,7 @@
             "name": "fetch_typos_info",
             "location": 115,
             "return": [
-                "list[]"
+                "list"
             ],
             "arguments": {
                 "string_constants": [],
@@ -468,9 +550,7 @@
                 "None"
             ],
             "arguments": {
-                "vocabulary_path": [
-                    "str"
-                ]
+                "vocabulary_path": []
             }
         },
         "main": {
@@ -491,7 +571,10 @@
             ],
             "arguments": {
                 "raw_content": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -499,11 +582,15 @@
             "name": "extract_from_html",
             "location": 22,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "raw_content": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Mapping[str,str]",
+                    "bool",
+                    "Mapping"
                 ]
             }
         },
@@ -511,11 +598,18 @@
             "name": "extract_from_markdown",
             "location": 26,
             "return": [
-                "List[str]"
+                "List[str]",
+                "dict",
+                "bytes",
+                "int",
+                "str",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "raw_content": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -523,11 +617,15 @@
             "name": "extract_from_js",
             "location": 35,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "raw_content": [
-                    "str"
+                    "str",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -535,11 +633,13 @@
             "name": "extract_from_po",
             "location": 43,
             "return": [
-                "List[str]"
+                "List[Optional[str]]"
             ],
             "arguments": {
                 "raw_content": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict"
                 ]
             }
         },
@@ -547,7 +647,7 @@
             "name": "_extract_from_python_ast",
             "location": 53,
             "return": [
-                "List[str]"
+                "List[nothing]"
             ],
             "arguments": {
                 "raw_content": [
@@ -563,7 +663,10 @@
             ],
             "arguments": {
                 "raw_content": [
-                    "str"
+                    "str",
+                    "int",
+                    "Tuple[str,str,str]",
+                    "Tuple[Union[str,str,str]]"
                 ]
             }
         }
@@ -577,7 +680,10 @@
             ],
             "arguments": {
                 "word": [
-                    "str"
+                    "float",
+                    "List[cirq.Qid]",
+                    "str",
+                    "List[libkol.Item]"
                 ]
             }
         },
@@ -585,11 +691,12 @@
             "name": "split_camel_case_words",
             "location": 15,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "camel_cased_word": [
-                    "str"
+                    "int",
+                    "float"
                 ]
             }
         }
@@ -599,14 +706,21 @@
             "name": "process_with_vocabulary",
             "location": 20,
             "return": [
-                "Tuple[(List[str], List[rozental_as_a_service.common_types.TypoInfo], List[str])]"
+                "Tuple[(list, List[nothing], Union[(list, _T0)])]"
             ],
             "arguments": {
                 "words": [
-                    "List[str]"
+                    "str",
+                    "int",
+                    "List[list[int]]",
+                    "List[List[int]]",
+                    "bool"
                 ],
                 "vocabulary_path": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "Union[str,pathlib.Path]",
+                    "Union[str,List[str]]"
                 ]
             }
         },
@@ -614,17 +728,23 @@
             "name": "_process_ya_speller_response",
             "location": 100,
             "return": [
-                "Tuple[(List[rozental_as_a_service.common_types.TypoInfo], List[str])]"
+                "Tuple[(List[Dict[(str, Any)]], list)]"
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "str",
+                    "scrapy.http.Response",
+                    "requests.Response"
                 ],
                 "words": [
-                    "List[str]"
+                    "str",
+                    "Optional[Any]",
+                    "bool"
                 ],
                 "db_path": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -637,6 +757,9 @@
             "arguments": {
                 "self": [],
                 "db_path": [
+                    "str",
+                    "None",
+                    "pathlib.Path",
                     "Optional[str]"
                 ]
             }
@@ -645,12 +768,15 @@
             "name": "__call__",
             "location": 37,
             "return": [
-                "Tuple[(List[str], List[rozental_as_a_service.common_types.TypoInfo], List[str])]"
+                "Tuple[(list, list, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "words": [
-                    "List[str]"
+                    "bytes",
+                    "Dict",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -658,12 +784,12 @@
             "name": "_process_with_db_cache",
             "location": 52,
             "return": [
-                "Tuple[(List[str], List[rozental_as_a_service.common_types.TypoInfo], List[str])]"
+                "Tuple[(list, List[Dict[(str, Any)]], Union[(list, _T0)])]"
             ],
             "arguments": {
                 "self": [],
                 "words": [
-                    "List[str]"
+                    "List"
                 ]
             }
         },
@@ -671,12 +797,12 @@
             "name": "_process_with_ya_speller",
             "location": 79,
             "return": [
-                "Tuple[(List[str], List[rozental_as_a_service.common_types.TypoInfo], List[str])]"
+                "Tuple[(List[nothing], List[Dict[(str, Any)]], Any)]"
             ],
             "arguments": {
                 "self": [],
                 "words": [
-                    "List[str]"
+                    "Dict"
                 ]
             }
         },
@@ -694,12 +820,12 @@
             "name": "__call__",
             "location": 127,
             "return": [
-                "Tuple[(List[str], List[rozental_as_a_service.common_types.TypoInfo], List[str])]"
+                "Tuple[(list, List[Dict[(str, Any)]], List[nothing])]"
             ],
             "arguments": {
                 "self": [],
                 "words": [
-                    "List[str]"
+                    "Dict"
                 ]
             }
         }
@@ -710,15 +836,11 @@
             "name": "get_words",
             "location": 16,
             "return": [
-                "generator"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
-                "filename": [
-                    "str"
-                ],
-                "encd": [
-                    "Optional[str]"
-                ]
+                "filename": [],
+                "encd": []
             }
         },
         "count_words": {
@@ -728,14 +850,12 @@
                 "None"
             ],
             "arguments": {
-                "src_filename": [
-                    "str"
-                ],
+                "src_filename": [],
                 "encd": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "out_filename": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         }
@@ -768,11 +888,10 @@
             "name": "fake_custom_path_config_file",
             "location": 20,
             "return": [
-                "dict[, ]",
+                "Dict",
+                "Dict[str,Any]",
                 "str",
-                "dict[str, typing.Any]",
-                "Dict[str, Any]",
-                "typing.Type",
+                "Type",
                 "Optional[str]",
                 "List[str]"
             ],
@@ -841,7 +960,7 @@
             "location": 43,
             "return": [
                 "str",
-                "dict[typing.Text, list[]]"
+                "Dict[Text,list]"
             ],
             "arguments": {}
         },
@@ -855,15 +974,12 @@
                 "fake_section_name": [
                     "str",
                     "bool",
-                    "typing.Type",
-                    "type",
+                    "Type",
                     "int"
                 ],
                 "fake_config_params": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[, ]",
-                    "dict",
+                    "Dict[str,Any]",
+                    "Dict",
                     "Optional[str]"
                 ],
                 "tmpdir": [
@@ -877,7 +993,7 @@
             "name": "randomized_fake_argv",
             "location": 70,
             "return": [
-                "list[typing.Union[typing.Text,tuple[typing.Text]]]",
+                "List[Union[Text,tuple[Text]]]",
                 "int",
                 "Callable",
                 "str"
@@ -894,8 +1010,7 @@
             ],
             "arguments": {
                 "randomized_fake_argv": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -910,26 +1025,22 @@
             "arguments": {
                 "fake_section_name": [
                     "str",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "typing.Callable[, ]",
-                    "Iterable[str]",
-                    "Callable"
+                    "Dict[str,str]",
+                    "Callable",
+                    "Iterable[str]"
                 ],
                 "fake_config_params": [
                     "str",
                     "List[str]",
-                    "list[str]",
+                    "Dict[str,Any]",
                     "Optional[str]",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "None"
                 ],
                 "fake_config_file": [
                     "str",
                     "int",
                     "Optional[Dict]",
-                    "dict[, ]",
+                    "Dict",
                     "None"
                 ]
             }
@@ -943,8 +1054,7 @@
             "arguments": {
                 "fake_section_name": [
                     "str",
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "Iterable[str]"
                 ],
                 "fake_config_params": [
@@ -957,7 +1067,7 @@
                     "str",
                     "int",
                     "Optional[Dict]",
-                    "dict[, ]",
+                    "Dict",
                     "None"
                 ]
             }
@@ -968,21 +1078,20 @@
             "name": "test_get_config_path",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "custom_path_provided": [
                     "str",
                     "bool",
-                    "Dict[int, Set[str]]",
-                    "dict[int, set[str]]"
+                    "Dict[int,Set[str]]",
+                    "Dict[int,set[str]]"
                 ],
                 "custom_path_exists": [
                     "str",
                     "bool",
-                    "Dict[int, Set[str]]",
-                    "dict[int, set[str]]"
+                    "Dict[int,Set[str]]",
+                    "Dict[int,set[str]]"
                 ],
                 "custom_path_matches": [
                     "str",
@@ -990,7 +1099,7 @@
                     "bool",
                     "None",
                     "Optional[bool]",
-                    "list[str]",
+                    "List[str]",
                     "Optional[List[str]]"
                 ],
                 "default_path_provided": [
@@ -1003,19 +1112,18 @@
                 ],
                 "default_path_matches": [
                     "str",
+                    "List",
                     "Optional[str]",
                     "bool",
                     "None",
-                    "list",
-                    "list[]",
                     "Optional[IO[bytes]]",
-                    "typing.IO"
+                    "IO"
                 ],
                 "fake_custom_path_config_file": [
                     "str",
                     "bool",
-                    "Dict[int, Set[str]]",
-                    "dict[int, set[str]]"
+                    "Dict[int,Set[str]]",
+                    "Dict[int,set[str]]"
                 ],
                 "fake_base_directory": [
                     "str",
@@ -1046,25 +1154,20 @@
             "name": "test_calculate_age_works_fine",
             "location": 11,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "test_value": [
                     "int",
-                    "list",
-                    "str",
-                    "list[]",
-                    "Dict[str, float]",
-                    "dict[str, float]"
+                    "List",
+                    "Dict[str,float]",
+                    "str"
                 ],
                 "expected_result": [
                     "int",
-                    "list",
-                    "str",
-                    "list[]",
-                    "Dict[str, float]",
-                    "dict[str, float]"
+                    "List",
+                    "Dict[str,float]",
+                    "str"
                 ]
             }
         },
@@ -1152,7 +1255,7 @@
             "name": "start_ad_company",
             "location": 2,
             "return": [
-                "bool"
+                "Optional[bool]"
             ],
             "arguments": {
                 "company": []

@@ -14,7 +14,7 @@
             "name": "token_literal",
             "location": 10,
             "return": [
-                "Optional[str]"
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -24,7 +24,9 @@
             "name": "token_literal",
             "location": 26,
             "return": [
-                "Optional[str]"
+                "None",
+                "T",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -44,7 +46,8 @@
             "name": "__str__",
             "location": 43,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -94,7 +97,7 @@
             "name": "token_literal",
             "location": 101,
             "return": [
-                "Optional[str]"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -186,14 +189,19 @@
             "name": "eval",
             "location": 7,
             "return": [
-                "objmod.Object"
+                "str",
+                "int",
+                "bytes"
             ],
             "arguments": {
                 "node": [
-                    "ast.Node"
+                    "obj.Environment"
                 ],
                 "env": [
-                    "objmod.Environment"
+                    "Dict",
+                    "obj.Environment",
+                    "Type",
+                    "Type[T]"
                 ]
             }
         },
@@ -201,14 +209,22 @@
             "name": "_eval_program",
             "location": 72,
             "return": [
-                "objmod.Object"
+                "int",
+                "objmod_@_Error",
+                "Optional[float]",
+                "str",
+                "List",
+                "Dict[str,Any]",
+                "bool",
+                "Dict",
+                "Tuple[int,int]",
+                "objmod_@_ReturnValue"
             ],
             "arguments": {
-                "program": [
-                    "ast.Program"
-                ],
+                "program": [],
                 "env": [
-                    "objmod.Environment"
+                    "Dict",
+                    "List[str]"
                 ]
             }
         },
@@ -216,14 +232,26 @@
             "name": "_eval_block_statements",
             "location": 86,
             "return": [
-                "objmod.Object"
+                "bool",
+                "Optional[Any]",
+                "int",
+                "obj.Object",
+                "float"
             ],
             "arguments": {
                 "block": [
-                    "ast.BlockStatement"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "LineageBuilder"
                 ],
                 "env": [
-                    "objmod.Environment"
+                    "Sequence[Any]",
+                    "float",
+                    "Dict[str,Any]",
+                    "List[tuple[Union[str,str]]]",
+                    "Iterable[Any]",
+                    "List[Tuple[str,str]]"
                 ]
             }
         },
@@ -231,11 +259,15 @@
             "name": "_is_error",
             "location": 99,
             "return": [
+                "Type",
                 "bool"
             ],
             "arguments": {
                 "obj": [
-                    "objmod.Object"
+                    "obj.Object",
+                    "str",
+                    "Union[str,bytes]",
+                    "bytes"
                 ]
             }
         },
@@ -243,14 +275,17 @@
             "name": "_eval_prefix_expression",
             "location": 103,
             "return": [
-                "objmod.Object"
+                "Union[(objmod.Boolean, objmod.Error, objmod.Integer)]"
             ],
             "arguments": {
                 "op": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "right": [
-                    "objmod.Object"
+                    "Callable",
+                    "obj.Object",
+                    "T"
                 ]
             }
         },
@@ -258,11 +293,15 @@
             "name": "_eval_bang_operator_expression",
             "location": 112,
             "return": [
-                "objmod.Object"
+                "objmod.Boolean"
             ],
             "arguments": {
                 "right": [
-                    "objmod.Object"
+                    "int",
+                    "obj.Obj",
+                    "None",
+                    "obj.Object",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -270,11 +309,11 @@
             "name": "_eval_minux_prefix_operator_expression",
             "location": 123,
             "return": [
-                "objmod.Object"
+                "Union[(objmod.Error, objmod.Integer)]"
             ],
             "arguments": {
                 "right": [
-                    "objmod.Object"
+                    "obj.Object"
                 ]
             }
         },
@@ -286,7 +325,8 @@
             ],
             "arguments": {
                 "input": [
-                    "bool"
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -294,17 +334,20 @@
             "name": "_eval_infix_expression",
             "location": 135,
             "return": [
-                "objmod.Object"
+                "Error"
             ],
             "arguments": {
                 "left": [
-                    "objmod.Object"
+                    "obj.Object",
+                    "obj.Obj"
                 ],
                 "op": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "right": [
-                    "objmod.Object"
+                    "obj.Object",
+                    "obj.Obj"
                 ]
             }
         },
@@ -312,17 +355,20 @@
             "name": "_eval_integer_infix_expression",
             "location": 150,
             "return": [
-                "objmod.Object"
+                "Union[(objmod.Boolean, objmod.Error, objmod.Integer)]"
             ],
             "arguments": {
                 "left": [
-                    "objmod.Object"
-                ],
-                "op": [
+                    "float",
                     "str"
                 ],
+                "op": [
+                    "str",
+                    "Exception"
+                ],
                 "right": [
-                    "objmod.Object"
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -330,71 +376,84 @@
             "name": "_eval_if_expression",
             "location": 175,
             "return": [
-                "objmod.Object"
+                "int",
+                "float",
+                "bytes"
             ],
             "arguments": {
-                "ifexp": [
-                    "ast.IfExpression"
-                ],
-                "env": [
-                    "objmod.Environment"
-                ]
+                "ifexp": [],
+                "env": []
             }
         },
         "_eval_expression": {
             "name": "_eval_expression",
             "location": 189,
             "return": [
-                "Tuple[(List[objmod.Object], Optional[objmod.Object])]"
+                "Tuple[(list, Any)]"
             ],
             "arguments": {
                 "exps": [
-                    "List[ast.Expression]"
+                    "Dict[str,str]",
+                    "Iterable[str]",
+                    "bool"
                 ],
-                "env": [
-                    "objmod.Environment"
-                ]
+                "env": []
             }
         },
         "_apply_function": {
             "name": "_apply_function",
             "location": 202,
             "return": [
-                "objmod.Error"
+                "Error",
+                "bool",
+                "str"
             ],
             "arguments": {
                 "fn": [
-                    "objmod.Object"
+                    "str"
                 ],
-                "args": [
-                    "List[objmod.Object]"
-                ]
+                "args": []
             }
         },
         "_extend_function_env": {
             "name": "_extend_function_env",
             "location": 210,
             "return": [
-                "objmod.Environment"
+                "str",
+                "frozenset",
+                "typing.Type"
             ],
             "arguments": {
                 "fn": [
-                    "objmod.Function"
+                    "Callable"
                 ],
-                "args": [
-                    "List[objmod.Object]"
-                ]
+                "args": []
             }
         },
         "_unwrap_return_value": {
             "name": "_unwrap_return_value",
             "location": 220,
             "return": [
-                "objmod.Object"
+                "int",
+                "str",
+                "None",
+                "Tuple",
+                "Dict[int,dict]",
+                "objmod_@_ReturnValue",
+                "Union[List[str],List[Any]]",
+                "Dict",
+                "List[int]",
+                "Dict[str,Any]",
+                "float"
             ],
             "arguments": {
                 "obj": [
-                    "objmod.Object"
+                    "int",
+                    "obj.Object",
+                    "str",
+                    "Dict[int,dict]",
+                    "None",
+                    "Optional[str]"
                 ]
             }
         },
@@ -406,7 +465,12 @@
             ],
             "arguments": {
                 "obj": [
-                    "objmod.Object"
+                    "Callable[...,None]",
+                    "obj.Object",
+                    "bool",
+                    "str",
+                    "Type",
+                    "obj.Obj"
                 ]
             }
         }
@@ -420,7 +484,7 @@
             ],
             "arguments": {
                 "ch": [
-                    "Optional[str]"
+                    "str"
                 ]
             }
         },
@@ -432,7 +496,17 @@
             ],
             "arguments": {
                 "ch": [
-                    "Optional[str]"
+                    "Iterable[Any]",
+                    "Optional[Iterable[Any]]",
+                    "None",
+                    "Callable",
+                    "int",
+                    "str",
+                    "Optional[int]",
+                    "List[str]",
+                    "bool",
+                    "T",
+                    "Optional[List[Callable]]"
                 ]
             }
         },
@@ -445,7 +519,9 @@
             "arguments": {
                 "self": [],
                 "input": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -473,7 +549,11 @@
             "name": "_peek_char",
             "location": 82,
             "return": [
-                "Optional[str]"
+                "None",
+                "Optional[str]",
+                "str",
+                "Optional[int]",
+                "List[Dict[str,Any]]"
             ],
             "arguments": {
                 "self": []
@@ -483,6 +563,8 @@
             "name": "_read_identifier",
             "location": 88,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
@@ -493,6 +575,8 @@
             "name": "_read_number",
             "location": 94,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
@@ -515,7 +599,7 @@
             "name": "type",
             "location": 15,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -525,7 +609,7 @@
             "name": "__str__",
             "location": 18,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -645,12 +729,16 @@
             "name": "get",
             "location": 87,
             "return": [
-                "Tuple[(Object, bool)]"
+                "Tuple[Union[dict,int,dict[str,str],str]]",
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str,List[bytes]]",
+                    "Dict[str,list[bytes]]"
                 ]
             }
         },
@@ -658,7 +746,9 @@
             "name": "set",
             "location": 95,
             "return": [
-                "Object"
+                "str",
+                "bool",
+                "float"
             ],
             "arguments": {
                 "self": [],
@@ -666,7 +756,7 @@
                     "str"
                 ],
                 "val": [
-                    "Object"
+                    "str"
                 ]
             }
         },
@@ -678,7 +768,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TEnvironment"
+                    "_TEnvironment@@Environment@@"
                 ]
             }
         },
@@ -713,7 +803,8 @@
             "arguments": {
                 "self": [],
                 "lexer": [
-                    "lexer.Lexer"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -744,6 +835,7 @@
             "arguments": {
                 "self": [],
                 "tok": [
+                    "tuple[typing.Union[int,str]]",
                     "str"
                 ]
             }
@@ -762,7 +854,7 @@
             "name": "_parse_statement",
             "location": 93,
             "return": [
-                "Optional[ast.Statement]"
+                "Optional[Union[(ast.ExpressionStatement, ast.LetStatement, ast.ReturnStatement)]]"
             ],
             "arguments": {
                 "self": []
@@ -782,7 +874,7 @@
             "name": "_parse_return_statement",
             "location": 115,
             "return": [
-                "Optional[ast.ReturnStatement]"
+                "ast.ReturnStatement"
             ],
             "arguments": {
                 "self": []
@@ -797,7 +889,10 @@
             "arguments": {
                 "self": [],
                 "t": [
-                    "str"
+                    "str",
+                    "typing.Sequence[typing.Any]",
+                    "typing.Type",
+                    "typing.Callable[[], dict[str, object]]"
                 ]
             }
         },
@@ -810,7 +905,10 @@
             "arguments": {
                 "self": [],
                 "t": [
-                    "str"
+                    "str",
+                    "typing.Sequence[typing.Any]",
+                    "typing.Type",
+                    "typing.Callable[[], dict[str, object]]"
                 ]
             }
         },
@@ -823,6 +921,8 @@
             "arguments": {
                 "self": [],
                 "t": [
+                    "tuple[typing.Union[float,float,float]]",
+                    "int",
                     "str"
                 ]
             }
@@ -856,10 +956,14 @@
             "arguments": {
                 "self": [],
                 "token_type": [
-                    "str"
+                    "str",
+                    "typing.Mapping",
+                    "typing.Type"
                 ],
                 "fn": [
-                    "Callable[([], ast.Expression)]"
+                    "str",
+                    "typing.Mapping",
+                    "typing.Type"
                 ]
             }
         },
@@ -872,10 +976,14 @@
             "arguments": {
                 "self": [],
                 "token_type": [
-                    "str"
+                    "str",
+                    "typing.Mapping",
+                    "typing.Type"
                 ],
                 "fn": [
-                    "Callable[([ast.Expression], ast.Expression)]"
+                    "str",
+                    "typing.Mapping",
+                    "typing.Type"
                 ]
             }
         },
@@ -893,12 +1001,18 @@
             "name": "_parse_expression",
             "location": 160,
             "return": [
-                "ast.Expression"
+                "str",
+                "int",
+                "set[str]",
+                "list[str]",
+                "dict[str, str]",
+                "list[]"
             ],
             "arguments": {
                 "self": [],
                 "precedence": [
-                    "int"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -906,7 +1020,7 @@
             "name": "_parse_identifier",
             "location": 177,
             "return": [
-                "ast.Expression"
+                "ast.Identifier"
             ],
             "arguments": {
                 "self": []
@@ -916,7 +1030,7 @@
             "name": "_parse_integer_literal",
             "location": 180,
             "return": [
-                "ast.Expression"
+                "ast.IntegerLiteral"
             ],
             "arguments": {
                 "self": []
@@ -931,6 +1045,7 @@
             "arguments": {
                 "self": [],
                 "t": [
+                    "typing.Callable[None, bool]",
                     "str"
                 ]
             }
@@ -939,7 +1054,7 @@
             "name": "_parse_prefix_expression",
             "location": 188,
             "return": [
-                "ast.Expression"
+                "ast.PrefixExpression"
             ],
             "arguments": {
                 "self": []
@@ -949,12 +1064,14 @@
             "name": "_parse_infix_expression",
             "location": 196,
             "return": [
-                "ast.Expression"
+                "ast.InfixExpression"
             ],
             "arguments": {
                 "self": [],
                 "left": [
-                    "ast.Expression"
+                    "typing.Type",
+                    "str",
+                    "typing.Iterable[typing.Any]"
                 ]
             }
         },
@@ -962,7 +1079,9 @@
             "name": "_parse_grouped_expression",
             "location": 209,
             "return": [
-                "ast.Expression"
+                "list[str]",
+                "dict[str, str]",
+                "bytes"
             ],
             "arguments": {
                 "self": []
@@ -972,7 +1091,7 @@
             "name": "_parse_boolean",
             "location": 216,
             "return": [
-                "ast.Expression"
+                "ast.Boolean"
             ],
             "arguments": {
                 "self": []
@@ -982,7 +1101,7 @@
             "name": "_parse_if_expression",
             "location": 219,
             "return": [
-                "ast.Expression"
+                "Union[(ast.IfExpression, ast.NullExpression)]"
             ],
             "arguments": {
                 "self": []
@@ -1002,7 +1121,7 @@
             "name": "_parse_function_literal",
             "location": 261,
             "return": [
-                "ast.Expression"
+                "Union[(ast.FunctionLiteral, ast.NullExpression)]"
             ],
             "arguments": {
                 "self": []
@@ -1022,12 +1141,13 @@
             "name": "_parse_call_expression",
             "location": 297,
             "return": [
-                "ast.Expression"
+                "ast.CallExpression"
             ],
             "arguments": {
                 "self": [],
                 "func": [
-                    "ast.Expression"
+                    "typing.Callable[, ]",
+                    "typing.Iterable[T]"
                 ]
             }
         },
@@ -1035,7 +1155,7 @@
             "name": "_parse_call_arguments",
             "location": 302,
             "return": [
-                "List[ast.Expression]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -1051,10 +1171,14 @@
             ],
             "arguments": {
                 "input": [
-                    "IO"
+                    "IO",
+                    "str",
+                    "bool"
                 ],
                 "output": [
-                    "IO"
+                    "IO",
+                    "str",
+                    "Iterable[TextIO]"
                 ]
             }
         },
@@ -1066,10 +1190,19 @@
             ],
             "arguments": {
                 "output": [
-                    "IO"
+                    "IO",
+                    "Exception",
+                    "bool",
+                    "Dict",
+                    "List[Tuple[str,str]]",
+                    "List[tuple[Union[str,str]]]"
                 ],
                 "errors": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "Optional[Callable]",
+                    "bool",
+                    "Iterable[str]"
                 ]
             }
         }
@@ -1084,8 +1217,7 @@
             "arguments": {
                 "ident": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1126,12 +1258,16 @@
             "name": "_eval",
             "location": 33,
             "return": [
-                "objmod.Object"
+                "str",
+                "int",
+                "bytes"
             ],
             "arguments": {
                 "self": [],
                 "input": [
-                    "str"
+                    "List[str]",
+                    "bool",
+                    "monkey.lexer.Lexer"
                 ]
             }
         },
@@ -1143,12 +1279,8 @@
             ],
             "arguments": {
                 "self": [],
-                "obj": [
-                    "objmod.Object"
-                ],
-                "expected": [
-                    "int"
-                ]
+                "obj": [],
+                "expected": []
             }
         },
         "TestEvaluator.test_eval_boolean_expression": {
@@ -1170,11 +1302,13 @@
             "arguments": {
                 "self": [],
                 "obj": [
-                    "objmod.Object"
+                    "str",
+                    "int",
+                    "Optional[Any]",
+                    "Any",
+                    "None"
                 ],
-                "expected": [
-                    "bool"
-                ]
+                "expected": []
             }
         },
         "TestEvaluator.test_bang_operator": {
@@ -1270,7 +1404,9 @@
             "arguments": {
                 "self": [],
                 "p": [
-                    "parser.Parser"
+                    "list[]",
+                    "list[int]",
+                    "bool"
                 ]
             }
         },
@@ -1343,14 +1479,14 @@
             "arguments": {
                 "self": [],
                 "exp": [
-                    "ast.Expression"
+                    "dict[str, typing.Any]"
                 ],
                 "left": [
                     "tuple[]",
                     "bool"
                 ],
                 "operator": [
-                    "str"
+                    "bytes"
                 ],
                 "right": [
                     "tuple[]",
@@ -1377,10 +1513,13 @@
             "arguments": {
                 "self": [],
                 "exp": [
-                    "ast.Expression"
+                    "str",
+                    "typing.Callable[, ]"
                 ],
                 "value": [
-                    "int"
+                    "str",
+                    "typing.IO",
+                    "list[str]"
                 ]
             }
         },
@@ -1393,10 +1532,12 @@
             "arguments": {
                 "self": [],
                 "exp": [
-                    "ast.Expression"
+                    "str",
+                    "None"
                 ],
                 "value": [
-                    "str"
+                    "typing.Type",
+                    "tuple[typing.Union[bytes,bytes]]"
                 ]
             }
         },
@@ -1409,10 +1550,15 @@
             "arguments": {
                 "self": [],
                 "exp": [
-                    "ast.Expression"
+                    "typing.Type",
+                    "None",
+                    "typing.Iterable[T]"
                 ],
                 "value": [
-                    "bool"
+                    "str",
+                    "typing.IO",
+                    "dict[str, typing.Any]",
+                    "list[str]"
                 ]
             }
         },
@@ -1425,7 +1571,7 @@
             "arguments": {
                 "self": [],
                 "exp": [
-                    "ast.Expression"
+                    "str"
                 ],
                 "expected": [
                     "dict[, ]",

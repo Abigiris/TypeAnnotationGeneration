@@ -4,10 +4,11 @@
             "name": "load_authors",
             "location": 14,
             "return": [
-                "Dict[(str, advent.models.Author)]"
+                "Dict[(Any, advent.models.Author)]"
             ],
             "arguments": {
                 "authors_file": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -16,14 +17,17 @@
             "name": "load_entries",
             "location": 22,
             "return": [
-                "List[advent.models.Entry]"
+                "list"
             ],
             "arguments": {
                 "entries_file": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "authors": [
-                    "Mapping[(str, advent.models.Author)]"
+                    "Optional[datetime.datetime]",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -31,11 +35,12 @@
             "name": "group_entries_by_year",
             "location": 48,
             "return": [
-                "Dict[(int, List[advent.models.Entry])]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "entries": [
-                    "Iterable[advent.models.Entry]"
+                    "Dict",
+                    "salon.models.Stylist"
                 ]
             }
         },
@@ -43,14 +48,20 @@
             "name": "get_last_published_entries",
             "location": 57,
             "return": [
-                "List[advent.models.Entry]"
+                "list"
             ],
             "arguments": {
                 "entries": [
-                    "Iterable[advent.models.Entry]"
+                    "str",
+                    "List",
+                    "List[str]",
+                    "zerver.models.Realm"
                 ],
                 "n": [
-                    "int"
+                    "str",
+                    "list",
+                    "zerver.models.Realm",
+                    "List[str]"
                 ]
             }
         },
@@ -58,14 +69,21 @@
             "name": "get_entry_for_day",
             "location": 67,
             "return": [
-                "Optional[advent.models.Entry]"
+                "Optional[str]",
+                "str",
+                "Optional[float]",
+                "None"
             ],
             "arguments": {
                 "entries": [
-                    "Iterable[advent.models.Entry]"
+                    "List[str]",
+                    "str",
+                    "bool"
                 ],
                 "day": [
-                    "_datetime.date"
+                    "int",
+                    "datetime.date",
+                    "datetime"
                 ]
             }
         },
@@ -94,9 +112,7 @@
                 "str"
             ],
             "arguments": {
-                "entry": [
-                    "models.Entry"
-                ]
+                "entry": []
             }
         },
         "main": {
@@ -106,9 +122,7 @@
                 "int"
             ],
             "arguments": {
-                "day": [
-                    "_datetime.date"
-                ]
+                "day": []
             }
         }
     },
@@ -121,9 +135,7 @@
                 "str"
             ],
             "arguments": {
-                "html": [
-                    "str"
-                ]
+                "html": []
             }
         },
         "render_and_write": {
@@ -133,12 +145,8 @@
                 "None"
             ],
             "arguments": {
-                "filename": [
-                    "str"
-                ],
-                "context": [
-                    "Dict[(str, Any)]"
-                ],
+                "filename": [],
+                "context": [],
                 "minify": [
                     "bool"
                 ]

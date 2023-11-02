@@ -11,8 +11,8 @@
                     "str",
                     "bytes",
                     "memoryview",
-                    "Dict[str, str]",
-                    "Dict[str, Any]"
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -22,11 +22,14 @@
             "name": "StrLiteral",
             "location": 17,
             "return": [
-                "Type[StrEnum]"
+                "StrEnum"
             ],
             "arguments": {
                 "value": [
-                    "str"
+                    "str",
+                    "Union[str,int,float]",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -38,10 +41,16 @@
             ],
             "arguments": {
                 "base_type": [
-                    "type"
+                    "Type",
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "pattern": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[Union[float,int]]",
+                    "float",
+                    "None"
                 ]
             }
         },
@@ -49,7 +58,8 @@
             "name": "__str__",
             "location": 9,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "self": []
@@ -67,23 +77,20 @@
                 ],
                 "start": [
                     "int",
-                    "str",
-                    "list[str]",
                     "List[str]",
+                    "str",
                     "bool"
                 ],
                 "count": [
                     "int",
-                    "str",
-                    "list[str]",
                     "List[str]",
+                    "str",
                     "bool"
                 ],
                 "last_values": [
                     "int",
-                    "str",
-                    "list[str]",
                     "List[str]",
+                    "str",
                     "bool"
                 ]
             }
@@ -96,13 +103,12 @@
             ],
             "arguments": {
                 "cls": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "typing.AbstractSet",
+                    "AbstractSet",
                     "AbstractSet[str]",
-                    "typing.Container",
-                    "\"Project\"",
+                    "Container",
+                    "Project",
                     "Container[str]"
                 ]
             }
@@ -150,7 +156,13 @@
                     "Type[T]"
                 ],
                 "base": [
-                    "type"
+                    "Type",
+                    "int",
+                    "Type[enum.Enum]",
+                    "float",
+                    "BinaryIO",
+                    "str",
+                    "Type[T]"
                 ]
             }
         },
@@ -206,11 +218,13 @@
             "name": "_get_restrictions",
             "location": 203,
             "return": [
-                "List[Tuple[(dataclasses.Field, str)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "variant_type": [
-                    "type"
+                    "Type",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -218,7 +232,7 @@
             "name": "get_union_fields",
             "location": 219,
             "return": [
-                "List[Tuple[(Type[T], Optional[List[Tuple[(dataclasses.Field, str)]]])]]"
+                "List[Tuple[(Any, Optional[List[Tuple[(Any, Any)]]])]]"
             ],
             "arguments": {
                 "field_type": [
@@ -236,7 +250,11 @@
             "arguments": {
                 "value": [],
                 "restrict_fields": [
-                    "Optional[List[Tuple[(dataclasses.Field, str)]]]"
+                    "Optional[List[Any]]",
+                    "Optional[int]",
+                    "bool",
+                    "Hashable",
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -252,7 +270,12 @@
                     "list"
                 ],
                 "restrict_fields": [
-                    "Optional[List[Tuple[(dataclasses.Field, str)]]]"
+                    "Optional[List[Any]]",
+                    "Optional[str]",
+                    "Optional[T]",
+                    "T",
+                    "Optional[int]",
+                    "List[int]"
                 ]
             }
         },
@@ -265,10 +288,14 @@
             "arguments": {
                 "self": [],
                 "field": [
-                    "str"
+                    "int",
+                    "type",
+                    "Iterable[Field]"
                 ],
                 "errors": [
-                    "Dict[(str, Exception)]"
+                    "Optional[List[str]]",
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -296,12 +323,18 @@
             "name": "to_wire",
             "location": 106,
             "return": [
-                "Optional[Union[(float, int, str)]]"
+                "str",
+                "int",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "value": [
-                    "TV"
+                    "bytes",
+                    "str",
+                    "int",
+                    "list",
+                    "float"
                 ]
             }
         },
@@ -309,12 +342,18 @@
             "name": "to_python",
             "location": 109,
             "return": [
-                "TV"
+                "str",
+                "int",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "value": [
-                    "Optional[Union[(float, str)]]"
+                    "bytes",
+                    "str",
+                    "int",
+                    "list",
+                    "float"
                 ]
             }
         },
@@ -322,7 +361,7 @@
             "name": "json_schema",
             "location": 113,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -332,12 +371,17 @@
             "name": "to_wire",
             "location": 120,
             "return": [
-                "str"
+                "str",
+                "Set[str]"
             ],
             "arguments": {
                 "self": [],
                 "value": [
-                    "_datetime.datetime"
+                    "bool",
+                    "float",
+                    "Hashable",
+                    "int",
+                    "T"
                 ]
             }
         },
@@ -345,12 +389,13 @@
             "name": "to_python",
             "location": 128,
             "return": [
-                "_datetime.datetime"
+                "Union[(_datetime.datetime, _T0)]"
             ],
             "arguments": {
                 "self": [],
                 "value": [
-                    "Optional[Union[(float, str)]]"
+                    "str",
+                    "Optional[Exception]"
                 ]
             }
         },
@@ -358,7 +403,7 @@
             "name": "json_schema",
             "location": 134,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -373,7 +418,9 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "uuid.UUID"
+                    "uuid.UUID",
+                    "str",
+                    "Set[str]"
                 ]
             }
         },
@@ -396,7 +443,7 @@
             "name": "json_schema",
             "location": 146,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -422,7 +469,7 @@
             "name": "field_mapping",
             "location": 304,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "cls": [
@@ -449,7 +496,7 @@
                     "type"
                 ],
                 "field_encoders": [
-                    "Dict[(type, FieldEncoder)]"
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -457,7 +504,7 @@
             "name": "_local_to_dict",
             "location": 322,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -497,7 +544,7 @@
             "name": "_get_fields",
             "location": 443,
             "return": [
-                "List[Tuple[(dataclasses.Field, str)]]"
+                "str"
             ],
             "arguments": {
                 "cls": [
@@ -511,7 +558,7 @@
             "name": "_get_field_names",
             "location": 465,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "cls": [
@@ -523,15 +570,17 @@
             "name": "to_dict",
             "location": 472,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "omit_none": [
-                    "bool"
+                    "Callable"
                 ],
                 "validate": [
-                    "bool"
+                    "Optional[Callable[[dict], None]]",
+                    "Dict[str, str]",
+                    "Iterable['Notification']"
                 ]
             }
         },
@@ -562,7 +611,8 @@
                     "str"
                 ],
                 "validate": [
-                    "bool"
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -570,14 +620,27 @@
             "name": "_find_matching_validator",
             "location": 616,
             "return": [
-                "T"
+                "int",
+                "List[str]",
+                "Dict[str, Any]",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "cls": [
-                    "Type[T]"
+                    "Type[T]",
+                    "Optional[int]",
+                    "bool",
+                    "complex",
+                    "bytes"
                 ],
                 "data": [
-                    "Dict[(str, Any)]"
+                    "Type[T]",
+                    "dict",
+                    "Dict[str, Any]",
+                    "Optional[int]",
+                    "Type",
+                    "str",
+                    "Mapping[str, Any]"
                 ]
             }
         },
@@ -585,14 +648,24 @@
             "name": "from_dict",
             "location": 636,
             "return": [
-                "T"
+                "Dict[str, Any]",
+                "bytes",
+                "Dict[str, Dict]",
+                "Union[int, float]",
+                "dict",
+                "Dict[str, dict]",
+                "List[dict]",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "cls": [
-                    "Type[T]"
+                    "Type[T]",
+                    "Dict[str, Union[str, int]]"
                 ],
                 "data": [
-                    "Dict[(str, Any)]"
+                    "bytes",
+                    "dict",
+                    "type"
                 ],
                 "validate": [
                     "dict",
@@ -610,7 +683,9 @@
             ],
             "arguments": {
                 "field_type": [
-                    "type"
+                    "Type",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -618,11 +693,13 @@
             "name": "_has_definition",
             "location": 671,
             "return": [
-                "bool"
+                "List[str]",
+                "str"
             ],
             "arguments": {
                 "field_type": [
-                    "type"
+                    "Type",
+                    "list"
                 ]
             }
         },
@@ -639,7 +716,13 @@
                     "str"
                 ],
                 "field": [
-                    "dataclasses.Field"
+                    "dict",
+                    "dataclasses.Field",
+                    "str",
+                    "Optional[tortoise.fields.Field]",
+                    "django.db.models.fields.Field",
+                    "Union[django.db.models.fields.Field, django.db.models.fields.reverse_related.ForeignObjectRel]",
+                    "Dict[str, List[int]]"
                 ]
             }
         },
@@ -647,7 +730,7 @@
             "name": "_encode_restrictions",
             "location": 705,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, Union[(list, str)])]"
             ],
             "arguments": {
                 "cls": [
@@ -656,7 +739,9 @@
                     "dict"
                 ],
                 "restrictions": [
-                    "Union[(list, Type[enum.Enum])]"
+                    "memoryview",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -664,7 +749,7 @@
             "name": "_get_schema_for_type",
             "location": 737,
             "return": [
-                "Tuple[(Dict[(str, Any)], bool)]"
+                "Tuple[(Any, Union[(bool, _T1)])]"
             ],
             "arguments": {
                 "cls": [
@@ -672,13 +757,21 @@
                     "Type"
                 ],
                 "target": [
-                    "type"
+                    "str",
+                    "Type"
                 ],
                 "required": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Dict[str, Any]"
                 ],
                 "restrictions": [
-                    "Optional[list]"
+                    "Optional[List[Any]]",
+                    "dict",
+                    "dataclasses.Field",
+                    "int",
+                    "Optional[Any]",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -686,7 +779,7 @@
             "name": "_get_field_schema",
             "location": 814,
             "return": [
-                "Tuple[(Dict[(str, Any)], bool)]"
+                "Tuple[(Any, bool)]"
             ],
             "arguments": {
                 "cls": [
@@ -697,7 +790,8 @@
                     "rflx.model.Field"
                 ],
                 "field": [
-                    "Union[(type, dataclasses.Field)]"
+                    "str",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -721,7 +815,9 @@
                     "Optional[str]"
                 ],
                 "definitions": [
-                    "Dict[(str, Any)]"
+                    "type",
+                    "str",
+                    "Exception"
                 ]
             }
         },
@@ -729,7 +825,7 @@
             "name": "all_json_schemas",
             "location": 872,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "cls": [
@@ -743,14 +839,15 @@
             "name": "_collect_json_schema",
             "location": 883,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, Union[(bool, dict, list, str)])]"
             ],
             "arguments": {
                 "cls": [
                     "str"
                 ],
                 "definitions": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "type"
                 ]
             }
         },
@@ -758,7 +855,8 @@
             "name": "_schema_defs_from_cache",
             "location": 908,
             "return": [
-                "CompleteSchema"
+                "bool",
+                "int"
             ],
             "arguments": {
                 "cls": [
@@ -768,7 +866,11 @@
                     "dict"
                 ],
                 "definitions": [
-                    "Dict[(str, Any)]"
+                    "Type",
+                    "Type[T]",
+                    "int",
+                    "bool",
+                    "type"
                 ]
             }
         },
@@ -783,10 +885,12 @@
                     "Dict[str, Any]"
                 ],
                 "embeddable": [
-                    "bool"
+                    "memoryview",
+                    "bool",
+                    "str"
                 ],
                 "definitions": [
-                    "Dict[(str, Any)]"
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -794,7 +898,7 @@
             "name": "json_schema",
             "location": 954,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "cls": [
@@ -804,7 +908,9 @@
                     "Optional[int]"
                 ],
                 "embeddable": [
-                    "bool"
+                    "Type",
+                    "float",
+                    "type"
                 ]
             }
         },
@@ -884,15 +990,13 @@
             "arguments": {
                 "cls": [
                     "int",
-                    "str",
-                    "typing.Type",
-                    "bool",
-                    "typing.Callable[typing.Any, T]",
                     "Type",
-                    "list[str]",
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Callable[Any,T]",
                     "Type[T]",
-                    "Callable[[Any], T]",
-                    "List[str]"
+                    "Callable[[Any],T]"
                 ]
             }
         },
@@ -901,8 +1005,8 @@
             "location": 101,
             "return": [
                 "bool",
-                "list",
-                "List[Dict[str, Any]]",
+                "List",
+                "List[Dict[str,Any]]",
                 "frozenset",
                 "str",
                 "Counter",
@@ -1062,8 +1166,7 @@
                 "self": [],
                 "value": [
                     "str",
-                    "Set[str]",
-                    "set[str]"
+                    "Set[str]"
                 ]
             }
         },
@@ -1071,12 +1174,21 @@
             "name": "to_python",
             "location": 16,
             "return": [
-                "_T0"
+                "str",
+                "int",
+                "bytes",
+                "Dict[str,Any]",
+                "List",
+                "float"
             ],
             "arguments": {
                 "self": [],
                 "value": [
-                    "_T0"
+                    "bytes",
+                    "str",
+                    "int",
+                    "List",
+                    "float"
                 ]
             }
         },
@@ -1084,10 +1196,10 @@
             "name": "json_schema",
             "location": 20,
             "return": [
-                "dict[typing.Text, typing.Union[typing.Text,dict[typing.Text, typing.Text]]]",
+                "Dict[Text,Union[Text,dict[Text,Text]]]",
                 "int",
                 "bool",
-                "Tuple[str, str]"
+                "Tuple[str,str]"
             ],
             "arguments": {
                 "self": []
@@ -1102,7 +1214,8 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "_T0"
+                    "List",
+                    "int"
                 ]
             }
         },
@@ -1115,7 +1228,8 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "_T0"
+                    "List",
+                    "int"
                 ]
             }
         },
@@ -1123,7 +1237,7 @@
             "name": "json_schema",
             "location": 38,
             "return": [
-                "dict[typing.Text, typing.Union[list[typing.Text],dict[typing.Text, typing.Text]]]",
+                "Dict[Text,Union[list[Text],dict[Text,Text]]]",
                 "str",
                 "T",
                 "bool"
@@ -1172,7 +1286,6 @@
             "name": "assert_symmetry",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1191,7 +1304,7 @@
             "name": "extensible_dict",
             "location": 27,
             "return": [
-                "dict[typing.Text, typing.Union[typing.Text,int]]",
+                "Dict[Text,Union[Text,int]]",
                 "bytes",
                 "str",
                 "List[dict]",
@@ -1211,12 +1324,10 @@
             ],
             "arguments": {
                 "extensible_dict": [
-                    "Mapping[str, Any]",
-                    "typing.Mapping",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Mapping[str,Any]",
+                    "Dict",
+                    "Mapping",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1250,10 +1361,10 @@
             "name": "contains_extra_data",
             "location": 49,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "str",
                 "bool",
-                "Tuple[str, str]",
+                "Tuple[str,str]",
                 "IO[str]",
                 "Callable",
                 "IO",
@@ -1261,11 +1372,9 @@
             ],
             "arguments": {
                 "extra_data": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "Sequence[str]",
-                    "typing.Sequence[str]"
+                    "Sequence[str]"
                 ]
             }
         },
@@ -1284,7 +1393,7 @@
             "name": "contains_dict",
             "location": 59,
             "return": [
-                "dict[typing.Text, ]",
+                "Dict[Text,]",
                 "List[str]",
                 "Callable",
                 "int"
@@ -1307,24 +1416,17 @@
             ],
             "arguments": {
                 "extra_data": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "extensible_dict": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "extensible": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -1337,28 +1439,22 @@
             "arguments": {
                 "extra_data": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,Any]",
+                    "Dict[str,str]"
                 ],
                 "extensible_dict": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Dict[str, str]]",
-                    "dict[str, dict[str, str]]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,dict[str,str]]"
                 ],
                 "inextensible": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Dict[str, str]]",
-                    "dict[str, dict[str, str]]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,dict[str,str]]"
                 ]
             }
         },
@@ -1370,28 +1466,23 @@
             ],
             "arguments": {
                 "contains_extra_data": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "int",
                     "Optional[List[str]]",
-                    "list[str]",
-                    "None",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "List[str]",
+                    "None"
                 ],
                 "contains_dict": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[Any, Union[int, str]]",
-                    "dict[typing.Any, typing.Union[int,str]]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[Any,Union[int,str]]",
+                    "Dict[str,Any]"
                 ],
                 "contains": [
                     "bytes",
                     "str",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ]
             }
@@ -1426,7 +1517,7 @@
             "name": "test_inferred_class",
             "location": 55,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         },
@@ -1458,7 +1549,6 @@
             "name": "assert_symmetry_StageOne",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1472,7 +1562,6 @@
             "name": "assert_symmetry_StageTwo",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1548,7 +1637,6 @@
             "name": "assert_symmetry",
             "location": 30,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1577,13 +1665,13 @@
             "name": "loud_dict",
             "location": 26,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
                 "bool",
                 "List[Dict]",
-                "Mapping[str, Any]",
-                "Dict[int, Dict[str, Any]]",
-                "dict"
+                "Mapping[str,Any]",
+                "Dict[int,Dict[str,Any]]",
+                "Dict"
             ],
             "arguments": {}
         },
@@ -1591,7 +1679,7 @@
             "name": "too_quiet",
             "location": 31,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "int",
                 "Callable",
                 "str"
@@ -1606,20 +1694,17 @@
             ],
             "arguments": {
                 "loud": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[Dict]",
                     "None"
                 ],
                 "loud_dict": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[Dict]",
                     "None"
                 ],
                 "too_quiet": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -1716,7 +1801,7 @@
             "name": "underscore_dict",
             "location": 25,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "T",
                 "List[str]",
                 "bool",
@@ -1732,14 +1817,13 @@
                 "ContainsHasUnderscoreConverts",
                 "str",
                 "bytes",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "underscore": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -1747,20 +1831,18 @@
             "name": "contains_dict",
             "location": 35,
             "return": [
-                "dict[typing.Text, typing.Union[dict[, ],int,str,dict[str, typing.Union[str,int]]]]",
-                "dict",
-                "Dict[str, Any]",
-                "Mapping[str, Any]",
-                "Optional[Dict[str, str]]"
+                "Dict[Text,Union[dict,int,str,dict[str,Union[str,int]]]]",
+                "Dict",
+                "Dict[str,Any]",
+                "Mapping[str,Any]",
+                "Optional[Dict[str,str]]"
             ],
             "arguments": {
                 "underscore_dict": [
-                    "dict",
+                    "Dict",
                     "int",
-                    "dict[, ]",
                     "str",
-                    "Dict[str, Union[str, int]]",
-                    "dict[str, typing.Union[str,int]]"
+                    "Dict[str,Union[str,int]]"
                 ]
             }
         },
@@ -1768,7 +1850,7 @@
             "name": "bad_dict",
             "location": 40,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "T",
                 "List[str]",
                 "bool",
@@ -1785,28 +1867,20 @@
             ],
             "arguments": {
                 "underscore": [
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "set",
-                    "set[]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,str]",
+                    "Set",
+                    "Dict"
                 ],
                 "underscore_dict": [
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "set",
-                    "set[]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,str]",
+                    "Set",
+                    "Dict"
                 ],
                 "bad_dict": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "Optional[Dict]",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "None"
                 ]
             }
         },
@@ -1818,30 +1892,26 @@
             ],
             "arguments": {
                 "contains": [
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "set[]",
-                    "set",
-                    "list[dict[str, typing.Any]]",
-                    "Dict[str, Any]",
-                    "List[Dict[str, Any]]"
+                    "Dict[str,str]",
+                    "Set",
+                    "List[dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "List[Dict[str,Any]]"
                 ],
                 "contains_dict": [
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "set[]",
-                    "set",
-                    "list[dict[str, typing.Any]]",
-                    "Dict[str, Any]",
-                    "List[Dict[str, Any]]"
+                    "Dict[str,str]",
+                    "Set",
+                    "List[dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "List[Dict[str,Any]]"
                 ],
                 "bad_dict": [
                     "Optional[Dict]",
-                    "dict[, ]",
+                    "Dict",
                     "bool",
-                    "Optional[Dict[str, Any]]",
+                    "Optional[Dict[str,Any]]",
                     "None",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -1889,72 +1959,5 @@
         }
     },
     "hologram-master/tests/__init__.py": {},
-    "hologram-master/third-party-stubs/dateutil/__init__.py": {},
-    "hologram-master/third-party-stubs/jsonschema/exceptions.py": {
-        "best_match": {
-            "name": "best_match",
-            "location": 23,
-            "return": [],
-            "arguments": {
-                "errors": []
-            }
-        },
-        "ValidationError.__init__": {
-            "name": "__init__",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "message": [],
-                "validator": [],
-                "path": [],
-                "cause": [],
-                "context": [],
-                "validator_value": [],
-                "instance": [],
-                "schema": [],
-                "schema_path": [],
-                "parent": []
-            }
-        },
-        "ValidationError.create_from": {
-            "name": "create_from",
-            "location": 21,
-            "return": [],
-            "arguments": {
-                "cls": [],
-                "ValidationError": []
-            }
-        }
-    },
-    "hologram-master/third-party-stubs/jsonschema/__init__.py": {
-        "Draft7Validator.__init__": {
-            "name": "__init__",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "schema": []
-            }
-        },
-        "Draft7Validator.check_schema": {
-            "name": "check_schema",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "cls": [],
-                "schema": []
-            }
-        },
-        "Draft7Validator.iter_errors": {
-            "name": "iter_errors",
-            "location": 10,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "instance": [],
-                "_schema": []
-            }
-        }
-    }
+    "hologram-master/third-party-stubs/dateutil/__init__.py": {}
 }

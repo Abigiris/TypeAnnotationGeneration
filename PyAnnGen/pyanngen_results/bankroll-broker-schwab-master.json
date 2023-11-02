@@ -40,7 +40,9 @@
             ],
             "arguments": {
                 "p": [
-                    "_SchwabPosition"
+                    "str",
+                    "Mapping",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -48,17 +50,17 @@
             "name": "padToLength",
             "location": 142,
             "return": [
-                "Iterable[_T]"
+                "itertools.chain"
             ],
             "arguments": {
                 "seq": [
-                    "Sequence[_T]"
+                    "int"
                 ],
                 "length": [
                     "int"
                 ],
                 "padding": [
-                    "_T"
+                    "int"
                 ]
             }
         },
@@ -66,11 +68,12 @@
             "name": "_schwabPositionsFromRows",
             "location": 146,
             "return": [
-                "Iterable[_SchwabPosition]"
+                "Generator[(_SchwabPosition, Any, None)]"
             ],
             "arguments": {
                 "rows": [
-                    "Iterable[List[str]]"
+                    "Iterable[List[str]]",
+                    "Dict[str, float]"
                 ]
             }
         },
@@ -78,14 +81,18 @@
             "name": "_parsePositions",
             "location": 158,
             "return": [
-                "Sequence"
+                "list"
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Optional[pathlib.Path]"
                 ],
                 "lenient": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[Union[str,SqlFile]]"
                 ]
             }
         },
@@ -93,11 +100,11 @@
             "name": "_parseCashValue",
             "location": 174,
             "return": [
-                "Tuple[(str, Any)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "p": [
-                    "_SchwabPosition"
+                    "str"
                 ]
             }
         },
@@ -106,18 +113,23 @@
             "location": 181,
             "return": [
                 "AccountBalance",
-                "Dict[str, Tuple[Any, Any]]",
+                "Dict[str,Tuple[Any,Any]]",
                 "bool",
-                "Dict[str, str]",
-                "Dict[str, Any]",
+                "Dict[str,str]",
+                "Dict[str,Any]",
                 "int"
             ],
             "arguments": {
                 "path": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "lenient": [
-                    "bool"
+                    "bool",
+                    "pathlib.Path",
+                    "int",
+                    "backup.model.Coordinator",
+                    "str"
                 ]
             }
         },
@@ -133,7 +145,9 @@
             ],
             "arguments": {
                 "symbol": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -145,7 +159,9 @@
             ],
             "arguments": {
                 "datestr": [
-                    "str"
+                    "str",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -163,7 +179,10 @@
             ],
             "arguments": {
                 "t": [
-                    "_SchwabTransaction"
+                    "int",
+                    "str",
+                    "Dict[str,float]",
+                    "bool"
                 ],
                 "flags": [
                     "None",
@@ -186,10 +205,15 @@
             ],
             "arguments": {
                 "t": [
-                    "_SchwabTransaction"
+                    "str",
+                    "List",
+                    "Set[str]",
+                    "Tuple[str]",
+                    "bool"
                 ],
                 "otherTransactionsThisDate": [
-                    "Iterable[_SchwabTransaction]"
+                    "str",
+                    "Optional[int]"
                 ]
             }
         },
@@ -197,14 +221,22 @@
             "name": "_parseTransactions",
             "location": 355,
             "return": [
-                "list"
+                "str",
+                "int"
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Optional[pathlib.Path]"
                 ],
                 "lenient": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "Optional[float]",
+                    "Optional[Callable]",
+                    "Type[T]"
                 ]
             }
         },
@@ -216,10 +248,16 @@
             ],
             "arguments": {
                 "activity": [
-                    "Sequence"
+                    "str",
+                    "List[str]"
                 ],
                 "inboundTransfers": [
-                    "Sequence"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -227,7 +265,7 @@
             "name": "help",
             "location": 48,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "int",
                 "bool"
@@ -244,12 +282,11 @@
             ],
             "arguments": {
                 "cls": [
-                    "typing.Type",
+                    "Type",
                     "str",
                     "Type[Any]",
-                    "bool",
-                    "typing.Callable[, ]",
                     "Callable",
+                    "bool",
                     "Type[T]"
                 ]
             }
@@ -281,10 +318,17 @@
                     "Type[_TSchwabAccount]"
                 ],
                 "settings": [
-                    "Mapping[(Any, str)]"
+                    "Mapping[bankroll.broker.configuration.Settings,str]",
+                    "Mapping",
+                    "Dict[str,Any]",
+                    "Type[T]",
+                    "Type"
                 ],
                 "lenient": [
-                    "bool"
+                    "bool",
+                    "Dict[str,Any]",
+                    "str",
+                    "T"
                 ]
             }
         },
@@ -297,13 +341,21 @@
             "arguments": {
                 "self": [],
                 "positions": [
-                    "Optional[pathlib.Path]"
+                    "str",
+                    "Dict",
+                    "None"
                 ],
                 "transactions": [
-                    "Optional[pathlib.Path]"
+                    "str",
+                    "Dict",
+                    "None"
                 ],
                 "lenient": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "List",
+                    "Set[str]",
+                    "float"
                 ]
             }
         },
@@ -311,7 +363,7 @@
             "name": "positions",
             "location": 473,
             "return": [
-                "Iterable"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -321,7 +373,14 @@
             "name": "activity",
             "location": 484,
             "return": [
-                "Iterable"
+                "int",
+                "Callable",
+                "str",
+                "List",
+                "Pattern",
+                "Final",
+                "Dict[str,str]",
+                "Type"
             ],
             "arguments": {
                 "self": []
@@ -335,7 +394,7 @@
                 "int",
                 "AccountBalance",
                 "Exception",
-                "tuple[typing.Union[typing.Any,typing.Any]]",
+                "Tuple[Union[Any,Any]]",
                 "float"
             ],
             "arguments": {
@@ -351,10 +410,12 @@
             "return": [
                 "Cash",
                 "str",
-                "Tuple[Any, Any, Any]"
+                "Tuple[Any,Any,Any]"
             ],
             "arguments": {
                 "amount": [
+                    "int",
+                    "str",
                     "decimal.Decimal"
                 ]
             }

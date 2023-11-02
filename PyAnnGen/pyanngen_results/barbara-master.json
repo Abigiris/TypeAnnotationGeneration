@@ -4,7 +4,6 @@
             "name": "barbara_develop",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -12,7 +11,7 @@
                     "bool",
                     "str",
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "int",
                     "None"
                 ],
@@ -25,17 +24,15 @@
                     "List[str]"
                 ],
                 "template": [
-                    "typing.Iterable[bytes]",
-                    "bool",
                     "Iterable[bytes]",
+                    "bool",
                     "None",
-                    "Optional[\"AbstractPurpose\"]",
-                    "Tuple[Any, Any, Any, Any, Any]"
+                    "Optional[AbstractPurpose]",
+                    "Tuple[Any,Any,Any,Any,Any]"
                 ],
                 "zero_input": [
                     "bool",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         }
@@ -45,11 +42,12 @@
             "name": "get_reader",
             "location": 22,
             "return": [
-                "type"
+                "Type[BaseTemplateReader]"
             ],
             "arguments": {
                 "file_or_name": [
-                    "pathlib.Path"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -76,7 +74,9 @@
             "arguments": {
                 "self": [],
                 "source": [
-                    "Union[(str, TextIO)]"
+                    "Optional[str]",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -84,7 +84,7 @@
             "name": "read",
             "location": 43,
             "return": [
-                "Dict[(str, str)]"
+                "tuple"
             ],
             "arguments": {
                 "self": []
@@ -99,7 +99,9 @@
             "arguments": {
                 "self": [],
                 "source": [
-                    "pathlib.Path"
+                    "Optional[str]",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -107,7 +109,9 @@
             "name": "_read",
             "location": 55,
             "return": [
-                "dict"
+                "str",
+                "List[str]",
+                "pathlib.Path"
             ],
             "arguments": {
                 "self": []
@@ -117,7 +121,8 @@
             "name": "read",
             "location": 67,
             "return": [
-                "Dict[(str, str)]"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -129,11 +134,19 @@
             "name": "confirm_target_file",
             "location": 13,
             "return": [
-                "bool"
+                "str",
+                "Optional[str]",
+                "pathlib.Path",
+                "bool",
+                "List[Tuple[pathlib.Path, pathlib.Path]]"
             ],
             "arguments": {
                 "target_file": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "TextIO",
+                    "Union[str, pathlib.Path]",
+                    "pathlib.PosixPath",
+                    "Path"
                 ]
             }
         },
@@ -141,11 +154,17 @@
             "name": "create_target_file",
             "location": 30,
             "return": [
-                "bool"
+                "str",
+                "pathlib.Path",
+                "Set[pathlib.Path]"
             ],
             "arguments": {
                 "target_file": [
-                    "pathlib.Path"
+                    "str",
+                    "TextIO",
+                    "IO",
+                    "AsyncGenerator",
+                    "Coroutine"
                 ]
             }
         },
@@ -153,11 +172,16 @@
             "name": "prompt_user_for_value",
             "location": 36,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "env_variable": [
-                    "barbara.variables.EnvVariable"
+                    "MutableMapping",
+                    "Dict",
+                    "MutableMapping[str,str]",
+                    "Dict[str,Any]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -165,17 +189,29 @@
             "name": "merge_keys",
             "location": 41,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "existing": [
-                    "Dict[(str, str)]"
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "Set[str]",
+                    "Iterable[str]",
+                    "Callable[...,None]",
+                    "str"
                 ],
                 "template": [
-                    "Dict[(str, Union[(barbara.variables.AutoVariable, barbara.variables.EnvVariable)])]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "os.DirEntry",
+                    "MutableMapping"
                 ],
                 "skip_existing": [
-                    "bool"
+                    "str",
+                    "Dict",
+                    "None",
+                    "Union[pathlib.Path,str]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -183,17 +219,26 @@
             "name": "merge_with_presets",
             "location": 57,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "existing": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Optional[List[Any]]",
+                    "Type"
                 ],
                 "template": [
-                    "Dict[(str, Union[(barbara.variables.AutoVariable, barbara.variables.EnvVariable)])]"
+                    "Dict",
+                    "int",
+                    "str",
+                    "Dict[str,Any]",
+                    "Token"
                 ],
                 "skip_existing": [
-                    "bool"
+                    "str",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -201,17 +246,29 @@
             "name": "merge_with_prompts",
             "location": 80,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "existing": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "T",
+                    "MutableMapping"
                 ],
                 "template": [
-                    "Dict[(str, Union[(barbara.variables.AutoVariable, barbara.variables.EnvVariable)])]"
+                    "Dict",
+                    "int",
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[List[Any]]",
+                    "List[Any]",
+                    "None"
                 ],
                 "skip_existing": [
-                    "bool"
+                    "str",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         }
@@ -226,8 +283,7 @@
             "arguments": {
                 "cls": [
                     "int",
-                    "Mapping",
-                    "typing.Mapping"
+                    "Mapping"
                 ]
             }
         },
@@ -247,7 +303,7 @@
             "name": "validate",
             "location": 26,
             "return": [
-                "bool"
+                "_NotImplementedType"
             ],
             "arguments": {
                 "self": []
@@ -257,7 +313,7 @@
             "name": "generate",
             "location": 30,
             "return": [
-                "str"
+                "_NotImplementedType"
             ],
             "arguments": {
                 "self": []
@@ -272,10 +328,15 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "Dict"
                 ],
                 "length": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -289,11 +350,10 @@
                 "self": [],
                 "other": [
                     "str",
+                    "Dict",
                     "int",
-                    "dict",
-                    "dict[, ]",
-                    "Callable[..., Awaitable[Any]]",
-                    "typing.Callable[..., collections.abc.Awaitable[typing.Any]]",
+                    "Callable[...,Awaitable[Any]]",
+                    "Callable[...,collections.abc.Awaitable[Any]]",
                     "Optional[str]",
                     "None"
                 ]
@@ -340,10 +400,14 @@
             "arguments": {
                 "self": [],
                 "target_file": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "environment": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "TextIO",
+                    "bool",
+                    "List[str]"
                 ]
             }
         },
@@ -370,18 +434,15 @@
                 "self": [],
                 "env": [
                     "str",
-                    "Sequence[str]",
-                    "typing.Sequence[str]"
+                    "Sequence[str]"
                 ],
                 "key": [
                     "str",
-                    "Sequence[str]",
-                    "typing.Sequence[str]"
+                    "Sequence[str]"
                 ],
                 "value": [
                     "str",
-                    "Sequence[str]",
-                    "typing.Sequence[str]"
+                    "Sequence[str]"
                 ]
             }
         },
@@ -522,7 +583,7 @@
             "location": 9,
             "return": [
                 "str",
-                "dict[typing.Text, EnvVariable]"
+                "Dict[Text,EnvVariable]"
             ],
             "arguments": {}
         },
@@ -530,7 +591,7 @@
             "name": "create_stub_template_with_auto_variables",
             "location": 19,
             "return": [
-                "dict[typing.Text, typing.Union[EnvVariable,GitCommitVariable]]",
+                "Dict[Text,Union[EnvVariable,GitCommitVariable]]",
                 "str",
                 "Type[Any]"
             ],
@@ -540,7 +601,6 @@
             "name": "patch_subprocess_output",
             "location": 30,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -549,17 +609,15 @@
             "name": "test_confirm_target_default_create_confirmed",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "patched_create_target": [
                     "str",
                     "int",
+                    "Dict",
                     "Optional[str]",
-                    "None",
-                    "dict",
-                    "dict[, ]"
+                    "None"
                 ],
                 "patched_click": [
                     "bool",
@@ -575,7 +633,6 @@
             "name": "test_confirm_target_default_create_rejected",
             "location": 47,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -599,7 +656,6 @@
             "name": "test_confirm_target_provided_confirmed",
             "location": 58,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -616,7 +672,6 @@
             "name": "test_confirm_target_provided_rejected",
             "location": 70,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -650,8 +705,7 @@
                 "self": [],
                 "template": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -665,10 +719,9 @@
                 "self": [],
                 "template": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Callable[[None, None], bool]",
-                    "typing.Callable[None,None, bool]"
+                    "Dict",
+                    "Callable[[None,None],bool]",
+                    "Callable[None,None,bool]"
                 ]
             }
         },
@@ -676,7 +729,6 @@
             "name": "test_merge_with_prompts_matching_with_skip",
             "location": 99,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -689,7 +741,6 @@
             "name": "test_merge_with_prompts_matching_without_skip",
             "location": 109,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -697,9 +748,8 @@
                 "patched_get": [
                     "str",
                     "List[str]",
-                    "list[str]",
                     "Type[Any]",
-                    "typing.Type"
+                    "Type"
                 ],
                 "template": [
                     "int",
@@ -711,7 +761,6 @@
             "name": "test_prompt_user_for_value",
             "location": 118,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -734,13 +783,12 @@
                     "int",
                     "raiden.utils.List[raiden.raiden_service.RaidenService]",
                     "raiden.utils.TokenNetworkAddress",
-                    "Iterable[Tuple[str, dict]]"
+                    "Iterable[Tuple[str,dict]]"
                 ],
                 "patched_subprocess_output": [
                     "bool",
-                    "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -759,9 +807,8 @@
                 ],
                 "patched_subprocess_output": [
                     "bool",
-                    "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -780,9 +827,8 @@
                 ],
                 "patched_subprocess_output": [
                     "bool",
-                    "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -790,7 +836,6 @@
             "name": "test_merge_with_prompts_matching_with_skip",
             "location": 164,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -806,8 +851,7 @@
                 ],
                 "patched_subprocess_output": [
                     "List[str]",
-                    "str",
-                    "list[str]"
+                    "str"
                 ]
             }
         },
@@ -815,7 +859,6 @@
             "name": "test_merge_with_prompts_matching_without_skip",
             "location": 178,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -832,8 +875,7 @@
                 ],
                 "patched_subprocess_output": [
                     "List[str]",
-                    "str",
-                    "list[str]"
+                    "str"
                 ]
             }
         }
@@ -843,19 +885,18 @@
             "name": "test_writer_writes",
             "location": 8,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "patched_shutil": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "patched_os": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -863,14 +904,12 @@
             "name": "test_writer_backup",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "patched_os": [],
                 "patched_shutil": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }

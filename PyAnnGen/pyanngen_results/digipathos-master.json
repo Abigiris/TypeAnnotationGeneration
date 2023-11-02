@@ -54,9 +54,8 @@
                 "arg": [
                     "str",
                     "int",
-                    "list[]",
-                    "bool",
-                    "list"
+                    "List",
+                    "bool"
                 ]
             }
         },
@@ -64,7 +63,7 @@
             "name": "read_command",
             "location": 48,
             "return": [
-                "digipathos.cli.command.Command"
+                "Union[(digipathos.cli.command.DownloadAllDatasets, digipathos.cli.command.DownloadAllDatasetsFromCrop, digipathos.cli.command.DownloadDataset, digipathos.cli.command.Exit, digipathos.cli.command.ListCrops, digipathos.cli.command.ListDatasets, digipathos.cli.command.ListDatasetsFromCrop)]"
             ],
             "arguments": {}
         }
@@ -86,7 +85,14 @@
             ],
             "arguments": {
                 "data": [
-                    "list"
+                    "List",
+                    "List[Tuple[str,...]]",
+                    "str",
+                    "List[tuple[Union[str,...]]]",
+                    "List[str]",
+                    "List[Dict]",
+                    "bytes",
+                    "List[dict]"
                 ]
             }
         },
@@ -94,11 +100,14 @@
             "name": "get_commands",
             "location": 112,
             "return": [
-                "Dict[(int, Command)]"
+                "Dict[(int, Union[(DownloadAllDatasets, DownloadAllDatasetsFromCrop, DownloadDataset, Exit, ListCrops, ListDatasets, ListDatasetsFromCrop)])]"
             ],
             "arguments": {
                 "data_loader": [
-                    "digipathos.data.data_loader.DataLoader"
+                    "Dict",
+                    "List",
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         },
@@ -111,26 +120,45 @@
             "arguments": {
                 "self": [],
                 "desc": [
-                    "str"
+                    "int",
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "Callable[...,None]",
+                    "Optional[bool]"
                 ],
                 "command": [
                     "int",
                     "str",
-                    "typing.Callable[, ]",
-                    "None",
                     "Callable",
+                    "None",
                     "Optional[str]",
-                    "Callable[..., None]",
+                    "Callable[...,None]",
                     "Optional[bool]"
                 ],
                 "lang": [
-                    "str"
+                    "int",
+                    "str",
+                    "Callable",
+                    "None",
+                    "Optional[str]",
+                    "Callable[...,None]",
+                    "Optional[bool]"
                 ],
                 "require_args": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Sequence[Optional[Type]]"
                 ],
                 "args_description": [
-                    "str"
+                    "int",
+                    "None",
+                    "str",
+                    "Callable",
+                    "Optional[str]",
+                    "Callable[...,None]",
+                    "Optional[bool]"
                 ],
                 "arg_type": [
                     "str",
@@ -155,17 +183,14 @@
             "name": "print_pretty",
             "location": 41,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "command_response": [
                     "List[digipathos.data.dataseDataset]",
-                    "list[digipathos.data.dataseDataset]",
-                    "float",
                     "List[str]",
-                    "list[str]"
+                    "float"
                 ]
             }
         },
@@ -178,7 +203,11 @@
             "arguments": {
                 "self": [],
                 "command_response": [
-                    "Dict[(str, digipathos.data.dataset.Dataset)]"
+                    "Dict[str,digipathos.data.dataseDataset]",
+                    "Dict[str,float]",
+                    "Dict",
+                    "bytes",
+                    "int"
                 ]
             }
         },
@@ -191,7 +220,12 @@
             "arguments": {
                 "self": [],
                 "command_response": [
-                    "Dict[(str, List[int])]"
+                    "Dict[str,list[int]]",
+                    "Dict[str,List[int]]",
+                    "str",
+                    "Dict[str,Any]",
+                    "int",
+                    "List[Dict]"
                 ]
             }
         },
@@ -204,7 +238,9 @@
             "arguments": {
                 "self": [],
                 "command_response": [
-                    "List[digipathos.data.dataset.Dataset]"
+                    "List[digipathos.data.dataseDataset]",
+                    "List[str]",
+                    "float"
                 ]
             }
         },
@@ -218,10 +254,8 @@
                 "self": [],
                 "command_response": [
                     "List[digipathos.data.dataseDataset]",
-                    "list[digipathos.data.dataseDataset]",
-                    "float",
                     "List[str]",
-                    "list[str]"
+                    "float"
                 ]
             }
         },
@@ -235,10 +269,8 @@
                 "self": [],
                 "command_response": [
                     "List[digipathos.data.dataseDataset]",
-                    "list[digipathos.data.dataseDataset]",
-                    "float",
                     "List[str]",
-                    "list[str]"
+                    "float"
                 ]
             }
         },
@@ -252,10 +284,8 @@
                 "self": [],
                 "command_response": [
                     "List[digipathos.data.dataseDataset]",
-                    "list[digipathos.data.dataseDataset]",
-                    "float",
                     "List[str]",
-                    "list[str]"
+                    "float"
                 ]
             }
         },
@@ -269,10 +299,8 @@
                 "self": [],
                 "command_response": [
                     "List[digipathos.data.dataseDataset]",
-                    "list[digipathos.data.dataseDataset]",
-                    "float",
                     "List[str]",
-                    "list[str]"
+                    "float"
                 ]
             }
         }
@@ -288,16 +316,32 @@
             "arguments": {
                 "self": [],
                 "full_name": [
-                    "str"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "url": [
                     "str"
                 ],
                 "extension": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "size": [
-                    "float"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "Optional[str]",
+                    "None",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -312,7 +356,11 @@
                     "Type[_TDataset]"
                 ],
                 "item": [
-                    "dict"
+                    "List",
+                    "str",
+                    "Dict",
+                    "Tuple",
+                    "Dict[str,object]"
                 ]
             }
         },
@@ -325,7 +373,8 @@
             "arguments": {
                 "self": [],
                 "lang": [
-                    "str"
+                    "str",
+                    "List[int]"
                 ]
             }
         },
@@ -338,6 +387,9 @@
             "arguments": {
                 "self": [],
                 "lang": [
+                    "Text",
+                    "int",
+                    "Dict[str,Any]",
                     "str"
                 ]
             }
@@ -351,6 +403,9 @@
             "arguments": {
                 "self": [],
                 "lang": [
+                    "Text",
+                    "int",
+                    "Dict[str,Any]",
                     "str"
                 ]
             }
@@ -359,18 +414,44 @@
             "name": "find",
             "location": 79,
             "return": [
-                "str"
+                "None",
+                "bool",
+                "Optional[Sequence[str]]",
+                "Optional[Callable]",
+                "int",
+                "Tuple"
             ],
             "arguments": {
                 "self": [],
                 "pattern": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[dict]",
+                    "Dict",
+                    "List[Dict[str,str]]",
+                    "None",
+                    "List[dict[str,str]]"
                 ],
                 "contents": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[dict]",
+                    "Dict",
+                    "List[Dict[str,str]]",
+                    "None",
+                    "List[dict[str,str]]"
                 ],
                 "index": [
-                    "int"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[dict]",
+                    "Dict",
+                    "List[Dict[str,str]]",
+                    "None",
+                    "List[dict[str,str]]"
                 ]
             }
         },
@@ -395,10 +476,14 @@
             "arguments": {
                 "self": [],
                 "artifacts_path": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Iterable[str]"
                 ],
                 "lang": [
-                    "str"
+                    "Text",
+                    "Dict",
+                    "bool"
                 ],
                 "auto_fetch": [
                     "bool",
@@ -410,7 +495,7 @@
             "name": "get_datasets",
             "location": 34,
             "return": [
-                "List[digipathos.data.dataset.Dataset]"
+                "Dict[(int, digipathos.data.dataset.Dataset)]"
             ],
             "arguments": {
                 "self": []
@@ -420,7 +505,7 @@
             "name": "get_crops",
             "location": 42,
             "return": [
-                "Dict[(str, digipathos.data.dataset.Dataset)]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "self": []
@@ -430,7 +515,7 @@
             "name": "get_datasets_from_crop",
             "location": 49,
             "return": [
-                "List[digipathos.data.dataset.Dataset]"
+                "list"
             ],
             "arguments": {
                 "self": [],
@@ -443,12 +528,15 @@
             "name": "get_dataset",
             "location": 58,
             "return": [
-                "digipathos.data.dataset.Dataset"
+                "str",
+                "Union[str, int]",
+                "List[int]"
             ],
             "arguments": {
                 "self": [],
                 "dataset_id": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -461,6 +549,7 @@
             "arguments": {
                 "self": [],
                 "dataset_id": [
+                    "str",
                     "int"
                 ]
             }
@@ -484,7 +573,13 @@
             "arguments": {
                 "self": [],
                 "crop_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Any",
+                    "Optional[Union[Any,Any]]",
+                    "None",
+                    "int",
+                    "Optional[int]"
                 ]
             }
         }
@@ -499,7 +594,10 @@
             "arguments": {
                 "self": [],
                 "lang": [
-                    "str"
+                    "Text",
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -507,7 +605,8 @@
             "name": "load_datasets",
             "location": 19,
             "return": [
-                "List[digipathos.data.dataset.Dataset]"
+                "List[digipathos.data.dataset.Dataset]",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -517,7 +616,7 @@
             "name": "load_crops",
             "location": 22,
             "return": [
-                "Dict[(str, digipathos.data.dataset.Dataset)]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "self": []
@@ -527,12 +626,13 @@
             "name": "load_items_from_crop",
             "location": 39,
             "return": [
-                "Union[(list, digipathos.data.dataset.Dataset)]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "crop_name": [
-                    "str"
+                    "str",
+                    "Set[str]"
                 ]
             }
         },
@@ -540,12 +640,15 @@
             "name": "load_item",
             "location": 51,
             "return": [
-                "digipathos.data.dataset.Dataset"
+                "str",
+                "int",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
                 "item_id": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -553,7 +656,7 @@
             "name": "load_datasets",
             "location": 61,
             "return": [
-                "List[digipathos.data.dataset.Dataset]"
+                "Dict[(int, digipathos.data.dataset.Dataset)]"
             ],
             "arguments": {
                 "self": []
@@ -563,7 +666,7 @@
             "name": "fetch_data_from_remote",
             "location": 75,
             "return": [
-                "List[digipathos.data.dataset.Dataset]"
+                "Dict[(int, digipathos.data.dataset.Dataset)]"
             ],
             "arguments": {
                 "self": []
@@ -590,10 +693,14 @@
             ],
             "arguments": {
                 "dataset": [
-                    "digipathos.data.dataset.Dataset"
+                    "str",
+                    "bool",
+                    "Union[os.PathLike,str]"
                 ],
                 "output_dir": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "verbose": [
                     "bool",
@@ -612,7 +719,6 @@
             "name": "test_invalid_command_throws_exception",
             "location": 10,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

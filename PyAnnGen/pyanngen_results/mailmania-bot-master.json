@@ -4,14 +4,18 @@
             "name": "prepare_email",
             "location": 29,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, Dict[(str, Union[(str, Dict[(str, Union[(str, _T1)])], _T0)])])]"
             ],
             "arguments": {
                 "subject": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes"
                 ],
                 "body": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes"
                 ]
             }
         },
@@ -19,11 +23,16 @@
             "name": "prepare_destination",
             "location": 45,
             "return": [
-                "Dict[(str, Iterable[str])]"
+                "Dict[(str, _T0)]"
             ],
             "arguments": {
                 "recipients": [
-                    "Iterable[str]"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -31,7 +40,10 @@
             "name": "send_email_ses",
             "location": 49,
             "return": [
-                "Dict[(str, str)]"
+                "None",
+                "Optional[int]",
+                "str",
+                "Optional[Dict[str,Any]]"
             ],
             "arguments": {
                 "ses_client": [
@@ -39,12 +51,15 @@
                     "int"
                 ],
                 "recipient": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "subject": [
+                    "int",
                     "str"
                 ],
                 "body": [
+                    "int",
                     "str"
                 ]
             }
@@ -55,7 +70,7 @@
             "return": [
                 "str",
                 "int",
-                "list[str]",
+                "List[str]",
                 "bytes"
             ],
             "arguments": {}
@@ -76,7 +91,9 @@
             ],
             "arguments": {
                 "error_trace": [
-                    "str"
+                    "Callable",
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -91,11 +108,12 @@
                     "str",
                     "bool",
                     "None",
-                    "Optional[\"PNSqlCursor\"]",
+                    "Optional[PNSqlCursor]",
                     "Optional[str]"
                 ],
                 "mr_id": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -113,7 +131,10 @@
                     "int"
                 ],
                 "mr_id": [
-                    "str"
+                    "str",
+                    "bytearray",
+                    "Tuple[int,str]",
+                    "Tuple[Union[int,str]]"
                 ]
             }
         },
@@ -125,10 +146,13 @@
             ],
             "arguments": {
                 "labels": [
-                    "Iterable[str]"
+                    "str",
+                    "int"
                 ],
                 "label_name": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -136,11 +160,14 @@
             "name": "is_backport_required",
             "location": 148,
             "return": [
-                "Tuple[(bool, str)]"
+                "Tuple[(bool, Optional[str])]"
             ],
             "arguments": {
                 "request_body": [
-                    "dict"
+                    "bytes",
+                    "str",
+                    "Dict[str,str]",
+                    "Dict"
                 ]
             }
         },
@@ -148,17 +175,24 @@
             "name": "_decide_backport",
             "location": 160,
             "return": [
-                "Tuple[(bool, str)]"
+                "Tuple[(bool, Optional[str])]"
             ],
             "arguments": {
                 "target_branch": [
-                    "str"
+                    "str",
+                    "Callable[[str,str],None]"
                 ],
                 "labels": [
-                    "Iterable[str]"
+                    "Callable",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "state": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -166,9 +200,9 @@
             "name": "index",
             "location": 174,
             "return": [
-                "typing.Text",
-                "dict",
-                "Dict[str, Any]",
+                "Text",
+                "Dict",
+                "Dict[str,Any]",
                 "str",
                 "Iterable[str]"
             ],
@@ -180,7 +214,6 @@
             "name": "captured_output",
             "location": 19,
             "return": [
-                "",
                 "typing.Generator[tuple[typing.Union[StringIO,StringIO]]]"
             ],
             "arguments": {}
@@ -235,7 +268,6 @@
             "name": "test_send_email",
             "location": 86,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -258,7 +290,6 @@
             "name": "test_send_email_ses_with_bad_email",
             "location": 118,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -269,7 +300,6 @@
             "name": "test_send_email_ses_uses_sender_env",
             "location": 127,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -281,7 +311,6 @@
             "name": "test_send_email_ses_new_sender",
             "location": 143,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -293,7 +322,6 @@
             "name": "test_notify_admin",
             "location": 160,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -305,7 +333,6 @@
             "name": "test_notify_admin_silenced",
             "location": 169,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -427,7 +454,6 @@
             "name": "test_is_backport_required_simple",
             "location": 227,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -439,7 +465,7 @@
             "name": "test_decide_backport",
             "location": 249,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": []

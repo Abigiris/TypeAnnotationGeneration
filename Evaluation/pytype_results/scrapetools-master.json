@@ -5,29 +5,21 @@
             "name": "download",
             "location": 22,
             "return": [
-                "Awaitable[None]"
+                "Any"
             ],
             "arguments": {
-                "urls": [
-                    "Union[(str, Dict[(str, str)], Iterable[str])]"
-                ],
-                "path": [
-                    "str"
-                ],
+                "urls": [],
+                "path": [],
                 "session": [],
-                "show_progress": [
-                    "bool"
-                ],
-                "max_concurrent": [
-                    "int"
-                ]
+                "show_progress": [],
+                "max_concurrent": []
             }
         },
         "download_sync": {
             "name": "download_sync",
             "location": 36,
             "return": [
-                "None"
+                "Any"
             ],
             "arguments": {}
         },
@@ -35,41 +27,27 @@
             "name": "download_one",
             "location": 42,
             "return": [
-                "Awaitable[None]"
+                "coroutine"
             ],
             "arguments": {
-                "url": [
-                    "str"
-                ],
-                "path": [
-                    "str"
-                ],
+                "url": [],
+                "path": [],
                 "session": [],
-                "show_progress": [
-                    "bool"
-                ]
+                "show_progress": []
             }
         },
         "download_all": {
             "name": "download_all",
             "location": 93,
             "return": [
-                "Awaitable[None]"
+                "coroutine"
             ],
             "arguments": {
-                "urls": [
-                    "Union[(Dict[(str, str)], Iterable[str])]"
-                ],
-                "path": [
-                    "str"
-                ],
+                "urls": [],
+                "path": [],
                 "session": [],
-                "show_progress": [
-                    "bool"
-                ],
-                "max_concurrent": [
-                    "int"
-                ]
+                "show_progress": [],
+                "max_concurrent": []
             }
         }
     },
@@ -78,26 +56,20 @@
             "name": "fetch",
             "location": 32,
             "return": [
-                "Awaitable[Union[(scrapetools.response.Response, List[scrapetools.response.Response])]]"
+                "Any"
             ],
             "arguments": {
-                "urls": [
-                    "Union[(str, Iterable[str])]"
-                ],
+                "urls": [],
                 "session": [],
-                "show_progress": [
-                    "bool"
-                ],
-                "max_concurrent": [
-                    "int"
-                ]
+                "show_progress": [],
+                "max_concurrent": []
             }
         },
         "fetch_sync": {
             "name": "fetch_sync",
             "location": 43,
             "return": [
-                "Union[(scrapetools.response.Response, List[scrapetools.response.Response])]"
+                "Any"
             ],
             "arguments": {}
         },
@@ -105,18 +77,18 @@
             "name": "responsify",
             "location": 50,
             "return": [
-                "Callable[(..., Awaitable[scrapetools.response.Response[A]])]"
+                "Callable"
             ],
             "arguments": {
-                "f": [
-                    "Callable[(..., Awaitable[A])]"
-                ]
+                "f": []
             }
         },
         "fetch_one": {
             "name": "fetch_one",
             "location": 66,
-            "return": [],
+            "return": [
+                "Coroutine[(Any, Any, scrapetools.response.Response)]"
+            ],
             "arguments": {
                 "url": [],
                 "session": []
@@ -126,19 +98,13 @@
             "name": "fetch_all",
             "location": 95,
             "return": [
-                "Awaitable[List[scrapetools.response.Response]]"
+                "coroutine"
             ],
             "arguments": {
-                "urls": [
-                    "List[str]"
-                ],
+                "urls": [],
                 "session": [],
-                "show_progress": [
-                    "bool"
-                ],
-                "max_concurrent": [
-                    "int"
-                ]
+                "show_progress": [],
+                "max_concurrent": []
             }
         }
     },
@@ -147,27 +113,21 @@
             "name": "compose",
             "location": 15,
             "return": [
-                "Callable[(..., B)]"
+                "Union[(functools.partial, Callable)]"
             ],
             "arguments": {
-                "f": [
-                    "Callable[([A], B)]"
-                ],
-                "g": [
-                    "Callable[(..., A)]"
-                ]
+                "f": [],
+                "g": []
             }
         },
         "fmap": {
             "name": "fmap",
             "location": 23,
             "return": [
-                "Any"
+                "functools.partial"
             ],
             "arguments": {
-                "f": [
-                    "Callable"
-                ],
+                "f": [],
                 "obj": []
             }
         },
@@ -195,10 +155,12 @@
             "name": "__new__",
             "location": 21,
             "return": [
-                "Any"
+                "_TShow@@Show@@"
             ],
             "arguments": {
-                "cls": []
+                "cls": [
+                    "Type[_TShow]"
+                ]
             }
         },
         "Show.__repr__": {
@@ -221,22 +183,16 @@
             ],
             "arguments": {
                 "self": [],
-                "url": [
-                    "str"
-                ],
-                "result": [
-                    "A"
-                ],
-                "error": [
-                    "Exception"
-                ]
+                "url": [],
+                "result": [],
+                "error": []
             }
         },
         "Response.__iter__": {
             "name": "__iter__",
             "location": 26,
             "return": [
-                "Iterator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -246,42 +202,34 @@
             "name": "fmap",
             "location": 31,
             "return": [
-                "Response[Union[(A, B)]]"
+                "Response"
             ],
             "arguments": {
                 "self": [],
-                "f": [
-                    "Callable[([A], B)]"
-                ]
+                "f": []
             }
         },
         "Response.bind": {
             "name": "bind",
             "location": 38,
             "return": [
-                "Response[Union[(A, B)]]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "f": [
-                    "Callable[([A], Response[B])]"
-                ]
+                "f": []
             }
         },
         "Response.fold": {
             "name": "fold",
             "location": 45,
             "return": [
-                "Union[(Exception, A, B)]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "on_result": [
-                    "Callable[([A], B)]"
-                ],
-                "on_error": [
-                    "Callable[([Exception], B)]"
-                ]
+                "on_result": [],
+                "on_error": []
             }
         }
     },
@@ -290,22 +238,14 @@
             "name": "scrape",
             "location": 17,
             "return": [
-                "Union[(list, functools.partial)]"
+                "Any"
             ],
             "arguments": {
                 "data": [],
-                "css": [
-                    "str"
-                ],
-                "xpath": [
-                    "str"
-                ],
-                "base_url": [
-                    "str"
-                ],
-                "flatten": [
-                    "bool"
-                ]
+                "css": [],
+                "xpath": [],
+                "base_url": [],
+                "flatten": []
             }
         }
     },
@@ -314,39 +254,31 @@
             "name": "run",
             "location": 13,
             "return": [
-                "A"
+                "Any"
             ],
             "arguments": {
-                "coro": [
-                    "Awaitable[A]"
-                ]
+                "coro": []
             }
         },
         "sensible_download_path": {
             "name": "sensible_download_path",
             "location": 18,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "url": [
-                    "str"
-                ],
-                "path": [
-                    "str"
-                ]
+                "url": [],
+                "path": []
             }
         },
         "url_basename": {
             "name": "url_basename",
             "location": 32,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "url": [
-                    "str"
-                ]
+                "url": []
             }
         },
         "mkdirdeep": {
@@ -356,9 +288,7 @@
                 "None"
             ],
             "arguments": {
-                "path": [
-                    "str"
-                ]
+                "path": []
             }
         }
     },

@@ -8,14 +8,24 @@
             "name": "node_from_tokens",
             "location": 19,
             "return": [
-                "Tuple[(myjson.core.nodes.Node, int)]"
+                "Tuple[(Union[(myjson.core.nodes.MappingNode, myjson.core.nodes.ScalarNode, myjson.core.nodes.SequenceNode)], Any)]"
             ],
             "arguments": {
                 "tokens": [
-                    "List[myjson.loading.tokens.Token]"
+                    "int",
+                    "str",
+                    "List[Token]",
+                    "List[T]",
+                    "Optional[int]",
+                    "None"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[Token]",
+                    "List[T]",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -27,10 +37,12 @@
             ],
             "arguments": {
                 "tokens": [
-                    "List[myjson.loading.tokens.Token]"
+                    "int",
+                    "List['Token']"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "List[Token]"
                 ]
             }
         },
@@ -38,14 +50,21 @@
             "name": "mapping_node_from_tokens",
             "location": 36,
             "return": [
-                "Tuple[(myjson.core.nodes.MappingNode, int)]"
+                "Tuple[(myjson.core.nodes.MappingNode, Any)]"
             ],
             "arguments": {
                 "tokens": [
-                    "List[myjson.loading.tokens.Token]"
+                    "List[T]",
+                    "List[str]",
+                    "List[Token]",
+                    "List[dict]",
+                    "str",
+                    "int"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[int]"
                 ]
             }
         },
@@ -57,10 +76,12 @@
             ],
             "arguments": {
                 "tokens": [
-                    "List[myjson.loading.tokens.Token]"
+                    "int",
+                    "List['Token']"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "List[Token]"
                 ]
             }
         },
@@ -68,14 +89,23 @@
             "name": "sequence_node_from_tokens",
             "location": 58,
             "return": [
-                "Tuple[(myjson.core.nodes.SequenceNode, int)]"
+                "Tuple[(myjson.core.nodes.SequenceNode, Any)]"
             ],
             "arguments": {
                 "tokens": [
-                    "List[myjson.loading.tokens.Token]"
+                    "List[T]",
+                    "List[Token]",
+                    "List[int]",
+                    "List[str]",
+                    "int"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "List[T]",
+                    "Optional[int]",
+                    "T",
+                    "List[Token]",
+                    "str"
                 ]
             }
         },
@@ -87,10 +117,12 @@
             ],
             "arguments": {
                 "tokens": [
-                    "List[myjson.loading.tokens.Token]"
+                    "int",
+                    "List['Token']"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "List[Token]"
                 ]
             }
         },
@@ -98,14 +130,16 @@
             "name": "scalar_node_from_tokens",
             "location": 77,
             "return": [
-                "Tuple[(myjson.core.nodes.ScalarNode, int)]"
+                "Tuple[(myjson.core.nodes.ScalarNode, Any)]"
             ],
             "arguments": {
                 "tokens": [
-                    "List[myjson.loading.tokens.Token]"
+                    "int",
+                    "List['Token']"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "List[Token]"
                 ]
             }
         }
@@ -115,7 +149,6 @@
             "name": "object_from_node",
             "location": 8,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -137,9 +170,8 @@
             ],
             "arguments": {
                 "node": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -147,7 +179,7 @@
             "name": "_2",
             "location": 18,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "List[int]",
                 "Iterable[str]",
                 "Iterable[T]",
@@ -156,10 +188,8 @@
             "arguments": {
                 "node": [
                     "Set[str]",
-                    "set[str]",
+                    "Dict[str,Any]",
                     "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
                     "Optional[int]",
                     "None"
                 ]
@@ -169,7 +199,7 @@
             "name": "_3",
             "location": 28,
             "return": [
-                "list[]",
+                "List",
                 "List[int]",
                 "Iterable[str]",
                 "Iterable[T]",
@@ -178,13 +208,9 @@
             "arguments": {
                 "node": [
                     "Set[str]",
-                    "set[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "Dict"
                 ]
             }
         }
@@ -194,11 +220,15 @@
             "name": "tokenize",
             "location": 17,
             "return": [
-                "List[myjson.loading.tokens.Token]"
+                "List[Union[(myjson.loading.tokens.Delimiter, myjson.loading.tokens.MappingEnd, myjson.loading.tokens.MappingStart, myjson.loading.tokens.Separator, myjson.loading.tokens.SequenceEnd, myjson.loading.tokens.SequenceStart)]]"
             ],
             "arguments": {
                 "string": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "List[list[str]]",
+                    "Mapping[str,str]",
+                    "List[List[str]]"
                 ]
             }
         },
@@ -206,12 +236,17 @@
             "name": "transition",
             "location": 29,
             "return": [
-                "Tuple[(State, List[myjson.loading.tokens.Token])]"
+                "Tuple[State,List[Token]]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "inp": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -219,12 +254,16 @@
             "name": "transition",
             "location": 36,
             "return": [
-                "Tuple[(State, List[myjson.loading.tokens.Token])]"
+                "Tuple[(Union[(Quoted, Unquoted)], List[Union[(myjson.loading.tokens.Delimiter, myjson.loading.tokens.MappingEnd, myjson.loading.tokens.MappingStart, myjson.loading.tokens.Separator, myjson.loading.tokens.SequenceEnd, myjson.loading.tokens.SequenceStart)]])]"
             ],
             "arguments": {
                 "self": [],
                 "inp": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -232,7 +271,7 @@
             "name": "transition",
             "location": 59,
             "return": [
-                "Tuple[(State, List[myjson.loading.tokens.Token])]"
+                "Tuple[(Union[(Quoted, Unquoted)], List[myjson.loading.tokens.ScalarValue])]"
             ],
             "arguments": {
                 "self": [],
@@ -264,23 +303,19 @@
             "name": "test_loading",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "description": [
                     "str",
-                    "Type[Any]",
-                    "typing.Type",
                     "List[str]",
-                    "list[str]"
+                    "Type[Any]",
+                    "Type"
                 ],
                 "string": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -288,7 +323,6 @@
             "name": "test_loading_from_file",
             "location": 30,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

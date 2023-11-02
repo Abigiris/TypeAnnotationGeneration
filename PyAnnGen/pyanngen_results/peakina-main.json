@@ -1,14 +1,21 @@
 {
-    "peakina/cache.py": {
+    "peakina-main/peakina/cache.py": {
         "Cache.get_cache": {
             "name": "get_cache",
             "location": 25,
             "return": [
-                "Cache"
+                "Union[(HDFCache, InMemoryCache)]"
             ],
             "arguments": {
                 "kind": [
-                    "CacheEnum"
+                    "int",
+                    "Sequence[str]",
+                    "str",
+                    "Tuple",
+                    "List[str]",
+                    "List",
+                    "Optional[List[str]]",
+                    "None"
                 ]
             }
         },
@@ -23,14 +30,30 @@
         "Cache.get": {
             "name": "get",
             "location": 50,
-            "return": [],
+            "return": [
+                "pandas.DataFrame",
+                "None"
+            ],
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "Iterable[str]",
+                    "Optional[datetime.timedelta]",
+                    "None"
                 ],
-                "mtime": [],
-                "expire": []
+                "mtime": [
+                    "str",
+                    "None",
+                    "Iterable[str]",
+                    "Optional[datetime.timedelta]"
+                ],
+                "expire": [
+                    "str",
+                    "None",
+                    "Iterable[str]",
+                    "Optional[datetime.timedelta]"
+                ]
             }
         },
         "Cache.set": {
@@ -42,10 +65,32 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[int]",
+                    "None",
+                    "T",
+                    "pandas.DataFrame"
                 ],
-                "value": [],
-                "mtime": []
+                "value": [
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[int]",
+                    "None",
+                    "T",
+                    "pandas.DataFrame"
+                ],
+                "mtime": [
+                    "str",
+                    "None",
+                    "bytes",
+                    "Optional[int]",
+                    "int",
+                    "T",
+                    "pandas.DataFrame"
+                ]
             }
         },
         "Cache.delete": {
@@ -57,7 +102,11 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "bool",
+                    "Iterable[str]",
+                    "abc.doc.DocKeyType"
                 ]
             }
         },
@@ -74,14 +123,36 @@
         "InMemoryCache.get": {
             "name": "get",
             "location": 68,
-            "return": [],
+            "return": [
+                "str",
+                "bool",
+                "Optional[str]",
+                "Optional[float]",
+                "Optional[Exception]",
+                "Optional[Callable]"
+            ],
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "int"
                 ],
-                "mtime": [],
-                "expire": []
+                "mtime": [
+                    "bool",
+                    "None",
+                    "str",
+                    "bytes",
+                    "pandas.DataFrame",
+                    "int"
+                ],
+                "expire": [
+                    "bool",
+                    "None",
+                    "str",
+                    "bytes",
+                    "pandas.DataFrame",
+                    "int"
+                ]
             }
         },
         "InMemoryCache.set": {
@@ -93,10 +164,26 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[int]",
+                    "None",
+                    "Union[str,int]"
                 ],
-                "value": [],
-                "mtime": []
+                "value": [
+                    "str",
+                    "int",
+                    "bytes",
+                    "Optional[int]",
+                    "None",
+                    "Union[str,int]"
+                ],
+                "mtime": [
+                    "str",
+                    "None",
+                    "pandas.DataFrame"
+                ]
             }
         },
         "InMemoryCache.delete": {
@@ -108,7 +195,11 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "Type",
+                    "None",
+                    "T",
+                    "Optional[str]"
                 ]
             }
         },
@@ -120,13 +211,20 @@
             ],
             "arguments": {
                 "self": [],
-                "cache_dir": []
+                "cache_dir": [
+                    "bool",
+                    "str",
+                    "Union[str,pathlib.Path]"
+                ]
             }
         },
         "HDFCache.get_metadata": {
             "name": "get_metadata",
             "location": 96,
-            "return": [],
+            "return": [
+                "str",
+                "bool"
+            ],
             "arguments": {
                 "self": []
             }
@@ -139,20 +237,43 @@
             ],
             "arguments": {
                 "self": [],
-                "df": []
+                "df": [
+                    "bytes",
+                    "int",
+                    "str"
+                ]
             }
         },
         "HDFCache.get": {
             "name": "get",
             "location": 118,
-            "return": [],
+            "return": [
+                "str"
+            ],
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "KT"
                 ],
-                "mtime": [],
-                "expire": []
+                "mtime": [
+                    "str",
+                    "None",
+                    "Optional[datetime.timedelta]",
+                    "bytes",
+                    "int",
+                    "Optional[float]",
+                    "float"
+                ],
+                "expire": [
+                    "str",
+                    "None",
+                    "Optional[datetime.timedelta]",
+                    "bytes",
+                    "int",
+                    "Optional[float]",
+                    "float"
+                ]
             }
         },
         "HDFCache.set": {
@@ -164,10 +285,25 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "Iterable[Sequence[str]]",
+                    "bytes"
                 ],
-                "value": [],
-                "mtime": []
+                "value": [
+                    "str",
+                    "int",
+                    "pandas.DataFrame",
+                    "Union[str,int]",
+                    "VT",
+                    "KT"
+                ],
+                "mtime": [
+                    "str",
+                    "None",
+                    "Dict",
+                    "T",
+                    "int"
+                ]
             }
         },
         "HDFCache.delete": {
@@ -179,12 +315,17 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "Iterable[Hashable]",
+                    "None",
+                    "bytes",
+                    "Optional[str]",
+                    "List[str]"
                 ]
             }
         }
     },
-    "peakina/datapool.py": {
+    "peakina-main/peakina/datapool.py": {
         "DataPool.__init__": {
             "name": "__init__",
             "location": 12,
@@ -194,12 +335,25 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "Dict[(Hashable, Dict[(str, Any)])]"
+                    "Dict[str,str]",
+                    "Dict",
+                    "Mapping[str,str]",
+                    "Dict[str,Any]",
+                    "Type"
                 ],
                 "data_sources_dir": [
-                    "str"
+                    "str",
+                    "Text"
                 ],
-                "cache": []
+                "cache": [
+                    "str",
+                    "None",
+                    "int",
+                    "Sequence[str]",
+                    "Dict[str,Dict]",
+                    "bool",
+                    "Dict[str,dict]"
+                ]
             }
         },
         "DataPool.__contains__": {
@@ -211,18 +365,28 @@
             "arguments": {
                 "self": [],
                 "item": [
-                    "Hashable"
+                    "str",
+                    "List[float]",
+                    "bool",
+                    "os.DirEntry"
                 ]
             }
         },
         "DataPool.__getitem__": {
             "name": "__getitem__",
             "location": 32,
-            "return": [],
+            "return": [
+                "bool",
+                "tuple",
+                "Dict[str, str]"
+            ],
             "arguments": {
                 "self": [],
                 "item": [
-                    "Hashable"
+                    "Dict",
+                    "T",
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -237,21 +401,21 @@
             }
         }
     },
-    "peakina/datasource.py": {
+    "peakina-main/peakina/datasource.py": {
         "read_pandas": {
             "name": "read_pandas",
             "location": 168,
             "return": [],
             "arguments": {
-                "uri": [
-                    "str"
-                ]
+                "uri": []
             }
         },
         "DataSource.__post_init_post_parse__": {
             "name": "__post_init_post_parse__",
             "location": 47,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": []
             }
@@ -267,7 +431,9 @@
         "DataSource.hash": {
             "name": "hash",
             "location": 64,
-            "return": [],
+            "return": [
+                "typing.Text"
+            ],
             "arguments": {
                 "self": []
             }
@@ -276,7 +442,7 @@
             "name": "get_metadata",
             "location": 71,
             "return": [
-                "Dict[(str, Any)]"
+                "dict[, ]"
             ],
             "arguments": {
                 "self": []
@@ -294,7 +460,9 @@
         "DataSource.get_matched_datasources": {
             "name": "get_matched_datasources",
             "location": 120,
-            "return": [],
+            "return": [
+                "typing.Generator[DataSource]"
+            ],
             "arguments": {
                 "self": []
             }
@@ -302,10 +470,14 @@
         "DataSource.get_dfs": {
             "name": "get_dfs",
             "location": 126,
-            "return": [],
+            "return": [
+                "typing.Generator[]"
+            ],
             "arguments": {
                 "self": [],
-                "cache": []
+                "cache": [
+                    "None"
+                ]
             }
         },
         "DataSource.get_df": {
@@ -314,19 +486,22 @@
             "return": [],
             "arguments": {
                 "self": [],
-                "cache": []
+                "cache": [
+                    "None"
+                ]
             }
         }
     },
-    "peakina/helpers.py": {
+    "peakina-main/peakina/helpers.py": {
         "detect_type": {
             "name": "detect_type",
             "location": 92,
-            "return": [],
+            "return": [
+                "None",
+                "TypeEnum"
+            ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
+                "filepath": [],
                 "is_regex": [
                     "bool"
                 ]
@@ -339,12 +514,8 @@
                 "bytes"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
-                "n": [
-                    "int"
-                ]
+                "filepath": [],
+                "n": []
             }
         },
         "str_head": {
@@ -354,13 +525,11 @@
                 "str"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
-                "n": [
-                    "int"
-                ],
-                "encoding": []
+                "filepath": [],
+                "n": [],
+                "encoding": [
+                    "None"
+                ]
             }
         },
         "detect_encoding": {
@@ -370,9 +539,7 @@
                 "str"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ]
+                "filepath": []
             }
         },
         "validate_encoding": {
@@ -382,10 +549,10 @@
                 "bool"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
-                "encoding": []
+                "filepath": [],
+                "encoding": [
+                    "None"
+                ]
             }
         },
         "detect_sep": {
@@ -395,10 +562,10 @@
                 "str"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
-                "encoding": []
+                "filepath": [],
+                "encoding": [
+                    "None"
+                ]
             }
         },
         "validate_sep": {
@@ -408,13 +575,13 @@
                 "bool"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
+                "filepath": [],
                 "sep": [
-                    "str"
+                    "typing.Text"
                 ],
-                "encoding": []
+                "encoding": [
+                    "None"
+                ]
             }
         },
         "get_reader_allowed_params": {
@@ -424,9 +591,7 @@
                 "List[str]"
             ],
             "arguments": {
-                "t": [
-                    "TypeEnum"
-                ]
+                "t": []
             }
         },
         "validate_kwargs": {
@@ -436,9 +601,7 @@
                 "bool"
             ],
             "arguments": {
-                "kwargs": [
-                    "Dict[(str, Any)]"
-                ],
+                "kwargs": [],
                 "t": []
             }
         },
@@ -449,53 +612,41 @@
                 "str"
             ],
             "arguments": {
-                "mtime": [
-                    "int"
-                ]
+                "mtime": []
             }
         },
         "pd_read": {
             "name": "pd_read",
             "location": 199,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
-                "t": [
-                    "str"
-                ],
-                "kwargs": [
-                    "Dict[(str, Any)]"
-                ]
+                "filepath": [],
+                "t": [],
+                "kwargs": []
             }
         },
         "get_metadata": {
             "name": "get_metadata",
             "location": 203,
             "return": [
-                "Dict[(str, Any)]"
+                "dict[, ]"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
-                "type": [
-                    "str"
-                ],
-                "reader_kwargs": [
-                    "Dict[(str, Any)]"
-                ]
+                "filepath": [],
+                "type": [],
+                "reader_kwargs": []
             }
         }
     },
-    "peakina/__init__.py": {},
-    "peakina/io/fetcher.py": {
+    "peakina-main/peakina/__init__.py": {},
+    "peakina-main/peakina/io/fetcher.py": {
         "register": {
             "name": "register",
             "location": 26,
             "return": [
-                "Callable[([F], F)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "schemes": []
@@ -523,48 +674,44 @@
             "name": "get_fetcher",
             "location": 55,
             "return": [
-                "Fetcher"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
-                "filepath": [
-                    "str"
-                ]
+                "filepath": []
             }
         },
         "Fetcher.listdir": {
             "name": "listdir",
             "location": 60,
             "return": [
-                "List[str]"
+                "None"
             ],
             "arguments": {
                 "self": [],
-                "dirpath": [
-                    "str"
-                ]
+                "dirpath": []
             }
         },
         "Fetcher.open": {
             "name": "open",
             "location": 64,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": [
-                    "str"
-                ]
+                "filepath": []
             }
         },
         "Fetcher.mtime": {
             "name": "mtime",
             "location": 68,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": [
-                    "str"
-                ]
+                "filepath": []
             }
         },
         "Fetcher.is_matching": {
@@ -574,51 +721,45 @@
                 "bool"
             ],
             "arguments": {
-                "filename": [
-                    "str"
-                ],
+                "filename": [],
                 "match": [],
-                "pattern": [
-                    "Pattern[str]"
-                ]
+                "pattern": []
             }
         },
         "Fetcher.get_filepath_list": {
             "name": "get_filepath_list",
             "location": 80,
             "return": [
-                "List[str]"
+                "list[]"
             ],
             "arguments": {
                 "self": [],
-                "filepath": [
-                    "str"
-                ],
-                "match": []
+                "filepath": [],
+                "match": [
+                    "None"
+                ]
             }
         },
         "Fetcher.get_str_mtime": {
             "name": "get_str_mtime",
             "location": 91,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": [
-                    "str"
-                ]
+                "filepath": []
             }
         },
         "Fetcher.get_mtime_dict": {
             "name": "get_mtime_dict",
             "location": 98,
             "return": [
-                "Dict[(str, Any)]"
+                "dict[, ]"
             ],
             "arguments": {
                 "self": [],
-                "dirpath": [
-                    "str"
-                ]
+                "dirpath": []
             }
         },
         "fetch.__init__": {
@@ -629,9 +770,7 @@
             ],
             "arguments": {
                 "self": [],
-                "uri": [
-                    "str"
-                ]
+                "uri": []
             }
         },
         "fetch.scheme": {
@@ -661,7 +800,9 @@
         "fetch.open": {
             "name": "open",
             "location": 121,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -669,7 +810,9 @@
         "fetch.get_str_mtime": {
             "name": "get_str_mtime",
             "location": 124,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -678,19 +821,21 @@
             "name": "get_mtime_dict",
             "location": 127,
             "return": [
-                "Dict[(str, Any)]"
+                "Any"
             ],
             "arguments": {
                 "self": []
             }
         }
     },
-    "peakina/io/__init__.py": {},
-    "peakina/io/ftp/ftp_fetcher.py": {
+    "peakina-main/peakina/io/__init__.py": {},
+    "peakina-main/peakina/io/ftp/ftp_fetcher.py": {
         "FTPFetcher.__init__": {
             "name": "__init__",
             "location": 10,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": []
             }
@@ -698,63 +843,111 @@
         "FTPFetcher.get_dir_mtimes": {
             "name": "get_dir_mtimes",
             "location": 14,
-            "return": [],
+            "return": [
+                "str"
+            ],
             "arguments": {
                 "self": [],
-                "dirpath": []
+                "dirpath": [
+                    "str"
+                ]
             }
         },
         "FTPFetcher.open": {
             "name": "open",
             "location": 19,
-            "return": [],
+            "return": [
+                "float",
+                "str",
+                "Optional[BaseException]"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": []
+                "filepath": [
+                    "str",
+                    "bool",
+                    "int"
+                ]
             }
         },
         "FTPFetcher.listdir": {
             "name": "listdir",
             "location": 22,
-            "return": [],
+            "return": [
+                "List",
+                "float",
+                "str",
+                "Union[str,bytes]",
+                "List[str]"
+            ],
             "arguments": {
                 "self": [],
-                "dirpath": []
+                "dirpath": [
+                    "Type",
+                    "Dict",
+                    "bytes",
+                    "Type[T]"
+                ]
             }
         },
         "FTPFetcher.mtime": {
             "name": "mtime",
             "location": 31,
-            "return": [],
+            "return": [
+                "str",
+                "Callable",
+                "Optional[int]"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": []
+                "filepath": [
+                    "str",
+                    "bool"
+                ]
             }
         }
     },
-    "peakina/io/ftp/ftp_utils.py": {
+    "peakina-main/peakina/io/ftp/ftp_utils.py": {
         "ftps_client": {
             "name": "ftps_client",
             "location": 73,
-            "return": [],
+            "return": [
+                "Generator[tuple[FTPS,str],None,None]",
+                "Generator[tuple[FTPS]]"
+            ],
             "arguments": {
-                "params": []
+                "params": [
+                    "Dict"
+                ]
             }
         },
         "ftp_client": {
             "name": "ftp_client",
             "location": 96,
-            "return": [],
+            "return": [
+                "Generator[tuple[ftplib.FTP,str],None,None]",
+                "Generator[tuple]"
+            ],
             "arguments": {
-                "params": []
+                "params": [
+                    "str",
+                    "bool",
+                    "float"
+                ]
             }
         },
         "sftp_client": {
             "name": "sftp_client",
             "location": 110,
-            "return": [],
+            "return": [
+                "Generator[tuple[paramiko.SFTPClient,str],None,None]",
+                "Generator[tuple]"
+            ],
             "arguments": {
-                "params": []
+                "params": [
+                    "str",
+                    "Dict"
+                ]
             }
         },
         "_urlparse": {
@@ -765,7 +958,9 @@
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -773,24 +968,37 @@
             "name": "client",
             "location": 140,
             "return": [
-                "ContextManager[Tuple[(Any, str)]]"
+                "contextlib._GeneratorContextManager"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[Tuple[str,Any]]",
+                    "List[tuple[Union[str,Any]]]"
                 ]
             }
         },
         "retry_pasv": {
             "name": "retry_pasv",
             "location": 152,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
                 "c": [
-                    "ftplib.FTP"
+                    "str",
+                    "List[str]",
+                    "Optional[List[str]]",
+                    "Tuple[object]",
+                    "tuple",
+                    "Callable"
                 ],
                 "cmd": [
-                    "str"
+                    "str",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -798,11 +1006,13 @@
             "name": "_open",
             "location": 165,
             "return": [
-                "IO[bytes]"
+                "tempfile._TemporaryFileWrapper[bytes]"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Mapping[str,Any]"
                 ]
             }
         },
@@ -810,14 +1020,21 @@
             "name": "ftp_open",
             "location": 180,
             "return": [
-                "IO[bytes]"
+                "Optional[tempfile._TemporaryFileWrapper[bytes]]"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "Optional[bool]",
+                    "bool",
+                    "None"
                 ],
                 "retry": [
-                    "int"
+                    "int",
+                    "str",
+                    "Set[str]",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -825,12 +1042,18 @@
             "name": "_get_all_files",
             "location": 190,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
-                "c": [],
+                "c": [
+                    "str",
+                    "Dict",
+                    "int"
+                ],
                 "path": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "int"
                 ]
             }
         },
@@ -838,20 +1061,35 @@
             "name": "ftp_listdir",
             "location": 200,
             "return": [
+                "str",
+                "bool",
                 "List[str]"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
         "_get_mtime": {
             "name": "_get_mtime",
             "location": 205,
-            "return": [],
+            "return": [
+                "int",
+                "str",
+                "None",
+                "datetime.datetime"
+            ],
             "arguments": {
-                "c": [],
+                "c": [
+                    "str",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "Dict[str,Dict[str,str]]",
+                    "None",
+                    "Dict[str,dict[str,str]]"
+                ],
                 "path": [
                     "str"
                 ]
@@ -860,7 +1098,12 @@
         "ftp_mtime": {
             "name": "ftp_mtime",
             "location": 224,
-            "return": [],
+            "return": [
+                "str",
+                "int",
+                "bool",
+                "Tuple[str]"
+            ],
             "arguments": {
                 "url": [
                     "str"
@@ -871,11 +1114,14 @@
             "name": "dir_mtimes",
             "location": 229,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Union[str,list]",
+                    "List"
                 ]
             }
         },
@@ -888,11 +1134,21 @@
             "arguments": {
                 "self": [],
                 "host": [
-                    "str"
+                    "int",
+                    "str",
+                    "Dict",
+                    "Exception",
+                    "bool"
                 ],
-                "port": [],
+                "port": [
+                    "int",
+                    "float",
+                    "bool"
+                ],
                 "timeout": [
-                    "int"
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -905,16 +1161,35 @@
             "arguments": {
                 "self": [],
                 "cmd": [
-                    "str"
+                    "Union[bytearray,memoryview]",
+                    "bytearray",
+                    "Dict",
+                    "memoryview",
+                    "Dict[str,Any]",
+                    "int",
+                    "List[List[int]]",
+                    "List[list[int]]",
+                    "bool"
                 ],
-                "rest": []
+                "rest": [
+                    "Union[bytearray,memoryview]",
+                    "None",
+                    "Dict",
+                    "bytearray",
+                    "Dict[str,Any]",
+                    "List[List[int]]",
+                    "int",
+                    "memoryview",
+                    "List[list[int]]",
+                    "bool"
+                ]
             }
         },
         "FTPS.makepasv": {
             "name": "makepasv",
             "location": 60,
             "return": [
-                "Tuple[(str, int)]"
+                "Tuple[(Any, int)]"
             ],
             "arguments": {
                 "self": []
@@ -923,16 +1198,22 @@
         "FTPS.connect._setup_sock": {
             "name": "_setup_sock",
             "location": 33,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {}
         }
     },
-    "peakina/io/ftp/__init__.py": {},
-    "peakina/io/http/http_fetcher.py": {
+    "peakina-main/peakina/io/ftp/__init__.py": {},
+    "peakina-main/peakina/io/http/http_fetcher.py": {
         "HttpFetcher.__init__": {
             "name": "__init__",
             "location": 13,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": []
             }
@@ -940,67 +1221,125 @@
         "HttpFetcher.open": {
             "name": "open",
             "location": 23,
-            "return": [],
+            "return": [
+                "List[str]",
+                "str",
+                "bool",
+                "int"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": []
+                "filepath": [
+                    "int",
+                    "Dict[str,Any]",
+                    "str",
+                    "bytes",
+                    "purplship.providers.ups.utils.Settings"
+                ]
             }
         },
         "HttpFetcher.listdir": {
             "name": "listdir",
             "location": 31,
-            "return": [],
+            "return": [
+                "List[str]",
+                "None"
+            ],
             "arguments": {
                 "self": [],
-                "dirpath": []
+                "dirpath": [
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
+                ]
             }
         },
         "HttpFetcher.mtime": {
             "name": "mtime",
             "location": 34,
-            "return": [],
+            "return": [
+                "None",
+                "Optional[str]",
+                "int",
+                "Optional[int]",
+                "List",
+                "Type"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": []
+                "filepath": [
+                    "Optional[str]",
+                    "int",
+                    "str",
+                    "Dict",
+                    "None"
+                ]
             }
         }
     },
-    "peakina/io/http/__init__.py": {},
-    "peakina/io/local/file_fetcher.py": {
+    "peakina-main/peakina/io/http/__init__.py": {},
+    "peakina-main/peakina/io/local/file_fetcher.py": {
         "FileFetcher.open": {
             "name": "open",
             "location": 9,
-            "return": [],
+            "return": [
+                "IO",
+                "List[str]",
+                "int",
+                "str"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": []
+                "filepath": [
+                    "str",
+                    "bool",
+                    "int"
+                ]
             }
         },
         "FileFetcher.listdir": {
             "name": "listdir",
             "location": 12,
-            "return": [],
+            "return": [
+                "str"
+            ],
             "arguments": {
                 "self": [],
-                "dirpath": []
+                "dirpath": [
+                    "bool",
+                    "str",
+                    "float",
+                    "Sequence[int]",
+                    "int"
+                ]
             }
         },
         "FileFetcher.mtime": {
             "name": "mtime",
             "location": 15,
-            "return": [],
+            "return": [
+                "int",
+                "str",
+                "List[int]"
+            ],
             "arguments": {
                 "self": [],
-                "filepath": []
+                "filepath": [
+                    "str"
+                ]
             }
         }
     },
-    "peakina/io/local/__init__.py": {},
-    "peakina/io/s3/s3_fetcher.py": {
+    "peakina-main/peakina/io/local/__init__.py": {},
+    "peakina-main/peakina/io/s3/s3_fetcher.py": {
         "S3Fetcher.__init__": {
             "name": "__init__",
             "location": 10,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": []
             }
@@ -1026,7 +1365,9 @@
         "S3Fetcher.listdir": {
             "name": "listdir",
             "location": 23,
-            "return": [],
+            "return": [
+                "list[]"
+            ],
             "arguments": {
                 "self": [],
                 "dirpath": []
@@ -1042,17 +1383,15 @@
             }
         }
     },
-    "peakina/io/s3/s3_utils.py": {
+    "peakina-main/peakina/io/s3/s3_utils.py": {
         "parse_s3_url": {
             "name": "parse_s3_url",
             "location": 16,
             "return": [
-                "Tuple[(Any, Any, Any, str)]"
+                "Tuple[(Optional[str], Optional[str], Any, Any)]"
             ],
             "arguments": {
-                "url": [
-                    "str"
-                ],
+                "url": [],
                 "file": [
                     "bool"
                 ]
@@ -1061,47 +1400,43 @@
         "_s3_open_file_with_retries": {
             "name": "_s3_open_file_with_retries",
             "location": 55,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "fs": [],
-                "path": [
-                    "str"
-                ],
-                "retries": [
-                    "int"
-                ]
+                "path": [],
+                "retries": []
             }
         },
         "s3_open": {
             "name": "s3_open",
             "location": 71,
             "return": [
-                "IO[bytes]"
+                "tempfile._TemporaryFileWrapper[bytes]"
             ],
             "arguments": {
-                "url": [
-                    "str"
-                ]
+                "url": []
             }
         },
         "_get_timestamp": {
             "name": "_get_timestamp",
             "location": 84,
-            "return": [],
+            "return": [
+                "Optional[int]"
+            ],
             "arguments": {
-                "obj": [
-                    "Dict[(str, Any)]"
-                ]
+                "obj": []
             }
         },
         "s3_mtime": {
             "name": "s3_mtime",
             "location": 91,
-            "return": [],
+            "return": [
+                "Optional[int]"
+            ],
             "arguments": {
-                "url": [
-                    "str"
-                ]
+                "url": []
             }
         },
         "dir_mtimes": {
@@ -1111,20 +1446,24 @@
                 "Dict[(str, Any)]"
             ],
             "arguments": {
-                "dirpath": [
-                    "str"
-                ]
+                "dirpath": []
             }
         }
     },
-    "peakina/io/s3/__init__.py": {},
-    "peakina/readers/csv.py": {
+    "peakina-main/peakina/io/s3/__init__.py": {},
+    "peakina-main/peakina/readers/csv.py": {
         "read_csv": {
             "name": "read_csv",
             "location": 16,
-            "return": [],
+            "return": [
+                "int",
+                "Callable",
+                "str"
+            ],
             "arguments": {
-                "filepath_or_buffer": []
+                "filepath_or_buffer": [
+                    "str"
+                ]
             }
         },
         "_line_count": {
@@ -1134,8 +1473,15 @@
                 "int"
             ],
             "arguments": {
-                "filepath_or_buffer": [],
-                "encoding": []
+                "filepath_or_buffer": [
+                    "str",
+                    "Optional[str]"
+                ],
+                "encoding": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         },
         "csv_meta": {
@@ -1145,18 +1491,28 @@
                 "Dict[(str, Any)]"
             ],
             "arguments": {
-                "filepath_or_buffer": [],
+                "filepath_or_buffer": [
+                    "int",
+                    "Dict[str,Any]",
+                    "List[List[int]]",
+                    "List[list[int]]"
+                ],
                 "reader_kwargs": [
-                    "Dict[(str, Any)]"
+                    "int",
+                    "str",
+                    "bytes",
+                    "pandas.Series"
                 ]
             }
         }
     },
-    "peakina/readers/excel.py": {
+    "peakina-main/peakina/readers/excel.py": {
         "read_excel": {
             "name": "read_excel",
             "location": 14,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {}
         },
         "excel_meta": {
@@ -1166,97 +1522,143 @@
                 "Dict[(str, Any)]"
             ],
             "arguments": {
-                "filepath": [
-                    "str"
+                "filepath": [],
+                "reader_kwargs": []
+            }
+        }
+    },
+    "peakina-main/peakina/readers/geodata.py": {
+        "read_geo_data": {
+            "name": "read_geo_data",
+            "location": 8,
+            "return": [
+                "bytes",
+                "int",
+                "str",
+                "bool"
+            ],
+            "arguments": {
+                "path": [
+                    "str",
+                    "int"
                 ],
-                "reader_kwargs": [
-                    "Dict[(str, Any)]"
+                "preview_offset": [
+                    "int",
+                    "str",
+                    "Dict[str,Any]"
+                ],
+                "preview_nrows": [
+                    "List[str]",
+                    "str",
+                    "Optional[List[str]]"
                 ]
             }
         }
     },
-    "peakina/readers/geodata.py": {
-        "read_geo_data": {
-            "name": "read_geo_data",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "path": [
-                    "str"
-                ],
-                "preview_offset": [
-                    "int"
-                ],
-                "preview_nrows": []
-            }
-        }
-    },
-    "peakina/readers/json.py": {
+    "peakina-main/peakina/readers/json.py": {
         "transform_with_jq": {
             "name": "transform_with_jq",
             "location": 17,
             "return": [
+                "bool",
                 "str"
             ],
             "arguments": {
                 "json_input": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Dict[str,Any]",
+                    "None"
                 ],
                 "jq_filter": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
         "read_json": {
             "name": "read_json",
             "location": 23,
-            "return": [],
+            "return": [
+                "str"
+            ],
             "arguments": {
-                "path_or_buf": [],
+                "path_or_buf": [
+                    "str",
+                    "bytes",
+                    "BinaryIO",
+                    "bool"
+                ],
                 "encoding": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "Optional[Pattern[str]]"
                 ],
-                "filter": [],
+                "filter": [
+                    "bool",
+                    "None",
+                    "str",
+                    "List[str]",
+                    "Optional[Union[Any,Any]]",
+                    "Optional[pandas.DataFrame]",
+                    "Any",
+                    "Optional[float]",
+                    "float"
+                ],
                 "preview_offset": [
-                    "int"
+                    "int",
+                    "Dict",
+                    "Exception",
+                    "bool",
+                    "Optional[Dict]",
+                    "Optional[dict]"
                 ],
-                "preview_nrows": []
+                "preview_nrows": [
+                    "str",
+                    "None",
+                    "Dict",
+                    "float",
+                    "Union[float,str]"
+                ]
             }
         }
     },
-    "peakina/readers/xml.py": {
+    "peakina-main/peakina/readers/xml.py": {
         "transform_with_jq": {
             "name": "transform_with_jq",
             "location": 14,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "data": [],
-                "jq_filter": [
-                    "str"
-                ]
+                "jq_filter": []
             }
         },
         "read_xml": {
             "name": "read_xml",
             "location": 32,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "filepath": [
-                    "str"
-                ],
+                "filepath": [],
                 "encoding": [
-                    "str"
+                    "typing.Text"
                 ],
-                "preview_offset": [
-                    "int"
-                ],
+                "preview_offset": [],
                 "preview_nrows": [],
-                "filter": []
+                "filter": [
+                    "None"
+                ]
             }
         }
     },
-    "peakina/readers/__init__.py": {},
-    "tests/conftest.py": {
+    "peakina-main/peakina/readers/__init__.py": {},
+    "peakina-main/tests/conftest.py": {
         "path": {
             "name": "path",
             "location": 19,
@@ -1328,19 +1730,11 @@
                 "None"
             ],
             "arguments": {
-                "checker_callable": [
-                    "Callable[([int], bool)]"
-                ],
-                "host_port": [
-                    "int"
-                ],
-                "image": [
-                    "str"
-                ],
+                "checker_callable": [],
+                "host_port": [],
+                "image": [],
                 "skip_exception": [],
-                "timeout": [
-                    "int"
-                ]
+                "timeout": []
             }
         },
         "container_starter": {
@@ -1418,60 +1812,116 @@
             "arguments": {}
         }
     },
-    "tests/test_cache.py": {
+    "peakina-main/tests/test_cache.py": {
         "df_test": {
             "name": "df_test",
             "location": 13,
-            "return": [],
+            "return": [
+                "str",
+                "Optional[Callable]"
+            ],
             "arguments": {}
         },
         "test_inmemory_cache": {
             "name": "test_inmemory_cache",
             "location": 17,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
-                "df_test": []
+                "df_test": [
+                    "str",
+                    "bool",
+                    "AbstractSet[str]",
+                    "AbstractSet"
+                ]
             }
         },
         "test_hdf_cache": {
             "name": "test_hdf_cache",
             "location": 34,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
-                "mocker": [],
-                "tmp_path": [],
-                "df_test": []
+                "mocker": [
+                    "str",
+                    "bool",
+                    "Hashable",
+                    "int"
+                ],
+                "tmp_path": [
+                    "str"
+                ],
+                "df_test": [
+                    "List[List[str]]",
+                    "List[list[str]]",
+                    "int",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]",
+                    "str",
+                    "Dict[str,Optional[str]]",
+                    "Dict[str,Union[str,None]]"
+                ]
             }
         },
         "cache": {
             "name": "cache",
             "location": 59,
-            "return": [],
+            "return": [
+                "bool",
+                "Optional[Any]",
+                "str",
+                "Callable[..., None]"
+            ],
             "arguments": {
                 "request": [],
-                "tmpdir": []
+                "tmpdir": [
+                    "str",
+                    "Dict[str,Any]"
+                ]
             }
         },
         "test_cache_invalidation": {
             "name": "test_cache_invalidation",
             "location": 72,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "cache": [],
-                "df_test": []
+                "cache": [
+                    "List[Tuple[bool, Any]]",
+                    "bool"
+                ],
+                "df_test": [
+                    "str",
+                    "bool",
+                    "Sequence[str]"
+                ]
             }
         },
         "test_cache_expiration": {
             "name": "test_cache_expiration",
             "location": 80,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "cache": [],
-                "df_test": [],
+                "cache": [
+                    "List[tuple[Union[bool,Any]]]",
+                    "str",
+                    "List[Tuple[bool,Any]]",
+                    "bool",
+                    "Dict[str,str]",
+                    "int"
+                ],
+                "df_test": [
+                    "str",
+                    "List[int]",
+                    "List[Tuple[bool,Any]]",
+                    "Dict[str,str]",
+                    "List[tuple[Union[bool,Any]]]"
+                ],
                 "mocker": []
             }
         },
@@ -1479,16 +1929,23 @@
             "name": "test_hdf_store_closed_on_error",
             "location": 89,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
-                "df_test": [],
+                "df_test": [
+                    "int",
+                    "bool"
+                ],
                 "mocker": [],
-                "tmp_path": []
+                "tmp_path": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         }
     },
-    "tests/test_datapool.py": {
+    "peakina-main/tests/test_datapool.py": {
         "templatize": {
             "name": "templatize",
             "location": 10,
@@ -1497,20 +1954,42 @@
             ],
             "arguments": {
                 "d": [
-                    "Dict[(str, Any)]"
+                    "List[Any]",
+                    "List[str]",
+                    "str",
+                    "Optional[List[Any]]",
+                    "bool",
+                    "Optional[List[str]]",
+                    "Optional[str]",
+                    "Optional[AnyStr]"
                 ],
                 "real_ftp_path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "TextIO"
                 ]
             }
         },
         "config": {
             "name": "config",
             "location": 23,
-            "return": [],
+            "return": [
+                "Dict",
+                "Sequence[Optional[Type]]",
+                "bool"
+            ],
             "arguments": {
-                "path": [],
-                "ftp_path": []
+                "path": [
+                    "str",
+                    "Union[str,bytes,int]",
+                    "bytes",
+                    "int"
+                ],
+                "ftp_path": [
+                    "str",
+                    "Dict"
+                ]
             }
         },
         "test_datapool": {
@@ -1520,12 +1999,17 @@
                 "None"
             ],
             "arguments": {
-                "config": [],
-                "path": []
+                "config": [
+                    "str",
+                    "Tuple[str]"
+                ],
+                "path": [
+                    "str"
+                ]
             }
         }
     },
-    "tests/test_datasource.py": {
+    "peakina-main/tests/test_datasource.py": {
         "read_csv_spy": {
             "name": "read_csv_spy",
             "location": 15,
@@ -1673,7 +2157,9 @@
         "test_ftp": {
             "name": "test_ftp",
             "location": 169,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "ftp_path": []
             }
@@ -1681,7 +2167,9 @@
         "test_ftp_match": {
             "name": "test_ftp_match",
             "location": 175,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "ftp_path": []
             }
@@ -1788,7 +2276,7 @@
             }
         }
     },
-    "tests/test_fetch.py": {
+    "peakina-main/tests/test_fetch.py": {
         "test_fetch": {
             "name": "test_fetch",
             "location": 6,
@@ -1796,11 +2284,14 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "List[str]"
+                ]
             }
         }
     },
-    "tests/test_helpers.py": {
+    "peakina-main/tests/test_helpers.py": {
         "test_detect_geojson_type_for_coverage": {
             "name": "test_detect_geojson_type_for_coverage",
             "location": 21,
@@ -1832,7 +2323,9 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str"
+                ]
             }
         },
         "test_str_head": {
@@ -1842,7 +2335,9 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str"
+                ]
             }
         },
         "test_detect_encoding": {
@@ -1852,7 +2347,9 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str"
+                ]
             }
         },
         "test_validate_encoding": {
@@ -1862,7 +2359,12 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "bool",
+                    "Optional[str]",
+                    "str",
+                    "None"
+                ]
             }
         },
         "test_detect_sep": {
@@ -1872,7 +2374,9 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str"
+                ]
             }
         },
         "test_validate_sep": {
@@ -1882,7 +2386,12 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "bool",
+                    "Optional[str]",
+                    "str",
+                    "None"
+                ]
             }
         },
         "test_validate_sep_error": {
@@ -1892,17 +2401,33 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str"
+                ]
             }
         },
         "test_validate_kwargs": {
             "name": "test_validate_kwargs",
             "location": 118,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
-                "filetype": [],
-                "reader_kwargs": [],
-                "exception_str": []
+                "filetype": [
+                    "int",
+                    "str"
+                ],
+                "reader_kwargs": [
+                    "int",
+                    "str"
+                ],
+                "exception_str": [
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Type[Exception]]",
+                    "Type"
+                ]
             }
         },
         "test_mdtm_to_string": {
@@ -1920,13 +2445,17 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         }
     },
-    "tests/__init__.py": {},
-    "tests/io/__init__.py": {},
-    "tests/io/ftp/test_ftp_fetcher.py": {
+    "peakina-main/tests/__init__.py": {},
+    "peakina-main/tests/io/__init__.py": {},
+    "peakina-main/tests/io/ftp/test_ftp_fetcher.py": {
         "test_ftp_fetcher": {
             "name": "test_ftp_fetcher",
             "location": 6,
@@ -1935,17 +2464,29 @@
             ],
             "arguments": {
                 "mocker": [],
-                "ftp_path": []
+                "ftp_path": [
+                    "bool"
+                ]
             }
         }
     },
-    "tests/io/ftp/test_ftp_utils.py": {
+    "peakina-main/tests/io/ftp/test_ftp_utils.py": {
         "ftp_client": {
             "name": "ftp_client",
             "location": 12,
-            "return": [],
+            "return": [
+                "List[object]",
+                "List[str]",
+                "int",
+                "Dict[str, Any]",
+                "dict",
+                "List[Dict[str, str]]",
+                "str"
+            ],
             "arguments": {
-                "mocker": []
+                "mocker": [
+                    "Iterable"
+                ]
             }
         },
         "test_open": {
@@ -1956,7 +2497,10 @@
             ],
             "arguments": {
                 "ftp_client": [],
-                "mocker": []
+                "mocker": [
+                    "str",
+                    "Dict[str,Sequence[str]]"
+                ]
             }
         },
         "test_ftp_dir": {
@@ -2071,8 +2615,8 @@
             }
         }
     },
-    "tests/io/ftp/__init__.py": {},
-    "tests/io/http/test_http_fetcher.py": {
+    "peakina-main/tests/io/ftp/__init__.py": {},
+    "peakina-main/tests/io/http/test_http_fetcher.py": {
         "test_http_fetcher": {
             "name": "test_http_fetcher",
             "location": 8,
@@ -2081,7 +2625,12 @@
             ],
             "arguments": {
                 "http_path": [],
-                "mocker": []
+                "mocker": [
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         },
         "test_http_mtime_error": {
@@ -2101,8 +2650,12 @@
                 "None"
             ],
             "arguments": {
-                "http_path": [],
-                "mocker": []
+                "http_path": [
+                    "str"
+                ],
+                "mocker": [
+                    "Iterable"
+                ]
             }
         },
         "test_http_fetcher_verify": {
@@ -2138,8 +2691,8 @@
             }
         }
     },
-    "tests/io/http/__init__.py": {},
-    "tests/io/local/test_file_fetcher.py": {
+    "peakina-main/tests/io/http/__init__.py": {},
+    "peakina-main/tests/io/local/test_file_fetcher.py": {
         "test_file_fetcher": {
             "name": "test_file_fetcher",
             "location": 7,
@@ -2147,7 +2700,9 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str"
+                ]
             }
         },
         "test_file_fetcher_mtime_oserror": {
@@ -2157,7 +2712,9 @@
                 "None"
             ],
             "arguments": {
-                "mocker": []
+                "mocker": [
+                    "str"
+                ]
             }
         },
         "test_file_fetcher_match": {
@@ -2167,18 +2724,29 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "List[str]"
+                ]
             }
         }
     },
-    "tests/io/local/__init__.py": {},
-    "tests/io/s3/test_s3_fetcher.py": {
+    "peakina-main/tests/io/local/__init__.py": {},
+    "peakina-main/tests/io/s3/test_s3_fetcher.py": {
         "s3_fetcher": {
             "name": "s3_fetcher",
             "location": 11,
-            "return": [],
+            "return": [
+                "str",
+                "bytes",
+                "list"
+            ],
             "arguments": {
-                "s3_endpoint_url": []
+                "s3_endpoint_url": [
+                    "str",
+                    "bool",
+                    "list"
+                ]
             }
         },
         "test_s3_fetcher_open": {
@@ -2188,7 +2756,10 @@
                 "None"
             ],
             "arguments": {
-                "s3_fetcher": []
+                "s3_fetcher": [
+                    "str",
+                    "Callable[[str], None]"
+                ]
             }
         },
         "test_s3_fetcher_listdir": {
@@ -2198,8 +2769,18 @@
                 "None"
             ],
             "arguments": {
-                "s3_fetcher": [],
-                "mocker": []
+                "s3_fetcher": [
+                    "int",
+                    "bool",
+                    "Callable",
+                    "str"
+                ],
+                "mocker": [
+                    "str",
+                    "bytes",
+                    "List[str]",
+                    "Optional[str]"
+                ]
             }
         },
         "test_s3_fetcher_mtime": {
@@ -2209,7 +2790,11 @@
                 "None"
             ],
             "arguments": {
-                "s3_fetcher": []
+                "s3_fetcher": [
+                    "str",
+                    "List[Tuple[int, int]]",
+                    "float"
+                ]
             }
         },
         "test_s3_fetcher_open_retry": {
@@ -2219,32 +2804,84 @@
                 "None"
             ],
             "arguments": {
-                "s3_fetcher": [],
-                "s3_endpoint_url": [],
-                "mocker": []
+                "s3_fetcher": [
+                    "str"
+                ],
+                "s3_endpoint_url": [
+                    "str",
+                    "bool",
+                    "List[str]"
+                ],
+                "mocker": [
+                    "str"
+                ]
             }
         },
         "test_s3_fetcher_open_retry.S3FileSystemThatFailsOpen.__init__": {
             "name": "__init__",
             "location": 58,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "self": [],
-                "key": [],
-                "secret": [],
-                "client_kwargs": []
+                "key": [
+                    "str",
+                    "float",
+                    "int"
+                ],
+                "secret": [
+                    "str",
+                    "float",
+                    "int"
+                ],
+                "client_kwargs": [
+                    "str",
+                    "float",
+                    "int"
+                ]
             }
         },
         "test_s3_fetcher_open_retry.S3FileSystemThatFailsOpen.open": {
             "name": "open",
             "location": 62,
-            "return": [],
+            "return": [
+                "int",
+                "str",
+                "bytes",
+                "TextIO",
+                "BinaryIO"
+            ],
             "arguments": {
                 "self": [],
-                "path": [],
-                "mode": [],
-                "block_size": [],
-                "cache_options": []
+                "path": [
+                    "float",
+                    "bytes",
+                    "bool",
+                    "list",
+                    "str"
+                ],
+                "mode": [
+                    "float",
+                    "bytes",
+                    "bool",
+                    "list",
+                    "str"
+                ],
+                "block_size": [
+                    "float",
+                    "bytes",
+                    "bool",
+                    "list",
+                    "str"
+                ],
+                "cache_options": [
+                    "float",
+                    "bytes",
+                    "bool",
+                    "list",
+                    "str"
+                ]
             }
         },
         "test_s3_fetcher_open_retry.S3FileSystemThatFailsOpen.invalidate_cache": {
@@ -2253,11 +2890,14 @@
             "return": [],
             "arguments": {
                 "self": [],
-                "path": []
+                "path": [
+                    "str",
+                    "bool"
+                ]
             }
         }
     },
-    "tests/io/s3/test_s3_utils.py": {
+    "peakina-main/tests/io/s3/test_s3_utils.py": {
         "test_parse_s3_url_no_credentials": {
             "name": "test_parse_s3_url_no_credentials",
             "location": 8,
@@ -2309,8 +2949,8 @@
             }
         }
     },
-    "tests/io/s3/__init__.py": {},
-    "tests/readers/test_csv.py": {
+    "peakina-main/tests/io/s3/__init__.py": {},
+    "peakina-main/tests/readers/test_csv.py": {
         "test_simple_csv": {
             "name": "test_simple_csv",
             "location": 6,
@@ -2318,7 +2958,12 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         },
         "test_simple_csv_preview": {
@@ -2328,7 +2973,10 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "bool"
+                ]
             }
         },
         "test_csv_metadata": {
@@ -2338,7 +2986,10 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "bool"
+                ]
             }
         },
         "test_chunk_and_preview": {
@@ -2348,11 +2999,15 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "Dict",
+                    "bool"
+                ]
             }
         }
     },
-    "tests/readers/test_excel.py": {
+    "peakina-main/tests/readers/test_excel.py": {
         "test_simple_xls": {
             "name": "test_simple_xls",
             "location": 6,
@@ -2454,7 +3109,7 @@
             }
         }
     },
-    "tests/readers/test_geodata.py": {
+    "peakina-main/tests/readers/test_geodata.py": {
         "test_simple_geojson_preview": {
             "name": "test_simple_geojson_preview",
             "location": 35,
@@ -2462,7 +3117,10 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "bool"
+                ]
             }
         },
         "test_geojson_bbox": {
@@ -2472,7 +3130,12 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         },
         "test_geojson_mask": {
@@ -2482,11 +3145,16 @@
                 "None"
             ],
             "arguments": {
-                "path": []
+                "path": [
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
+                ]
             }
         }
     },
-    "tests/readers/test_json.py": {
+    "peakina-main/tests/readers/test_json.py": {
         "test_transform_with_jq": {
             "name": "test_transform_with_jq",
             "location": 4,
@@ -2496,11 +3164,13 @@
             "arguments": {}
         }
     },
-    "tests/readers/test_xml.py": {
+    "peakina-main/tests/readers/test_xml.py": {
         "test_transform_with_jq": {
             "name": "test_transform_with_jq",
             "location": 23,
-            "return": [],
+            "return": [
+                "None"
+            ],
             "arguments": {
                 "jq_filter": [],
                 "expected": []

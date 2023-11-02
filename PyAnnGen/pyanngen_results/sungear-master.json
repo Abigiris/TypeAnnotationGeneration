@@ -98,11 +98,16 @@
             "name": "get_lists",
             "location": 5,
             "return": [
-                "Dict[(str, Set[str])]"
+                "collections.OrderedDict[(Any, set)]"
             ],
             "arguments": {
                 "value": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Tuple",
+                    "List",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -110,22 +115,27 @@
             "name": "filter_lists",
             "location": 19,
             "return": [
-                "Generator[(Tuple[(str, Set[str])], Any, None)]"
+                "Generator[(Tuple[(Any, Any)], Any, None)]"
             ],
             "arguments": {
                 "lists": [
-                    "Dict[(str, Set[str])]"
+                    "Dict[str,set[str]]",
+                    "Dict",
+                    "Dict[str,Set[str]]",
+                    "Dict[str,str]",
+                    "Dict[str,dict[str,str]]",
+                    "Dict[str,Any]",
+                    "List[Tuple[str,str]]",
+                    "Dict[str,Dict[str,str]]"
                 ],
                 "to_filter": [
-                    "set[str]",
-                    "int",
-                    "dict[typing.Union[str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str], ]",
-                    "str",
                     "Set[str]",
-                    "list[str]",
-                    "dict",
-                    "Type[T]",
-                    "List[str]"
+                    "int",
+                    "Dict[Union[str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str],]",
+                    "str",
+                    "List[str]",
+                    "Dict",
+                    "Type[T]"
                 ]
             }
         }
@@ -150,14 +160,24 @@
             "name": "get_vertices",
             "location": 30,
             "return": [
-                "np.ndarray"
+                "bool",
+                "Set[str]",
+                "List[str]",
+                "str",
+                "Mapping",
+                "MutableMapping[str, int]"
             ],
             "arguments": {
                 "n": [
-                    "int"
+                    "int",
+                    "float",
+                    "Tuple[int,int,int]",
+                    "Tuple[Union[int,int,int]]"
                 ],
                 "r": [
-                    "float"
+                    "float",
+                    "int",
+                    "Tuple[int,int,int]"
                 ],
                 "center": [
                     "int",
@@ -167,7 +187,7 @@
                 "start": [
                     "int",
                     "float",
-                    "Tuple[int, int, int]"
+                    "Tuple[int,int,int]"
                 ]
             }
         },
@@ -188,7 +208,7 @@
                 "node_size": [
                     "int",
                     "bool",
-                    "Tuple[float, float]"
+                    "Tuple[float,float]"
                 ]
             }
         },
@@ -196,7 +216,7 @@
             "name": "sungear",
             "location": 52,
             "return": [
-                "Tuple[(dict, bool)]"
+                "Tuple[(Dict[(str, List[Union[(list, Tuple[(Any, list)])]])], bool)]"
             ],
             "arguments": {
                 "gene_lists": [
@@ -208,7 +228,10 @@
                     "bool"
                 ],
                 "iterations": [
-                    "int"
+                    "int",
+                    "numpy.ndarray",
+                    "List[List[T]]",
+                    "float"
                 ]
             }
         },

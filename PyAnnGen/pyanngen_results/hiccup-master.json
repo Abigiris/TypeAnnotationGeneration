@@ -48,7 +48,8 @@
             ],
             "arguments": {
                 "id_": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -69,11 +70,14 @@
             "name": "IfType",
             "location": 54,
             "return": [
-                "Callable[([List[Tuple[(Optional[str], Any)]]], bool)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "cls": [
-                    "type"
+                    "Type",
+                    "Callable",
+                    "Type[Any]",
+                    "Type[T]"
                 ]
             }
         },
@@ -81,11 +85,14 @@
             "name": "IfParentType",
             "location": 61,
             "return": [
-                "Callable[([List[Tuple[(Optional[str], Any)]]], bool)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "cls": [
-                    "type"
+                    "Type",
+                    "Callable",
+                    "Type[Any]",
+                    "Type[T]"
                 ]
             }
         },
@@ -93,7 +100,7 @@
             "name": "IfName",
             "location": 70,
             "return": [
-                "Callable[([List[Tuple[(Optional[str], Any)]]], bool)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "name": [
@@ -105,19 +112,17 @@
             "name": "IfNameMatches",
             "location": 77,
             "return": [
-                "Callable[([List[Tuple[(Optional[str], Any)]]], bool)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "regex": [
                     "str",
                     "int",
-                    "list[]",
+                    "List",
+                    "Dict[str,Any]",
                     "bool",
-                    "list[tuple[typing.Union[typing.Any,typing.Any]]]",
-                    "list",
-                    "dict[str, typing.Any]",
-                    "List[Tuple[Any, Any]]",
-                    "Dict[str, Any]"
+                    "List[tuple[Union[Any,Any]]]",
+                    "List[Tuple[Any,Any]]"
                 ]
             }
         },
@@ -125,11 +130,16 @@
             "name": "IfValueMatches",
             "location": 87,
             "return": [
-                "Callable[([List[Tuple[(Optional[str], Any)]]], bool)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "predicate": [
-                    "Callable[([Any], bool)]"
+                    "Callable[Any,bool]",
+                    "str",
+                    "Callable[[Any],bool]",
+                    "Dict",
+                    "List[str]",
+                    "Callable"
                 ]
             }
         },
@@ -137,29 +147,33 @@
             "name": "xquery",
             "location": 291,
             "return": [
-                "list"
+                "bool",
+                "str",
+                "Iterable",
+                "List[str]"
             ],
             "arguments": {
                 "obj": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "Set[str]",
-                    "set[str]",
-                    "Match",
-                    "typing.Match"
+                    "bool",
+                    "Match"
                 ],
                 "query": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Set[str]",
+                    "bool",
+                    "Match"
                 ],
                 "cls": [
                     "Hiccup",
                     "str",
-                    "dict",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "Set[str]",
                     "bool",
                     "Match"
@@ -181,6 +195,7 @@
                     "str"
                 ],
                 "query": [
+                    "int",
                     "str"
                 ],
                 "cls": [
@@ -237,7 +252,7 @@
                 "bool",
                 "str",
                 "int",
-                "Callable[[Mapping], T]",
+                "Callable[[Mapping],T]",
                 "List[int]"
             ],
             "arguments": {
@@ -258,20 +273,22 @@
             "name": "get_type_name",
             "location": 99,
             "return": [
-                "str"
+                "str",
+                "Pattern",
+                "bytes",
+                "bool",
+                "Tuple[str,str]",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
                 "obj": [
                     "Any",
-                    "typing.Any",
-                    "Optional[Callable]",
-                    "typing.Callable[, ]",
                     "Sequence[Any]",
-                    "None",
+                    "Optional[Callable]",
                     "Type",
-                    "typing.Sequence[typing.Any]",
-                    "typing.Type"
+                    "Callable",
+                    "None"
                 ]
             }
         },
@@ -279,14 +296,13 @@
             "name": "as_primitive",
             "location": 109,
             "return": [
-                "Optional[str]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "obj": [
-                    "Dict[str, int]",
-                    "bool",
-                    "dict[str, int]"
+                    "Dict[str,int]",
+                    "bool"
                 ]
             }
         },
@@ -304,14 +320,17 @@
             "name": "as_primitive",
             "location": 125,
             "return": [
+                "None",
+                "Optional[int]",
+                "Optional[float]",
+                "str",
                 "Optional[str]"
             ],
             "arguments": {
                 "self": [],
                 "obj": [
-                    "typing.Callable[..., None]",
-                    "Callable[..., None]",
-                    "Callable[..., Awaitable]"
+                    "Callable[...,None]",
+                    "Callable[...,Awaitable]"
                 ]
             }
         },
@@ -319,7 +338,7 @@
             "name": "as_list",
             "location": 133,
             "return": [
-                "Optional[list]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
@@ -327,7 +346,6 @@
                     "str",
                     "bool",
                     "List[int]",
-                    "list[int]",
                     "Optional[str]",
                     "None"
                 ]
@@ -342,11 +360,11 @@
             "arguments": {
                 "self": [],
                 "obj": [
-                    "List[Dict[str, Any]]",
+                    "List[Dict[str,Any]]",
                     "str",
-                    "list[typing.Union[dict[str, typing.Any],str,str,str,str,str,str,str,str]]",
+                    "List[Union[dict[str,Any],str,str,str,str,str,str,str,str]]",
                     "List[List[int]]",
-                    "list[list[int]]"
+                    "List[list[int]]"
                 ]
             }
         },
@@ -354,15 +372,14 @@
             "name": "as_dict",
             "location": 148,
             "return": [
-                "Optional[dict]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "obj": [
                     "int",
-                    "typing.Sequence[int]",
-                    "bool",
-                    "Sequence[int]"
+                    "Sequence[int]",
+                    "bool"
                 ]
             }
         },
@@ -370,7 +387,7 @@
             "name": "as_dict",
             "location": 156,
             "return": [
-                "Optional[dict]"
+                "Optional[_T0]"
             ],
             "arguments": {
                 "self": [],
@@ -395,7 +412,7 @@
             "name": "default_excludes",
             "location": 178,
             "return": [
-                "List[Tuple[Callable[([List[Tuple[(Optional[str], Any)]]], bool)]]]"
+                "List[Tuple[Callable[([Any], Any)]]]"
             ],
             "arguments": {}
         },
@@ -413,7 +430,7 @@
             "name": "_get_attributes",
             "location": 191,
             "return": [
-                "List[Tuple[(str, Any)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "self": [],
@@ -421,7 +438,7 @@
                     "str"
                 ],
                 "path": [
-                    "List[Tuple[(Optional[str], Any)]]"
+                    "str"
                 ]
             }
         },
@@ -456,16 +473,21 @@
                 "obj": [
                     "str",
                     "List[str]",
-                    "list[str]",
-                    "Optional[str]",
-                    "None",
                     "Set[str]",
-                    "set[str]",
-                    "Dict[Any, list]",
-                    "dict[typing.Any, list[]]"
+                    "Dict[Any,list]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "bytes",
+                    "float",
+                    "Optional[float]",
+                    "None",
+                    "Optional[str]",
+                    "int"
                 ]
             }
         },
@@ -473,7 +495,11 @@
             "name": "_as_xmlstr",
             "location": 207,
             "return": [
-                "str"
+                "bytes",
+                "Tuple[str]",
+                "str",
+                "Dict[str, Callable]",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
@@ -482,7 +508,7 @@
                     "int",
                     "Optional[Any]",
                     "str",
-                    "typing.Any",
+                    "Any",
                     "None"
                 ]
             }
@@ -495,9 +521,7 @@
             ],
             "arguments": {
                 "self": [],
-                "ctx": [
-                    "List[Tuple[(Optional[str], Any)]]"
-                ]
+                "ctx": []
             }
         },
         "Hiccup._as_xml": {
@@ -507,15 +531,13 @@
                 "Optional[str]",
                 "None",
                 "bool",
-                "list[]",
+                "List",
                 "Optional[int]",
-                "list[typing.Union[list[],dict[str, list[typing.Any]],float,set[]]]"
+                "List[Union[list,dict[str,list[Any]],float,set]]"
             ],
             "arguments": {
                 "self": [],
-                "ctx": [
-                    "List[Tuple[(Optional[str], Any)]]"
-                ]
+                "ctx": []
             }
         },
         "Hiccup.as_xml": {
@@ -551,14 +573,15 @@
                 "self": [],
                 "obj": [
                     "str",
-                    "list",
-                    "int",
-                    "list[]",
-                    "callable",
-                    "typing.Callable[, ]"
+                    "List",
+                    "Callable",
+                    "int"
                 ],
                 "query": [
-                    "str"
+                    "str",
+                    "List",
+                    "Callable",
+                    "int"
                 ]
             }
         },
@@ -574,9 +597,8 @@
             "arguments": {
                 "self": [],
                 "obj": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bytes",
                     "Optional[bool]",
                     "bool",
@@ -584,7 +606,9 @@
                     "None"
                 ],
                 "query": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -638,16 +662,15 @@
                 "left": [
                     "float",
                     "List[List[float]]",
-                    "list[list[float]]"
+                    "List[list[float]]"
                 ],
                 "right": [
                     "float",
-                    "Callable[[int], int]",
-                    "typing.Callable[int, int]",
-                    "List[Tuple[int, int]]",
-                    "list[tuple[typing.Union[int,int]]]",
+                    "Callable[[int],int]",
                     "List[dict]",
-                    "list[dict[, ]]"
+                    "Callable[int,int]",
+                    "List[Tuple[int,int]]",
+                    "List[tuple[Union[int,int]]]"
                 ]
             }
         }
@@ -664,9 +687,8 @@
                 "obj": [
                     "str",
                     "int",
-                    "set[str]",
-                    "datetime.timedelta",
-                    "Set[str]"
+                    "Set[str]",
+                    "datetime.timedelta"
                 ]
             }
         },
@@ -799,7 +821,12 @@
             "arguments": {
                 "self": [],
                 "xmls": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[float]",
+                    "Optional[Tuple[str,int]]",
+                    "Tuple[Union[str,int]]",
+                    "None"
                 ]
             }
         },
@@ -812,8 +839,7 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -875,7 +901,11 @@
             "arguments": {
                 "self": [],
                 "node": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[Dict[str,Any]]",
+                    "Callable[...,T]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -883,13 +913,12 @@
             "name": "without_pyid",
             "location": 33,
             "return": [
-                "dict[, ]",
-                "dict",
+                "Dict",
                 "Set[str]",
-                "Dict[int, Dict[int, Any]]",
+                "Dict[int,Dict[int,Any]]",
                 "str",
-                "Dict[str, str]",
-                "Dict[str, Any]"
+                "Dict[str,str]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "attrs": [
@@ -915,7 +944,6 @@
             "name": "__init__",
             "location": 137,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -936,7 +964,6 @@
             "name": "__init__",
             "location": 157,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -957,7 +984,6 @@
             "name": "error",
             "location": 238,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -980,7 +1006,7 @@
             "name": "include",
             "location": 295,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"

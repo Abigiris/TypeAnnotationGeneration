@@ -14,18 +14,12 @@
             "name": "initialize_model",
             "location": 26,
             "return": [
-                "model.predictor.PredictorModel"
+                "Any"
             ],
             "arguments": {
-                "args": [
-                    "model.train_parser.TrainArgs"
-                ],
-                "train_dataset": [
-                    "model.corpus.TrainDataset"
-                ],
-                "vectors": [
-                    "model.wv.WordVectors"
-                ]
+                "args": [],
+                "train_dataset": [],
+                "vectors": []
             }
         },
         "get_datasets": {
@@ -35,9 +29,7 @@
                 "Tuple[(model.corpus.TrainDataset, model.corpus.EvalDataset, model.wv.WordVectors)]"
             ],
             "arguments": {
-                "args": [
-                    "model.train_parser.TrainArgs"
-                ]
+                "args": []
             }
         },
         "get_training_config": {
@@ -47,9 +39,7 @@
                 "model.trainer.Trainer.TrainingConfig"
             ],
             "arguments": {
-                "args": [
-                    "model.train_parser.TrainArgs"
-                ]
+                "args": []
             }
         },
         "main": {
@@ -66,15 +56,11 @@
             "name": "get_collator",
             "location": 103,
             "return": [
-                "Callable[([List[model.qa.EncodedSample]], QABatch)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
-                "max_question_size": [
-                    "int"
-                ],
-                "max_context_size": [
-                    "int"
-                ]
+                "max_question_size": [],
+                "max_context_size": []
             }
         },
         "collate_batch": {
@@ -84,15 +70,9 @@
                 "QABatch"
             ],
             "arguments": {
-                "batch": [
-                    "List[model.qa.EncodedSample]"
-                ],
-                "max_question_size": [
-                    "int"
-                ],
-                "max_context_size": [
-                    "int"
-                ]
+                "batch": [],
+                "max_question_size": [],
+                "max_context_size": []
             }
         },
         "pad_and_sort": {
@@ -102,12 +82,8 @@
                 "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
-                "seq": [
-                    "list"
-                ],
-                "max_sequence_size": [
-                    "int"
-                ]
+                "seq": [],
+                "max_sequence_size": []
             }
         },
         "QABatch.__init__": {
@@ -118,9 +94,7 @@
             ],
             "arguments": {
                 "self": [],
-                "question_ids": [
-                    "List[model.qa.QuestionId]"
-                ],
+                "question_ids": [],
                 "question_words": [],
                 "question_chars": [],
                 "question_lens": [],
@@ -141,11 +115,11 @@
             "name": "to",
             "location": 76,
             "return": [
-                "_TQABatch"
+                "_TQABatch@@QABatch@@"
             ],
             "arguments": {
                 "self": [
-                    "_TQABatch"
+                    "_TQABatch@@QABatch@@"
                 ],
                 "device": []
             }
@@ -170,22 +144,16 @@
             ],
             "arguments": {
                 "self": [],
-                "contextual_encoder_config": [
-                    "model.predictor.ContextualEncoderConfig"
-                ],
-                "modeling_layer_config": [
-                    "model.predictor.ContextualEncoderConfig"
-                ],
-                "output_config": [
-                    "model.predictor.ContextualEncoderConfig"
-                ]
+                "contextual_encoder_config": [],
+                "modeling_layer_config": [],
+                "output_config": []
             }
         },
         "BidafConfig.get_default_bidaf_config": {
             "name": "get_default_bidaf_config",
             "location": 45,
             "return": [
-                "_TBidafConfig"
+                "_TBidafConfig@@BidafConfig@@"
             ],
             "arguments": {
                 "cls": [
@@ -201,15 +169,9 @@
             ],
             "arguments": {
                 "self": [],
-                "config": [
-                    "model.predictor.ContextualEncoderConfig"
-                ],
-                "attended_input_size": [
-                    "int"
-                ],
-                "modeled_input_size": [
-                    "int"
-                ]
+                "config": [],
+                "attended_input_size": [],
+                "modeled_input_size": []
             }
         },
         "BidafOutput.forward": {
@@ -236,12 +198,8 @@
             ],
             "arguments": {
                 "self": [],
-                "embeddor": [
-                    "model.modules.embeddor.Embeddor"
-                ],
-                "config": [
-                    "BidafConfig"
-                ]
+                "embeddor": [],
+                "config": []
             }
         },
         "BidafPredictor.forward": {
@@ -252,9 +210,7 @@
             ],
             "arguments": {
                 "self": [],
-                "batch": [
-                    "model.batcher.QABatch"
-                ]
+                "batch": []
             }
         }
     },
@@ -267,66 +223,42 @@
             ],
             "arguments": {
                 "self": [],
-                "context_qas": [
-                    "List[model.qa.ContextQuestionAnswer]"
-                ],
-                "token_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "char_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "stats": [
-                    "CorpusStats"
-                ],
-                "source_file": [
-                    "Optional[str]"
-                ]
+                "context_qas": [],
+                "token_mapping": [],
+                "char_mapping": [],
+                "stats": [],
+                "source_file": []
             }
         },
         "Corpus.from_disk": {
             "name": "from_disk",
             "location": 72,
             "return": [
-                "_TCorpus"
+                "_TCorpus@@Corpus@@"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TCorpus]"
                 ],
-                "serialized_file": [
-                    "str"
-                ]
+                "serialized_file": []
             }
         },
         "Corpus.from_raw": {
             "name": "from_raw",
             "location": 82,
             "return": [
-                "_TCorpus"
+                "_TCorpus@@Corpus@@"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TCorpus]"
                 ],
-                "data_file": [
-                    "str"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ],
-                "word_vectors": [
-                    "model.wv.WordVectors"
-                ],
-                "force_single_answer": [
-                    "bool"
-                ],
-                "char_mapping": [
-                    "Optional[Dict[(str, int)]]"
-                ]
+                "data_file": [],
+                "tokenizer": [],
+                "processor": [],
+                "word_vectors": [],
+                "force_single_answer": [],
+                "char_mapping": []
             }
         },
         "Corpus.read_context_qas": {
@@ -336,30 +268,20 @@
                 "List[model.qa.ContextQuestionAnswer]"
             ],
             "arguments": {
-                "data_file": [
-                    "str"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ],
-                "force_single_answer": [
-                    "bool"
-                ]
+                "data_file": [],
+                "tokenizer": [],
+                "processor": [],
+                "force_single_answer": []
             }
         },
         "Corpus.compute_char_indices": {
             "name": "compute_char_indices",
             "location": 162,
             "return": [
-                "Dict[(str, int)]"
+                "Dict[(Any, int)]"
             ],
             "arguments": {
-                "context_qas": [
-                    "List[model.qa.ContextQuestionAnswer]"
-                ]
+                "context_qas": []
             }
         },
         "Corpus.compute_stats": {
@@ -369,54 +291,40 @@
                 "CorpusStats"
             ],
             "arguments": {
-                "context_qas": [
-                    "List[model.qa.ContextQuestionAnswer]"
-                ],
-                "token_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "char_mapping": [
-                    "Dict[(str, int)]"
-                ]
+                "context_qas": [],
+                "token_mapping": [],
+                "char_mapping": []
             }
         },
         "Corpus.get_single_answer_text": {
             "name": "get_single_answer_text",
             "location": 231,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "qid": [
-                    "model.qa.QuestionId"
-                ],
-                "span_start": [
-                    "int"
-                ],
-                "span_end": [
-                    "int"
-                ]
+                "qid": [],
+                "span_start": [],
+                "span_end": []
             }
         },
         "Corpus.get_answer_texts": {
             "name": "get_answer_texts",
             "location": 260,
             "return": [
-                "Dict[(model.qa.QuestionId, str)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
-                "answer_token_idxs": [
-                    "Dict[(model.qa.QuestionId, tuple)]"
-                ]
+                "answer_token_idxs": []
             }
         },
         "Corpus.get_gold_answers": {
             "name": "get_gold_answers",
             "location": 277,
             "return": [
-                "Dict[(model.qa.QuestionId, str)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -430,9 +338,7 @@
             ],
             "arguments": {
                 "self": [],
-                "file_name": [
-                    "str"
-                ]
+                "file_name": []
             }
         },
         "EncodedCorpus.__init__": {
@@ -443,9 +349,7 @@
             ],
             "arguments": {
                 "self": [],
-                "corpus": [
-                    "Corpus"
-                ]
+                "corpus": []
             }
         },
         "EncodedCorpus.encode": {
@@ -455,15 +359,9 @@
                 "List[model.qa.EncodedContextQuestionAnswer]"
             ],
             "arguments": {
-                "context_qas": [
-                    "List[model.qa.ContextQuestionAnswer]"
-                ],
-                "token_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "char_mapping": [
-                    "Dict[(str, int)]"
-                ]
+                "context_qas": [],
+                "token_mapping": [],
+                "char_mapping": []
             }
         },
         "SampleCorpus.__init__": {
@@ -474,9 +372,7 @@
             ],
             "arguments": {
                 "self": [],
-                "corpus": [
-                    "Corpus"
-                ]
+                "corpus": []
             }
         },
         "SampleCorpus.make_samples": {
@@ -486,9 +382,7 @@
                 "List[model.qa.EncodedSample]"
             ],
             "arguments": {
-                "context_qas": [
-                    "List[model.qa.EncodedContextQuestionAnswer]"
-                ]
+                "context_qas": []
             }
         },
         "QADataset.__init__": {
@@ -499,9 +393,7 @@
             ],
             "arguments": {
                 "self": [],
-                "corpus": [
-                    "Corpus"
-                ]
+                "corpus": []
             }
         },
         "QADataset.__len__": {
@@ -518,20 +410,18 @@
             "name": "__getitem__",
             "location": 386,
             "return": [
-                "model.qa.EncodedSample"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "idx": [
-                    "int"
-                ]
+                "idx": []
             }
         },
         "QADataset.get_gold_answers": {
             "name": "get_gold_answers",
             "location": 389,
             "return": [
-                "Dict[(model.qa.QuestionId, str)]"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -541,13 +431,11 @@
             "name": "get_answer_texts",
             "location": 392,
             "return": [
-                "Dict[(model.qa.QuestionId, str)]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "answer_token_idxs": [
-                    "Dict[(model.qa.QuestionId, tuple)]"
-                ]
+                "answer_token_idxs": []
             }
         },
         "QADataset.stats": {
@@ -574,34 +462,24 @@
             ],
             "arguments": {
                 "self": [],
-                "corpus": [
-                    "Corpus"
-                ]
+                "corpus": []
             }
         },
         "TrainDataset.load_dataset": {
             "name": "load_dataset",
             "location": 433,
             "return": [
-                "QADataset"
+                "_TTrainDataset@@TrainDataset@@"
             ],
             "arguments": {
-                "cls": [],
-                "filename": [
-                    "str"
+                "cls": [
+                    "Type[_TTrainDataset]"
                 ],
-                "vectors": [
-                    "model.wv.WordVectors"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ],
-                "force_single_answer": [
-                    "bool"
-                ]
+                "filename": [],
+                "vectors": [],
+                "tokenizer": [],
+                "processor": [],
+                "force_single_answer": []
             }
         },
         "EvalDataset.__init__": {
@@ -612,37 +490,25 @@
             ],
             "arguments": {
                 "self": [],
-                "corpus": [
-                    "Corpus"
-                ]
+                "corpus": []
             }
         },
         "EvalDataset.load_dataset": {
             "name": "load_dataset",
             "location": 476,
             "return": [
-                "QADataset"
+                "_TEvalDataset@@EvalDataset@@"
             ],
             "arguments": {
-                "cls": [],
-                "filename": [
-                    "str"
+                "cls": [
+                    "Type[_TEvalDataset]"
                 ],
-                "vectors": [
-                    "model.wv.WordVectors"
-                ],
-                "char_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ],
-                "force_single_answer": [
-                    "bool"
-                ]
+                "filename": [],
+                "vectors": [],
+                "char_mapping": [],
+                "tokenizer": [],
+                "processor": [],
+                "force_single_answer": []
             }
         },
         "Corpus.from_raw.return_one": {
@@ -661,21 +527,11 @@
             ],
             "arguments": {
                 "self": [],
-                "contextual_encoder_config": [
-                    "model.predictor.ContextualEncoderConfig"
-                ],
-                "dropout_prob": [
-                    "float"
-                ],
-                "attention_linear_hidden_size": [
-                    "int"
-                ],
-                "use_self_attention": [
-                    "bool"
-                ],
-                "batch_size": [
-                    "int"
-                ]
+                "contextual_encoder_config": [],
+                "dropout_prob": [],
+                "attention_linear_hidden_size": [],
+                "use_self_attention": [],
+                "batch_size": []
             }
         },
         "DocQAOutput.__init__": {
@@ -686,12 +542,8 @@
             ],
             "arguments": {
                 "self": [],
-                "config": [
-                    "model.predictor.ContextualEncoderConfig"
-                ],
-                "input_size": [
-                    "int"
-                ]
+                "config": [],
+                "input_size": []
             }
         },
         "DocQAOutput.forward": {
@@ -717,12 +569,8 @@
             ],
             "arguments": {
                 "self": [],
-                "embeddor": [
-                    "model.modules.embeddor.Embeddor"
-                ],
-                "config": [
-                    "DocQAConfig"
-                ]
+                "embeddor": [],
+                "config": []
             }
         },
         "DocQAPredictor.forward": {
@@ -733,9 +581,7 @@
             ],
             "arguments": {
                 "self": [],
-                "batch": [
-                    "model.batcher.QABatch"
-                ]
+                "batch": []
             }
         }
     },
@@ -744,15 +590,11 @@
             "name": "get_answer_token_idxs",
             "location": 87,
             "return": [
-                "Dict[(model.qa.QuestionId, tuple)]"
+                "Dict[(Any, Tuple[(int, int)])]"
             ],
             "arguments": {
-                "batch": [
-                    "model.batcher.QABatch"
-                ],
-                "model_predictions": [
-                    "model.predictor.ModelPredictions"
-                ]
+                "batch": [],
+                "model_predictions": []
             }
         },
         "Evaluator.__init__": {
@@ -769,16 +611,12 @@
             "name": "forward",
             "location": 26,
             "return": [
-                "Any"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
-                "batch": [
-                    "model.batcher.QABatch"
-                ],
-                "model_predictions": [
-                    "model.predictor.ModelPredictions"
-                ]
+                "batch": [],
+                "model_predictions": []
             }
         },
         "SingleClassLossEvaluator.__init__": {
@@ -799,12 +637,8 @@
             ],
             "arguments": {
                 "self": [],
-                "batch": [
-                    "model.batcher.QABatch"
-                ],
-                "model_predictions": [
-                    "model.predictor.ModelPredictions"
-                ]
+                "batch": [],
+                "model_predictions": []
             }
         },
         "MultiClassLossEvaluator.__init__": {
@@ -825,12 +659,8 @@
             ],
             "arguments": {
                 "self": [],
-                "batch": [
-                    "model.batcher.QABatch"
-                ],
-                "model_predictions": [
-                    "model.predictor.ModelPredictions"
-                ]
+                "batch": [],
+                "model_predictions": []
             }
         }
     },
@@ -849,13 +679,11 @@
             "name": "forward",
             "location": 33,
             "return": [
-                "ModelPredictions"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
-                "batch": [
-                    "model.batcher.QABatch"
-                ]
+                "batch": []
             }
         },
         "ContextualEncoderConfig.__init__": {
@@ -866,18 +694,10 @@
             ],
             "arguments": {
                 "self": [],
-                "hidden_size": [
-                    "int"
-                ],
-                "num_layers": [
-                    "int"
-                ],
-                "dropout_input": [
-                    "bool"
-                ],
-                "dropout_prob": [
-                    "float"
-                ]
+                "hidden_size": [],
+                "num_layers": [],
+                "dropout_input": [],
+                "dropout_prob": []
             }
         },
         "ContextualEncoder.__init__": {
@@ -888,12 +708,8 @@
             ],
             "arguments": {
                 "self": [],
-                "input_dim": [
-                    "int"
-                ],
-                "config": [
-                    "ContextualEncoderConfig"
-                ]
+                "input_dim": [],
+                "config": []
             }
         },
         "ContextualEncoder.forward": {
@@ -919,9 +735,7 @@
                 "None"
             ],
             "arguments": {
-                "print_all": [
-                    "bool"
-                ]
+                "print_all": []
             }
         },
         "memory_profiled": {
@@ -931,9 +745,7 @@
                 "Callable"
             ],
             "arguments": {
-                "op": [
-                    "Callable"
-                ]
+                "op": []
             }
         },
         "autograd_profiled": {
@@ -943,12 +755,8 @@
                 "Callable"
             ],
             "arguments": {
-                "op": [
-                    "Callable"
-                ],
-                "use_cuda": [
-                    "bool"
-                ]
+                "op": [],
+                "use_cuda": []
             }
         },
         "mem_report._mem_report": {
@@ -982,15 +790,9 @@
             ],
             "arguments": {
                 "self": [],
-                "text": [
-                    "str"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ]
+                "text": [],
+                "tokenizer": [],
+                "processor": []
             }
         },
         "Processed.__eq__": {
@@ -1012,25 +814,17 @@
             ],
             "arguments": {
                 "self": [],
-                "text": [
-                    "str"
-                ],
-                "span_start": [
-                    "int"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ]
+                "text": [],
+                "span_start": [],
+                "tokenizer": [],
+                "processor": []
             }
         },
         "Answer.__eq__": {
             "name": "__eq__",
             "location": 59,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -1041,7 +835,7 @@
             "name": "__hash__",
             "location": 69,
             "return": [
-                "Any"
+                "int"
             ],
             "arguments": {
                 "self": []
@@ -1055,28 +849,18 @@
             ],
             "arguments": {
                 "self": [],
-                "question_id": [
-                    "str"
-                ],
-                "text": [
-                    "str"
-                ],
-                "answers": [
-                    "Set[Answer]"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ]
+                "question_id": [],
+                "text": [],
+                "answers": [],
+                "tokenizer": [],
+                "processor": []
             }
         },
         "QuestionAnswer.__eq__": {
             "name": "__eq__",
             "location": 97,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -1091,25 +875,17 @@
             ],
             "arguments": {
                 "self": [],
-                "text": [
-                    "str"
-                ],
-                "qas": [
-                    "List[QuestionAnswer]"
-                ],
-                "tokenizer": [
-                    "model.tokenizer.Tokenizer"
-                ],
-                "processor": [
-                    "model.text_processor.TextProcessor"
-                ]
+                "text": [],
+                "qas": [],
+                "tokenizer": [],
+                "processor": []
             }
         },
         "ContextQuestionAnswer.__eq__": {
             "name": "__eq__",
             "location": 123,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -1124,12 +900,8 @@
             ],
             "arguments": {
                 "self": [],
-                "answer": [
-                    "Answer"
-                ],
-                "context_tokens": [
-                    "List[model.tokenizer.Token]"
-                ]
+                "answer": [],
+                "context_tokens": []
             }
         },
         "EncodedAnswer.__eq__": {
@@ -1151,18 +923,10 @@
             ],
             "arguments": {
                 "self": [],
-                "qa": [
-                    "QuestionAnswer"
-                ],
-                "token_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "char_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "context_tokens": [
-                    "List[model.tokenizer.Token]"
-                ]
+                "qa": [],
+                "token_mapping": [],
+                "char_mapping": [],
+                "context_tokens": []
             }
         },
         "EncodedQuestionAnswer.__eq__": {
@@ -1184,15 +948,9 @@
             ],
             "arguments": {
                 "self": [],
-                "ctx": [
-                    "ContextQuestionAnswer"
-                ],
-                "token_mapping": [
-                    "Dict[(str, int)]"
-                ],
-                "char_mapping": [
-                    "Dict[(str, int)]"
-                ]
+                "ctx": [],
+                "token_mapping": [],
+                "char_mapping": []
             }
         },
         "EncodedContextQuestionAnswer.__eq__": {
@@ -1216,9 +974,7 @@
                 "self": [],
                 "ctx_word_encoding": [],
                 "ctx_char_encoding": [],
-                "qa": [
-                    "EncodedQuestionAnswer"
-                ]
+                "qa": []
             }
         },
         "EncodedSample.__eq__": {
@@ -1242,22 +998,18 @@
             ],
             "arguments": {
                 "self": [],
-                "config": [
-                    "Dict[(str, bool)]"
-                ]
+                "config": []
             }
         },
         "TextProcessor.process": {
             "name": "process",
             "location": 18,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         }
     },
@@ -1266,13 +1018,11 @@
             "name": "tokenize",
             "location": 17,
             "return": [
-                "List[Token]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         },
         "NltkTokenizer.__init__": {
@@ -1293,9 +1043,7 @@
             ],
             "arguments": {
                 "self": [],
-                "text": [
-                    "str"
-                ]
+                "text": []
             }
         }
     },
@@ -1308,25 +1056,13 @@
             ],
             "arguments": {
                 "cls": [],
-                "batch": [
-                    "model.batcher.QABatch"
-                ],
-                "model": [
-                    "model.predictor.PredictorModel"
-                ],
-                "parameters": [
-                    "Iterable"
-                ],
-                "evaluator": [
-                    "model.evaluator.Evaluator"
-                ],
+                "batch": [],
+                "model": [],
+                "parameters": [],
+                "evaluator": [],
                 "optimizer": [],
-                "ema": [
-                    "model.modules.ema.EMA"
-                ],
-                "max_grad_norm": [
-                    "Optional[float]"
-                ]
+                "ema": [],
+                "max_grad_norm": []
             }
         },
         "Trainer.training_run": {
@@ -1338,25 +1074,13 @@
             "arguments": {
                 "cls": [],
                 "loader": [],
-                "model": [
-                    "model.predictor.PredictorModel"
-                ],
-                "parameters": [
-                    "Iterable"
-                ],
-                "evaluator": [
-                    "model.evaluator.Evaluator"
-                ],
+                "model": [],
+                "parameters": [],
+                "evaluator": [],
                 "optimizer": [],
-                "ema": [
-                    "model.modules.ema.EMA"
-                ],
-                "dev_dataset": [
-                    "model.corpus.EvalDataset"
-                ],
-                "training_config": [
-                    "Trainer.TrainingConfig"
-                ]
+                "ema": [],
+                "dev_dataset": [],
+                "training_config": []
             }
         },
         "Trainer.train_model": {
@@ -1367,106 +1091,66 @@
             ],
             "arguments": {
                 "cls": [],
-                "model": [
-                    "model.predictor.PredictorModel"
-                ],
-                "train_dataset": [
-                    "model.corpus.TrainDataset"
-                ],
-                "dev_dataset": [
-                    "model.corpus.EvalDataset"
-                ],
-                "training_config": [
-                    "Trainer.TrainingConfig"
-                ],
-                "debug": [
-                    "bool"
-                ]
+                "model": [],
+                "train_dataset": [],
+                "dev_dataset": [],
+                "training_config": [],
+                "debug": []
             }
         },
         "Trainer.validate": {
             "name": "validate",
             "location": 271,
             "return": [
-                "Tuple[(float, float, float)]"
+                "Tuple[(Any, float, float)]"
             ],
             "arguments": {
                 "cls": [],
-                "dataset": [
-                    "model.corpus.QADataset"
-                ],
-                "model": [
-                    "model.predictor.PredictorModel"
-                ],
-                "evaluator": [
-                    "model.evaluator.Evaluator"
-                ],
-                "training_config": [
-                    "Trainer.TrainingConfig"
-                ],
-                "epoch": [
-                    "int"
-                ]
+                "dataset": [],
+                "model": [],
+                "evaluator": [],
+                "training_config": [],
+                "epoch": []
             }
         },
         "Trainer.get_dataset_loss": {
             "name": "get_dataset_loss",
             "location": 305,
             "return": [
-                "float"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
-                "dataset": [
-                    "model.corpus.QADataset"
-                ],
-                "model": [
-                    "model.predictor.PredictorModel"
-                ],
-                "evaluator": [
-                    "model.evaluator.Evaluator"
-                ],
-                "training_config": [
-                    "Trainer.TrainingConfig"
-                ]
+                "dataset": [],
+                "model": [],
+                "evaluator": [],
+                "training_config": []
             }
         },
         "Trainer.answer_dataset": {
             "name": "answer_dataset",
             "location": 336,
             "return": [
-                "Dict[(model.qa.QuestionId, str)]"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
-                "dataset": [
-                    "model.corpus.QADataset"
-                ],
-                "model": [
-                    "model.predictor.PredictorModel"
-                ],
-                "training_config": [
-                    "Trainer.TrainingConfig"
-                ]
+                "dataset": [],
+                "model": [],
+                "training_config": []
             }
         },
         "Trainer.evaluate_on_squad_dataset": {
             "name": "evaluate_on_squad_dataset",
             "location": 363,
             "return": [
-                "Dict[(str, str)]"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
-                "dataset": [
-                    "model.corpus.QADataset"
-                ],
-                "model": [
-                    "model.predictor.PredictorModel"
-                ],
-                "training_config": [
-                    "Trainer.TrainingConfig"
-                ]
+                "dataset": [],
+                "model": [],
+                "training_config": []
             }
         }
     },
@@ -1479,9 +1163,7 @@
             ],
             "arguments": {
                 "self": [],
-                "arg_dict": [
-                    "Dict[(str, Any)]"
-                ]
+                "arg_dict": []
             }
         },
         "TrainArgs.parse_cli_args": {
@@ -1496,7 +1178,7 @@
             "name": "get_args",
             "location": 127,
             "return": [
-                "_TTrainArgs"
+                "_TTrainArgs@@TrainArgs@@"
             ],
             "arguments": {
                 "cls": [
@@ -1514,12 +1196,8 @@
             ],
             "arguments": {
                 "states": [],
-                "n_directions": [
-                    "int"
-                ],
-                "total_hidden_size": [
-                    "int"
-                ]
+                "n_directions": [],
+                "total_hidden_size": []
             }
         },
         "get_device": {
@@ -1529,9 +1207,7 @@
                 "Any"
             ],
             "arguments": {
-                "disable_cuda": [
-                    "bool"
-                ]
+                "disable_cuda": []
             }
         }
     },
@@ -1545,12 +1221,8 @@
             "arguments": {
                 "self": [],
                 "vectors": [],
-                "idx_to_word": [
-                    "Dict[(int, str)]"
-                ],
-                "word_to_idx": [
-                    "Dict[(str, int)]"
-                ]
+                "idx_to_word": [],
+                "word_to_idx": []
             }
         },
         "WordVectors.contains": {
@@ -1561,57 +1233,47 @@
             ],
             "arguments": {
                 "self": [],
-                "token": [
-                    "str"
-                ]
+                "token": []
             }
         },
         "WordVectors.load_vectors": {
             "name": "load_vectors",
             "location": 42,
             "return": [
-                "_TWordVectors"
+                "_TWordVectors@@WordVectors@@"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TWordVectors]"
                 ],
-                "file_name": [
-                    "str"
-                ]
+                "file_name": []
             }
         },
         "WordVectors.from_disk": {
             "name": "from_disk",
             "location": 56,
             "return": [
-                "_TWordVectors"
+                "_TWordVectors@@WordVectors@@"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TWordVectors]"
                 ],
-                "file_name": [
-                    "str"
-                ]
+                "file_name": []
             }
         },
         "WordVectors.from_text_vectors": {
             "name": "from_text_vectors",
             "location": 72,
             "return": [
-                "_TWordVectors"
+                "_TWordVectors@@WordVectors@@"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TWordVectors]"
                 ],
-                "vector_file": [
-                    "str"
-                ],
-                "consume_first_line": [
-                    "bool"
-                ]
+                "vector_file": [],
+                "consume_first_line": []
             }
         },
         "WordVectors.read_vectors": {
@@ -1621,12 +1283,8 @@
                 "Tuple[(Any, Dict[(str, int)], Dict[(int, str)])]"
             ],
             "arguments": {
-                "vector_file": [
-                    "str"
-                ],
-                "consume_first_line": [
-                    "bool"
-                ]
+                "vector_file": [],
+                "consume_first_line": []
             }
         },
         "WordVectors.save": {
@@ -1637,9 +1295,7 @@
             ],
             "arguments": {
                 "self": [],
-                "file_name": [
-                    "str"
-                ]
+                "file_name": []
             }
         }
     },
@@ -1653,18 +1309,10 @@
             ],
             "arguments": {
                 "self": [],
-                "input_size": [
-                    "int"
-                ],
-                "linear_layer": [
-                    "bool"
-                ],
-                "linear_hidden_size": [
-                    "int"
-                ],
-                "self_attention": [
-                    "bool"
-                ]
+                "input_size": [],
+                "linear_layer": [],
+                "linear_hidden_size": [],
+                "self_attention": []
             }
         },
         "BaseBidirectionalAttention.forward": {
@@ -1688,9 +1336,7 @@
             ],
             "arguments": {
                 "self": [],
-                "input_size": [
-                    "int"
-                ]
+                "input_size": []
             }
         },
         "DocQABidirectionalAttention.__init__": {
@@ -1701,12 +1347,8 @@
             ],
             "arguments": {
                 "self": [],
-                "input_size": [
-                    "int"
-                ],
-                "linear_hidden_size": [
-                    "int"
-                ]
+                "input_size": [],
+                "linear_hidden_size": []
             }
         },
         "SelfAttention.__init__": {
@@ -1717,12 +1359,8 @@
             ],
             "arguments": {
                 "self": [],
-                "input_size": [
-                    "int"
-                ],
-                "linear_hidden_size": [
-                    "int"
-                ]
+                "input_size": [],
+                "linear_hidden_size": []
             }
         }
     },
@@ -1735,9 +1373,7 @@
             ],
             "arguments": {
                 "self": [],
-                "mu": [
-                    "float"
-                ]
+                "mu": []
             }
         },
         "EMA.register": {
@@ -1748,9 +1384,7 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
+                "name": [],
                 "val": []
             }
         },
@@ -1762,9 +1396,7 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
+                "name": [],
                 "x": []
             }
         }
@@ -1774,12 +1406,10 @@
             "name": "make_embeddor",
             "location": 188,
             "return": [
-                "Embeddor"
+                "ConcatenatingEmbeddor"
             ],
             "arguments": {
-                "config": [
-                    "EmbeddorConfig"
-                ],
+                "config": [],
                 "device": []
             }
         },
@@ -1791,16 +1421,14 @@
             ],
             "arguments": {
                 "self": [],
-                "embedding_dim": [
-                    "int"
-                ]
+                "embedding_dim": []
             }
         },
         "Embeddor.forward": {
             "name": "forward",
             "location": 44,
             "return": [
-                "Any"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
@@ -1816,12 +1444,8 @@
             ],
             "arguments": {
                 "self": [],
-                "word_vectors": [
-                    "model.wv.WordVectors"
-                ],
-                "train_vecs": [
-                    "bool"
-                ],
+                "word_vectors": [],
+                "train_vecs": [],
                 "device": []
             }
         },
@@ -1845,12 +1469,8 @@
             ],
             "arguments": {
                 "self": [],
-                "char_vocab_size": [
-                    "int"
-                ],
-                "embedding_dimension": [
-                    "int"
-                ],
+                "char_vocab_size": [],
+                "embedding_dimension": [],
                 "device": []
             }
         },
@@ -1874,9 +1494,7 @@
             ],
             "arguments": {
                 "self": [],
-                "embeddors": [
-                    "List[Embeddor]"
-                ]
+                "embeddors": []
             }
         },
         "ConcatenatingEmbeddor.forward": {
@@ -1899,12 +1517,8 @@
             ],
             "arguments": {
                 "self": [],
-                "embeddors": [
-                    "List[Embeddor]"
-                ],
-                "n_layers": [
-                    "int"
-                ]
+                "embeddors": [],
+                "n_layers": []
             }
         },
         "HighwayEmbeddor.forward": {
@@ -1929,9 +1543,7 @@
             ],
             "arguments": {
                 "input_batch": [],
-                "mask_index": [
-                    "float"
-                ]
+                "mask_index": []
             }
         },
         "MaskedOp.__init__": {
@@ -1943,15 +1555,9 @@
             "arguments": {
                 "self": [],
                 "op": [],
-                "mask_mode": [
-                    "enum.Enum"
-                ],
-                "mask_time": [
-                    "enum.Enum"
-                ],
-                "mask_value": [
-                    "float"
-                ]
+                "mask_mode": [],
+                "mask_time": [],
+                "mask_value": []
             }
         },
         "MaskedOp._apply_mask": {
@@ -1985,9 +1591,7 @@
             ],
             "arguments": {
                 "self": [],
-                "dim": [
-                    "int"
-                ]
+                "dim": []
             }
         },
         "MaskedLogSoftmax.__init__": {
@@ -1998,9 +1602,7 @@
             ],
             "arguments": {
                 "self": [],
-                "dim": [
-                    "int"
-                ]
+                "dim": []
             }
         },
         "MaskedLinear.__init__": {
@@ -2011,15 +1613,9 @@
             ],
             "arguments": {
                 "self": [],
-                "in_features": [
-                    "int"
-                ],
-                "out_features": [
-                    "int"
-                ],
-                "bias": [
-                    "bool"
-                ]
+                "in_features": [],
+                "out_features": [],
+                "bias": []
             }
         }
     },
@@ -2399,18 +1995,10 @@
             ],
             "arguments": {
                 "self": [],
-                "context_text": [
-                    "str"
-                ],
-                "answers": [
-                    "List[model.qa.Answer]"
-                ],
-                "question_id": [
-                    "str"
-                ],
-                "question_text": [
-                    "str"
-                ]
+                "context_text": [],
+                "answers": [],
+                "question_id": [],
+                "question_text": []
             }
         },
         "BatcherTestCase.test_pad_and_sort_single_seq": {
@@ -2813,12 +2401,8 @@
             ],
             "arguments": {
                 "self": [],
-                "num_layers": [
-                    "int"
-                ],
-                "bidirectional": [
-                    "bool"
-                ]
+                "num_layers": [],
+                "bidirectional": []
             }
         },
         "PredictorTestCase.check_match": {

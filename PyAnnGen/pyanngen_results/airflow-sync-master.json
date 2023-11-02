@@ -11,34 +11,61 @@
             ],
             "arguments": {
                 "dag_name": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "bool"
                 ],
                 "pg_conn_id": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "int"
                 ],
                 "s3_conn_id": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[Dict[str,dict]]",
+                    "Dict[str,dict]"
                 ],
                 "s3_bucket": [
-                    "str"
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "int",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "sync_interval": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[Mapping[str,Any]]",
+                    "Mapping"
                 ],
                 "dag_base": [
-                    "str"
+                    "str",
+                    "None",
+                    "Dict[str,str]",
+                    "Optional[str]"
                 ],
                 "concurrent_uploads": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[float]"
                 ],
                 "upload_timeout": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[str]"
                 ],
                 "csv_dir": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[str]"
                 ],
                 "owner": [
-                    "str"
+                    "str",
+                    "Text"
                 ]
             }
         }
@@ -54,40 +81,51 @@
             ],
             "arguments": {
                 "dag_name": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "pg_conn_id": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "sf_conn_id": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "catchup": [
+                    "str",
                     "bool"
                 ],
                 "dag_base": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "owner": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "sync_file": [
-                    "airflow_sync.utils.SqlFile"
+                    "str",
+                    "Optional[str]",
+                    "Optional[Dict[str, Any]]"
                 ],
                 "triggers": [
-                    "List[airflow_sync.utils.SqlFile]"
+                    "str",
+                    "Optional[\"Address\"]",
+                    "Optional[str]",
+                    "List[pathlib.Path]",
+                    "bool"
                 ],
                 "deps": [
-                    "List[airflow_sync.utils.SqlFile]"
+                    "str",
+                    "bool"
                 ]
             }
         },
         "create_dag._cleanup_temp_table": {
             "name": "_cleanup_temp_table",
             "location": 75,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "context": [
                     "str",
@@ -127,25 +165,56 @@
             ],
             "arguments": {
                 "dag_name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "List[Tuple[str,...]]",
+                    "List[tuple[Union[str,...]]]"
                 ],
                 "pg_conn_id": [
-                    "str"
+                    "str",
+                    "None",
+                    "List[str]",
+                    "bool",
+                    "List[Tuple[str,...]]",
+                    "List[tuple[Union[str,...]]]"
                 ],
                 "s3_conn_id": [
-                    "str"
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[datetime.datetime]",
+                    "Optional[str]"
                 ],
                 "owner": [
-                    "str"
+                    "str",
+                    "None",
+                    "List[str]",
+                    "bool",
+                    "List[Tuple[str,...]]",
+                    "List[tuple[Union[str,...]]]"
                 ],
                 "variable_key": [
-                    "str"
+                    "str",
+                    "None",
+                    "List[str]",
+                    "bool",
+                    "List[Tuple[str,...]]",
+                    "List[tuple[Union[str,...]]]"
                 ],
                 "tables": [
-                    "List[str]"
+                    "str",
+                    "List[str]",
+                    "List[tuple[Union[str,...]]]",
+                    "bool",
+                    "List[Tuple[str,...]]"
                 ],
                 "pool": [
-                    "str"
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[datetime.datetime]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -153,7 +222,7 @@
             "name": "get_s3_uri",
             "location": 80,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "Iterable[str]",
                 "Type[Exception]"
@@ -168,9 +237,9 @@
             "name": "convert_table_to_file",
             "location": 85,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
-                "Union[Literal, str]",
+                "Union[Literal,str]",
                 "Set[str]"
             ],
             "arguments": {
@@ -185,7 +254,7 @@
             "location": 91,
             "return": [
                 "str",
-                "list[]"
+                "List"
             ],
             "arguments": {
                 "tables": [
@@ -199,9 +268,9 @@
             "name": "_sync_join",
             "location": 102,
             "return": [
-                "list[tuple[]]",
+                "List[tuple]",
                 "List[int]",
-                "Dict[str, int]",
+                "Dict[str,int]",
                 "List[dict]",
                 "magic.models.Deck"
             ],
@@ -211,7 +280,6 @@
             "name": "_cleanup_temp_table",
             "location": 110,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -233,23 +301,17 @@
                 "None"
             ],
             "arguments": {
-                "dag_name": [
-                    "str"
-                ],
-                "pg_conn_id": [
-                    "str"
-                ],
-                "sf_conn_id": [
-                    "str"
-                ],
+                "dag_name": [],
+                "pg_conn_id": [],
+                "sf_conn_id": [],
                 "catchup": [
                     "bool"
                 ],
                 "owner": [
-                    "str"
+                    "typing.Text"
                 ],
                 "sql_files": [
-                    "List[Tuple[(str, ...)]]"
+                    "None"
                 ]
             }
         },
@@ -291,19 +353,36 @@
             ],
             "arguments": {
                 "dag_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Callable",
+                    "None",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "sf_conn_id": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[Tuple[str,...]]",
+                    "List[tuple[Union[str,...]]]"
                 ],
                 "s3_conn_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "None",
+                    "List[Tuple[str,int]]",
+                    "List[tuple[Union[str,int]]]"
                 ],
                 "dag_base": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]"
                 ],
                 "owner": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         }
@@ -317,7 +396,12 @@
             ],
             "arguments": {
                 "delta": [
-                    "Optional[Dict[(str, int)]]"
+                    "bool",
+                    "List[D]",
+                    "List[zerver.models.DefaultStreamGroup]",
+                    "Mapping",
+                    "Mapping[str,str]",
+                    "core.models.Grouping"
                 ]
             }
         },
@@ -325,20 +409,40 @@
             "name": "_run_sql",
             "location": 48,
             "return": [
-                "List[tuple]"
+                "list"
             ],
             "arguments": {
                 "pg_conn_id": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[bool]",
+                    "bool"
                 ],
                 "query": [
-                    "str"
+                    "int",
+                    "List[str]",
+                    "str",
+                    "Iterable[str]",
+                    "None",
+                    "Optional[str]",
+                    "List[tuple[Union[int,int]]]",
+                    "List[Tuple[int,int]]"
                 ],
                 "schema": [
-                    "Optional[str]"
+                    "Text",
+                    "str",
+                    "Optional[str]",
+                    "Optional[bool]"
                 ],
                 "returns_rows": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "List[str]",
+                    "Iterable[str]",
+                    "Optional[str]",
+                    "List[Tuple[int,int]]",
+                    "str"
                 ]
             }
         },
@@ -350,19 +454,35 @@
             ],
             "arguments": {
                 "pg_conn_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "datetime.datetime"
                 ],
                 "table": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "schema": [
-                    "Optional[str]"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "datetime.datetime"
                 ],
                 "constraints": [
-                    "List[str]"
+                    "str",
+                    "list",
+                    "List[str]",
+                    "bool"
                 ],
                 "returns_rows": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -374,10 +494,15 @@
             ],
             "arguments": {
                 "pg_conn_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "cmk.utils.type_defs.UserId"
                 ],
                 "schema": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int",
+                    "cmk.utils.type_defs.UserId"
                 ]
             }
         },
@@ -385,11 +510,12 @@
             "name": "query_salesforce",
             "location": 124,
             "return": [
-                "Union[(str, List[str])]"
+                "str"
             ],
             "arguments": {
                 "sf_conn_id": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "soql": [
                     "str"
@@ -407,12 +533,23 @@
                     "str"
                 ],
                 "path": [
-                    "Optional[str]"
+                    "None",
+                    "str",
+                    "Optional[str]",
+                    "Sequence[str]",
+                    "Optional[Sequence[str]]",
+                    "Optional[Union[str,pathlib.Path]]"
                 ],
                 "s3_conn_id": [
-                    "str"
+                    "str",
+                    "None",
+                    "int",
+                    "List[int]",
+                    "bytes"
                 ],
                 "s3_key": [
+                    "str",
+                    "None",
                     "Optional[str]"
                 ],
                 "s3_hook": [
@@ -431,7 +568,11 @@
             ],
             "arguments": {
                 "filepath": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "pathlib.Path",
+                    "bool",
+                    "Union[str,pathlib.Path]"
                 ]
             }
         },
@@ -443,10 +584,12 @@
             ],
             "arguments": {
                 "filepaths": [
-                    "List[str]"
+                    "str",
+                    "pathlib.Path"
                 ],
                 "max_workers": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -458,10 +601,17 @@
             ],
             "arguments": {
                 "path_and_hook": [
-                    "Tuple[(str, Any)]"
+                    "None",
+                    "Tuple[str]",
+                    "str",
+                    "Optional[pathlib.Path]",
+                    "pathlib.Path"
                 ],
                 "bucket": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[path.Path]",
+                    "None"
                 ]
             }
         },
@@ -476,10 +626,13 @@
                     "str"
                 ],
                 "s3_bucket": [
-                    "str"
+                    "str",
+                    "Callable[[str,Any],None]",
+                    "Callable[A,None]"
                 ],
                 "max_connections": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -487,18 +640,22 @@
             "name": "get_s3_files",
             "location": 246,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "s3_conn_id": [
-                    "str"
+                    "int",
+                    "str",
+                    "Mapping",
+                    "Mapping[str,Any]",
+                    "cmk.utils.type_defs.UserId"
                 ],
                 "s3_bucket": [
                     "str"
                 ],
                 "prefix": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ]
             }
         },
@@ -540,11 +697,11 @@
             "name": "convert_path",
             "location": 27,
             "return": [
-                "Optional[pathlib.Path]"
+                "Optional[Union[(pathlib.Path, _T0)]]"
             ],
             "arguments": {
                 "path": [
-                    "Optional[pathlib.Path]"
+                    "_T0@@"
                 ]
             }
         },
@@ -562,12 +719,10 @@
             "name": "get_upsert_mapping",
             "location": 317,
             "return": [
-                "Tuple[(Dict[(str, Dict[(str, SqlFile)])], List[SqlFile], List[SqlFile])]"
+                "Tuple[(Dict[(Any, Dict[(str, Any)])], list, list)]"
             ],
             "arguments": {
-                "pipeline_list": [
-                    "List[Pipeline]"
-                ],
+                "pipeline_list": [],
                 "allow_upsert": [
                     "bool"
                 ]
@@ -629,11 +784,9 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ],
-                "other": [
-                    "SqlFile"
-                ]
+                "other": []
             }
         },
         "SqlFile.load_sql": {
@@ -644,7 +797,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ]
             }
         },
@@ -652,32 +805,28 @@
             "name": "merge_and_update",
             "location": 105,
             "return": [
-                "List[SqlFile]"
+                "list[]"
             ],
             "arguments": {
                 "cls": [],
                 "original_list": [
-                    "List[SqlFile]"
+                    "_T0@@"
                 ],
-                "new_file": [
-                    "SqlFile"
-                ]
+                "new_file": []
             }
         },
         "SqlFile.merge_from_list": {
             "name": "merge_from_list",
             "location": 117,
             "return": [
-                "List[SqlFile]"
+                "_T0@@"
             ],
             "arguments": {
                 "cls": [],
                 "original_list": [
-                    "List[SqlFile]"
+                    "_T0@@"
                 ],
-                "new_list": [
-                    "List[SqlFile]"
-                ]
+                "new_list": []
             }
         },
         "SqlFile.depends_on": {
@@ -688,11 +837,9 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ],
-                "sql_file": [
-                    "SqlFile"
-                ]
+                "sql_file": []
             }
         },
         "SqlFile.with_dependencies": {
@@ -703,11 +850,9 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ],
-                "dependencies": [
-                    "List[_TSqlFile]"
-                ]
+                "dependencies": []
             }
         },
         "SqlFile.with_trigger": {
@@ -718,11 +863,9 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ],
-                "sql_file": [
-                    "SqlFile"
-                ]
+                "sql_file": []
             }
         },
         "SqlFile.with_triggers": {
@@ -733,11 +876,9 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ],
-                "triggers": [
-                    "List[_TSqlFile]"
-                ]
+                "triggers": []
             }
         },
         "SqlFile.with_child": {
@@ -748,11 +889,9 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ],
-                "sql_file": [
-                    "SqlFile"
-                ]
+                "sql_file": []
             }
         },
         "SqlFile.with_children": {
@@ -763,58 +902,46 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSqlFile"
+                    "_TSqlFile@@SqlFile@@"
                 ],
-                "children": [
-                    "List[_TSqlFile]"
-                ]
+                "children": []
             }
         },
         "SqlFile.from_tuple": {
             "name": "from_tuple",
             "location": 206,
             "return": [
-                "Tuple[(SqlFile, List[SqlFile], Optional[List[SqlFile]])]"
+                "Any"
             ],
             "arguments": {
                 "cls": [],
-                "pipeline": [
-                    "Tuple[(Union[(str, pathlib.Path)], Union[(str, List[Union[(SqlFile, str)]])], List[Union[(SqlFile, str)]])]"
-                ]
+                "pipeline": []
             }
         },
         "SqlFile.build_trigger": {
             "name": "build_trigger",
             "location": 228,
             "return": [
-                "Tuple[(SqlFile, SqlFile, Optional[List[SqlFile]])]"
+                "Tuple[(Any, Any, list)]"
             ],
             "arguments": {
                 "cls": [],
-                "parent": [
-                    "SqlFile"
-                ],
-                "trigger": [
-                    "Union[(SqlFile, str)]"
-                ],
-                "deps": [
-                    "Optional[List[SqlFile]]"
-                ]
+                "parent": [],
+                "trigger": [],
+                "deps": []
             }
         },
         "SqlFile.build_dependencies": {
             "name": "build_dependencies",
             "location": 251,
             "return": [
-                "Tuple[(Optional[SqlFile], List[SqlFile])]"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "cls": [],
-                "dependencies": [
-                    "List[Union[(SqlFile, str)]]"
-                ],
+                "dependencies": [],
                 "parent": [
-                    "Optional[SqlFile]"
+                    "_T1@@"
                 ]
             }
         },
@@ -822,37 +949,29 @@
             "name": "build_triggers",
             "location": 273,
             "return": [
-                "Tuple[(SqlFile, List[SqlFile], Optional[List[SqlFile]])]"
+                "Tuple[(Any, list, Any)]"
             ],
             "arguments": {
                 "cls": [],
-                "parent": [
-                    "SqlFile"
-                ],
-                "triggers": [
-                    "List[Union[(SqlFile, str)]]"
-                ],
-                "dependencies": [
-                    "List[Union[(SqlFile, str)]]"
-                ]
+                "parent": [],
+                "triggers": [],
+                "dependencies": []
             }
         },
         "SqlFile.create": {
             "name": "create",
             "location": 290,
             "return": [
-                "Tuple[(SqlFile, List[SqlFile], Optional[List[SqlFile]])]"
+                "Tuple[(Any, list, Any)]"
             ],
             "arguments": {
                 "cls": [],
-                "path": [
-                    "Union[(str, pathlib.Path)]"
-                ],
+                "path": [],
                 "triggers": [
-                    "List[Union[(SqlFile, str)]]"
+                    "None"
                 ],
                 "dependencies": [
-                    "List[Union[(SqlFile, str)]]"
+                    "None"
                 ]
             }
         }
@@ -863,7 +982,6 @@
             "name": "typecheck",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -876,7 +994,6 @@
             "name": "build_package",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -887,7 +1004,6 @@
             "name": "upload",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -901,7 +1017,6 @@
             "name": "build_docs",
             "location": 46,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

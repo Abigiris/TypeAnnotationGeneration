@@ -46,7 +46,7 @@
             "name": "generate_config",
             "location": 80,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "bool",
                 "Optional[int]",
@@ -58,16 +58,15 @@
             "name": "handle_leases_changed",
             "location": 87,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "sender": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -78,14 +77,24 @@
             "name": "_date_parser",
             "location": 108,
             "return": [
-                "Callable[([List[str]], Any)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Callable[A,None]",
+                    "Iterable[str]",
+                    "Callable[[str,Any],None]",
+                    "Callable"
                 ],
                 "set_lease_value": [
-                    "Callable[([str, Any], None)]"
+                    "str",
+                    "bool",
+                    "Callable[A,None]",
+                    "Iterable[str]",
+                    "Callable[[str,Any],None]",
+                    "Callable"
                 ]
             }
         },
@@ -93,14 +102,30 @@
             "name": "_binding_state_parser",
             "location": 116,
             "return": [
-                "Callable[([List[str]], Any)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Callable[A,None]",
+                    "bool",
+                    "Callable[[str,Any],None]",
+                    "None",
+                    "Iterable[str]",
+                    "int",
+                    "Optional[str]"
                 ],
                 "set_lease_value": [
-                    "Callable[([str, Any], None)]"
+                    "str",
+                    "List[str]",
+                    "Callable[A,None]",
+                    "bool",
+                    "Callable[[str,Any],None]",
+                    "None",
+                    "Iterable[str]",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -108,11 +133,14 @@
             "name": "_set_parser",
             "location": 123,
             "return": [
-                "Callable[([List[str]], Any)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "set_lease_value": [
-                    "Callable[([str, Any], None)]"
+                    "Callable[[str,Any],None]",
+                    "str",
+                    "Callable[A,None]",
+                    "bool"
                 ]
             }
         },
@@ -120,11 +148,16 @@
             "name": "_option_parser",
             "location": 131,
             "return": [
-                "Callable[([List[str]], Any)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "set_lease_value": [
-                    "Callable[([str, Any], None)]"
+                    "Callable[[str,Any],None]",
+                    "str",
+                    "Callable[A,None]",
+                    "Optional[list]",
+                    "List",
+                    "None"
                 ]
             }
         },
@@ -137,7 +170,9 @@
             "arguments": {
                 "self": [],
                 "address": [
-                    "ipaddress.IPv4Address"
+                    "int",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -145,7 +180,7 @@
             "name": "get_serializable",
             "location": 13,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -176,7 +211,9 @@
             "arguments": {
                 "self": [],
                 "filename": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -210,7 +247,7 @@
             "name": "get_leases",
             "location": 52,
             "return": [
-                "List[Lease]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -220,13 +257,11 @@
             "name": "_scan_statement",
             "location": 76,
             "return": [
-                "Optional[Tuple[(str, List[str])]]"
+                "Optional[Tuple[(str, Any)]]"
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "List[str]"
-                ]
+                "args": []
             }
         },
         "Parser._begin_lease": {
@@ -237,9 +272,7 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "List[str]"
-                ]
+                "args": []
             }
         },
         "Parser._end_lease": {
@@ -250,9 +283,7 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "List[str]"
-                ]
+                "args": []
             }
         },
         "Parser._lease_hardware": {
@@ -263,9 +294,7 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "List[str]"
-                ]
+                "args": []
             }
         },
         "Parser._lease_uid": {
@@ -276,9 +305,7 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "List[str]"
-                ]
+                "args": []
             }
         },
         "Parser._lease_client_hostname": {
@@ -289,9 +316,7 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "List[str]"
-                ]
+                "args": []
             }
         },
         "_date_parser._parse": {
@@ -328,7 +353,6 @@
             "name": "_parse",
             "location": 132,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -346,18 +370,17 @@
             "arguments": {
                 "self": [],
                 "filename": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "signal": [
                     "str",
-                    "List[Union[int, Any]]",
-                    "list[typing.Union[int,typing.Any]]",
-                    "dict",
-                    "dict[, ]",
-                    "Optional[str]",
-                    "None",
+                    "List[Union[int,Any]]",
+                    "Dict",
                     "List[str]",
-                    "list[str]"
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -390,7 +413,9 @@
             "arguments": {
                 "self": [],
                 "filename": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "callback": [
                     "int",
@@ -413,9 +438,7 @@
                 "event": [
                     "int",
                     "str",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "typing.TextIO",
+                    "Dict[str,Any]",
                     "TextIO",
                     "watchdog.events.FileSystemEvent"
                 ]

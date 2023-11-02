@@ -4,11 +4,16 @@
             "name": "_get_dependencies",
             "location": 12,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "requirements_file": [
-                    "pathlib.Path"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "frozenset",
+                    "pathlib.Path",
+                    "FrozenSet[str]"
                 ]
             }
         }
@@ -42,10 +47,12 @@
             ],
             "arguments": {
                 "rclone_remote": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ],
                 "rclone_root": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ],
                 "rclone_relative_path": [
                     "str",
@@ -80,11 +87,18 @@
             "name": "config_option",
             "location": 171,
             "return": [
-                "Callable[(..., None)]"
+                "str",
+                "Union",
+                "None",
+                "List[str]",
+                "List"
             ],
             "arguments": {
                 "command": [
-                    "Callable[(..., None)]"
+                    "Iterable[str]",
+                    "Callable[...,None]",
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -96,10 +110,15 @@
             ],
             "arguments": {
                 "days_to_keep_local": [
-                    "float"
+                    "int",
+                    "str",
+                    "Optional[datetime.datetime]"
                 ],
                 "local_decrypted": [
-                    "pathlib.Path"
+                    "str",
+                    "Optional[str]",
+                    "datetime.datetime",
+                    "int"
                 ]
             }
         },
@@ -123,7 +142,10 @@
             ],
             "arguments": {
                 "mountpoint": [
-                    "pathlib.Path"
+                    "bytes",
+                    "Dict[str,dict]",
+                    "bool",
+                    "Match"
                 ]
             }
         },
@@ -135,8 +157,7 @@
             ],
             "arguments": {
                 "config": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -154,9 +175,8 @@
                 ],
                 "config": [
                     "str",
-                    "list[str]",
-                    "click.Context",
-                    "List[str]"
+                    "List[str]",
+                    "click.Context"
                 ]
             }
         },
@@ -168,28 +188,51 @@
             ],
             "arguments": {
                 "local_decrypted": [
-                    "pathlib.Path"
+                    "bool",
+                    "str",
+                    "Optional[str]"
                 ],
                 "encfs_pass": [
-                    "str"
+                    "str",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]",
+                    "Union[pathlib.Path,str]"
                 ],
                 "remote_encrypted": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]",
+                    "Union[pathlib.Path,str]"
                 ],
                 "rclone_remote": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "path_on_cloud_drive": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "rclone_config_path": [
-                    "pathlib.Path"
+                    "bool",
+                    "str",
+                    "pydcop.replication.path_utils.Path",
+                    "int"
                 ],
                 "rclone": [
-                    "pathlib.Path"
+                    "bool",
+                    "str",
+                    "pydcop.replication.path_utils.Path",
+                    "int"
                 ],
                 "rclone_verbose": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "pydcop.replication.path_utils.Path",
+                    "int"
                 ]
             }
         },
@@ -201,8 +244,7 @@
             ],
             "arguments": {
                 "config": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -214,19 +256,19 @@
             ],
             "arguments": {
                 "remote_encrypted": [
-                    "pathlib.Path"
+                    "str"
                 ],
                 "remote_decrypted": [
-                    "pathlib.Path"
+                    "str"
                 ],
                 "local_encrypted": [
-                    "pathlib.Path"
+                    "str"
                 ],
                 "local_decrypted": [
-                    "pathlib.Path"
+                    "str"
                 ],
                 "data_dir": [
-                    "pathlib.Path"
+                    "str"
                 ]
             }
         },
@@ -238,7 +280,10 @@
             ],
             "arguments": {
                 "max_attempts": [
-                    "int"
+                    "int",
+                    "str",
+                    "Counter[int]",
+                    "List[str]"
                 ],
                 "ctx": [
                     "str",
@@ -247,10 +292,19 @@
                     "Tuple[int, int]"
                 ],
                 "remote_encrypted": [
-                    "pathlib.Path"
+                    "int",
+                    "pathlib.Path",
+                    "Optional[int]",
+                    "str",
+                    "Union[str,pathlib3x.Path,IO[str]]",
+                    "bool",
+                    "Path"
                 ],
                 "path_on_cloud_drive": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Union[pathlib.Path,str]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -262,25 +316,58 @@
             ],
             "arguments": {
                 "remote_encrypted": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Union[pathlib.Path, str]",
+                    "Iterable[str]",
+                    "list"
                 ],
                 "remote_decrypted": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Callable[pathlib.Path,int]",
+                    "path.Path",
+                    "None",
+                    "IO",
+                    "Optional[Callable[[pathlib.Path],int]]",
+                    "datetime.datetime.datetime",
+                    "IO[Any]"
                 ],
                 "local_encrypted": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Dict[str,Any]",
+                    "Callable[pathlib.Path,int]",
+                    "Optional[Callable[[pathlib.Path],int]]",
+                    "None"
                 ],
                 "local_decrypted": [
-                    "pathlib.Path"
+                    "str",
+                    "IO",
+                    "Dict[str,str]",
+                    "pathlib.Path",
+                    "path.Path",
+                    "IO[Any]",
+                    "os.DirEntry"
                 ],
                 "data_dir": [
-                    "pathlib.Path"
+                    "str",
+                    "Dict[str,str]",
+                    "pathlib.Path",
+                    "Callable[pathlib.Path,int]",
+                    "Optional[Callable[[pathlib.Path],int]]",
+                    "None"
                 ],
                 "encfs_pass": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "IO",
+                    "pathlib.Path",
+                    "IO[Any]"
                 ],
                 "path_on_cloud_drive": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -309,19 +396,33 @@
             ],
             "arguments": {
                 "rclone_remote": [
-                    "str"
+                    "str",
+                    "path.Path"
                 ],
                 "unmount_lock_file": [
-                    "pathlib.Path"
-                ],
-                "rclone": [
-                    "pathlib.Path"
-                ],
-                "rclone_verbose": [
+                    "pathlib.Path",
+                    "str",
                     "bool"
                 ],
+                "rclone": [
+                    "str",
+                    "Sequence[str]",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]",
+                    "Union[pathlib.Path,str]"
+                ],
+                "rclone_verbose": [
+                    "str",
+                    "Sequence[str]",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]",
+                    "Union[pathlib.Path,str]"
+                ],
                 "remote_encrypted": [
-                    "pathlib.Path"
+                    "Pattern",
+                    "str",
+                    "pathlib.Path",
+                    "Pattern[str]"
                 ]
             }
         },
@@ -339,7 +440,7 @@
                     "str"
                 ],
                 "root_dir": [
-                    "pathlib.Path"
+                    "str"
                 ]
             }
         },
@@ -357,7 +458,7 @@
                     "str"
                 ],
                 "root_dir": [
-                    "pathlib.Path"
+                    "str"
                 ]
             }
         },
@@ -374,7 +475,7 @@
                     "Optional[str]",
                     "path.Path",
                     "pathlib.Path",
-                    "Union[pathlib.Path, str]"
+                    "Union[pathlib.Path,str]"
                 ],
                 "decoded_path": [
                     "str",
@@ -382,7 +483,7 @@
                     "Optional[str]",
                     "path.Path",
                     "pathlib.Path",
-                    "Union[pathlib.Path, str]"
+                    "Union[pathlib.Path,str]"
                 ]
             }
         },
@@ -395,19 +496,17 @@
             "arguments": {
                 "config": [
                     "str",
-                    "dict[, ]",
-                    "Union[pathlib.Path, str]",
+                    "Dict",
+                    "Union[pathlib.Path,str]",
                     "path.Path",
-                    "pathlib.Path",
-                    "dict"
+                    "pathlib.Path"
                 ],
                 "encoded_path": [
                     "str",
-                    "dict[, ]",
-                    "Union[pathlib.Path, str]",
+                    "Dict",
+                    "Union[pathlib.Path,str]",
                     "path.Path",
-                    "pathlib.Path",
-                    "dict"
+                    "pathlib.Path"
                 ]
             }
         },
@@ -419,25 +518,22 @@
             ],
             "arguments": {
                 "config": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "pathlib.Path"
                 ],
                 "src": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "pathlib.Path"
                 ],
                 "dst": [
                     "str",
                     "None",
+                    "List",
                     "Optional[str]",
-                    "list[]",
-                    "typing.BinaryIO",
-                    "Union[pathlib.Path, str]",
+                    "BinaryIO",
+                    "Union[pathlib.Path,str]",
                     "pathlib.Path",
-                    "list",
-                    "Union[str, BinaryIO]"
+                    "Union[str,BinaryIO]"
                 ]
             }
         },
@@ -470,10 +566,8 @@
             ],
             "arguments": {
                 "config": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -486,10 +580,9 @@
             "arguments": {
                 "config": [
                     "bool",
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ]
             }
@@ -502,16 +595,14 @@
             ],
             "arguments": {
                 "ctx": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.Context",
-                    "List[str]"
+                    "click.Context"
                 ],
                 "config": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.Context",
-                    "List[str]"
+                    "click.Context"
                 ]
             }
         },
@@ -524,40 +615,76 @@
             "arguments": {
                 "self": [],
                 "cloud_drive_tools_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "cerulean.Path"
                 ],
                 "data_dir": [
-                    "pathlib.Path"
+                    "str",
+                    "bool",
+                    "pathlib.Path",
+                    "cerulean.Path",
+                    "pathlib.PurePath"
                 ],
                 "days_to_keep_local": [
-                    "float"
+                    "str",
+                    "Dict",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "encfs6_config": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "encfs_pass": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "max_retries_remote_mount": [
-                    "int"
+                    "bool",
+                    "str",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "mount_base": [
-                    "pathlib.Path"
+                    "bytes",
+                    "pathlib.Path",
+                    "dict"
                 ],
                 "path_on_cloud_drive": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ],
                 "rclone": [
-                    "pathlib.Path"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path,None]"
                 ],
                 "rclone_config_path": [
-                    "pathlib.Path"
+                    "bool",
+                    "str",
+                    "pathlib.Path",
+                    "cerulean.Path"
                 ],
                 "rclone_remote": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "rclone_verbose": [
-                    "bool"
+                    "str",
+                    "Dict",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ]
             }
         }

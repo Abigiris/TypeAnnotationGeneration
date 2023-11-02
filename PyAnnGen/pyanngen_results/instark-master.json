@@ -20,12 +20,18 @@
             "name": "parse",
             "location": 46,
             "return": [
-                "Callable"
+                "Callable",
+                "bool",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "domain": [
-                    "Sequence[Union[(str, Tuple[(str, str, Union[(float, list, str, tuple)])])]]"
+                    "List[str]",
+                    "str",
+                    "float",
+                    "int",
+                    "Container"
                 ]
             }
         },
@@ -33,12 +39,16 @@
             "name": "_default_join",
             "location": 70,
             "return": [
-                "List[Callable]"
+                "Callable[[Mapping], T]",
+                "int",
+                "float"
             ],
             "arguments": {
                 "self": [],
                 "stack": [
-                    "List[Callable]"
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -46,12 +56,15 @@
             "name": "_parse_term",
             "location": 80,
             "return": [
-                "Callable"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "self": [],
                 "term_tuple": [
-                    "Tuple[(str, str, Union[(float, list, str, tuple)])]"
+                    "str",
+                    "Callable[[str], T]",
+                    "Optional[Union[Any, str]]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -66,7 +79,8 @@
                     "str"
                 ],
                 "pattern": [
-                    "str"
+                    "str",
+                    "Union[str, bytes]"
                 ],
                 "insensitive": [
                     "bool",
@@ -74,9 +88,9 @@
                     "ics.types.ExtraParams",
                     "ics.types.DatetimeLike",
                     "int",
-                    "Tuple[str, int]",
+                    "Tuple[str,int]",
                     "complex",
-                    "list"
+                    "List"
                 ]
             }
         }
@@ -86,12 +100,14 @@
             "name": "__call__",
             "location": 10,
             "return": [
-                "Callable"
+                "Callable",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "cls": [
-                    "Callable"
+                    "Callable",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -99,12 +115,13 @@
             "name": "__call__",
             "location": 16,
             "return": [
-                "Callable"
+                "mypy.types.Instance"
             ],
             "arguments": {
                 "self": [],
                 "cls": [
-                    "Callable"
+                    "Callable",
+                    "Iterable[str]"
                 ]
             }
         }
@@ -121,7 +138,10 @@
             "arguments": {
                 "self": [],
                 "user": [
-                    "instark.application.domain.common.auth.user.User"
+                    "dict",
+                    "Dict[str, Any]",
+                    "str",
+                    "multinedb.models.user.User"
                 ]
             }
         },
@@ -140,7 +160,7 @@
             "name": "roles",
             "location": 25,
             "return": [
-                "typing.List[builtins.str]",
+                "List[str]",
                 "None"
             ],
             "arguments": {
@@ -151,13 +171,17 @@
             "name": "validate_roles",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "required_roles": [
-                    "List[str]"
+                    "None",
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -181,7 +205,7 @@
             "arguments": {
                 "self": [],
                 "user": [
-                    "instark.application.domain.common.auth.user.User"
+                    "str"
                 ]
             }
         },
@@ -221,7 +245,9 @@
             "arguments": {
                 "self": [],
                 "required_roles": [
-                    "List[str]"
+                    "None",
+                    "str",
+                    "bytes"
                 ]
             }
         }
@@ -273,7 +299,11 @@
             "arguments": {
                 "self": [],
                 "tenant": [
-                    "instark.application.domain.common.tenancy.tenant.Tenant"
+                    "bool",
+                    "List[Dict[str, int]]",
+                    "dict",
+                    "str",
+                    "List[Dict[str, Any]]"
                 ]
             }
         },
@@ -322,7 +352,9 @@
             "arguments": {
                 "self": [],
                 "tenant": [
-                    "instark.application.domain.common.tenancy.tenant.Tenant"
+                    "str",
+                    "int",
+                    "Set[str]"
                 ]
             }
         },
@@ -396,18 +428,19 @@
             "name": "send",
             "location": 6,
             "return": [
-                "str"
+                "str",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "locator": [
-                    "str"
+                    "Callable"
                 ],
                 "title": [
-                    "str"
+                    "Callable"
                 ],
                 "content": [
-                    "str"
+                    "Callable"
                 ]
             }
         },
@@ -415,7 +448,8 @@
             "name": "broadcast",
             "location": 10,
             "return": [
-                "str"
+                "str",
+                "None"
             ],
             "arguments": {
                 "self": [],
@@ -434,15 +468,20 @@
             "name": "subscribe",
             "location": 14,
             "return": [
-                "bool"
+                "bool",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "code": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]"
                 ],
                 "locator": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]"
                 ]
             }
         }
@@ -457,9 +496,9 @@
             "arguments": {
                 "self": [],
                 "response": [
-                    "typing.Text",
+                    "Text",
                     "List[dict]",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -467,18 +506,21 @@
             "name": "send",
             "location": 13,
             "return": [
-                "str"
+                "bytes",
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "locator": [
+                    "bytes",
+                    "int",
                     "str"
                 ],
                 "title": [
-                    "str"
+                    "Callable"
                 ],
                 "content": [
-                    "str"
+                    "Callable"
                 ]
             }
         },
@@ -486,12 +528,14 @@
             "name": "broadcast",
             "location": 17,
             "return": [
-                "str"
+                "bytes",
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "code": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "title": [
                     "str"
@@ -510,10 +554,12 @@
             "arguments": {
                 "self": [],
                 "code": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "locator": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -529,16 +575,19 @@
             "arguments": {
                 "self": [],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "int",
+                    "str"
                 ],
                 "channel_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.ChannelRepository"
+                    "int"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "int",
+                    "str"
                 ],
                 "subscription_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.SubscriptionRepository"
+                    "int",
+                    "str"
                 ]
             }
         }
@@ -554,16 +603,24 @@
             "arguments": {
                 "self": [],
                 "channel_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.ChannelRepository"
+                    "int",
+                    "ebl.corpus.domain.texChapter",
+                    "Dict[str, str]"
                 ],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "float",
+                    "bool",
+                    "int"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "float",
+                    "bool",
+                    "int"
                 ],
                 "delivery_service": [
-                    "instark.application.domain.services.delivery_service.DeliveryService"
+                    "float",
+                    "bool",
+                    "int"
                 ]
             }
         }
@@ -578,16 +635,24 @@
             "arguments": {
                 "self": [],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "subscription_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.SubscriptionRepository"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "delivery_service": [
-                    "instark.application.domain.services.delivery_service.DeliveryService"
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         }
@@ -602,10 +667,16 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "Callable",
+                    "str",
+                    "List[Dict]",
+                    "bool"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "Callable",
+                    "str",
+                    "List[Dict]",
+                    "bool"
                 ]
             }
         },
@@ -618,7 +689,7 @@
             "arguments": {
                 "self": [],
                 "tenant_dict": [
-                    "Dict[(str, Any)]"
+                    "Iterable[Hashable]"
                 ]
             }
         },
@@ -641,7 +712,12 @@
             "arguments": {
                 "self": [],
                 "user_dict": [
-                    "Dict[(str, Any)]"
+                    "bool",
+                    "Optional[int]",
+                    "User",
+                    "domain.common.RecordList",
+                    "List[domain.models.User]",
+                    "src.domain.entity.user_persistence.UserPersistence"
                 ]
             }
         }
@@ -656,19 +732,29 @@
             "arguments": {
                 "self": [],
                 "channel_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.ChannelRepository"
+                    "int",
+                    "ebl.corpus.domain.texChapter",
+                    "Dict[str, str]"
                 ],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "float",
+                    "bool",
+                    "int"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "float",
+                    "bool",
+                    "int"
                 ],
                 "subscription_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.SubscriptionRepository"
+                    "float",
+                    "bool",
+                    "int"
                 ],
                 "delivery_service": [
-                    "instark.application.domain.services.delivery_service.DeliveryService"
+                    "float",
+                    "bool",
+                    "int"
                 ]
             }
         }
@@ -688,13 +774,19 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "parser": [
                     "str",
@@ -722,13 +814,19 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "parser": [
                     "str",
@@ -756,13 +854,19 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "bool",
+                    "str",
+                    "List[str]"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "bool",
+                    "str",
+                    "List[str]"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "bool",
+                    "str",
+                    "List[str]"
                 ],
                 "parser": [
                     "bool",
@@ -780,13 +884,19 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "str",
+                    "List[str]",
+                    "TextIO"
                 ],
                 "parser": [
                     "str",
@@ -807,10 +917,19 @@
             "arguments": {
                 "self": [],
                 "settings": [
-                    "List[Dict[(str, Any)]]"
+                    "Optional[bool]",
+                    "bool",
+                    "Optional[Any]",
+                    "str",
+                    "Optional[str]"
                 ],
                 "default": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[bool]",
+                    "int",
+                    "Optional[int]",
+                    "bool"
                 ]
             }
         }
@@ -825,10 +944,15 @@
             "arguments": {
                 "self": [],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "List[str]",
+                    "str",
+                    "int"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "List[float]",
+                    "int",
+                    "bool",
+                    "Optional[List[Any]]"
                 ]
             }
         },
@@ -855,7 +979,10 @@
             "arguments": {
                 "self": [],
                 "method": [
-                    "Callable"
+                    "str",
+                    "dict",
+                    "Iterable[str]",
+                    "tuple"
                 ]
             }
         },
@@ -993,7 +1120,8 @@
             "arguments": {
                 "self": [],
                 "dsn": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1026,10 +1154,19 @@
             "arguments": {
                 "self": [],
                 "statement": [
-                    "str"
+                    "str",
+                    "Sequence[Any]",
+                    "Dict[str, int]",
+                    "type",
+                    "Optional[Iterable[Any]]"
                 ],
                 "parameters": [
-                    "Sequence"
+                    "List",
+                    "str",
+                    "Sequence[Any]",
+                    "Dict[str,int]",
+                    "Type",
+                    "Optional[Iterable[Any]]"
                 ]
             }
         },
@@ -1037,15 +1174,24 @@
             "name": "select",
             "location": 31,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "statement": [
-                    "str"
+                    "str",
+                    "Sequence[Any]",
+                    "Dict[str, int]",
+                    "type",
+                    "Optional[Iterable[Any]]"
                 ],
                 "parameters": [
-                    "Sequence"
+                    "List",
+                    "str",
+                    "Sequence[Any]",
+                    "Dict[str,int]",
+                    "Type",
+                    "Optional[Iterable[Any]]"
                 ]
             }
         }
@@ -1066,12 +1212,15 @@
             "name": "get_tenant",
             "location": 11,
             "return": [
-                "Dict[(str, Any)]"
+                "str",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "tenant_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "transfer.models.TopicID"
                 ]
             }
         },
@@ -1079,12 +1228,17 @@
             "name": "search_tenants",
             "location": 14,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "dict",
+                "zam_repondeur.models.Lecture",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "domain": [
-                    "list"
+                    "str",
+                    "Union[List[str], Tuple[str], None]",
+                    "List[str]",
+                    "Match"
                 ]
             }
         },
@@ -1092,12 +1246,17 @@
             "name": "ensure_tenant",
             "location": 17,
             "return": [
-                "Dict[(str, Any)]"
+                "str",
+                "Callable",
+                "Mapping[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "tenant_dict": [
-                    "Dict[(str, Any)]"
+                    "Optional[str]",
+                    "bool",
+                    "str",
+                    "Callable[[], Any]"
                 ]
             }
         }
@@ -1112,10 +1271,16 @@
             "arguments": {
                 "self": [],
                 "connection": [
-                    "instark.core.suppliers.common.connection.schema_connection.SchemaConnection"
+                    "str",
+                    "Callable",
+                    "dict",
+                    "Callable[[str], None]"
                 ],
                 "zones": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Callable",
+                    "dict",
+                    "Callable[[str], None]"
                 ]
             }
         }
@@ -1125,12 +1290,14 @@
             "name": "get_tenant",
             "location": 7,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[str,Any]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "tenant_id": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1138,12 +1305,17 @@
             "name": "search_tenants",
             "location": 11,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "List[Dict[str,Any]]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "domain": [
-                    "list"
+                    "list",
+                    "int",
+                    "bool",
+                    "T",
+                    "str"
                 ]
             }
         },
@@ -1151,12 +1323,15 @@
             "name": "ensure_tenant",
             "location": 15,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[str,Any]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "tenant_dict": [
-                    "Dict[(str, Any)]"
+                    "Dict[str, Any]",
+                    "Exception",
+                    "int"
                 ]
             }
         }
@@ -1172,10 +1347,16 @@
             "arguments": {
                 "self": [],
                 "tenant": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "List[str]"
                 ],
                 "version": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "List[str]"
                 ]
             }
         },
@@ -1188,10 +1369,16 @@
             "arguments": {
                 "self": [],
                 "tenant": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "List[str]"
                 ],
                 "version": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "List[str]"
                 ]
             }
         }
@@ -1206,10 +1393,14 @@
             "arguments": {
                 "self": [],
                 "zones": [
-                    "Dict[(str, str)]"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "tenant_supplier": [
-                    "instark.core.suppliers.common.tenancy.tenant_supplier.TenantSupplier"
+                    "int",
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -1222,10 +1413,15 @@
             "arguments": {
                 "self": [],
                 "tenant": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Dict"
                 ],
                 "version": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bool",
+                    "Optional[Callable[[None],None]]"
                 ]
             }
         }
@@ -1241,7 +1437,10 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "Dict[(str, Any)]"
+                    "sphinx.config.Config",
+                    "model.Config",
+                    "virgene.config.Config",
+                    "config.Config"
                 ]
             }
         },
@@ -1294,13 +1493,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1313,13 +1518,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1332,13 +1543,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1351,13 +1568,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1375,24 +1598,25 @@
             "name": "registration_manager",
             "location": 80,
             "return": [
-                "instark.application.managers.registration_manager.RegistrationManager"
+                "int",
+                "Sequence[str]"
             ],
             "arguments": {
                 "self": [],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "bool"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "bool"
                 ],
                 "subscription_manager": [
-                    "instark.application.domain.repositories.memory_model_repositories.SubscriptionRepository"
+                    "bool"
                 ],
                 "transaction_manager": [
-                    "instark.application.domain.common.transaction.TransactionManager"
+                    "bool"
                 ],
                 "delivery_service": [
-                    "instark.application.domain.services.delivery_service.DeliveryService"
+                    "bool"
                 ]
             }
         },
@@ -1400,27 +1624,29 @@
             "name": "subscription_manager",
             "location": 91,
             "return": [
-                "instark.application.managers.subscription_manager.SubscriptionManager"
+                "float",
+                "int",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "channel_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.ChannelRepository"
+                    "taskiinfrastructure.data.json.repositories.task_repository.JsonTaskRepository"
                 ],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "taskiinfrastructure.data.json.repositories.task_repository.JsonTaskRepository"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "taskiinfrastructure.data.json.repositories.task_repository.JsonTaskRepository"
                 ],
                 "subscription_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.SubscriptionRepository"
+                    "taskiinfrastructure.data.json.repositories.task_repository.JsonTaskRepository"
                 ],
                 "delivery_service": [
-                    "instark.application.domain.services.delivery_service.DeliveryService"
+                    "taskiinfrastructure.data.json.repositories.task_repository.JsonTaskRepository"
                 ],
                 "transaction_manager": [
-                    "instark.application.domain.common.transaction.TransactionManager"
+                    "taskiinfrastructure.data.json.repositories.task_repository.JsonTaskRepository"
                 ]
             }
         },
@@ -1428,24 +1654,46 @@
             "name": "notification_manager",
             "location": 104,
             "return": [
-                "instark.application.managers.notification_manager.NotificationManager"
+                "float",
+                "int",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "channel_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.ChannelRepository"
+                    "application.domain.repositories.UserRepository",
+                    "application.domain.repositories.RoleRepository",
+                    "application.domain.repositories.CredentialRepository",
+                    "application.domain.repositories.DominionRepository",
+                    "application.domain.repositories.RankingRepository"
                 ],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "application.domain.repositories.UserRepository",
+                    "application.domain.repositories.RoleRepository",
+                    "application.domain.repositories.CredentialRepository",
+                    "application.domain.repositories.DominionRepository",
+                    "application.domain.repositories.RankingRepository"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "application.domain.repositories.UserRepository",
+                    "application.domain.repositories.RoleRepository",
+                    "application.domain.repositories.CredentialRepository",
+                    "application.domain.repositories.DominionRepository",
+                    "application.domain.repositories.RankingRepository"
                 ],
                 "delivery_service": [
-                    "instark.application.domain.services.delivery_service.DeliveryService"
+                    "application.domain.repositories.UserRepository",
+                    "application.domain.repositories.RoleRepository",
+                    "application.domain.repositories.CredentialRepository",
+                    "application.domain.repositories.DominionRepository",
+                    "application.domain.repositories.RankingRepository"
                 ],
                 "transaction_manager": [
-                    "instark.application.domain.common.transaction.TransactionManager"
+                    "application.domain.repositories.UserRepository",
+                    "application.domain.repositories.RoleRepository",
+                    "application.domain.repositories.CredentialRepository",
+                    "application.domain.repositories.DominionRepository",
+                    "application.domain.repositories.RankingRepository"
                 ]
             }
         },
@@ -1458,10 +1706,16 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.TenantProvider",
+                    "bool",
+                    "str"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.TenantProvider",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -1469,24 +1723,30 @@
             "name": "standard_instark_informer",
             "location": 123,
             "return": [
-                "instark.application.informers.instark_informer.StandardInstarkInformer"
+                "int",
+                "Sequence[str]"
             ],
             "arguments": {
                 "self": [],
                 "device_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.DeviceRepository"
+                    "int",
+                    "bool"
                 ],
                 "channel_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.ChannelRepository"
+                    "int",
+                    "bool"
                 ],
                 "message_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.MessageRepository"
+                    "int",
+                    "bool"
                 ],
                 "subscription_repository": [
-                    "instark.application.domain.repositories.memory_model_repositories.SubscriptionRepository"
+                    "int",
+                    "bool"
                 ],
                 "transaction_manager": [
-                    "instark.application.domain.common.transaction.TransactionManager"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1521,7 +1781,10 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "Dict[(str, Any)]"
+                    "pricemonitor.config.Config",
+                    "core.Config",
+                    "core.common.Config",
+                    "Mapping[str, Any]"
                 ]
             }
         },
@@ -1554,13 +1817,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1573,13 +1842,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1592,13 +1867,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1611,13 +1892,19 @@
             "arguments": {
                 "self": [],
                 "query_parser": [
-                    "instark.application.domain.common.query_parser.QueryParser"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "application.domain.common.TenantProvider",
+                    "application.domain.common.AuthProvider",
+                    "application.domain.common.QueryParser"
                 ]
             }
         },
@@ -1642,7 +1929,10 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "Dict[(str, Any)]"
+                    "dict",
+                    "ezscrape.scraping.core.ScrapeConfig",
+                    "core.common.Config",
+                    "pricemonitor.config.Config"
                 ]
             }
         },
@@ -1652,7 +1942,7 @@
             "return": [
                 "SqlParser",
                 "Optional[int]",
-                "Dict[int, dict]",
+                "Dict[int,dict]",
                 "Optional[Iterable[int]]",
                 "Optional[static_frame.core.util.PathSpecifierOrFileLike]",
                 "bool"
@@ -1680,10 +1970,22 @@
             "arguments": {
                 "self": [],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "bool",
+                    "TextIO",
+                    "Dict[str, str]",
+                    "str",
+                    "dict",
+                    "List[str]",
+                    "int"
                 ],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "bool",
+                    "TextIO",
+                    "Dict[str, str]",
+                    "str",
+                    "dict",
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -1696,13 +1998,22 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "Callable",
+                    "bool",
+                    "Optional[Any]",
+                    "src.main.core.repositories.window_repository.WindowRepository"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "Callable",
+                    "bool",
+                    "Optional[Any]",
+                    "src.main.core.repositories.window_repository.WindowRepository"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "Callable",
+                    "bool",
+                    "Optional[Any]",
+                    "src.main.core.repositories.window_repository.WindowRepository"
                 ],
                 "sql_parser": [
                     "Callable",
@@ -1721,13 +2032,13 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "bool"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "bool"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "bool"
                 ],
                 "sql_parser": [
                     "bool"
@@ -1743,13 +2054,13 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "bool"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "bool"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "bool"
                 ],
                 "sql_parser": [
                     "bool"
@@ -1765,13 +2076,13 @@
             "arguments": {
                 "self": [],
                 "tenant_provider": [
-                    "instark.application.domain.common.tenancy.tenant_provider.TenantProvider"
+                    "bool"
                 ],
                 "auth_provider": [
-                    "instark.application.domain.common.auth.auth_provider.AuthProvider"
+                    "bool"
                 ],
                 "connection_manager": [
-                    "instark.core.data.sql.connection.connection_manager.ConnectionManager"
+                    "bool"
                 ],
                 "sql_parser": [
                     "bool"
@@ -1797,7 +2108,10 @@
             "arguments": {
                 "self": [],
                 "tenant_supplier": [
-                    "instark.core.suppliers.common.tenancy.tenant_supplier.TenantSupplier"
+                    "str",
+                    "Dict[str, Tuple[str, str]]",
+                    "jgikbase.idmapping.core.user.AuthsourceID",
+                    "jgikbase.idmapping.core.user.User.name"
                 ]
             }
         },
@@ -1829,6 +2143,7 @@
             "arguments": {
                 "self": [],
                 "certificate_path": [
+                    "List[int]",
                     "str"
                 ]
             }
@@ -1837,18 +2152,16 @@
             "name": "send",
             "location": 10,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
                 "self": [],
-                "locator": [
-                    "str"
-                ],
-                "title": [
-                    "str"
-                ],
+                "locator": [],
+                "title": [],
                 "content": [
-                    "str"
+                    "List[str]"
                 ]
             }
         },
@@ -1856,18 +2169,24 @@
             "name": "broadcast",
             "location": 20,
             "return": [
+                "int",
+                "Callable",
                 "str"
             ],
             "arguments": {
                 "self": [],
                 "code": [
-                    "str"
+                    "str",
+                    "Callable"
                 ],
                 "title": [
-                    "str"
+                    "str",
+                    "Callable"
                 ],
                 "content": [
-                    "str"
+                    "str",
+                    "TextIO",
+                    "bytes"
                 ]
             }
         },
@@ -1880,10 +2199,12 @@
             "arguments": {
                 "self": [],
                 "code": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ],
                 "locator": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         }
@@ -1955,7 +2276,9 @@
             ],
             "arguments": {
                 "description": [
-                    "_T0"
+                    "str",
+                    "Exception",
+                    "bool"
                 ],
                 "schema": [
                     "str",
@@ -1963,7 +2286,10 @@
                     "bool"
                 ],
                 "status": [
-                    "_T2"
+                    "Text",
+                    "str",
+                    "Exception",
+                    "bool"
                 ]
             }
         }
@@ -1978,7 +2304,10 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "Dict[(str, Any)]"
+                    "sphinx.config.Config",
+                    "model.Config",
+                    "virgene.config.Config",
+                    "config.Config"
                 ],
                 "injector": [
                     "dict",
@@ -2037,11 +2366,18 @@
             "name": "parse_domain",
             "location": 6,
             "return": [
-                "list"
+                "List",
+                "int",
+                "str",
+                "Mapping[str,Sequence[str]]",
+                "bool"
             ],
             "arguments": {
                 "filter": [
-                    "str"
+                    "Mapping",
+                    "Callable",
+                    "Dict[str, Any]",
+                    "Optional[Dict[str, str]]"
                 ]
             }
         },
@@ -2053,7 +2389,9 @@
             ],
             "arguments": {
                 "value": [
-                    "str"
+                    "str",
+                    "Union[str, bytes]",
+                    "bytes"
                 ]
             }
         }
@@ -2072,7 +2410,9 @@
             "name": "authenticate_middleware_factory",
             "location": 9,
             "return": [
-                "Callable"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "injector": [
@@ -2092,7 +2432,10 @@
             ],
             "arguments": {
                 "headers": [
-                    "Dict[(str, Any)]"
+                    "Dict[str, Any]",
+                    "dict",
+                    "aiohttp.web.Request",
+                    "bool"
                 ]
             }
         }
@@ -2102,7 +2445,9 @@
             "name": "errors_middleware_factory",
             "location": 9,
             "return": [
-                "Callable"
+                "str",
+                "int",
+                "set"
             ],
             "arguments": {
                 "injector": [
@@ -2119,7 +2464,7 @@
             "name": "middlewares",
             "location": 7,
             "return": [
-                "List[Callable]"
+                "list"
             ],
             "arguments": {
                 "injector": [
@@ -2192,19 +2537,41 @@
             "arguments": {
                 "self": [],
                 "schema": [
-                    "type"
+                    "Optional[str]",
+                    "bool",
+                    "int",
+                    "Optional[List[Any]]"
                 ],
                 "count_handler": [
-                    "Callable"
+                    "Callable",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "Optional[Callable[..., Any]]",
+                    "bytes"
                 ],
                 "search_handler": [
-                    "Callable"
+                    "Callable",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "Optional[Callable[..., Any]]",
+                    "bytes"
                 ],
                 "add_handler": [
-                    "Callable"
+                    "bool",
+                    "str",
+                    "Optional[List[str]]",
+                    "float",
+                    "List[str]"
                 ],
                 "delete_handler": [
-                    "Callable"
+                    "Callable",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "Optional[Callable[..., Any]]",
+                    "bytes"
                 ]
             }
         }
@@ -2431,7 +2798,7 @@
             "return": [
                 "MemoryTransactionManager",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "Pattern",
                 "search.domain.Phrase"
             ],
@@ -2621,7 +2988,8 @@
             ],
             "arguments": {
                 "user": [
-                    "instark.application.domain.common.auth.user.User"
+                    "authark.application.domain.common.User",
+                    "User"
                 ]
             }
         },
@@ -2633,7 +3001,8 @@
             ],
             "arguments": {
                 "user": [
-                    "instark.application.domain.common.auth.user.User"
+                    "authark.application.domain.common.User",
+                    "Optional[str]"
                 ]
             }
         },
@@ -2655,7 +3024,7 @@
                 "StandardTenantProvider",
                 "int",
                 "bytes",
-                "tuple"
+                "Tuple"
             ],
             "arguments": {}
         }
@@ -2676,9 +3045,7 @@
                 "None"
             ],
             "arguments": {
-                "tenant": [
-                    "instark.application.domain.common.tenancy.tenant.Tenant"
-                ]
+                "tenant": []
             }
         },
         "test_tenant_default_attributes": {
@@ -2688,9 +3055,7 @@
                 "None"
             ],
             "arguments": {
-                "tenant": [
-                    "instark.application.domain.common.tenancy.tenant.Tenant"
-                ]
+                "tenant": []
             }
         },
         "test_tenant_attributes_from_dict": {
@@ -2814,8 +3179,8 @@
             "return": [
                 "Device",
                 "str",
-                "dict",
-                "Dict[str, Any]",
+                "Dict",
+                "Dict[str,Any]",
                 "bool"
             ],
             "arguments": {}
@@ -2849,12 +3214,12 @@
             "location": 6,
             "return": [
                 "Subscription",
-                "Dict[str, Dict[str, int]]",
+                "Dict[str,Dict[str,int]]",
                 "bool",
                 "models.seat_group.SeatGroup",
                 "ticketing.models.ticket_bundle.TicketBundle",
                 "viewer.models.Gallery",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "zerver.models.Realm"
             ],
             "arguments": {}
@@ -3125,7 +3490,7 @@
             "location": 95,
             "return": [
                 "StandardInstarkInformer",
-                "Dict[str, int]",
+                "Dict[str,int]",
                 "Optional[bool]",
                 "Optional[int]",
                 "str"
@@ -3296,7 +3661,7 @@
             "return": [
                 "NotificationManager",
                 "Optional[int]",
-                "Dict[str, int]",
+                "Dict[str,int]",
                 "float",
                 "str",
                 "int"
@@ -3328,7 +3693,10 @@
             ],
             "arguments": {
                 "notification_manager": [
-                    "instark.application.managers.notification_manager.NotificationManager"
+                    "instark.application.managers.SubscriptionManager",
+                    "instark.application.managers.NotificationManager",
+                    "pyats.topology.Device",
+                    "common.ComponentFactory"
                 ]
             }
         }
@@ -3367,7 +3735,10 @@
             ],
             "arguments": {
                 "registration_manager": [
-                    "instark.application.managers.registration_manager.RegistrationManager"
+                    "instark.application.managers.SubscriptionManager",
+                    "instark.application.managers.NotificationManager",
+                    "pyats.topology.Device",
+                    "common.ComponentFactory"
                 ]
             }
         }
@@ -3391,7 +3762,7 @@
                 "StandardTenantProvider",
                 "int",
                 "bytes",
-                "tuple"
+                "Tuple"
             ],
             "arguments": {}
         },
@@ -3402,8 +3773,8 @@
                 "SessionManager",
                 "str",
                 "Optional[int]",
-                "Mapping[str, Any]",
-                "dict"
+                "Mapping[str,Any]",
+                "Dict"
             ],
             "arguments": {
                 "tenant_provider": [
@@ -3428,7 +3799,8 @@
             ],
             "arguments": {
                 "session_manager": [
-                    "instark.application.managers.session_manager.SessionManager"
+                    "instark.application.managers.SessionManager",
+                    "Callable"
                 ]
             }
         },
@@ -3440,7 +3812,8 @@
             ],
             "arguments": {
                 "session_manager": [
-                    "instark.application.managers.session_manager.SessionManager"
+                    "instark.application.managers.SessionManager",
+                    "bool"
                 ]
             }
         },
@@ -3452,7 +3825,7 @@
             ],
             "arguments": {
                 "session_manager": [
-                    "instark.application.managers.session_manager.SessionManager"
+                    "instark.application.managers.SessionManager"
                 ]
             }
         },
@@ -3464,7 +3837,8 @@
             ],
             "arguments": {
                 "session_manager": [
-                    "instark.application.managers.session_manager.SessionManager"
+                    "instark.application.managers.SessionManager",
+                    "str"
                 ]
             }
         }
@@ -3511,7 +3885,10 @@
             ],
             "arguments": {
                 "subscription_manager": [
-                    "instark.application.managers.subscription_manager.SubscriptionManager"
+                    "instark.application.managers.SubscriptionManager",
+                    "instark.application.managers.NotificationManager",
+                    "pyats.topology.Device",
+                    "common.ComponentFactory"
                 ]
             }
         }
@@ -3526,7 +3903,7 @@
             "location": 8,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {}
         },
@@ -3534,7 +3911,6 @@
             "name": "mock_pool",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3559,7 +3935,7 @@
             "location": 60,
             "return": [
                 "DefaultConnectionManager",
-                "list",
+                "List",
                 "bool",
                 "int"
             ],
@@ -3580,7 +3956,6 @@
             "name": "__init__",
             "location": 18,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3591,7 +3966,6 @@
             "name": "__init__",
             "location": 33,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3790,7 +4164,6 @@
             "name": "driver_connection",
             "location": 8,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3890,7 +4263,7 @@
             "return": [
                 "MockDriverConnection",
                 "str",
-                "Dict[str, Sequence[str]]"
+                "Dict[str,Sequence[str]]"
             ],
             "arguments": {
                 "dsn": [
@@ -3903,7 +4276,6 @@
             "name": "__init__",
             "location": 10,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3919,7 +4291,6 @@
             "name": "execute",
             "location": 15,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3942,7 +4313,7 @@
             "name": "fetchall",
             "location": 19,
             "return": [
-                "list",
+                "List",
                 "int",
                 "Callable",
                 "str"
@@ -3955,7 +4326,6 @@
             "name": "close",
             "location": 22,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3966,7 +4336,6 @@
             "name": "__init__",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3995,7 +4364,6 @@
             "name": "commit",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4006,7 +4374,6 @@
             "name": "close",
             "location": 40,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4105,7 +4472,7 @@
             "name": "test_schema_migration_supplier_migrate",
             "location": 36,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "schema_migration_supplier": [
@@ -4132,7 +4499,6 @@
             "name": "mock_sql_migrate",
             "location": 41,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4205,7 +4571,6 @@
             "name": "mock_initialize_app",
             "location": 18,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4220,7 +4585,6 @@
             "name": "Certificate",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4236,7 +4600,6 @@
             "name": "Notification",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4253,7 +4616,6 @@
             "name": "Message",
             "location": 40,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4274,7 +4636,6 @@
             "name": "send",
             "location": 44,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4291,7 +4652,6 @@
             "name": "subscribe_to_topic",
             "location": 48,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4327,7 +4687,7 @@
             "name": "headers",
             "location": 25,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "Optional[str]",
                 "int",
                 "Optional[Any]"
@@ -4407,7 +4767,6 @@
             "name": "get",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4418,7 +4777,6 @@
             "name": "post",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4463,7 +4821,6 @@
             "name": "__init__",
             "location": 42,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

@@ -12,7 +12,9 @@
             "arguments": {
                 "self": [],
                 "extractor": [
-                    "py_codegen.type_extractor.type_extractor.TypeExtractor"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -20,12 +22,16 @@
             "name": "get_identifier",
             "location": 33,
             "return": [
-                "str"
+                "Text",
+                "str",
+                "Optional[int]"
             ],
             "arguments": {
                 "self": [],
                 "node": [
-                    "Union[(type, py_codegen.type_extractor.nodes.BaseNodeType.BaseNodeType)]"
+                    "None",
+                    "Optional[mypy.nodes.Node]",
+                    "py_type_extractor.type_extractor.nodes.BaseNodeType.NodeType"
                 ]
             }
         },
@@ -44,7 +50,7 @@
             "location": 73,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {
                 "self": [],
@@ -63,25 +69,22 @@
             "arguments": {
                 "self": [],
                 "node_dict": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, float]",
-                    "dict[str, float]",
-                    "Dict[int, Dict[str, Any]]",
-                    "dict[int, dict[str, typing.Any]]",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "Dict[str, py_type_extractor.type_extractor.nodes.BaseNodeType.NodeType]",
-                    "dict[str, N]",
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[str, dict[str, typing.Any]]"
+                    "Dict",
+                    "Dict[str,float]",
+                    "Dict[str,str]",
+                    "Dict[int,Dict[str,Any]]",
+                    "Dict[int,dict[str,Any]]",
+                    "Dict[str,py_type_extractor.type_extractor.nodes.BaseNodeType.NodeType]",
+                    "Dict[str,N]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]"
                 ],
                 "ending": [
-                    "typing.Text",
+                    "Text",
                     "str",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "List[str]",
-                    "dict"
+                    "Dict"
                 ]
             }
         },
@@ -94,7 +97,10 @@
             "arguments": {
                 "self": [],
                 "class_found": [
-                    "py_codegen.type_extractor.nodes.ClassFound.ClassFound"
+                    "Dict[str,Any]",
+                    "bool",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]"
                 ]
             }
         },
@@ -106,9 +112,7 @@
             ],
             "arguments": {
                 "self": [],
-                "function_found": [
-                    "py_codegen.type_extractor.nodes.FunctionFound.FunctionFound"
-                ]
+                "function_found": []
             }
         },
         "TypescriptConverter.convert_typed_dict_found": {
@@ -120,7 +124,9 @@
             "arguments": {
                 "self": [],
                 "typed_dict_found": [
-                    "py_codegen.type_extractor.nodes.TypedDictFound.TypedDictFound"
+                    "int",
+                    "str",
+                    "mypy.nodes.TypeInfo"
                 ]
             }
         }
@@ -148,13 +154,11 @@
                 "arg1": [
                     "Optional[str]",
                     "str",
+                    "Dict[str,Any]",
                     "Optional[Callable]",
-                    "None",
-                    "Dict[str, Any]",
-                    "typing.Callable[, ]",
                     "List[str]",
-                    "dict[str, typing.Any]",
-                    "list[str]"
+                    "None",
+                    "Callable"
                 ]
             }
         }
@@ -168,7 +172,12 @@
             ],
             "arguments": {
                 "some_input": [
-                    "Optional[str]"
+                    "str",
+                    "int",
+                    "IO[str]",
+                    "IO",
+                    "Optional[bool]",
+                    "None"
                 ]
             }
         }
@@ -182,7 +191,10 @@
             ],
             "arguments": {
                 "a": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Callable[[Any],T]",
+                    "Type[T]"
                 ]
             }
         }
@@ -192,11 +204,21 @@
             "name": "func_with_dict",
             "location": 4,
             "return": [
-                "Dict[(str, int)]"
+                "float",
+                "bool",
+                "Dict[str,int]",
+                "int",
+                "str",
+                "List[str]",
+                "Callable[,object]"
             ],
             "arguments": {
                 "input": [
-                    "Dict[(str, int)]"
+                    "Dict[str,int]",
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "Callable[,object]"
                 ]
             }
         }
@@ -206,11 +228,25 @@
             "name": "func_with_list",
             "location": 4,
             "return": [
-                "List[str]"
+                "bool",
+                "List[str]",
+                "List[int]",
+                "str",
+                "Sequence[int]",
+                "List[tuple[Union[Any,Any]]]",
+                "int",
+                "Dict[str,str]"
             ],
             "arguments": {
                 "input": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "List[tuple[Union[Any,Any]]]",
+                    "List[Tuple[Any,Any]]",
+                    "Dict[str,str]",
+                    "int",
+                    "Union[str,Dict[str,str]]"
                 ]
             }
         }
@@ -220,17 +256,13 @@
             "name": "func_with_typed_dict",
             "location": 23,
             "return": [
-                "dict[typing.Text, typing.Union[int,SomeClass]]",
-                "str",
-                "bool",
-                "Union[bytes, bytearray]",
-                "bytes"
+                "Dict[(str, Union[(SomeClass, int)])]"
             ],
             "arguments": {
                 "input": [
                     "str",
                     "int",
-                    "Union[int, str]"
+                    "Union[int,str]"
                 ]
             }
         },
@@ -243,7 +275,8 @@
             "arguments": {
                 "self": [],
                 "a": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         }
@@ -271,9 +304,8 @@
             "arguments": {
                 "self": [],
                 "options": [
-                    "typing.Type",
-                    "str",
                     "Type",
+                    "str",
                     "Type[Exception]"
                 ]
             }
@@ -287,9 +319,7 @@
             "arguments": {
                 "self": [],
                 "options": [
-                    "typing.Type",
-                    "Type",
-                    "type"
+                    "Type"
                 ]
             }
         },
@@ -352,7 +382,7 @@
             "name": "add_function",
             "location": 38,
             "return": [
-                "Callable[([Callable], Any)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -505,9 +535,7 @@
         "TypeExtractor.__add_class_found": {
             "name": "__add_class_found",
             "location": 175,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "class_found": [
@@ -573,10 +601,18 @@
             "arguments": {
                 "self": [],
                 "found1": [
-                    "Union[(type, py_codegen.type_extractor.nodes.BaseNodeType.BaseNodeType)]"
+                    "int",
+                    "Dict[str,Any]",
+                    "str",
+                    "Union[str,int]",
+                    "bool"
                 ],
                 "found2": [
-                    "Union[(type, py_codegen.type_extractor.nodes.BaseNodeType.BaseNodeType)]"
+                    "int",
+                    "Dict[str,Any]",
+                    "str",
+                    "Union[str,int]",
+                    "bool"
                 ]
             }
         }
@@ -588,11 +624,16 @@
             "name": "set_fields_extra",
             "location": 22,
             "return": [
-                "Callable[([ClassFound, Dict[(str, Any)]], Any)]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "namespace": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "Optional[int]",
+                    "bool"
                 ]
             }
         },
@@ -600,11 +641,14 @@
             "name": "get_fields_extra",
             "location": 35,
             "return": [
-                "Callable[([ClassFound], Optional[Dict[(str, Any)]])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "namespace": [
-                    "str"
+                    "str",
+                    "Sequence[int]",
+                    "bool",
+                    "Set[str]"
                 ]
             }
         },
@@ -651,11 +695,13 @@
             "name": "set_params_extra",
             "location": 19,
             "return": [
-                "Callable[([FunctionFound, Dict[(str, Any)]], Any)]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "namespace": [
-                    "str"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -663,11 +709,14 @@
             "name": "get_params_extra",
             "location": 33,
             "return": [
-                "Callable[([FunctionFound], Optional[Dict[(str, Any)]])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "namespace": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Dict",
+                    "T"
                 ]
             }
         },
@@ -675,11 +724,15 @@
             "name": "set_return_type_extra",
             "location": 42,
             "return": [
-                "Callable[([FunctionFound, Any], None)]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "namespace": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[tuple[Union[Any,Any]]]",
+                    "List[Tuple[Any,Any]]",
+                    "int"
                 ]
             }
         },
@@ -687,11 +740,13 @@
             "name": "get_return_type_extra",
             "location": 55,
             "return": [
-                "Callable[([FunctionFound], Any)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "namespace": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "bool"
                 ]
             }
         },
@@ -809,7 +864,8 @@
             ],
             "arguments": {
                 "text": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -948,12 +1004,12 @@
             "location": 17,
             "return": [
                 "float",
-                "typing.Callable[, ]",
+                "Callable",
                 "SupportsInt",
-                "list[\"Block\"]",
+                "List[Block]",
                 "int",
-                "dict",
-                "typing.Sequence[str]",
+                "Dict",
+                "Sequence[str]",
                 "str",
                 "ClassFound",
                 "FunctionFound",
@@ -962,10 +1018,19 @@
             ],
             "arguments": {
                 "node": [
-                    "Union[(type, py_codegen.type_extractor.nodes.BaseNodeType.BaseNodeType)]"
+                    "Callable",
+                    "mypy.nodes.Block",
+                    "List[Block]",
+                    "Sequence[str]"
                 ],
                 "func": [
-                    "Callable[([Union[(type, py_codegen.type_extractor.nodes.BaseNodeType.BaseNodeType)]], Union[(type, py_codegen.type_extractor.nodes.BaseNodeType.BaseNodeType)])]"
+                    "Type",
+                    "mypy.nodes.Block",
+                    "Sequence[str]",
+                    "bool",
+                    "List",
+                    "Type[DataclassT]",
+                    "str"
                 ]
             }
         },
@@ -974,7 +1039,7 @@
             "location": 62,
             "return": [
                 "bool",
-                "dict[, ]",
+                "Dict",
                 "str",
                 "ClassFound",
                 "FunctionFound",
@@ -982,7 +1047,10 @@
             ],
             "arguments": {
                 "node": [
-                    "Union[(type, py_codegen.type_extractor.nodes.BaseNodeType.BaseNodeType)]"
+                    "Dict",
+                    "str",
+                    "yaml.nodes.MappingNode",
+                    "py_type_extractor.type_extractor.nodes.BaseNodeType.NodeType"
                 ]
             }
         }

@@ -11,29 +11,6 @@
             }
         }
     },
-    "kconfgen-master/dev/mypy/kconfiglib.py": {
-        "Kconfig.load_config": {
-            "name": "load_config",
-            "location": 19,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "filename": [],
-                "replace": [],
-                "verbose": []
-            }
-        },
-        "Kconfig.write_min_config": {
-            "name": "write_min_config",
-            "location": 21,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "filename": [],
-                "header": []
-            }
-        }
-    },
     "kconfgen-master/src/kconfgen/cli.py": {
         "main": {
             "name": "main",
@@ -49,11 +26,16 @@
             "name": "load_configuration",
             "location": 41,
             "return": [
-                "Configuration"
+                "str",
+                "int"
             ],
             "arguments": {
                 "config": [
-                    "Mapping[(str, Any)]"
+                    "Dict[str, Any]",
+                    "Optional[List[str]]",
+                    "Callable[[str], None]",
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -66,10 +48,14 @@
             ],
             "arguments": {
                 "kernel_sources": [
-                    "pathlib.Path"
+                    "Union[str, bytes]",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "arch": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "int"
                 ]
             }
         },
@@ -77,20 +63,30 @@
             "name": "defconfig_for_target",
             "location": 111,
             "return": [
-                "Profile"
+                "Optional[str]",
+                "Optional[Any]"
             ],
             "arguments": {
                 "config": [
-                    "Configuration"
+                    "Callable[[], None]",
+                    "List[str]",
+                    "Dict[str, Any]",
+                    "bytes",
+                    "List[Dict]"
                 ],
                 "target": [
-                    "str"
+                    "Dict[str, Any]",
+                    "str",
+                    "Optional[str]"
                 ],
                 "root": [
-                    "pathlib.Path"
+                    "str",
+                    "dict"
                 ],
                 "extra_include": [
-                    "List[str]"
+                    "str",
+                    "bytes",
+                    "dict"
                 ]
             }
         },
@@ -98,7 +94,8 @@
             "name": "defconfig_merge",
             "location": 135,
             "return": [
-                "GenerationResult"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "kconf": [
@@ -107,10 +104,16 @@
                     "pathlib.Path"
                 ],
                 "sources": [
-                    "List[pathlib.Path]"
+                    "str",
+                    "Dict[str, Any]",
+                    "Optional[Mapping[str, Any]]"
                 ],
                 "fail_on_unknown": [
-                    "bool"
+                    "int",
+                    "str",
+                    "List[Tuple[int, int]]",
+                    "float",
+                    "Optional[str]"
                 ]
             }
         },
@@ -118,7 +121,9 @@
             "name": "defconfig_split",
             "location": 163,
             "return": [
-                "Stats"
+                "bool",
+                "str",
+                "int"
             ],
             "arguments": {
                 "kconf": [
@@ -129,19 +134,35 @@
                     "Optional[str]"
                 ],
                 "fail_on_unknown": [
-                    "bool"
+                    "bool",
+                    "str"
                 ],
                 "categories": [
-                    "List[str]"
+                    "dict",
+                    "Optional[str]",
+                    "Dict[str, List[Callable]]",
+                    "bool"
                 ],
                 "destdir": [
-                    "pathlib.Path"
+                    "str",
+                    "Sequence",
+                    "dict",
+                    "bytes",
+                    "int",
+                    "os.PathLike"
                 ],
                 "source": [
-                    "TextIO"
+                    "Optional[int]",
+                    "float",
+                    "int"
                 ],
                 "prefix": [
-                    "str"
+                    "str",
+                    "Sequence",
+                    "dict",
+                    "bytes",
+                    "int",
+                    "os.PathLike"
                 ]
             }
         }
@@ -217,13 +238,24 @@
             "arguments": {
                 "self": [],
                 "config": [
-                    "str"
+                    "str",
+                    "Iterable[str]",
+                    "Callable[[str],str]",
+                    "Callable[str,str]"
                 ],
                 "defconfigs": [
-                    "Dict[(str, str)]"
+                    "Dict[str,str]",
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "fragments_dir": [
-                    "str"
+                    "Text",
+                    "pathlib.Path",
+                    "str",
+                    "Optional[str]",
+                    "Union[str,pathlib.Path]",
+                    "Optional[pathlib.Path]"
                 ]
             }
         },
@@ -276,10 +308,12 @@
             "arguments": {
                 "self": [],
                 "sources": [
-                    "List[str]"
+                    "str",
+                    "int"
                 ],
                 "expected": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -332,13 +366,23 @@
             "arguments": {
                 "self": [],
                 "source": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "categories": [
-                    "List[str]"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "expected": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "pathlib.Path",
+                    "Union[str, Callable]"
                 ]
             }
         },

@@ -52,13 +52,28 @@
             "arguments": {
                 "self": [],
                 "value_front": [
-                    "int"
+                    "str",
+                    "Tuple[int,int]",
+                    "bool",
+                    "Tuple[Union[int,int]]",
+                    "float",
+                    "Callable[[T],None]",
+                    "Callable[T,None]"
                 ],
                 "value_behind": [
-                    "int"
+                    "str",
+                    "Tuple[int,int]",
+                    "bool",
+                    "Tuple[Union[int,int]]",
+                    "float",
+                    "Callable[[T],None]",
+                    "Callable[T,None]"
                 ],
                 "exhaustion": [
-                    "bool"
+                    "float",
+                    "bool",
+                    "List[Tuple[int,float]]",
+                    "List[tuple[Union[int,float]]]"
                 ]
             }
         },
@@ -67,7 +82,7 @@
             "location": 30,
             "return": [
                 "bool",
-                "tuple[bool]"
+                "Tuple[bool]"
             ],
             "arguments": {
                 "self": []
@@ -93,9 +108,7 @@
                 "None"
             ],
             "arguments": {
-                "action": [
-                    "flamme_rouge.actions.SelectCyclistAction"
-                ]
+                "action": []
             }
         },
         "_execute_card_action": {
@@ -105,9 +118,7 @@
                 "None"
             ],
             "arguments": {
-                "action": [
-                    "flamme_rouge.actions.SelectCardAction"
-                ]
+                "action": []
             }
         },
         "Phase.next_phase": {
@@ -128,12 +139,8 @@
             ],
             "arguments": {
                 "self": [],
-                "track": [
-                    "flamme_rouge.tracks.Track"
-                ],
-                "teams": [
-                    "Iterable[flamme_rouge.teams.Team]"
-                ]
+                "track": [],
+                "teams": []
             }
         },
         "Game.reset": {
@@ -144,10 +151,10 @@
             ],
             "arguments": {
                 "self": [
-                    "_TGame"
+                    "_TGame@@Game@@"
                 ],
                 "teams": [
-                    "Optional[Iterable[flamme_rouge.teams.Team]]"
+                    "None"
                 ]
             }
         },
@@ -203,42 +210,35 @@
             "name": "_available_actions_start",
             "location": 137,
             "return": [
-                "Tuple[(flamme_rouge.actions.Action, ...)]"
+                "Tuple[(flamme_rouge.actions.SelectStartPositionAction, ...)]"
             ],
             "arguments": {
                 "self": [],
-                "team": [
-                    "flamme_rouge.teams.Team"
-                ]
+                "team": []
             }
         },
         "Game.available_actions": {
             "name": "available_actions",
             "location": 147,
             "return": [
-                "Tuple[(flamme_rouge.actions.Action, ...)]"
+                "tuple[]"
             ],
             "arguments": {
                 "self": [],
-                "team": [
-                    "flamme_rouge.teams.Team"
-                ]
+                "team": []
             }
         },
         "Game.take_action": {
             "name": "take_action",
             "location": 163,
             "return": [
-                "Phase"
+                "Phase_@_RACE",
+                "Phase_@_START"
             ],
             "arguments": {
                 "self": [],
-                "team": [
-                    "flamme_rouge.teams.Team"
-                ],
-                "action": [
-                    "flamme_rouge.actions.Action"
-                ]
+                "team": [],
+                "action": []
             }
         },
         "Game._execute_start_action": {
@@ -249,9 +249,7 @@
             ],
             "arguments": {
                 "self": [],
-                "action": [
-                    "flamme_rouge.actions.SelectStartPositionAction"
-                ]
+                "action": []
             }
         },
         "Game._execute_race_action": {
@@ -262,16 +260,14 @@
             ],
             "arguments": {
                 "self": [],
-                "action": [
-                    "flamme_rouge.actions.RaceAction"
-                ]
+                "action": []
             }
         },
         "Game.play_action": {
             "name": "play_action",
             "location": 227,
             "return": [
-                "Phase"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -303,7 +299,7 @@
             "name": "_flatten",
             "location": 87,
             "return": [
-                "generator"
+                "Generator[(_T0, Any, None)]"
             ],
             "arguments": {
                 "data": [
@@ -322,7 +318,10 @@
             ],
             "arguments": {
                 "cards": [
-                    "Iterable[flamme_rouge.cards.Card]"
+                    "int",
+                    "Callable",
+                    "models.Question",
+                    "str"
                 ]
             }
         },
@@ -330,14 +329,27 @@
             "name": "_to_action",
             "location": 235,
             "return": [
-                "Optional[flamme_rouge.actions.Action]"
+                "str",
+                "bool",
+                "bytearray",
+                "esm.models.service_type.ServiceType"
             ],
             "arguments": {
                 "number": [
+                    "numpy.ndarray",
+                    "float",
+                    "Dict[str, numpy.ndarray]",
+                    "dict",
+                    "str",
                     "int"
                 ],
                 "team": [
-                    "flamme_rouge.teams.Team"
+                    "numpy.ndarray",
+                    "Union[int, float]",
+                    "Optional[bytes]",
+                    "Optional[complex]",
+                    "List[int]",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -353,7 +365,9 @@
             "name": "from_action",
             "location": 57,
             "return": [
-                "Optional[FRAction]"
+                "SendCh[trio.abc.Stream]",
+                "str",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "cls": [
@@ -362,7 +376,10 @@
                     "float"
                 ],
                 "action": [
-                    "flamme_rouge.actions.Action"
+                    "actions.Action",
+                    "int",
+                    "Dict[str, str]",
+                    "audiopyle.lib.models.plugin.VampyPlugin"
                 ]
             }
         },
@@ -388,7 +405,11 @@
                     "Type[_TFRSectionData]"
                 ],
                 "section": [
-                    "flamme_rouge.tracks.Section"
+                    "int",
+                    "numpy.ndarray",
+                    "bool",
+                    "list",
+                    "float"
                 ]
             }
         },
@@ -403,7 +424,11 @@
                     "Type[_TFROwnCyclistData]"
                 ],
                 "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
+                    "Optional[teams.Cyclist]",
+                    "Dict[str, Any]",
+                    "int",
+                    "teams.Cyclist",
+                    "Dict[Any, bool]"
                 ]
             }
         },
@@ -418,7 +443,12 @@
                     "Type[_TFROtherCyclistData]"
                 ],
                 "cyclist": [
-                    "Optional[flamme_rouge.teams.Cyclist]"
+                    "Optional[teams.Cyclist]",
+                    "Dict[str, Any]",
+                    "int",
+                    "teams.Cyclist",
+                    "Optional[int]",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -433,10 +463,18 @@
                     "Type[_TFRData]"
                 ],
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "core.Game",
+                    "bool",
+                    "Dict[str, int]",
+                    "int",
+                    "float"
                 ],
                 "team": [
-                    "flamme_rouge.teams.Team"
+                    "list",
+                    "app.core.game.game_lobby.GameLobby",
+                    "core.entities.game.Game",
+                    "Dict[str, Any]",
+                    "dict"
                 ]
             }
         },
@@ -455,10 +493,13 @@
                     "List[app.models.Question]"
                 ],
                 "name": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "Sequence[str]"
                 ],
                 "max_tries": [
-                    "int"
+                    "int",
+                    "Optional[float]"
                 ]
             }
         },
@@ -466,12 +507,15 @@
             "name": "starting_position",
             "location": 268,
             "return": [
-                "Tuple[(flamme_rouge.teams.Cyclist, flamme_rouge.tracks.Section)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "Game",
+                    "int",
+                    "float",
+                    "game_engine.Game"
                 ]
             }
         },
@@ -479,12 +523,15 @@
             "name": "_select_action",
             "location": 277,
             "return": [
-                "Optional[flamme_rouge.actions.Action]"
+                "Optional[str]",
+                "list",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "Game",
+                    "int"
                 ]
             }
         },
@@ -492,12 +539,13 @@
             "name": "next_cyclist",
             "location": 290,
             "return": [
-                "Optional[flamme_rouge.teams.Cyclist]"
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "bool",
+                    "projects.models.Project"
                 ]
             }
         },
@@ -505,15 +553,21 @@
             "name": "choose_card",
             "location": 297,
             "return": [
-                "Optional[flamme_rouge.cards.Card]"
+                "str",
+                "int",
+                "Optional[str]",
+                "annofabapi.models.Inspection",
+                "bytes"
             ],
             "arguments": {
                 "self": [],
                 "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
+                    "teams.Cyclist",
+                    "dict",
+                    "src.core.model.scripScript"
                 ],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "bool"
                 ]
             }
         },
@@ -613,13 +667,19 @@
             "arguments": {
                 "self": [],
                 "team": [
-                    "flamme_rouge.teams.Team"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "opponents": [
-                    "Optional[Tuple[(flamme_rouge.teams.Team, ...)]]"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "track": [
-                    "Optional[flamme_rouge.tracks.Track]"
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -637,7 +697,7 @@
             "name": "reset",
             "location": 376,
             "return": [
-                "np.ndarray"
+                "typing.Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -647,12 +707,13 @@
             "name": "step",
             "location": 390,
             "return": [
-                "Tuple[(np.ndarray, float, bool, dict)]"
+                "Tuple[(typing.Dict[(str, Any)], int, bool, typing.Dict[(nothing, nothing)])]"
             ],
             "arguments": {
                 "self": [],
                 "action": [
-                    "int"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -764,17 +825,29 @@
             "name": "_first_available",
             "location": 22,
             "return": [
-                "Dict[(flamme_rouge.teams.Cyclist, flamme_rouge.tracks.Section)]"
+                "dict"
             ],
             "arguments": {
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "bool",
+                    "Sequence[str]",
+                    "str"
                 ],
                 "cyclists": [
-                    "Iterable[flamme_rouge.teams.Cyclist]"
+                    "str",
+                    "Optional[str]",
+                    "bytes",
+                    "List[str]",
+                    "Dict[str,str]",
+                    "Type",
+                    "Union[None,str,List[str],Dict[str,str]]"
                 ],
                 "key": [
-                    "Optional[Callable[([flamme_rouge.teams.Cyclist], Any)]]"
+                    "str",
+                    "None",
+                    "Type",
+                    "Dict",
+                    "Optional[str]"
                 ]
             }
         },
@@ -796,7 +869,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TPeloton"
+                    "_TPeloton@@Peloton@@"
                 ]
             }
         },
@@ -804,15 +877,12 @@
             "name": "starting_position",
             "location": 56,
             "return": [
-                "tuple[]",
-                "float",
-                "Tuple[Tuple[int, Any]]",
-                "bool"
+                "typing.Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "str"
                 ]
             }
         },
@@ -820,12 +890,14 @@
             "name": "next_cyclist",
             "location": 64,
             "return": [
-                "Optional[flamme_rouge.teams.Cyclist]"
+                "Optional[flamme_rouge.teams.Rouleur]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None",
+                    "Optional[Game]",
+                    "game_engine.Game"
                 ]
             }
         },
@@ -833,15 +905,26 @@
             "name": "choose_card",
             "location": 73,
             "return": [
-                "Optional[flamme_rouge.cards.Card]"
+                "int",
+                "Callable",
+                "float",
+                "str",
+                "List",
+                "List[str]",
+                "Dict",
+                "Dict[str,Literal]"
             ],
             "arguments": {
                 "self": [],
                 "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
+                    "str",
+                    "Set",
+                    "teams.Cyclist",
+                    "game.Game"
                 ],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "game.Game",
+                    "None"
                 ]
             }
         },
@@ -863,7 +946,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TMuscle"
+                    "_TMuscle@@Muscle@@"
                 ]
             }
         },
@@ -871,15 +954,16 @@
             "name": "starting_position",
             "location": 111,
             "return": [
-                "tuple[typing.Union[str,float]]",
-                "float",
-                "Tuple[Tuple[int, Any]]",
-                "bool"
+                "typing.Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "Tuple[int]",
+                    "str",
+                    "Game",
+                    "Union[Tuple[int],Tuple[int,int]]",
+                    "teams.Cyclist"
                 ]
             }
         },
@@ -897,12 +981,25 @@
             "name": "_select_cyclist",
             "location": 129,
             "return": [
-                "Optional[flamme_rouge.teams.Cyclist]"
+                "None",
+                "Optional[int]",
+                "bool",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "cyclists": [
-                    "Optional[Sequence[flamme_rouge.teams.Cyclist]]"
+                    "List[Dict[str,Any]]",
+                    "None",
+                    "Optional[bytes]",
+                    "List[dict[str,Any]]",
+                    "Optional[int]",
+                    "bytes",
+                    "Optional[List[str]]",
+                    "int",
+                    "Optional[Outcome]",
+                    "List[str]"
                 ]
             }
         },
@@ -910,28 +1007,27 @@
             "name": "starting_position",
             "location": 147,
             "return": [
-                "tuple[typing.Union[tuple[typing.Union[typing.Type,typing.Type]],tuple[typing.Union[int,int,int,int,int,int,int,int,int,int]],list[str]]]",
-                "str",
-                "Optional[str]",
-                "bool"
+                "typing.Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
-                "game": [
-                    "flamme_rouge.core.Game"
-                ]
+                "game": []
             }
         },
         "Human.next_cyclist": {
             "name": "next_cyclist",
             "location": 173,
             "return": [
-                "Optional[flamme_rouge.teams.Cyclist]"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None",
+                    "Optional[Game]",
+                    "game_engine.Game"
                 ]
             }
         },
@@ -939,15 +1035,23 @@
             "name": "choose_card",
             "location": 177,
             "return": [
-                "Optional[flamme_rouge.cards.Card]"
+                "None",
+                "Optional[str]",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
+                    "str",
+                    "T"
                 ],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None",
+                    "Optional[Game]",
+                    "int",
+                    "str",
+                    "Callable",
+                    "vtes.game.Game"
                 ]
             }
         },
@@ -955,15 +1059,15 @@
             "name": "starting_position",
             "location": 204,
             "return": [
-                "tuple[]",
-                "str",
-                "int",
-                "List[List[str]]"
+                "typing.Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "int",
+                    "float",
+                    "Game",
+                    "game_engine.Game"
                 ]
             }
         },
@@ -971,15 +1075,24 @@
             "name": "choose_card",
             "location": 213,
             "return": [
-                "Optional[flamme_rouge.cards.Card]"
+                "None",
+                "Optional[str]",
+                "str",
+                "Optional[int]"
             ],
             "arguments": {
                 "self": [],
                 "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
+                    "teams.Cyclist",
+                    "game.Game"
                 ],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None",
+                    "Optional[Game]",
+                    "int",
+                    "str",
+                    "Callable",
+                    "vtes.game.Game"
                 ]
             }
         },
@@ -987,15 +1100,15 @@
             "name": "starting_position",
             "location": 224,
             "return": [
-                "tuple[]",
-                "str",
-                "int",
-                "List[List[str]]"
+                "typing.Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "flamme_rouge.core.Game"
+                    "int",
+                    "float",
+                    "Game",
+                    "game_engine.Game"
                 ]
             }
         },
@@ -1003,12 +1116,17 @@
             "name": "next_cyclist",
             "location": 233,
             "return": [
-                "Optional[flamme_rouge.teams.Cyclist]"
+                "None",
+                "bool",
+                "List[List[int]]",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None",
+                    "Optional[Game]",
+                    "game_engine.Game"
                 ]
             }
         },
@@ -1016,15 +1134,21 @@
             "name": "choose_card",
             "location": 241,
             "return": [
-                "Optional[flamme_rouge.cards.Card]"
+                "None",
+                "str",
+                "Exception",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
                 "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
+                    "str",
+                    "Iterable[str]"
                 ],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "src.game.Game",
+                    "str",
+                    "None"
                 ]
             }
         }
@@ -1039,19 +1163,19 @@
             "arguments": {
                 "self": [],
                 "deck": [
-                    "Optional[Iterable[flamme_rouge.cards.Card]]"
+                    "None"
                 ],
                 "team": [
-                    "Optional[Team]"
+                    "None"
                 ],
                 "hand_size": [
                     "int"
                 ],
                 "colors": [
-                    "Optional[Union[(str, Dict[(str, str)])]]"
+                    "None"
                 ],
                 "handicap": [
-                    "Optional[int]"
+                    "None"
                 ]
             }
         },
@@ -1063,7 +1187,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TCyclist"
+                    "_TCyclist@@Cyclist@@"
                 ]
             }
         },
@@ -1090,7 +1214,7 @@
             "name": "_draw",
             "location": 136,
             "return": [
-                "Optional[flamme_rouge.cards.Card]"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -1105,7 +1229,7 @@
             "arguments": {
                 "self": [],
                 "size": [
-                    "Optional[int]"
+                    "None"
                 ]
             }
         },
@@ -1117,9 +1241,7 @@
             ],
             "arguments": {
                 "self": [],
-                "card": [
-                    "flamme_rouge.cards.Card"
-                ]
+                "card": []
             }
         },
         "Cyclist.discard": {
@@ -1130,9 +1252,7 @@
             ],
             "arguments": {
                 "self": [],
-                "card": [
-                    "flamme_rouge.cards.Card"
-                ]
+                "card": []
             }
         },
         "Cyclist.discard_hand": {
@@ -1153,19 +1273,15 @@
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "Cyclist"
-                ],
-                "track": [
-                    "flamme_rouge.tracks.Track"
-                ]
+                "other": [],
+                "track": []
             }
         },
         "Cyclist.__str__": {
             "name": "__str__",
             "location": 184,
             "return": [
-                "str"
+                "typing.Text"
             ],
             "arguments": {
                 "self": []
@@ -1179,26 +1295,22 @@
             ],
             "arguments": {
                 "self": [],
-                "cyclists": [
-                    "Iterable[Cyclist]"
-                ],
+                "cyclists": [],
                 "name": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "exhaustion": [
                     "bool"
                 ],
-                "order": [
-                    "float"
-                ],
+                "order": [],
                 "colors": [
-                    "Optional[Union[(str, Dict[(str, str)])]]"
+                    "None"
                 ],
                 "handicap": [
-                    "Union[(int, Sequence[int])]"
+                    "int"
                 ],
                 "hand_size": [
-                    "Optional[int]"
+                    "None"
                 ]
             }
         },
@@ -1266,38 +1378,34 @@
             "name": "select_action",
             "location": 296,
             "return": [
-                "Optional[flamme_rouge.actions.Action]"
+                "Optional[Union[(flamme_rouge.actions.SelectCardAction, flamme_rouge.actions.SelectCyclistAction, flamme_rouge.actions.SelectStartPositionAction)]]"
             ],
             "arguments": {
                 "self": [],
-                "game": [
-                    "flamme_rouge.core.Game"
-                ]
+                "game": []
             }
         },
         "Team.starting_position": {
             "name": "starting_position",
             "location": 333,
             "return": [
-                "Tuple[(Cyclist, flamme_rouge.tracks.Section)]"
+                "Tuple[(nothing, Any)]"
             ],
             "arguments": {
                 "self": [],
-                "game": [
-                    "flamme_rouge.core.Game"
-                ]
+                "game": []
             }
         },
         "Team.next_cyclist": {
             "name": "next_cyclist",
             "location": 341,
             "return": [
-                "Optional[Cyclist]"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None"
                 ]
             }
         },
@@ -1305,12 +1413,12 @@
             "name": "order_cyclists",
             "location": 347,
             "return": [
-                "Generator[(Cyclist, None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None"
                 ]
             }
         },
@@ -1318,15 +1426,13 @@
             "name": "choose_card",
             "location": 364,
             "return": [
-                "Optional[flamme_rouge.cards.Card]"
+                "None"
             ],
             "arguments": {
                 "self": [],
-                "cyclist": [
-                    "Cyclist"
-                ],
+                "cyclist": [],
                 "game": [
-                    "Optional[flamme_rouge.core.Game]"
+                    "None"
                 ]
             }
         },
@@ -1334,11 +1440,11 @@
             "name": "reset",
             "location": 370,
             "return": [
-                "eam"
+                "Team"
             ],
             "arguments": {
                 "self": [
-                    "_TTeam"
+                    "_TTeam@@Team@@"
                 ]
             }
         },
@@ -1346,7 +1452,7 @@
             "name": "__str__",
             "location": 377,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1372,28 +1478,18 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ],
-                "lanes": [
-                    "int"
-                ],
-                "slipstream": [
-                    "bool"
-                ],
-                "min_speed": [
-                    "Optional[int]"
-                ],
-                "max_speed": [
-                    "Optional[int]"
-                ]
+                "position": [],
+                "lanes": [],
+                "slipstream": [],
+                "min_speed": [],
+                "max_speed": []
             }
         },
         "Section.cyclists": {
             "name": "cyclists",
             "location": 58,
             "return": [
-                "Generator[(flamme_rouge.teams.Cyclist, None, None)]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -1423,9 +1519,7 @@
             ],
             "arguments": {
                 "self": [],
-                "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
-                ]
+                "cyclist": []
             }
         },
         "Section.remove_cyclist": {
@@ -1436,9 +1530,7 @@
             ],
             "arguments": {
                 "self": [],
-                "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
-                ]
+                "cyclist": []
             }
         },
         "Section.lane": {
@@ -1449,9 +1541,7 @@
             ],
             "arguments": {
                 "self": [],
-                "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
-                ]
+                "cyclist": []
             }
         },
         "Section.reset": {
@@ -1462,7 +1552,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TSection"
+                    "_TSection@@Section@@"
                 ]
             }
         },
@@ -1484,9 +1574,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "Finish.__init__": {
@@ -1497,9 +1585,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "Finish3.__init__": {
@@ -1510,9 +1596,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "MountainUp.__init__": {
@@ -1523,9 +1607,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "MountainDown.__init__": {
@@ -1536,9 +1618,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "Supply.__init__": {
@@ -1549,9 +1629,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "Cobblestone1.__init__": {
@@ -1562,9 +1640,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "Cobblestone2.__init__": {
@@ -1575,9 +1651,7 @@
             ],
             "arguments": {
                 "self": [],
-                "position": [
-                    "int"
-                ]
+                "position": []
             }
         },
         "Track.__init__": {
@@ -1588,24 +1662,12 @@
             ],
             "arguments": {
                 "self": [],
-                "name": [
-                    "str"
-                ],
-                "sections": [
-                    "Iterable[Section]"
-                ],
-                "start": [
-                    "int"
-                ],
-                "finish": [
-                    "int"
-                ],
-                "min_players": [
-                    "int"
-                ],
-                "max_players": [
-                    "int"
-                ]
+                "name": [],
+                "sections": [],
+                "start": [],
+                "finish": [],
+                "min_players": [],
+                "max_players": []
             }
         },
         "Track.__len__": {
@@ -1622,20 +1684,18 @@
             "name": "__getitem__",
             "location": 217,
             "return": [
-                "Tuple[(Section, ...)]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "key": [
-                    "slice"
-                ]
+                "key": []
             }
         },
         "Track.__iter__": {
             "name": "__iter__",
             "location": 220,
             "return": [
-                "Iterator[Section]"
+                "tupleiterator"
             ],
             "arguments": {
                 "self": []
@@ -1645,7 +1705,7 @@
             "name": "__reversed__",
             "location": 223,
             "return": [
-                "Iterator[Section]"
+                "reversed"
             ],
             "arguments": {
                 "self": []
@@ -1663,7 +1723,7 @@
             "name": "cyclists",
             "location": 233,
             "return": [
-                "Generator[(flamme_rouge.teams.Cyclist, None, None)]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -1673,22 +1733,16 @@
             "name": "_move_cyclist",
             "location": 238,
             "return": [
-                "int"
+                "Union[(int, _T2)]"
             ],
             "arguments": {
                 "self": [],
-                "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
-                ],
-                "value": [
-                    "int"
-                ],
+                "cyclist": [],
+                "value": [],
                 "start": [
-                    "int"
+                    "_T2@@"
                 ],
-                "min_speed": [
-                    "bool"
-                ]
+                "min_speed": []
             }
         },
         "Track.move_cyclist": {
@@ -1699,15 +1753,9 @@
             ],
             "arguments": {
                 "self": [],
-                "cyclist": [
-                    "flamme_rouge.teams.Cyclist"
-                ],
-                "card": [
-                    "Union[(int, flamme_rouge.cards.Card)]"
-                ],
-                "min_speed": [
-                    "bool"
-                ]
+                "cyclist": [],
+                "card": [],
+                "min_speed": []
             }
         },
         "Track.do_slipstream": {
@@ -1742,7 +1790,7 @@
             "name": "non_empty",
             "location": 328,
             "return": [
-                "Generator[(Section, None, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -1756,20 +1804,18 @@
             ],
             "arguments": {
                 "self": [],
-                "all_cyclists": [
-                    "bool"
-                ]
+                "all_cyclists": []
             }
         },
         "Track.reset": {
             "name": "reset",
             "location": 340,
             "return": [
-                "rack"
+                "Track"
             ],
             "arguments": {
                 "self": [
-                    "_TTrack"
+                    "_TTrack@@Track@@"
                 ]
             }
         },
@@ -1781,12 +1827,8 @@
             ],
             "arguments": {
                 "self": [],
-                "cyclist_1": [
-                    "flamme_rouge.teams.Cyclist"
-                ],
-                "cyclist_2": [
-                    "flamme_rouge.teams.Cyclist"
-                ]
+                "cyclist_1": [],
+                "cyclist_2": []
             }
         },
         "Track.__str__": {
@@ -1803,15 +1845,13 @@
             "name": "from_sections",
             "location": 379,
             "return": [
-                "rack"
+                "Track"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TTrack]"
                 ],
-                "sections": [
-                    "Union[(str, Iterable[Union[(str, Type[Section])]])]"
-                ]
+                "sections": []
             }
         }
     },
@@ -1820,11 +1860,14 @@
             "name": "clear_list",
             "location": 19,
             "return": [
-                "List[Typed]"
+                "list"
             ],
             "arguments": {
                 "items": [
-                    "Iterable[Optional[Typed]]"
+                    "Dict[str,str]",
+                    "Dict",
+                    "List[str]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1832,11 +1875,11 @@
             "name": "window",
             "location": 24,
             "return": [
-                "Iterable[Tuple[(Typed, ...)]]"
+                "Iterator"
             ],
             "arguments": {
                 "iterable": [
-                    "Iterable[Typed]"
+                    "int"
                 ],
                 "size": [
                     "int"
@@ -1847,7 +1890,7 @@
             "name": "parse_int",
             "location": 36,
             "return": [
-                "Optional[int]"
+                "Optional[Union[(int, _T0)]]"
             ],
             "arguments": {
                 "string": [
@@ -1855,6 +1898,7 @@
                     "int"
                 ],
                 "base": [
+                    "str",
                     "int"
                 ]
             }
@@ -1867,16 +1911,33 @@
             ],
             "arguments": {
                 "prompt": [
-                    "str"
+                    "str",
+                    "bytes"
                 ],
                 "base": [
-                    "int"
+                    "int",
+                    "str",
+                    "bytes"
                 ],
                 "lower": [
-                    "Optional[int]"
+                    "bool",
+                    "str",
+                    "Optional[Callable[[List],Any]]",
+                    "float",
+                    "Optional[AnyStr]",
+                    "Optional[Callable]",
+                    "Optional[int]",
+                    "Optional[float]"
                 ],
                 "upper": [
-                    "Optional[int]"
+                    "bool",
+                    "str",
+                    "Optional[Callable[[List],Any]]",
+                    "float",
+                    "Optional[AnyStr]",
+                    "Optional[Callable]",
+                    "Optional[int]",
+                    "Optional[float]"
                 ]
             }
         },
@@ -1909,7 +1970,12 @@
             "name": "__ge__",
             "location": 119,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Union[int,Tuple[int,...]]",
+                "float",
+                "str",
+                "Tuple"
             ],
             "arguments": {
                 "self": [],
@@ -1920,7 +1986,12 @@
             "name": "__gt__",
             "location": 124,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Union[int,Tuple[int,...]]",
+                "float",
+                "str",
+                "Tuple"
             ],
             "arguments": {
                 "self": [],
@@ -1931,7 +2002,12 @@
             "name": "__le__",
             "location": 129,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Union[int,Tuple[int,...]]",
+                "float",
+                "str",
+                "Tuple"
             ],
             "arguments": {
                 "self": [],
@@ -1942,7 +2018,12 @@
             "name": "__lt__",
             "location": 134,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Union[int,Tuple[int,...]]",
+                "float",
+                "str",
+                "Tuple"
             ],
             "arguments": {
                 "self": [],

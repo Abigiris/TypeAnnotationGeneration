@@ -35,7 +35,7 @@
                 "is_debug": [
                     "bool",
                     "str",
-                    "Optional[Dict[str, str]]",
+                    "Optional[Dict[str,str]]",
                     "int"
                 ],
                 "verbosity_count": [
@@ -58,14 +58,21 @@
             "name": "_normalise_verbosity",
             "location": 125,
             "return": [
-                "int"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "verbosity_count": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[int]"
                 ],
                 "is_quiet": [
-                    "bool"
+                    "bool",
+                    "Dict",
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -89,7 +96,9 @@
             ],
             "arguments": {
                 "config_filename": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "package_name": [
                     "str"
@@ -120,13 +129,17 @@
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "dict[, ]",
+                    "dict[str, typing.Any]",
+                    "list[dict[, ]]",
+                    "None"
                 ],
-                "data": [
-                    "dict"
-                ],
+                "data": [],
                 "package_name": [
-                    "str"
+                    "str",
+                    "dict[str, str]",
+                    "dict[, ]",
+                    "dict[str, dict[str, typing.Any]]"
                 ]
             }
         },
@@ -169,7 +182,8 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "list[str]"
                 ],
                 "is_optional": [
                     "bool"
@@ -180,7 +194,7 @@
             "name": "__str__",
             "location": 32,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -205,16 +219,27 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "dict[, ]"
                 ],
                 "containers": [
-                    "List[layer_linter.module.Module]"
+                    "bool",
+                    "str",
+                    "list[typing.Any]",
+                    "None",
+                    "dict[str, str]"
                 ],
                 "layers": [
-                    "List[Layer]"
+                    "bool",
+                    "str",
+                    "list[typing.Any]",
+                    "None",
+                    "dict[str, str]"
                 ],
                 "whitelisted_paths": [
-                    "Optional[List[layer_linter.dependencies.path.ImportPath]]"
+                    "None",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -227,7 +252,9 @@
             "arguments": {
                 "self": [],
                 "dependencies": [
-                    "layer_linter.dependencies.graph.DependencyGraph"
+                    "bytes",
+                    "str",
+                    "dict[, ]"
                 ]
             }
         },
@@ -240,7 +267,9 @@
             "arguments": {
                 "self": [],
                 "dependencies": [
-                    "layer_linter.dependencies.graph.DependencyGraph"
+                    "str",
+                    "list[str]",
+                    "None"
                 ]
             }
         },
@@ -253,10 +282,13 @@
             "arguments": {
                 "self": [],
                 "container": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "None"
                 ],
                 "dependencies": [
-                    "layer_linter.dependencies.graph.DependencyGraph"
+                    "str",
+                    "list[dict[, ]]",
+                    "dict[str, typing.Any]"
                 ]
             }
         },
@@ -269,13 +301,20 @@
             "arguments": {
                 "self": [],
                 "layer": [
-                    "Layer"
+                    "bool",
+                    "list[str]",
+                    "typing.Collection",
+                    "str"
                 ],
                 "container": [
-                    "layer_linter.module.Module"
+                    "bool",
+                    "list[str]",
+                    "typing.Collection",
+                    "str"
                 ],
                 "dependencies": [
-                    "layer_linter.dependencies.graph.DependencyGraph"
+                    "dict[, ]",
+                    "str"
                 ]
             }
         },
@@ -283,19 +322,23 @@
             "name": "_get_modules_in_layer",
             "location": 104,
             "return": [
-                "List[layer_linter.module.Module]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "layer": [
-                    "Layer"
+                    "list[typing.Any]",
+                    "None",
+                    "typing.Callable[, ]",
+                    "typing.NamedTuple"
                 ],
                 "container": [
-                    "layer_linter.module.Module"
+                    "list[typing.Any]",
+                    "None",
+                    "typing.Callable[, ]",
+                    "typing.NamedTuple"
                 ],
-                "dependencies": [
-                    "layer_linter.dependencies.graph.DependencyGraph"
-                ]
+                "dependencies": []
             }
         },
         "Contract._get_layer_module": {
@@ -307,10 +350,18 @@
             "arguments": {
                 "self": [],
                 "layer": [
-                    "Layer"
+                    "str",
+                    "dict[str, str]",
+                    "None",
+                    "bool",
+                    "list[str]"
                 ],
                 "container": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "dict[str, str]",
+                    "None",
+                    "bool",
+                    "list[str]"
                 ]
             }
         },
@@ -318,18 +369,20 @@
             "name": "_get_modules_in_downstream_layers",
             "location": 126,
             "return": [
-                "List[layer_linter.module.Module]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "layer": [
-                    "Layer"
+                    "int"
                 ],
                 "container": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "typing.Type"
                 ],
                 "dependencies": [
-                    "layer_linter.dependencies.graph.DependencyGraph"
+                    "str",
+                    "typing.Type"
                 ]
             }
         },
@@ -384,12 +437,13 @@
             "name": "_get_layers_downstream_of",
             "location": 184,
             "return": [
-                "Iterable[Layer]"
+                "reversed"
             ],
             "arguments": {
                 "self": [],
                 "layer": [
-                    "Layer"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -397,7 +451,7 @@
             "name": "__str__",
             "location": 187,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -424,7 +478,10 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "Dict"
                 ]
             }
         },
@@ -432,7 +489,9 @@
             "name": "__str__",
             "location": 15,
             "return": [
-                "str"
+                "str",
+                "Optional[Any]",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": []
@@ -452,7 +511,8 @@
             "name": "__eq__",
             "location": 21,
             "return": [
-                "bool"
+                "bool",
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -480,7 +540,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "filename": [
                     "str"
@@ -493,11 +555,11 @@
             "name": "get_report_class",
             "location": 13,
             "return": [
-                "Type[BaseReport]"
+                "Type[Union[(NormalReport, VerboseReport)]]"
             ],
             "arguments": {
                 "verbosity": [
-                    "int"
+                    "str"
                 ]
             }
         },
@@ -510,7 +572,9 @@
             "arguments": {
                 "self": [],
                 "graph": [
-                    "layer_linter.dependencies.graph.DependencyGraph"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -523,7 +587,12 @@
             "arguments": {
                 "self": [],
                 "contract": [
-                    "layer_linter.contract.Contract"
+                    "Union[str,bool,None]",
+                    "List[List[int]]",
+                    "str",
+                    "bool",
+                    "None",
+                    "List[list[int]]"
                 ]
             }
         },
@@ -567,12 +636,10 @@
                 "self": [],
                 "contract": [
                     "str",
-                    "int",
-                    "list[bytes]",
                     "List[bytes]",
-                    "Iterable[float]",
-                    "tuple[int]",
-                    "Tuple[int]"
+                    "int",
+                    "Tuple[int]",
+                    "Iterable[float]"
                 ]
             }
         },
@@ -638,8 +705,8 @@
                     "Optional[str]",
                     "bytes",
                     "None",
-                    "Optional[Union[Any, Any]]",
-                    "typing.Any"
+                    "Optional[Union[Any,Any]]",
+                    "Any"
                 ],
                 "text": [
                     "int",
@@ -650,10 +717,10 @@
                 "level": [
                     "str",
                     "bytes",
-                    "Tuple[Any, Any, Any]",
-                    "tuple[typing.Union[typing.Any,typing.Any,typing.Any]]",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[Any,Any,Any]",
+                    "Tuple[Union[Any,Any,Any]]",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "style": [
                     "str",
@@ -709,18 +776,18 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "Callable[[Any], bool]",
-                    "typing.Callable[typing.Any, bool]"
+                    "Callable[[Any],bool]",
+                    "Callable[Any,bool]"
                 ],
                 "text": [
                     "str",
-                    "Callable[[Any], bool]",
-                    "typing.Callable[typing.Any, bool]"
+                    "Callable[[Any],bool]",
+                    "Callable[Any,bool]"
                 ],
                 "bold": [
                     "bool",
                     "str",
-                    "Callable[[Any], bool]"
+                    "Callable[[Any],bool]"
                 ]
             }
         },
@@ -733,12 +800,10 @@
             "arguments": {
                 "cls": [
                     "Set[str]",
-                    "set[str]",
                     "bytes",
-                    "Tuple[int, int, str]",
-                    "tuple[typing.Union[int,int,str]]",
-                    "dict",
-                    "dict[, ]",
+                    "Tuple[int,int,str]",
+                    "Dict",
+                    "Tuple[Union[int,int,str]]",
                     "Optional[str]",
                     "str",
                     "None"
@@ -753,14 +818,11 @@
             ],
             "arguments": {
                 "cls": [
-                    "typing.Type",
-                    "Type[T]",
-                    "list[dict[, ]]",
-                    "bool",
-                    "List[dict]",
-                    "dict[, ]",
-                    "dict",
                     "Type",
+                    "List[dict]",
+                    "Type[T]",
+                    "Dict",
+                    "bool",
                     "T"
                 ]
             }
@@ -776,7 +838,11 @@
                     "bytes"
                 ],
                 "contract": [
-                    "layer_linter.contract.Contract"
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[int]",
+                    "int",
+                    "None"
                 ]
             }
         }
@@ -793,10 +859,22 @@
             "arguments": {
                 "self": [],
                 "modules": [
-                    "List[layer_linter.module.SafeFilenameModule]"
+                    "str",
+                    "int",
+                    "List[str]",
+                    "Tuple[Union[int,int,int]]",
+                    "Tuple[int,int,int]",
+                    "bool",
+                    "Tuple[int,int]"
                 ],
                 "package": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "int",
+                    "List[str]",
+                    "Tuple[Union[int,int,int]]",
+                    "Tuple[int,int,int]",
+                    "bool",
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -819,7 +897,9 @@
             "arguments": {
                 "self": [],
                 "module": [
-                    "layer_linter.module.SafeFilenameModule"
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
@@ -832,7 +912,13 @@
             "arguments": {
                 "self": [],
                 "module": [
-                    "layer_linter.module.SafeFilenameModule"
+                    "str",
+                    "Dict",
+                    "Union[str,bytes]",
+                    "int",
+                    "bytes",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -840,12 +926,18 @@
             "name": "_trim_each_to_known_modules",
             "location": 122,
             "return": [
-                "List[layer_linter.module.Module]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "imported_modules": [
-                    "List[layer_linter.module.Module]"
+                    "List[M]",
+                    "str",
+                    "List[module.Module]",
+                    "bool",
+                    "ClassVar",
+                    "Exception",
+                    "List[mythril.analysis.module.base.DetectionModule]"
                 ]
             }
         }
@@ -860,7 +952,11 @@
             "arguments": {
                 "self": [],
                 "package": [
-                    "layer_linter.module.SafeFilenameModule"
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -868,12 +964,22 @@
             "name": "get_modules_directly_imported_by",
             "location": 51,
             "return": [
-                "List[layer_linter.module.Module]"
+                "List",
+                "str",
+                "Tuple[int,int]",
+                "int",
+                "Tuple[bytes]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "self": [],
                 "importer": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "int",
+                    "Tuple[int,int]",
+                    "Tuple[bytes]",
+                    "Tuple[Union[int,int]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -881,18 +987,27 @@
             "name": "find_path",
             "location": 61,
             "return": [
-                "List[layer_linter.module.Module]"
+                "Optional[tuple]"
             ],
             "arguments": {
                 "self": [],
                 "downstream": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "module.Module",
+                    "logging.FileHandler",
+                    "logging.Formatter"
                 ],
                 "upstream": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "module.Module",
+                    "logging.FileHandler",
+                    "logging.Formatter"
                 ],
                 "ignore_paths": [
-                    "Optional[List[layer_linter.dependencies.path.ImportPath]]"
+                    "str",
+                    "None",
+                    "bool",
+                    "path.Path"
                 ]
             }
         },
@@ -900,12 +1015,15 @@
             "name": "get_descendants",
             "location": 91,
             "return": [
-                "List[layer_linter.module.Module]"
+                "List[layer_linter.module.SafeFilenameModule]"
             ],
             "arguments": {
                 "self": [],
                 "module": [
-                    "layer_linter.module.Module"
+                    "str",
+                    "module.Module",
+                    "Dict[str,Any]",
+                    "List[float]"
                 ]
             }
         },
@@ -918,7 +1036,12 @@
             "arguments": {
                 "self": [],
                 "import_path": [
-                    "layer_linter.dependencies.path.ImportPath"
+                    "Iterable[str]",
+                    "str",
+                    "path.ImportPath",
+                    "None",
+                    "Optional[str]",
+                    "path.Path"
                 ]
             }
         },
@@ -931,7 +1054,10 @@
             "arguments": {
                 "self": [],
                 "import_path": [
-                    "layer_linter.dependencies.path.ImportPath"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -939,12 +1065,15 @@
             "name": "_import_path_is_in_networkx_graph",
             "location": 108,
             "return": [
-                "bool"
+                "str",
+                "Tuple[str, str]",
+                "TextIO",
+                "BinaryIO"
             ],
             "arguments": {
                 "self": [],
                 "import_path": [
-                    "layer_linter.dependencies.path.ImportPath"
+                    "str"
                 ]
             }
         },
@@ -952,12 +1081,15 @@
             "name": "_remove_paths_from_networkx_graph",
             "location": 113,
             "return": [
-                "List[layer_linter.dependencies.path.ImportPath]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "import_paths": [
-                    "List[layer_linter.dependencies.path.ImportPath]"
+                    "List[I]",
+                    "str",
+                    "List[path.ImportPath]",
+                    "bool"
                 ]
             }
         },
@@ -970,7 +1102,11 @@
             "arguments": {
                 "self": [],
                 "import_paths": [
-                    "List[layer_linter.dependencies.path.ImportPath]"
+                    "List[I]",
+                    "str",
+                    "List[path.ImportPath]",
+                    "Iterable[str]",
+                    "bool"
                 ]
             }
         },
@@ -984,9 +1120,8 @@
                 "self": [],
                 "item": [
                     "str",
-                    "bool",
                     "List[float]",
-                    "list[float]"
+                    "bool"
                 ]
             }
         }
@@ -1001,10 +1136,14 @@
             "arguments": {
                 "self": [],
                 "importer": [
-                    "layer_linter.module.Module"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "imported": [
-                    "layer_linter.module.Module"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1039,9 +1178,9 @@
                 "other": [
                     "str",
                     "MutableSequence[str]",
-                    "typing.MutableSequence",
+                    "MutableSequence",
                     "Optional[List[Any]]",
-                    "list[typing.Any]",
+                    "List[Any]",
                     "None"
                 ]
             }
@@ -1067,7 +1206,10 @@
             "arguments": {
                 "self": [],
                 "package": [
-                    "layer_linter.module.SafeFilenameModule"
+                    "str",
+                    "bool",
+                    "Dict[int,bool]",
+                    "int"
                 ]
             }
         },
@@ -1085,12 +1227,16 @@
             "name": "_get_python_files_inside_package",
             "location": 39,
             "return": [
-                "Iterator[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "directory": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Optional[Union[str,Any]]",
+                    "Any",
+                    "None"
                 ]
             }
         },
@@ -1098,12 +1244,16 @@
             "name": "_should_ignore_dir",
             "location": 62,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "bytes",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "directory": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -1111,7 +1261,9 @@
             "name": "_is_python_file",
             "location": 67,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "Dict[str,str]"
             ],
             "arguments": {
                 "self": [],
@@ -1129,7 +1281,8 @@
             "arguments": {
                 "self": [],
                 "filename_and_path": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ],
                 "package_directory": [
                     "str"
@@ -1144,9 +1297,7 @@
             "name": "foo",
             "location": 4,
             "return": [
-                "int",
-                "Callable",
-                "str"
+                "int"
             ],
             "arguments": {}
         }
@@ -1160,8 +1311,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1175,8 +1324,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1235,8 +1382,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1250,8 +1395,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1266,8 +1409,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1303,8 +1444,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1321,8 +1460,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1338,9 +1475,7 @@
             "name": "foo",
             "location": 1,
             "return": [
-                "int",
-                "Callable",
-                "str"
+                "int"
             ],
             "arguments": {}
         }
@@ -1352,8 +1487,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1368,8 +1501,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1384,8 +1515,6 @@
             "name": "foo",
             "location": 3,
             "return": [
-                "int",
-                "Callable",
                 "str"
             ],
             "arguments": {}
@@ -1423,9 +1552,9 @@
             "arguments": {
                 "self": [],
                 "config_filename": [
-                    "typing.Text",
+                    "Text",
                     "str",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -1435,7 +1564,6 @@
             "name": "test_success",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1443,25 +1571,24 @@
                 "verbosity_count": [
                     "int",
                     "Optional[Set[str]]",
-                    "set[str]",
-                    "List[Dict[str, str]]",
+                    "Set[str]",
+                    "List[Dict[str,str]]",
                     "None",
-                    "list[dict[str, str]]"
+                    "List[dict[str,str]]"
                 ],
                 "is_quiet": [
                     "int",
                     "Optional[Set[str]]",
-                    "set[str]",
-                    "List[Dict[str, str]]",
+                    "Set[str]",
+                    "List[Dict[str,str]]",
                     "None",
-                    "list[dict[str, str]]"
+                    "List[dict[str,str]]"
                 ],
                 "should_always_fail": [
-                    "list[str]",
-                    "bool",
                     "List[str]",
-                    "list[tuple[typing.Union[str,typing.Any]]]",
-                    "List[Tuple[str, Any]]",
+                    "bool",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
                     "int"
                 ]
             }
@@ -1470,7 +1597,6 @@
             "name": "test_failure",
             "location": 32,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1478,25 +1604,24 @@
                 "verbosity_count": [
                     "int",
                     "Optional[Set[str]]",
-                    "set[str]",
-                    "List[Dict[str, str]]",
+                    "Set[str]",
+                    "List[Dict[str,str]]",
                     "None",
-                    "list[dict[str, str]]"
+                    "List[dict[str,str]]"
                 ],
                 "is_quiet": [
                     "int",
                     "Optional[Set[str]]",
-                    "set[str]",
-                    "List[Dict[str, str]]",
+                    "Set[str]",
+                    "List[Dict[str,str]]",
                     "None",
-                    "list[dict[str, str]]"
+                    "List[dict[str,str]]"
                 ],
                 "should_always_fail": [
-                    "list[str]",
-                    "bool",
                     "List[str]",
-                    "list[tuple[typing.Union[str,typing.Any]]]",
-                    "List[Tuple[str, Any]]",
+                    "bool",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
                     "int"
                 ]
             }
@@ -1505,7 +1630,6 @@
             "name": "test_specify_config_file",
             "location": 40,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1525,27 +1649,23 @@
             "name": "test_missing_container",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "verbosity_count": [
                     "int",
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "bool"
                 ],
                 "is_quiet": [
                     "int",
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "bool"
                 ],
                 "should_always_fail": [
                     "List[str]",
-                    "bool",
-                    "list[str]"
+                    "bool"
                 ]
             }
         },
@@ -1553,7 +1673,6 @@
             "name": "_chdir_and_add_to_system_path",
             "location": 65,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1608,7 +1727,13 @@
                     "str"
                 ],
                 "tuples": [
-                    "Tuple[Tuple[(str, str)]]"
+                    "Tuple[tuple[Union[str,str]]]",
+                    "str",
+                    "Tuple[Tuple[str,str]]",
+                    "Set[str]",
+                    "bool",
+                    "Tuple[Union[str,str]]",
+                    "Tuple[str,str]"
                 ]
             }
         },
@@ -1621,7 +1746,15 @@
             "arguments": {
                 "self": [],
                 "tuples": [
-                    "Tuple[Tuple[(str, str)]]"
+                    "Tuple[tuple[Union[str,str]]]",
+                    "Tuple[Tuple[str,str]]",
+                    "Tuple[Union[str,str]]",
+                    "bytes",
+                    "Dict[str,Any]",
+                    "bool",
+                    "str",
+                    "int",
+                    "Tuple[str,str]"
                 ]
             }
         }
@@ -1631,7 +1764,7 @@
             "name": "test_dependency_graph",
             "location": 7,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         }
@@ -1672,7 +1805,13 @@
                     "str"
                 ],
                 "tuples": [
-                    "Tuple[Tuple[(str, str)]]"
+                    "Tuple[tuple[Union[str,str]]]",
+                    "str",
+                    "Tuple[Tuple[str,str]]",
+                    "Set[str]",
+                    "bool",
+                    "Tuple[Union[str,str]]",
+                    "Tuple[str,str]"
                 ]
             }
         }
@@ -1683,16 +1822,15 @@
             "name": "test_normalise_verbosity",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "verbosity": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "is_quiet": [
-                    "Union[int, slice]",
+                    "Union[int,slice]",
                     "int"
                 ],
                 "expected_result": [
@@ -1704,7 +1842,6 @@
             "name": "test_debug",
             "location": 38,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2296,20 +2433,20 @@
                 "modules": [
                     "bool",
                     "bytes",
-                    "typing.Iterable[tuple[typing.Union[int,int]]]",
+                    "Iterable[tuple[Union[int,int]]]",
                     "str",
-                    "Iterable[Tuple[int, int]]",
+                    "Iterable[Tuple[int,int]]",
                     "List[object]",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ],
                 "package": [
                     "bool",
                     "bytes",
-                    "typing.Iterable[tuple[typing.Union[int,int]]]",
+                    "Iterable[tuple[Union[int,int]]]",
                     "str",
-                    "Iterable[Tuple[int, int]]",
+                    "Iterable[Tuple[int,int]]",
                     "List[object]",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -2334,8 +2471,7 @@
                 "package": [
                     "str",
                     "bool",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -2373,7 +2509,7 @@
             "name": "test_find_path_nonexistent",
             "location": 55,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": []

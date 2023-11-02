@@ -4,11 +4,14 @@
             "name": "main",
             "location": 15,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "iris_config": [
-                    "configparser.ConfigParser"
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "Optional[int]"
                 ]
             }
         }
@@ -19,14 +22,18 @@
             "name": "run_iris",
             "location": 36,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "logger": [
-                    "logging.Logger"
+                    "logging.Logger",
+                    "str",
+                    "logging.Handler",
+                    "bool"
                 ],
                 "iris_config": [
-                    "configparser.ConfigParser"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -54,7 +61,10 @@
             "name": "get_exit_code",
             "location": 271,
             "return": [
-                "Optional[int]"
+                "int",
+                "str",
+                "bool",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": []
@@ -117,7 +127,7 @@
             "name": "to_json",
             "location": 109,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -149,17 +159,26 @@
             "name": "run_config_service",
             "location": 13,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "aws_creds_path": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[Tuple[str,str]]",
+                    "List[tuple[Union[str,str]]]"
                 ],
                 "s3_region_name": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[Tuple[str,str]]",
+                    "List[tuple[Union[str,str]]]"
                 ],
                 "s3_bucket_env": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[Tuple[str,str]]",
+                    "List[tuple[Union[str,str]]]"
                 ],
                 "s3_bucket_name": [
                     "str"
@@ -168,13 +187,22 @@
                     "str"
                 ],
                 "ec2_region_name": [
-                    "str"
+                    "str",
+                    "Tuple[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "ec2_dev_instance_id": [
-                    "str"
+                    "str",
+                    "Tuple[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "ec2_metadata_url": [
-                    "str"
+                    "str",
+                    "Tuple[str]",
+                    "Optional[str]",
+                    "None"
                 ],
                 "local_config_path": [
                     "str"
@@ -183,7 +211,10 @@
                     "str"
                 ],
                 "run_frequency": [
-                    "float"
+                    "float",
+                    "str",
+                    "Tuple[int,int,int]",
+                    "Tuple[Union[int,int,int]]"
                 ],
                 "log_path": [
                     "str"
@@ -192,7 +223,10 @@
                     "str"
                 ],
                 "dev_mode": [
-                    "bool"
+                    "str",
+                    "int",
+                    "List[Tuple[str,str]]",
+                    "List[tuple[Union[str,str]]]"
                 ]
             }
         }
@@ -213,7 +247,7 @@
             "name": "get_iris_tags",
             "location": 50,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -223,12 +257,17 @@
             "name": "_extract_iris_tags",
             "location": 88,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "instance_tags": [
-                    "list"
+                    "List",
+                    "Dict[str,Any]",
+                    "str",
+                    "List[str]",
+                    "Type[Exception]",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -258,12 +297,13 @@
             "name": "download_bucket",
             "location": 45,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "download_path": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -271,12 +311,16 @@
             "name": "upload_object",
             "location": 74,
             "return": [
-                "str"
+                "str",
+                "Optional[str]",
+                "bytes",
+                "Iterable[str]"
             ],
             "arguments": {
                 "self": [],
                 "upload_file_path": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -284,7 +328,7 @@
             "name": "upload_directory",
             "location": 90,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
@@ -297,7 +341,8 @@
             "name": "_create_object_key",
             "location": 115,
             "return": [
-                "str"
+                "str",
+                "Optional[str]"
             ],
             "arguments": {
                 "dir_path": [
@@ -323,7 +368,9 @@
             "arguments": {
                 "self": [],
                 "global_config_path": [
-                    "str"
+                    "str",
+                    "Tuple[str,str,str]",
+                    "Tuple[Union[str,str,str]]"
                 ]
             }
         },
@@ -331,15 +378,20 @@
             "name": "lint_metrics_config",
             "location": 33,
             "return": [
-                "Dict[(str, iris.config_service.configs.Metric)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "global_config": [
-                    "iris.config_service.configs.GlobalConfig"
+                    "str",
+                    "Dict",
+                    "int"
                 ],
                 "metrics_config_path": [
-                    "str"
+                    "Dict[str,Any]",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -347,12 +399,13 @@
             "name": "lint_profile_configs",
             "location": 48,
             "return": [
-                "Dict[(str, iris.config_service.configs.Profile)]"
+                "Dict[(Any, iris.config_service.configs.Profile)]"
             ],
             "arguments": {
                 "self": [],
                 "profile_configs_path": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -365,7 +418,8 @@
             "arguments": {
                 "self": [],
                 "global_config_json": [
-                    "Dict[(str, Any)]"
+                    "Dict[str, Any]",
+                    "dict"
                 ]
             }
         },
@@ -378,13 +432,22 @@
             "arguments": {
                 "self": [],
                 "global_config": [
+                    "str",
+                    "Dict[str,Any]",
+                    "List[str]",
                     "iris.config_service.configs.GlobalConfig"
                 ],
                 "metric_name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "iris.config_service.configs.GlobalConfig"
                 ],
                 "metric_body": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "List[str]",
+                    "iris.config_service.configs.GlobalConfig",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -397,7 +460,11 @@
             "arguments": {
                 "self": [],
                 "profile_configs_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[List]",
+                    "List"
                 ]
             }
         },
@@ -405,12 +472,17 @@
             "name": "_detect_mismatch_profilename_filename",
             "location": 115,
             "return": [
-                "List[Tuple[(str, str)]]"
+                "List[Tuple[(Any, str)]]"
             ],
             "arguments": {
                 "self": [],
                 "profiles": [
-                    "Dict[(str, iris.config_service.configs.Profile)]"
+                    "Dict[str,iris.config_service.configs.Profile]",
+                    "Dict",
+                    "Dict[str,float]",
+                    "Dict[str,bool]",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -421,7 +493,7 @@
             "name": "delete_stale_prom_files",
             "location": 25,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -433,7 +505,7 @@
             "name": "run_garbage_collector",
             "location": 11,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "global_config_path": [
@@ -443,13 +515,21 @@
                     "str"
                 ],
                 "prom_dir_path": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "run_frequency": [
-                    "float"
+                    "float",
+                    "int",
+                    "Optional[str]",
+                    "str",
+                    "Tuple[int,int,int]",
+                    "None",
+                    "Tuple[Union[int,int,int]]"
                 ],
                 "internal_metrics_whitelist": [
-                    "Tuple[str]"
+                    "str",
+                    "Dict"
                 ],
                 "log_path": [
                     "str"
@@ -466,23 +546,34 @@
             "name": "run_scheduler",
             "location": 11,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "global_config_path": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "local_config_path": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "prom_dir_path": [
                     "str"
                 ],
                 "run_frequency": [
-                    "float"
+                    "float",
+                    "int",
+                    "Optional[str]",
+                    "str",
+                    "Tuple[int,int,int]",
+                    "None",
+                    "Tuple[Union[int,int,int]]"
                 ],
                 "internal_metrics_whitelist": [
-                    "Tuple[str]"
+                    "Tuple[str]",
+                    "str",
+                    "int",
+                    "List[str]"
                 ],
                 "log_path": [
                     "str"
@@ -528,7 +619,12 @@
             "name": "run",
             "location": 97,
             "return": [
-                "List[MetricResult]"
+                "str",
+                "int",
+                "Set[str]",
+                "Mapping[str, int]",
+                "bool",
+                "\"Parameter\""
             ],
             "arguments": {
                 "self": []
@@ -538,7 +634,7 @@
             "name": "get_prom_files_to_write",
             "location": 113,
             "return": [
-                "Dict[(str, iris.config_service.configs.Metric)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -555,10 +651,13 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "log_file_path": [
-                    "str"
+                    "str",
+                    "IO"
                 ],
                 "log_debug_file_path": [
                     "str"
@@ -575,10 +674,14 @@
             ],
             "arguments": {
                 "iris_config": [
-                    "configparser.ConfigParser"
+                    "str",
+                    "Dict[str, Any]"
                 ],
                 "logger": [
-                    "logging.Logger"
+                    "logging.Logger",
+                    "dict",
+                    "Callable",
+                    "str"
                 ]
             }
         }
@@ -618,12 +721,15 @@
             "name": "write_prom_file",
             "location": 77,
             "return": [
-                "Optional[Awaitable]"
+                "Optional[Coroutine[(Any, Any, None)]]"
             ],
             "arguments": {
                 "self": [],
                 "prom_file_path": [
-                    "str"
+                    "str",
+                    "int",
+                    "logging.Logger",
+                    "device.utilities.logger.Logger"
                 ]
             }
         },
@@ -636,7 +742,9 @@
             "arguments": {
                 "self": [],
                 "prom_file_path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bytes"
                 ],
                 "prom_string": [
                     "str"
@@ -656,7 +764,8 @@
                     "str"
                 ],
                 "logger": [
-                    "logging.Logger"
+                    "logging.Logger",
+                    "str"
                 ]
             }
         },
@@ -668,13 +777,16 @@
             ],
             "arguments": {
                 "file_path": [
-                    "str"
+                    "str",
+                    "Set[str]"
                 ],
                 "file_type": [
                     "str"
                 ],
                 "logger": [
-                    "logging.Logger"
+                    "logging.Logger",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -689,10 +801,17 @@
                     "str"
                 ],
                 "dir_type": [
-                    "str"
+                    "str",
+                    "Optional[Union[Dict,str,int,bytes]]",
+                    "Dict",
+                    "int",
+                    "bytes",
+                    "None"
                 ],
                 "logger": [
-                    "logging.Logger"
+                    "logging.Logger",
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -704,13 +823,18 @@
             ],
             "arguments": {
                 "items": [
-                    "list"
+                    "List",
+                    "str",
+                    "Dict",
+                    "List[str]",
+                    "List[SqlFile]",
+                    "List[S]"
                 ],
-                "item_description": [
-                    "str"
-                ],
+                "item_description": [],
                 "logger": [
-                    "logging.Logger"
+                    "logging.Logger",
+                    "str",
+                    "dict"
                 ]
             }
         },
@@ -718,17 +842,28 @@
             "name": "load_json_config",
             "location": 91,
             "return": [
-                "Dict[(str, Any)]"
+                "Optional[dict]",
+                "dict",
+                "str",
+                "bool",
+                "Sequence"
             ],
             "arguments": {
                 "config_path": [
-                    "str"
+                    "str",
+                    "logging.Logger",
+                    "List[str]",
+                    "Optional[str]"
                 ],
                 "config_type": [
-                    "str"
+                    "str",
+                    "Dict[str,str]"
                 ],
                 "logger": [
-                    "logging.Logger"
+                    "logging.Logger",
+                    "str",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -736,11 +871,16 @@
             "name": "_detect_duplicate_json_keys",
             "location": 113,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "pairs": [
-                    "List[tuple]"
+                    "str",
+                    "List[tuple]",
+                    "List[Tuple]",
+                    "List[str]",
+                    "Optional[List[str]]",
+                    "int"
                 ]
             }
         }
@@ -768,7 +908,6 @@
             "name": "test_successful_get_tags",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -780,7 +919,6 @@
             "name": "test_get_tags_failure",
             "location": 35,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -792,7 +930,6 @@
             "name": "test_successful_request_instance_id",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -803,7 +940,6 @@
             "name": "test_request_instance_id_failure",
             "location": 62,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -816,18 +952,16 @@
             "return": [
                 "EC2Tags",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int",
                 "float"
             ],
             "arguments": {
                 "mock_requests": [
                     "str",
-                    "dict",
-                    "bool",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict",
+                    "Dict[str,str]",
+                    "bool"
                 ]
             }
         }
@@ -887,7 +1021,6 @@
             "name": "test_s3_download_bucket",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -898,7 +1031,6 @@
             "name": "test_s3_upload_object",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -909,7 +1041,6 @@
             "name": "test_s3_upload_directory",
             "location": 49,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -995,10 +1126,17 @@
                     "str"
                 ],
                 "local_config_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "prom_output_path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Callable[[str],str]",
+                    "Callable[str,str]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }

@@ -16,7 +16,9 @@
             ],
             "arguments": {
                 "deploy_dir": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[dict]"
                 ]
             }
         },
@@ -50,10 +52,9 @@
             ],
             "arguments": {
                 "event": [
-                    "list[dict[, ]]",
-                    "dict",
                     "List[dict]",
-                    "Mapping[str, str]"
+                    "Dict",
+                    "Mapping[str,str]"
                 ],
                 "context": [
                     "str"
@@ -64,7 +65,7 @@
             "name": "lambda_worker",
             "location": 31,
             "return": [
-                "Tuple[(list, list)]"
+                "None"
             ],
             "arguments": {
                 "bucket": [
@@ -79,14 +80,16 @@
             "name": "lambda_parser",
             "location": 50,
             "return": [
-                "None"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "body": [
-                    "str"
+                    "str",
+                    "Dict[str,str]"
                 ],
                 "bucket": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -98,15 +101,14 @@
             ],
             "arguments": {
                 "sdb": [
-                    "dict[, ]",
-                    "boto3.client",
-                    "dict"
+                    "Dict",
+                    "boto3.client"
                 ],
                 "activities": [
-                    "list"
+                    "str"
                 ],
                 "naps": [
-                    "list"
+                    "str"
                 ]
             }
         }
@@ -121,7 +123,7 @@
             ],
             "arguments": {
                 "email_payload": [
-                    "str"
+                    "bool"
                 ]
             }
         },
@@ -133,7 +135,7 @@
             ],
             "arguments": {
                 "email": [
-                    "str"
+                    "bool"
                 ]
             }
         },
@@ -153,14 +155,28 @@
             "name": "_make_iso_time",
             "location": 245,
             "return": [
-                "str"
+                "int",
+                "datetime.datetime",
+                "Optional[int]",
+                "Optional[datetime.tzinfo]",
+                "float"
             ],
             "arguments": {
                 "time": [
-                    "_datetime.datetime"
+                    "str",
+                    "datetime.datetime",
+                    "None",
+                    "int",
+                    "datetime.date",
+                    "Optional[str]"
                 ],
                 "date": [
-                    "_datetime.datetime"
+                    "str",
+                    "datetime.datetime",
+                    "None",
+                    "int",
+                    "datetime.date",
+                    "Optional[str]"
                 ],
                 "time_zone": [
                     "bool",
@@ -188,7 +204,10 @@
             "name": "_load_email",
             "location": 14,
             "return": [
-                "str"
+                "str",
+                "Dict[str, Any]",
+                "Optional[str]",
+                "Dict[str, Dict]"
             ],
             "arguments": {
                 "test_path": [
@@ -277,10 +296,16 @@
         "create_app": {
             "name": "create_app",
             "location": 32,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "is_test": [
-                    "bool"
+                    "bool",
+                    "Optional[int]",
+                    "int",
+                    "Optional[List[str]]",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -326,9 +351,9 @@
             "name": "update_nap_graph",
             "location": 98,
             "return": [
-                "dict[typing.Text, typing.Union[list[typing.Union[dict[typing.Text, typing.Union[list[int],typing.Text]],dict[typing.Text, typing.Union[list[float],typing.Text]]]],dict[typing.Text, typing.Text]]]",
+                "Dict[Text,Union[list[Union[dict[Text,Union[list[int],Text]],dict[Text,Union[list[float],Text]]]],dict[Text,Text]]]",
                 "str",
-                "dict",
+                "Dict",
                 "int",
                 "bool"
             ],
@@ -365,10 +390,10 @@
             "name": "cache_images",
             "location": 143,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "str",
                 "float",
-                "Tuple[str, str]"
+                "Tuple[str,str]"
             ],
             "arguments": {
                 "image_key": [
@@ -382,7 +407,7 @@
             "name": "update_media",
             "location": 154,
             "return": [
-                "list[]",
+                "List",
                 "str",
                 "Callable"
             ],
@@ -410,14 +435,18 @@
             "name": "_get_item_by_activity",
             "location": 25,
             "return": [
-                "List[dict]"
+                "list"
             ],
             "arguments": {
                 "items": [
-                    "List[dict]"
+                    "str"
                 ],
                 "activity": [
-                    "str"
+                    "str",
+                    "float",
+                    "Optional[str]",
+                    "MutableSequence[str]",
+                    "bool"
                 ]
             }
         },
@@ -425,14 +454,19 @@
             "name": "_update_date",
             "location": 43,
             "return": [
-                "_datetime.datetime"
+                "str",
+                "Optional[str]",
+                "datetime.datetime",
+                "datetime.date"
             ],
             "arguments": {
                 "date1": [
-                    "_datetime.datetime"
+                    "str",
+                    "datetime.date"
                 ],
                 "date2": [
-                    "_datetime.datetime"
+                    "str",
+                    "datetime.date"
                 ]
             }
         },
@@ -440,11 +474,14 @@
             "name": "compute_nap_times",
             "location": 52,
             "return": [
-                "List[Tuple[(_datetime.datetime, float)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "items": [
-                    "List[dict]"
+                    "str",
+                    "bool",
+                    "Tuple[List[str],List[str]]",
+                    "Tuple[Union[list[str],list[str]]]"
                 ]
             }
         },
@@ -458,7 +495,10 @@
             ],
             "arguments": {
                 "items": [
-                    "List[dict]"
+                    "str",
+                    "Dict[str,Any]",
+                    "logging.Logger",
+                    "BaseException"
                 ]
             }
         },
@@ -488,7 +528,8 @@
             ],
             "arguments": {
                 "items": [
-                    "List[dict]"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -496,11 +537,15 @@
             "name": "get_week_data",
             "location": 134,
             "return": [
-                "dict"
+                "List",
+                "Dict",
+                "bytes"
             ],
             "arguments": {
                 "date": [
-                    "str"
+                    "int",
+                    "datetime.datetime",
+                    "datetime.date"
                 ]
             }
         },
@@ -508,11 +553,14 @@
             "name": "get_media_keys",
             "location": 173,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "data": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "pandas._FrameOrSeries"
                 ]
             }
         },
@@ -524,7 +572,8 @@
             ],
             "arguments": {
                 "media_key": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         }

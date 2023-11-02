@@ -128,32 +128,29 @@
             "arguments": {
                 "email_to": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Union[int, str, bool]",
+                    "Dict",
+                    "List[str]",
+                    "Union[int,str,bool]",
                     "int",
                     "Type[object]",
-                    "typing.Type",
-                    "List[str]",
-                    "list[str]"
+                    "Type"
                 ],
                 "subject_template": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "bool",
                     "BinaryIO"
                 ],
                 "html_template": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "bool",
                     "BinaryIO"
                 ],
                 "environment": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
-                    "Union[int, str, bool]",
+                    "Union[int,str,bool]",
                     "Type[object]",
                     "List[str]"
                 ]
@@ -237,7 +234,7 @@
             "arguments": {
                 "token": [
                     "str",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "int"
                 ]
             }
@@ -249,13 +246,13 @@
             "location": 10,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {
                 "word": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         }
@@ -266,7 +263,7 @@
             "name": "get_db",
             "location": 19,
             "return": [
-                "generator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {}
         },
@@ -274,14 +271,28 @@
             "name": "get_current_user",
             "location": 27,
             "return": [
-                "models.user.User"
+                "Dict[str,str]",
+                "tracim.models.auth.User",
+                "Dict[int,Any]",
+                "int",
+                "zam_repondeur.models.Lecture",
+                "Iterable[str]",
+                "zerver.models.UserProfile",
+                "metaswitch_tinder.database.models.User",
+                "Set"
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "Depends",
+                    "sqlalchemy.orm.Session",
+                    "bool",
+                    "str"
                 ],
                 "token": [
-                    "str"
+                    "Depends",
+                    "str",
+                    "ocspdash.models.Authority",
+                    "bool"
                 ]
             }
         },
@@ -289,11 +300,20 @@
             "name": "get_current_active_user",
             "location": 46,
             "return": [
-                "models.user.User"
+                "Depends",
+                "str",
+                "Optional[str]",
+                "zerver.models.Realm"
             ],
             "arguments": {
                 "current_user": [
-                    "models.user.User"
+                    "Depends",
+                    "app.models.User",
+                    "app.models.user.User",
+                    "str",
+                    "app.contexts.AuthContext",
+                    "django.conf.settings.AUTH_USER_MODEL",
+                    "zerver.models.UserProfile"
                 ]
             }
         },
@@ -301,11 +321,17 @@
             "name": "get_current_active_superuser",
             "location": 54,
             "return": [
-                "models.user.User"
+                "Depends",
+                "str",
+                "bool"
             ],
             "arguments": {
                 "current_user": [
-                    "models.user.User"
+                    "Depends",
+                    "app.models.user.User",
+                    "app.models.User",
+                    "app.contexts.AuthContext",
+                    "str"
                 ]
             }
         }
@@ -347,7 +373,7 @@
                     "sqlalchemy.orm.Session",
                     "app.models.User",
                     "int",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -355,9 +381,9 @@
             "name": "create_item",
             "location": 32,
             "return": [
-                "list[]",
-                "Dict[str, Dict[str, int]]",
-                "Union[Sequence, 'SweepFixedValues']",
+                "List",
+                "Dict[str,Dict[str,int]]",
+                "Union[Sequence,SweepFixedValues]",
                 "Iterable[str]",
                 "bool"
             ],
@@ -367,12 +393,11 @@
             "name": "update_item",
             "location": 46,
             "return": [
-                "list[]",
+                "List",
                 "List[Dict]",
                 "int",
-                "dict[int, str]",
-                "dict[str, typing.Literal]",
-                "list",
+                "Dict[int,str]",
+                "Dict[str,Literal]",
                 "List[object]",
                 "models.Dominion"
             ],
@@ -382,15 +407,15 @@
             "name": "read_item",
             "location": 66,
             "return": [
-                "Dict[str, Dict[str, int]]",
-                "list[]",
-                "Union[Sequence, 'SweepFixedValues']",
-                "dict[, ]",
-                "Dict[str, Any]",
-                "dict[int, str]",
+                "Dict[str,Dict[str,int]]",
+                "List",
+                "Union[Sequence,SweepFixedValues]",
+                "Dict",
+                "Dict[str,Any]",
+                "Dict[int,str]",
                 "Iterable[str]",
                 "int",
-                "dict[str, typing.Literal]"
+                "Dict[str,Literal]"
             ],
             "arguments": {}
         },
@@ -398,12 +423,12 @@
             "name": "delete_item",
             "location": 84,
             "return": [
-                "Dict[str, Dict[str, int]]",
-                "list[]",
+                "Dict[str,Dict[str,int]]",
+                "List",
                 "str",
-                "dict[int, str]",
+                "Dict[int,str]",
                 "Iterable[str]",
-                "dict[str, typing.Literal]",
+                "Dict[str,Literal]",
                 "int"
             ],
             "arguments": {}
@@ -414,24 +439,24 @@
             "name": "login_access_token",
             "location": 23,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "db": [
                     "Depends",
                     "salon.models.Stylist",
                     "bytes",
-                    "Dict[str, Any]",
-                    "List[Dict[str, Any]]"
+                    "Dict[str,Any]",
+                    "List[Dict[str,Any]]"
                 ],
                 "form_data": [
                     "Depends",
                     "salon.models.Stylist",
                     "bytes",
-                    "Dict[str, Any]",
-                    "List[Dict[str, Any]]"
+                    "Dict[str,Any]",
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -456,24 +481,23 @@
             "name": "recover_password",
             "location": 54,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
                 "audiopyle.lib.models.file_meta.CompressedAudioFileMeta",
-                "type"
+                "Type"
             ],
             "arguments": {
                 "email": [
                     "str",
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "db": [
                     "Depends",
                     "str",
                     "int",
                     "django.db.models.Model",
-                    "raiden.utils.List[raiden.utils.Tuple[str, raiden.utils.Any]]",
+                    "raiden.utils.List[raiden.utils.Tuple[str,raiden.utils.Any]]",
                     "bool",
                     "limbic.emotion.models.LexiconLimbicModel"
                 ]
@@ -483,10 +507,10 @@
             "name": "reset_password",
             "location": 73,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
                 "List[zerver.models.Stream]",
-                "dict",
+                "Dict",
                 "int"
             ],
             "arguments": {
@@ -502,7 +526,7 @@
                 "db": [
                     "Depends",
                     "str",
-                    "dict",
+                    "Dict",
                     "Optional[float]"
                 ]
             }
@@ -516,11 +540,11 @@
                 "lms.lmsdb.models.User",
                 "str",
                 "lms.lmsdb.models.Solution",
-                "tuple[typing.Union[typing.Literal,typing.Literal]]",
+                "Tuple[Union[Literal,Literal]]",
                 "zam_repondeur.models.Lecture",
-                "set[]",
+                "Set",
                 "asgard.models.user.User",
-                "dict[str, int]"
+                "Dict[str,int]"
             ],
             "arguments": {
                 "db": [
@@ -547,7 +571,7 @@
                     "app.db_models.user.User",
                     "Callable",
                     "List[str]",
-                    "List[Dict[str, Any]]",
+                    "List[Dict[str,Any]]",
                     "sqlalchemy.orm.unitofwork.UOWTransaction",
                     "bool"
                 ]
@@ -560,7 +584,7 @@
                 "str",
                 "zam_repondeur.models.Lecture",
                 "core.models.UserPreferences",
-                "set",
+                "Set",
                 "int",
                 "bool",
                 "django.db.models.QuerySet"
@@ -571,16 +595,16 @@
             "name": "update_user_me",
             "location": 55,
             "return": [
-                "dict[str, str]",
+                "Dict[str,str]",
                 "int",
                 "zam_repondeur.models.Lecture",
-                "dict[typing.Any, dict[str, typing.Any]]",
-                "set",
-                "dict[str, None]",
+                "Dict[Any,dict[str,Any]]",
+                "Set",
+                "Dict[str,None]",
                 "bool",
-                "dict[str, typing.Union[bytes,str]]",
+                "Dict[str,Union[bytes,str]]",
                 "django.db.models.QuerySet",
-                "typing.Type",
+                "Type",
                 "core.models.UserPreferences",
                 "bob_emploi.frontend.api.user_pb2.EmailSent"
             ],
@@ -635,7 +659,7 @@
                 "str",
                 "zerver.models.Realm",
                 "None",
-                "dict[, ]",
+                "Dict",
                 "abilian.core.models.subjects.User",
                 "models.User",
                 "zerver.models.UserProfile",
@@ -653,7 +677,7 @@
                     "Depends",
                     "str",
                     "Optional[str]",
-                    "Optional[Dict[str, str]]",
+                    "Optional[Dict[str,str]]",
                     "int"
                 ],
                 "db": [
@@ -673,7 +697,7 @@
                 "str",
                 "zam_repondeur.models.Lecture",
                 "int",
-                "set",
+                "Set",
                 "bool",
                 "django.db.models.QuerySet",
                 "core.models.UserPreferences",
@@ -687,7 +711,7 @@
             "name": "test_celery",
             "location": 15,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
                 "float"
             ],
@@ -706,17 +730,16 @@
             "name": "test_email",
             "location": 27,
             "return": [
-                "dict[typing.Text, typing.Text]",
-                "Mapping[str, Any]",
+                "Dict[Text,Text]",
+                "Mapping[str,Any]",
                 "core.models.Recipe"
             ],
             "arguments": {
                 "email_to": [
                     "str",
+                    "List[cmk.gui.plugins.visuals.utils.Filter]",
                     "pydantic.EmailStr",
-                    "list[cmk.gui.plugins.visuals.utils.Filter]",
-                    "raiden.utils.List[raiden.raiden_service.RaidenService]",
-                    "List[cmk.gui.plugins.visuals.utils.Filter]"
+                    "raiden.utils.List[raiden.raiden_service.RaidenService]"
                 ],
                 "current_user": [
                     "Depends",
@@ -737,31 +760,28 @@
             "name": "assemble_cors_origins",
             "location": 20,
             "return": [
-                "list[str]",
-                "str",
                 "List[str]",
+                "str",
                 "Set[str]",
                 "Optional[dict]",
                 "int",
                 "List[int]",
-                "list",
-                "Dict[int, int]"
+                "List",
+                "Dict[int,int]"
             ],
             "arguments": {
                 "cls": [
                     "int",
-                    "typing.Type",
-                    "Type['DataclassT']",
-                    "typing.Callable[, ]",
-                    "typing.Iterable[T]",
                     "Callable",
+                    "Type",
+                    "Iterable[T]",
+                    "Type[DataclassT]",
                     "T",
-                    "bool",
-                    "Iterable[T]"
+                    "bool"
                 ],
                 "v": [
                     "str",
-                    "Union[str, List[str]]",
+                    "Union[str,List[str]]",
                     "int"
                 ]
             }
@@ -772,19 +792,17 @@
             "return": [
                 "None",
                 "Optional[int]",
-                "type",
+                "Type",
                 "Optional[str]"
             ],
             "arguments": {
                 "cls": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "int",
-                    "typing.Type",
+                    "Type",
+                    "Callable",
                     "Iterable[T]",
-                    "Type['DataclassT']",
-                    "typing.Callable[, ]",
-                    "Callable"
+                    "Type[DataclassT]"
                 ],
                 "v": [
                     "str",
@@ -806,30 +824,24 @@
                     "bool",
                     "List[str]",
                     "str",
-                    "list[str]",
-                    "Union[Type[Exception], Tuple[Any, ...]]",
-                    "typing.Type",
-                    "tuple[typing.Union[typing.Any,...]]"
+                    "Union[Type[Exception],Tuple[Any,...]]",
+                    "Type",
+                    "Tuple[Union[Any,...]]"
                 ],
                 "v": [
                     "str",
                     "Optional[str]",
                     "int",
-                    "None",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "dict[, ]"
+                    "None",
+                    "Dict"
                 ],
                 "values": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[, ]",
-                    "dict[str, typing.Union[str,bool]]",
-                    "dict",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Dict[str,Union[str,bool]]",
                     "bool",
-                    "str",
-                    "Dict[str, Union[str, bool]]"
+                    "str"
                 ]
             }
         },
@@ -840,48 +852,40 @@
                 "str",
                 "Optional[str]",
                 "None",
-                "dict[str, typing.Any]",
-                "dict[, ]",
-                "typing.Callable[, ]",
+                "Dict[str,Any]",
+                "Dict",
+                "Callable",
                 "int",
-                "typing.Sequence[str]"
+                "Sequence[str]"
             ],
             "arguments": {
                 "cls": [
                     "str",
                     "Optional[str]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "int",
-                    "dict[, ]",
-                    "Iterable",
-                    "typing.Callable[, ]",
                     "Callable",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "int",
+                    "Sequence[str]",
+                    "Iterable"
                 ],
                 "v": [
                     "str",
                     "Optional[str]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "int",
-                    "dict[, ]",
-                    "Iterable",
-                    "typing.Callable[, ]",
                     "Callable",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "int",
+                    "Sequence[str]",
+                    "Iterable"
                 ],
                 "values": [
                     "str",
                     "Optional[str]",
-                    "Dict[str, Any]",
-                    "dict",
+                    "Dict[str,Any]",
+                    "Dict",
                     "Iterable",
                     "Callable",
                     "int",
@@ -894,39 +898,35 @@
             "location": 73,
             "return": [
                 "bool",
-                "Union[int, float]",
+                "Union[int,float]",
                 "str",
-                "Optional[Mapping[str, Any]]"
+                "Optional[Mapping[str,Any]]"
             ],
             "arguments": {
                 "cls": [
                     "bool",
                     "float",
-                    "typing.Type",
-                    "int",
-                    "typing.Sequence[str]",
-                    "Type[Exception]",
+                    "Type",
                     "Sequence[str]",
+                    "int",
+                    "Type[Exception]",
                     "T"
                 ],
                 "v": [
                     "bool",
                     "float",
-                    "typing.Type",
-                    "int",
-                    "typing.Sequence[str]",
-                    "Type[Exception]",
+                    "Type",
                     "Sequence[str]",
+                    "int",
+                    "Type[Exception]",
                     "T"
                 ],
                 "values": [
-                    "dict[str, typing.Any]",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "List[Tuple[str, str, str]]",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "List[Tuple[str,str,str]]",
                     "str",
-                    "list",
-                    "dict"
+                    "List"
                 ]
             }
         }
@@ -936,16 +936,24 @@
             "name": "create_access_token",
             "location": 15,
             "return": [
-                "str"
+                "str",
+                "bool",
+                "dict",
+                "bytes"
             ],
             "arguments": {
                 "subject": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "expires_delta": [
-                    "_datetime.timedelta"
+                    "datetime.timedelta",
+                    "int",
+                    "None",
+                    "float",
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -953,14 +961,18 @@
             "name": "verify_password",
             "location": 29,
             "return": [
-                "bool"
+                "str",
+                "Optional[str]",
+                "int"
             ],
             "arguments": {
                 "plain_password": [
-                    "str"
+                    "str",
+                    "Callable"
                 ],
                 "hashed_password": [
-                    "str"
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -968,7 +980,10 @@
             "name": "get_password_hash",
             "location": 33,
             "return": [
-                "str"
+                "str",
+                "Dict[str, bool]",
+                "Dict[str, Any]",
+                "Mapping[str, Any]"
             ],
             "arguments": {
                 "password": [
@@ -983,7 +998,6 @@
             "name": "__init__",
             "location": 15,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -992,7 +1006,7 @@
                     "bool",
                     "None",
                     "int",
-                    "Optional[Union[\"IPUtilityFunction\", \"UtilityDistribution\"]]"
+                    "Optional[Union[IPUtilityFunction,UtilityDistribution]]"
                 ]
             }
         },
@@ -1061,11 +1075,7 @@
             "name": "update",
             "location": 42,
             "return": [
-                "Optional[str]",
-                "Tuple[int, int]",
-                "list",
-                "bool",
-                "int"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -1083,11 +1093,11 @@
             "location": 62,
             "return": [
                 "int",
-                "dict[, ]",
+                "Dict",
                 "Callable",
-                "set[str]",
+                "Set[str]",
                 "str",
-                "dict[typing.Hashable, dict[typing.Hashable, typing.Any]]"
+                "Dict[Hashable,dict[Hashable,Any]]"
             ],
             "arguments": {
                 "self": [],
@@ -1105,12 +1115,20 @@
             "name": "create_with_owner",
             "location": 12,
             "return": [
-                "app.models.item.Item"
+                "Dict[int,Any]",
+                "bool",
+                "Dict[str,Any]",
+                "Optional[int]",
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "self": [],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "sqlalchemy.orm.Session",
+                    "Tuple[int]",
+                    "str",
+                    "models.user.PostingCard",
+                    "float"
                 ]
             }
         },
@@ -1118,12 +1136,20 @@
             "name": "get_multi_by_owner",
             "location": 22,
             "return": [
-                "List[app.models.item.Item]"
+                "bool",
+                "Tuple[str, str, str]"
             ],
             "arguments": {
                 "self": [],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "int",
+                    "Type",
+                    "sqlalchemy.orm.Session",
+                    "str",
+                    "bool",
+                    "None",
+                    "Type[T]",
+                    "Optional[str]"
                 ]
             }
         }
@@ -1133,12 +1159,17 @@
             "name": "get_by_email",
             "location": 12,
             "return": [
-                "Optional[app.models.user.User]"
+                "str",
+                "Callable[[Dict], None]",
+                "Callable[[], str]"
             ],
             "arguments": {
                 "self": [],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "str",
+                    "sqlalchemy.orm.Session",
+                    "Optional[str]",
+                    "requests.Session"
                 ]
             }
         },
@@ -1151,6 +1182,7 @@
             "arguments": {
                 "self": [],
                 "db": [
+                    "sqlalchemy.orm.Session",
                     "sqlalchemy.orm.session.Session"
                 ]
             }
@@ -1164,7 +1196,9 @@
             "arguments": {
                 "self": [],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "sqlalchemy.orm.Session",
+                    "app.models.user.User",
+                    "Optional[Dict[str, Any]]"
                 ]
             }
         },
@@ -1172,12 +1206,17 @@
             "name": "authenticate",
             "location": 40,
             "return": [
-                "Optional[app.models.user.User]"
+                "Optional[str]",
+                "Optional[int]"
             ],
             "arguments": {
                 "self": [],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "str",
+                    "sqlalchemy.orm.session.Session",
+                    "sqlalchemy.orm.Session",
+                    "gdpr.anonymizers.base.FieldAnonymizer",
+                    "bool"
                 ]
             }
         },
@@ -1185,12 +1224,21 @@
             "name": "is_active",
             "location": 48,
             "return": [
-                "bool"
+                "bool",
+                "Optional[str]",
+                "Optional[Any]",
+                "reader_server.types.User"
             ],
             "arguments": {
                 "self": [],
                 "user": [
-                    "app.models.user.User"
+                    "app.models.user.User",
+                    "app.models.user.UserInDB",
+                    "str",
+                    "users.models.JustfixUser",
+                    "User",
+                    "models.User",
+                    "Optional[str]"
                 ]
             }
         },
@@ -1198,12 +1246,21 @@
             "name": "is_superuser",
             "location": 51,
             "return": [
-                "bool"
+                "bool",
+                "Optional[str]",
+                "Optional[Any]",
+                "reader_server.types.User"
             ],
             "arguments": {
                 "self": [],
                 "user": [
-                    "app.models.user.User"
+                    "app.models.user.User",
+                    "app.models.user.UserInDB",
+                    "str",
+                    "users.models.JustfixUser",
+                    "User",
+                    "models.User",
+                    "Optional[str]"
                 ]
             }
         }
@@ -1236,7 +1293,9 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "int",
+                    "django.conf.settings.AUTH_USER_MODEL",
+                    "db.Db"
                 ]
             }
         }
@@ -1256,8 +1315,7 @@
             "name": "db",
             "location": 15,
             "return": [
-                "typing.Generator",
-                "typing.Generator[]"
+                "Generator"
             ],
             "arguments": {}
         },
@@ -1265,8 +1323,8 @@
             "name": "client",
             "location": 20,
             "return": [
-                "typing.Generator",
-                "typing.Generator[TestClient]"
+                "Generator",
+                "Generator[TestClient]"
             ],
             "arguments": {}
         },
@@ -1283,11 +1341,10 @@
             ],
             "arguments": {
                 "client": [
-                    "dict[, ]",
+                    "Dict",
                     "fastapi.testclienTestClient",
                     "str",
-                    "int",
-                    "dict"
+                    "int"
                 ]
             }
         },
@@ -1328,7 +1385,7 @@
                     "fastapi.testclienTestClient"
                 ],
                 "superuser_token_headers": [
-                    "Dict[(str, str)]"
+                    "fastapi.testclienTestClient"
                 ]
             }
         }
@@ -1346,10 +1403,13 @@
                     "Dict[str, str]"
                 ],
                 "superuser_token_headers": [
-                    "dict"
+                    "Dict[str,str]",
+                    "fastapi.testclienTestClient"
                 ],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "django.conf.settings.AUTH_USER_MODEL",
+                    "fastapi.testclienTestClient",
+                    "tests.clienMDMClient"
                 ]
             }
         },
@@ -1361,16 +1421,17 @@
             ],
             "arguments": {
                 "client": [
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "fastapi.testclienTestClient",
-                    "aiohttp.test_utils.TestClient",
-                    "Dict[str, str]"
+                    "aiohttp.test_utils.TestClient"
                 ],
                 "superuser_token_headers": [
-                    "dict"
+                    "Dict[str,str]",
+                    "fastapi.testclienTestClient",
+                    "aiohttp.test_utils.TestClient"
                 ],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "int"
                 ]
             }
         }
@@ -1401,7 +1462,7 @@
                     "fastapi.testclienTestClient"
                 ],
                 "superuser_token_headers": [
-                    "Dict[(str, str)]"
+                    "fastapi.testclienTestClient"
                 ]
             }
         }
@@ -1415,13 +1476,14 @@
             ],
             "arguments": {
                 "client": [
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "fastapi.testclienTestClient",
-                    "Dict[str, str]",
                     "aiohttp.test_utils.TestClient"
                 ],
                 "superuser_token_headers": [
-                    "Dict[(str, str)]"
+                    "Dict[str,str]",
+                    "fastapi.testclienTestClient",
+                    "aiohttp.test_utils.TestClient"
                 ]
             }
         },
@@ -1437,7 +1499,8 @@
                     "aiohttp.test_utils.TestClient"
                 ],
                 "normal_user_token_headers": [
-                    "Dict[(str, str)]"
+                    "fastapi.testclienTestClient",
+                    "aiohttp.test_utils.TestClient"
                 ]
             }
         },
@@ -1452,11 +1515,9 @@
                     "fastapi.testclienTestClient"
                 ],
                 "superuser_token_headers": [
-                    "dict"
+                    "fastapi.testclienTestClient"
                 ],
-                "db": [
-                    "sqlalchemy.orm.session.Session"
-                ]
+                "db": []
             }
         },
         "test_get_existing_user": {
@@ -1467,15 +1528,15 @@
             ],
             "arguments": {
                 "client": [
-                    "dict[str, str]",
-                    "fastapi.testclienTestClient",
-                    "Dict[str, str]"
+                    "Dict[str,str]",
+                    "fastapi.testclienTestClient"
                 ],
                 "superuser_token_headers": [
-                    "dict"
+                    "Dict[str,str]",
+                    "fastapi.testclienTestClient"
                 ],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "sqlalchemy.orm.Session"
                 ]
             }
         },
@@ -1491,10 +1552,12 @@
                     "fastapi.testclienTestClient"
                 ],
                 "superuser_token_headers": [
-                    "dict"
+                    "aiohttp.test_utils.TestClient",
+                    "fastapi.testclienTestClient"
                 ],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "tests.conftesWorker",
+                    "tests.hints.RightFolderCall"
                 ]
             }
         },
@@ -1511,7 +1574,9 @@
                     "dict"
                 ],
                 "normal_user_token_headers": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "fastapi.testclienTestClient",
+                    "aiohttp.test_utils.TestClient"
                 ]
             }
         },
@@ -1523,15 +1588,15 @@
             ],
             "arguments": {
                 "client": [
-                    "dict[str, str]",
-                    "fastapi.testclienTestClient",
-                    "Dict[str, str]"
+                    "Dict[str,str]",
+                    "fastapi.testclienTestClient"
                 ],
                 "superuser_token_headers": [
-                    "dict"
+                    "Dict[str,str]",
+                    "fastapi.testclienTestClient"
                 ],
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "tests.conftesWorker"
                 ]
             }
         }
@@ -1546,7 +1611,10 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "None",
+                    "app.models.User",
+                    "Optional[mwapi.Session]",
+                    "sqlalchemy.orm.Session"
                 ]
             }
         },
@@ -1558,7 +1626,13 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "None",
+                    "int",
+                    "app.models.User",
+                    "Optional[mwapi.Session]",
+                    "app.db.session.Session",
+                    "sqlalchemy.orm.Session",
+                    "asgard.models.user.User"
                 ]
             }
         },
@@ -1570,7 +1644,10 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "None",
+                    "app.models.User",
+                    "sqlalchemy.orm.Session",
+                    "Optional[mwapi.Session]"
                 ]
             }
         },
@@ -1582,7 +1659,10 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "None",
+                    "sqlalchemy.orm.Session",
+                    "app.models.User",
+                    "Optional[mwapi.Session]"
                 ]
             }
         }
@@ -1596,6 +1676,7 @@
             ],
             "arguments": {
                 "db": [
+                    "Set[str]",
                     "sqlalchemy.orm.session.Session"
                 ]
             }
@@ -1608,7 +1689,7 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "sqlalchemy.orm.Session"
                 ]
             }
         },
@@ -1620,7 +1701,8 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "bool",
+                    "raiden.utils.TokenAmount"
                 ]
             }
         },
@@ -1680,7 +1762,10 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "List[authorityspoke.io.schemas.RawHolding]",
+                    "sqlalchemy.orm.Session",
+                    "labm8.py.sqlutil.Session",
+                    "authorityspoke.io.schemas.RawFactor"
                 ]
             }
         },
@@ -1692,7 +1777,8 @@
             ],
             "arguments": {
                 "db": [
-                    "sqlalchemy.orm.session.Session"
+                    "sqlalchemy.orm.Session",
+                    "labm8.py.sqlutil.Session"
                 ]
             }
         }
@@ -1712,7 +1798,6 @@
                 "db": [
                     "int",
                     "str",
-                    "list[int]",
                     "List[int]",
                     "sqlalchemy.orm.Session"
                 ]
@@ -1724,9 +1809,9 @@
             "name": "user_authentication_headers",
             "location": 13,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "tests.mock_vws.utils.Endpoint",
-                "dict"
+                "Dict"
             ],
             "arguments": {}
         },
@@ -1735,9 +1820,9 @@
             "location": 25,
             "return": [
                 "str",
-                "list[typing.Union[typing.Any,typing.Any]]",
+                "List[Union[Any,Any]]",
                 "zam_repondeur.models.Lecture",
-                "list[tuple[typing.Union[int,str,str]]]",
+                "List[tuple[Union[int,str,str]]]",
                 "user_models.User",
                 "app.models.user.User",
                 "lms.lmsdb.models.User",
@@ -1769,8 +1854,8 @@
             "location": 10,
             "return": [
                 "str",
-                "Tuple[Tuple[int, ...]]",
-                "dict"
+                "Tuple[Tuple[int,...]]",
+                "Dict"
             ],
             "arguments": {}
         },
@@ -1779,7 +1864,7 @@
             "location": 14,
             "return": [
                 "str",
-                "typing.Text"
+                "Text"
             ],
             "arguments": {}
         },
@@ -1787,11 +1872,11 @@
             "name": "get_superuser_token_headers",
             "location": 18,
             "return": [
-                "dict[typing.Text, typing.Text]",
+                "Dict[Text,Text]",
                 "str",
                 "List[dict]",
-                "Dict[str, Any]",
-                "Dict[str, Union[str, int]]"
+                "Dict[str,Any]",
+                "Dict[str,Union[str,int]]"
             ],
             "arguments": {
                 "client": [

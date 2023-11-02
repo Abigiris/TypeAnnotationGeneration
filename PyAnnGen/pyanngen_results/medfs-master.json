@@ -4,7 +4,6 @@
             "name": "session_scope",
             "location": 246,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -13,7 +12,6 @@
             "name": "serve",
             "location": 259,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -47,10 +45,16 @@
             "arguments": {
                 "self": [],
                 "user_id": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "record_id": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -63,10 +67,12 @@
             "arguments": {
                 "self": [],
                 "user_id": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "record_id": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -81,15 +87,13 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Optional[Dict[str, Any]]",
+                    "Dict[str,Any]",
+                    "Optional[Dict[str,Any]]",
                     "None"
                 ],
                 "context": [
-                    "dict[, ]",
-                    "grpc.ServicerContext",
-                    "dict"
+                    "Dict",
+                    "grpc.ServicerContext"
                 ]
             }
         },
@@ -105,9 +109,8 @@
                 "self": [],
                 "request": [],
                 "context": [
-                    "dict[, ]",
-                    "grpc.ServicerContext",
-                    "dict"
+                    "Dict",
+                    "grpc.ServicerContext"
                 ]
             }
         },
@@ -125,9 +128,8 @@
                 "self": [],
                 "request": [],
                 "context": [
-                    "dict",
-                    "Exception",
-                    "dict[, ]"
+                    "Dict",
+                    "Exception"
                 ]
             }
         },
@@ -186,9 +188,8 @@
                     "sqlalchemy.orm.Session"
                 ],
                 "context": [
-                    "dict",
-                    "Exception",
-                    "dict[, ]"
+                    "Dict",
+                    "Exception"
                 ]
             }
         },
@@ -244,10 +245,9 @@
                 "self": [],
                 "request": [],
                 "context": [
-                    "list[]",
+                    "List",
                     "bool",
-                    "grpc.ServicerContext",
-                    "list"
+                    "grpc.ServicerContext"
                 ]
             }
         }
@@ -381,7 +381,7 @@
             "name": "lambda_handler",
             "location": 3,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, Union[(int, str)])]"
             ],
             "arguments": {
                 "event": [
@@ -401,7 +401,6 @@
             "name": "send_notification_email",
             "location": 9,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -433,9 +432,7 @@
             "name": "_create_queue_name",
             "location": 9,
             "return": [
-                "typing.Text",
-                "str",
-                "Tuple[str]"
+                "str"
             ],
             "arguments": {
                 "uuid": [
@@ -448,7 +445,7 @@
             "name": "receive_messages",
             "location": 13,
             "return": [
-                "list[]",
+                "List",
                 "int",
                 "Callable",
                 "str"
@@ -457,9 +454,8 @@
                 "uuid": [
                     "str",
                     "bool",
-                    "dict[str, typing.Any]",
-                    "int",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         }
@@ -470,8 +466,8 @@
             "location": 27,
             "return": [
                 "None",
-                "dict",
-                "Dict[str, Any]",
+                "Dict",
+                "Dict[str,Any]",
                 "str",
                 "Optional[Dict]"
             ],
@@ -500,7 +496,12 @@
             "name": "encode",
             "location": 23,
             "return": [
-                "str"
+                "str",
+                "Optional[float]",
+                "int",
+                "List[Dict[str, Any]]",
+                "Dict[str, str]",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -512,7 +513,6 @@
             "name": "setup_db",
             "location": 78,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -590,11 +590,11 @@
             "name": "login",
             "location": 30,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
-                "Dict[str, Any]",
+                "Tuple[Union[Text,int]]",
+                "Dict[str,Any]",
                 "JsonResponse",
-                "dict",
-                "Tuple[str, str]"
+                "Dict",
+                "Tuple[str,str]"
             ],
             "arguments": {}
         },
@@ -602,7 +602,7 @@
             "name": "logout",
             "location": 62,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "int",
                 "Callable",
                 "models.Question",
@@ -614,9 +614,9 @@
             "name": "is_logged_in",
             "location": 69,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "IO[str]",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {}
         }
@@ -628,8 +628,8 @@
             "return": [
                 "JsonResponse",
                 "str",
-                "\"User\"",
-                "List[Dict[str, Any]]",
+                "User",
+                "List[Dict[str,Any]]",
                 "bool"
             ],
             "arguments": {}
@@ -643,8 +643,8 @@
                 "JsonResponse",
                 "Optional[str]",
                 "int",
-                "Dict[str, Any]",
-                "Dict[int, str]",
+                "Dict[str,Any]",
+                "Dict[int,str]",
                 "str",
                 "List[DefaultDict]"
             ],
@@ -656,20 +656,17 @@
             "name": "send",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "uuid": [
                     "str",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "message": [
                     "str",
                     "int",
-                    "IO",
-                    "typing.IO"
+                    "IO"
                 ]
             }
         }
@@ -682,7 +679,7 @@
                 "JsonResponse",
                 "Optional[str]",
                 "bytes",
-                "Dict[str, dict]",
+                "Dict[str,dict]",
                 "str"
             ],
             "arguments": {}
@@ -693,8 +690,8 @@
             "return": [
                 "JsonResponse",
                 "str",
-                "\"User\"",
-                "List[Dict[str, Any]]",
+                "User",
+                "List[Dict[str,Any]]",
                 "bool"
             ],
             "arguments": {}
@@ -704,7 +701,7 @@
             "location": 112,
             "return": [
                 "JsonResponse",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int"
             ],
             "arguments": {}
@@ -714,7 +711,7 @@
             "location": 159,
             "return": [
                 "JsonResponse",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "Optional[str]"
             ],
@@ -726,7 +723,7 @@
             "return": [
                 "JsonResponse",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int"
             ],
             "arguments": {
@@ -741,11 +738,17 @@
             "name": "_get_patient_info",
             "location": 197,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "patient_id": [
-                    "str"
+                    "str",
+                    "List[int]",
+                    "int",
+                    "transfer.models.ItemID",
+                    "verification_token.models.Token",
+                    "ticketing.transfer.models.TicketCategoryID",
+                    "sqlalchemy.orm.Session"
                 ]
             }
         },
@@ -754,7 +757,7 @@
             "location": 224,
             "return": [
                 "JsonResponse",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int"
             ],
             "arguments": {
@@ -770,11 +773,11 @@
             "location": 283,
             "return": [
                 "JsonResponse",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "Optional[Any]",
                 "Optional[str]",
-                "dict"
+                "Dict"
             ],
             "arguments": {}
         }
@@ -785,16 +788,15 @@
             "location": 20,
             "return": [
                 "bool",
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "JsonResponse"
             ],
             "arguments": {
                 "record_id": [
                     "int",
                     "str",
-                    "cnaas_nms.db.session.sqla_session",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "cnaas_nms.db.session.sqla_session"
                 ]
             }
         },
@@ -804,9 +806,9 @@
             "return": [
                 "JsonResponse",
                 "str",
-                "Optional[Dict[str, Any]]",
+                "Optional[Dict[str,Any]]",
                 "robot_server.service.legacy.models.settings.PipetteSettings",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int"
             ],
             "arguments": {
@@ -825,8 +827,8 @@
             "location": 41,
             "return": [
                 "JsonResponse",
-                "dict",
-                "Tuple[int, str]",
+                "Dict",
+                "Tuple[int,str]",
                 "Optional[bytes]"
             ],
             "arguments": {}
@@ -836,9 +838,9 @@
             "location": 87,
             "return": [
                 "JsonResponse",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
-                "dict",
+                "Dict",
                 "Optional[bytes]",
                 "Optional[str]"
             ],
@@ -859,13 +861,16 @@
             ],
             "arguments": {
                 "form": [
-                    "dict[, ]",
+                    "Dict",
                     "float",
-                    "str",
-                    "dict"
+                    "str"
                 ],
                 "permissions_json": [
-                    "List[Dict[(str, Any)]]"
+                    "str",
+                    "bool",
+                    "Iterable[str]",
+                    "Optional[Iterable[str]]",
+                    "List[str]"
                 ]
             }
         },
@@ -874,10 +879,10 @@
             "location": 129,
             "return": [
                 "str",
-                "tuple[typing.Union[typing.Text,int]]",
-                "Dict[str, Any]",
-                "tuple[int]",
-                "tuple[typing.Union[str,int]]"
+                "Tuple[Union[Text,int]]",
+                "Dict[str,Any]",
+                "Tuple[int]",
+                "Tuple[Union[str,int]]"
             ],
             "arguments": {}
         },
@@ -885,9 +890,9 @@
             "name": "update_record",
             "location": 208,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "List[str]",
-                "tuple[int]",
+                "Tuple[int]",
                 "str",
                 "bool",
                 "int"
@@ -925,8 +930,8 @@
             "return": [
                 "JsonResponse",
                 "tests.mock_vws.utils.Endpoint",
-                "dict",
-                "Dict[str, Any]"
+                "Dict",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "record_id": [
@@ -954,7 +959,7 @@
             "name": "create_user",
             "location": 30,
             "return": [
-                "tuple[typing.Union[typing.Text,int]]",
+                "Tuple[Union[Text,int]]",
                 "int",
                 "bool",
                 "guillotina.db.orm.interfaces.IBaseObject"
@@ -966,7 +971,7 @@
             "location": 83,
             "return": [
                 "bool",
-                "tuple[typing.Union[typing.Text,int]]"
+                "Tuple[Union[Text,int]]"
             ],
             "arguments": {}
         },
@@ -975,8 +980,8 @@
             "location": 110,
             "return": [
                 "str",
-                "tuple[typing.Union[typing.Text,int]]",
-                "tuple[int]"
+                "Tuple[Union[Text,int]]",
+                "Tuple[int]"
             ],
             "arguments": {}
         },
@@ -985,9 +990,9 @@
             "location": 143,
             "return": [
                 "JsonResponse",
-                "Dict[str, Any]",
-                "dict",
-                "Dict[str, str]",
+                "Dict[str,Any]",
+                "Dict",
+                "Dict[str,str]",
                 "core.models.User"
             ],
             "arguments": {}
@@ -1002,13 +1007,24 @@
             ],
             "arguments": {
                 "slack_signature": [
-                    "str"
+                    "str",
+                    "float",
+                    "Dict",
+                    "bytes"
                 ],
                 "slack_request_timestamp": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Optional[Mapping[str,Any]]",
+                    "Mapping",
+                    "None"
                 ],
                 "request_body": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Optional[Mapping[str,Any]]",
+                    "Mapping",
+                    "None"
                 ]
             }
         },
@@ -1050,9 +1066,9 @@
             "return": [
                 "JsonResponse",
                 "tests.mock_vws.utils.Endpoint",
-                "dict",
-                "Dict[str, Any]",
-                "Dict[str, Dict[str, Any]]"
+                "Dict",
+                "Dict[str,Any]",
+                "Dict[str,Dict[str,Any]]"
             ],
             "arguments": {}
         }
@@ -1068,10 +1084,22 @@
             ],
             "arguments": {
                 "server": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "IO[str]",
+                    "IO",
+                    "Callable[[None,None],bool]",
+                    "Callable[None,None,bool]"
                 ],
                 "port": [
-                    "int"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "IO[str]",
+                    "IO",
+                    "Callable[[None,None],bool]",
+                    "Callable[None,None,bool]"
                 ]
             }
         },
@@ -1088,15 +1116,10 @@
             "arguments": {
                 "client": [
                     "Callable",
-                    "str",
-                    "typing.Callable[, ]"
-                ],
-                "user_uuid": [
                     "str"
                 ],
-                "record_uuid": [
-                    "str"
-                ]
+                "user_uuid": [],
+                "record_uuid": []
             }
         },
         "set_permissions": {
@@ -1116,10 +1139,11 @@
                     "str"
                 ],
                 "record_uuid": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "permissions": [
-                    "Dict[(str, str)]"
+                    "str"
                 ]
             }
         },
@@ -1132,7 +1156,7 @@
             "arguments": {
                 "perm_entry": [
                     "Optional[List[int]]",
-                    "list[int]",
+                    "List[int]",
                     "None"
                 ]
             }
@@ -1141,61 +1165,52 @@
             "name": "is_user_permissioned_for_read",
             "location": 51,
             "return": [
-                "bool"
+                "dict",
+                "int",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "client": [],
-                "user_uuid": [
-                    "str"
-                ],
-                "record_uuid": [
-                    "str"
-                ]
+                "user_uuid": [],
+                "record_uuid": []
             }
         },
         "is_user_permissioned_for_write": {
             "name": "is_user_permissioned_for_write",
             "location": 61,
             "return": [
-                "bool"
+                "dict",
+                "int",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "client": [],
-                "user_uuid": [
-                    "str"
-                ],
-                "record_uuid": [
-                    "str"
-                ]
+                "user_uuid": [],
+                "record_uuid": []
             }
         },
         "get_records_for_user": {
             "name": "get_records_for_user",
             "location": 76,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(Any, str)]"
             ],
             "arguments": {
                 "client": [
                     "str"
                 ],
-                "user_uuid": [
-                    "str"
-                ]
+                "user_uuid": []
             }
         },
         "get_users_for_record": {
             "name": "get_users_for_record",
             "location": 86,
             "return": [
-                "Dict[str, Any]",
-                "list[tuple[]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "client": [],
-                "record_uuid": [
-                    "str"
-                ]
+                "record_uuid": []
             }
         },
         "find_common_records": {
@@ -1208,12 +1223,9 @@
                 "client": [
                     "str",
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
-                "user_uuid": [
-                    "str"
-                ]
+                "user_uuid": []
             }
         },
         "_user_id": {
@@ -1241,7 +1253,9 @@
             ],
             "arguments": {
                 "record_uuid": [
-                    "str"
+                    "int",
+                    "str",
+                    "uuid.UUID"
                 ]
             }
         },
@@ -1254,7 +1268,8 @@
             ],
             "arguments": {
                 "perm_str": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -1277,9 +1292,7 @@
             "name": "_create_queue_name",
             "location": 22,
             "return": [
-                "typing.Text",
-                "str",
-                "Tuple[str]"
+                "str"
             ],
             "arguments": {
                 "uuid": [
@@ -1292,21 +1305,18 @@
             "name": "send_message",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "uuid": [
                     "str",
                     "bool",
-                    "dict[str, typing.Any]",
-                    "int",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "message": [
-                    "Dict[str, Any]",
-                    "bool",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "bool"
                 ]
             }
         },
@@ -1328,10 +1338,7 @@
             "name": "serialize",
             "location": 14,
             "return": [
-                "IO[str]",
-                "int",
-                "str",
-                "Iterable[int]"
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -1366,11 +1373,7 @@
             "name": "to_json",
             "location": 50,
             "return": [
-                "str",
-                "int",
-                "Tuple[str, str]",
-                "Dict[int, Dict]",
-                "bytes"
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -1387,18 +1390,15 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "set[enum.Enum]",
-                    "Type[T]",
                     "Set[enum.Enum]",
+                    "Type[T]",
                     "Type"
                 ],
                 "value": [
                     "str",
-                    "typing.Type",
-                    "Type[T]",
-                    "set[enum.Enum]",
+                    "Type",
                     "Set[enum.Enum]",
-                    "Type"
+                    "Type[T]"
                 ]
             }
         },
@@ -1418,18 +1418,14 @@
                 "cls": [
                     "str",
                     "bool",
-                    "type",
-                    "typing.Type",
-                    "dict",
-                    "dict[, ]"
+                    "Type",
+                    "Dict"
                 ],
                 "value": [
                     "str",
                     "bool",
-                    "type",
-                    "typing.Type",
-                    "dict",
-                    "dict[, ]"
+                    "Type",
+                    "Dict"
                 ]
             }
         }
@@ -1467,7 +1463,11 @@
             "name": "hash_password",
             "location": 32,
             "return": [
-                "str"
+                "str",
+                "Mapping[str, Any]",
+                "Dict[str, Any]",
+                "IO",
+                "Dict[str, List[str]]"
             ],
             "arguments": {
                 "password": [
@@ -1479,7 +1479,11 @@
             "name": "check_password",
             "location": 36,
             "return": [
-                "bool"
+                "str",
+                "Mapping[str, Any]",
+                "Dict[str, Any]",
+                "Dict[str, List[str]]",
+                "IO"
             ],
             "arguments": {
                 "hashpw": [
@@ -1498,10 +1502,12 @@
             ],
             "arguments": {
                 "password": [
-                    "str"
+                    "str",
+                    "bytes"
                 ],
                 "private_key": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -1519,14 +1525,13 @@
                 "self": [],
                 "name": [
                     "str",
-                    "Optional[str]",
-                    "None",
                     "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "public_key": [
                     "str",
-                    "Union[str, int]"
+                    "Union[str,int]"
                 ]
             }
         },
@@ -1544,14 +1549,13 @@
                 "self": [],
                 "name": [
                     "str",
-                    "Optional[str]",
-                    "None",
                     "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "private_key": [
                     "str",
-                    "Union[Dict[str, Any], List[Any]]"
+                    "Union[Dict[str,Any],List[Any]]"
                 ]
             }
         }
@@ -1567,9 +1571,7 @@
             ],
             "arguments": {
                 "f": [
-                    "typing.Iterable[str]",
                     "Iterable[str]",
-                    "typing.Callable[, ]",
                     "Callable",
                     "T"
                 ]
@@ -1583,9 +1585,7 @@
             ],
             "arguments": {
                 "f": [
-                    "typing.Iterable[str]",
                     "Iterable[str]",
-                    "typing.Callable[, ]",
                     "Callable",
                     "T"
                 ]
@@ -1605,7 +1605,7 @@
             "return": [
                 "JsonResponse",
                 "str",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {}
         }
@@ -1615,7 +1615,6 @@
             "name": "send_notification_email",
             "location": 9,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1634,12 +1633,16 @@
             "name": "write",
             "location": 15,
             "return": [
-                "dict"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "fp": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1647,12 +1650,16 @@
             "name": "write",
             "location": 20,
             "return": [
-                "dict"
+                "Dict[(str, uuid.UUID)]"
             ],
             "arguments": {
                 "self": [],
                 "fp": [
-                    "str"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1683,12 +1690,16 @@
             "name": "write",
             "location": 36,
             "return": [
-                "dict"
+                "str",
+                "solo.config.app.Config",
+                "eth.abc.ComputationAPI"
             ],
             "arguments": {
                 "self": [],
                 "fp": [
-                    "str"
+                    "int",
+                    "VT",
+                    "T"
                 ]
             }
         },
@@ -1701,7 +1712,9 @@
             "arguments": {
                 "self": [],
                 "fs_writer": [
-                    "FsWriter"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1732,10 +1745,15 @@
                     "bool"
                 ],
                 "filename": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "record_id": [
-                    "str"
+                    "str",
+                    "bool",
+                    "uuid.UUID",
+                    "models.PermissionLookup"
                 ]
             }
         },
@@ -1744,10 +1762,10 @@
             "location": 63,
             "return": [
                 "Record",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "List[str]",
                 "models.Slice",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "str",
                 "models.User"
             ],
@@ -1756,8 +1774,7 @@
                 "flask_file": [
                     "str",
                     "bool",
-                    "Dict[str, pypi2nix.utils.NixOption]",
-                    "dict[str, pypi2nix.utils.NixOption]",
+                    "Dict[str,pypi2nix.utils.NixOption]",
                     "Optional[str]",
                     "None"
                 ],
@@ -1772,14 +1789,27 @@
             "name": "parse_uploaded_permissions",
             "location": 18,
             "return": [
-                "Dict[(str, Dict[(str, str)])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "permissions_json": [
-                    "List[Dict[(str, Dict[(str, str)])]]"
+                    "Dict",
+                    "str",
+                    "django.db.models.query.QuerySet",
+                    "qcodes.utils.metadata.Metadatable",
+                    "games.models.Game",
+                    "int",
+                    "Optional[str]"
                 ],
                 "db": [
-                    "flask_sqlalchemy.SQLAlchemy"
+                    "str",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "abilian.services.security.models.Permission",
+                    "abilian.services.security.models.Role",
+                    "bob_emploi.frontend.api.user_pb2.User",
+                    "telethon.tl.types.User",
+                    "app.models.user.User"
                 ]
             }
         },
@@ -1791,21 +1821,40 @@
             ],
             "arguments": {
                 "user_id": [
-                    "str"
+                    "float",
+                    "Optional[float]",
+                    "int",
+                    "None",
+                    "Dict[str,Any]",
+                    "topicdb.core.models.collaborationmode.CollaborationMode",
+                    "str",
+                    "Optional[zerver.models.UserProfile]",
+                    "Optional[str]"
                 ],
                 "record_uuid": [
-                    "str"
+                    "float",
+                    "Optional[float]",
+                    "int",
+                    "None",
+                    "Dict[str,Any]",
+                    "topicdb.core.models.collaborationmode.CollaborationMode",
+                    "str",
+                    "Optional[zerver.models.UserProfile]",
+                    "Optional[str]"
                 ],
                 "permissions_dict": [
-                    "Dict[(str, Dict[(str, str)])]"
+                    "int",
+                    "str",
+                    "daylighdb.models.User",
+                    "topicdb.core.models.collaborationmode.CollaborationMode",
+                    "zerver.models.UserProfile"
                 ],
                 "acl_client": [
                     "str",
                     "None",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "homeassistanauth.models.User",
                     "Optional[models.DBClient]",
-                    "Dict[str, str]",
                     "Optional[str]"
                 ]
             }
@@ -1818,13 +1867,22 @@
             ],
             "arguments": {
                 "user_id": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "List[int]",
+                    "zerver.models.UserProfile"
                 ],
                 "record_uuid": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "abilian.core.models.subjects.User",
+                    "zerver.models.UserProfile"
                 ],
                 "permissions_dict": [
-                    "Dict[(str, Dict[(str, str)])]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "bool"
                 ],
                 "acl_client": [
                     "str",
@@ -1851,9 +1909,7 @@
                     "Optional[str]",
                     "bytes",
                     "Set[str]",
-                    "set[str]",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple"
                 ],
                 "message": [
                     "int",
@@ -1862,9 +1918,7 @@
                     "Optional[str]",
                     "bytes",
                     "Set[str]",
-                    "set[str]",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple"
                 ],
                 "status": [
                     "int",

@@ -9,7 +9,10 @@
             ],
             "arguments": {
                 "debug": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -22,9 +25,16 @@
             "arguments": {
                 "self": [],
                 "source_dir": [
+                    "str",
+                    "List[str]",
                     "pathlib.Path"
                 ],
                 "dest_dir": [
+                    "str",
+                    "bool",
+                    "None",
+                    "Dict[str,Any]",
+                    "Optional[str]",
                     "pathlib.Path"
                 ]
             }
@@ -33,13 +43,14 @@
             "name": "parse_file",
             "location": 41,
             "return": [
-                "List[str]",
-                "list[Line]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "source": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "List"
                 ]
             }
         },
@@ -47,11 +58,12 @@
             "name": "parse_dir",
             "location": 62,
             "return": [
-                "Dict[(pathlib.Path, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "source_dir": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -60,12 +72,16 @@
             "name": "organize",
             "location": 76,
             "return": [
-                "Dict[(str, Any)]"
+                "collections.defaultdict"
             ],
             "arguments": {
                 "self": [],
                 "contents": [
-                    "Dict[(pathlib.Path, Any)]"
+                    "Dict[pathlib.Path,L]",
+                    "Dict[str,str]",
+                    "Dict[pathlib.Path,types.Lines]",
+                    "str",
+                    "List"
                 ]
             }
         },
@@ -79,18 +95,22 @@
                 "self": [],
                 "line": [
                     "str",
-                    "bytes",
-                    "Union[str, bytes]",
-                    "tuple[str]",
-                    "int",
-                    "tuple[typing.Union[str,str,int]]",
-                    "Line",
                     "Tuple[str]",
-                    "Tuple[str, str, int]",
+                    "bytes",
+                    "Union[str,bytes]",
+                    "int",
+                    "Tuple[Union[str,str,int]]",
+                    "Line",
+                    "Tuple[str,str,int]",
                     "pathlib.Path"
                 ],
                 "kind": [
-                    "str"
+                    "str",
+                    "None",
+                    "List[str]",
+                    "Dict",
+                    "int",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -98,7 +118,7 @@
             "name": "_split_types",
             "location": 107,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {
                 "t": [
@@ -110,11 +130,12 @@
             "name": "_convert_type",
             "location": 117,
             "return": [
-                "str"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "t": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -127,7 +148,9 @@
             "arguments": {
                 "self": [],
                 "dest": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "logging.Logger"
                 ],
                 "lines": [
                     "str",
@@ -141,7 +164,7 @@
             "name": "gen_stubs",
             "location": 257,
             "return": [
-                "List[pathlib.Path]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -153,7 +176,6 @@
             "name": "main",
             "location": 30,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -168,14 +190,14 @@
                     "List[str]"
                 ],
                 "source_dir": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "bool",
                     "cerulean.Path"
                 ],
                 "dest_dir": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "pathlib.Path"

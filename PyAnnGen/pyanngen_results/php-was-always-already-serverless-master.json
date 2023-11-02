@@ -12,18 +12,20 @@
             "name": "main",
             "location": 37,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, Union[(int, str, Dict[(str, str)])])]"
             ],
             "arguments": {
                 "event": [
-                    "dict"
+                    "Dict",
+                    "Tuple",
+                    "Optional[dict]",
+                    "None"
                 ],
                 "context": [
                     "bool",
-                    "Type[T]",
-                    "typing.Type",
                     "List[dict]",
-                    "list[dict[, ]]"
+                    "Type[T]",
+                    "Type"
                 ]
             }
         },
@@ -31,11 +33,15 @@
             "name": "transform_header_name_for_php",
             "location": 55,
             "return": [
-                "str"
+                "str",
+                "List[str]"
             ],
             "arguments": {
                 "k": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Type[T]",
+                    "Type"
                 ]
             }
         },
@@ -47,7 +53,8 @@
             ],
             "arguments": {
                 "headers": [
-                    "List[Tuple[(bytes, bytes)]]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -59,7 +66,10 @@
             ],
             "arguments": {
                 "event": [
-                    "dict"
+                    "dict",
+                    "Dict[str, Dict[str, str]]",
+                    "Dict[str, Any]",
+                    "Optional[Dict[str, Any]]"
                 ]
             }
         },
@@ -71,7 +81,10 @@
             ],
             "arguments": {
                 "event": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -79,11 +92,12 @@
             "name": "make_fcgi_params_and_input_from_event",
             "location": 88,
             "return": [
-                "Tuple[(Dict[(str, Any)], bytes)]"
+                "Tuple[(dict, bytes)]"
             ],
             "arguments": {
                 "event": [
-                    "dict"
+                    "dict",
+                    "Dict[str, Any]"
                 ]
             }
         }
@@ -93,11 +107,13 @@
             "name": "parse_out",
             "location": 170,
             "return": [
-                "Tuple[(bytes, List[Tuple[(bytes, bytes)]], bytes)]"
+                "Tuple[(Any, List[Tuple[(Any, Any)]], Any)]"
             ],
             "arguments": {
                 "result": [
-                    "bytes"
+                    "dict",
+                    "Dict[str, Any]",
+                    "Dict[str, Dict[str, Any]]"
                 ]
             }
         },
@@ -105,11 +121,15 @@
             "name": "decode_name_value_pairs",
             "location": 399,
             "return": [
-                "List[Tuple[(str, str)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "buffer": [
-                    "bytearray"
+                    "bytearray",
+                    "Set[str]",
+                    "List[Dict[str, Any]]",
+                    "int",
+                    "List[str]"
                 ]
             }
         },
@@ -121,7 +141,10 @@
             ],
             "arguments": {
                 "pairs": [
-                    "List[Tuple[(Union[(bytes, str)], Union[(bytes, str)])]]"
+                    "List[tuple[Union[Any,Any]]]",
+                    "str",
+                    "List[Tuple[Any,Any]]",
+                    "Iterable[Tuple[int,Any]]"
                 ]
             }
         },
@@ -129,11 +152,14 @@
             "name": "decode_record",
             "location": 469,
             "return": [
-                "Optional[FCGIRecord]"
+                "Type[Any]",
+                "FCGIUnknownManagementRecord",
+                "None"
             ],
             "arguments": {
                 "buffer": [
-                    "bytearray"
+                    "bytearray",
+                    "float"
                 ]
             }
         },
@@ -141,11 +167,13 @@
             "name": "decode_buffer_generator",
             "location": 497,
             "return": [
-                "Generator[(Optional[FCGIRecord], Any, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "buffer": [
-                    "bytearray"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -187,13 +215,25 @@
             "arguments": {
                 "self": [],
                 "params": [
-                    "dict"
+                    "Dict",
+                    "List[int]",
+                    "bytes",
+                    "Sequence",
+                    "Mapping[str,Any]",
+                    "asyncio.StreamWriter"
                 ],
                 "input": [
-                    "bytes"
+                    "bytes",
+                    "str",
+                    "int"
                 ],
                 "data": [
-                    "bytes"
+                    "bytes",
+                    "Dict",
+                    "List[dict]",
+                    "str",
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -201,11 +241,13 @@
             "name": "_read_packet",
             "location": 120,
             "return": [
-                "FCGIRecord"
+                "Type[Any]",
+                "FCGIUnknownManagementRecord"
             ],
             "arguments": {
                 "sock": [
-                    "socket.socket"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -229,7 +271,9 @@
             "arguments": {
                 "self": [],
                 "request_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[int]"
                 ]
             }
         },
@@ -250,11 +294,10 @@
                 "content": [
                     "str",
                     "bool",
-                    "Optional[Mapping[str, str]]",
-                    "typing.Mapping",
                     "Set[str]",
-                    "None",
-                    "set[str]"
+                    "Optional[Mapping[str,str]]",
+                    "Mapping",
+                    "None"
                 ]
             }
         },
@@ -303,10 +346,19 @@
             "arguments": {
                 "self": [],
                 "request_id": [
-                    "int"
+                    "str",
+                    "bool"
                 ],
                 "content": [
-                    "bytes"
+                    "Dict",
+                    "bytes",
+                    "Dict[str,str]",
+                    "int",
+                    "None",
+                    "Optional[TrackingData]",
+                    "Tuple[Union[str,dict[str,Any]]]",
+                    "asyncio.Future",
+                    "Tuple[str,Dict[str,Any]]"
                 ]
             }
         },
@@ -376,9 +428,8 @@
                 "keys": [
                     "str",
                     "int",
-                    "bytes",
                     "List[str]",
-                    "list[str]"
+                    "bytes"
                 ]
             }
         },
@@ -394,16 +445,14 @@
                 ],
                 "request_id": [
                     "str",
-                    "list",
-                    "list[]",
+                    "List",
                     "Optional[int]",
                     "int",
                     "None"
                 ],
                 "content": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -445,24 +494,21 @@
                 ],
                 "request_id": [
                     "str",
-                    "list",
-                    "list[]",
+                    "List",
                     "Optional[int]",
                     "int",
                     "None"
                 ],
                 "content": [
                     "bool",
+                    "Dict[str,str]",
                     "Optional[list]",
-                    "list[]",
-                    "Dict[str, str]",
+                    "List",
+                    "List[Callable]",
                     "None",
                     "str",
-                    "List[Callable]",
-                    "dict[str, str]",
-                    "Callable[[Any], bool]",
-                    "list[typing.Callable[, ]]",
-                    "typing.Callable[typing.Any, bool]",
+                    "Callable[[Any],bool]",
+                    "Callable[Any,bool]",
                     "Optional[str]"
                 ]
             }
@@ -487,9 +533,8 @@
                 "self": [],
                 "type": [
                     "str",
-                    "typing.Type",
-                    "Type[Any]",
-                    "Type"
+                    "Type",
+                    "Type[Any]"
                 ]
             }
         },
@@ -513,28 +558,23 @@
                 "self": [],
                 "request_id": [
                     "str",
+                    "Dict",
                     "None",
                     "bool",
                     "Optional[str]",
-                    "dict[, ]",
-                    "dict",
-                    "list['Request']",
-                    "List['Request']",
-                    "dict[int, dict[, ]]",
-                    "int",
-                    "Dict[int, dict]"
+                    "List[Request]",
+                    "Dict[int,dict]",
+                    "int"
                 ],
                 "role": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "flags": [
                     "int",
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ]
             }
         },
@@ -561,13 +601,11 @@
                 "request_id": [
                     "str",
                     "bytearray",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "content": [
                     "str",
-                    "list",
-                    "list[]",
+                    "List",
                     "Optional[int]",
                     "int",
                     "None"
@@ -593,25 +631,22 @@
             "arguments": {
                 "self": [],
                 "request_id": [
-                    "dict[, ]",
+                    "Dict",
                     "bool",
-                    "dict",
                     "int"
                 ],
                 "app_status": [
                     "int",
-                    "str",
                     "TextIO",
-                    "typing.TextIO"
+                    "str"
                 ],
                 "protocol_status": [
                     "int",
                     "bool",
+                    "Dict[str,Any]",
                     "str",
                     "Optional[str]",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "None"
                 ]
             }
         },
@@ -649,26 +684,43 @@
             "arguments": {
                 "self": [],
                 "request_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "params": [
-                    "dict"
+                    "str",
+                    "Dict",
+                    "List[int]",
+                    "int",
+                    "Dict[str,List[Any]]",
+                    "Dict[str,list[Any]]"
                 ],
                 "input": [
-                    "bytes"
+                    "str",
+                    "Dict",
+                    "List[int]",
+                    "int",
+                    "Dict[str,List[Any]]",
+                    "Dict[str,list[Any]]"
                 ],
                 "data": [
-                    "bytes"
+                    "Dict",
+                    "Optional[Dict]",
+                    "None",
+                    "str",
+                    "Optional[str]",
+                    "List[list[int]]",
+                    "Iterable[dict]",
+                    "List[List[int]]"
                 ],
                 "loop": [
                     "str",
-                    "dict",
-                    "int",
-                    "dict[, ]",
+                    "Dict",
                     "List[int]",
-                    "list[int]",
-                    "Dict[str, List[Any]]",
-                    "dict[str, list[typing.Any]]"
+                    "int",
+                    "Dict[str,List[Any]]",
+                    "Dict[str,list[Any]]"
                 ]
             }
         },
@@ -683,10 +735,9 @@
                 "transport": [
                     "bool",
                     "str",
+                    "IO",
                     "bytes",
-                    "typing.IO",
-                    "asyncio.StreamWriter",
-                    "IO"
+                    "asyncio.StreamWriter"
                 ]
             }
         },
@@ -701,9 +752,8 @@
                 "exc": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -717,14 +767,12 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "dict",
+                    "Dict",
                     "float",
-                    "dict[, ]",
+                    "List",
                     "bytes",
-                    "Mapping[str, Any]",
-                    "typing.Mapping",
-                    "list",
-                    "list[]"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -874,7 +922,6 @@
             "name": "test_decode_name_value_pairs",
             "location": 126,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -883,8 +930,8 @@
                     "int",
                     "str",
                     "bool",
-                    "list[tuple[typing.Union[str,str]]]",
-                    "List[Tuple[str, str]]"
+                    "List[tuple[Union[str,str]]]",
+                    "List[Tuple[str,str]]"
                 ],
                 "data": [
                     "str",
@@ -904,7 +951,6 @@
             "name": "test_decode_name_value_pairs_incomplete",
             "location": 135,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -913,10 +959,8 @@
                     "bool",
                     "str",
                     "bytes",
-                    "list[]",
-                    "list",
-                    "dict[, ]",
-                    "dict",
+                    "List",
+                    "Dict",
                     "int"
                 ],
                 "data": [
@@ -928,9 +972,8 @@
                     "str",
                     "Callable",
                     "bool",
-                    "typing.Callable[, ]",
                     "Optional[dict]",
-                    "dict[, ]",
+                    "Dict",
                     "None"
                 ]
             }
@@ -939,7 +982,6 @@
             "name": "test_encode_name_value_pairs",
             "location": 151,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

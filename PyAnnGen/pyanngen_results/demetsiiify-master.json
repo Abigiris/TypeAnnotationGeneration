@@ -13,7 +13,6 @@
             "name": "worker",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -22,7 +21,6 @@
             "name": "oai_worker",
             "location": 32,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -31,7 +29,6 @@
             "name": "drop",
             "location": 39,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -40,7 +37,6 @@
             "name": "create",
             "location": 46,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -49,7 +45,6 @@
             "name": "recreate",
             "location": 52,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -57,13 +52,13 @@
                     "bool",
                     "str",
                     "Optional[bytes]",
-                    "dict"
+                    "Dict"
                 ],
                 "sample_data": [
                     "bool",
                     "str",
                     "Optional[bytes]",
-                    "dict"
+                    "Dict"
                 ]
             }
         }
@@ -74,36 +69,30 @@
             "name": "make_label",
             "location": 42,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "mets_meta": [
-                    "dict"
-                ]
+                "mets_meta": []
             }
         },
         "make_metadata": {
             "name": "make_metadata",
             "location": 68,
             "return": [
-                "List[dict]"
+                "List[Dict[(str, Any)]]"
             ],
             "arguments": {
-                "mets_meta": [
-                    "dict"
-                ]
+                "mets_meta": []
             }
         },
         "_get_canvases": {
             "name": "_get_canvases",
             "location": 83,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
-                "toc_entry": [
-                    "demetsiiify.mets.TocEntry"
-                ],
+                "toc_entry": [],
                 "manifest": []
             }
         },
@@ -115,25 +104,19 @@
             ],
             "arguments": {
                 "manifest": [],
-                "toc_entries": [
-                    "Iterable[demetsiiify.mets.TocEntry]"
-                ]
+                "toc_entries": []
             }
         },
         "_make_empty_manifest": {
             "name": "_make_empty_manifest",
             "location": 122,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "ident": [
-                    "str"
-                ],
-                "label": [
-                    "str"
-                ],
-                "base_url": [
-                    "str"
-                ]
+                "ident": [],
+                "label": [],
+                "base_url": []
             }
         },
         "_fill_manifest_metadata": {
@@ -144,93 +127,59 @@
             ],
             "arguments": {
                 "manifest": [],
-                "mets_metadata": [
-                    "dict"
-                ]
+                "mets_metadata": []
             }
         },
         "make_image_info": {
             "name": "make_image_info",
             "location": 156,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "itm": [
-                    "demetsiiify.mets.PhysicalItem"
-                ],
-                "base_url": [
-                    "str"
-                ]
+                "itm": [],
+                "base_url": []
             }
         },
         "make_manifest": {
             "name": "make_manifest",
             "location": 171,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
-                "ident": [
-                    "str"
-                ],
-                "mets_doc": [
-                    "demetsiiify.mets.MetsDocument"
-                ],
-                "base_url": [
-                    "str"
-                ]
+                "ident": [],
+                "mets_doc": [],
+                "base_url": []
             }
         },
         "make_manifest_collection": {
             "name": "make_manifest_collection",
             "location": 199,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "pagination": [
-                    "flask_sqlalchemy.Pagination"
-                ],
-                "label": [
-                    "str"
-                ],
-                "collection_id": [
-                    "str"
-                ],
-                "per_page": [
-                    "int"
-                ],
-                "base_url": [
-                    "str"
-                ],
-                "page_num": [
-                    "Optional[int]"
-                ],
-                "coll_counts": [
-                    "Optional[Tuple[(int, str, int)]]"
-                ]
+                "pagination": [],
+                "label": [],
+                "collection_id": [],
+                "per_page": [],
+                "base_url": [],
+                "page_num": [],
+                "coll_counts": []
             }
         },
         "make_annotation_list": {
             "name": "make_annotation_list",
             "location": 269,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "pagination": [
-                    "flask_sqlalchemy.Pagination"
-                ],
-                "request_url": [
-                    "str"
-                ],
-                "request_args": [
-                    "dict"
-                ],
-                "base_url": [
-                    "str"
-                ]
+                "pagination": [],
+                "request_url": [],
+                "request_args": [],
+                "base_url": []
             }
         },
         "make_annotation_list._make_link": {
@@ -251,10 +200,16 @@
             ],
             "arguments": {
                 "file": [
-                    "demetsiiify.mets.ImageInfo"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ],
                 "jpeg_only": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Iterator[int]",
+                    "Tuple[int]",
+                    "float"
                 ],
                 "about_url": [
                     "int",
@@ -267,20 +222,33 @@
             "name": "add_image_dimensions",
             "location": 81,
             "return": [
-                "Iterable[Tuple[(int, int)]]"
+                "Generator[(Tuple[(int, int)], Any, None)]"
             ],
             "arguments": {
                 "files": [
-                    "Iterable[demetsiiify.mets.ImageInfo]"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "int"
                 ],
                 "jpeg_only": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List",
+                    "List[str]",
+                    "int"
                 ],
                 "about_url": [
-                    "str"
+                    "str",
+                    "None",
+                    "List",
+                    "List[str]",
+                    "int"
                 ],
                 "concurrency": [
-                    "int"
+                    "int",
+                    "Optional[int]",
+                    "str"
                 ]
             }
         },
@@ -293,10 +261,15 @@
             "arguments": {
                 "self": [],
                 "message": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ],
                 "debug_info": [
-                    "dict"
+                    "bool",
+                    "Dict",
+                    "None",
+                    "List[str]"
                 ]
             }
         }
@@ -311,8 +284,7 @@
             "arguments": {
                 "mets_url": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -347,10 +319,15 @@
             "arguments": {
                 "self": [],
                 "message": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ],
                 "debug_info": [
-                    "dict"
+                    "bool",
+                    "Dict",
+                    "None",
+                    "List[str]"
                 ]
             }
         },
@@ -363,21 +340,25 @@
             "arguments": {
                 "self": [],
                 "mets_tree": [
-                    "Optional[Dict[str, str]]",
-                    "dict[str, str]",
-                    "str",
+                    "Optional[Dict[str,str]]",
+                    "Dict[str,str]",
                     "Callable",
+                    "str",
                     "None",
+                    "Dict[int,int]",
                     "bool",
-                    "typing.Callable[, ]",
-                    "Dict[int, int]",
-                    "dict[int, int]",
                     "Optional[str]"
                 ],
                 "url": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "None"
                 ],
                 "primary_id": [
+                    "Iterable[str]",
+                    "None",
+                    "Optional[str]",
+                    "Optional[Dict[str,Any]]",
                     "str"
                 ]
             }
@@ -386,11 +367,15 @@
             "name": "_xpath",
             "location": 119,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "xpath": [
+                    "int",
+                    "Callable",
                     "str"
                 ],
                 "elem": [
@@ -410,14 +395,14 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "elem": [
                     "lxml.etree.Element",
                     "str",
                     "None",
-                    "list",
-                    "list[]"
+                    "List"
                 ]
             }
         },
@@ -425,21 +410,23 @@
             "name": "_findall",
             "location": 128,
             "return": [
-                "list"
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "elem": [
                     "lxml.etree.Element",
                     "str",
                     "None",
-                    "list",
-                    "list[]",
+                    "List",
                     "Optional[Sequence[str]]",
-                    "typing.Sequence[str]"
+                    "Sequence[str]"
                 ]
             }
         },
@@ -447,21 +434,23 @@
             "name": "_findtext",
             "location": 133,
             "return": [
-                "str"
+                "str",
+                "List[int]",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "elem": [
                     "lxml.etree.Element",
                     "str",
                     "None",
-                    "list",
-                    "list[]",
+                    "List",
                     "Optional[Sequence[str]]",
-                    "typing.Sequence[str]"
+                    "Sequence[str]"
                 ]
             }
         },
@@ -469,15 +458,18 @@
             "name": "_parse_title",
             "location": 137,
             "return": [
-                "str"
+                "int",
+                "Callable",
+                "Tuple[Union[Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal,Literal]]",
+                "str",
+                "Text"
             ],
             "arguments": {
                 "self": [],
                 "title_elem": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -485,16 +477,18 @@
             "name": "_parse_name",
             "location": 147,
             "return": [
-                "str"
+                "str",
+                "None",
+                "Dict[str,str]"
             ],
             "arguments": {
                 "self": [],
                 "name_elem": [
                     "str",
-                    "Callable[[Any], str]",
-                    "typing.Callable[typing.Any, str]",
-                    "List['PydanticModelField']",
-                    "list[M]"
+                    "Callable[[Any],str]",
+                    "Callable[Any,str]",
+                    "List[PydanticModelField]",
+                    "List[M]"
                 ]
             }
         },
@@ -502,7 +496,7 @@
             "name": "_read_persons",
             "location": 154,
             "return": [
-                "Mapping[(str, List[str])]"
+                "collections.defaultdict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -512,7 +506,7 @@
             "name": "_read_origin",
             "location": 166,
             "return": [
-                "Mapping[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -522,7 +516,10 @@
             "name": "_get_unique_identifier",
             "location": 174,
             "return": [
-                "str"
+                "Text",
+                "str",
+                "Callable",
+                "List[List[int]]"
             ],
             "arguments": {
                 "self": []
@@ -532,7 +529,7 @@
             "name": "_read_titles",
             "location": 192,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -552,7 +549,7 @@
             "name": "_read_files",
             "location": 255,
             "return": [
-                "Dict[(str, ImageInfo)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -562,7 +559,7 @@
             "name": "_read_physical_items",
             "location": 262,
             "return": [
-                "Dict[(str, PhysicalItem)]"
+                "Dict[(Any, PhysicalItem)]"
             ],
             "arguments": {
                 "self": []
@@ -577,16 +574,15 @@
             "arguments": {
                 "self": [],
                 "toc_elem": [
-                    "dict[typing.Hashable, typing.Any]",
-                    "dict[str, str]",
+                    "Dict[Hashable,Any]",
+                    "Dict[str,str]",
                     "Type",
-                    "Dict[Hashable, Any]",
                     "int",
-                    "Optional[Dict[str, str]]",
+                    "Optional[Dict[str,str]]",
                     "Set[str]"
                 ],
                 "lmap": [
-                    "Mapping[(str, List[str])]"
+                    "bool"
                 ]
             }
         },
@@ -594,7 +590,7 @@
             "name": "_read_toc_entries",
             "location": 300,
             "return": [
-                "List[TocEntry]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -609,12 +605,9 @@
             "arguments": {
                 "self": [],
                 "file_elem": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[str, str]",
-                    "Dict[str, str]",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
                     "Optional[int]"
                 ]
             }
@@ -637,11 +630,10 @@
                 "type_": [
                     "bool",
                     "Optional[bool]",
+                    "List[str]",
                     "None",
                     "Optional[str]",
-                    "str",
-                    "List[str]",
-                    "list[str]"
+                    "str"
                 ],
                 "manifest_id": [
                     "str",
@@ -658,7 +650,7 @@
                 "None",
                 "bool",
                 "str",
-                "Tuple[int, int]"
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "cls": [
@@ -682,10 +674,9 @@
                 ],
                 "identifier": [
                     "str",
+                    "Dict[str,Any]",
                     "Type[tikki.db.tables.Base]",
-                    "typing.Type",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Type"
                 ]
             }
         },
@@ -699,30 +690,24 @@
                 "self": [],
                 "origin": [
                     "str",
-                    "dict[str, str]",
+                    "Dict[str,str]",
+                    "Dict",
                     "int",
-                    "Dict[str, str]",
-                    "dict[, ]",
-                    "dict",
                     "bool"
                 ],
                 "manifest": [
                     "str",
-                    "dict[str, str]",
+                    "Dict[str,str]",
+                    "Dict",
                     "int",
-                    "Dict[str, str]",
-                    "dict[, ]",
-                    "dict",
                     "bool"
                 ],
                 "label": [
                     "str",
                     "None",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
+                    "Dict",
                     "int",
-                    "dict",
-                    "dict[str, str]",
-                    "dict[, ]",
                     "bool"
                 ],
                 "id": [
@@ -730,7 +715,7 @@
                     "None",
                     "Optional[str]",
                     "Optional[Sequence]",
-                    "typing.Sequence[]"
+                    "Sequence"
                 ]
             }
         },
@@ -741,15 +726,13 @@
                 "None",
                 "bool",
                 "str",
-                "Tuple[int, int]"
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "cls": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "bool",
-                    "list",
-                    "list[]"
+                    "Dict[str,Any]",
+                    "List",
+                    "bool"
                 ]
             }
         },
@@ -784,8 +767,8 @@
             "return": [
                 "str",
                 "bool",
-                "set[int]",
-                "dict[str, list[str]]"
+                "Set[int]",
+                "Dict[str,list[str]]"
             ],
             "arguments": {
                 "cls": [
@@ -794,9 +777,8 @@
                 ],
                 "id": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]"
+                    "int"
                 ]
             }
         },
@@ -812,15 +794,13 @@
                 "cls": [
                     "str",
                     "Type",
-                    "typing.Type",
-                    "Union[int, str, bool]",
+                    "Union[int,str,bool]",
                     "int"
                 ],
                 "origin": [
                     "str",
                     "Type",
-                    "typing.Type",
-                    "Union[int, str, bool]",
+                    "Union[int,str,bool]",
                     "int"
                 ]
             }
@@ -831,7 +811,7 @@
             "return": [
                 "str",
                 "int",
-                "list",
+                "List",
                 "None",
                 "bool",
                 "Optional[str]",
@@ -842,10 +822,8 @@
                 "cls": [
                     "str",
                     "List[str]",
-                    "int",
-                    "list[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "manifest_id": [
                     "str",
@@ -863,7 +841,7 @@
             "return": [
                 "str",
                 "int",
-                "list",
+                "List",
                 "None",
                 "bool",
                 "Optional[str]",
@@ -874,10 +852,8 @@
                 "cls": [
                     "str",
                     "List[str]",
-                    "int",
-                    "list[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "manifest_id": [
                     "str",
@@ -894,7 +870,7 @@
             "location": 116,
             "return": [
                 "str",
-                "list",
+                "List",
                 "int",
                 "None",
                 "bool",
@@ -906,9 +882,8 @@
                 "cls": [
                     "bool",
                     "str",
-                    "list[str]",
-                    "int",
-                    "List[str]"
+                    "List[str]",
+                    "int"
                 ],
                 "manifest_id": [
                     "str",
@@ -927,7 +902,7 @@
                 "str",
                 "int",
                 "None",
-                "list",
+                "List",
                 "bool",
                 "Optional[str]",
                 "Optional[bytes]",
@@ -968,7 +943,7 @@
                     "None",
                     "int",
                     "Optional[str]",
-                    "typing.Sequence[]",
+                    "Sequence",
                     "Optional[Sequence]",
                     "Optional[int]"
                 ]
@@ -989,12 +964,12 @@
                     "str",
                     "None",
                     "int",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
                     "Optional[int]",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "Optional[str]",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ],
                 "width": [
                     "str",
@@ -1012,7 +987,7 @@
                     "Optional[str]",
                     "int",
                     "Optional[int]",
-                    "Union[None, int, str]",
+                    "Union[None,int,str]",
                     "datetime.datetime"
                 ]
             }
@@ -1045,14 +1020,12 @@
                 "None",
                 "bool",
                 "str",
-                "Tuple[int, int]"
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "cls": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1067,11 +1040,10 @@
                 "cls": [
                     "str",
                     "bool",
-                    "typing.Type",
+                    "List",
+                    "Type",
                     "Type[object]",
-                    "list[]",
-                    "Type[django.db.models.base.Model]",
-                    "list"
+                    "Type[django.db.models.base.Model]"
                 ]
             }
         },
@@ -1123,14 +1095,12 @@
                 "cls": [
                     "str",
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "id_": [
                     "str",
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1159,14 +1129,13 @@
                 "None",
                 "bool",
                 "str",
-                "Tuple[int, int]"
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "cls": [
                     "bool",
-                    "dict[str, typing.Any]",
-                    "int",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -1180,7 +1149,7 @@
                 "self": [],
                 "annotation": [
                     "str",
-                    "dict",
+                    "Dict",
                     "Optional[str]"
                 ]
             }
@@ -1199,9 +1168,8 @@
                 "self": [],
                 "on": [
                     "int",
-                    "bytes",
                     "List[int]",
-                    "list[int]"
+                    "bytes"
                 ]
             }
         },
@@ -1236,11 +1204,10 @@
                 "cls": [
                     "str",
                     "bool",
-                    "typing.Type",
+                    "List",
+                    "Type",
                     "Type[object]",
-                    "list[]",
-                    "Type[django.db.models.base.Model]",
-                    "list"
+                    "Type[django.db.models.base.Model]"
                 ]
             }
         },
@@ -1251,15 +1218,13 @@
                 "None",
                 "bool",
                 "str",
-                "Tuple[int, int]"
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "cls": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "bool",
-                    "list",
-                    "list[]"
+                    "Dict[str,Any]",
+                    "List",
+                    "bool"
                 ]
             }
         },
@@ -1269,8 +1234,8 @@
             "return": [
                 "str",
                 "int",
-                "Iterable[Tuple[str, str]]",
-                "Dict[str, Any]"
+                "Iterable[Tuple[str,str]]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "cls": [
@@ -1281,22 +1246,18 @@
                 "target": [
                     "str",
                     "None",
-                    "dict",
+                    "Dict",
+                    "Set",
                     "Optional[List[str]]",
-                    "dict[, ]",
-                    "set",
-                    "list[str]",
-                    "set[]"
+                    "List[str]"
                 ],
                 "motivation": [
                     "str",
                     "None",
-                    "dict",
+                    "Dict",
+                    "Set",
                     "Optional[List[str]]",
-                    "dict[, ]",
-                    "set",
-                    "list[str]",
-                    "set[]"
+                    "List[str]"
                 ],
                 "date_ranges": [
                     "str",
@@ -1318,16 +1279,13 @@
                 "identifier": [
                     "str",
                     "bool",
-                    "List[T]",
-                    "list[T]"
+                    "List[T]"
                 ],
                 "name": [
-                    "list[str]",
-                    "str",
                     "List[str]",
-                    "dict[, ]",
-                    "sqlalchemy.Column",
-                    "dict"
+                    "str",
+                    "Dict",
+                    "sqlalchemy.Column"
                 ]
             }
         },
@@ -1338,15 +1296,13 @@
                 "None",
                 "bool",
                 "str",
-                "Tuple[int, int]"
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "cls": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "bool",
-                    "list",
-                    "list[]"
+                    "Dict[str,Any]",
+                    "List",
+                    "bool"
                 ]
             }
         },
@@ -1382,8 +1338,7 @@
                 "cls": [
                     "str",
                     "bool",
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "collection_id": [
                     "str",
@@ -1410,12 +1365,10 @@
                     "None"
                 ],
                 "name": [
-                    "list[str]",
-                    "str",
                     "List[str]",
-                    "dict[, ]",
-                    "sqlalchemy.Column",
-                    "dict"
+                    "str",
+                    "Dict",
+                    "sqlalchemy.Column"
                 ]
             }
         }
@@ -1448,13 +1401,11 @@
             "arguments": {
                 "self": [],
                 "verb": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
+                    "Dict[str,Any]",
+                    "Dict",
                     "bool",
-                    "dict[, ]",
                     "List[Dict]",
-                    "list[dict[, ]]"
+                    "List[dict]"
                 ]
             }
         },
@@ -1479,7 +1430,7 @@
             "location": 57,
             "return": [
                 "str",
-                "set[]"
+                "Set"
             ],
             "arguments": {
                 "self": []
@@ -1498,13 +1449,12 @@
                     "str",
                     "int",
                     "None",
+                    "Iterable[str]",
                     "Optional[str]",
-                    "typing.Iterable[str]",
-                    "bool",
-                    "Iterable[str]"
+                    "bool"
                 ],
                 "metadata_format": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]"
                 ]
@@ -1520,7 +1470,7 @@
                 "self": [],
                 "metadata_format": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ],
                 "set_id": [
                     "str",
@@ -1546,29 +1496,27 @@
                 "self": [],
                 "metadata_format": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ],
                 "set_id": [
                     "int",
                     "None",
-                    "Optional[int]",
-                    "str",
                     "List[int]",
-                    "list[int]"
+                    "Optional[int]",
+                    "str"
                 ],
                 "since": [
                     "int",
                     "None",
-                    "Optional[int]",
-                    "str",
                     "List[int]",
-                    "list[int]"
+                    "Optional[int]",
+                    "str"
                 ],
                 "include_sets": [
                     "bool",
                     "str",
                     "float",
-                    "Callable[..., str]",
+                    "Callable[...,str]",
                     "int"
                 ]
             }
@@ -1582,7 +1530,7 @@
             "arguments": {
                 "self": [],
                 "metadata_format": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "int"
@@ -1637,7 +1585,10 @@
             ],
             "arguments": {
                 "doc": [
-                    "demetsiiify.mets.MetsDocument"
+                    "db.DB.Product",
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "job": [
                     "bool",
@@ -1645,7 +1596,10 @@
                     "int"
                 ],
                 "concurrency": [
-                    "int"
+                    "db.DB.Product",
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1657,7 +1611,10 @@
             ],
             "arguments": {
                 "mets_url": [
-                    "str"
+                    "str",
+                    "Optional[Any]",
+                    "Dict[str, Any]",
+                    "int"
                 ]
             }
         },
@@ -1669,10 +1626,15 @@
             ],
             "arguments": {
                 "doc": [
-                    "demetsiiify.mets.MetsDocument"
+                    "abilian.core.models.subjects.Principal",
+                    "Match[str]",
+                    "str"
                 ],
                 "concurrency": [
-                    "int"
+                    "int",
+                    "PIL.Image",
+                    "tuple",
+                    "Tuple[int]"
                 ]
             }
         },
@@ -1684,10 +1646,16 @@
             ],
             "arguments": {
                 "doc": [
-                    "demetsiiify.mets.MetsDocument"
+                    "mets.MetsDocument",
+                    "int",
+                    "str",
+                    "bytes",
+                    "Callable",
+                    "Union[str]",
+                    "T"
                 ],
                 "base_url": [
-                    "str"
+                    "type"
                 ]
             }
         },
@@ -1695,14 +1663,19 @@
             "name": "_make_manifest",
             "location": 106,
             "return": [
-                "demetsiiify.models.Manifest"
+                "bool"
             ],
             "arguments": {
                 "doc": [
-                    "demetsiiify.mets.MetsDocument"
+                    "str",
+                    "Callable",
+                    "bool",
+                    "int",
+                    "Union[str, int]"
                 ],
                 "base_url": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1714,10 +1687,10 @@
             ],
             "arguments": {
                 "manifest": [
-                    "demetsiiify.models.Manifest"
+                    "str"
                 ],
                 "doc": [
-                    "demetsiiify.mets.MetsDocument"
+                    "str"
                 ]
             }
         },
@@ -1725,17 +1698,31 @@
             "name": "import_mets_job",
             "location": 126,
             "return": [
-                "str"
+                "str",
+                "float",
+                "Sequence[str]",
+                "Set[str]",
+                "List[str]",
+                "bool"
             ],
             "arguments": {
                 "mets_url": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Mapping[str, str]",
+                    "Callable",
+                    "int"
                 ],
                 "collection_id": [
+                    "str",
+                    "int",
                     "Optional[str]"
                 ],
                 "concurrency": [
-                    "int"
+                    "int",
+                    "ticketing.transfer.models.TicketCategoryID",
+                    "bool"
                 ]
             }
         },
@@ -1823,14 +1810,13 @@
             "location": 40,
             "return": [
                 "str",
-                "tuple[int]"
+                "Tuple[int]"
             ],
             "arguments": {
                 "error": [
                     "Exception",
-                    "str",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple",
+                    "str"
                 ]
             }
         },
@@ -1883,7 +1869,7 @@
             "name": "api_import",
             "location": 104,
             "return": [
-                "tuple[int]",
+                "Tuple[int]",
                 "bool",
                 "Optional[int]",
                 "float",
@@ -1899,9 +1885,8 @@
             ],
             "arguments": {
                 "job": [
-                    "Dict[str, Any]",
-                    "str",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         },
@@ -1934,11 +1919,11 @@
             "name": "sse_stream",
             "location": 186,
             "return": [
-                "dict[str, list[str]]",
+                "Dict[str,list[str]]",
                 "bool",
-                "dict[typing.Any, str]",
+                "Dict[Any,str]",
                 "str",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "task_id": [
@@ -1956,9 +1941,8 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bytes"
                 ]
             }
@@ -1977,7 +1961,6 @@
             "name": "gen",
             "location": 200,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -1999,11 +1982,11 @@
             ],
             "arguments": {
                 "origin": [
-                    "typing.Text",
+                    "Text",
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -2017,12 +2000,12 @@
             ],
             "arguments": {
                 "collection_id": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "int"
                 ],
                 "page_id": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "List[str]",
                     "IO[bytes]"
@@ -2170,10 +2153,9 @@
                 "region": [
                     "str",
                     "bool",
-                    "Optional[str]",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "size": [
                     "int",
@@ -2183,24 +2165,22 @@
                 "rotation": [
                     "str",
                     "bool",
-                    "Optional[str]",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "quality": [
                     "str",
                     "bool",
-                    "Optional[str]",
-                    "None",
                     "List[str]",
-                    "list[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "format": [
                     "str",
                     "int",
                     "float",
-                    "Dict[Optional[str], str]",
+                    "Dict[Optional[str],str]",
                     "List[str]"
                 ]
             }
@@ -2307,17 +2287,15 @@
             "return": [
                 "bool",
                 "str",
-                "Optional[Union[str, Any]]",
+                "Optional[Union[str,Any]]",
                 "Markup"
             ],
             "arguments": {
                 "eval_ctx": [
-                    "Callable[[None], None]",
-                    "typing.Callable[None, None]",
+                    "Callable[[None],None]",
                     "IO",
-                    "typing.IO",
-                    "List[str]",
-                    "list[str]"
+                    "Callable[None,None]",
+                    "List[str]"
                 ],
                 "value": [
                     "str"
@@ -2418,7 +2396,6 @@
             "name": "process_revision_directives",
             "location": 61,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2615,11 +2592,10 @@
             "arguments": {
                 "mets_doc": [
                     "bool",
-                    "Optional[List[dict]]",
-                    "list[dict[, ]]",
                     "List[str]",
-                    "None",
-                    "list[str]"
+                    "Optional[List[dict]]",
+                    "List[dict]",
+                    "None"
                 ]
             }
         },

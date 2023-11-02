@@ -11,7 +11,7 @@
                 "int",
                 "bool",
                 "List[str]",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {}
         }
@@ -27,10 +27,9 @@
             "arguments": {
                 "request": [
                     "str",
+                    "Dict",
                     "bool",
-                    "dict[, ]",
-                    "dict",
-                    "Union[bool, str]"
+                    "Union[bool,str]"
                 ],
                 "page_list": [
                     "int"
@@ -50,9 +49,8 @@
             ],
             "arguments": {
                 "request": [
-                    "typing.Callable[, ]",
-                    "django.http.HttpRequest",
-                    "Callable"
+                    "Callable",
+                    "django.http.HttpRequest"
                 ]
             }
         },
@@ -218,11 +216,17 @@
             "name": "get_collection",
             "location": 9,
             "return": [
-                "dict"
+                "str",
+                "Callable",
+                "dict",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "collection_id": [
-                    "int"
+                    "int",
+                    "shop.transfer.models.ShopID",
+                    "transfer.models.BadgeID",
+                    "transfer.models.Channel.ID"
                 ]
             }
         },
@@ -250,13 +254,11 @@
             ],
             "arguments": {
                 "collection_dict": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "dict[str, dict[str, typing.Any]]",
-                    "Dict[str, Any]",
-                    "Dict[str, Dict[str, Any]]",
-                    "Union['HTMLSession', 'AsyncHTMLSession']",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Union[HTMLSession,AsyncHTMLSession]",
                     "requests.models.Response"
                 ]
             }
@@ -265,11 +267,16 @@
             "name": "get_recordings",
             "location": 27,
             "return": [
-                "List[Dict[(str, Union[(dict, List[dict])])]]"
+                "list"
             ],
             "arguments": {
                 "collection_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "transfer.models.StorefronID",
+                    "transfer.models.ShopID",
+                    "transfer.models.Badge.ID",
+                    "transfer.models.ArticleID"
                 ]
             }
         },
@@ -277,11 +284,13 @@
             "name": "get_entities",
             "location": 40,
             "return": [
-                "List[Dict[(str, str)]]"
+                "Dict[(str, list)]"
             ],
             "arguments": {
                 "collection_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "transfer.models.Catalog.ID"
                 ]
             }
         },
@@ -289,7 +298,7 @@
             "name": "enrich_collection",
             "location": 58,
             "return": [
-                "Dict[(str, Union[(dict, List[Dict[(str, Union[(dict, str, List[dict])])]])])]"
+                "Dict[(str, Union[(dict, list)])]"
             ],
             "arguments": {
                 "collection": [
@@ -307,7 +316,10 @@
             ],
             "arguments": {
                 "collection_id": [
-                    "int"
+                    "str",
+                    "List[str]",
+                    "transfer.models.TopicID",
+                    "transfer.models.MatchCommentID"
                 ]
             }
         }
@@ -317,11 +329,16 @@
             "name": "get_entity",
             "location": 6,
             "return": [
-                "dict"
+                "str",
+                "models.Name",
+                "dict",
+                "List[str]"
             ],
             "arguments": {
                 "entity_id": [
-                    "int"
+                    "int",
+                    "transfer.models.Channel.ID",
+                    "transfer.models.BadgeID"
                 ]
             }
         },
@@ -350,12 +367,10 @@
             ],
             "arguments": {
                 "entity_dict": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "Optional[grouper.models.user.User]",
-                    "list",
-                    "Dict[str, Any]"
+                    "List"
                 ]
             }
         },
@@ -367,7 +382,9 @@
             ],
             "arguments": {
                 "entity_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "models.EntityId"
                 ]
             }
         },
@@ -375,11 +392,17 @@
             "name": "get_recordings",
             "location": 36,
             "return": [
-                "List[Dict[(str, Union[(dict, List[dict])])]]"
+                "list"
             ],
             "arguments": {
                 "entity_id": [
-                    "int"
+                    "str",
+                    "int",
+                    "transfer.models.StorefronID",
+                    "transfer.models.ShopID",
+                    "transfer.models.Badge.ID",
+                    "transfer.models.ArticleID",
+                    "transfer.models.Member.shipID"
                 ]
             }
         },
@@ -387,7 +410,7 @@
             "name": "enrich_entity",
             "location": 50,
             "return": [
-                "Dict[(str, Union[(dict, List[Dict[(str, Union[(dict, List[dict])])]])])]"
+                "Dict[(str, Union[(dict, list)])]"
             ],
             "arguments": {
                 "entity": [
@@ -404,6 +427,7 @@
             ],
             "arguments": {
                 "entity_id": [
+                    "str",
                     "int"
                 ]
             }
@@ -426,7 +450,13 @@
             ],
             "arguments": {
                 "field_weight_ls": [
-                    "List[Tuple[(str, str)]]"
+                    "List[tuple[Union[str,str]]]",
+                    "str",
+                    "List[Tuple[str,str]]",
+                    "Tuple[Type]",
+                    "bool",
+                    "Optional[str]",
+                    "Tuple[type]"
                 ]
             }
         },
@@ -438,7 +468,10 @@
             ],
             "arguments": {
                 "term_number": [
-                    "int"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "List[List[str]]"
                 ]
             }
         },
@@ -446,17 +479,31 @@
             "name": "make_query",
             "location": 47,
             "return": [
-                "List[dict]"
+                "List",
+                "str",
+                "OrderedDict",
+                "Dict[str,str]",
+                "Union[int,float,complex]",
+                "Mapping[str,Any]",
+                "Dict[str,int]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "base_string": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[Union[str,int]]",
+                    "None"
                 ],
                 "field_list": [
-                    "List[Tuple[(str, str)]]"
+                    "str",
+                    "int"
                 ],
                 "term": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -464,14 +511,23 @@
             "name": "search_works_and_entities",
             "location": 124,
             "return": [
-                "List[dict]"
+                "dict",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "field_list": [
-                    "List[Tuple[(str, str)]]"
+                    "List[Tuple[str,str]]",
+                    "str",
+                    "List[tuple[Union[str,str]]]",
+                    "List[int]",
+                    "Dict"
                 ],
                 "term": [
-                    "str"
+                    "List[Tuple[str,str]]",
+                    "str",
+                    "List[tuple[Union[str,str]]]",
+                    "List[int]",
+                    "Dict"
                 ]
             }
         },
@@ -479,14 +535,33 @@
             "name": "dict_agg",
             "location": 153,
             "return": [
-                "collections.defaultdict"
+                "dict",
+                "str",
+                "Exception",
+                "Dict[str, Union[str, Set]]"
             ],
             "arguments": {
                 "d": [
-                    "collections.defaultdict"
+                    "str",
+                    "defaultdict",
+                    "Dict",
+                    "DefaultDict",
+                    "Optional[str]",
+                    "bytes",
+                    "None",
+                    "Union[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "ele": [
-                    "str"
+                    "str",
+                    "defaultdict",
+                    "Dict",
+                    "DefaultDict",
+                    "Optional[str]",
+                    "bytes",
+                    "None",
+                    "Union[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -494,10 +569,13 @@
             "name": "get_aggregate_data",
             "location": 158,
             "return": [
-                "Accumulator"
+                "str",
+                "int"
             ],
             "arguments": {
                 "model_ls": [
+                    "List[Dict]",
+                    "int",
                     "List[dict]"
                 ]
             }
@@ -510,10 +588,17 @@
             ],
             "arguments": {
                 "field_dict": [
-                    "collections.defaultdict"
+                    "Dict[str,Any]",
+                    "Iterable[List[str]]",
+                    "raiden.utils.List[raiden.utils.Dict]",
+                    "bool",
+                    "Mapping[str,Sequence[str]]"
                 ],
                 "n": [
-                    "int"
+                    "int",
+                    "bool",
+                    "List",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -525,10 +610,16 @@
             ],
             "arguments": {
                 "collection_dict": [
-                    "Dict[(int, dict)]"
+                    "Dict[int,dict]",
+                    "Callable",
+                    "bool",
+                    "str",
+                    "float"
                 ],
                 "n": [
-                    "int"
+                    "int",
+                    "Tuple[float,float]",
+                    "List"
                 ]
             }
         },
@@ -536,14 +627,22 @@
             "name": "sort_and_scale_tags",
             "location": 194,
             "return": [
-                "List[dict]"
+                "List[Dict[(str, Any)]]"
             ],
             "arguments": {
                 "d": [
-                    "Dict[(str, int)]"
+                    "Dict[str,str]",
+                    "str",
+                    "Sequence[T]",
+                    "int",
+                    "Optional[str]"
                 ],
                 "n": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,str]",
+                    "Sequence[T]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -551,11 +650,12 @@
             "name": "get_search_context",
             "location": 240,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "request_dict": [
-                    "Dict[(str, str)]"
+                    "Dict[str,Any]",
+                    "django.http.HttpRequest"
                 ]
             }
         },
@@ -609,25 +709,22 @@
             ],
             "arguments": {
                 "f": [
-                    "typing.Pattern",
                     "Pattern",
-                    "float",
-                    "typing.Type",
                     "Type",
+                    "float",
                     "models.Subtask"
                 ],
                 "message": [
                     "Optional[str]",
                     "None",
+                    "Callable[...,T]",
                     "Optional[int]",
                     "str",
-                    "Callable[..., T]",
                     "int",
                     "Optional[Dict]",
-                    "typing.Callable[..., T]",
                     "Type[T]",
-                    "dict[, ]",
-                    "typing.Type"
+                    "Dict",
+                    "Type"
                 ]
             }
         },
@@ -640,9 +737,8 @@
             "arguments": {
                 "arr": [
                     "int",
-                    "typing.Iterable[typing.Any]",
                     "Iterable[Any]",
-                    "Dict[str, float]"
+                    "Dict[str,float]"
                 ]
             }
         },
@@ -650,13 +746,13 @@
             "name": "get_peaks_from_audio_path",
             "location": 25,
             "return": [
-                "List[float]"
+                "list"
             ],
             "arguments": {
                 "file": [
                     "str",
                     "pathlib.Path",
-                    "Union[str, pathlib.Path]"
+                    "Union[str,pathlib.Path]"
                 ]
             }
         },
@@ -668,7 +764,8 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -680,7 +777,17 @@
             ],
             "arguments": {
                 "s": [
-                    "_T0"
+                    "Optional[Any]",
+                    "Any",
+                    "Optional[str]",
+                    "None",
+                    "Optional[List[str]]",
+                    "str",
+                    "Union[str,int]",
+                    "List[str]",
+                    "Optional[Callable]",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -705,11 +812,13 @@
             "name": "sort_entities",
             "location": 75,
             "return": [
-                "Dict[(str, List[Dict[(str, str)]])]"
+                "Dict[(str, list)]"
             ],
             "arguments": {
                 "entity_ls": [
-                    "List[Dict[(str, str)]]"
+                    "List",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -717,14 +826,19 @@
             "name": "query",
             "location": 86,
             "return": [
-                "List[dict]"
+                "int",
+                "dict",
+                "bytes",
+                "Optional[Dict[str, Any]]"
             ],
             "arguments": {
                 "query_string": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "query_args": [
-                    "list"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -736,14 +850,12 @@
             ],
             "arguments": {
                 "model_dict": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
+                    "List[str]",
                     "str",
                     "Optional[List[str]]",
-                    "list[str]",
                     "int",
-                    "None",
-                    "List[str]"
+                    "None"
                 ]
             }
         },
@@ -755,7 +867,13 @@
             ],
             "arguments": {
                 "model_dict": [
-                    "Dict[(str, str)]"
+                    "int",
+                    "Dict",
+                    "List[str]",
+                    "List[List[int]]",
+                    "List[list[int]]",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -767,7 +885,12 @@
             ],
             "arguments": {
                 "model_dict": [
-                    "Dict[(str, str)]"
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[int]"
                 ]
             }
         },
@@ -800,11 +923,18 @@
             "name": "get_work",
             "location": 30,
             "return": [
-                "dict"
+                "str",
+                "Callable",
+                "dict",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "work_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "transfer.models.ListID",
+                    "transfer.models.SiteID",
+                    "transfer.models.OrderID"
                 ]
             }
         },
@@ -812,10 +942,14 @@
             "name": "get_associated_collections",
             "location": 39,
             "return": [
-                "List[dict]"
+                "str",
+                "Callable",
+                "dict",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "work_id": [
+                    "str",
                     "int"
                 ]
             }
@@ -843,14 +977,11 @@
             ],
             "arguments": {
                 "work_dict": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "dict[str, piccolo.conf.apps.MigrationModule]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,piccolo.conf.apps.MigrationModule]",
                     "Optional[str]",
-                    "Optional[List[str]]",
-                    "Dict[str, piccolo.conf.apps.MigrationModule]"
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -858,11 +989,15 @@
             "name": "get_entities",
             "location": 62,
             "return": [
-                "List[Dict[(str, str)]]"
+                "Dict[(str, list)]"
             ],
             "arguments": {
                 "work_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -870,7 +1005,7 @@
             "name": "enrich_work",
             "location": 79,
             "return": [
-                "Dict[(str, Union[(dict, List[dict])])]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "work": [
@@ -888,7 +1023,7 @@
             ],
             "arguments": {
                 "work_id": [
-                    "int"
+                    "str"
                 ]
             }
         }
@@ -935,9 +1070,8 @@
                 "schema_editor": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -962,10 +1096,9 @@
                     "int",
                     "str",
                     "float",
-                    "list[object]",
+                    "List[object]",
                     "django.db.backends.postgresql_psycopg2.schema.DatabaseSchemaEditor",
-                    "bool",
-                    "List[object]"
+                    "bool"
                 ]
             }
         }
@@ -1033,7 +1166,9 @@
         "EntityToEntityRel.__str__": {
             "name": "__str__",
             "location": 133,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -1065,12 +1200,10 @@
             "name": "strip_to_none",
             "location": 8,
             "return": [
-                "Optional[str]"
+                "None"
             ],
             "arguments": {
-                "maybe_str": [
-                    "Optional[str]"
-                ]
+                "maybe_str": []
             }
         },
         "EntityToWorkRel.clean": {
@@ -1086,7 +1219,9 @@
         "EntityToWorkRel.__str__": {
             "name": "__str__",
             "location": 64,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -1094,7 +1229,9 @@
         "WorkToCollection.__str__": {
             "name": "__str__",
             "location": 88,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -1308,7 +1445,7 @@
             "name": "doesnt_raise",
             "location": 24,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"

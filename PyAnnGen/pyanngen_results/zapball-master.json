@@ -39,11 +39,15 @@
             "name": "match_description_message",
             "location": 8,
             "return": [
-                "dict"
+                "Dict[(str, Union[(str, List[Dict[(str, Union[(str, List[Dict[(str, str)]])])]])])]"
             ],
             "arguments": {
                 "match": [
-                    "matches.models.Match"
+                    "Dict[str,Any]",
+                    "List[dict]",
+                    "Dict",
+                    "requests.models.Response",
+                    "asgard.models.spec.container.ContainerSpec"
                 ]
             }
         },
@@ -51,11 +55,13 @@
             "name": "match_started_message",
             "location": 35,
             "return": [
-                "dict"
+                "Dict[(str, Union[(str, List[Dict[(str, str)]])])]"
             ],
             "arguments": {
                 "match": [
-                    "matches.models.Match"
+                    "str",
+                    "Match",
+                    "Match[bytes]"
                 ]
             }
         }
@@ -65,25 +71,40 @@
             "name": "create_match",
             "location": 9,
             "return": [
-                "matches.models.Match"
+                "str",
+                "bool",
+                "int",
+                "List",
+                "OrderedDict"
             ],
             "arguments": {
                 "game": [
-                    "matches.models.Game"
+                    "str",
+                    "List[int]",
+                    "int",
+                    "List[str]",
+                    "django.contrib.auth.models.User",
+                    "database.Game",
+                    "database.User"
                 ],
                 "user": [
                     "str",
-                    "list[int]",
-                    "int",
-                    "django.contrib.auth.models.User",
-                    "list[str]",
                     "List[int]",
+                    "int",
+                    "List[str]",
+                    "django.contrib.auth.models.User",
+                    "database.Game",
+                    "database.User"
+                ],
+                "msg": [
+                    "Text",
+                    "str",
+                    "django.contrib.auth.models.User",
+                    "List[int]",
+                    "int",
                     "database.Game",
                     "database.User",
                     "List[str]"
-                ],
-                "msg": [
-                    "str"
                 ]
             }
         },
@@ -91,14 +112,25 @@
             "name": "prepare_match",
             "location": 16,
             "return": [
-                "Tuple[(matches.models.Match, List[matches.models.MatchTeam])]"
+                "Tuple[(Any, list)]"
             ],
             "arguments": {
                 "game": [
-                    "matches.models.Game"
+                    "str",
+                    "int",
+                    "None",
+                    "List",
+                    "Optional[str]",
+                    "django.db.models.Model",
+                    "salon.models.Stylist"
                 ],
                 "msg": [
-                    "str"
+                    "Text",
+                    "str",
+                    "List[Dict[str,Any]]",
+                    "Dict",
+                    "Dict[str,str]",
+                    "int"
                 ]
             }
         },
@@ -110,15 +142,19 @@
             ],
             "arguments": {
                 "match": [
-                    "matches.models.Match"
+                    "Iterable[U]",
+                    "models.Match",
+                    "Union[zerver.models.UserProfile,zilencer.models.RemoteZulipServer]",
+                    "Iterable[contests.models.User]",
+                    "models.User"
                 ],
                 "user": [
                     "str",
                     "django.contrib.auth.models.User",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "int",
                     "app.models.user.User",
-                    "List[Dict[str, Any]]",
+                    "List[Dict[str,Any]]",
                     "app.models.user.UserInDB"
                 ]
             }
@@ -131,7 +167,11 @@
             ],
             "arguments": {
                 "match": [
-                    "matches.models.Match"
+                    "str",
+                    "bool",
+                    "models.Match",
+                    "List[str]",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -143,7 +183,10 @@
             ],
             "arguments": {
                 "team": [
-                    "matches.models.MatchTeam"
+                    "str",
+                    "int",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -155,7 +198,14 @@
             ],
             "arguments": {
                 "match": [
-                    "matches.models.Match"
+                    "int",
+                    "str",
+                    "models.Match",
+                    "Match",
+                    "Pattern",
+                    "Match[bytes]",
+                    "Pattern[str]",
+                    "Pattern[bytes]"
                 ]
             }
         },
@@ -167,7 +217,11 @@
             ],
             "arguments": {
                 "teams": [
-                    "List[matches.models.MatchTeam]"
+                    "str",
+                    "Dict[str,str]",
+                    "purplship.core.models.ShipmentRequest",
+                    "Sequence[int]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -185,7 +239,10 @@
                     "accounts.models.KippoOrganization"
                 ],
                 "teams": [
-                    "List[matches.models.MatchTeam]"
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]",
+                    "models.scenes.scenes_base.Scene"
                 ]
             }
         }
@@ -195,7 +252,7 @@
             "name": "start_match",
             "location": 15,
             "return": [
-                "dict",
+                "Dict",
                 "HttpResponseForbidden",
                 "bool",
                 "JsonResponse"
@@ -215,9 +272,9 @@
                 "HttpResponse",
                 "JsonResponse",
                 "Optional[str]",
-                "Dict[str, dict]",
-                "Dict[str, Any]",
-                "Iterable[Tuple[str, int]]"
+                "Dict[str,dict]",
+                "Dict[str,Any]",
+                "Iterable[Tuple[str,int]]"
             ],
             "arguments": {
                 "request": [
@@ -238,11 +295,17 @@
             "name": "is_slack_token_valid",
             "location": 8,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Dict",
+                "float",
+                "str"
             ],
             "arguments": {
                 "token": [
-                    "str"
+                    "str",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -254,7 +317,12 @@
             ],
             "arguments": {
                 "user": [
-                    "slack.models.SlackUser"
+                    "str",
+                    "django.contrib.auth.models.User",
+                    "server.models.User",
+                    "User",
+                    "tracim.models.auth.User",
+                    "arxiv.users.domain.User"
                 ]
             }
         },
@@ -262,17 +330,32 @@
             "name": "get_or_create_slack_user",
             "location": 16,
             "return": [
-                "slack.models.SlackUser"
+                "str",
+                "OrderedDict",
+                "Dict[str,str]",
+                "bool",
+                "Optional[app.models.User]",
+                "bytes",
+                "List[zerver.models.UserProfile]"
             ],
             "arguments": {
                 "team": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "user_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "username": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -308,8 +391,8 @@
             "arguments": {
                 "django_user_model": [
                     "str",
-                    "list[dict[str, typing.Any]]",
-                    "List[Dict[str, Any]]",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]",
                     "models.User",
                     "models.Dominion"
                 ]
@@ -325,10 +408,10 @@
             ],
             "arguments": {
                 "django_user_model": [
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "str",
                     "models.user.User",
-                    "List[Dict[str, Any]]",
+                    "List[Dict[str,Any]]",
                     "core.models.Recipe",
                     "models.characters.ai_base.AI"
                 ]
@@ -345,9 +428,9 @@
             "arguments": {
                 "django_user_model": [
                     "str",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "abilian.core.models.subjects.User",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -363,8 +446,8 @@
             "arguments": {
                 "django_user_model": [
                     "str",
-                    "list[dict[str, typing.Any]]",
-                    "List[Dict[str, Any]]",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]",
                     "abilian.core.models.subjects.User"
                 ]
             }
@@ -381,8 +464,8 @@
             "arguments": {
                 "django_user_model": [
                     "str",
-                    "list[dict[str, typing.Any]]",
-                    "List[Dict[str, Any]]",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]",
                     "abilian.core.models.subjects.User"
                 ]
             }
@@ -434,11 +517,9 @@
                 "foosball_game": [
                     "int",
                     "Sequence[float]",
-                    "float",
-                    "typing.Sequence[float]",
-                    "bytes",
                     "List[int]",
-                    "list[int]"
+                    "float",
+                    "bytes"
                 ],
                 "user_a": [
                     "str",
@@ -467,9 +548,8 @@
                 "user_e": [
                     "bool",
                     "str",
-                    "int",
-                    "typing.Callable[, ]",
-                    "Callable"
+                    "Callable",
+                    "int"
                 ]
             }
         }

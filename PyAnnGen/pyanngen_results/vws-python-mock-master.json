@@ -4,11 +4,16 @@
             "name": "_get_dependencies",
             "location": 12,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "requirements_file": [
-                    "pathlib.Path"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "frozenset",
+                    "pathlib.Path",
+                    "FrozenSet[str]"
                 ]
             }
         }
@@ -18,7 +23,7 @@
             "name": "_ci_patterns",
             "location": 13,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -29,9 +34,7 @@
                 "Set[str]"
             ],
             "arguments": {
-                "ci_pattern": [
-                    "str"
-                ]
+                "ci_pattern": []
             }
         },
         "test_ci_patterns_valid": {
@@ -83,7 +86,7 @@
             "name": "to_dict",
             "location": 77,
             "return": [
-                "DatabaseDict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -93,12 +96,17 @@
             "name": "get_target",
             "location": 92,
             "return": [
-                "mock_vws.target.Target"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "target_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "uuid.UUID",
+                    "None",
+                    "Optional[str]"
                 ]
             }
         },
@@ -113,7 +121,8 @@
                     "Type[_TVuforiaDatabase]"
                 ],
                 "database_dict": [
-                    "DatabaseDict"
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -121,13 +130,13 @@
             "name": "not_deleted_targets",
             "location": 120,
             "return": [
-                "set[]",
+                "Set",
                 "str",
-                "dict",
-                "list",
-                "List[Dict[str, str]]",
-                "Union[int, None]",
-                "Tuple[int, int]"
+                "Dict",
+                "List",
+                "List[Dict[str,str]]",
+                "Union[int,None]",
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "self": []
@@ -137,15 +146,15 @@
             "name": "active_targets",
             "location": 127,
             "return": [
-                "set[]",
+                "Set",
                 "int",
                 "str",
-                "list",
-                "Tuple[int, int]",
+                "List",
+                "Tuple[int,int]",
                 "bool",
                 "List[Dict]",
-                "List[Tuple[int, float]]",
-                "List[Tuple[str, str]]"
+                "List[Tuple[int,float]]",
+                "List[Tuple[str,str]]"
             ],
             "arguments": {
                 "self": []
@@ -155,15 +164,15 @@
             "name": "inactive_targets",
             "location": 139,
             "return": [
-                "set[]",
+                "Set",
                 "int",
                 "str",
-                "list",
-                "Tuple[int, int]",
+                "List",
+                "Tuple[int,int]",
                 "bool",
                 "List[Dict]",
-                "List[Tuple[int, float]]",
-                "List[Tuple[str, str]]"
+                "List[Tuple[int,float]]",
+                "List[Tuple[str,str]]"
             ],
             "arguments": {
                 "self": []
@@ -173,15 +182,15 @@
             "name": "failed_targets",
             "location": 151,
             "return": [
-                "set[]",
+                "Set",
                 "int",
                 "str",
-                "list",
-                "Tuple[int, int]",
+                "List",
+                "Tuple[int,int]",
                 "bool",
                 "List[Dict]",
-                "List[Tuple[int, float]]",
-                "List[Tuple[str, str]]"
+                "List[Tuple[int,float]]",
+                "List[Tuple[str,str]]"
             ],
             "arguments": {
                 "self": []
@@ -191,15 +200,15 @@
             "name": "processing_targets",
             "location": 162,
             "return": [
-                "set[]",
+                "Set",
                 "int",
                 "str",
-                "list",
-                "Tuple[int, int]",
+                "List",
+                "Tuple[int,int]",
                 "bool",
                 "List[Dict]",
-                "List[Tuple[int, float]]",
-                "List[Tuple[str, str]]"
+                "List[Tuple[int,float]]",
+                "List[Tuple[str,str]]"
             ],
             "arguments": {
                 "self": []
@@ -261,7 +270,7 @@
             "location": 108,
             "return": [
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "List[str]"
             ],
             "arguments": {
@@ -284,14 +293,15 @@
             "name": "from_dict",
             "location": 164,
             "return": [
-                "arget"
+                "Target"
             ],
             "arguments": {
                 "cls": [
                     "Type[_TTarget]"
                 ],
                 "target_dict": [
-                    "TargetDict"
+                    "dict",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -299,7 +309,7 @@
             "name": "to_dict",
             "location": 207,
             "return": [
-                "TargetDict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -327,9 +337,8 @@
                 "self": [],
                 "database": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -369,7 +378,10 @@
             ],
             "arguments": {
                 "encoded_data": [
-                    "str"
+                    "str",
+                    "Dict[str, Any]",
+                    "MutableMapping",
+                    "bytes"
                 ]
             }
         }
@@ -384,27 +396,34 @@
                 "Optional[str]",
                 "None",
                 "Iterable[T]",
-                "dict",
+                "Dict",
                 "int"
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "int",
+                    "str",
+                    "Optional[str]"
                 ],
                 "request_body": [
                     "int",
-                    "str",
                     "MutableMapping",
-                    "typing.MutableMapping"
+                    "str"
                 ],
                 "request_method": [
-                    "str"
+                    "bytes",
+                    "float",
+                    "int"
                 ],
                 "request_path": [
-                    "str"
+                    "bytes",
+                    "float",
+                    "int"
                 ],
                 "databases": [
-                    "Iterable[mock_vws.database.VuforiaDatabase]"
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -421,25 +440,31 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "Dict",
+                    "int",
+                    "Optional[str]"
                 ],
                 "request_body": [
                     "int",
+                    "MutableMapping",
                     "Optional[Any]",
                     "str",
-                    "typing.Any",
-                    "MutableMapping",
-                    "None",
-                    "typing.MutableMapping"
+                    "Any",
+                    "None"
                 ],
                 "request_method": [
-                    "str"
+                    "bytes",
+                    "float",
+                    "int"
                 ],
                 "request_path": [
-                    "str"
+                    "bytes",
+                    "float",
+                    "int"
                 ],
                 "databases": [
-                    "Iterable[mock_vws.database.VuforiaDatabase]"
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         }
@@ -453,7 +478,11 @@
             ],
             "arguments": {
                 "body": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "str",
+                    "float",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -467,10 +496,13 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "List",
+                    "Dict[str,str]"
                 ],
                 "request_body": [
-                    "bytes"
+                    "bytes",
+                    "io.BytesIO"
                 ],
                 "request_method": [
                     "str"
@@ -479,11 +511,11 @@
                     "str"
                 ],
                 "databases": [
-                    "Set[mock_vws.database.VuforiaDatabase]"
+                    "str"
                 ],
                 "query_processes_deletion_seconds": [
                     "int",
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "float",
                     "str",
                     "datetime.datetime",
@@ -491,7 +523,7 @@
                 ],
                 "query_recognizes_deletion_seconds": [
                     "int",
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "float",
                     "str",
                     "datetime.datetime",
@@ -506,7 +538,7 @@
             "name": "delete_database",
             "location": 29,
             "return": [
-                "tuple[typing.Text]",
+                "Tuple[Text]",
                 "str",
                 "int",
                 "bytes"
@@ -522,9 +554,9 @@
             "name": "get_databases",
             "location": 49,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "str",
-                "dict",
+                "Dict",
                 "Optional[str]"
             ],
             "arguments": {}
@@ -534,9 +566,9 @@
             "location": 58,
             "return": [
                 "str",
-                "tuple[str]",
+                "Tuple[str]",
                 "Optional[str]",
-                "tuple[]"
+                "Tuple"
             ],
             "arguments": {}
         },
@@ -544,18 +576,17 @@
             "name": "create_target",
             "location": 136,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "Optional[Dict]",
-                "dict",
+                "Dict",
                 "int"
             ],
             "arguments": {
                 "database_name": [
                     "str",
+                    "Dict[str,Any]",
                     "Optional[str]",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "None"
                 ]
             }
         },
@@ -563,8 +594,8 @@
             "name": "delete_target",
             "location": 165,
             "return": [
-                "tuple[]",
-                "Dict[str, Any]",
+                "Tuple",
+                "Dict[str,Any]",
                 "str",
                 "Iterable[str]"
             ],
@@ -584,7 +615,7 @@
             "location": 186,
             "return": [
                 "str",
-                "tuple[]"
+                "Tuple"
             ],
             "arguments": {
                 "database_name": [
@@ -620,7 +651,7 @@
             "location": 80,
             "return": [
                 "ResponseNoContentTypeAdded",
-                "dict",
+                "Dict",
                 "List[Callable]",
                 "Optional[Tuple]",
                 "bool",
@@ -628,9 +659,8 @@
             ],
             "arguments": {
                 "exc": [
-                    "dict",
-                    "int",
-                    "dict[, ]"
+                    "Dict",
+                    "int"
                 ]
             }
         },
@@ -640,8 +670,8 @@
             "return": [
                 "Response",
                 "str",
-                "Dict[str, Any]",
-                "dict",
+                "Dict[str,Any]",
+                "Dict",
                 "bytes",
                 "Optional[Dict]"
             ],
@@ -678,7 +708,7 @@
             "location": 100,
             "return": [
                 "ResponseNoContentTypeAdded",
-                "dict",
+                "Dict",
                 "List[Callable]",
                 "Optional[Tuple]",
                 "bool",
@@ -686,9 +716,8 @@
             ],
             "arguments": {
                 "exc": [
-                    "dict",
-                    "int",
-                    "dict[, ]"
+                    "Dict",
+                    "int"
                 ]
             }
         },
@@ -699,9 +728,9 @@
                 "Response",
                 "str",
                 "Optional[Dict]",
-                "Dict[int, dict]",
-                "Mapping[str, Any]",
-                "Dict[str, Any]"
+                "Dict[int,dict]",
+                "Mapping[str,Any]",
+                "Dict[str,Any]"
             ],
             "arguments": {}
         },
@@ -711,11 +740,11 @@
             "return": [
                 "Response",
                 "int",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
-                "dict",
-                "Optional[Dict[str, str]]",
-                "Optional[Union[str, Any]]"
+                "Dict",
+                "Optional[Dict[str,str]]",
+                "Optional[Union[str,Any]]"
             ],
             "arguments": {
                 "target_id": [
@@ -743,7 +772,7 @@
             "return": [
                 "Response",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "bool",
                 "asyncworker.http.wrapper.RequestWrapper"
             ],
@@ -755,7 +784,7 @@
             "return": [
                 "Response",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "bool",
                 "asyncworker.http.wrapper.RequestWrapper"
             ],
@@ -775,11 +804,11 @@
             "return": [
                 "Response",
                 "int",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
-                "dict",
-                "Optional[Dict[str, str]]",
-                "Optional[Union[str, Any]]"
+                "Dict",
+                "Optional[Dict[str,str]]",
+                "Optional[Union[str,Any]]"
             ],
             "arguments": {
                 "target_id": [
@@ -794,7 +823,7 @@
             "return": [
                 "Response",
                 "str",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "django.http.HttpResponse"
             ],
             "arguments": {}
@@ -804,7 +833,7 @@
             "location": 466,
             "return": [
                 "Response",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "int",
                 "bool",
@@ -827,7 +856,10 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "Optional[Dict[str,Any]]",
+                    "bool"
                 ]
             }
         }
@@ -837,17 +869,12 @@
             "name": "validate_auth_header_exists",
             "location": 17,
             "return": [
-                "None",
-                "dict",
-                "Dict[str, Any]",
-                "OrderedDict"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "Set[mock_vws.database.VuforiaDatabase]",
-                    "set[mock_vws.database.VuforiaDatabase]"
+                    "Dict[str,str]",
+                    "Set[mock_vws.database.VuforiaDatabase]"
                 ]
             }
         },
@@ -855,18 +882,14 @@
             "name": "validate_auth_header_number_of_parts",
             "location": 34,
             "return": [
-                "None",
-                "Iterable[Mapping[str, Any]]",
-                "Optional[bool]",
-                "str",
-                "Iterator[Any]"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
-                    "Dict[str, str]",
-                    "list[dict[str, typing.Any]]",
-                    "List[Dict[str, Any]]"
+                    "Dict[str,str]",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -874,25 +897,20 @@
             "name": "validate_client_key_exists",
             "location": 55,
             "return": [
-                "None",
-                "List[Dict[str, str]]",
-                "Optional[List[\"DeliveryItem\"]]",
-                "Iterator[object]"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "bytes",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
                     "str",
-                    "List[Dict[str, Any]]",
-                    "dict"
+                    "List[Dict[str,Any]]",
+                    "Dict"
                 ],
                 "databases": [
-                    "set[mock_vws.database.VuforiaDatabase]",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "dict[str, str]",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
                     "bool"
                 ]
             }
@@ -901,19 +919,14 @@
             "name": "validate_auth_header_has_signature",
             "location": 80,
             "return": [
-                "None",
-                "Iterable[Mapping[str, Any]]",
-                "Optional[bool]",
-                "OrderedDict",
-                "Callable"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
-                    "Dict[str, str]",
-                    "bytes",
-                    "list[str]",
-                    "List[str]"
+                    "Dict[str,str]",
+                    "List[str]",
+                    "bytes"
                 ]
             }
         },
@@ -921,11 +934,7 @@
             "name": "validate_authorization",
             "location": 100,
             "return": [
-                "None",
-                "Union[tuple, list]",
-                "List[int]",
-                "Dict[str, Any]",
-                "str"
+                "None"
             ],
             "arguments": {
                 "request_path": [
@@ -956,11 +965,11 @@
             "arguments": {
                 "request_headers": [
                     "str",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "bytes",
-                    "Optional[Dict[str, Any]]",
-                    "List[Dict[str, Any]]",
-                    "dict",
+                    "Optional[Dict[str,Any]]",
+                    "List[Dict[str,Any]]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -975,21 +984,16 @@
                 "request_headers": [
                     "str",
                     "bytes",
-                    "Dict[str, Any]",
-                    "Dict[str, Dict[str, Any]]"
+                    "Dict[str,Any]",
+                    "Dict[str,Dict[str,Any]]"
                 ],
                 "request_body": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool",
-                    "dict[str, typing.Any]",
-                    "list",
-                    "list[]",
+                    "List",
                     "List[int]",
-                    "list[int]",
-                    "dict",
-                    "dict[, ]",
-                    "List[dict]",
-                    "list[dict[, ]]"
+                    "Dict",
+                    "List[dict]"
                 ]
             }
         },
@@ -1003,21 +1007,16 @@
                 "request_headers": [
                     "str",
                     "bytes",
-                    "Dict[str, Any]",
-                    "Dict[str, Dict[str, Any]]"
+                    "Dict[str,Any]",
+                    "Dict[str,Dict[str,Any]]"
                 ],
                 "request_body": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool",
-                    "dict[str, typing.Any]",
-                    "list",
-                    "list[]",
+                    "List",
                     "List[int]",
-                    "list[int]",
-                    "dict",
-                    "dict[, ]",
-                    "List[dict]",
-                    "list[dict[, ]]"
+                    "Dict",
+                    "List[dict]"
                 ]
             }
         }
@@ -1031,11 +1030,9 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ],
                 "request_body": [
                     "str",
@@ -1049,18 +1046,11 @@
             "name": "validate_date_header_given",
             "location": 16,
             "return": [
-                "None",
-                "Dict[str, Any]",
-                "Set[VT]",
-                "tuple",
-                "Optional[bool]",
-                "type"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "set[mock_vws.database.VuforiaDatabase]",
+                    "Dict[str,str]",
                     "Set[mock_vws.database.VuforiaDatabase]",
                     "float",
                     "bool"
@@ -1071,9 +1061,7 @@
             "name": "_accepted_date_formats",
             "location": 32,
             "return": [
-                "set[]",
-                "str",
-                "Optional[str]"
+                "set"
             ],
             "arguments": {}
         },
@@ -1081,16 +1069,13 @@
             "name": "validate_date_format",
             "location": 53,
             "return": [
-                "None",
-                "int",
-                "Union[tuple, list]",
-                "Optional[bool]"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
-                    "Dict[str, str]",
-                    "Optional[Dict[str, Any]]"
+                    "Dict[str,str]",
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -1098,10 +1083,7 @@
             "name": "validate_date_in_range",
             "location": 76,
             "return": [
-                "None",
-                "Set[VT]",
-                "\"DGEList\"",
-                "str"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
@@ -1248,12 +1230,9 @@
                 "given_value": [
                     "int",
                     "List[str]",
-                    "list[str]",
-                    "float",
-                    "Dict[str, str]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Set[int]",
-                    "set[int]"
+                    "float"
                 ]
             }
         },
@@ -1268,8 +1247,8 @@
                 "given_value": [
                     "str",
                     "bytes",
-                    "List[Tuple[int, Any]]",
-                    "list[tuple[typing.Union[int,typing.Any]]]"
+                    "List[Tuple[int,Any]]",
+                    "List[tuple[Union[int,Any]]]"
                 ]
             }
         },
@@ -1373,7 +1352,10 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "request_body": [
                     "bytes"
@@ -1386,19 +1368,14 @@
             "name": "validate_image_field_given",
             "location": 18,
             "return": [
-                "None",
-                "int",
-                "Union[tuple, list]",
-                "Set[str]",
-                "Optional[bool]",
-                "str"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
                     "bytes",
-                    "Dict[str, str]",
-                    "dict"
+                    "Dict[str,str]",
+                    "Dict"
                 ],
                 "request_body": [
                     "bytes",
@@ -1415,8 +1392,8 @@
             "arguments": {
                 "request_headers": [
                     "str",
-                    "Dict[str, str]",
-                    "dict"
+                    "Dict[str,str]",
+                    "Dict"
                 ],
                 "request_body": [
                     "bytes",
@@ -1428,19 +1405,15 @@
             "name": "validate_image_dimensions",
             "location": 83,
             "return": [
-                "None",
-                "int",
-                "Union[tuple, list]",
-                "Set[str]",
-                "str"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
                     "bytes",
-                    "Dict[str, str]",
-                    "Dict[str, Any]",
-                    "dict"
+                    "Dict[str,str]",
+                    "Dict[str,Any]",
+                    "Dict"
                 ],
                 "request_body": [
                     "bytes",
@@ -1452,18 +1425,14 @@
             "name": "validate_image_format",
             "location": 120,
             "return": [
-                "None",
-                "Iterator[object]",
-                "Union[tuple, list]",
-                "Optional[bool]",
-                "Set[str]"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
                     "bytes",
-                    "Dict[str, str]",
-                    "dict"
+                    "Dict[str,str]",
+                    "Dict"
                 ],
                 "request_body": [
                     "bytes",
@@ -1501,10 +1470,14 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "bytes",
+                    "str",
+                    "Dict[str,str]",
+                    "Dict"
                 ],
                 "request_body": [
-                    "bytes"
+                    "bytes",
+                    "str"
                 ]
             }
         }
@@ -1518,10 +1491,14 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "request_body": [
-                    "bytes"
+                    "bytes",
+                    "str"
                 ]
             }
         }
@@ -1531,7 +1508,6 @@
             "name": "validate_project_state",
             "location": 13,
             "return": [
-                "Union[tuple, list]",
                 "None"
             ],
             "arguments": {
@@ -1564,7 +1540,7 @@
                 "request_path": [
                     "str",
                     "Pattern[str]",
-                    "typing.Pattern",
+                    "Pattern",
                     "Optional[str]",
                     "None"
                 ],
@@ -1580,17 +1556,15 @@
                 "request_method": [
                     "str",
                     "Pattern[str]",
-                    "typing.Pattern",
+                    "Pattern",
                     "Optional[str]",
                     "None"
                 ],
                 "databases": [
                     "str",
-                    "Dict[str, str]",
-                    "bytes",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "set[mock_vws.database.VuforiaDatabase]"
+                    "bytes"
                 ]
             }
         }
@@ -1605,29 +1579,41 @@
             "arguments": {
                 "self": [],
                 "base_vws_url": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "base_vwq_url": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "real_http": [
-                    "bool"
+                    "bool",
+                    "Optional[str]",
+                    "float",
+                    "int",
+                    "Tuple[str]",
+                    "Optional[List[Any]]",
+                    "Tuple[int,int,int]"
                 ],
                 "processing_time_seconds": [
                     "float",
                     "str",
                     "bool",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ],
                 "query_recognizes_deletion_seconds": [
                     "float",
                     "str",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ],
                 "query_processes_deletion_seconds": [
                     "int",
                     "str",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1640,7 +1626,8 @@
             "arguments": {
                 "self": [],
                 "database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -1652,7 +1639,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TMockVWS"
+                    "_TMockVWS@@MockVWS@@"
                 ]
             }
         },
@@ -1660,7 +1647,7 @@
             "name": "__exit__",
             "location": 145,
             "return": [
-                "Literal[False]"
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -1672,14 +1659,18 @@
             "name": "route",
             "location": 32,
             "return": [
-                "Callable[(..., Callable)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "path_pattern": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "bool"
                 ],
                 "http_methods": [
-                    "Set[str]"
+                    "str",
+                    "Set[str]",
+                    "bool"
                 ]
             }
         },
@@ -1711,20 +1702,21 @@
             "arguments": {
                 "self": [],
                 "target_manager": [
-                    "mock_vws.target_manager.TargetManager"
+                    "bool",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ],
                 "query_recognizes_deletion_seconds": [
                     "int",
-                    "str",
-                    "typing.Sequence[typing.Sequence[float]]",
                     "Sequence[Sequence[float]]",
+                    "str",
                     "bool"
                 ],
                 "query_processes_deletion_seconds": [
                     "int",
-                    "str",
-                    "typing.Sequence[typing.Sequence[float]]",
                     "Sequence[Sequence[float]]",
+                    "str",
                     "bool"
                 ]
             }
@@ -1740,15 +1732,12 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "Dict[str, Any]",
-                    "str",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "context": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -1758,14 +1747,18 @@
             "name": "route",
             "location": 44,
             "return": [
-                "Callable[(..., Callable)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "path_pattern": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "bool"
                 ],
                 "http_methods": [
-                    "Set[str]"
+                    "str",
+                    "Set[str]",
+                    "bool"
                 ]
             }
         },
@@ -1797,15 +1790,18 @@
             "arguments": {
                 "self": [],
                 "target_manager": [
-                    "mock_vws.target_manager.TargetManager"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "Tuple"
                 ],
                 "processing_time_seconds": [
                     "float",
                     "str",
                     "Optional[datetime.datetime]",
                     "None",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -1825,9 +1821,8 @@
                     "Exception"
                 ],
                 "context": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "django.http.HttpRequest",
-                    "Dict[str, Any]",
                     "requests_mock._RequestObjectProxy"
                 ]
             }
@@ -1867,8 +1862,7 @@
                     "django.http.HttpRequest"
                 ],
                 "context": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "django.http.HttpRequest"
                 ]
             }
@@ -1885,13 +1879,11 @@
                 "self": [],
                 "request": [
                     "Exception",
-                    "django.http.HttpRequest",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "django.http.HttpRequest"
                 ],
                 "context": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1910,8 +1902,7 @@
                     "django.http.HttpRequest"
                 ],
                 "context": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "django.http.HttpRequest"
                 ]
             }
@@ -1931,8 +1922,7 @@
                     "django.http.HttpRequest"
                 ],
                 "context": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "django.http.HttpRequest"
                 ]
             }
@@ -1951,8 +1941,7 @@
                     "Exception"
                 ],
                 "context": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -1971,8 +1960,7 @@
                     "django.http.HttpRequest"
                 ],
                 "context": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "django.http.HttpRequest"
                 ]
             }
@@ -1988,7 +1976,11 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytearray",
+                    "bytes",
+                    "str",
+                    "int",
+                    "Literal"
                 ]
             }
         }
@@ -2002,9 +1994,7 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "set[mock_vws.database.VuforiaDatabase]",
+                    "Dict[str,str]",
                     "Set[mock_vws.database.VuforiaDatabase]",
                     "django.http.HttpRequest"
                 ]
@@ -2015,25 +2005,23 @@
             "location": 30,
             "return": [
                 "None",
-                "Dict[str, Any]",
-                "List[Dict[str, str]]",
-                "Iterator[Dict[str, Any]]",
+                "Dict[str,Any]",
+                "List[Dict[str,str]]",
+                "Iterator[Dict[str,Any]]",
                 "Generator"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
                     "bytes",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[Dict]"
                 ],
                 "databases": [
-                    "set[mock_vws.database.VuforiaDatabase]",
-                    "str",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "dict[str, str]",
+                    "str",
+                    "Dict[str,str]",
                     "django.http.HttpRequest",
-                    "Dict[str, str]",
                     "http.clienHTTPResponse",
                     "django.http.HttpResponse"
                 ]
@@ -2043,19 +2031,14 @@
             "name": "validate_auth_header_has_signature",
             "location": 54,
             "return": [
-                "None",
-                "Iterable[Mapping[str, Any]]",
-                "Optional[bool]",
-                "OrderedDict",
-                "Callable"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
                     "str",
-                    "Dict[str, str]",
-                    "list[str]",
-                    "bytes",
                     "List[str]",
+                    "Dict[str,str]",
+                    "bytes",
                     "django.http.HttpRequest"
                 ]
             }
@@ -2070,42 +2053,32 @@
                 "request_path": [
                     "str",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "bytes",
-                    "set[mock_vws.database.VuforiaDatabase]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "bytes"
                 ],
                 "request_headers": [
                     "str",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "bytes",
-                    "set[mock_vws.database.VuforiaDatabase]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "bytes"
                 ],
                 "request_body": [
                     "str",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "bytes",
-                    "set[mock_vws.database.VuforiaDatabase]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "bytes"
                 ],
                 "request_method": [
                     "str",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "bytes",
-                    "set[mock_vws.database.VuforiaDatabase]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "bytes"
                 ],
                 "databases": [
                     "str",
                     "Set[mock_vws.database.VuforiaDatabase]",
-                    "bytes",
-                    "set[mock_vws.database.VuforiaDatabase]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "bytes"
                 ]
             }
         }
@@ -2119,22 +2092,17 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "dict[, ]",
+                    "Dict[str,str]",
+                    "Dict",
                     "Optional[dict]",
                     "int",
                     "str"
                 ],
                 "request_body": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, int]",
-                    "dict[str, int]",
+                    "Dict[str,Any]",
+                    "Dict[str,int]",
                     "List[int]",
-                    "list[int]",
-                    "List[dict]",
-                    "list[dict[, ]]"
+                    "List[dict]"
                 ]
             }
         },
@@ -2146,23 +2114,17 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
                     "Optional[str]"
                 ],
                 "request_body": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool",
-                    "dict[str, typing.Any]",
-                    "list",
-                    "list[]",
+                    "List",
                     "List[int]",
-                    "list[int]",
-                    "dict",
-                    "dict[, ]",
-                    "List[dict]",
-                    "list[dict[, ]]"
+                    "Dict",
+                    "List[dict]"
                 ]
             }
         },
@@ -2174,23 +2136,17 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "dict",
                     "Optional[str]"
                 ],
                 "request_body": [
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool",
-                    "dict[str, typing.Any]",
-                    "list",
-                    "list[]",
+                    "List",
                     "List[int]",
-                    "list[int]",
-                    "dict",
-                    "dict[, ]",
-                    "List[dict]",
-                    "list[dict[, ]]"
+                    "Dict",
+                    "List[dict]"
                 ]
             }
         }
@@ -2202,25 +2158,22 @@
             "return": [
                 "None",
                 "str",
-                "Iterator[Tuple[str, str]]",
+                "Iterator[Tuple[str,str]]",
                 "Optional[bool]",
                 "int"
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[, ]",
-                    "dict[str, typing.Any]",
-                    "dict",
+                    "Dict",
+                    "Dict[str,Any]",
                     "str",
                     "Exception",
-                    "Dict[str, Any]",
                     "Optional[str]"
                 ],
                 "request_method": [
                     "str",
+                    "Dict[str,Any]",
                     "int",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
                     "Optional[str]",
                     "None"
                 ]
@@ -2232,18 +2185,11 @@
             "name": "validate_date_header_given",
             "location": 13,
             "return": [
-                "None",
-                "Dict[str, Any]",
-                "Set[VT]",
-                "tuple",
-                "Optional[bool]",
-                "type"
+                "None"
             ],
             "arguments": {
                 "request_headers": [
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "set[mock_vws.database.VuforiaDatabase]",
+                    "Dict[str,str]",
                     "Set[mock_vws.database.VuforiaDatabase]",
                     "float",
                     "bool"
@@ -2259,8 +2205,8 @@
             "arguments": {
                 "request_headers": [
                     "str",
-                    "Dict[str, str]",
-                    "Optional[Dict[str, Any]]"
+                    "Dict[str,str]",
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -2273,7 +2219,7 @@
             "arguments": {
                 "request_headers": [
                     "str",
-                    "Dict[str, str]",
+                    "Dict[str,str]",
                     "datetime.datetime",
                     "datetime.date",
                     "Optional[float]",
@@ -2442,7 +2388,6 @@
             "name": "validate_image_format",
             "location": 20,
             "return": [
-                "set",
                 "None"
             ],
             "arguments": {
@@ -2484,10 +2429,7 @@
             "name": "validate_image_is_image",
             "location": 109,
             "return": [
-                "None",
-                "Iterator[object]",
-                "Set[str]",
-                "int"
+                "None"
             ],
             "arguments": {
                 "request_body": [
@@ -2501,8 +2443,8 @@
             "location": 138,
             "return": [
                 "None",
-                "set",
-                "Iterator[Dict[str, str]]"
+                "Set",
+                "Iterator[Dict[str,str]]"
             ],
             "arguments": {
                 "request_body": [
@@ -2536,10 +2478,16 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytes",
+                    "str",
+                    "Dict[str,str]",
+                    "Dict"
                 ],
                 "request_method": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -2553,13 +2501,29 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytes",
+                    "Dict",
+                    "Optional[bool]",
+                    "Dict[str,Any]",
+                    "django.http.requesHttpRequest",
+                    "Dict[str,str]",
+                    "Optional[Dict[str,str]]"
                 ],
                 "request_path": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Literal",
+                    "None"
                 ],
                 "request_method": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Literal",
+                    "None"
                 ]
             }
         }
@@ -2573,7 +2537,8 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "str",
+                    "Literal"
                 ]
             }
         },
@@ -2585,7 +2550,9 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytearray",
+                    "str",
+                    "Literal"
                 ]
             }
         },
@@ -2597,7 +2564,10 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytearray",
+                    "bytes",
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -2611,13 +2581,18 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytearray",
+                    "bytes",
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "request_method": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "request_path": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2629,7 +2604,8 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytearray",
+                    "str"
                 ]
             }
         },
@@ -2641,7 +2617,11 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytearray",
+                    "bytes",
+                    "str",
+                    "mock_vws.database.VuforiaDatabase",
+                    "Optional[str]"
                 ]
             }
         },
@@ -2653,19 +2633,40 @@
             ],
             "arguments": {
                 "databases": [
-                    "Set[mock_vws.database.VuforiaDatabase]"
+                    "bool",
+                    "Optional[bool]",
+                    "None",
+                    "mock_vws.database.VuforiaDatabase",
+                    "Optional[int]"
                 ],
                 "request_body": [
-                    "bytes"
+                    "bytes",
+                    "Optional[bool]",
+                    "bool",
+                    "Union[bytes,str]",
+                    "List[str]",
+                    "Any",
+                    "str"
                 ],
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "bool",
+                    "Optional[bool]",
+                    "None",
+                    "mock_vws.database.VuforiaDatabase",
+                    "Optional[int]"
                 ],
                 "request_method": [
-                    "str"
+                    "bool",
+                    "Optional[bool]",
+                    "None",
+                    "mock_vws.database.VuforiaDatabase",
+                    "Optional[int]"
                 ],
                 "request_path": [
-                    "str"
+                    "str",
+                    "Optional[bool]",
+                    "Dict[str,str]",
+                    "Set[mock_vws.database.VuforiaDatabase]"
                 ]
             }
         },
@@ -2677,19 +2678,41 @@
             ],
             "arguments": {
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Set[mock_vws.database.VuforiaDatabase]",
+                    "Dict[str,str]",
+                    "bytes",
+                    "Dict[str,Any]"
                 ],
                 "request_body": [
-                    "bytes"
+                    "bytes",
+                    "str",
+                    "bool",
+                    "Optional[bytes]",
+                    "Optional[str]",
+                    "Sequence[str]"
                 ],
                 "request_method": [
-                    "str"
+                    "str",
+                    "Set[mock_vws.database.VuforiaDatabase]",
+                    "Dict[str,str]",
+                    "bytes",
+                    "Dict[str,Any]"
                 ],
                 "request_path": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Optional[str]",
+                    "Set[mock_vws.database.VuforiaDatabase]",
+                    "Dict[str,str]",
+                    "Optional[bytes]"
                 ],
                 "databases": [
-                    "Set[mock_vws.database.VuforiaDatabase]"
+                    "str",
+                    "Set[mock_vws.database.VuforiaDatabase]",
+                    "Dict[str,str]",
+                    "bytes",
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -2699,10 +2722,7 @@
             "name": "validate_project_state",
             "location": 13,
             "return": [
-                "None",
-                "Iterator[Dict[str, str]]",
-                "Union[tuple, list]",
-                "set"
+                "None"
             ],
             "arguments": {
                 "request_path": [
@@ -2735,16 +2755,16 @@
                     "str"
                 ],
                 "request_headers": [
-                    "Dict[(str, str)]"
+                    "str"
                 ],
                 "request_body": [
-                    "bytes"
+                    "str"
                 ],
                 "request_method": [
                     "str"
                 ],
                 "databases": [
-                    "Set[mock_vws.database.VuforiaDatabase]"
+                    "str"
                 ]
             }
         }
@@ -2758,7 +2778,9 @@
             ],
             "arguments": {
                 "request_body": [
-                    "bytes"
+                    "bytearray",
+                    "str",
+                    "Literal"
                 ]
             }
         }
@@ -2774,30 +2796,27 @@
                 "request_path": [
                     "str",
                     "Pattern[str]",
-                    "typing.Pattern"
+                    "Pattern"
                 ],
                 "request_headers": [
                     "str",
+                    "Dict[str,str]",
                     "bytes",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "Set[mock_vws.database.VuforiaDatabase]",
-                    "set[mock_vws.database.VuforiaDatabase]"
+                    "Set[mock_vws.database.VuforiaDatabase]"
                 ],
                 "request_body": [
                     "str",
                     "Pattern[str]",
-                    "typing.Pattern"
+                    "Pattern"
                 ],
                 "request_method": [
                     "str",
                     "Pattern[str]",
-                    "typing.Pattern"
+                    "Pattern"
                 ],
                 "databases": [
                     "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -2811,16 +2830,13 @@
             ],
             "arguments": {
                 "vuforia_database": [
-                    "dict[str, typing.Union[int,str]]",
+                    "Dict[str,Union[int,str]]",
                     "mock_vws.database.VuforiaDatabase",
                     "str",
-                    "Dict[str, Union[int, str]]",
+                    "Dict",
+                    "List[int]",
                     "None",
                     "Optional[str]",
-                    "dict[, ]",
-                    "dict",
-                    "list[int]",
-                    "List[int]",
                     "Exception",
                     "Optional[Exception]",
                     "purplship.providers.ups.utils.Settings"
@@ -2838,16 +2854,13 @@
             ],
             "arguments": {
                 "vuforia_database": [
+                    "Dict",
                     "mock_vws.database.VuforiaDatabase",
-                    "dict[, ]",
-                    "dict",
-                    "Exception",
-                    "Optional[Exception]",
-                    "None",
                     "List[int]",
-                    "list[int]",
-                    "Dict[str, Union[int, str]]",
-                    "dict[str, typing.Union[int,str]]"
+                    "Exception",
+                    "Dict[str,Union[int,str]]",
+                    "Optional[Exception]",
+                    "None"
                 ]
             }
         },
@@ -2859,12 +2872,10 @@
             ],
             "arguments": {
                 "inactive_database": [
-                    "typing.Sequence[int]",
-                    "mock_vws.database.VuforiaDatabase",
-                    "dict[str, typing.Union[int,str]]",
                     "Sequence[int]",
+                    "mock_vws.database.VuforiaDatabase",
+                    "Dict[str,Union[int,str]]",
                     "str",
-                    "Dict[str, Union[int, str]]",
                     "None",
                     "Optional[str]",
                     "purplship.providers.ups.utils.Settings"
@@ -2901,9 +2912,8 @@
             ],
             "arguments": {
                 "request": [
-                    "dict[, ]",
-                    "_pytesfixtures.SubRequest",
-                    "dict"
+                    "Dict",
+                    "_pytesfixtures.SubRequest"
                 ]
             }
         },
@@ -2916,9 +2926,8 @@
             ],
             "arguments": {
                 "request": [
-                    "dict[, ]",
-                    "_pytesfixtures.SubRequest",
-                    "dict"
+                    "Dict",
+                    "_pytesfixtures.SubRequest"
                 ]
             }
         },
@@ -2931,9 +2940,8 @@
             ],
             "arguments": {
                 "request": [
-                    "dict[, ]",
-                    "_pytesfixtures.SubRequest",
-                    "dict"
+                    "Dict",
+                    "_pytesfixtures.SubRequest"
                 ]
             }
         }
@@ -2947,14 +2955,10 @@
                 "requests.models.Response"
             ],
             "arguments": {
-                "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
-                ],
-                "data": [
-                    "Dict[(str, Any)]"
-                ],
+                "vuforia_database": [],
+                "data": [],
                 "content_type": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
@@ -2965,9 +2969,7 @@
                 "None"
             ],
             "arguments": {
-                "response": [
-                    "requests.models.Response"
-                ]
+                "response": []
             }
         },
         "assert_success": {
@@ -2977,9 +2979,7 @@
                 "None"
             ],
             "arguments": {
-                "response": [
-                    "requests.models.Response"
-                ]
+                "response": []
             }
         },
         "TestContentTypes.test_content_types": {
@@ -3443,9 +3443,8 @@
             "arguments": {
                 "self": [],
                 "vuforia_database": [
-                    "dict[str, typing.Any]",
-                    "tests.test_util.aiohttp.AiohttpClientMocker",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "tests.test_util.aiohttp.AiohttpClientMocker"
                 ]
             }
         },
@@ -3520,15 +3519,23 @@
                     "int"
                 ],
                 "active_images": [
+                    "List[int]",
+                    "bool",
                     "int"
                 ],
                 "inactive_images": [
+                    "List[int]",
+                    "bool",
                     "int"
                 ],
                 "failed_images": [
+                    "List[int]",
+                    "bool",
                     "int"
                 ],
                 "processing_images": [
+                    "List[int]",
+                    "bool",
                     "int"
                 ]
             }
@@ -3653,7 +3660,9 @@
             "arguments": {
                 "self": [],
                 "image_file_success_state_low_rating": [
-                    "io.BytesIO"
+                    "bool",
+                    "io.BytesIO",
+                    "vws.VWS"
                 ]
             }
         },
@@ -3801,11 +3810,9 @@
                 ],
                 "endpoint": [
                     "str",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[, ]",
-                    "tests.mock_vws.utils.Endpoint",
-                    "dict"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "tests.mock_vws.utils.Endpoint"
                 ]
             }
         },
@@ -3814,7 +3821,7 @@
             "location": 229,
             "return": [
                 "None",
-                "Dict[str, Sequence[str]]",
+                "Dict[str,Sequence[str]]",
                 "T",
                 "str"
             ],
@@ -3823,16 +3830,14 @@
                 "time_multiplier": [
                     "int",
                     "float",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "Tuple[List[str], Optional[str]]",
-                    "tuple[typing.Union[list[str],str,None]]"
+                    "str",
+                    "Tuple[List[str],Optional[str]]",
+                    "Tuple[Union[list[str],str,None]]"
                 ],
                 "endpoint": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -3893,8 +3898,8 @@
             "name": "fixture_custom_bridge_network",
             "location": 22,
             "return": [
-                "typing.Iterator[docker.models.networks.Network]",
-                "typing.Generator[]"
+                "Iterator[docker.models.networks.Network]",
+                "Generator"
             ],
             "arguments": {}
         },
@@ -3926,16 +3931,14 @@
             ],
             "arguments": {
                 "monkeypatch": [
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "str",
-                    "Dict[str, str]",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[Dict]",
                     "None",
-                    "MutableMapping[str, Any]",
-                    "typing.MutableMapping",
-                    "Iterable[str]",
-                    "dict"
+                    "MutableMapping[str,Any]",
+                    "MutableMapping",
+                    "Iterable[str]"
                 ],
                 "requests_mock": [
                     "requests_mock.Mocker",
@@ -3952,7 +3955,8 @@
             "arguments": {
                 "self": [],
                 "image_file_failed_state": [
-                    "io.BytesIO"
+                    "int",
+                    "raiden.utils.List[raiden.raiden_service.RaidenService]"
                 ]
             }
         },
@@ -3965,7 +3969,8 @@
             "arguments": {
                 "self": [],
                 "image_file_failed_state": [
-                    "io.BytesIO"
+                    "int",
+                    "raiden.utils.List[raiden.raiden_service.RaidenService]"
                 ],
                 "monkeypatch": [
                     "str",
@@ -3982,9 +3987,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ]
+                "high_quality_image": []
             }
         },
         "TestCustomQueryRecognizesDeletionSeconds.test_custom": {
@@ -3995,9 +3998,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ],
+                "high_quality_image": [],
                 "monkeypatch": [
                     "str"
                 ]
@@ -4011,9 +4012,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ]
+                "high_quality_image": []
             }
         },
         "TestCustomQueryProcessDeletionSeconds.test_custom": {
@@ -4024,9 +4023,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ],
+                "high_quality_image": [],
                 "monkeypatch": [
                     "str"
                 ]
@@ -4051,7 +4048,8 @@
             "arguments": {
                 "self": [],
                 "high_quality_image": [
-                    "io.BytesIO"
+                    "io.BytesIO",
+                    "vws.CloudRecoService"
                 ]
             }
         },
@@ -4275,12 +4273,10 @@
                 "self": [],
                 "endpoint": [
                     "str",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "typing.Match",
-                    "Match[str]",
-                    "typing.Callable[, ]",
+                    "Dict[str,Any]",
                     "Callable",
+                    "Match",
+                    "Match[str]",
                     "kitovu.utils.JsonType"
                 ],
                 "date_skew_minutes": [
@@ -4301,12 +4297,8 @@
                 "requests.models.Response"
             ],
             "arguments": {
-                "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
-                ],
-                "body": [
-                    "Dict[(str, Any)]"
-                ]
+                "vuforia_database": [],
+                "body": []
             }
         },
         "add_and_wait_for_targets": {
@@ -4316,13 +4308,9 @@
                 "None"
             ],
             "arguments": {
-                "image": [
-                    "io.BytesIO"
-                ],
+                "image": [],
                 "vws_client": [],
-                "num_targets": [
-                    "int"
-                ]
+                "num_targets": []
             }
         },
         "TestContentType.test_incorrect_no_boundary": {
@@ -4880,7 +4868,8 @@
             "arguments": {
                 "self": [],
                 "image_file_failed_state": [
-                    "io.BytesIO"
+                    "int",
+                    "raiden.utils.List[raiden.raiden_service.RaidenService]"
                 ]
             }
         },
@@ -4893,7 +4882,8 @@
             "arguments": {
                 "self": [],
                 "image_file_failed_state": [
-                    "io.BytesIO"
+                    "int",
+                    "raiden.utils.List[raiden.raiden_service.RaidenService]"
                 ]
             }
         },
@@ -4955,9 +4945,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ]
+                "high_quality_image": []
             }
         },
         "TestCustomQueryRecognizesDeletionSeconds.test_with_no_processing_time": {
@@ -4968,9 +4956,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ]
+                "high_quality_image": []
             }
         },
         "TestCustomQueryRecognizesDeletionSeconds.test_custom": {
@@ -4981,9 +4967,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ]
+                "high_quality_image": []
             }
         },
         "TestCustomQueryProcessDeletionSeconds.test_default": {
@@ -4994,9 +4978,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ]
+                "high_quality_image": []
             }
         },
         "TestCustomQueryProcessDeletionSeconds.test_custom": {
@@ -5007,9 +4989,7 @@
             ],
             "arguments": {
                 "self": [],
-                "high_quality_image": [
-                    "io.BytesIO"
-                ]
+                "high_quality_image": []
             }
         },
         "TestStates.test_repr": {
@@ -5031,7 +5011,9 @@
             "arguments": {
                 "self": [],
                 "high_quality_image": [
-                    "io.BytesIO"
+                    "str",
+                    "io.BytesIO",
+                    "vws.VWS"
                 ]
             }
         },
@@ -5044,6 +5026,7 @@
             "arguments": {
                 "self": [],
                 "high_quality_image": [
+                    "vws.VWS",
                     "io.BytesIO"
                 ]
             }
@@ -5057,7 +5040,9 @@
             "arguments": {
                 "self": [],
                 "high_quality_image": [
-                    "io.BytesIO"
+                    "str",
+                    "io.BytesIO",
+                    "vws.VWS"
                 ]
             }
         },
@@ -5185,12 +5170,11 @@
                 ],
                 "expected_status": [
                     "int",
-                    "str",
-                    "tuple[str]",
                     "Tuple[str]",
-                    "list[dict[str, typing.Any]]",
+                    "str",
+                    "List[dict[str,Any]]",
                     "uuid.UUID",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -5243,12 +5227,12 @@
             "arguments": {
                 "self": [],
                 "endpoint": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "mock_vws.database.VuforiaDatabase",
                     "str",
                     "None",
                     "tests.mock_vws.utils.Endpoint",
-                    "Optional[Dict[str, Any]]"
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         }
@@ -5261,17 +5245,11 @@
                 "requests.models.Response"
             ],
             "arguments": {
-                "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
-                ],
-                "data": [
-                    "Dict[(str, Any)]"
-                ],
-                "target_id": [
-                    "str"
-                ],
+                "vuforia_database": [],
+                "data": [],
+                "target_id": [],
                 "content_type": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
@@ -5673,7 +5651,7 @@
                 "Optional[Dict]",
                 "bytes",
                 "str",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "vuforia_database": [
@@ -5695,7 +5673,7 @@
                 "str",
                 "List[str]",
                 "int",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "vuforia_database": [
@@ -5717,16 +5695,15 @@
             "location": 135,
             "return": [
                 "Endpoint",
-                "dict",
+                "Dict",
                 "Optional[Dict]",
                 "str"
             ],
             "arguments": {
                 "vuforia_database": [
                     "bool",
-                    "mock_vws.database.VuforiaDatabase",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "mock_vws.database.VuforiaDatabase"
                 ]
             }
         },
@@ -5781,18 +5758,17 @@
             "location": 284,
             "return": [
                 "Endpoint",
-                "Mapping[str, Any]",
+                "Mapping[str,Any]",
                 "Optional[Dict]",
                 "int",
                 "str",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "vuforia_database": [
-                    "dict[, ]",
+                    "Dict",
                     "str",
-                    "mock_vws.database.VuforiaDatabase",
-                    "dict"
+                    "mock_vws.database.VuforiaDatabase"
                 ]
             }
         },
@@ -5801,7 +5777,7 @@
             "location": 330,
             "return": [
                 "Endpoint",
-                "dict",
+                "Dict",
                 "Optional[Dict]",
                 "str"
             ],
@@ -5828,7 +5804,7 @@
                 "str",
                 "List[str]",
                 "trezor.utils.Writer",
-                "dict",
+                "Dict",
                 "bool",
                 "Optional[Dict]"
             ],
@@ -5852,10 +5828,10 @@
             "location": 435,
             "return": [
                 "Endpoint",
-                "dict",
+                "Dict",
                 "Optional[Dict]",
                 "str",
-                "Mapping[str, Any]",
+                "Mapping[str,Any]",
                 "trezor.utils.Writer"
             ],
             "arguments": {
@@ -5879,7 +5855,9 @@
             ],
             "arguments": {
                 "database_keys": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "str",
+                    "Union[str,int]",
+                    "int"
                 ]
             }
         },
@@ -5887,13 +5865,19 @@
             "name": "_enable_use_real_vuforia",
             "location": 57,
             "return": [
-                "generator"
+                "Generator[(None, Any, None)]"
             ],
             "arguments": {
                 "working_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "bytes",
+                    "mock_vws.database.VuforiaDatabase",
+                    "TextIO",
+                    "str",
+                    "Dict[str,Any]"
                 ],
                 "inactive_database": [
+                    "float",
+                    "int",
                     "mock_vws.database.VuforiaDatabase"
                 ],
                 "monkeypatch": [
@@ -5907,25 +5891,25 @@
             "name": "_enable_use_mock_vuforia",
             "location": 68,
             "return": [
-                "generator"
+                "Generator[(None, Any, None)]"
             ],
             "arguments": {
                 "working_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "Dict[str,Any]",
+                    "str",
+                    "Exception",
+                    "logging.LogRecord"
                 ],
                 "inactive_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "pyramid.config.Configurator"
                 ],
                 "monkeypatch": [
                     "bool",
-                    "typing.Callable[, ]",
                     "Callable",
-                    "typing.Optional[]",
                     "Optional",
-                    "typing.Match",
+                    "List",
+                    "Match",
                     "Match[Any]",
-                    "list[]",
-                    "list",
                     "Iterable[str]"
                 ]
             }
@@ -5934,14 +5918,20 @@
             "name": "_enable_use_docker_in_memory",
             "location": 97,
             "return": [
-                "generator"
+                "Generator[(None, Any, None)]"
             ],
             "arguments": {
                 "working_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "str",
+                    "Optional[str]",
+                    "dict"
                 ],
                 "inactive_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "str",
+                    "Callable",
+                    "dict",
+                    "Callable[[str], T]",
+                    "Optional[str]"
                 ],
                 "monkeypatch": [
                     "bytes",
@@ -5966,8 +5956,7 @@
             "name": "verify_mock_vuforia",
             "location": 182,
             "return": [
-                "typing.Generator",
-                "typing.Generator[]"
+                "Generator"
             ],
             "arguments": {
                 "request": [
@@ -5975,21 +5964,18 @@
                 ],
                 "vuforia_database": [
                     "bool",
-                    "mock_vws.database.VuforiaDatabase",
-                    "set[str]",
-                    "Set[str]"
+                    "Set[str]",
+                    "mock_vws.database.VuforiaDatabase"
                 ],
                 "inactive_database": [
                     "bool",
-                    "mock_vws.database.VuforiaDatabase",
-                    "set[str]",
-                    "Set[str]"
+                    "Set[str]",
+                    "mock_vws.database.VuforiaDatabase"
                 ],
                 "monkeypatch": [
                     "bool",
-                    "mock_vws.database.VuforiaDatabase",
-                    "set[str]",
-                    "Set[str]"
+                    "Set[str]",
+                    "mock_vws.database.VuforiaDatabase"
                 ]
             }
         }
@@ -6004,13 +5990,27 @@
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "int",
+                    "str",
+                    "requests.Response",
+                    "django.http.HttpResponse",
+                    "flask.Response"
                 ],
                 "status_code": [
-                    "int"
+                    "int",
+                    "None",
+                    "mock_vws._constants.ResultCodes",
+                    "float",
+                    "Optional[int]",
+                    "Optional[float]"
                 ],
                 "result_code": [
-                    "mock_vws._constants.ResultCodes"
+                    "int",
+                    "None",
+                    "mock_vws._constants.ResultCodes",
+                    "float",
+                    "Optional[int]",
+                    "Optional[float]"
                 ]
             }
         },
@@ -6022,7 +6022,11 @@
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str",
+                    "requests.models.Response",
+                    "requests.Response"
                 ]
             }
         },
@@ -6034,7 +6038,9 @@
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "requests.Response",
+                    "Iterator",
+                    "scrapy.http.Response"
                 ]
             }
         },
@@ -6046,7 +6052,13 @@
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "Dict[str,Any]",
+                    "requests.Response",
+                    "Tuple[Union[str,int]]",
+                    "str",
+                    "scrapy.http.TextResponse",
+                    "pyppeteer.network_manager.Response",
+                    "Tuple[str,int]"
                 ]
             }
         },
@@ -6058,13 +6070,18 @@
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "requests.Response",
+                    "werkzeug.Response",
+                    "flask.Response"
                 ],
                 "status_code": [
                     "int"
                 ],
                 "result_code": [
-                    "mock_vws._constants.ResultCodes"
+                    "int",
+                    "mock_vws._constants.ResultCodes",
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -6076,7 +6093,10 @@
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "Dict[str, str]",
+                    "Dict[str, Any]",
+                    "str",
+                    "requests.Response"
                 ]
             }
         },
@@ -6088,7 +6108,10 @@
             ],
             "arguments": {
                 "response": [
-                    "requests.models.Response"
+                    "int",
+                    "requests.Response",
+                    "bytes",
+                    "Dict[str,str]"
                 ],
                 "status_code": [
                     "int"
@@ -6098,46 +6121,47 @@
                     "Optional[str]",
                     "None",
                     "Optional[Dict]",
-                    "dict[, ]",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
-                    "Mapping[str, str]",
-                    "typing.Mapping"
+                    "Dict",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ],
                 "cache_control": [
                     "Optional[str]",
                     "str",
                     "Optional[int]",
                     "None",
-                    "Optional[Dict[str, str]]",
+                    "Optional[Dict[str,str]]",
                     "int",
                     "Optional[dict]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[Type[Any]]",
-                    "dict[, ]",
-                    "Optional[Dict[str, Any]]",
-                    "typing.Type",
+                    "Dict",
+                    "Optional[Dict[str,Any]]",
+                    "Type",
                     "Optional[Mapping]",
-                    "typing.Mapping"
+                    "Mapping"
                 ],
                 "www_authenticate": [
                     "Optional[str]",
                     "str",
                     "Optional[int]",
                     "None",
-                    "Optional[Dict[str, str]]",
+                    "Optional[Dict[str,str]]",
                     "int",
                     "Optional[dict]",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "Optional[Type[Any]]",
-                    "dict[, ]",
-                    "Optional[Dict[str, Any]]",
-                    "typing.Type",
+                    "Dict",
+                    "Optional[Dict[str,Any]]",
+                    "Type",
                     "Optional[Mapping]",
-                    "typing.Mapping"
+                    "Mapping"
                 ],
                 "connection": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -6151,10 +6175,16 @@
             ],
             "arguments": {
                 "image": [
-                    "io.BytesIO"
+                    "int",
+                    "bytes",
+                    "Optional[str]",
+                    "List[str]"
                 ],
                 "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "str",
+                    "dict",
+                    "bool",
+                    "bytes"
                 ]
             }
         },
@@ -6166,10 +6196,16 @@
             ],
             "arguments": {
                 "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "bytes",
+                    "str",
+                    "bool",
+                    "dict",
+                    "Dict[str, Any]"
                 ],
                 "image": [
-                    "io.BytesIO"
+                    "io.BytesIO",
+                    "vws.VWS",
+                    "bool"
                 ]
             }
         },
@@ -6181,10 +6217,12 @@
             ],
             "arguments": {
                 "image": [
-                    "io.BytesIO"
+                    "int",
+                    "Dict[str, Any]",
+                    "Callable"
                 ],
                 "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "str"
                 ]
             }
         },
@@ -6196,10 +6234,14 @@
             ],
             "arguments": {
                 "image": [
-                    "io.BytesIO"
+                    "io.BytesIO",
+                    "mock_vws.database.VuforiaDatabase",
+                    "int"
                 ],
                 "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "io.BytesIO",
+                    "mock_vws.database.VuforiaDatabase",
+                    "int"
                 ]
             }
         },
@@ -6211,10 +6253,16 @@
             ],
             "arguments": {
                 "high_quality_image": [
-                    "io.BytesIO"
+                    "io.BytesIO",
+                    "mock_vws.database.VuforiaDatabase",
+                    "float",
+                    "List[deque]"
                 ],
                 "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "io.BytesIO",
+                    "mock_vws.database.VuforiaDatabase",
+                    "float",
+                    "List[deque]"
                 ]
             }
         },
@@ -6226,10 +6274,16 @@
             ],
             "arguments": {
                 "high_quality_image": [
-                    "io.BytesIO"
+                    "io.BytesIO",
+                    "mock_vws.database.VuforiaDatabase",
+                    "float",
+                    "List[deque]"
                 ],
                 "vuforia_database": [
-                    "mock_vws.database.VuforiaDatabase"
+                    "io.BytesIO",
+                    "mock_vws.database.VuforiaDatabase",
+                    "float",
+                    "List[deque]"
                 ]
             }
         }
@@ -6243,16 +6297,31 @@
             ],
             "arguments": {
                 "file_format": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ],
                 "color_space": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int",
+                    "Tuple[Union[float,float]]",
+                    "Tuple[float,float]",
+                    "float",
+                    "Optional[float]",
+                    "None"
                 ],
                 "width": [
-                    "int"
+                    "int",
+                    "Sequence[Any]",
+                    "Optional[float]",
+                    "float"
                 ],
                 "height": [
-                    "int"
+                    "int",
+                    "Sequence[Any]",
+                    "Optional[float]",
+                    "float"
                 ]
             }
         },
@@ -6265,19 +6334,41 @@
             "arguments": {
                 "self": [],
                 "prepared_request": [
-                    "requests.models.PreparedRequest"
+                    "Dict",
+                    "requests.Response",
+                    "str",
+                    "Dict[str,Any]",
+                    "bool"
                 ],
                 "successful_headers_result_code": [
+                    "int",
+                    "Callable",
                     "mock_vws._constants.ResultCodes"
                 ],
                 "successful_headers_status_code": [
-                    "int"
+                    "str",
+                    "Dict",
+                    "int",
+                    "Callable",
+                    "Collection[Any]",
+                    "Collection"
                 ],
                 "access_key": [
-                    "str"
+                    "List[str]",
+                    "bool",
+                    "Optional[List[str]]",
+                    "None"
                 ],
                 "secret_key": [
-                    "str"
+                    "Dict[str,Any]",
+                    "bytes",
+                    "Union[bytes,str,None]",
+                    "bool",
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "Dict[str,Set[str]]",
+                    "Dict[str,set[str]]"
                 ]
             }
         }

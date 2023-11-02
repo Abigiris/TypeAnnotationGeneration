@@ -40,9 +40,7 @@
             ],
             "arguments": {
                 "f": [
-                    "typing.Iterable[str]",
                     "Iterable[str]",
-                    "typing.Callable[, ]",
                     "Callable",
                     "T"
                 ]
@@ -100,8 +98,7 @@
             "arguments": {
                 "jid": [
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -115,8 +112,7 @@
             "arguments": {
                 "jid": [
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -142,7 +138,8 @@
             "name": "_get_journey_data",
             "location": 93,
             "return": [
-                "app.models.Journey"
+                "str",
+                "int"
             ],
             "arguments": {
                 "journey_id": [
@@ -213,10 +210,8 @@
                 "form": [
                     "str",
                     "List[str]",
-                    "bool",
-                    "list[str]",
                     "ClassVar",
-                    "typing.ClassVar"
+                    "bool"
                 ],
                 "field": [
                     "str"
@@ -285,7 +280,6 @@
             "name": "password",
             "location": 67,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -312,11 +306,16 @@
             "name": "all_ordered",
             "location": 10,
             "return": [
-                "List[app.models.Journey]"
+                "Dict[str, Any]",
+                "dep_check.models.GlobalDependencies",
+                "Dict[str, float]"
             ],
             "arguments": {
                 "user_id": [
-                    "int"
+                    "int",
+                    "List[int]",
+                    "transfer.models.Channel.ID",
+                    "transfer.models.BadgeID"
                 ]
             }
         },
@@ -324,11 +323,18 @@
             "name": "add",
             "location": 17,
             "return": [
-                "app.models.Journey"
+                "int",
+                "Optional[str]"
             ],
             "arguments": {
                 "journey": [
-                    "app.models.Journey"
+                    "app.models.Journey",
+                    "app.models.Stage",
+                    "app.models.GameMember",
+                    "sqlalchemy.orm.query.Query",
+                    "zerver.models.Recipient",
+                    "app.models.Tweet",
+                    "app.models.Position"
                 ]
             }
         },
@@ -336,7 +342,9 @@
             "name": "get",
             "location": 23,
             "return": [
-                "Optional[app.models.Journey]"
+                "str",
+                "bool",
+                "zerver.models.Realm"
             ],
             "arguments": {
                 "user_id": [
@@ -351,11 +359,15 @@
             "name": "all_ordered",
             "location": 31,
             "return": [
-                "List[app.models.Stage]"
+                "int",
+                "bool"
             ],
             "arguments": {
                 "journey_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -363,11 +375,18 @@
             "name": "add",
             "location": 40,
             "return": [
-                "app.models.Stage"
+                "int",
+                "Optional[str]"
             ],
             "arguments": {
                 "stage": [
-                    "app.models.Stage"
+                    "app.models.Journey",
+                    "app.models.Stage",
+                    "app.models.GameMember",
+                    "sqlalchemy.orm.query.Query",
+                    "zerver.models.Recipient",
+                    "app.models.Tweet",
+                    "app.models.Position"
                 ]
             }
         },
@@ -379,7 +398,12 @@
             ],
             "arguments": {
                 "user_id": [
-                    "int"
+                    "int",
+                    "Iterable[int]",
+                    "transfer.models.OrderNumber.SequenceID",
+                    "transfer.models.ArticleNumberSequenceID",
+                    "transfer.models.PostingID",
+                    "transfer.models.Channel.ID"
                 ]
             }
         },
@@ -387,11 +411,22 @@
             "name": "get",
             "location": 62,
             "return": [
-                "Optional[app.models.User]"
+                "str",
+                "zerver.models.Realm",
+                "sqlalchemy.orm.session.Session",
+                "Dict[str, Dict[str, Any]]",
+                "bytes"
             ],
             "arguments": {
                 "user_id": [
-                    "int"
+                    "int",
+                    "transfer.models.DocumenID",
+                    "transfer.models.MatchID",
+                    "transfer.models.TopicID",
+                    "transfer.models.Order.ID",
+                    "transfer.models.ShopID",
+                    "transfer.models.StorefronID",
+                    "transfer.models.ArticleID"
                 ]
             }
         },
@@ -399,11 +434,15 @@
             "name": "get_by_email",
             "location": 66,
             "return": [
-                "Optional[app.models.User]"
+                "str",
+                "zerver.models.Realm",
+                "bytes"
             ],
             "arguments": {
                 "email": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -411,11 +450,17 @@
             "name": "get_by_username",
             "location": 70,
             "return": [
-                "Optional[app.models.User]"
+                "bool",
+                "models.User",
+                "app.models.GameMember",
+                "app.models.course.Course",
+                "core.models.UserPreferences"
             ],
             "arguments": {
                 "username": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "models.Course"
                 ]
             }
         },
@@ -423,11 +468,16 @@
             "name": "get_by_email_or_username",
             "location": 74,
             "return": [
-                "Optional[app.models.User]"
+                "Optional[str]",
+                "str",
+                "List[dict]",
+                "list",
+                "List[Dict[str, Any]]"
             ],
             "arguments": {
                 "email_or_username": [
-                    "str"
+                    "str",
+                    "lms.lmsdb.models.Comment"
                 ]
             }
         },
@@ -435,11 +485,20 @@
             "name": "add",
             "location": 79,
             "return": [
-                "app.models.User"
+                "bool",
+                "str",
+                "django.db.migrations.state.StateApps",
+                "zam_repondeur.models.Lecture",
+                "django.db.models.QuerySet",
+                "Set"
             ],
             "arguments": {
                 "user": [
-                    "app.models.User"
+                    "bool",
+                    "str",
+                    "app.models.User",
+                    "http_quesuser.model.User",
+                    "readicomponents.User"
                 ]
             }
         }
@@ -454,8 +513,7 @@
             ],
             "arguments": {
                 "config_obj": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -481,9 +539,9 @@
             "location": 17,
             "return": [
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int",
-                "dict",
+                "Dict",
                 "float",
                 "Optional[int]",
                 "datetime"
@@ -504,16 +562,15 @@
             "return": [
                 "str",
                 "Optional[str]",
-                "dict[str, str]",
+                "Dict[str,str]",
                 "float",
                 "int"
             ],
             "arguments": {
                 "val": [
                     "int",
+                    "Dict[str,str]",
                     "float",
-                    "dict[str, str]",
-                    "Dict[str, str]",
                     "slice"
                 ]
             }
@@ -532,8 +589,8 @@
                     "int",
                     "float",
                     "str",
-                    "Dict[str, str]",
-                    "Union[float, str]"
+                    "Dict[str,str]",
+                    "Union[float,str]"
                 ]
             }
         }
@@ -560,7 +617,6 @@
             "name": "process_revision_directives",
             "location": 61,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -637,7 +693,6 @@
             "name": "test_auth",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -670,7 +725,6 @@
             "name": "test_auth",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -681,7 +735,6 @@
             "name": "test_no_journeys",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -699,7 +752,6 @@
             "name": "test_list_journeys",
             "location": 56,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -729,7 +781,6 @@
             "name": "test_auth",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -762,7 +813,6 @@
             "name": "test_auth",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -783,7 +833,6 @@
             "name": "test_valid_submission",
             "location": 43,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -810,7 +859,6 @@
             "name": "test_auth",
             "location": 18,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -821,7 +869,6 @@
             "name": "test_not_found",
             "location": 22,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -836,7 +883,6 @@
             "name": "test_completed",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -853,7 +899,6 @@
             "name": "test_empty_form",
             "location": 49,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -882,7 +927,6 @@
             "name": "test_auth",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -893,7 +937,6 @@
             "name": "test_not_found",
             "location": 28,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -908,7 +951,6 @@
             "name": "test_completed",
             "location": 40,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -925,7 +967,6 @@
             "name": "test_invalid_submission",
             "location": 55,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -942,7 +983,6 @@
             "name": "test_non_final_stage",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -964,7 +1004,6 @@
             "name": "test_final_stage_message",
             "location": 89,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -997,7 +1036,6 @@
             "name": "test_auth",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1008,7 +1046,6 @@
             "name": "test_not_found",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1023,7 +1060,6 @@
             "name": "test_journey_details",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1040,7 +1076,6 @@
             "name": "test_no_stages",
             "location": 50,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1057,7 +1092,6 @@
             "name": "test_with_stages",
             "location": 64,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1086,7 +1120,6 @@
             "name": "test_auth",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1097,7 +1130,6 @@
             "name": "test_not_found",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1112,7 +1144,6 @@
             "name": "test_panorama",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1141,7 +1172,6 @@
             "name": "test_auth",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1174,7 +1204,6 @@
             "name": "test_auth",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1185,7 +1214,6 @@
             "name": "test_invalid_submission",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1200,7 +1228,6 @@
             "name": "test_valid_submission",
             "location": 41,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1226,7 +1253,6 @@
             "name": "test_auth",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1259,7 +1285,6 @@
             "name": "test_auth",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1292,7 +1317,6 @@
             "name": "test_auth",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1303,7 +1327,6 @@
             "name": "test_invalid_submission",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1317,7 +1340,6 @@
             "name": "test_valid_submission",
             "location": 42,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1334,7 +1356,6 @@
             "name": "test_email_submission",
             "location": 60,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1351,7 +1372,6 @@
             "name": "test_username_submission",
             "location": 73,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1511,7 +1531,6 @@
             "name": "test_non_existing_email",
             "location": 27,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1526,7 +1545,6 @@
             "name": "test_bad_password",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1540,7 +1558,6 @@
             "name": "test_valid_credentials",
             "location": 50,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1567,7 +1584,6 @@
             "name": "test_existing_value",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1581,7 +1597,6 @@
             "name": "test_new_value",
             "location": 38,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

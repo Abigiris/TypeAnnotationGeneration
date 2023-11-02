@@ -10,10 +10,9 @@
                 "self": [],
                 "dist": [
                     "int",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "str",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "bool"
                 ]
             }
@@ -469,9 +468,7 @@
         "get_cmdclass.cmd_version.initialize_options": {
             "name": "initialize_options",
             "location": 1510,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -479,9 +476,7 @@
         "get_cmdclass.cmd_version.finalize_options": {
             "name": "finalize_options",
             "location": 1513,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -489,9 +484,7 @@
         "get_cmdclass.cmd_version.run": {
             "name": "run",
             "location": 1516,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -499,9 +492,7 @@
         "get_cmdclass.cmd_build_py.run": {
             "name": "run",
             "location": 1548,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -517,9 +508,7 @@
         "get_cmdclass.cmd_sdist.make_release_tree": {
             "name": "make_release_tree",
             "location": 1637,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "base_dir": [
@@ -536,9 +525,7 @@
         "get_cmdclass.cmd_build_exe.run": {
             "name": "run",
             "location": 1572,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -546,9 +533,7 @@
         "get_cmdclass.cmd_py2exe.run": {
             "name": "run",
             "location": 1601,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -564,10 +549,18 @@
             "arguments": {
                 "self": [],
                 "path_config_to_load": [
-                    "Union[(str, pathlib.Path)]"
+                    "pathlib.Path",
+                    "str",
+                    "Optional[str]",
+                    "dict",
+                    "Union[pathlib.Path, str, None]"
                 ],
                 "default_config_path": [
-                    "Union[(str, pathlib.Path)]"
+                    "Union[str, pathlib.Path]",
+                    "pathlib.Path",
+                    "str",
+                    "path.Path",
+                    "Optional[str]"
                 ]
             }
         },
@@ -652,13 +645,15 @@
             "arguments": {
                 "df": [
                     "bool",
+                    "List[pandas.DataFrame]",
                     "str",
-                    "list[pandas.DataFrame]",
-                    "pandas.DataFrame",
-                    "List[pandas.DataFrame]"
+                    "pandas.DataFrame"
                 ],
                 "deep": [
-                    "bool"
+                    "bool",
+                    "pandas.DataFrame",
+                    "List[pandas.DataFrame]",
+                    "str"
                 ]
             }
         },
@@ -670,7 +665,9 @@
             ],
             "arguments": {
                 "caller_name": [
-                    "str"
+                    "str",
+                    "Union[str,Tuple[str,...]]",
+                    "Tuple[Union[str,...]]"
                 ]
             }
         },
@@ -683,12 +680,12 @@
             ],
             "arguments": {
                 "df_left": [
-                    "list[dict[, ]]",
+                    "List[dict]",
                     "pandas.DataFrame",
                     "List[Dict]"
                 ],
                 "df_right": [
-                    "list[dict[, ]]",
+                    "List[dict]",
                     "pandas.DataFrame",
                     "List[Dict]"
                 ]
@@ -698,17 +695,36 @@
             "name": "dates_split",
             "location": 241,
             "return": [
-                "Sequence[Tuple[(_datetime.datetime, _datetime.datetime)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "date_start": [
-                    "_datetime.datetime"
+                    "int",
+                    "datetime.date",
+                    "Tuple[int,int]",
+                    "pandas.DataFrame",
+                    "Optional[datetime.datetime]",
+                    "datetime.datetime"
                 ],
                 "date_end": [
-                    "_datetime.datetime"
+                    "int",
+                    "float",
+                    "Optional[datetime.datetime]",
+                    "pandas.DataFrame",
+                    "Tuple[int,int]",
+                    "datetime.date",
+                    "str",
+                    "List[str]"
                 ],
                 "n_splits": [
-                    "int"
+                    "int",
+                    "datetime.date",
+                    "Tuple[Union[int,int]]",
+                    "None",
+                    "Tuple[int,int]",
+                    "pandas.DataFrame",
+                    "Optional[datetime.datetime]",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -724,7 +740,11 @@
                     "bool"
                 ],
                 "distance_scale": [
-                    "float"
+                    "float",
+                    "bool",
+                    "str",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -732,11 +752,12 @@
             "name": "idict",
             "location": 326,
             "return": [
-                "Dict[(Hashable, Any)]"
+                "dict"
             ],
             "arguments": {
                 "d": [
-                    "Dict[(Any, Hashable)]"
+                    "Dict",
+                    "pandas.DataFrame"
                 ]
             }
         },
@@ -744,7 +765,7 @@
             "name": "kwargs_2_list",
             "location": 366,
             "return": [
-                "Dict[(str, Sequence)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {}
         },
@@ -768,10 +789,18 @@
                     "logging.Logger"
                 ],
                 "f": [
-                    "Callable[([Any], Any)]"
+                    "Callable",
+                    "str",
+                    "pandas.DataFrame",
+                    "bool",
+                    "logging.Logger"
                 ],
                 "msg": [
-                    "str"
+                    "Text",
+                    "str",
+                    "pandas.DataFrame",
+                    "bool",
+                    "logging.Logger"
                 ]
             }
         },
@@ -779,7 +808,7 @@
             "name": "mem_usage_pd",
             "location": 447,
             "return": [
-                "Dict[(str, Union[(set, str)])]"
+                "Dict[(Any, Union[(set, str)])]"
             ],
             "arguments": {
                 "pd_obj": [
@@ -788,13 +817,23 @@
                     "datetime.datetime"
                 ],
                 "index": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "List[int]"
                 ],
                 "deep": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "List[int]"
                 ],
                 "details": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict"
                 ]
             }
         },
@@ -826,9 +865,20 @@
                     "bool"
                 ],
                 "columns": [
-                    "Optional[Union[(str, Sequence[str])]]"
+                    "Optional[Union[str,Any]]",
+                    "None",
+                    "str",
+                    "List[str]",
+                    "pandas.DataFrame",
+                    "bool",
+                    "Tuple[str]",
+                    "Any"
                 ],
                 "suffix": [
+                    "None",
+                    "numpy.dtype",
+                    "str",
+                    "bytes",
                     "Optional[str]"
                 ],
                 "new_type": [
@@ -847,10 +897,24 @@
             ],
             "arguments": {
                 "func": [
-                    "Optional[Callable]"
+                    "None",
+                    "Optional[Callable]",
+                    "Callable",
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "Optional[datetime.date]",
+                    "datetime.date",
+                    "datetime.datetime"
                 ],
                 "date_fields": [
-                    "Sequence[str]"
+                    "Text",
+                    "Sequence[str]",
+                    "bool",
+                    "str",
+                    "Dict",
+                    "T",
+                    "int"
                 ]
             }
         },
@@ -868,13 +932,13 @@
                 "df": [
                     "float",
                     "numpy.ndarray",
-                    "typing.Callable[, ]",
-                    "list[]",
                     "Callable",
-                    "list"
+                    "List"
                 ],
                 "func": [
-                    "Callable"
+                    "Callable",
+                    "T",
+                    "Callable[,Dict[str,object]]"
                 ]
             }
         },
@@ -890,26 +954,41 @@
             ],
             "arguments": {
                 "sql": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "Dict",
+                    "None",
+                    "Type"
                 ],
                 "cnxn": [
                     "str",
                     "int",
                     "Optional[str]",
+                    "Dict",
                     "None",
-                    "dict",
-                    "dict[, ]",
-                    "Type",
-                    "typing.Type"
+                    "Type"
                 ],
                 "params": [
-                    "Optional[Union[(dict, list)]]"
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[str]",
+                    "Dict",
+                    "Type"
                 ],
                 "chunksize": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "Dict",
+                    "Type"
                 ],
                 "column_types": [
-                    "Optional[dict]"
+                    "int",
+                    "None",
+                    "List[Tuple[int,Any]]",
+                    "List[tuple[Union[int,Any]]]"
                 ]
             }
         },
@@ -921,7 +1000,8 @@
             ],
             "arguments": {
                 "n": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -929,17 +1009,23 @@
             "name": "sliding_window",
             "location": 777,
             "return": [
-                "Generator[(Sequence, Any, None)]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "sequence": [
-                    "Sequence"
+                    "int",
+                    "Sequence[Mapping[str, Any]]",
+                    "List[List[str]]",
+                    "float"
                 ],
                 "window_size": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "step": [
-                    "int"
+                    "int",
+                    "float",
+                    "bytearray"
                 ]
             }
         },
@@ -947,7 +1033,7 @@
             "name": "value_2_list",
             "location": 835,
             "return": [
-                "Sequence"
+                "Union[(List[_T0], _T0)]"
             ],
             "arguments": {
                 "value": [
@@ -955,13 +1041,12 @@
                     "numpy.ndarray",
                     "int",
                     "Optional[int]",
+                    "List",
                     "None",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes",
-                    "Union[int, float]",
-                    "float",
-                    "list",
-                    "list[]"
+                    "Union[int,float]",
+                    "float"
                 ]
             }
         },
@@ -1330,9 +1415,13 @@
         "add_identity": {
             "name": "add_identity",
             "location": 31,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "ax": []
+                "ax": [
+                    "_T0@@"
+                ]
             }
         },
         "get_n_colors": {
@@ -1342,68 +1431,66 @@
                 "list"
             ],
             "arguments": {
-                "n": [
-                    "int"
-                ],
+                "n": [],
                 "cmap": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_cluster": {
             "name": "plot_cluster",
             "location": 96,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": [],
                 "cluster_col_1": [
-                    "str"
+                    "typing.Text"
                 ],
                 "cluster_col_2": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_col": [
-                    "Optional[str]"
+                    "None"
                 ],
-                "colors": [
-                    "Optional[Sequence[str]]"
-                ],
+                "colors": [],
                 "labels": [
-                    "Optional[Union[(str, Sequence[str])]]"
+                    "None"
                 ],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "loc": [
-                    "Union[(int, str)]"
+                    "typing.Text"
                 ],
-                "s": [
-                    "Optional[Union[(float, Sequence)]]"
-                ],
+                "s": [],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_confusion_matrix": {
             "name": "plot_confusion_matrix",
             "location": 281,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "y_true": [],
                 "y_pred": [],
@@ -1414,94 +1501,94 @@
                     "typing.Text"
                 ],
                 "sample_weight": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "normalize": [
-                    "Optional[str]"
+                    "None"
                 ],
-                "stats": [
-                    "Optional[str]"
-                ],
+                "stats": [],
                 "annotation_fmt": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "cbar_fmt": [
                     "None"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "rotation_xticks": [
-                    "Optional[float]"
+                    "int"
                 ],
                 "rotation_yticks": [
-                    "Optional[float]"
+                    "None"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_correlation": {
             "name": "plot_correlation",
             "location": 422,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": [],
                 "already_computed": [
                     "bool"
                 ],
                 "method": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "rotation_xticks": [
-                    "Optional[float]"
+                    "int"
                 ],
                 "rotation_yticks": [
-                    "Optional[float]"
+                    "None"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_counter": {
             "name": "plot_counter",
             "location": 507,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "counter": [
-                    "dict"
-                ],
+                "counter": [],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "width": [
                     "float"
@@ -1516,158 +1603,158 @@
                     "None"
                 ],
                 "rotation_xticks": [
-                    "Optional[float]"
+                    "None"
                 ],
                 "grid": [
-                    "Optional[str]"
+                    "typing.Text"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_history": {
             "name": "plot_history",
             "location": 642,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "history": [
-                    "dict"
-                ],
-                "metric": [
-                    "Optional[str]"
-                ],
+                "history": [],
+                "metric": [],
                 "twinx": [
                     "bool"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "axes": [
                     "None"
                 ],
                 "loc": [
-                    "Union[(int, str)]"
+                    "typing.Text"
                 ],
                 "grid": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_kmeans": {
             "name": "plot_kmeans",
             "location": 801,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": [],
                 "kmeans_col_1": [
-                    "str"
+                    "typing.Text"
                 ],
                 "kmeans_col_2": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_col": [
-                    "Optional[str]"
+                    "typing.Text"
                 ],
                 "centroids": [
-                    "Optional[Sequence[Tuple[(float, float)]]]"
+                    "None"
                 ],
                 "cmap": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "loc": [
-                    "Union[(int, str)]"
+                    "typing.Text"
                 ],
-                "s": [
-                    "float"
-                ],
+                "s": [],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_pca_explained_variance_ratio": {
             "name": "plot_pca_explained_variance_ratio",
             "location": 931,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "pca": [],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "hline": [
-                    "Optional[float]"
+                    "None"
                 ],
                 "ax": [
                     "None"
                 ],
                 "lim_x": [
-                    "Optional[Tuple[(float, float)]]"
+                    "None"
                 ],
                 "lim_y": [
-                    "Optional[Tuple[(float, float)]]"
+                    "None"
                 ],
                 "grid": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_pie": {
             "name": "plot_pie",
             "location": 1038,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "data": [
-                    "dict"
-                ],
+                "data": [],
                 "explode": [
                     "float"
                 ],
@@ -1675,13 +1762,13 @@
                     "bool"
                 ],
                 "colors": [
-                    "Optional[Sequence[str]]"
+                    "None"
                 ],
                 "textprops": [
-                    "Optional[dict]"
+                    "None"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "threshold": [
                     "int"
@@ -1690,23 +1777,25 @@
                     "None"
                 ],
                 "loc": [
-                    "Optional[Union[(int, str)]]"
+                    "None"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_predictions": {
             "name": "plot_predictions",
             "location": 1154,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "y_true": [],
                 "y_pred": [],
@@ -1717,91 +1806,89 @@
                     "None"
                 ],
                 "label_true": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_pred": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "loc": [
-                    "Union[(int, str)]"
+                    "typing.Text"
                 ],
                 "rotation_xticks": [
-                    "Optional[float]"
+                    "None"
                 ],
                 "grid": [
-                    "Optional[str]"
+                    "typing.Text"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_roc_curve": {
             "name": "plot_roc_curve",
             "location": 1292,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "labels": [
-                    "Sequence[float]"
-                ],
-                "predictions": [
-                    "Sequence[float]"
-                ],
+                "labels": [],
+                "predictions": [],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "grid": [
-                    "Optional[str]"
+                    "typing.Text"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "plot_series": {
             "name": "plot_series",
             "location": 1380,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "df": [],
-                "column": [
-                    "str"
-                ],
+                "column": [],
                 "groupby": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "with_sem": [
                     "bool"
@@ -1816,37 +1903,37 @@
                     "float"
                 ],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "Optional[str]"
+                    "None"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "color": [
-                    "str"
+                    "typing.Text"
                 ],
                 "loc": [
-                    "Union[(int, str)]"
+                    "typing.Text"
                 ],
                 "rotation_xticks": [
-                    "Optional[float]"
+                    "None"
                 ],
                 "grid": [
-                    "Optional[str]"
+                    "typing.Text"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
@@ -1872,45 +1959,49 @@
                     "bool"
                 ],
                 "label_x": [
-                    "str"
+                    "typing.Text"
                 ],
                 "label_y": [
-                    "str"
+                    "typing.Text"
                 ],
                 "title": [
-                    "str"
+                    "typing.Text"
                 ],
                 "ax": [
                     "None"
                 ],
                 "lim_x": [
-                    "Optional[Tuple[(float, float)]]"
+                    "None"
                 ],
                 "lim_y": [
-                    "Optional[Tuple[(float, float)]]"
+                    "None"
                 ],
                 "grid": [
-                    "Optional[str]"
+                    "typing.Text"
                 ],
                 "figsize": [
-                    "Tuple[(int, int)]"
+                    "tuple[int]"
                 ],
                 "dpi": [
                     "int"
                 ],
                 "style": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
         "set_thousands_separator": {
             "name": "set_thousands_separator",
             "location": 1758,
-            "return": [],
+            "return": [
+                "_T0@@"
+            ],
             "arguments": {
-                "axes": [],
+                "axes": [
+                    "_T0@@"
+                ],
                 "which": [
-                    "str"
+                    "typing.Text"
                 ],
                 "nb_decimals": [
                     "int"

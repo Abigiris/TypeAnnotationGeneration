@@ -32,7 +32,9 @@
             "arguments": {
                 "self": [],
                 "payload": [
-                    "Optional[T]"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -40,7 +42,8 @@
             "name": "get",
             "location": 14,
             "return": [
-                "T"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -75,7 +78,9 @@
             "arguments": {
                 "self": [],
                 "action": [
-                    "Callable[([T], None)]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -83,12 +88,16 @@
             "name": "filter",
             "location": 30,
             "return": [
-                "Option[T]"
+                "Option"
             ],
             "arguments": {
                 "self": [],
                 "predicate": [
-                    "Callable[([T], bool)]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "int",
+                    "Union[Dict,str]"
                 ]
             }
         },
@@ -96,12 +105,16 @@
             "name": "map",
             "location": 36,
             "return": [
-                "Option[U]"
+                "int",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "mapper": [
-                    "Callable[([T], U)]"
+                    "str",
+                    "bool",
+                    "Iterable[str]",
+                    "int"
                 ]
             }
         },
@@ -109,12 +122,18 @@
             "name": "flat_map",
             "location": 42,
             "return": [
-                "Option[U]"
+                "bool",
+                "str",
+                "Optional[int]",
+                "int",
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "mapper": [
-                    "Callable[([T], Option[U])]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -122,12 +141,24 @@
             "name": "or_else",
             "location": 48,
             "return": [
-                "T"
+                "bool",
+                "List[str]",
+                "int",
+                "str",
+                "float",
+                "Optional[int]",
+                "AbstractSet"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "T"
+                    "List[str]",
+                    "SupportsFloat",
+                    "int",
+                    "Union[int,float]",
+                    "float",
+                    "AbstractSet[T]",
+                    "AbstractSet"
                 ]
             }
         },
@@ -135,12 +166,16 @@
             "name": "or_else_get",
             "location": 54,
             "return": [
-                "T"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": [],
                 "supplier": [
-                    "Callable[([], T)]"
+                    "Callable[,T]",
+                    "bool",
+                    "Dict[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -148,12 +183,21 @@
             "name": "or_else_throw",
             "location": 60,
             "return": [
-                "T"
+                "int",
+                "str",
+                "bool",
+                "Optional[BaseException]",
+                "Union[str, Tuple[str, ...]]"
             ],
             "arguments": {
                 "self": [],
                 "exception_supplier": [
-                    "Callable[([], E)]"
+                    "Type",
+                    "Exception",
+                    "bool",
+                    "Optional[Exception]",
+                    "None",
+                    "Type[BaseException]"
                 ]
             }
         },
@@ -161,7 +205,8 @@
             "name": "or_none",
             "location": 66,
             "return": [
-                "Optional[T]"
+                "int",
+                "float"
             ],
             "arguments": {
                 "self": []
@@ -171,7 +216,7 @@
             "name": "stream",
             "location": 69,
             "return": [
-                "streamborne.stream.Stream[T]"
+                "streamborne.stream.Stream"
             ],
             "arguments": {
                 "self": []
@@ -181,11 +226,22 @@
             "name": "of",
             "location": 74,
             "return": [
-                "Option[T]"
+                "Option"
             ],
             "arguments": {
                 "value": [
-                    "T"
+                    "str",
+                    "T",
+                    "Any",
+                    "Optional[Union[str,Any]]",
+                    "None",
+                    "int",
+                    "Union[None,int,float]",
+                    "float",
+                    "Optional[T]",
+                    "Optional[str]",
+                    "Union[int,None]",
+                    "Union[str,None]"
                 ]
             }
         },
@@ -193,11 +249,21 @@
             "name": "of_nullable",
             "location": 81,
             "return": [
-                "Option[T]"
+                "Option"
             ],
             "arguments": {
                 "value": [
-                    "Optional[T]"
+                    "None",
+                    "str",
+                    "Optional[T]",
+                    "int",
+                    "Optional[str]",
+                    "float",
+                    "T",
+                    "Union[int,None]",
+                    "Union[str,None]",
+                    "Union[None,float,int,str]",
+                    "Union[None,int,float]"
                 ]
             }
         },
@@ -205,7 +271,7 @@
             "name": "empty",
             "location": 88,
             "return": [
-                "Option[T]"
+                "Option"
             ],
             "arguments": {}
         }
@@ -219,81 +285,69 @@
             ],
             "arguments": {
                 "self": [],
-                "data": [
-                    "Iterable[T]"
-                ]
+                "data": []
             }
         },
         "Stream.filter": {
             "name": "filter",
             "location": 30,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "predicate": [
-                    "Callable[([T], bool)]"
-                ]
+                "predicate": []
             }
         },
         "Stream.filterfalse": {
             "name": "filterfalse",
             "location": 33,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "predicate": [
-                    "Callable[([T], bool)]"
-                ]
+                "predicate": []
             }
         },
         "Stream.map": {
             "name": "map",
             "location": 36,
             "return": [
-                "Stream[U]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "function": [
-                    "Callable[([T], U)]"
-                ]
+                "function": []
             }
         },
         "Stream.takewhile": {
             "name": "takewhile",
             "location": 39,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "predicate": [
-                    "Callable[([T], bool)]"
-                ]
+                "predicate": []
             }
         },
         "Stream.dropwhile": {
             "name": "dropwhile",
             "location": 42,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "predicate": [
-                    "Callable[([T], bool)]"
-                ]
+                "predicate": []
             }
         },
         "Stream.reversed": {
             "name": "reversed",
             "location": 45,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": []
@@ -303,75 +357,63 @@
             "name": "sorted",
             "location": 51,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "key_selector": [
-                    "Optional[Callable[([T], U)]]"
-                ],
-                "reverse": [
-                    "bool"
-                ]
+                "key_selector": [],
+                "reverse": []
             }
         },
         "Stream.accumulate": {
             "name": "accumulate",
             "location": 54,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "function": [
-                    "Callable[([T, T], T)]"
-                ]
+                "function": []
             }
         },
         "Stream.chain": {
             "name": "chain",
             "location": 58,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "Iterable[T]"
-                ]
+                "other": []
             }
         },
         "Stream.chain_from_iterable": {
             "name": "chain_from_iterable",
             "location": 61,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "Iterable[Iterable[T]]"
-                ]
+                "other": []
             }
         },
         "Stream.groupby": {
             "name": "groupby",
             "location": 64,
             "return": [
-                "Stream[Tuple[(T, Iterable[T])]]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "key_selector": [
-                    "Callable[([T], T)]"
-                ]
+                "key_selector": []
             }
         },
         "Stream.cycle": {
             "name": "cycle",
             "location": 68,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": []
@@ -381,36 +423,30 @@
             "name": "zip",
             "location": 71,
             "return": [
-                "Stream[Tuple[(T, U)]]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "items": [
-                    "Iterable[U]"
-                ]
+                "items": []
             }
         },
         "Stream.islice": {
             "name": "islice",
             "location": 75,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "start": [
-                    "int"
-                ],
-                "stop": [
-                    "int"
-                ]
+                "start": [],
+                "stop": []
             }
         },
         "Stream.all": {
             "name": "all",
             "location": 79,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -420,7 +456,7 @@
             "name": "any",
             "location": 82,
             "return": [
-                "bool"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -430,13 +466,11 @@
             "name": "apply",
             "location": 85,
             "return": [
-                "U"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "function": [
-                    "Callable[([Iterable[T]], U)]"
-                ]
+                "function": []
             }
         },
         "Stream.len": {
@@ -453,7 +487,7 @@
             "name": "max",
             "location": 94,
             "return": [
-                "T"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -463,36 +497,30 @@
             "name": "reduce",
             "location": 97,
             "return": [
-                "U"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "function": [
-                    "Callable[([U, T], U)]"
-                ],
-                "initial": [
-                    "U"
-                ]
+                "function": [],
+                "initial": []
             }
         },
         "Stream.sum": {
             "name": "sum",
             "location": 101,
             "return": [
-                "T"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "start": [
-                    "T"
-                ]
+                "start": []
             }
         },
         "Stream.tee": {
             "name": "tee",
             "location": 107,
             "return": [
-                "Tuple[(Stream[T], Stream[T])]"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -502,23 +530,19 @@
             "name": "dict",
             "location": 114,
             "return": [
-                "builtins.dict[(K, U)]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "key_selector": [
-                    "Callable[([T], K)]"
-                ],
-                "value_selector": [
-                    "Callable[([T], U)]"
-                ]
+                "key_selector": [],
+                "value_selector": []
             }
         },
         "Stream.list": {
             "name": "list",
             "location": 120,
             "return": [
-                "builtins.list[T]"
+                "builtins.list"
             ],
             "arguments": {
                 "self": []
@@ -528,7 +552,7 @@
             "name": "set",
             "location": 123,
             "return": [
-                "builtins.set[T]"
+                "builtins.set"
             ],
             "arguments": {
                 "self": []
@@ -538,50 +562,42 @@
             "name": "next",
             "location": 127,
             "return": [
-                "Stream[U]"
+                "Stream"
             ],
             "arguments": {
                 "self": [],
-                "next_function": [
-                    "Callable[([Iterable[T]], Iterable[U])]"
-                ]
+                "next_function": []
             }
         },
         "Stream.terminate": {
             "name": "terminate",
             "location": 134,
             "return": [
-                "U"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "terminate": [
-                    "Callable[([Iterable[T]], U)]"
-                ]
+                "terminate": []
             }
         },
         "Stream.from_list": {
             "name": "from_list",
             "location": 143,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
-                "data": [
-                    "Iterable[T]"
-                ]
+                "data": []
             }
         },
         "Stream.from_option": {
             "name": "from_option",
             "location": 147,
             "return": [
-                "Stream[T]"
+                "Stream"
             ],
             "arguments": {
-                "option": [
-                    "streamborne.option.Option[T]"
-                ]
+                "option": []
             }
         },
         "Stream.tee.f": {
@@ -771,7 +787,7 @@
             "name": "from_list",
             "location": 13,
             "return": [
-                "streamborne.stream.Stream[str]"
+                "streamborne.stream.Stream"
             ],
             "arguments": {
                 "self": []

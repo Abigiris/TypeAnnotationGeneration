@@ -62,9 +62,7 @@
                 "ARSMapping"
             ],
             "arguments": {
-                "db_connection": [
-                    "sqlite3.dbapi2.Connection"
-                ],
+                "db_connection": [],
                 "imgt_version": []
             }
         },
@@ -72,12 +70,10 @@
             "name": "generate_alleles_and_xx_codes_and_who",
             "location": 275,
             "return": [
-                "Tuple[(set, set, Any, Any, Dict[(Any, List[str])], Any)]"
+                "Tuple[(set, set, Any, Any, dict, Any)]"
             ],
             "arguments": {
-                "db_connection": [
-                    "sqlite3.dbapi2.Connection"
-                ],
+                "db_connection": [],
                 "imgt_version": [],
                 "ars_mappings": []
             }
@@ -89,24 +85,18 @@
                 "None"
             ],
             "arguments": {
-                "db_connection": [
-                    "sqlite3.dbapi2.Connection"
-                ],
-                "refresh_mac": [
-                    "bool"
-                ]
+                "db_connection": [],
+                "refresh_mac": []
             }
         },
         "to_serological_name": {
             "name": "to_serological_name",
             "location": 536,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "locus_name": [
-                    "str"
-                ]
+                "locus_name": []
             }
         },
         "generate_serology_mapping": {
@@ -116,9 +106,7 @@
                 "None"
             ],
             "arguments": {
-                "db_connection": [
-                    "sqlite3.dbapi2.Connection"
-                ],
+                "db_connection": [],
                 "imgt_version": []
             }
         },
@@ -129,9 +117,7 @@
                 "None"
             ],
             "arguments": {
-                "db_connection": [
-                    "sqlite3.dbapi2.Connection"
-                ],
+                "db_connection": [],
                 "imgt_version": []
             }
         }
@@ -156,11 +142,11 @@
                     "str",
                     "None",
                     "Optional[str]",
-                    "list[str]",
-                    "Union[str, pathlib.Path]",
-                    "typing.IO",
-                    "Union[str, List[str]]",
-                    "typing.TextIO",
+                    "List[str]",
+                    "Union[str,pathlib.Path]",
+                    "IO",
+                    "Union[str,List[str]]",
+                    "TextIO",
                     "Optional[IO[bytes]]",
                     "Optional[TextIO]"
                 ],
@@ -181,14 +167,19 @@
             "name": "table_exists",
             "location": 68,
             "return": [
-                "bool"
+                "bool",
+                "Dict[str,Tuple[int,int]]",
+                "int",
+                "str"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "bool"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -200,10 +191,13 @@
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "table_names": [
-                    "List[str]"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -211,14 +205,21 @@
             "name": "count_rows",
             "location": 94,
             "return": [
-                "int"
+                "bool",
+                "Iterable"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "int",
+                    "List[str]",
+                    "dict",
+                    "str",
+                    "pathlib.Path"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -226,14 +227,26 @@
             "name": "mac_code_to_alleles",
             "location": 109,
             "return": [
-                "List[str]"
+                "List",
+                "int",
+                "IO",
+                "bytes",
+                "List[str]",
+                "str"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "int",
+                    "List[str]",
+                    "Dict[str, List[str]]"
                 ],
                 "code": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[str]",
+                    "Dict[str,List[str]]",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -241,14 +254,23 @@
             "name": "is_valid_mac_code",
             "location": 128,
             "return": [
-                "bool"
+                "bool",
+                "List[str]",
+                "Tuple[int,Dict[str,Any]]"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "Dict[str, List[str]]",
+                    "List[str]",
+                    "int"
                 ],
                 "code": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Dict[str,List[str]]",
+                    "int",
+                    "Dict[str,list[str]]"
                 ]
             }
         },
@@ -256,14 +278,31 @@
             "name": "serology_to_alleles",
             "location": 143,
             "return": [
-                "List[str]"
+                "List",
+                "bytes",
+                "int",
+                "IO",
+                "List[str]",
+                "str"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "List[str]",
+                    "Callable[..., Awaitable]",
+                    "Dict[str, Any]",
+                    "Awaitable",
+                    "List['cirq.Qid']"
                 ],
                 "serology": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Dict[str,Any]",
+                    "Callable[...,Awaitable]",
+                    "List[cirq.Qid]",
+                    "Callable[...,collections.abc.Awaitable]",
+                    "Awaitable",
+                    "collections.abc.Awaitable"
                 ]
             }
         },
@@ -271,14 +310,24 @@
             "name": "is_valid_serology",
             "location": 162,
             "return": [
-                "bool"
+                "bool",
+                "Parameter",
+                "str",
+                "Dict[str,Tuple[int,int]]",
+                "Type"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "Dict[str, Any]",
+                    "str",
+                    "Hashable",
+                    "float"
                 ],
                 "serology": [
-                    "str"
+                    "Dict[str,Any]",
+                    "str",
+                    "Hashable",
+                    "float"
                 ]
             }
         },
@@ -286,14 +335,19 @@
             "name": "v2_to_v3_allele",
             "location": 179,
             "return": [
-                "str"
+                "Optional[str]",
+                "None"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "Callable",
+                    "Dict[str, Any]",
+                    "dict"
                 ],
                 "v2_allele": [
-                    "str"
+                    "Callable",
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -305,13 +359,21 @@
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "bool",
+                    "str",
+                    "int",
+                    "dict"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "dictionary": [
-                    "Dict[(str, str)]"
+                    "Optional[str]",
+                    "str",
+                    "Set[str]",
+                    "bool"
                 ],
                 "columns": [
                     "str",
@@ -327,16 +389,26 @@
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "bool",
+                    "int"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "rows": [
-                    "set"
+                    "str",
+                    "List[str]",
+                    "Optional[str]",
+                    "bool",
+                    "None"
                 ],
                 "column": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "Optional[str]",
+                    "int",
+                    "None"
                 ]
             }
         },
@@ -348,7 +420,8 @@
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "Iterable[str]"
                 ],
                 "table_name": [
                     "str"
@@ -359,17 +432,33 @@
             "name": "load_dict",
             "location": 291,
             "return": [
-                "Dict[(str, str)]"
+                "dict"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "Dict[str, Any]",
+                    "Any",
+                    "Optional[str]"
                 ],
                 "table_name": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "List[LabelTag]",
+                    "Dict[str,Any]",
+                    "List[T]",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "columns": [
-                    "Tuple[(str, str)]"
+                    "str",
+                    "List[T]",
+                    "List[LabelTag]",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -377,14 +466,19 @@
             "name": "similar_alleles",
             "location": 310,
             "return": [
-                "Set[str]"
+                "set"
             ],
             "arguments": {
                 "connection": [
-                    "sqlite3.dbapi2.Connection"
+                    "str",
+                    "FrozenSet[str]",
+                    "bool"
                 ],
                 "allele_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "FrozenSet[str]",
+                    "frozenset"
                 ]
             }
         }
@@ -398,10 +492,20 @@
             ],
             "arguments": {
                 "drb_alleles": [
-                    "list"
+                    "str",
+                    "bool",
+                    "Callable",
+                    "List",
+                    "Dict",
+                    "None",
+                    "Optional[str]",
+                    "int"
                 ],
                 "locus_in_allele_name": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -416,7 +520,9 @@
             "arguments": {
                 "self": [],
                 "message": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -439,7 +545,9 @@
             "arguments": {
                 "self": [],
                 "message": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -462,7 +570,9 @@
             "arguments": {
                 "self": [],
                 "message": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "cause": [
                     "int",
@@ -492,10 +602,14 @@
             ],
             "arguments": {
                 "allele": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool"
                 ],
                 "n": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[str]"
                 ],
                 "preserve_expression": [
                     "str",
@@ -511,7 +625,10 @@
             ],
             "arguments": {
                 "a": [
-                    "str"
+                    "Dict[str,Any]",
+                    "bool",
+                    "Callable",
+                    "Pattern"
                 ]
             }
         },
@@ -523,7 +640,10 @@
             ],
             "arguments": {
                 "a": [
-                    "str"
+                    "Dict[str,Any]",
+                    "bool",
+                    "Callable",
+                    "Pattern"
                 ]
             }
         },
@@ -550,8 +670,7 @@
             "arguments": {
                 "ars_type": [
                     "int",
-                    "Type",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -564,13 +683,22 @@
             "arguments": {
                 "self": [],
                 "imgt_version": [
-                    "str"
+                    "Dict",
+                    "Text"
                 ],
                 "data_dir": [
+                    "Dict",
+                    "None",
+                    "Optional[str]",
                     "str"
                 ],
                 "config": [
-                    "dict"
+                    "Dict",
+                    "None",
+                    "Dict[str,Any]",
+                    "str",
+                    "Dict[str,str]",
+                    "Optional[dict]"
                 ]
             }
         },
@@ -589,26 +717,25 @@
             "location": 143,
             "return": [
                 "Callable",
-                "Dict[str, Any]",
-                "typing.Text",
+                "Dict[str,Any]",
+                "Text",
                 "str",
-                "list[str]",
-                "dict[, ]"
+                "List[str]",
+                "Dict"
             ],
             "arguments": {
                 "self": [],
                 "allele": [
                     "str",
-                    "dict"
+                    "Dict"
                 ],
                 "redux_type": [
-                    "typing.Sequence[dict[str, typing.Any]]",
+                    "Sequence[dict[str,Any]]",
                     "BaseException",
-                    "Sequence[Dict[str, Any]]",
+                    "Sequence[Dict[str,Any]]",
                     "Exception",
-                    "typing.Type",
-                    "Type[BaseException]",
-                    "type"
+                    "Type",
+                    "Type[BaseException]"
                 ]
             }
         },
@@ -616,15 +743,20 @@
             "name": "sorted_unique_gl",
             "location": 234,
             "return": [
-                "str"
+                "str",
+                "int",
+                "deque"
             ],
             "arguments": {
                 "self": [],
                 "gls": [
-                    "List[str]"
+                    "Dict",
+                    "str",
+                    "OrderedDict"
                 ],
                 "delim": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -642,8 +774,7 @@
                     "int"
                 ],
                 "redux_type": [
-                    "Type",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -651,7 +782,9 @@
             "name": "validate",
             "location": 361,
             "return": [
-                "bool"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
@@ -673,10 +806,20 @@
                     "str"
                 ],
                 "loc_antigen": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "int",
+                    "Union[str,int]",
+                    "bool"
                 ],
                 "code": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "int",
+                    "Union[str,int]",
+                    "bool"
                 ]
             }
         },
@@ -689,7 +832,11 @@
             "arguments": {
                 "self": [],
                 "allele": [
-                    "str"
+                    "List[str]",
+                    "str",
+                    "bytes",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -697,7 +844,11 @@
             "name": "is_mac",
             "location": 404,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "str",
+                "Tuple[int,int]",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
@@ -710,12 +861,15 @@
             "name": "is_v2",
             "location": 420,
             "return": [
-                "bool"
+                "bool",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
                 "allele": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -744,9 +898,7 @@
                 "allele": [
                     "str",
                     "List[int]",
-                    "list[int]",
-                    "Set[str]",
-                    "set[str]"
+                    "Set[str]"
                 ]
             }
         },
@@ -782,7 +934,7 @@
             "name": "_get_alleles",
             "location": 476,
             "return": [
-                "Iterable[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
@@ -801,17 +953,15 @@
             "name": "_get_alleles_from_serology",
             "location": 496,
             "return": [
-                "Iterable[str]"
+                "Iterator"
             ],
             "arguments": {
                 "self": [],
                 "serology": [
                     "List[str]",
                     "int",
-                    "list[str]",
                     "bytes",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -832,12 +982,18 @@
             "name": "_predict_v3",
             "location": 505,
             "return": [
-                "str"
+                "str",
+                "bool",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "v2_allele": [
-                    "str"
+                    "str",
+                    "django.db.models.Field",
+                    "Dict[str,str]",
+                    "T",
+                    "Tuple[List[str],List[str]]"
                 ]
             }
         },
@@ -845,17 +1001,20 @@
             "name": "_map_v2_to_v3",
             "location": 542,
             "return": [
-                "str"
+                "int",
+                "str",
+                "bytes",
+                "Iterable[str]",
+                "Set[str]"
             ],
             "arguments": {
                 "self": [],
                 "v2_allele": [
                     "int",
                     "str",
-                    "Optional[str]",
-                    "None",
                     "Iterable[int]",
-                    "typing.Iterable[int]"
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -868,7 +1027,10 @@
             "arguments": {
                 "self": [],
                 "allele": [
-                    "str"
+                    "str",
+                    "OrderedDict",
+                    "Dict[str,int]",
+                    "Set[str]"
                 ]
             }
         },
@@ -876,12 +1038,21 @@
             "name": "isvalid_gl",
             "location": 598,
             "return": [
-                "bool"
+                "List[int]",
+                "bool",
+                "str",
+                "int",
+                "List[dict]",
+                "Dict[str,str]",
+                "Dict[str,int]",
+                "List",
+                "Dict[str,Union[dict,Any,str]]"
             ],
             "arguments": {
                 "self": [],
                 "glstring": [
-                    "str"
+                    "str",
+                    "List[DictDataLoader]"
                 ]
             }
         },
@@ -894,7 +1065,8 @@
             "arguments": {
                 "self": [],
                 "allele": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -902,12 +1074,20 @@
             "name": "toG",
             "location": 647,
             "return": [
-                "str"
+                "Text",
+                "str",
+                "Dict[str,bool]",
+                "Dict[str,Any]",
+                "Dict[str,str]"
             ],
             "arguments": {
                 "self": [],
                 "allele": [
-                    "str"
+                    "bytes",
+                    "str",
+                    "Optional[str]",
+                    "Dict[str,Any]",
+                    "None"
                 ]
             }
         },
@@ -928,7 +1108,17 @@
             "name": "v2_to_v3",
             "location": 683,
             "return": [
-                "str"
+                "float",
+                "str",
+                "bool",
+                "Dict[str,str]",
+                "Dict[str,Any]",
+                "Optional[Mapping[str,Any]]",
+                "Dict[str,object]",
+                "Set",
+                "Tuple[str,str]",
+                "Tuple[Dict,int]",
+                "Dict"
             ],
             "arguments": {
                 "self": [],
@@ -981,13 +1171,11 @@
             "arguments": {
                 "context": [
                     "str",
-                    "list",
-                    "list[]",
-                    "Optional[Union[str, Any]]",
-                    "typing.Any",
-                    "dict",
-                    "None",
-                    "dict[, ]"
+                    "List",
+                    "Dict",
+                    "Optional[Union[str,Any]]",
+                    "Any",
+                    "None"
                 ]
             }
         }
@@ -1001,11 +1189,9 @@
             ],
             "arguments": {
                 "cls": [
-                    "typing.Type",
-                    "bool",
                     "Type",
+                    "bool",
                     "str",
-                    "type",
                     "Type[T]"
                 ]
             }
@@ -1338,14 +1524,12 @@
             "name": "step_impl",
             "location": 39,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "context": [
-                    "dict",
-                    "bool",
-                    "dict[, ]"
+                    "Dict",
+                    "bool"
                 ],
                 "drbx1": [
                     "int",
@@ -1369,7 +1553,6 @@
             "name": "step_impl",
             "location": 60,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

@@ -14,9 +14,8 @@
                 "scenario": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -27,7 +26,6 @@
             "name": "step_impl",
             "location": 38,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -66,17 +64,14 @@
             "name": "step_impl",
             "location": 62,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "context": [
                     "bool",
-                    "Dict[int, dict]",
-                    "str",
-                    "dict[int, dict[, ]]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[int,dict]",
+                    "Dict",
+                    "str"
                 ],
                 "expected_status_code": [
                     "bool",
@@ -98,9 +93,8 @@
                 "default_no_color": [
                     "str",
                     "None",
-                    "float",
                     "List[str]",
-                    "list[str]",
+                    "float",
                     "Optional[List[str]]",
                     "Iterable[str]"
                 ]
@@ -134,9 +128,15 @@
             ],
             "arguments": {
                 "build_id": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "Optional[str]",
+                    "pathlib.Path"
                 ],
                 "deploy_root": [
+                    "str",
+                    "bytes",
+                    "Optional[str]",
                     "pathlib.Path"
                 ]
             }
@@ -145,14 +145,17 @@
             "name": "build_shell_command",
             "location": 187,
             "return": [
-                "Sequence[str]"
+                "list"
             ],
             "arguments": {
                 "command": [
+                    "dict",
+                    "list",
                     "str"
                 ],
                 "config": [
-                    "Config"
+                    "Dict[str, Any]",
+                    "dict"
                 ]
             }
         },
@@ -160,20 +163,30 @@
             "name": "run_command_on_build",
             "location": 192,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "command": [
-                    "str"
+                    "str",
+                    "pathlib.Path",
+                    "dict",
+                    "Optional[pathlib.Path]"
                 ],
                 "build": [
-                    "Build"
+                    "pathlib.Path",
+                    "Dict[str, Any]"
                 ],
                 "config": [
-                    "Config"
+                    "pathlib.Path",
+                    "str",
+                    "Dict[str, Any]",
+                    "Optional[List[str]]"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "pathlib.Path",
+                    "Optional[str]",
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -181,17 +194,20 @@
             "name": "run_build",
             "location": 216,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "build": [
-                    "Build"
+                    "str",
+                    "Optional[List[str]]"
                 ],
                 "config": [
-                    "Config"
+                    "str",
+                    "Optional[List[str]]"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "str",
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -203,7 +219,9 @@
             ],
             "arguments": {
                 "build_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "pathlib.PosixPath"
                 ]
             }
         },
@@ -215,7 +233,10 @@
             ],
             "arguments": {
                 "deploy_path": [
-                    "pathlib.Path"
+                    "Optional[List[str]]",
+                    "Optional[str]",
+                    "bool",
+                    "List[str]"
                 ],
                 "allow_invalid": [
                     "Optional[List[str]]",
@@ -232,15 +253,11 @@
                 "None"
             ],
             "arguments": {
-                "build": [
-                    "Build"
-                ],
+                "build": [],
                 "config": [
-                    "Config"
+                    "Optional[List[str]]"
                 ],
-                "reporter": [
-                    "laika.output.Reporter"
-                ]
+                "reporter": []
             }
         },
         "deploy_prepared_build": {
@@ -251,13 +268,17 @@
             ],
             "arguments": {
                 "build": [
-                    "Build"
+                    "Optional[str]",
+                    "str"
                 ],
                 "config": [
-                    "Config"
+                    "configparser.ConfigParser",
+                    "Optional[dict]",
+                    "Dict[str, str]",
+                    "Optional[List[str]]"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "dict"
                 ]
             }
         },
@@ -269,9 +290,7 @@
             ],
             "arguments": {
                 "self": [],
-                "config": [
-                    "configparser.ConfigParser"
-                ]
+                "config": []
             }
         },
         "Config._get_dir": {
@@ -283,7 +302,8 @@
             "arguments": {
                 "self": [],
                 "dir_spec": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -383,7 +403,10 @@
             "arguments": {
                 "self": [],
                 "status": [
-                    "int"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "List[str]"
                 ]
             }
         },
@@ -396,16 +419,28 @@
             "arguments": {
                 "self": [],
                 "source_path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "pathlib.Path",
+                    "bool"
                 ],
                 "git_ref": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool",
+                    "List[str]"
                 ],
                 "git_hash": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool",
+                    "List[str]"
                 ],
                 "timestamp": [
-                    "datetime.datetime"
+                    "str",
+                    "int",
+                    "bool",
+                    "List[str]"
                 ]
             }
         },
@@ -420,6 +455,7 @@
                     "Type[_TBuildMeta]"
                 ],
                 "d": [
+                    "Any",
                     "dict"
                 ]
             }
@@ -443,13 +479,18 @@
             "arguments": {
                 "self": [],
                 "build_id": [
-                    "str"
-                ],
-                "path": [
+                    "str",
                     "pathlib.Path"
                 ],
+                "path": [
+                    "pathlib.Path",
+                    "str",
+                    "bool"
+                ],
                 "meta": [
-                    "_BaseBuildMeta"
+                    "str",
+                    "dict",
+                    "int"
                 ]
             }
         },
@@ -457,12 +498,17 @@
             "name": "is_older_than",
             "location": 134,
             "return": [
-                "bool"
+                "Callable[[Union, Union], Tuple[Any, ...],]",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "reference": [
-                    "datetime.datetime"
+                    "bool",
+                    "int",
+                    "List[int]",
+                    "Callable",
+                    "Awaitable[T]"
                 ]
             }
         },
@@ -550,7 +596,10 @@
                     "str"
                 ],
                 "build_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "bool",
+                    "pathlib.PurePath",
+                    "str"
                 ]
             }
         },
@@ -568,10 +617,16 @@
                     "str"
                 ],
                 "build_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "bool",
+                    "pathlib.PurePath",
+                    "str"
                 ],
                 "meta": [
-                    "BuildMeta"
+                    "dict",
+                    "Union[Dict, List]",
+                    "Dict[int, Dict[int, Any]]",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -684,12 +739,13 @@
             "name": "filter",
             "location": 13,
             "return": [
-                "List[laika.core.Build]"
+                "List[core.Build]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "builds": [
-                    "Iterable[laika.core.Build]"
+                    "Dict"
                 ]
             }
         },
@@ -697,7 +753,8 @@
             "name": "describe",
             "location": 17,
             "return": [
-                "str"
+                "str",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -707,11 +764,14 @@
             "name": "_build_meta_sort_key",
             "location": 21,
             "return": [
-                "Tuple[(None, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "build": [
-                    "laika.core.Build"
+                    "str",
+                    "pathlib.Path",
+                    "bool",
+                    "Dict"
                 ]
             }
         },
@@ -719,16 +779,18 @@
             "name": "sort_latest_first",
             "location": 28,
             "return": [
-                "List[laika.core.Build]"
+                "list"
             ],
             "arguments": {
                 "cls": [
-                    "List[Dict[str, Any]]",
+                    "List[Dict[str,Any]]",
                     "bool",
-                    "list[dict[str, typing.Any]]"
+                    "List[dict[str,Any]]"
                 ],
                 "builds": [
-                    "Iterable[laika.core.Build]"
+                    "List[Dict[str,Any]]",
+                    "bool",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -736,14 +798,22 @@
             "name": "keep_latest",
             "location": 32,
             "return": [
-                "PurgeSpecification"
+                "KeepLatestN"
             ],
             "arguments": {
                 "cls": [
-                    "Type[_TPurgeSpecification]"
+                    "str",
+                    "bool",
+                    "Callable",
+                    "List",
+                    "Optional[str]",
+                    "None"
                 ],
                 "num_latest": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -751,14 +821,23 @@
             "name": "discard_older_than",
             "location": 36,
             "return": [
-                "PurgeSpecification"
+                "DiscardOlderThan"
             ],
             "arguments": {
                 "cls": [
-                    "Type[_TPurgeSpecification]"
+                    "bool",
+                    "str",
+                    "Callable",
+                    "int"
                 ],
                 "oldest_allowed_datetime": [
-                    "datetime.datetime"
+                    "bool",
+                    "datetime.datetime",
+                    "Dict[str,Any]",
+                    "str",
+                    "List[Any]",
+                    "Optional[List[Any]]",
+                    "None"
                 ]
             }
         },
@@ -771,7 +850,9 @@
             "arguments": {
                 "self": [],
                 "num_latest": [
-                    "int"
+                    "int",
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -779,13 +860,12 @@
             "name": "filter",
             "location": 48,
             "return": [
-                "List[laika.core.Build]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "builds": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -808,7 +888,13 @@
             "arguments": {
                 "self": [],
                 "oldest_allowed_datetime": [
-                    "datetime.datetime"
+                    "bool",
+                    "List[int]",
+                    "datetime.datetime",
+                    "None",
+                    "int",
+                    "Optional[datetime.date]",
+                    "datetime.date"
                 ]
             }
         },
@@ -816,7 +902,7 @@
             "name": "filter",
             "location": 61,
             "return": [
-                "List[laika.core.Build]"
+                "list"
             ],
             "arguments": {
                 "self": [],
@@ -850,31 +936,29 @@
                     "None",
                     "Optional[Any]",
                     "int",
-                    "List[Dict[str, Any]]",
-                    "typing.Any",
-                    "Optional[\"Outcome\"]",
-                    "list[dict[str, typing.Any]]",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple",
+                    "List[Dict[str,Any]]",
+                    "Any",
+                    "Optional[Outcome]",
+                    "List[dict[str,Any]]"
                 ],
                 "bg": [
                     "Optional[int]",
                     "None",
                     "Optional[Any]",
                     "int",
-                    "List[Dict[str, Any]]",
-                    "typing.Any",
-                    "Optional[\"Outcome\"]",
-                    "list[dict[str, typing.Any]]",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple",
+                    "List[Dict[str,Any]]",
+                    "Any",
+                    "Optional[Outcome]",
+                    "List[dict[str,Any]]"
                 ],
                 "bold": [
                     "bool",
                     "None",
-                    "Optional[\"Outcome\"]",
+                    "Optional[Outcome]",
                     "Optional[bool]",
-                    "Union[int, None]"
+                    "Union[int,None]"
                 ]
             }
         },
@@ -889,27 +973,27 @@
                     "bool",
                     "None",
                     "float",
-                    "List[Tuple[int, str]]",
+                    "List[Tuple[int,str]]",
                     "str",
-                    "list[tuple[typing.Union[int,str]]]",
+                    "List[tuple[Union[int,str]]]",
                     "int"
                 ],
                 "bg": [
                     "bool",
                     "None",
                     "float",
-                    "List[Tuple[int, str]]",
+                    "List[Tuple[int,str]]",
                     "str",
-                    "list[tuple[typing.Union[int,str]]]",
+                    "List[tuple[Union[int,str]]]",
                     "int"
                 ],
                 "bold": [
                     "bool",
                     "None",
                     "float",
-                    "List[Tuple[int, str]]",
+                    "List[Tuple[int,str]]",
                     "str",
-                    "list[tuple[typing.Union[int,str]]]",
+                    "List[tuple[Union[int,str]]]",
                     "int"
                 ]
             }
@@ -928,15 +1012,13 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "dict",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "color_or_name": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -961,7 +1043,10 @@
             "name": "_get_version",
             "location": 1,
             "return": [
-                "str"
+                "Text",
+                "str",
+                "bytes",
+                "List[int]"
             ],
             "arguments": {
                 "package_name": [
@@ -980,19 +1065,35 @@
             ],
             "arguments": {
                 "deploy_root": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "fetch_first": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[pathlib.Path]",
+                    "List[str]",
+                    "pathlib.Path",
+                    "Path"
                 ],
                 "git_ref": [
-                    "str"
+                    "Dict[str,Any]",
+                    "str",
+                    "pathlib.Path",
+                    "Callable[Any,None]",
+                    "Optional[Callable[[Any],None]]",
+                    "None"
                 ],
                 "git_dir": [
+                    "str",
+                    "bool",
                     "pathlib.Path"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "Sequence[str]",
+                    "Union[pathlib.Path, str]",
+                    "Optional[Callable[[None], None]]"
                 ]
             }
         }
@@ -1003,15 +1104,21 @@
             "name": "cmd_build",
             "location": 11,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "args": [],
                 "config": [
-                    "laika.core.Config"
+                    "Dict[str,str]",
+                    "OrderedDict",
+                    "Dict",
+                    "tbump.config.Config"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "Dict[str, str]",
+                    "tbump.config.Config",
+                    "OrderedDict",
+                    "dict"
                 ]
             }
         },
@@ -1034,15 +1141,19 @@
             "name": "cmd_deploy",
             "location": 12,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "args": [],
                 "config": [
-                    "laika.core.Config"
+                    "Dict[str,str]",
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "Dict[str, str]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -1070,10 +1181,17 @@
             "arguments": {
                 "args": [],
                 "config": [
-                    "laika.core.Config"
+                    "Dict[str,Any]",
+                    "str",
+                    "Config"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "_pytesconfig.Config",
+                    "bool",
+                    "Dict[str,str]",
+                    "Config"
                 ]
             }
         },
@@ -1094,10 +1212,10 @@
             "name": "format_flags",
             "location": 5,
             "return": [
-                "typing.Text",
-                "dict",
-                "Dict[str, Any]",
-                "Dict[str, bool]",
+                "Text",
+                "Dict",
+                "Dict[str,Any]",
+                "Dict[str,bool]",
                 "str"
             ],
             "arguments": {
@@ -1119,10 +1237,14 @@
             "arguments": {
                 "args": [],
                 "config": [
-                    "laika.core.Config"
+                    "Dict[str,Any]",
+                    "sphinx.config.Config",
+                    "static_frame.core.store.StoreConfigMapInitializer"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "Callable",
+                    "flask.config.Config",
+                    "dict"
                 ]
             }
         },
@@ -1130,12 +1252,19 @@
             "name": "_find_what_to_purge",
             "location": 28,
             "return": [
-                "Optional[laika.purge.PurgeSpecification]"
+                "Optional[Union[(laika.purge.DiscardOlderThan, laika.purge.KeepLatestN)]]"
             ],
             "arguments": {
                 "args": [],
                 "config": [
-                    "laika.core.Config"
+                    "Dict[str,Any]",
+                    "Optional[Dict[str,Any]]",
+                    "str",
+                    "None",
+                    "core.Config",
+                    "Type",
+                    "_pytesconfig.Config",
+                    "Type[BaseConfig]"
                 ]
             }
         },
@@ -1143,11 +1272,14 @@
             "name": "parse_deployments_specification",
             "location": 43,
             "return": [
-                "laika.purge.PurgeSpecification"
+                "Union[(laika.purge.DiscardOlderThan, laika.purge.KeepLatestN)]"
             ],
             "arguments": {
                 "spec": [
-                    "str"
+                    "str",
+                    "List[Dict[str,Any]]",
+                    "Dict",
+                    "OrderedDict"
                 ]
             }
         },
@@ -1163,8 +1295,7 @@
             "arguments": {
                 "string": [
                     "str",
-                    "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "Iterable[str]"
                 ]
             }
         },
@@ -1206,10 +1337,16 @@
             "arguments": {
                 "args": [],
                 "config": [
-                    "laika.core.Config"
+                    "model.Config",
+                    "sphinx.config.Config",
+                    "Config",
+                    "config.Config"
                 ],
                 "reporter": [
-                    "laika.output.Reporter"
+                    "Dict[str, Any]",
+                    "Callable",
+                    "bool",
+                    "flask.config.Config"
                 ]
             }
         },
@@ -1250,25 +1387,23 @@
                 "ref": [
                     "Optional[int]",
                     "int",
-                    "tuple",
+                    "Tuple",
                     "None",
                     "bytes",
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[]",
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]",
                     "bool"
                 ],
                 "gitdir": [
                     "Optional[int]",
                     "None",
-                    "tuple",
+                    "Tuple",
                     "int",
                     "bytes",
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[]",
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]",
                     "bool"
                 ]
             }
@@ -1285,7 +1420,7 @@
                     "type"
                 ],
                 "short": [
-                    "type",
+                    "Type",
                     "bool"
                 ],
                 "gitdir": [
@@ -1305,9 +1440,8 @@
                     "bool",
                     "str",
                     "float",
-                    "typing.Sequence[int]",
-                    "int",
-                    "Sequence[int]"
+                    "Sequence[int]",
+                    "int"
                 ]
             }
         }
@@ -1331,7 +1465,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TDirectoryContext"
+                    "_TDirectoryContext@@DirectoryContext@@"
                 ]
             }
         },
@@ -1370,11 +1504,10 @@
                     "bool",
                     "str",
                     "BaseException",
-                    "list[str]",
+                    "List[str]",
                     "pathlib.Path",
                     "None",
-                    "Optional[List[str]]",
-                    "List[str]"
+                    "Optional[List[str]]"
                 ]
             }
         }
@@ -1389,7 +1522,9 @@
             "arguments": {
                 "self": [],
                 "dirname": [
-                    "pathlib.Path"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1421,14 +1556,13 @@
             "name": "root_dir",
             "location": 15,
             "return": [
-                "",
                 "typing.Generator[DirectoryContext]"
             ],
             "arguments": {
                 "context": [
                     "str",
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[str, dict[str, typing.Any]]"
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]"
                 ]
             }
         },
@@ -1436,14 +1570,13 @@
             "name": "default_git_repo",
             "location": 22,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "context": [
                     "str",
-                    "Union[str, IO[bytes]]",
-                    "typing.IO"
+                    "Union[str,IO[bytes]]",
+                    "IO"
                 ]
             }
         },
@@ -1459,10 +1592,8 @@
                 ],
                 "action": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "List[str]",
-                    "list[str]"
+                    "Dict",
+                    "List[str]"
                 ]
             }
         },
@@ -1475,7 +1606,12 @@
             "arguments": {
                 "context": [],
                 "command": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List",
+                    "Callable[Any,bool]",
+                    "Callable[[Any],bool]",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -1487,11 +1623,12 @@
             ],
             "arguments": {
                 "context": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "command": [
-                    "str"
+                    "str",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -1503,17 +1640,20 @@
             ],
             "arguments": {
                 "context": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bool",
-                    "Dict[str, Tuple[Any, Any, Any]]",
-                    "dict[str, tuple[typing.Union[typing.Any,typing.Any,typing.Any]]]",
                     "TextIO",
-                    "typing.TextIO"
+                    "Dict[str,Tuple[Any,Any,Any]]",
+                    "Dict[str,tuple[Union[Any,Any,Any]]]"
                 ],
                 "shell": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "bytes",
+                    "None",
+                    "Sequence"
                 ]
             }
         },
@@ -1541,7 +1681,6 @@
             "name": "update",
             "location": 85,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1557,7 +1696,6 @@
             "name": "git_repo",
             "location": 8,
             "return": [
-                "",
                 "typing.Generator[GitRepo]"
             ],
             "arguments": {}
@@ -1570,7 +1708,7 @@
             ],
             "arguments": {
                 "git_repo": [
-                    "testing_helpers.git.GitRepo"
+                    "testing_helpers.giGitRepo"
                 ]
             }
         }

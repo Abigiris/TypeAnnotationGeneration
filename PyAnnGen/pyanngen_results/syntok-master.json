@@ -5,18 +5,19 @@
             "name": "analyze",
             "location": 11,
             "return": [
-                "Iterator[Iterator[List[syntok.tokenizer.Token]]]"
+                "Generator[(Generator[(Any, Any, None)], Any, None)]"
             ],
             "arguments": {
                 "document": [
+                    "int",
+                    "Callable",
                     "str"
                 ],
                 "bracket_skip_len": [
                     "str",
                     "bool",
                     "None",
-                    "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "Iterable[str]"
                 ]
             }
         },
@@ -24,10 +25,12 @@
             "name": "process",
             "location": 31,
             "return": [
-                "Iterator[Iterator[List[syntok.tokenizer.Token]]]"
+                "Generator[(Generator[(Any, Any, None)], Any, None)]"
             ],
             "arguments": {
                 "document": [
+                    "int",
+                    "Callable",
                     "str"
                 ],
                 "bracket_skip_len": [
@@ -43,7 +46,7 @@
             "name": "preprocess",
             "location": 49,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "text": [
@@ -55,11 +58,14 @@
             "name": "preprocess_with_offsets",
             "location": 62,
             "return": [
-                "List[Tuple[(int, str)]]"
+                "List[Tuple[(int, Any)]]"
             ],
             "arguments": {
                 "text": [
-                    "str"
+                    "str",
+                    "Set[str]",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -67,18 +73,21 @@
             "name": "split",
             "location": 84,
             "return": [
-                "List[List[syntok.tokenizer.Token]]"
+                "list"
             ],
             "arguments": {
                 "tokens": [
-                    "Iterator[syntok.tokenizer.Token]"
+                    "Iterator[syntok.tokenizer.Token]",
+                    "str",
+                    "Iterator",
+                    "bytes"
                 ],
                 "bracket_skip_len": [
                     "Iterator[syntok.tokenizer.Token]",
                     "str",
                     "None",
                     "bytes",
-                    "typing.Iterator"
+                    "Iterator"
                 ]
             }
         },
@@ -86,17 +95,25 @@
             "name": "segment",
             "location": 96,
             "return": [
-                "Iterator[List[syntok.tokenizer.Token]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "tokens": [
-                    "Iterator[syntok.tokenizer.Token]"
+                    "List[T]",
+                    "List[lark.Token]",
+                    "List[str]",
+                    "Iterator",
+                    "str",
+                    "Iterator[syntok.tokenizer.Token]",
+                    "Tuple[Union[int,str]]",
+                    "Iterable[Token]",
+                    "Tuple[int,str]"
                 ],
                 "bracket_skip_len": [
                     "None",
                     "Optional[int]",
                     "int",
-                    "Union[List[str], List[Any]]",
+                    "Union[List[str],List[Any]]",
                     "List[int]"
                 ]
             }
@@ -105,7 +122,6 @@
             "name": "finditer",
             "location": 72,
             "return": [
-                "",
                 "typing.Generator[tuple[int]]"
             ],
             "arguments": {}
@@ -118,7 +134,9 @@
             ],
             "arguments": {
                 "document": [
-                    "str"
+                    "float",
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -725,13 +743,26 @@
             "arguments": {
                 "self": [],
                 "space_prefix": [
-                    "str"
+                    "int",
+                    "str",
+                    "float",
+                    "List[str]",
+                    "Union[str,float]",
+                    "bool"
                 ],
                 "value": [
-                    "str"
+                    "int",
+                    "str",
+                    "T",
+                    "bool"
                 ],
                 "offset": [
-                    "int"
+                    "int",
+                    "str",
+                    "float",
+                    "List[str]",
+                    "Union[str,float]",
+                    "bool"
                 ]
             }
         },
@@ -766,7 +797,7 @@
                 "other": [
                     "Optional[bool]",
                     "bool",
-                    "Optional[\"Cell\"]",
+                    "Optional[Cell]",
                     "None"
                 ]
             }
@@ -826,7 +857,10 @@
             "arguments": {
                 "self": [],
                 "val": [
-                    "int"
+                    "float",
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -850,7 +884,9 @@
             ],
             "arguments": {
                 "tokens": [
-                    "List[Token]"
+                    "str",
+                    "FrozenSet[str]",
+                    "frozenset"
                 ]
             }
         },
@@ -863,10 +899,14 @@
             "arguments": {
                 "self": [],
                 "emit_hyphen_or_underscore_sep": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "float"
                 ],
                 "replace_not_contraction": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -879,7 +919,10 @@
             "arguments": {
                 "self": [],
                 "text": [
-                    "str"
+                    "str",
+                    "int",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -887,15 +930,20 @@
             "name": "tokenize",
             "location": 135,
             "return": [
-                "Iterator[Token]"
+                "Generator[(Token, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "text": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[int]",
+                    "Optional[bytes]"
                 ],
                 "base_offset": [
-                    "int"
+                    "int",
+                    "MutableSequence[str]",
+                    "str"
                 ]
             }
         },
@@ -903,17 +951,29 @@
             "name": "_find_start",
             "location": 171,
             "return": [
-                "int"
+                "int",
+                "List",
+                "str",
+                "T"
             ],
             "arguments": {
                 "start": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool",
+                    "Union[str,list]",
+                    "str"
                 ],
                 "end": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Union[str,list]",
+                    "str"
                 ],
                 "text": [
-                    "str"
+                    "int",
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -921,17 +981,27 @@
             "name": "_find_end",
             "location": 181,
             "return": [
-                "int"
+                "int",
+                "Set",
+                "str"
             ],
             "arguments": {
                 "start": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Optional[bool]"
                 ],
                 "end": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Optional[bool]"
                 ],
                 "text": [
-                    "str"
+                    "int",
+                    "str",
+                    "float",
+                    "Tuple[int,int,int]",
+                    "Tuple[Union[int,int,int]]"
                 ]
             }
         },
@@ -939,7 +1009,7 @@
             "name": "_split_nonword_prefix",
             "location": 191,
             "return": [
-                "Generator[(Token, None, int)]"
+                "Generator[(Token, Any, Union[(_T1, _T2)])]"
             ],
             "arguments": {
                 "mo": [
@@ -947,13 +1017,18 @@
                     "Type[object]"
                 ],
                 "offset": [
-                    "int"
+                    "str",
+                    "int",
+                    "float"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "text": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -961,18 +1036,25 @@
             "name": "_split_word",
             "location": 202,
             "return": [
-                "Iterator[Token]"
+                "Generator[(Token, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "prefix": [
-                    "str"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "word": [
-                    "str"
+                    "str",
+                    "Dict[str, float]",
+                    "int",
+                    "Dict[str, str]"
                 ],
                 "offset": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -980,24 +1062,28 @@
             "name": "_produce_separator_split_token",
             "location": 215,
             "return": [
-                "Generator[(Token, None, str)]"
+                "Generator[(Token, Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "remainder": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "word": [
-                    "str"
+                    "int",
+                    "Iterator[T]"
                 ],
                 "mo": [
                     "int"
                 ],
                 "prefix": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "offset": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -1005,11 +1091,16 @@
             "name": "_can_emit",
             "location": 239,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "separator": [
+                    "int",
+                    "Callable",
                     "str"
                 ]
             }
@@ -1020,11 +1111,11 @@
             "name": "s",
             "location": 8,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "tokens": [
-                    "Iterable[syntok.tokenizer.Token]"
+                    "Dict"
                 ]
             }
         },
@@ -1228,22 +1319,16 @@
             ],
             "arguments": {
                 "self": [],
-                "stream": [
-                    "Iterator[syntok.tokenizer.Token]"
-                ],
-                "queue": [
-                    "List[syntok.tokenizer.Token]"
-                ],
-                "history": [
-                    "List[syntok.tokenizer.Token]"
-                ]
+                "stream": [],
+                "queue": [],
+                "history": []
             }
         },
         "State.collect_history": {
             "name": "collect_history",
             "location": 110,
             "return": [
-                "Optional[List[syntok.tokenizer.Token]]"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -1253,7 +1338,7 @@
             "name": "__iter__",
             "location": 123,
             "return": [
-                "Iterator[State]"
+                "Generator[(State, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -1263,12 +1348,10 @@
             "name": "__next__",
             "location": 132,
             "return": [
-                "State"
+                "None"
             ],
             "arguments": {
-                "self": [
-                    "_TState"
-                ]
+                "self": []
             }
         },
         "State._stream": {
@@ -1532,9 +1615,7 @@
                 "State"
             ],
             "arguments": {
-                "self": [
-                    "_TState"
-                ]
+                "self": []
             }
         },
         "State.__move_to_next_relevant_word_and_return_token_after_terminal": {
@@ -1571,7 +1652,7 @@
             "name": "__next__",
             "location": 489,
             "return": [
-                "State"
+                "Union[(End, FirstToken, InnerToken, Terminal)]"
             ],
             "arguments": {
                 "self": []
@@ -1581,7 +1662,7 @@
             "name": "__next__",
             "location": 507,
             "return": [
-                "State"
+                "Union[(End, InnerToken, Terminal)]"
             ],
             "arguments": {
                 "self": []
@@ -1601,7 +1682,7 @@
             "name": "__next__",
             "location": 524,
             "return": [
-                "State"
+                "Union[(End, FirstToken)]"
             ],
             "arguments": {
                 "self": []
@@ -1621,7 +1702,7 @@
             "name": "__next__",
             "location": 536,
             "return": [
-                "State"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1635,16 +1716,14 @@
             ],
             "arguments": {
                 "self": [],
-                "stream": [
-                    "Iterator[syntok.tokenizer.Token]"
-                ]
+                "stream": []
             }
         },
         "Begin.__next__": {
             "name": "__next__",
             "location": 546,
             "return": [
-                "State"
+                "Union[(End, FirstToken)]"
             ],
             "arguments": {
                 "self": []

@@ -11,19 +11,15 @@
             ],
             "arguments": {
                 "environ": [
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[str, str]",
-                    "dict[, ]",
-                    "Dict[str, str]",
-                    "dict",
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "Dict",
                     "bytes",
                     "Callable"
                 ],
                 "start_response": [
                     "Callable",
-                    "bytes",
-                    "typing.Callable[, ]"
+                    "bytes"
                 ]
             }
         }
@@ -34,7 +30,7 @@
             "name": "service_status",
             "location": 20,
             "return": [
-                "Tuple[(Optional[Union[(Dict[(str, Any)], IO[bytes])]], http.HTTPStatus, Dict[(str, str)])]"
+                "Tuple[(Dict[(str, str)], Any, Dict[(nothing, nothing)])]"
             ],
             "arguments": {}
         },
@@ -42,14 +38,18 @@
             "name": "check_preview_exists",
             "location": 54,
             "return": [
-                "Tuple[(Optional[Union[(Dict[(str, Any)], IO[bytes])]], http.HTTPStatus, Dict[(str, str)])]"
+                "Tuple[(Dict[(nothing, nothing)], Any, Dict[(str, Any)])]"
             ],
             "arguments": {
                 "source_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[str]"
                 ],
                 "checksum": [
-                    "str"
+                    "str",
+                    "int",
+                    "List[str]"
                 ]
             }
         },
@@ -57,14 +57,19 @@
             "name": "get_preview_metadata",
             "location": 89,
             "return": [
-                "Tuple[(Optional[Union[(Dict[(str, Any)], IO[bytes])]], http.HTTPStatus, Dict[(str, str)])]"
+                "Tuple[(Dict[(str, Any)], Any, Dict[(str, Any)])]"
             ],
             "arguments": {
                 "source_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytes"
                 ],
                 "checksum": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -72,17 +77,26 @@
             "name": "get_preview_content",
             "location": 128,
             "return": [
-                "Tuple[(Optional[Union[(Dict[(str, Any)], IO[bytes])]], http.HTTPStatus, Dict[(str, str)])]"
+                "Tuple[(Any, Any, Dict[(str, Any)])]"
             ],
             "arguments": {
                 "source_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,str]"
                 ],
                 "checksum": [
-                    "str"
+                    "str",
+                    "int",
+                    "Iterable[str]",
+                    "Optional[dict]",
+                    "None"
                 ],
                 "none_match": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "bool"
                 ]
             }
         },
@@ -90,26 +104,49 @@
             "name": "deposit_preview",
             "location": 180,
             "return": [
-                "Tuple[(Optional[Union[(Dict[(str, Any)], IO[bytes])]], http.HTTPStatus, Dict[(str, str)])]"
+                "Tuple[(Dict[(str, Any)], Any, Dict[(str, Any)])]"
             ],
             "arguments": {
                 "source_id": [
-                    "str"
+                    "str",
+                    "bool",
+                    "IO",
+                    "IO[bytes]",
+                    "int"
                 ],
                 "checksum": [
-                    "str"
+                    "str",
+                    "int",
+                    "Dict[str,str]"
                 ],
                 "stream": [
-                    "IO[bytes]"
+                    "str",
+                    "bool",
+                    "IO",
+                    "IO[bytes]",
+                    "int"
                 ],
                 "content_type": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[int]",
+                    "int"
                 ],
                 "content_checksum": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "bool",
+                    "Optional[str]",
+                    "int",
+                    "Optional[bool]"
                 ],
                 "overwrite": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "Optional[bool]"
                 ]
             }
         }
@@ -120,8 +157,8 @@
             "name": "default",
             "location": 12,
             "return": [
-                "dict[typing.Text, ]",
-                "dict[typing.Text, None]",
+                "Dict[Text,]",
+                "Dict[Text,None]",
                 "bool",
                 "browse.domain.identifier.Identifier",
                 "Optional[bytes]",
@@ -131,10 +168,8 @@
             "arguments": {
                 "self": [],
                 "obj": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         }
@@ -271,20 +306,21 @@
             "name": "_update_headers",
             "location": 75,
             "return": [
-                "dict[str, typing.Any]",
-                "dict",
-                "Dict[str, Any]"
+                "Dict[str,Any]",
+                "Dict"
             ],
             "arguments": {
                 "response": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "flask.Response",
-                    "Dict[str, Any]",
                     "django.http.HttpResponse",
                     "requests.Response"
                 ],
                 "headers": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "flask.Response",
+                    "requests.models.Response"
                 ]
             }
         }
@@ -312,7 +348,9 @@
             "arguments": {
                 "self": [],
                 "stream": [
-                    "IO[bytes]"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -320,7 +358,7 @@
             "name": "seekable",
             "location": 80,
             "return": [
-                "Literal[False]"
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -330,7 +368,7 @@
             "name": "readable",
             "location": 84,
             "return": [
-                "Literal[True]"
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -340,12 +378,19 @@
             "name": "read",
             "location": 88,
             "return": [
-                "bytes"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "size": [
-                    "Optional[int]"
+                    "int",
+                    "bool",
+                    "BinaryIO",
+                    "Union[bytes,str]",
+                    "bytes",
+                    "Union[bytes,str,None]"
                 ]
             }
         },
@@ -370,22 +415,47 @@
             "arguments": {
                 "self": [],
                 "bucket": [
-                    "str"
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "Optional[int]"
                 ],
                 "verify": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "Optional[int]"
                 ],
                 "region_name": [
-                    "Optional[str]"
+                    "str",
+                    "bool",
+                    "None",
+                    "Dict[str,str]"
                 ],
                 "endpoint_url": [
+                    "str",
+                    "None",
+                    "List[str]",
                     "Optional[str]"
                 ],
                 "aws_access_key_id": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "None",
+                    "Dict",
+                    "str"
                 ],
                 "aws_secret_access_key": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "Tuple[int,int]",
+                    "Dict",
+                    "Tuple[Union[int,int]]",
+                    "Union[str,int]",
+                    "int",
+                    "Optional[bytes]",
+                    "bytes"
                 ]
             }
         },
@@ -398,18 +468,15 @@
             "arguments": {
                 "self": [],
                 "config": [
+                    "Dict[str,Any]",
                     "None",
-                    "Dict[str, Any]",
                     "bool",
-                    "dict[str, typing.Any]",
+                    "Dict",
                     "_pytesconfig.Config",
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "list[str]",
+                    "Dict[str,str]",
+                    "List[str]",
                     "Optional[List[str]]",
-                    "Optional[Dict[str, Any]]"
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -417,16 +484,15 @@
             "name": "_handle_client_error",
             "location": 153,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "exc": [
-                    "dict[, ]",
+                    "Dict",
                     "botocore.exceptions.ClientError",
                     "Exception",
                     "str",
-                    "dict",
                     "None",
                     "Optional[str]"
                 ]
@@ -451,13 +517,16 @@
             "arguments": {
                 "self": [],
                 "retries": [
-                    "int"
+                    "int",
+                    "Optional[int]"
                 ],
                 "read_timeout": [
-                    "int"
+                    "int",
+                    "Optional[int]"
                 ],
                 "connect_timeout": [
-                    "int"
+                    "int",
+                    "Optional[int]"
                 ]
             }
         },
@@ -489,10 +558,12 @@
             "arguments": {
                 "self": [],
                 "retries": [
-                    "int"
+                    "int",
+                    "str"
                 ],
                 "delay": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -515,13 +586,16 @@
             "arguments": {
                 "self": [],
                 "retries": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "read_timeout": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "connect_timeout": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -558,11 +632,19 @@
             "name": "current_session",
             "location": 261,
             "return": [
-                "PreviewStore"
+                "Dict[str, str]",
+                "str",
+                "Dict[str, Union[str, Set]]",
+                "Exception",
+                "Dict[str, Any]",
+                "dict"
             ],
             "arguments": {
                 "cls": [
-                    "Type[_TPreviewStore]"
+                    "Optional[Dict[str, Any]]",
+                    "Mapping[str, Any]",
+                    "bool",
+                    "dict"
                 ]
             }
         },
@@ -586,18 +668,36 @@
             "name": "deposit",
             "location": 274,
             "return": [
-                "preview.domain.Preview"
+                "Preview",
+                "Dict",
+                "str",
+                "Dict[str,Any]",
+                "cmk.base.events.EventContext",
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "preview": [
-                    "preview.domain.Preview"
+                    "str",
+                    "Optional[Dict[str,Any]]",
+                    "int",
+                    "Dict[str,Any]",
+                    "dss.config.Replica",
+                    "None",
+                    "Optional[Dict]",
+                    "Dict"
                 ],
                 "overwrite": [
-                    "bool"
+                    "bool",
+                    "io.IOBase",
+                    "Optional[Any]",
+                    "Optional[int]"
                 ],
                 "checksum": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "int",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -605,12 +705,17 @@
             "name": "get_metadata",
             "location": 339,
             "return": [
-                "preview.domain.Metadata"
+                "Metadata",
+                "int",
+                "str",
+                "Optional[str]",
+                "Optional[Dict[str,str]]"
             ],
             "arguments": {
                 "self": [],
                 "source_id": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "checksum": [
                     "str"
@@ -637,7 +742,9 @@
             "name": "get_preview",
             "location": 382,
             "return": [
-                "preview.domain.Preview"
+                "Preview",
+                "str",
+                "bytes"
             ],
             "arguments": {
                 "self": [],
@@ -655,7 +762,6 @@
             "name": "setUp",
             "location": 16,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -664,10 +770,9 @@
                     "bytes",
                     "bool",
                     "str",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "mock.Mock",
-                    "feed.domain.DocumentSet",
-                    "Dict[str, str]"
+                    "feed.domain.DocumentSet"
                 ]
             }
         },
@@ -675,7 +780,6 @@
             "name": "test_deposit",
             "location": 29,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -686,7 +790,6 @@
             "name": "test_deposit_checksum_fails",
             "location": 64,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -697,7 +800,6 @@
             "name": "test_deposit_checksum_passes",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -708,7 +810,6 @@
             "name": "test_retrieve_nonexistant",
             "location": 94,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -722,7 +823,6 @@
             "name": "test_service_available",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -733,7 +833,6 @@
             "name": "test_service_unavailable",
             "location": 28,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -757,7 +856,6 @@
             "name": "test_deposit_without_content_type",
             "location": 47,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -768,7 +866,6 @@
             "name": "test_deposit_with_unsupported_content_type",
             "location": 57,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -779,7 +876,6 @@
             "name": "test_deposit_ok",
             "location": 68,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -790,7 +886,6 @@
             "name": "test_deposit_already_exists",
             "location": 91,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -801,7 +896,6 @@
             "name": "test_deposit_already_exists_overwrite",
             "location": 105,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -812,7 +906,6 @@
             "name": "test_retrieve_metadata",
             "location": 125,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -823,7 +916,6 @@
             "name": "test_retrieve_nonexistant_metadata",
             "location": 149,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -834,7 +926,6 @@
             "name": "test_retrieve_nonexistant_content",
             "location": 163,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -845,7 +936,6 @@
             "name": "test_retrieve_content",
             "location": 175,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -856,7 +946,6 @@
             "name": "test_retrieve_with_none_match_matches",
             "location": 192,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -867,7 +956,6 @@
             "name": "test_retrieve_with_none_match_no_match",
             "location": 206,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -880,7 +968,6 @@
             "name": "test_store_is_unavailable",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -892,7 +979,6 @@
             "name": "test_store_is_available",
             "location": 30,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -924,7 +1010,6 @@
             "name": "test_deposit_fails",
             "location": 57,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -936,7 +1021,6 @@
             "name": "test_already_exists",
             "location": 68,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -948,7 +1032,6 @@
             "name": "test_deposit_return_malformed",
             "location": 79,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -960,7 +1043,6 @@
             "name": "test_deposit_successful",
             "location": 91,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -982,7 +1064,6 @@
             "name": "test_does_not_exist",
             "location": 130,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -994,7 +1075,6 @@
             "name": "test_exists",
             "location": 140,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1016,7 +1096,6 @@
             "name": "test_does_not_exist",
             "location": 170,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1028,7 +1107,6 @@
             "name": "test_exists",
             "location": 180,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1050,7 +1128,6 @@
             "name": "test_does_not_exist",
             "location": 205,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1062,7 +1139,6 @@
             "name": "test_exists",
             "location": 215,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1074,7 +1150,6 @@
             "name": "test_if_none_match_matches",
             "location": 236,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1086,7 +1161,6 @@
             "name": "test_if_none_match_does_not_match",
             "location": 252,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1099,8 +1173,8 @@
             "location": 96,
             "return": [
                 "Preview",
-                "dict",
-                "Dict[str, Any]",
+                "Dict",
+                "Dict[str,Any]",
                 "Optional[str]",
                 "Callable"
             ],
@@ -1137,7 +1211,6 @@
             "name": "test_get_status",
             "location": 23,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1149,7 +1222,6 @@
             "name": "test_post_status",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1161,7 +1233,6 @@
             "name": "test_put_status",
             "location": 38,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1175,7 +1246,6 @@
             "name": "test_delete_status",
             "location": 45,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1189,7 +1259,6 @@
             "name": "test_get_preview_metadata",
             "location": 56,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1203,7 +1272,6 @@
             "name": "test_post_preview_metadata",
             "location": 74,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1217,7 +1285,6 @@
             "name": "test_put_preview_metadata",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1231,15 +1298,14 @@
             "name": "test_delete_preview_metadata",
             "location": 88,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "mock_controller": [
-                    "typing.Generator[typing.Union[None,typing.Any,None]]",
+                    "Generator[Union[None,Any,None]]",
                     "mock.Mock",
-                    "Generator[None, Any, None]"
+                    "Generator[None,Any,None]"
                 ]
             }
         },
@@ -1247,7 +1313,6 @@
             "name": "test_get_preview_content",
             "location": 99,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1259,7 +1324,6 @@
             "name": "test_post_preview_content",
             "location": 124,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1273,15 +1337,14 @@
             "name": "test_delete_preview_metadata",
             "location": 131,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "mock_controller": [
-                    "typing.Generator[typing.Union[None,typing.Any,None]]",
+                    "Generator[Union[None,Any,None]]",
                     "mock.Mock",
-                    "Generator[None, Any, None]"
+                    "Generator[None,Any,None]"
                 ]
             }
         },
@@ -1289,7 +1352,6 @@
             "name": "test_put_preview_content",
             "location": 138,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1301,7 +1363,6 @@
             "name": "test_put_preview_content_with_validation",
             "location": 173,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

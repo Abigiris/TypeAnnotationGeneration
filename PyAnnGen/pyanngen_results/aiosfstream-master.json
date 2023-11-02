@@ -47,18 +47,10 @@
             ],
             "arguments": {
                 "self": [],
-                "consumer_key": [
-                    "str"
-                ],
-                "consumer_secret": [
-                    "str"
-                ],
-                "username": [
-                    "str"
-                ],
-                "password": [
-                    "str"
-                ],
+                "consumer_key": [],
+                "consumer_secret": [],
+                "username": [],
+                "password": [],
                 "sandbox": [
                     "bool"
                 ],
@@ -84,15 +76,9 @@
             ],
             "arguments": {
                 "self": [],
-                "consumer_key": [
-                    "str"
-                ],
-                "consumer_secret": [
-                    "str"
-                ],
-                "refresh_token": [
-                    "str"
-                ],
+                "consumer_key": [],
+                "consumer_secret": [],
+                "refresh_token": [],
                 "sandbox": [
                     "bool"
                 ],
@@ -121,7 +107,12 @@
             "arguments": {
                 "self": [],
                 "authenticator": [
-                    "aiosfstream.auth.AuthenticatorBase"
+                    "int",
+                    "float",
+                    "Optional[web3.types.Wei]",
+                    "List[int]",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -129,11 +120,11 @@
             "name": "create_replay_storage",
             "location": 255,
             "return": [
-                "Optional[aiosfstream.replay.ReplayMarkerStorage]"
+                "Optional[Union[(aiosfstream.replay.ConstantReplayId, aiosfstream.replay.MappingStorage, _T0)]]"
             ],
             "arguments": {
                 "replay_param": [
-                    "Union[(aiosfstream.replay.ReplayMarkerStorage, aiosfstream.replay.ReplayOption, MutableMapping[(str, aiosfstream.replay.ReplayMarker)])]"
+                    "eth.abc.ComputationAPI"
                 ]
             }
         },
@@ -145,7 +136,8 @@
             ],
             "arguments": {
                 "instance_url": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -165,8 +157,8 @@
             "name": "translate_errors_context",
             "location": 104,
             "return": [
-                "typing.Generator[None, None, None]",
-                "typing.Generator[]"
+                "Generator[None,None,None]",
+                "Generator"
             ],
             "arguments": {}
         },
@@ -174,11 +166,15 @@
             "name": "translate_errors",
             "location": 126,
             "return": [
-                "Func"
+                "str",
+                "AbstractSet[T]",
+                "AbstractSet[T_co]",
+                "int"
             ],
             "arguments": {
                 "func": [
-                    "Func"
+                    "Callable[,Any]",
+                    "Callable"
                 ]
             }
         }
@@ -198,7 +194,10 @@
             "name": "get_message_date",
             "location": 78,
             "return": [
-                "str"
+                "str",
+                "None",
+                "int",
+                "float"
             ],
             "arguments": {
                 "message": [
@@ -211,7 +210,7 @@
             "name": "__call__",
             "location": 168,
             "return": [
-                "AsyncContextManager[None]"
+                "ReplayMarkerStorageContextManager"
             ],
             "arguments": {
                 "self": [],
@@ -230,7 +229,9 @@
             "arguments": {
                 "self": [],
                 "replay_storage": [
-                    "ReplayMarkerStorage"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "message": [
                     "int",
@@ -248,7 +249,9 @@
             "arguments": {
                 "self": [],
                 "mapping": [
-                    "MutableMapping[(str, ReplayMarker)]"
+                    "str",
+                    "bool",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -271,7 +274,10 @@
             "arguments": {
                 "self": [],
                 "default_id": [
-                    "int"
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -294,10 +300,12 @@
             "arguments": {
                 "self": [],
                 "mapping": [
-                    "MutableMapping[(str, ReplayMarker)]"
+                    "int",
+                    "str"
                 ],
                 "default_id": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -460,9 +468,7 @@
         "TestClient.test_init_translates_errors": {
             "name": "test_init_translates_errors",
             "location": 77,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "super_init": [
@@ -494,9 +500,7 @@
         "TestClient.test_init_creates_replay_storage": {
             "name": "test_init_creates_replay_storage",
             "location": 96,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "create_replay_storage": [
@@ -653,7 +657,7 @@
             "name": "test_reraises_non_cometd_error",
             "location": 80,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -663,7 +667,7 @@
             "name": "test_translates_cometd_error",
             "location": 94,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -673,7 +677,7 @@
             "name": "test_reraises_sfstream_error",
             "location": 122,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {
                 "self": []

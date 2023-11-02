@@ -17,27 +17,29 @@
         "load_data": {
             "name": "load_data",
             "location": 14,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "files": [
-                    "str"
-                ]
+                "files": []
             }
         },
         "load_training_data": {
             "name": "load_training_data",
             "location": 25,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
-                "data_path": [
-                    "str"
-                ]
+                "data_path": []
             }
         },
         "prepare_data": {
             "name": "prepare_data",
             "location": 31,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "data": []
             }
@@ -45,7 +47,9 @@
         "prepare_training_data": {
             "name": "prepare_training_data",
             "location": 45,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "tr_trees": []
             }
@@ -57,21 +61,17 @@
                 "None"
             ],
             "arguments": {
-                "models": [
-                    "dict"
-                ]
+                "models": []
             }
         },
         "load_models": {
             "name": "load_models",
             "location": 62,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
-                "models_path": [
-                    "str"
-                ]
+                "models_path": []
             }
         }
     },
@@ -80,11 +80,14 @@
             "name": "get_area",
             "location": 6,
             "return": [
-                "float"
+                "float",
+                "str",
+                "bool"
             ],
             "arguments": {
                 "circ": [
-                    "float"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -96,7 +99,12 @@
             ],
             "arguments": {
                 "input_data": [
-                    "str"
+                    "Dict",
+                    "bytes",
+                    "List[str]",
+                    "Sequence",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -108,7 +116,10 @@
             ],
             "arguments": {
                 "input_data": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "Dict",
+                    "Sequence[str]"
                 ]
             }
         }
@@ -125,13 +136,15 @@
             ],
             "arguments": {
                 "trees_df": [
-                    "list[pandas.DataFrame]",
-                    "pandas.DataFrame",
                     "List[pandas.DataFrame]",
+                    "pandas.DataFrame",
                     "int"
                 ],
                 "factor": [
-                    "str"
+                    "bool",
+                    "str",
+                    "pandas.DataFrame",
+                    "Set[str]"
                 ]
             }
         },
@@ -139,7 +152,8 @@
             "name": "predict_benefit",
             "location": 38,
             "return": [
-                "float"
+                "Optional[str]",
+                "int"
             ],
             "arguments": {
                 "reg_model": [
@@ -151,7 +165,13 @@
                     "str"
                 ],
                 "trunk_diam": [
-                    "float"
+                    "IO[str]",
+                    "Dict",
+                    "IO",
+                    "Set",
+                    "bool",
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -159,14 +179,20 @@
             "name": "predict_tree_benefits",
             "location": 43,
             "return": [
-                "Dict[(str, float)]"
+                "dict"
             ],
             "arguments": {
                 "models": [
-                    "dict"
+                    "Type",
+                    "int",
+                    "Type[T]",
+                    "base.Model"
                 ],
                 "trunk_diam": [
-                    "float"
+                    "float",
+                    "int",
+                    "bool",
+                    "pandas.DataFrame"
                 ]
             }
         },
@@ -188,7 +214,8 @@
             ],
             "arguments": {
                 "func": [
-                    "Callable"
+                    "Callable",
+                    "Callable[...,None]"
                 ]
             }
         },
@@ -261,7 +288,7 @@
             "name": "get_sync_redis_conn",
             "location": 12,
             "return": [
-                "redis.client.Redis"
+                "redis.client.Redis[Union[(bytearray, bytes, memoryview)]]"
             ],
             "arguments": {}
         },
@@ -270,7 +297,7 @@
             "location": 28,
             "return": [
                 "sqlalchemy.orm.session.Session",
-                "typing.Generator[]"
+                "Generator"
             ],
             "arguments": {
                 "engine": []
@@ -339,10 +366,8 @@
             ],
             "arguments": {
                 "cls": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "Optional[int]",
                     "int",
                     "None"

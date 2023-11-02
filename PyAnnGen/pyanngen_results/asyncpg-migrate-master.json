@@ -11,6 +11,7 @@
             ],
             "arguments": {
                 "filename": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -23,7 +24,10 @@
             ],
             "arguments": {
                 "config": [
-                    "model.Config"
+                    "Dict[str,str]",
+                    "Dict",
+                    "asyncpg_migrate.model.Config",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -35,6 +39,8 @@
             ],
             "arguments": {
                 "path": [
+                    "str",
+                    "norfs.fs.base.Path",
                     "pathlib.Path"
                 ]
             }
@@ -142,11 +148,16 @@
             "name": "async_run",
             "location": 26,
             "return": [
-                "_T"
+                "bool",
+                "Union[str, List[str], Tuple[str, ...]]",
+                "str",
+                "int"
             ],
             "arguments": {
                 "coro": [
-                    "Awaitable[_T]"
+                    "bool",
+                    "List[int]",
+                    "asyncio.AbstractEventLoop"
                 ]
             }
         }
@@ -156,17 +167,28 @@
             "name": "decode",
             "location": 23,
             "return": [
-                "Revision"
+                "Revision",
+                "float",
+                "str",
+                "T",
+                "List[int]"
             ],
             "arguments": {
                 "cls": [
-                    "Type[_TRevision]"
+                    "str",
+                    "int",
+                    "Dict[str, Any]",
+                    "Union[int, str]",
+                    "float"
                 ],
                 "rev": [
-                    "Union[(int, str, _TRevision)]"
+                    "int"
                 ],
                 "all_revisions": [
-                    "Sequence[_TRevision]"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -178,13 +200,17 @@
             ],
             "arguments": {
                 "self": [
-                    "_TMigrations"
+                    "_TMigrations@@Migrations@@"
                 ],
                 "start": [
                     "int"
                 ],
                 "end": [
-                    "Optional[int]"
+                    "int",
+                    "None",
+                    "float",
+                    "Optional[int]",
+                    "bool"
                 ]
             }
         },
@@ -192,7 +218,7 @@
             "name": "upgrade_iterator",
             "location": 78,
             "return": [
-                "Iterator[Migration]"
+                "listiterator"
             ],
             "arguments": {
                 "self": []
@@ -202,7 +228,7 @@
             "name": "downgrade_iterator",
             "location": 81,
             "return": [
-                "Iterator[Migration]"
+                "listiterator"
             ],
             "arguments": {
                 "self": []
@@ -212,7 +238,7 @@
             "name": "revisions",
             "location": 84,
             "return": [
-                "Sequence[Revision]"
+                "List[Revision]"
             ],
             "arguments": {
                 "self": []
@@ -226,11 +252,11 @@
             "name": "error_trap",
             "location": 25,
             "return": [
-                "Callable[(..., Coroutine[(Any, Any, MT)])]"
+                "Callable"
             ],
             "arguments": {
                 "func": [
-                    "Callable[(..., Coroutine[(Any, Any, MT)])]"
+                    "Callable"
                 ]
             }
         }
@@ -251,9 +277,9 @@
             "name": "db_dsn",
             "location": 17,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
-                "Union[int, str]"
+                "Union[int,str]"
             ],
             "arguments": {
                 "db_name": [
@@ -267,7 +293,7 @@
             "name": "migration_config",
             "location": 53,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "bool",
                 "Optional[List[str]]"
             ],
@@ -276,9 +302,8 @@
                     "str",
                     "bool",
                     "None",
+                    "Dict",
                     "Optional[str]",
-                    "dict[, ]",
-                    "dict",
                     "Iterable[str]",
                     "int"
                 ],
@@ -286,28 +311,25 @@
                     "str",
                     "bool",
                     "None",
+                    "Dict",
                     "Optional[str]",
-                    "dict[, ]",
-                    "dict",
                     "Iterable[str]",
                     "int"
                 ],
                 "tmp_path_factory": [
                     "str",
-                    "list[str]",
-                    "bool",
                     "List[str]",
+                    "bool",
                     "None",
                     "Optional[List[str]]",
                     "int"
                 ],
                 "request": [
                     "int",
+                    "Dict",
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Optional[str]]",
-                    "dict[str, typing.Union[str,None]]"
+                    "Dict[str,Optional[str]]",
+                    "Dict[str,Union[str,None]]"
                 ]
             }
         }
@@ -331,7 +353,7 @@
             "name": "config_env",
             "location": 17,
             "return": [
-                "tuple[typing.Union[Path,asyncpg_migrate.model.Config,int,list[int],dict[typing.Text, typing.Text]]]",
+                "Tuple[Union[Path,asyncpg_migrate.model.Config,int,list[int],dict[Text,Text]]]",
                 "str",
                 "pathlib.Path",
                 "List[str]"
@@ -340,23 +362,22 @@
                 "tmp_path": [
                     "bool",
                     "str",
-                    "MutableMapping[domain.Identifier, datetime.date]",
+                    "MutableMapping[domain.Identifier,datetime.date]",
                     "Mapping",
                     "Optional[int]"
                 ],
                 "request": [
                     "str",
-                    "typing.Sequence[str]",
                     "Sequence[str]",
                     "pathlib.Path"
                 ],
                 "config_with_migrations": [
-                    "tuple[typing.Union[pathlib.Path,asyncpg_migrate.model.Config,int]]",
+                    "Tuple[Union[pathlib.Path,asyncpg_migrate.model.Config,int]]",
                     "bytes",
-                    "Tuple[pathlib.Path, asyncpg_migrate.model.Config, int]",
+                    "Tuple[pathlib.Path,asyncpg_migrate.model.Config,int]",
                     "int",
                     "str",
-                    "list[list[int]]",
+                    "List[list[int]]",
                     "List[List[int]]",
                     "bool"
                 ]
@@ -367,7 +388,7 @@
             "location": 60,
             "return": [
                 "bool",
-                "tuple[typing.Union[Path,int]]"
+                "Tuple[Union[Path,int]]"
             ],
             "arguments": {
                 "tmp_path": [
@@ -384,8 +405,8 @@
                 "request": [
                     "bool",
                     "str",
-                    "MutableMapping[str, str]",
-                    "typing.MutableMapping"
+                    "MutableMapping[str,str]",
+                    "MutableMapping"
                 ]
             }
         }
@@ -399,10 +420,9 @@
             ],
             "arguments": {
                 "cli_runner": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.testing.CliRunner",
-                    "List[str]"
+                    "click.testing.CliRunner"
                 ]
             }
         },
@@ -427,10 +447,9 @@
             ],
             "arguments": {
                 "cli_runner": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.testing.CliRunner",
-                    "List[str]"
+                    "click.testing.CliRunner"
                 ],
                 "mocker": [
                     "pytest_mock.MockFixture",
@@ -438,10 +457,9 @@
                     "bool"
                 ],
                 "invoke_arg": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.testing.CliRunner",
-                    "List[str]"
+                    "click.testing.CliRunner"
                 ]
             }
         },
@@ -453,10 +471,9 @@
             ],
             "arguments": {
                 "cli_runner": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.testing.CliRunner",
-                    "List[str]"
+                    "click.testing.CliRunner"
                 ],
                 "mocker": [
                     "flask.testing.FlaskClient"
@@ -475,10 +492,9 @@
             ],
             "arguments": {
                 "cli_runner": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.testing.CliRunner",
-                    "List[str]"
+                    "click.testing.CliRunner"
                 ],
                 "mocker": [
                     "flask.testing.FlaskClient"
@@ -498,9 +514,8 @@
             "arguments": {
                 "cli_runner": [
                     "str",
-                    "click.testing.CliRunner",
-                    "list[str]",
-                    "List[str]"
+                    "List[str]",
+                    "click.testing.CliRunner"
                 ],
                 "mocker": [
                     "pytest_mock.MockFixture"
@@ -508,10 +523,10 @@
                 "return_revision": [
                     "Optional[int]",
                     "int",
-                    "Optional[\"Game\"]",
+                    "Optional[Game]",
                     "None",
                     "Optional[List[Any]]",
-                    "list[typing.Any]"
+                    "List[Any]"
                 ]
             }
         },
@@ -523,10 +538,9 @@
             ],
             "arguments": {
                 "cli_runner": [
-                    "list[str]",
+                    "List[str]",
                     "str",
-                    "click.testing.CliRunner",
-                    "List[str]"
+                    "click.testing.CliRunner"
                 ],
                 "mocker": [
                     "pytest_mock.MockFixture",
@@ -556,15 +570,14 @@
             ],
             "arguments": {
                 "config_env": [
-                    "Tuple[(pathlib.Path, pathlib.Path, Dict[(str, str)])]"
+                    "str",
+                    "Optional[str]"
                 ],
                 "mocker": [
                     "str",
                     "pytest_mock.MockFixture",
-                    "dict[str, typing.Any]",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict"
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -576,7 +589,14 @@
             ],
             "arguments": {
                 "config_with_migrations": [
-                    "Tuple[(pathlib.Path, model.Config, int)]"
+                    "Tuple[Union[pathlib.Path,asyncpg_migrate.model.Config,int]]",
+                    "List[str]",
+                    "Tuple[pathlib.Path,asyncpg_migrate.model.Config,int]",
+                    "List[tuple[Union[Any,Any]]]",
+                    "bool",
+                    "model.predictor.ContextualEncoderConfig",
+                    "Dict[str,Dict]",
+                    "List[Tuple[Any,Any]]"
                 ]
             }
         }
@@ -611,7 +631,7 @@
             "arguments": {
                 "test_revision": [
                     "str",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "int",
                     "asyncpg_migrate.model.Migration"
                 ],
@@ -624,7 +644,7 @@
                 ],
                 "all_revisions": [
                     "str",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "int",
                     "asyncpg_migrate.model.Migration"
                 ]

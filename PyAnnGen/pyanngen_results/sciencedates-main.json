@@ -9,20 +9,17 @@
             ],
             "arguments": {
                 "x": [
-                    "list[]",
-                    "list",
-                    "list[tuple[]]",
-                    "numpy.ndarray",
-                    "List[tuple]"
+                    "List",
+                    "List[tuple]",
+                    "numpy.ndarray"
                 ],
                 "X0": [
                     "int",
                     "float",
-                    "dict[, ]",
-                    "Union[numpy.ndarray, pandas.DataFrame]",
-                    "Union[int, float]",
-                    "numpy.array",
-                    "dict"
+                    "Dict",
+                    "Union[numpy.ndarray,pandas.DataFrame]",
+                    "Union[int,float]",
+                    "numpy.array"
                 ]
             }
         }
@@ -34,11 +31,7 @@
             "name": "datetime2utsec",
             "location": 11,
             "return": [
-                "float",
-                "numpy.ndarray",
-                "int",
-                "bool",
-                "tuple"
+                "Union[(float, np.ndarray)]"
             ],
             "arguments": {
                 "t": [
@@ -54,11 +47,15 @@
             "name": "yeardec2datetime",
             "location": 30,
             "return": [
-                "datetime.datetime"
+                "Union[(datetime.datetime, np.ndarray)]"
             ],
             "arguments": {
                 "atime": [
-                    "float"
+                    "int",
+                    "bool",
+                    "str",
+                    "slice",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -66,17 +63,20 @@
             "name": "datetime2yeardec",
             "location": 61,
             "return": [
-                "float"
+                "numpy.ndarray",
+                "int",
+                "bool",
+                "float",
+                "tuple"
             ],
             "arguments": {
                 "time": [
                     "float",
+                    "Dict[str,datetime.datetime]",
                     "datetime.datetime",
-                    "dict[str, datetime.datetime]",
                     "int",
                     "None",
-                    "Dict[str, datetime.datetime]",
-                    "Union[int, float, None]",
+                    "Union[int,float,None]",
                     "Optional[float]",
                     "datetime.timedelta"
                 ]
@@ -88,14 +88,13 @@
             "name": "datetime2yeardoy",
             "location": 12,
             "return": [
-                "Tuple[(int, float)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "time": [
                     "float",
-                    "dict[str, typing.Any]",
-                    "datetime.time",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "datetime.time"
                 ]
             }
         },
@@ -103,11 +102,14 @@
             "name": "yeardoy2datetime",
             "location": 37,
             "return": [
-                "datetime.datetime"
+                "Union[(datetime.datetime, np.ndarray)]"
             ],
             "arguments": {
                 "yeardate": [
-                    "int"
+                    "datetime.date",
+                    "bool",
+                    "int",
+                    "List[str]"
                 ],
                 "utsec": [
                     "int",
@@ -121,7 +123,7 @@
             "name": "date2doy",
             "location": 78,
             "return": [
-                "Tuple[(np.ndarray, np.ndarray)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "time": [
@@ -135,7 +137,7 @@
             "name": "datetime2gtd",
             "location": 99,
             "return": [
-                "Tuple[(np.ndarray, np.ndarray, np.ndarray)]"
+                "Tuple[(Any, Any, Any)]"
             ],
             "arguments": {
                 "time": [
@@ -157,7 +159,7 @@
             "name": "find_nearest",
             "location": 7,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "int",
                 "List[int]",
                 "str",
@@ -182,7 +184,11 @@
             ],
             "arguments": {
                 "year": [
-                    "int"
+                    "float",
+                    "str",
+                    "int",
+                    "datetime.timezone",
+                    "datetime.timedelta"
                 ]
             }
         }
@@ -196,10 +202,10 @@
             ],
             "arguments": {
                 "t": [
-                    "tuple[typing.Union[float,float]]",
-                    "Tuple[float, float]",
+                    "Tuple[Union[float,float]]",
+                    "Tuple[float,float]",
                     "int",
-                    "Union[numbers.Real, numpy.ndarray]",
+                    "Union[numbers.Real,numpy.ndarray]",
                     "float"
                 ],
                 "fg": [
@@ -215,7 +221,12 @@
                     "int"
                 ],
                 "tfmt": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int",
+                    "Tuple",
+                    "Optional[List[str]]",
+                    "datetime.time"
                 ]
             }
         },
@@ -231,9 +242,8 @@
                     "Optional[numpy.ndarray]",
                     "float",
                     "str",
-                    "Union[numpy.ndarray, astropy.units.quantity.Quantity]",
-                    "typing.Iterable[str]",
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "Union[numpy.ndarray,astropy.units.quantity.Quantity]"
                 ]
             }
         }
@@ -246,15 +256,14 @@
                 "datetime_@_date",
                 "bool",
                 "Optional[bool]",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "t": [
                     "bool",
                     "float",
-                    "str",
                     "Sequence[numpy.ndarray]",
-                    "typing.Sequence[numpy.ndarray]"
+                    "str"
                 ]
             }
         }

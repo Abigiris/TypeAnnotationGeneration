@@ -23,7 +23,9 @@
         "extract_gutenberg": {
             "name": "extract_gutenberg",
             "location": 31,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "gutenberg_text": []
             }
@@ -31,7 +33,9 @@
         "eliminate_wordwrap": {
             "name": "eliminate_wordwrap",
             "location": 36,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "text": []
             }
@@ -59,7 +63,9 @@
         "stem2word": {
             "name": "stem2word",
             "location": 133,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "stem": []
             }
@@ -88,13 +94,22 @@
             "arguments": {
                 "self": [],
                 "bag_path": [
-                    "edgar_code.types.PathLike"
+                    "str",
+                    "edgar_code.types.PathLike",
+                    "edgar_code.gs_path.PathLike",
+                    "Optional[str]"
                 ],
                 "name": [
                     "str"
                 ],
                 "serializer": [
-                    "Optional[edgar_code.types.Serializer]"
+                    "dict",
+                    "Optional[str]",
+                    "Optional[float]",
+                    "Optional[Type[Exception]]",
+                    "Optional[List[str]]",
+                    "Optional[Dict[str, Any]]",
+                    "Optional[Union[str, Any]]"
                 ]
             }
         },
@@ -102,16 +117,13 @@
             "name": "args2key",
             "location": 49,
             "return": [
+                "str",
                 "edgar_code.types.PathLike"
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "tuple"
-                ],
-                "kwargs": [
-                    "Dict[(str, Any)]"
-                ]
+                "args": [],
+                "kwargs": []
             }
         },
         "BagStore.__setitem__": {
@@ -123,7 +135,9 @@
             "arguments": {
                 "self": [],
                 "bag_path": [
-                    "edgar_code.types.PathLike"
+                    "str",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "bag": [
                     "str",
@@ -137,12 +151,15 @@
             "name": "make_dump_partition",
             "location": 74,
             "return": [
-                "Callable[([Iterable[T], int], List[T])]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "self": [],
                 "bag_path": [
-                    "edgar_code.types.PathLike"
+                    "str",
+                    "Optional[Tuple[str, ...]]",
+                    "Optional['Directory']",
+                    "Optional[str]"
                 ]
             }
         },
@@ -156,7 +173,9 @@
             "arguments": {
                 "self": [],
                 "bag_path": [
-                    "edgar_code.types.PathLike"
+                    "str",
+                    "BinaryIO",
+                    "IO"
                 ]
             }
         },
@@ -164,12 +183,14 @@
             "name": "make_load_partition",
             "location": 99,
             "return": [
-                "Callable[([List[int]], List[T])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "self": [],
                 "bag_path": [
-                    "edgar_code.types.PathLike"
+                    "edgar_code.gs_path.PathLike",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -198,7 +219,8 @@
             "arguments": {
                 "self": [],
                 "bag_path": [
-                    "edgar_code.types.PathLike"
+                    "edgar_code.gs_path.PathLike",
+                    "str"
                 ]
             }
         },
@@ -286,7 +308,7 @@
             "name": "to_hashable",
             "location": 244,
             "return": [
-                "Hashable"
+                "Union[(tuple, Hashable)]"
             ],
             "arguments": {
                 "obj": [
@@ -315,11 +337,12 @@
             "name": "pathify",
             "location": 301,
             "return": [
-                "edgar_code.types.PathLike"
+                "Union[(pathlib.Path, _T0)]"
             ],
             "arguments": {
                 "obj": [
-                    "Union[(str, edgar_code.types.PathLike)]"
+                    "pathlib.Path",
+                    "str"
                 ]
             }
         },
@@ -327,7 +350,7 @@
             "name": "decor",
             "location": 24,
             "return": [
-                "Callable[([CacheFunc], CacheFunc)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "cls": [
@@ -336,16 +359,24 @@
                     "Callable"
                 ],
                 "obj_store": [
-                    "Callable[([str], ObjectStore)]"
+                    "bool",
+                    "str",
+                    "Callable"
                 ],
                 "hit_msg": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Callable"
                 ],
                 "miss_msg": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Callable"
                 ],
                 "suffix": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Callable"
                 ]
             }
         },
@@ -358,19 +389,32 @@
             "arguments": {
                 "self": [],
                 "obj_store": [
-                    "Callable[([str], ObjectStore)]"
+                    "str",
+                    "bool",
+                    "int",
+                    "Optional[float]"
                 ],
                 "function": [
-                    "CacheFunc"
+                    "Dict[str, Any]",
+                    "Optional[List[str]]",
+                    "Optional[Any]"
                 ],
                 "hit_msg": [
+                    "int",
                     "bool"
                 ],
                 "miss_msg": [
+                    "int",
                     "bool"
                 ],
                 "suffix": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "dict",
+                    "tuple",
+                    "Type",
+                    "static_frame.core.util.NameType",
+                    "type"
                 ]
             }
         },
@@ -408,7 +452,7 @@
             "name": "create",
             "location": 110,
             "return": [
-                "Callable[([str], ObjectStore)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "cls": [
@@ -430,7 +474,10 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str, Any]",
+                    "List[str]",
+                    "dict"
                 ]
             }
         },
@@ -442,12 +489,8 @@
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "tuple"
-                ],
-                "kwargs": [
-                    "Dict[(str, Any)]"
-                ]
+                "args": [],
+                "kwargs": []
             }
         },
         "MemoryStore.__init__": {
@@ -459,7 +502,8 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         },
@@ -467,16 +511,12 @@
             "name": "args2key",
             "location": 134,
             "return": [
-                "Hashable"
+                "Union[(tuple, Hashable)]"
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "tuple"
-                ],
-                "kwargs": [
-                    "Dict[(str, Any)]"
-                ]
+                "args": [],
+                "kwargs": []
             }
         },
         "FileStore.__init__": {
@@ -488,13 +528,22 @@
             "arguments": {
                 "self": [],
                 "cache_path": [
-                    "edgar_code.types.PathLike"
+                    "str",
+                    "edgar_code.types.PathLike",
+                    "edgar_code.gs_path.PathLike"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Union[pathlib.Path, str]"
                 ],
                 "serializer": [
-                    "Optional[edgar_code.types.Serializer]"
+                    "dict",
+                    "Optional[str]",
+                    "Optional[float]",
+                    "Optional[Type[Exception]]",
+                    "Optional[List[str]]",
+                    "Optional[Dict[str, Any]]",
+                    "Optional[Union[str, Any]]"
                 ]
             }
         },
@@ -512,16 +561,12 @@
             "name": "args2key",
             "location": 166,
             "return": [
-                "Hashable"
+                "Union[(tuple, Hashable)]"
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "tuple"
-                ],
-                "kwargs": [
-                    "Dict[(str, Any)]"
-                ]
+                "args": [],
+                "kwargs": []
             }
         },
         "FileStore.commit": {
@@ -543,7 +588,11 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "Hashable"
+                    "Hashable",
+                    "str",
+                    "int",
+                    "static_frame.core.util.GetItemKeyType",
+                    "Union[int, slice]"
                 ],
                 "obj": [
                     "Hashable",
@@ -563,6 +612,8 @@
             "arguments": {
                 "self": [],
                 "key": [
+                    "str",
+                    "int",
                     "Hashable"
                 ]
             }
@@ -586,13 +637,22 @@
             "arguments": {
                 "self": [],
                 "object_path": [
-                    "edgar_code.types.PathLike"
+                    "str",
+                    "edgar_code.types.PathLike",
+                    "edgar_code.gs_path.PathLike"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Union[pathlib.Path, str]"
                 ],
                 "serializer": [
-                    "Optional[edgar_code.types.Serializer]"
+                    "dict",
+                    "Optional[str]",
+                    "Optional[float]",
+                    "Optional[Type[Exception]]",
+                    "Optional[List[str]]",
+                    "Optional[Dict[str, Any]]",
+                    "Optional[Union[str, Any]]"
                 ]
             }
         },
@@ -600,16 +660,13 @@
             "name": "args2key",
             "location": 212,
             "return": [
-                "edgar_code.types.PathLike"
+                "pathlib.Path",
+                "str"
             ],
             "arguments": {
                 "self": [],
-                "args": [
-                    "tuple"
-                ],
-                "kwargs": [
-                    "Dict[(str, Any)]"
-                ]
+                "args": [],
+                "kwargs": []
             }
         },
         "DirectoryStore.__setitem__": {
@@ -621,7 +678,9 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "edgar_code.types.PathLike"
+                    "edgar_code.types.PathLike",
+                    "pathlib.Path",
+                    "List[pathlib.Path]"
                 ],
                 "obj": [
                     "dict",
@@ -642,6 +701,9 @@
             "arguments": {
                 "self": [],
                 "path": [
+                    "str",
+                    "pathlib.Path",
+                    "pathlib2.Path",
                     "edgar_code.types.PathLike"
                 ]
             }
@@ -658,7 +720,12 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "edgar_code.types.PathLike"
+                    "pathlib.Path",
+                    "edgar_code.gs_path.PathLike",
+                    "edgar_code.types.PathLike",
+                    "pathlib2.Path",
+                    "pathlib.PosixPath",
+                    "str"
                 ]
             }
         },
@@ -737,11 +804,14 @@
             "name": "pathify",
             "location": 130,
             "return": [
-                "Union[(edgar_code.types.PathLike, pathlib.Path)]"
+                "Union[(pathlib.Path, _T0)]"
             ],
             "arguments": {
                 "obj": [
-                    "Union[(bytes, str, edgar_code.types.PathLike)]"
+                    "str",
+                    "Dict",
+                    "bool",
+                    "bytes"
                 ]
             }
         },
@@ -753,10 +823,13 @@
             ],
             "arguments": {
                 "src_path": [
-                    "edgar_code.types.PathLike"
+                    "PathLike",
+                    "pathlib.Path",
+                    "path.Path"
                 ],
                 "dst_path": [
-                    "edgar_code.types.PathLike"
+                    "PathLike",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -771,14 +844,11 @@
                     "Type[_TGSPath]"
                 ],
                 "blob": [
-                    "typing.Hashable",
-                    "google.cloud.storage.Blob",
-                    "dict[, ]",
-                    "str",
                     "Hashable",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "Dict[str, Any]"
+                    "google.cloud.storage.Blob",
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         },
@@ -793,7 +863,9 @@
                     "Type[_TGSPath]"
                 ],
                 "url_str": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -807,11 +879,12 @@
                 "self": [],
                 "bucket": [
                     "str",
-                    "BinaryIO",
-                    "typing.BinaryIO"
+                    "BinaryIO"
                 ],
                 "path": [
-                    "Union[(str, pathlib.PurePath)]"
+                    "str",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]"
                 ]
             }
         },
@@ -834,7 +907,12 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "bytes",
+                    "List[str]",
+                    "Dict[str,Any]",
+                    "Dict[str,str]",
+                    "T"
                 ]
             }
         },
@@ -846,10 +924,13 @@
             ],
             "arguments": {
                 "self": [
-                    "_TGSPath"
+                    "_TGSPath@@GSPath@@"
                 ],
                 "other": [
-                    "Union[(str, pathlib.PurePath)]"
+                    "str",
+                    "Union[str,pathlib.PurePath]",
+                    "Union[str,pathlib.Path]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -869,7 +950,7 @@
             "return": [
                 "GSPath",
                 "str",
-                "Union[str, pathlib.Path]"
+                "Union[str,pathlib.Path]"
             ],
             "arguments": {
                 "self": []
@@ -884,13 +965,22 @@
             "arguments": {
                 "self": [],
                 "mode": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Optional[bool]",
+                    "Exception"
                 ],
                 "parents": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Optional[bool]",
+                    "Exception"
                 ],
                 "exist_ok": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Optional[bool]",
+                    "Exception"
                 ]
             }
         },
@@ -908,7 +998,9 @@
             "name": "exists",
             "location": 74,
             "return": [
-                "bool"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -928,7 +1020,7 @@
             "name": "iterdir",
             "location": 81,
             "return": [
-                "Iterable[GSPath]"
+                "Generator[(GSPath, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -938,18 +1030,26 @@
             "name": "open",
             "location": 85,
             "return": [
-                "IO"
+                "Union[(io.BytesIO, io.TextIOWrapper)]"
             ],
             "arguments": {
                 "self": [],
                 "mode": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bytes"
                 ],
                 "encoding": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bytes",
+                    "Optional[str]"
                 ],
                 "newline": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bytes",
+                    "Optional[str]"
                 ]
             }
         },
@@ -972,10 +1072,16 @@
             "arguments": {
                 "self": [],
                 "gs_path": [
-                    "GSPath"
+                    "str",
+                    "Iterable[str]",
+                    "pathlib.Path",
+                    "path.Path",
+                    "cerulean.Path"
                 ],
                 "_": [
-                    "str"
+                    "str",
+                    "bool",
+                    "apistar.http.Path"
                 ]
             }
         },
@@ -1002,25 +1108,24 @@
             ],
             "arguments": {
                 "func": [
-                    "Callable[([T, U], V)]"
+                    "Callable",
+                    "Callable[...,None]"
                 ],
                 "bag": [
-                    "dict[str, set[str]]",
-                    "Dict[str, Set[str]]",
-                    "dict[str, dict[str, typing.Any]]",
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict"
+                    "Dict[str,set[str]]",
+                    "Dict[str,Set[str]]",
+                    "Dict",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "delayed": [
-                    "dict[str, set[str]]",
-                    "Dict[str, Set[str]]",
-                    "dict[str, dict[str, typing.Any]]",
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict"
+                    "Dict[str,set[str]]",
+                    "Dict[str,Set[str]]",
+                    "Dict",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1028,9 +1133,8 @@
             "name": "map_chunk",
             "location": 19,
             "return": [
-                "list[]",
+                "List",
                 "List[str]",
-                "list",
                 "Sequence[dict]",
                 "List[int]",
                 "Set[str]"
@@ -1060,9 +1164,7 @@
             "name": "encode_obj",
             "location": 8,
             "return": [
-                "str",
-                "bool",
-                "Tuple[str, str]"
+                "Union[(dict, _T0)]"
             ],
             "arguments": {
                 "obj": [
@@ -1096,7 +1198,7 @@
             "name": "dump",
             "location": 59,
             "return": [
-                "None"
+                "Any"
             ],
             "arguments": {
                 "obj": [
@@ -1119,7 +1221,9 @@
             "name": "dumps",
             "location": 62,
             "return": [
-                "bytes"
+                "str",
+                "bool",
+                "int"
             ],
             "arguments": {
                 "obj": [
@@ -1140,7 +1244,8 @@
             ],
             "arguments": {
                 "buf": [
-                    "bytes"
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1167,64 +1272,44 @@
         "download_index_lines": {
             "name": "download_index_lines",
             "location": 26,
-            "return": [
-                "Iterable[bytes]"
-            ],
+            "return": [],
             "arguments": {
-                "year": [
-                    "int"
-                ],
-                "qtr": [
-                    "int"
-                ]
+                "year": [],
+                "qtr": []
             }
         },
         "parse_header": {
             "name": "parse_header",
             "location": 38,
             "return": [
-                "List[str]"
+                "Any"
             ],
             "arguments": {
-                "lines": [
-                    "Iterator[bytes]"
-                ]
+                "lines": []
             }
         },
         "parse_body": {
             "name": "parse_body",
             "location": 68,
             "return": [
-                "Iterable[Index]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "year": [
-                    "int"
-                ],
-                "qtr": [
-                    "int"
-                ],
-                "lines": [
-                    "Iterable[bytes]"
-                ],
-                "col_names": [
-                    "List[str]"
-                ]
+                "year": [],
+                "qtr": [],
+                "lines": [],
+                "col_names": []
             }
         },
         "filter_form_type": {
             "name": "filter_form_type",
             "location": 93,
             "return": [
-                "Iterator[Index]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "records": [
-                    "Iterable[Index]"
-                ],
-                "this_form_type": [
-                    "str"
-                ]
+                "records": [],
+                "this_form_type": []
             }
         },
         "split": {
@@ -1234,54 +1319,40 @@
                 "List[str]"
             ],
             "arguments": {
-                "line_bytes": [
-                    "bytes"
-                ]
+                "line_bytes": []
             }
         },
         "download_indexes": {
             "name": "download_indexes",
             "location": 147,
             "return": [
-                "Iterable[Index]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
-                "form_type": [
-                    "str"
-                ],
-                "year": [
-                    "int"
-                ],
-                "qtr": [
-                    "int"
-                ]
+                "form_type": [],
+                "year": [],
+                "qtr": []
             }
         },
         "sgml2fileinfos": {
             "name": "sgml2fileinfos",
             "location": 167,
             "return": [
-                "Iterable[Dict[(str, bytes)]]"
+                "Generator[(Dict[(str, bytes)], Any, None)]"
             ],
             "arguments": {
-                "sgml_contents": [
-                    "bytes"
-                ]
+                "sgml_contents": []
             }
         },
         "find_form": {
             "name": "find_form",
             "location": 195,
             "return": [
-                "bytes"
+                "Any"
             ],
             "arguments": {
-                "fileinfos": [
-                    "Iterable[Dict[(str, bytes)]]"
-                ],
-                "form_type": [
-                    "str"
-                ]
+                "fileinfos": [],
+                "form_type": []
             }
         },
         "is_html": {
@@ -1291,33 +1362,23 @@
                 "bool"
             ],
             "arguments": {
-                "text": [
-                    "bytes"
-                ]
+                "text": []
             }
         },
         "html2paragraphs": {
             "name": "html2paragraphs",
             "location": 219,
-            "return": [
-                "List[str]"
-            ],
+            "return": [],
             "arguments": {
-                "bhtml": [
-                    "bytes"
-                ]
+                "bhtml": []
             }
         },
         "text2paragraphs": {
             "name": "text2paragraphs",
             "location": 257,
-            "return": [
-                "List[str]"
-            ],
+            "return": [],
             "arguments": {
-                "btext": [
-                    "bytes"
-                ]
+                "btext": []
             }
         },
         "is_text_line": {
@@ -1327,60 +1388,46 @@
                 "bool"
             ],
             "arguments": {
-                "line": [
-                    "str"
-                ]
+                "line": []
             }
         },
         "clean_paragraph": {
             "name": "clean_paragraph",
             "location": 314,
-            "return": [
-                "str"
-            ],
+            "return": [],
             "arguments": {
-                "paragraph": [
-                    "str"
-                ]
+                "paragraph": []
             }
         },
         "clean_paragraphs": {
             "name": "clean_paragraphs",
             "location": 343,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
-                "paragraphs": [
-                    "List[str]"
-                ]
+                "paragraphs": []
             }
         },
         "remove_header": {
             "name": "remove_header",
             "location": 347,
             "return": [
-                "List[str]"
+                "Any"
             ],
             "arguments": {
-                "paragraphs": [
-                    "List[str]"
-                ]
+                "paragraphs": []
             }
         },
         "paragraphs2rf": {
             "name": "paragraphs2rf",
             "location": 372,
             "return": [
-                "List[str]"
+                "Any"
             ],
             "arguments": {
-                "paragraphs": [
-                    "List[str]"
-                ],
-                "pre_2006": [
-                    "bool"
-                ]
+                "paragraphs": [],
+                "pre_2006": []
             }
         }
     },
@@ -1487,11 +1534,11 @@
             "name": "make_try_func",
             "location": 75,
             "return": [
-                "Callable[([Union[(Exception, T)]], Union[(Exception, U)])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "func": [
-                    "Callable[([T], U)]"
+                    "Callable"
                 ]
             }
         },
@@ -1573,7 +1620,11 @@
             "name": "is_paragraph",
             "location": 15,
             "return": [
-                "bool"
+                "bool",
+                "List[str]",
+                "str",
+                "denite.util.UserContext",
+                "List[Dict]"
             ],
             "arguments": {
                 "line": [
@@ -1585,10 +1636,12 @@
             "name": "paragraph2terms",
             "location": 24,
             "return": [
-                "Tuple[(Counter[Tuple[(str, ...)]], Dict[(int, Counter[Tuple[(str, ...)]])], Dict[(str, Counter[str])])]"
+                "Tuple[(Counter, dict, dict)]"
             ],
             "arguments": {
                 "paragraph": [
+                    "int",
+                    "Callable",
                     "str"
                 ]
             }
@@ -1599,14 +1652,19 @@
             "name": "__truediv__",
             "location": 55,
             "return": [
-                "PathLike"
+                "PathLike",
+                "None"
             ],
             "arguments": {
-                "self": [
-                    "_TPathLike"
-                ],
+                "self": [],
                 "other": [
-                    "Union[(str, pathlib.PurePath)]"
+                    "List[str]",
+                    "SupportsFloat",
+                    "int",
+                    "Union[int,float]",
+                    "float",
+                    "AbstractSet[T]",
+                    "AbstractSet"
                 ]
             }
         },
@@ -1619,13 +1677,22 @@
             "arguments": {
                 "self": [],
                 "mode": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Optional[bool]",
+                    "Exception"
                 ],
                 "parents": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Optional[bool]",
+                    "Exception"
                 ],
                 "exist_ok": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Optional[bool]",
+                    "Exception"
                 ]
             }
         },
@@ -1633,7 +1700,8 @@
             "name": "exists",
             "location": 59,
             "return": [
-                "bool"
+                "bool",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -1653,7 +1721,8 @@
             "name": "iterdir",
             "location": 63,
             "return": [
-                "Iterable[PathLike]"
+                "Iterable[PathLike]",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -1663,12 +1732,16 @@
             "name": "open",
             "location": 66,
             "return": [
-                "IO"
+                "IO[Any]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "mode": [
-                    "str"
+                    "Text",
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1687,13 +1760,17 @@
             "name": "load",
             "location": 74,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "fil": [
-                    "IO[bytes]"
+                    "bool",
+                    "str",
+                    "List",
+                    "IO[str]",
+                    "IO"
                 ]
             }
         },
@@ -1708,13 +1785,16 @@
                 "obj": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ],
                 "fil": [
-                    "IO[bytes]"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -1722,29 +1802,25 @@
             "name": "__getitem__",
             "location": 27,
             "return": [
-                "Dict[str, Any]",
-                "typing.Callable[, ]",
+                "Dict[str,Any]",
+                "Callable",
                 "str",
-                "typing.Iterable[T]",
-                "Callable[[str], T]",
+                "Iterable[T]",
+                "Callable[[str],T]",
                 "int"
             ],
             "arguments": {
                 "cls": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ],
                 "item": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ]
             }
         },
@@ -1752,29 +1828,25 @@
             "name": "__getitem__",
             "location": 33,
             "return": [
-                "Dict[str, Any]",
-                "typing.Callable[, ]",
+                "Dict[str,Any]",
+                "Callable",
                 "str",
-                "typing.Iterable[T]",
-                "Callable[[str], T]",
+                "Iterable[T]",
+                "Callable[[str],T]",
                 "int"
             ],
             "arguments": {
                 "cls": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ],
                 "item": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ]
             }
         },
@@ -1782,29 +1854,25 @@
             "name": "__getitem__",
             "location": 39,
             "return": [
-                "Dict[str, Any]",
-                "typing.Callable[, ]",
+                "Dict[str,Any]",
+                "Callable",
                 "str",
-                "typing.Iterable[T]",
-                "Callable[[str], T]",
+                "Iterable[T]",
+                "Callable[[str],T]",
                 "int"
             ],
             "arguments": {
                 "cls": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ],
                 "item": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ]
             }
         },
@@ -1812,29 +1880,25 @@
             "name": "__getitem__",
             "location": 45,
             "return": [
-                "Dict[str, Any]",
-                "typing.Callable[, ]",
+                "Dict[str,Any]",
+                "Callable",
                 "str",
-                "typing.Iterable[T]",
-                "Callable[[str], T]",
+                "Iterable[T]",
+                "Callable[[str],T]",
                 "int"
             ],
             "arguments": {
                 "cls": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ],
                 "item": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ]
             }
         }
@@ -1856,11 +1920,16 @@
             "name": "rf_mapper",
             "location": 23,
             "return": [
-                "Tuple[(int, int, str)]"
+                "Tuple[(Any, int, Any)]"
             ],
             "arguments": {
                 "rf": [
-                    "Union[(Exception, List[str])]"
+                    "int",
+                    "List[str]",
+                    "str",
+                    "Union[List[str],List[int]]",
+                    "List[int]",
+                    "List"
                 ]
             }
         },
@@ -1868,11 +1937,24 @@
             "name": "time_code_getter",
             "location": 34,
             "return": [
-                "T"
+                "str",
+                "int",
+                "bool",
+                "None",
+                "List[str]",
+                "List[dict]"
             ],
             "arguments": {
                 "val": [
-                    "T"
+                    "str",
+                    "T",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "List[dict]",
+                    "List[str]",
+                    "Optional[List[str]]",
+                    "int"
                 ]
             }
         },
@@ -1897,16 +1979,16 @@
             "name": "get_styled_ax",
             "location": 48,
             "return": [
-                "typing.Generator[matplotlib.pyplot.Axes, None, None]",
-                "typing.Generator[]"
+                "Generator[matplotlib.pyplot.Axes,None,None]",
+                "Generator"
             ],
             "arguments": {
                 "path": [
                     "str",
                     "bool",
                     "edgar_code.types.PathLike",
-                    "typing.Callable[str, str]",
-                    "Callable[[str], str]",
+                    "Callable[str,str]",
+                    "Callable[[str],str]",
                     "pathlib.Path"
                 ]
             }
@@ -1941,11 +2023,16 @@
             "name": "aggregate_terms",
             "location": 30,
             "return": [
-                "Tuple[(Counter[Tuple[(str, ...)]], Dict[(int, Counter[Tuple[(str, ...)]])], Dict[(str, Counter[str])])]"
+                "Tuple[(Counter, collections.defaultdict, collections.defaultdict)]"
             ],
             "arguments": {
                 "entities_ngrams_stems": [
-                    "Iterable[Tuple[(Counter[Tuple[(str, ...)]], Dict[(int, Counter[Tuple[(str, ...)]])], Dict[(str, Counter[str])])]]"
+                    "List[dict[str,Any]]",
+                    "Dict",
+                    "List[Dict[str,Any]]",
+                    "str",
+                    "T",
+                    "bool"
                 ]
             }
         },
@@ -1953,14 +2040,23 @@
             "name": "get_combined_terms",
             "location": 44,
             "return": [
-                "Tuple[(Counter[Tuple[(str, ...)]], Dict[(int, Counter[Tuple[(str, ...)]])], Dict[(str, Counter[str])])]"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "year": [
-                    "int"
+                    "int",
+                    "Optional[str]",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ],
                 "qtr": [
-                    "int"
+                    "int",
+                    "Optional[str]",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -1968,7 +2064,7 @@
             "name": "get_alltime_terms",
             "location": 51,
             "return": [
-                "Tuple[(Counter[Tuple[(str, ...)]], Dict[(int, Counter[Tuple[(str, ...)]])], Dict[(str, Counter[str])])]"
+                "Tuple[(Counter, collections.defaultdict, collections.defaultdict)]"
             ],
             "arguments": {}
         },
@@ -1984,9 +2080,9 @@
             "name": "ensure_str",
             "location": 17,
             "return": [
-                "list[]",
+                "List",
                 "float",
-                "Tuple[int, int]",
+                "Tuple[int,int]",
                 "str",
                 "int"
             ],
@@ -2058,7 +2154,7 @@
             "location": 20,
             "return": [
                 "str",
-                "list[tuple[]]"
+                "List[tuple]"
             ],
             "arguments": {
                 "term_types": [
@@ -2080,7 +2176,7 @@
             "name": "docs2bows",
             "location": 31,
             "return": [
-                "list[]",
+                "List",
                 "bool",
                 "Type"
             ],
@@ -2107,9 +2203,7 @@
             "arguments": {
                 "pattern": [
                     "List[str]",
-                    "list[str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -2164,7 +2258,7 @@
             "name": "compute_all_words",
             "location": 85,
             "return": [
-                "tuple[typing.Union[dict[, ],tuple[None],frozenset,dict[str, str],list[],dict[str, typing.Sequence[typing.Any]],list[bool],list[str],list[tuple[typing.Union[typing.Any,typing.Any]]]]]",
+                "Tuple[Union[dict,tuple[None],frozenset,dict[str,str],list,dict[str,Sequence[Any]],list[bool],list[str],list[tuple[Union[Any,Any]]]]]",
                 "str",
                 "django.contrib.sites.models.Site"
             ],
@@ -2174,20 +2268,18 @@
             "name": "corpus_for",
             "location": 121,
             "return": [
-                "list[]",
+                "List",
                 "int",
                 "float"
             ],
             "arguments": {
                 "year": [
                     "int",
-                    "tuple[]",
+                    "Tuple",
+                    "List",
                     "numpy.array",
-                    "tuple[frozenset]",
-                    "tuple",
-                    "list[]",
-                    "Tuple[FrozenSet[int]]",
-                    "list"
+                    "Tuple[frozenset]",
+                    "Tuple[FrozenSet[int]]"
                 ]
             }
         },
@@ -2195,7 +2287,6 @@
             "name": "corpus",
             "location": 138,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -2243,14 +2334,12 @@
                 "year": [
                     "str",
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "qtr": [
                     "str",
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -2272,43 +2361,39 @@
                 "year_topic_weighted": [
                     "str",
                     "bool",
-                    "list[str]",
-                    "int",
-                    "tuple[typing.Union[int,int]]",
                     "List[str]",
+                    "int",
+                    "Tuple[Union[int,int]]",
                     "None",
-                    "Union[int, Tuple[int, int]]",
+                    "Union[int,Tuple[int,int]]",
                     "Optional[int]"
                 ],
                 "year_topic_unweighted": [
                     "str",
                     "bool",
-                    "list[str]",
-                    "int",
-                    "tuple[typing.Union[int,int]]",
                     "List[str]",
+                    "int",
+                    "Tuple[Union[int,int]]",
                     "None",
-                    "Union[int, Tuple[int, int]]",
+                    "Union[int,Tuple[int,int]]",
                     "Optional[int]"
                 ],
                 "year_weights": [
                     "str",
-                    "list[str]",
-                    "tuple[typing.Union[int,int]]",
+                    "List[str]",
+                    "Tuple[Union[int,int]]",
                     "bool",
                     "int",
-                    "List[str]",
-                    "Union[int, Tuple[int, int]]",
+                    "Union[int,Tuple[int,int]]",
                     "Optional[int]"
                 ],
                 "year_docs": [
                     "str",
-                    "list[str]",
-                    "tuple[typing.Union[int,int]]",
+                    "List[str]",
+                    "Tuple[Union[int,int]]",
                     "bool",
                     "int",
-                    "List[str]",
-                    "Union[int, Tuple[int, int]]",
+                    "Union[int,Tuple[int,int]]",
                     "Optional[int]"
                 ]
             }
@@ -2321,11 +2406,10 @@
             ],
             "arguments": {
                 "counter": [
-                    "dict[, ]",
+                    "Dict",
                     "int",
-                    "Callable[[], Awaitable[Mapping]]",
+                    "Callable[,Awaitable[Mapping]]",
                     "denite.util.UserContext",
-                    "dict",
                     "Iterable"
                 ]
             }
@@ -2338,10 +2422,9 @@
             ],
             "arguments": {
                 "unstem_map": [
-                    "dict[int, dict[int, int]]",
-                    "Dict[int, Dict[int, int]]",
-                    "dict[, ]",
-                    "dict",
+                    "Dict[int,dict[int,int]]",
+                    "Dict",
+                    "Dict[int,Dict[int,int]]",
                     "Mapping",
                     "data.Order"
                 ]
@@ -2376,12 +2459,12 @@
             "name": "index_to_keys",
             "location": 25,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "str",
                 "bool",
-                "list",
+                "List",
                 "Optional[str]",
-                "List[Dict[str, Any]]",
+                "List[Dict[str,Any]]",
                 "int"
             ],
             "arguments": {
@@ -2447,7 +2530,7 @@
             "name": "get_bow",
             "location": 124,
             "return": [
-                "list[tuple[]]",
+                "List[tuple]",
                 "str",
                 "bool",
                 "float",
@@ -2464,7 +2547,7 @@
             "name": "perpartition",
             "location": 222,
             "return": [
-                "tuple[list[tuple[]]]",
+                "Tuple[list[tuple]]",
                 "int",
                 "Callable",
                 "models.Question",
@@ -2484,7 +2567,7 @@
             "name": "aggregate",
             "location": 233,
             "return": [
-                "tuple[list[]]",
+                "Tuple[list]",
                 "int",
                 "Callable",
                 "models.Question",
@@ -2512,9 +2595,7 @@
         "stats_for_year_topic.mapper": {
             "name": "mapper",
             "location": 290,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "topic_no": [
                     "int",
@@ -2530,11 +2611,17 @@
             "name": "generator2fn_list",
             "location": 13,
             "return": [
-                "Callable[(..., List[T])]"
+                "Callable"
             ],
             "arguments": {
                 "generator": [
-                    "Callable[(..., Iterable[T])]"
+                    "int",
+                    "Optional[int]",
+                    "List",
+                    "None",
+                    "List[str]",
+                    "List[bytes]",
+                    "bool"
                 ]
             }
         },
@@ -2542,11 +2629,15 @@
             "name": "invert",
             "location": 33,
             "return": [
-                "Dict[(U, T)]"
+                "dict"
             ],
             "arguments": {
                 "dct": [
-                    "Dict[(T, U)]"
+                    "str",
+                    "Mapping[str, Any]",
+                    "int",
+                    "OrderedDict",
+                    "Optional[Tuple[str, ...]]"
                 ]
             }
         },
@@ -2554,14 +2645,28 @@
             "name": "generator2iterator",
             "location": 37,
             "return": [
-                "Iterable[T]"
+                "MyIterator",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "generator": [
-                    "Callable[([], Iterable[T])]"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ],
                 "length": [
-                    "Optional[int]"
+                    "int",
+                    "None",
+                    "str",
+                    "Iterable[Context]",
+                    "Iterable[C]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -2569,11 +2674,20 @@
             "name": "concat_lists",
             "location": 60,
             "return": [
-                "List[T]"
+                "list"
             ],
             "arguments": {
                 "lists": [
-                    "Iterable[List[T]]"
+                    "List",
+                    "List[list[str]]",
+                    "List[tuple[Union[str,str]]]",
+                    "List[str]",
+                    "List[List[str]]",
+                    "List[Tuple[str,str]]",
+                    "Tuple[str]",
+                    "Optional[int]",
+                    "Union[int,None]",
+                    "IO"
                 ]
             }
         },
@@ -2581,11 +2695,15 @@
             "name": "merge_dicts",
             "location": 66,
             "return": [
-                "Dict[(T, U)]"
+                "dict"
             ],
             "arguments": {
                 "dicts": [
-                    "Iterable[Dict[(T, U)]]"
+                    "int",
+                    "str",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
                 ]
             }
         },
@@ -2593,11 +2711,11 @@
             "name": "func",
             "location": 28,
             "return": [
-                "list[]",
+                "List",
                 "str",
                 "List[Dict]",
                 "List[int]",
-                "Union[List, Tuple]"
+                "Union[List,Tuple]"
             ],
             "arguments": {}
         },
@@ -2615,8 +2733,8 @@
             "name": "__iter__",
             "location": 44,
             "return": [
-                "typing.Iterator[T]",
-                "typing.Generator[]"
+                "Iterator[T]",
+                "Generator"
             ],
             "arguments": {
                 "self": []
@@ -2640,7 +2758,7 @@
             "name": "__getstate__",
             "location": 9,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "self": []
@@ -2655,7 +2773,7 @@
             "arguments": {
                 "self": [],
                 "_state": [
-                    "Dict[(str, Any)]"
+                    "str"
                 ]
             }
         },
@@ -2678,10 +2796,14 @@
             "arguments": {
                 "self": [],
                 "blocking": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "float"
                 ],
                 "timeout": [
-                    "int"
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -2709,18 +2831,25 @@
             "name": "__exit__",
             "location": 29,
             "return": [
-                "Optional[bool]"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "exc_type": [
-                    "Optional[Type[Exception]]"
+                    "Optional[Type[BaseException]]"
                 ],
                 "exc_value": [
-                    "Optional[Exception]"
+                    "Optional[BaseException]"
                 ],
                 "traceback": [
-                    "Optional[types.TracebackType]"
+                    "Type",
+                    "BaseException",
+                    "Type[BaseException]",
+                    "None",
+                    "Optional[BaseException]",
+                    "Optional[types.TracebackType]",
+                    "mypy.types.Type",
+                    "types.TracebackType"
                 ]
             }
         },
@@ -2728,7 +2857,7 @@
             "name": "__getstate__",
             "location": 37,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "self": []
@@ -2743,7 +2872,11 @@
             "arguments": {
                 "self": [],
                 "dct": [
-                    "Dict[(str, Any)]"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -2753,17 +2886,23 @@
             "name": "mem2str",
             "location": 236,
             "return": [
-                "Tuple[(float, str, float)]"
+                "Tuple[(Any, str, Union[(float, int)])]"
             ],
             "arguments": {
                 "n_bytes": [
-                    "float"
+                    "int"
                 ],
                 "base2": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "str",
+                    "float"
                 ],
                 "round_up": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "float",
+                    "str"
                 ]
             }
         },
@@ -2771,11 +2910,19 @@
             "name": "mean",
             "location": 247,
             "return": [
-                "float"
+                "float",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "lst": [
-                    "List[float]"
+                    "List[int]",
+                    "list",
+                    "bool",
+                    "List[float]",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -2783,11 +2930,12 @@
             "name": "std",
             "location": 250,
             "return": [
-                "float"
+                "Union[(float, int)]"
             ],
             "arguments": {
                 "lst": [
-                    "List[float]"
+                    "int",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -2825,7 +2973,7 @@
             "name": "get_stats",
             "location": 46,
             "return": [
-                "Dict[(Tuple[(str, ...)], List[Tuple[(float, int)]])]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -2835,21 +2983,17 @@
             "name": "ctx",
             "location": 54,
             "return": [
-                "typing.Generator[None, None, None]",
-                "typing.Generator[]"
+                "Generator[None,None,None]",
+                "Generator"
             ],
             "arguments": {
                 "self": [],
                 "name": [
                     "List[str]",
-                    "list[str]",
+                    "Dict",
                     "Exception",
-                    "dict",
-                    "dict[, ]",
                     "Tuple[bool]",
-                    "tuple[bool]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "print_start": [
                     "bool",
@@ -2872,12 +3016,19 @@
             "name": "make_timed_func",
             "location": 128,
             "return": [
-                "FunctionType"
+                "int",
+                "Generator",
+                "Optional[str]",
+                "str",
+                "Dict[str, int]"
             ],
             "arguments": {
                 "self": [],
                 "func": [
-                    "FunctionType"
+                    "bool",
+                    "int",
+                    "str",
+                    "Callable"
                 ],
                 "print_start": [
                     "bool"
@@ -2897,21 +3048,25 @@
             "name": "decor",
             "location": 148,
             "return": [
-                "Callable[([FunctionType], FunctionType)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "self": [],
                 "print_start": [
-                    "bool"
+                    "bool",
+                    "static_frame.core.util.DepthLevelSpecifier"
                 ],
                 "print_time": [
-                    "bool"
+                    "bool",
+                    "static_frame.core.util.DepthLevelSpecifier"
                 ],
                 "print_args": [
-                    "bool"
+                    "bool",
+                    "static_frame.core.util.DepthLevelSpecifier"
                 ],
                 "run_gc": [
-                    "bool"
+                    "bool",
+                    "static_frame.core.util.DepthLevelSpecifier"
                 ]
             }
         },
@@ -2944,7 +3099,15 @@
             "arguments": {
                 "self": [],
                 "other_stats": [
-                    "Dict[(Tuple[(str, ...)], List[Tuple[(float, int)]])]"
+                    "Dict[tuple[Union[str,...]],list[Any]]",
+                    "Dict",
+                    "Dict[Tuple[str,...],List[Any]]",
+                    "Dict[str,dict[str,Any]]",
+                    "Dict[str,int]",
+                    "OrderedDict",
+                    "Dict[str,Dict[str,Any]]",
+                    "Mapping",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2973,11 +3136,18 @@
             "name": "make_timed_func",
             "location": 168,
             "return": [
-                "FunctionType"
+                "int",
+                "Generator",
+                "Optional[str]",
+                "str",
+                "Dict[str, int]"
             ],
             "arguments": {
                 "func": [
-                    "FunctionType"
+                    "bool",
+                    "int",
+                    "str",
+                    "Callable"
                 ]
             }
         }
@@ -2987,17 +3157,25 @@
             "name": "download_retry",
             "location": 10,
             "return": [
-                "bytes"
+                "bytes",
+                "dict",
+                "int",
+                "List[str]"
             ],
             "arguments": {
                 "url": [
-                    "str"
+                    "str",
+                    "Dict[str,Union[str,int]]"
                 ],
                 "max_retries": [
-                    "int"
+                    "int",
+                    "str"
                 ],
                 "cooldown": [
-                    "float"
+                    "int",
+                    "str",
+                    "float",
+                    "List[Tuple[int,int]]"
                 ]
             }
         }
@@ -3007,7 +3185,6 @@
             "name": "__init__",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3043,10 +3220,10 @@
                     "pathlib.Path"
                 ],
                 "machine_type": [
-                    "typing.Text",
+                    "Text",
                     "str",
-                    "dict",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "Optional[str]"
                 ],
                 "disk_size": [
@@ -3078,11 +3255,9 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, str]",
-                    "Dict[str, str]",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Dict[str,str]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -3090,14 +3265,13 @@
             "name": "provision_cluster",
             "location": 45,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "machine_type": [
                     "Type[BaseException]",
-                    "typing.Type",
+                    "Type",
                     "Optional[int]",
                     "int",
                     "None"
@@ -3108,7 +3282,6 @@
             "name": "wait_for_gke",
             "location": 84,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3119,7 +3292,6 @@
             "name": "setup_kube_auth",
             "location": 94,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3143,24 +3315,20 @@
             "name": "kubernetes_namespace",
             "location": 11,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "kube_api": [
-                    "dict",
-                    "dict[, ]",
-                    "str",
+                    "Dict",
                     "List[str]",
-                    "list[str]"
+                    "str"
                 ],
                 "namespace": [
                     "bool",
-                    "str",
                     "List[str]",
-                    "list[str]",
+                    "str",
                     "AbstractSet[str]",
-                    "typing.AbstractSet"
+                    "AbstractSet"
                 ]
             }
         },
@@ -3168,7 +3336,6 @@
             "name": "setup_kubernetes",
             "location": 32,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3177,54 +3344,47 @@
                 ],
                 "namespace": [
                     "str",
-                    "bool",
-                    "list[str]",
                     "List[str]",
+                    "bool",
                     "int"
                 ],
                 "n_workers": [
                     "str",
                     "bool",
                     "Optional[str]",
+                    "Dict[str,str]",
                     "None",
-                    "Dict[str, str]",
-                    "dict[str, str]",
                     "List[Optional[str]]",
-                    "list[typing.Optional[str]]",
-                    "Optional[Callable[..., Any]]",
-                    "typing.Callable[..., typing.Any]"
+                    "Optional[Callable[...,Any]]",
+                    "Callable[...,Any]"
                 ],
                 "images": [
                     "str",
                     "Optional[str]",
-                    "tuple[]",
+                    "Tuple",
                     "Optional[tuple]",
-                    "dict",
-                    "Optional[\"AbstractPurpose\"]"
+                    "Dict",
+                    "Optional[AbstractPurpose]"
                 ],
                 "public_egg_path": [
                     "str",
                     "bool",
                     "Optional[str]",
+                    "Dict[str,str]",
                     "None",
-                    "Dict[str, str]",
-                    "dict[str, str]",
                     "List[Optional[str]]",
-                    "list[typing.Optional[str]]",
-                    "Optional[Callable[..., Any]]",
-                    "typing.Callable[..., typing.Any]"
+                    "Optional[Callable[...,Any]]",
+                    "Callable[...,Any]"
                 ],
                 "run_module": [
                     "str",
                     "bool",
                     "Optional[str]",
+                    "Dict[str,str]",
                     "None",
-                    "Dict[str, str]",
-                    "dict[str, str]",
                     "List[Optional[str]]",
-                    "list[typing.Optional[str]]",
-                    "Optional[Callable[..., Any]]",
-                    "typing.Callable[..., typing.Any]"
+                    "Optional[Callable[...,Any]]",
+                    "Callable[...,Any]"
                 ]
             }
         }
@@ -3284,29 +3444,29 @@
             ],
             "arguments": {
                 "dockerfolder": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
+                    "TextIO",
                     "Optional[str]",
                     "str",
-                    "TextIO",
-                    "None",
-                    "typing.TextIO"
+                    "None"
                 ],
                 "push": [
-                    "list[str]",
                     "List[str]",
                     "str",
-                    "typing.Callable[str, str]",
+                    "Callable[str,str]",
                     "bool",
-                    "Callable[[str], str]",
-                    "typing.Mapping",
+                    "Callable[[str],str]",
+                    "Tuple[str]",
+                    "Mapping",
                     "cmk.gui.plugins.visuals.utils.Filter",
-                    "tuple[str]",
-                    "Mapping[str, str]",
-                    "Tuple[str]"
+                    "Mapping[str,str]"
                 ],
                 "tag": [
-                    "_T2"
+                    "str",
+                    "Dict",
+                    "Dict[str,list[bytes]]",
+                    "Dict[str,List[bytes]]",
+                    "rads.config.asSource"
                 ]
             }
         },
@@ -3319,13 +3479,12 @@
             "arguments": {
                 "dockerfolder": [
                     "bool",
-                    "typing.Callable[str, typing.Any]",
-                    "Exception",
-                    "Callable[[str], Any]",
-                    "str",
-                    "typing.Mapping",
                     "Mapping",
-                    "Mapping[str, Any]"
+                    "Callable[str,Any]",
+                    "Exception",
+                    "Callable[[str],Any]",
+                    "str",
+                    "Mapping[str,Any]"
                 ],
                 "cache_dir": [
                     "None",
@@ -3340,7 +3499,11 @@
                     "Mapping"
                 ],
                 "tag": [
-                    "_T3"
+                    "str",
+                    "None",
+                    "cmk.utils.type_defs.SectionName",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         }
@@ -3405,7 +3568,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TProvisionedResource"
+                    "_TProvisionedResource@@ProvisionedResource@@"
                 ]
             }
         },
@@ -3425,7 +3588,7 @@
                 ],
                 "exc_tb": [
                     "Optional[Type[BaseException]]",
-                    "typing.Type",
+                    "Type",
                     "str",
                     "BaseException",
                     "None",
@@ -3450,7 +3613,6 @@
             "name": "load",
             "location": 68,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3463,7 +3625,6 @@
             "name": "save",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3474,7 +3635,6 @@
             "name": "delete",
             "location": 76,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3503,25 +3663,23 @@
                 ],
                 "cache_dir": [
                     "str",
+                    "Dict[str,float]",
                     "None",
                     "Optional[str]",
                     "bool",
-                    "dict[str, float]",
-                    "Dict[str, float]",
                     "Optional[bool]",
-                    "typing.Callable[str, typing.Any]",
-                    "Optional[Callable[[str], Any]]"
+                    "Callable[str,Any]",
+                    "Optional[Callable[[str],Any]]"
                 ],
                 "name": [
                     "str",
+                    "Dict[str,float]",
                     "None",
                     "Optional[str]",
                     "bool",
-                    "dict[str, float]",
-                    "Dict[str, float]",
                     "Optional[bool]",
-                    "typing.Callable[str, typing.Any]",
-                    "Optional[Callable[[str], Any]]"
+                    "Callable[str,Any]",
+                    "Optional[Callable[[str],Any]]"
                 ]
             }
         },
@@ -3537,15 +3695,15 @@
                 ],
                 "cache_dir": [
                     "str",
-                    "typing.Callable[str, None]",
+                    "Callable[str,None]",
                     "pathlib.Path",
-                    "Callable[[str], None]"
+                    "Callable[[str],None]"
                 ],
                 "name": [
                     "str",
-                    "typing.Callable[str, None]",
+                    "Callable[str,None]",
                     "pathlib.Path",
-                    "Callable[[str], None]"
+                    "Callable[[str],None]"
                 ]
             }
         },
@@ -3650,22 +3808,18 @@
             ],
             "arguments": {
                 "dct": [
-                    "dict[str, typing.Any]",
-                    "dict[, ]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "str",
-                    "Dict[str, Any]",
                     "Sequence[str]",
-                    "bool",
-                    "dict"
+                    "bool"
                 ],
                 "keys": [
                     "str",
-                    "dict[str, typing.Any]",
-                    "dict[, ]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "Sequence[str]",
-                    "bool",
-                    "dict"
+                    "bool"
                 ]
             }
         },
@@ -3677,12 +3831,15 @@
             ],
             "arguments": {
                 "it": [
-                    "list[str]",
-                    "int",
-                    "List[str]"
+                    "List[str]",
+                    "int"
                 ],
                 "level": [
-                    "_T1"
+                    "int",
+                    "Iterable[T]",
+                    "Dict",
+                    "Dict[Hashable,Any]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -3694,13 +3851,11 @@
             ],
             "arguments": {
                 "list_": [
-                    "list[T]",
                     "List[T]",
-                    "list[dict[str, str]]",
+                    "Callable",
+                    "List[dict[str,str]]",
                     "datetime.datetime",
-                    "typing.Callable[, ]",
-                    "List[Dict[str, str]]",
-                    "Callable"
+                    "List[Dict[str,str]]"
                 ]
             }
         },
@@ -3713,9 +3868,8 @@
             "arguments": {
                 "itera": [
                     "int",
-                    "float",
                     "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "float"
                 ]
             }
         },
@@ -3738,9 +3892,8 @@
                 ],
                 "max_": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -3812,521 +3965,18 @@
                     "bool"
                 ],
                 "custom_alphabet": [
-                    "typing.Text",
+                    "Text",
                     "bool",
                     "Literal",
                     "str",
-                    "dict"
+                    "Dict"
                 ]
             }
         }
     },
-    "EDGAR-research-master/stubs/chardet.py": {
-        "detect": {
-            "name": "detect",
-            "location": 3,
-            "return": [],
-            "arguments": {
-                "rawdata": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/distributed.py": {
-        "Future.result": {
-            "name": "result",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "LocalCluster.__init__": {
-            "name": "__init__",
-            "location": 13,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Client.__init__": {
-            "name": "__init__",
-            "location": 19,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Client.wait_for_workers": {
-            "name": "wait_for_workers",
-            "location": 22,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "n_workers": []
-            }
-        },
-        "Client.gather": {
-            "name": "gather",
-            "location": 25,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "futures": []
-            }
-        },
-        "Client.map": {
-            "name": "map",
-            "location": 28,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "func": [],
-                "lst": []
-            }
-        },
-        "Client.compute": {
-            "name": "compute",
-            "location": 31,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "obj": [],
-                "sync": []
-            }
-        },
-        "Client.upload_file": {
-            "name": "upload_file",
-            "location": 34,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "path": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/msgpack.py": {
-        "dump": {
-            "name": "dump",
-            "location": 3,
-            "return": [],
-            "arguments": {
-                "obj": [],
-                "f": [],
-                "use_bin_type": [],
-                "default": [],
-                "use_list": [],
-                "strict_types": []
-            }
-        },
-        "dumps": {
-            "name": "dumps",
-            "location": 12,
-            "return": [],
-            "arguments": {
-                "obj": [],
-                "use_bin_type": [],
-                "default": [],
-                "use_list": [],
-                "strict_types": []
-            }
-        },
-        "loads": {
-            "name": "loads",
-            "location": 20,
-            "return": [],
-            "arguments": {
-                "b": [],
-                "raw": [],
-                "object_hook": [],
-                "use_list": []
-            }
-        },
-        "load": {
-            "name": "load",
-            "location": 27,
-            "return": [],
-            "arguments": {
-                "f": [],
-                "raw": [],
-                "object_hook": [],
-                "use_list": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/psutil.py": {
-        "Process.__init__": {
-            "name": "__init__",
-            "location": 2,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "pid": []
-            }
-        },
-        "Process.memory_info": {
-            "name": "memory_info",
-            "location": 4,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/pytest.py": {
-        "raises": {
-            "name": "raises",
-            "location": 4,
-            "return": [],
-            "arguments": {
-                "exc": []
-            }
-        },
-        "Mark.slow": {
-            "name": "slow",
-            "location": 9,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "func": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/spacy.py": {
-        "load": {
-            "name": "load",
-            "location": 4,
-            "return": [],
-            "arguments": {
-                "lang": []
-            }
-        },
-        "Nlp.__init__": {
-            "name": "__init__",
-            "location": 8,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "model": []
-            }
-        },
-        "Nlp.__call__": {
-            "name": "__call__",
-            "location": 10,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "input_doc": []
-            }
-        },
-        "Doc.__iter__": {
-            "name": "__iter__",
-            "location": 14,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Span.__iter__": {
-            "name": "__iter__",
-            "location": 20,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/dask/bag.py": {
-        "from_sequence": {
-            "name": "from_sequence",
-            "location": 44,
-            "return": [],
-            "arguments": {
-                "sequence": [],
-                "npartitions": []
-            }
-        },
-        "concat": {
-            "name": "concat",
-            "location": 47,
-            "return": [],
-            "arguments": {
-                "bags": []
-            }
-        },
-        "zip": {
-            "name": "zip",
-            "location": 52,
-            "return": [],
-            "arguments": {
-                "bag1": [],
-                "bag2": []
-            }
-        },
-        "map": {
-            "name": "map",
-            "location": 55,
-            "return": [],
-            "arguments": {
-                "func": [],
-                "bag1": [],
-                "bag2": []
-            }
-        },
-        "range": {
-            "name": "range",
-            "location": 58,
-            "return": [],
-            "arguments": {
-                "a": [],
-                "b": [],
-                "step": [],
-                "npartitions": []
-            }
-        },
-        "Bag.__init__": {
-            "name": "__init__",
-            "location": 17,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "dask": [],
-                "name": [],
-                "npartitions": []
-            }
-        },
-        "Bag.map": {
-            "name": "map",
-            "location": 22,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "f": []
-            }
-        },
-        "Bag.compute": {
-            "name": "compute",
-            "location": 25,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Bag.take": {
-            "name": "take",
-            "location": 28,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "n": [],
-                "compute": [],
-                "npartitions": []
-            }
-        },
-        "Bag.map_partitions": {
-            "name": "map_partitions",
-            "location": 31,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "func": []
-            }
-        },
-        "Bag.filter": {
-            "name": "filter",
-            "location": 34,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "pred": []
-            }
-        },
-        "Bag.reduction": {
-            "name": "reduction",
-            "location": 37,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "perpartition": [],
-                "aggregate": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/dask/config.py": {
-        "set": {
-            "name": "set",
-            "location": 1,
-            "return": [],
-            "arguments": {
-                "scheduler": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/dask/delayed.py": {
-        "delayed": {
-            "name": "delayed",
-            "location": 14,
-            "return": [],
-            "arguments": {
-                "func": []
-            }
-        },
-        "Delayed.compute": {
-            "name": "compute",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/dask/distributed.py": {},
-    "EDGAR-research-master/stubs/dask/highlevelgraph.py": {
-        "HighLevelGraph.from_collections": {
-            "name": "from_collections",
-            "location": 15,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "name": [],
-                "dsk": [],
-                "dependencies": []
-            }
-        }
-    },
-    "EDGAR-research-master/stubs/dask/__init__.py": {},
     "EDGAR-research-master/stubs/google/__init__.py": {},
-    "EDGAR-research-master/stubs/google/cloud/storage.py": {
-        "Client.bucket": {
-            "name": "bucket",
-            "location": 5,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "bucket_name": []
-            }
-        },
-        "Bucket.blob": {
-            "name": "blob",
-            "location": 10,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "key": []
-            }
-        },
-        "Bucket.list_blobs": {
-            "name": "list_blobs",
-            "location": 12,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "prefix": []
-            }
-        },
-        "Blob.upload_from_file": {
-            "name": "upload_from_file",
-            "location": 18,
-            "return": [],
-            "arguments": {
-                "self": [],
-                "file": [],
-                "rewind": []
-            }
-        },
-        "Blob.download_as_string": {
-            "name": "download_as_string",
-            "location": 20,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Blob.exists": {
-            "name": "exists",
-            "location": 22,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Blob.delete": {
-            "name": "delete",
-            "location": 24,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
     "EDGAR-research-master/stubs/google/cloud/__init__.py": {},
-    "EDGAR-research-master/stubs/matplotlib/pyplot.py": {
-        "figure": {
-            "name": "figure",
-            "location": 3,
-            "return": [],
-            "arguments": {}
-        },
-        "close": {
-            "name": "close",
-            "location": 6,
-            "return": [],
-            "arguments": {
-                "fig": []
-            }
-        },
-        "Figure.gca": {
-            "name": "gca",
-            "location": 10,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Figure.savefig": {
-            "name": "savefig",
-            "location": 12,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Axes.plot": {
-            "name": "plot",
-            "location": 17,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Axes.set_xlabel": {
-            "name": "set_xlabel",
-            "location": 19,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        },
-        "Axes.set_ylabel": {
-            "name": "set_ylabel",
-            "location": 21,
-            "return": [],
-            "arguments": {
-                "self": []
-            }
-        }
-    },
     "EDGAR-research-master/stubs/matplotlib/__init__.py": {},
-    "EDGAR-research-master/stubs/nltk/util.py": {
-        "ngrams": {
-            "name": "ngrams",
-            "location": 7,
-            "return": [],
-            "arguments": {
-                "seq": [],
-                "num": []
-            }
-        }
-    },
     "EDGAR-research-master/stubs/nltk/__init__.py": {},
     "EDGAR-research-master/tests/test_bag_store.py": {
         "test_bag_store": {
@@ -4341,29 +3991,25 @@
             "name": "__getitem__",
             "location": 19,
             "return": [
-                "Dict[str, Any]",
-                "typing.Callable[, ]",
+                "Dict[str,Any]",
+                "Callable",
                 "str",
-                "typing.Iterable[T]",
-                "Callable[[str], T]",
+                "Iterable[T]",
+                "Callable[[str],T]",
                 "int"
             ],
             "arguments": {
                 "cls": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ],
                 "item": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "int",
-                    "typing.Iterable[T]",
                     "Iterable[T]",
-                    "Callable[[None], \"Expr\"]"
+                    "int",
+                    "Callable[[None],Expr]"
                 ]
             }
         },

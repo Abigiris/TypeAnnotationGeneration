@@ -189,9 +189,7 @@
                 "None"
             ],
             "arguments": {
-                "data": [
-                    "list"
-                ]
+                "data": []
             }
         },
         "ETLBase.job": {
@@ -208,7 +206,7 @@
             "name": "fetch_all_tickers_from_database",
             "location": 7,
             "return": [
-                "List[tuple]"
+                "Any"
             ],
             "arguments": {}
         },
@@ -216,19 +214,17 @@
             "name": "fetch_isins_not_updated_financials",
             "location": 14,
             "return": [
-                "List[tuple]"
+                "Any"
             ],
             "arguments": {
-                "Model": [
-                    "Union[(utils.models.balance_sheet_statements.BalanceSheetStatement, utils.models.cash_flow_statements.CashFlowStatement, utils.models.income_statements.IncomeStatement)]"
-                ]
+                "Model": []
             }
         },
         "screened_stocks": {
             "name": "screened_stocks",
             "location": 24,
             "return": [
-                "List[dict]"
+                "list"
             ],
             "arguments": {}
         }
@@ -238,7 +234,7 @@
             "name": "fetch_yahoo_responses",
             "location": 10,
             "return": [
-                "List[tuple]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {}
         },
@@ -246,18 +242,12 @@
             "name": "traverse_statement_history",
             "location": 35,
             "return": [
-                "List[sqlalchemy.orm.decl_api._DeclarativeBase]"
+                "list"
             ],
             "arguments": {
-                "Model": [
-                    "Union[(utils.models.balance_sheet_statements.BalanceSheetStatement, utils.models.cash_flow_statements.CashFlowStatement, utils.models.income_statements.IncomeStatement)]"
-                ],
-                "isin": [
-                    "str"
-                ],
-                "statements": [
-                    "List[dict]"
-                ]
+                "Model": [],
+                "isin": [],
+                "statements": []
             }
         },
         "StockFinancialStatementsETL.job": {
@@ -274,24 +264,20 @@
             "name": "get_stock_info_soup_table",
             "location": 19,
             "return": [
-                "bs.element.Tag"
+                "Optional[Union[(bs.element.NavigableString, bs.element.Tag)]]"
             ],
             "arguments": {
-                "response": [
-                    "requests.models.Response"
-                ]
+                "response": []
             }
         },
         "create_data_from_soup": {
             "name": "create_data_from_soup",
             "location": 25,
             "return": [
-                "List[sqlalchemy.orm.decl_api._DeclarativeBase]"
+                "List[utils.models.stocks.Stock]"
             ],
             "arguments": {
-                "soup": [
-                    "bs.element.Tag"
-                ]
+                "soup": []
             }
         },
         "StockInfoETL.job": {
@@ -308,7 +294,7 @@
             "name": "create_database_records",
             "location": 9,
             "return": [
-                "List[sqlalchemy.orm.decl_api._DeclarativeBase]"
+                "List[utils.models.prices.Price]"
             ],
             "arguments": {}
         },
@@ -329,39 +315,29 @@
                 "Any"
             ],
             "arguments": {
-                "dict_": [
-                    "dict"
-                ]
+                "dict_": []
             }
         },
         "make_yahoo_request": {
             "name": "make_yahoo_request",
             "location": 32,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
-                "yahoo_ticker": [
-                    "str"
-                ],
-                "params": [
-                    "dict"
-                ]
+                "yahoo_ticker": [],
+                "params": []
             }
         },
         "fetch_yahoo_data": {
             "name": "fetch_yahoo_data",
             "location": 38,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
-                "yahoo_ticker": [
-                    "str"
-                ],
-                "modules": [
-                    "str"
-                ]
+                "yahoo_ticker": [],
+                "modules": []
             }
         },
         "union_of_list_elements": {
@@ -389,16 +365,14 @@
             "name": "process_response",
             "location": 39,
             "return": [
-                "sqlalchemy.orm.decl_api._DeclarativeBase"
+                "_TBalanceSheetStatement@@BalanceSheetStatement@@"
             ],
             "arguments": {
-                "cls": [],
-                "response": [
-                    "dict"
+                "cls": [
+                    "Type[_TBalanceSheetStatement]"
                 ],
-                "isin": [
-                    "str"
-                ]
+                "response": [],
+                "isin": []
             }
         }
     },
@@ -408,16 +382,14 @@
             "name": "process_response",
             "location": 32,
             "return": [
-                "sqlalchemy.orm.decl_api._DeclarativeBase"
+                "_TCashFlowStatement@@CashFlowStatement@@"
             ],
             "arguments": {
-                "cls": [],
-                "response": [
-                    "dict"
+                "cls": [
+                    "Type[_TCashFlowStatement]"
                 ],
-                "isin": [
-                    "str"
-                ]
+                "response": [],
+                "isin": []
             }
         }
     },
@@ -426,16 +398,14 @@
             "name": "process_response",
             "location": 38,
             "return": [
-                "sqlalchemy.orm.decl_api._DeclarativeBase"
+                "_TIncomeStatement@@IncomeStatement@@"
             ],
             "arguments": {
-                "cls": [],
-                "response": [
-                    "dict"
+                "cls": [
+                    "Type[_TIncomeStatement]"
                 ],
-                "isin": [
-                    "str"
-                ]
+                "response": [],
+                "isin": []
             }
         }
     },
@@ -444,16 +414,14 @@
             "name": "process_response",
             "location": 25,
             "return": [
-                "sqlalchemy.orm.decl_api._DeclarativeBase"
+                "_TPrice@@Price@@"
             ],
             "arguments": {
-                "cls": [],
-                "response": [
-                    "dict"
+                "cls": [
+                    "Type[_TPrice]"
                 ],
-                "isin": [
-                    "str"
-                ]
+                "response": [],
+                "isin": []
             }
         }
     },
@@ -462,25 +430,23 @@
             "name": "parse_yahoo_ticker_from_isin",
             "location": 19,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "record": [
-                    "Dict[(str, str)]"
-                ]
+                "record": []
             }
         },
         "Stock.process_response": {
             "name": "process_response",
             "location": 45,
             "return": [
-                "sqlalchemy.orm.decl_api._DeclarativeBase"
+                "_TStock@@Stock@@"
             ],
             "arguments": {
-                "cls": [],
-                "response": [
-                    "list"
-                ]
+                "cls": [
+                    "Type[_TStock]"
+                ],
+                "response": []
             }
         }
     },
@@ -551,25 +517,19 @@
                 "None"
             ],
             "arguments": {
-                "job_func": [
-                    "Callable"
-                ]
+                "job_func": []
             }
         },
         "SafeScheduler.__init__": {
             "name": "__init__",
             "location": 23,
             "return": [
-                "None"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "reschedule_on_failure": [
-                    "bool"
-                ],
-                "logger": [
-                    "logging.Logger"
-                ]
+                "reschedule_on_failure": [],
+                "logger": []
             }
         },
         "SafeScheduler._run_job": {
@@ -580,9 +540,7 @@
             ],
             "arguments": {
                 "self": [],
-                "job": [
-                    "Callable"
-                ]
+                "job": []
             }
         }
     },

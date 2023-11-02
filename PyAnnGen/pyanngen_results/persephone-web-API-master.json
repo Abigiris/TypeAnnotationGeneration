@@ -6,7 +6,7 @@
             "return": [
                 "str",
                 "int",
-                "Dict[str, str]"
+                "Dict[str,str]"
             ],
             "arguments": {}
         },
@@ -24,9 +24,7 @@
                     "Exception",
                     "str",
                     "List[str]",
-                    "list[str]",
-                    "tuple",
-                    "tuple[]"
+                    "Tuple"
                 ]
             }
         },
@@ -52,7 +50,9 @@
         "create_app": {
             "name": "create_app",
             "location": 15,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "config_object": [
                     "dict",
@@ -100,7 +100,9 @@
         "get_or_create": {
             "name": "get_or_create",
             "location": 17,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "session": [],
                 "model": []
@@ -212,7 +214,7 @@
             "name": "error_information",
             "location": 5,
             "return": [
-                "Tuple[(dict, int)]"
+                "Tuple[(Dict[(str, Any)], int)]"
             ],
             "arguments": {}
         }
@@ -231,11 +233,9 @@
                 "unicode_data": [
                     "str",
                     "int",
+                    "Dict",
                     "bytes",
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "bool"
                 ]
             }
@@ -252,8 +252,7 @@
                 "flask_app": [
                     "str",
                     "bool",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "base_upload_path": [
                     "str",
@@ -272,13 +271,23 @@
             ],
             "arguments": {
                 "filepath": [
-                    "pathlib.Path"
+                    "str",
+                    "Optional[pathlib.Path]",
+                    "IO[bytes]",
+                    "Dict[str, str]"
                 ],
                 "data": [
-                    "bytes"
+                    "str",
+                    "IO",
+                    "bytes",
+                    "Callable[[str], None]",
+                    "Optional[str]"
                 ],
                 "base_path": [
-                    "pathlib.Path"
+                    "str",
+                    "int",
+                    "pathlib.Path",
+                    "BinaryIO"
                 ]
             }
         },
@@ -376,12 +385,9 @@
                     "str"
                 ],
                 "flask_upload_config": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "dict",
-                    "dict[, ]",
-                    "List[str]",
-                    "list[str]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "List[str]"
                 ]
             }
         },
@@ -389,7 +395,7 @@
             "name": "utterances",
             "location": 35,
             "return": [
-                "Tuple[(dict, int)]"
+                "Tuple[(Dict[(str, Any)], int)]"
             ],
             "arguments": {
                 "utterancesFile": [
@@ -410,7 +416,8 @@
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "bool",
+                    "List[str]"
                 ]
             }
         },
@@ -418,14 +425,18 @@
             "name": "create_prefixes",
             "location": 32,
             "return": [
-                "set"
+                "Set[str]"
             ],
             "arguments": {
                 "audio_uploads_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Callable[[str], None]"
                 ],
                 "transcription_uploads_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Callable[[str], None]"
                 ],
                 "prefix_information": [
                     "str",
@@ -435,10 +446,15 @@
                     "Tuple[str]"
                 ],
                 "base_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Callable[[str], None]",
+                    "path.Path",
+                    "pathlib.PurePath"
                 ],
                 "prefix_name": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -446,11 +462,12 @@
             "name": "labels_set",
             "location": 76,
             "return": [
-                "Set[persephone_api.db_models.Label]"
+                "set"
             ],
             "arguments": {
                 "corpus": [
-                    "persephone_api.db_models.DBcorpus"
+                    "int",
+                    "Optional[int]"
                 ]
             }
         },
@@ -462,16 +479,21 @@
             ],
             "arguments": {
                 "audio_uploads_path": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "transcription_uploads_path": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "corpus": [
-                    "persephone_api.db_models.DBcorpus"
+                    "str",
+                    "pathlib.Path"
                 ],
                 "corpus_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "pathlib.PurePath"
                 ]
             }
         },
@@ -479,11 +501,15 @@
             "name": "fix_corpus_format",
             "location": 119,
             "return": [
-                "_T0"
+                "str"
             ],
             "arguments": {
                 "corpus": [
-                    "_T0"
+                    "Optional[str]",
+                    "str",
+                    "Dict[str, Any]",
+                    "logging.LogRecord",
+                    "List[str]"
                 ]
             }
         },
@@ -567,14 +593,14 @@
                     "int",
                     "bool",
                     "bytes",
-                    "Union[int, str, None]",
+                    "Union[int,str,None]",
                     "List[str]"
                 ],
                 "pageSize": [
                     "int",
                     "bool",
                     "bytes",
-                    "Union[int, str, None]",
+                    "Union[int,str,None]",
                     "List[str]"
                 ]
             }
@@ -605,7 +631,12 @@
             ],
             "arguments": {
                 "model_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,Any]",
+                    "Tuple[Union[str,None,str]]",
+                    "Tuple[Optional[str],str]",
+                    "Union[int,str]"
                 ]
             }
         },
@@ -617,7 +648,10 @@
             ],
             "arguments": {
                 "model_id": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "model_object": [
                     "int",
@@ -635,7 +669,10 @@
             ],
             "arguments": {
                 "num_train": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool",
+                    "Tuple[int,int]"
                 ]
             }
         },
@@ -648,13 +685,26 @@
             ],
             "arguments": {
                 "model_db": [
-                    "persephone_api.db_models.TranscriptionModel"
+                    "Optional[Callable[[List,bool],None]]",
+                    "Callable[List,bool,None]",
+                    "Optional[TextIO]",
+                    "None",
+                    "TextIO"
                 ],
                 "corpus_storage_path": [
-                    "pathlib.Path"
+                    "str",
+                    "Set[str]",
+                    "Optional[str]",
+                    "None",
+                    "Dict[str,Any]",
+                    "Union[pathlib.Path,str,None]",
+                    "pathlib.Path",
+                    "cerulean.Path"
                 ],
                 "models_storage_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Path"
                 ]
             }
         },
@@ -667,14 +717,14 @@
             "arguments": {
                 "pageNumber": [
                     "int",
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
                     "bool",
                     "Optional[float]",
                     "List[str]"
                 ],
                 "pageSize": [
                     "int",
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
                     "bool",
                     "Optional[float]",
                     "List[str]"
@@ -737,7 +787,7 @@
                     "str",
                     "int",
                     "None",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "Optional[str]"
                 ]
             }
@@ -752,9 +802,12 @@
             ],
             "arguments": {
                 "filepath": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "List[str]"
                 ],
                 "data": [
+                    "int",
                     "str"
                 ]
             }
@@ -848,14 +901,14 @@
             "arguments": {
                 "pageNumber": [
                     "int",
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
                     "bool",
                     "Optional[float]",
                     "List[str]"
                 ],
                 "pageSize": [
                     "int",
-                    "Tuple[int, int]",
+                    "Tuple[int,int]",
                     "bool",
                     "Optional[float]",
                     "List[str]"
@@ -1036,8 +1089,7 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]"
                 ],
                 "client": []
             }
@@ -1050,9 +1102,8 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ],
                 "client": []
             }
@@ -1065,9 +1116,8 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ],
                 "client": []
             }
@@ -1080,9 +1130,8 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ],
                 "client": []
             }
@@ -1097,8 +1146,7 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]"
                 ],
                 "client": []
             }
@@ -1111,8 +1159,7 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]"
                 ],
                 "client": []
             }
@@ -1125,8 +1172,7 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]"
                 ],
                 "client": []
             }
@@ -1142,10 +1188,9 @@
             "arguments": {
                 "init_database": [],
                 "client": [
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]",
-                    "dict",
-                    "dict[, ]"
+                    "List[Dict[str,Any]]",
+                    "Dict",
+                    "List[dict[str,Any]]"
                 ],
                 "upload_audio": [
                     "bytes"
@@ -1174,10 +1219,9 @@
                     "str"
                 ],
                 "client": [
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]",
-                    "dict",
-                    "dict[, ]"
+                    "List[Dict[str,Any]]",
+                    "Dict",
+                    "List[dict[str,Any]]"
                 ],
                 "upload_audio": [
                     "bytes"
@@ -1207,12 +1251,10 @@
                 "decoded_response_data": [
                     "bool",
                     "Optional[bool]",
+                    "Dict",
                     "None",
-                    "dict",
-                    "dict[, ]",
-                    "Iterable",
-                    "dict[str, dict[, ]]",
-                    "Dict[str, dict]"
+                    "Dict[str,dict]",
+                    "Iterable"
                 ]
             }
         },
@@ -1224,9 +1266,8 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ],
                 "client": []
             }
@@ -1302,8 +1343,7 @@
                     "bool"
                 ],
                 "client": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "create_corpus": [
                     "int"
@@ -1321,9 +1361,8 @@
                     "bool"
                 ],
                 "client": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ],
                 "create_corpus": [
                     "int"
@@ -1341,8 +1380,7 @@
                     "bool"
                 ],
                 "client": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "create_corpus": [
                     "int"
@@ -1360,9 +1398,8 @@
                     "bool"
                 ],
                 "client": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ],
                 "create_corpus": [
                     "int"
@@ -1380,8 +1417,7 @@
                     "bool"
                 ],
                 "client": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "create_corpus": [
                     "int"
@@ -1396,9 +1432,8 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ],
                 "client": []
             }
@@ -1445,9 +1480,8 @@
             ],
             "arguments": {
                 "init_database": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ],
                 "client": [
                     "dict"

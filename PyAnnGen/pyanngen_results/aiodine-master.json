@@ -5,11 +5,12 @@
             "name": "wrap_async",
             "location": 21,
             "return": [
-                "Callable[(..., Awaitable)]"
+                "Callable"
             ],
             "arguments": {
                 "func": [
-                    "Callable"
+                    "Callable",
+                    "Callable[...,None]"
                 ]
             }
         },
@@ -17,11 +18,16 @@
             "name": "wrap_generator_async",
             "location": 29,
             "return": [
-                "Callable[(..., asyncgenerator)]"
+                "Callable"
             ],
             "arguments": {
                 "gen": [
-                    "generator"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -36,10 +42,18 @@
             "arguments": {
                 "self": [],
                 "store": [
-                    "aiodine.store.Store"
+                    "bool",
+                    "str",
+                    "int"
                 ],
                 "consumer_function": [
-                    "Union[(functools.partial, Callable)]"
+                    "Iterable[T]",
+                    "Callable[[T],Any]",
+                    "Callable[T,Any]",
+                    "Optional[T]",
+                    "None",
+                    "Optional[int]",
+                    "int"
                 ]
             }
         },
@@ -47,7 +61,10 @@
             "name": "resolve",
             "location": 77,
             "return": [
-                "ResolvedProviders"
+                "ResolvedProviders",
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -65,10 +82,14 @@
             "arguments": {
                 "self": [],
                 "first": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "second": [
-                    "str"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -81,7 +102,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -95,33 +118,21 @@
             ],
             "arguments": {
                 "self": [],
-                "func": [
-                    "Callable"
-                ],
-                "name": [
-                    "str"
-                ],
-                "scope": [
-                    "str"
-                ],
-                "lazy": [
-                    "bool"
-                ],
-                "autouse": [
-                    "bool"
-                ]
+                "func": [],
+                "name": [],
+                "scope": [],
+                "lazy": [],
+                "autouse": []
             }
         },
         "Provider.create": {
             "name": "create",
             "location": 71,
             "return": [
-                "Provider"
+                "Union[(FunctionProvider, SessionProvider)]"
             ],
             "arguments": {
-                "cls": [
-                    "Type[_TProvider]"
-                ],
+                "cls": [],
                 "func": []
             }
         },
@@ -129,7 +140,7 @@
             "name": "__call__",
             "location": 80,
             "return": [
-                "Awaitable"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
@@ -140,7 +151,7 @@
             "name": "__call__",
             "location": 90,
             "return": [
-                "Awaitable"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -161,7 +172,7 @@
             "name": "__call__",
             "location": 152,
             "return": [
-                "Awaitable"
+                "coroutine"
             ],
             "arguments": {
                 "self": [],
@@ -176,15 +187,15 @@
             ],
             "arguments": {
                 "self": [],
-                "store": [
-                    "aiodine.store.Store"
-                ]
+                "store": []
             }
         },
         "ContextProvider._build_provider": {
             "name": "_build_provider",
             "location": 177,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": [],
                 "name": []
@@ -194,7 +205,7 @@
             "name": "_set",
             "location": 185,
             "return": [
-                "List[contextvars.Token]"
+                "List[contextvars.Token[None]]"
             ],
             "arguments": {
                 "self": []
@@ -232,7 +243,12 @@
             "arguments": {
                 "self": [],
                 "store": [
-                    "aiodine.store.Store"
+                    "str",
+                    "float",
+                    "Dict[str,T]",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         }
@@ -242,13 +258,12 @@
             "name": "__init__",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "providers_module": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "int"
@@ -256,15 +271,14 @@
                 "scope_aliases": [
                     "Optional[str]",
                     "None",
+                    "Callable",
                     "Optional[List[str]]",
                     "str",
-                    "Callable",
-                    "list[str]",
+                    "List[str]",
                     "Optional[bool]",
-                    "typing.Callable[, ]",
-                    "Optional[Union[str, Any]]",
+                    "Optional[Union[str,Any]]",
                     "bool",
-                    "typing.Any"
+                    "Any"
                 ],
                 "default_scope": [
                     "str",
@@ -330,11 +344,8 @@
                 "func": [
                     "str",
                     "MutableMapping",
-                    "typing.MutableMapping",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -343,8 +354,8 @@
             "location": 75,
             "return": [
                 "None",
-                "Union[tuple, list]",
-                "Dict[str, Any]",
+                "Union[tuple,list]",
+                "Dict[str,Any]",
                 "str",
                 "Sequence[str]"
             ],
@@ -356,7 +367,6 @@
             "name": "discover",
             "location": 82,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -375,13 +385,13 @@
                     "str",
                     "None",
                     "Optional[Set[str]]",
-                    "set[str]"
+                    "Set[str]"
                 ],
                 "scope": [
                     "str",
                     "None",
                     "Optional[List[str]]",
-                    "list[str]"
+                    "List[str]"
                 ],
                 "name": [
                     "str",
@@ -406,17 +416,15 @@
             "name": "_add",
             "location": 127,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "prov": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "float",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -424,22 +432,20 @@
             "name": "_check_for_recursive_providers",
             "location": 136,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "name": [
                     "str",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "func": [
                     "str",
                     "Optional[str]",
                     "None",
                     "Type[T]",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -454,8 +460,8 @@
             "arguments": {
                 "self": [],
                 "consumer_function": [
-                    "Callable[[str], bool]",
-                    "typing.Callable[str, bool]"
+                    "Callable[[str],bool]",
+                    "Callable[str,bool]"
                 ]
             }
         },
@@ -475,18 +481,17 @@
             "name": "get_used_providers",
             "location": 157,
             "return": [
-                "list[Provider]",
+                "List[Provider]",
                 "str",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "int"
             ],
             "arguments": {
                 "self": [],
                 "func": [
                     "str",
-                    "bool",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -505,7 +510,6 @@
             "name": "freeze",
             "location": 171,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -516,7 +520,6 @@
             "name": "exit_freeze",
             "location": 176,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -528,12 +531,12 @@
             "location": 190,
             "return": [
                 "Session",
-                "dict",
+                "Dict",
                 "Exception",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
-                "Dict[str, Union[str, Set]]",
-                "Optional[Dict[str, Any]]"
+                "Dict[str,Union[str,Set]]",
+                "Optional[Dict[str,Any]]"
             ],
             "arguments": {
                 "self": []
@@ -567,21 +570,42 @@
             "arguments": {
                 "content": [
                     "str",
-                    "bool",
                     "List[str]",
-                    "list[str]"
+                    "bool"
                 ],
                 "match": [
-                    "Optional[Match]"
+                    "Optional[List[str]]",
+                    "Iterable[str]",
+                    "Optional[Dict[str, Any]]",
+                    "Optional[int]",
+                    "List[Tuple[int, int]]",
+                    "Optional[str]",
+                    "dict"
                 ],
                 "first_line": [
-                    "Callable"
+                    "Callable",
+                    "str",
+                    "Union[float,int]",
+                    "float",
+                    "Optional[str]",
+                    "int",
+                    "None"
                 ],
                 "second_line": [
-                    "Callable"
+                    "Callable",
+                    "str",
+                    "Union[float,int]",
+                    "float",
+                    "Optional[str]",
+                    "int",
+                    "None"
                 ],
                 "sep": [
-                    "str"
+                    "Text",
+                    "Callable",
+                    "str",
+                    "Union[float,int]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -593,10 +617,14 @@
             ],
             "arguments": {
                 "content": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "next_version": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -608,10 +636,19 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "bool"
                 ],
                 "next_version": [
-                    "str"
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "str",
+                    "IO[str]",
+                    "Callable",
+                    "None",
+                    "IO",
+                    "Optional[bytes]",
+                    "bytes"
                 ]
             }
         }
@@ -636,12 +673,12 @@
             "name": "play_sync",
             "location": 16,
             "return": [
-                "typing.Text",
-                "Dict[str, Any]",
-                "Dict[str, Dict[str, int]]",
+                "Text",
+                "Dict[str,Any]",
+                "Dict[str,Dict[str,int]]",
                 "str",
                 "Optional[int]",
-                "set"
+                "Set"
             ],
             "arguments": {
                 "pitch": [
@@ -660,7 +697,7 @@
             "name": "gra",
             "location": 25,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -671,7 +708,7 @@
             "name": "arg",
             "location": 39,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -751,7 +788,6 @@
             "name": "not_async",
             "location": 144,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -778,7 +814,6 @@
             "name": "test_at_provider_returns_a_provider_object",
             "location": 4,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -791,7 +826,6 @@
             "name": "example",
             "location": 6,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -802,15 +836,13 @@
             "name": "providers_module",
             "location": 9,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "store": [
                     "bool",
-                    "list[str]",
                     "List[str]",
-                    "typing.Type",
+                    "Type",
                     "Iterable[str]",
                     "Type[BaseException]"
                 ]
@@ -820,14 +852,12 @@
             "name": "test_default_providers_module",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "store": [
-                    "dict[, ]",
-                    "aiodine.Store",
-                    "dict"
+                    "Dict",
+                    "aiodine.Store"
                 ]
             }
         },
@@ -835,7 +865,6 @@
             "name": "test_if_no_provider_module_then_ok",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -850,7 +879,7 @@
             "name": "example",
             "location": 14,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -863,7 +892,6 @@
             "name": "notes_module",
             "location": 8,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -871,10 +899,9 @@
                     "str",
                     "int",
                     "aiodine.Store",
-                    "dict[, ]",
+                    "Dict",
                     "Literal[True]",
-                    "Literal[False]",
-                    "dict"
+                    "Literal[False]"
                 ]
             }
         },
@@ -882,7 +909,6 @@
             "name": "test_if_module_does_not_exist_then_error",
             "location": 26,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -896,12 +922,12 @@
             "name": "pitch",
             "location": 11,
             "return": [
-                "typing.Text",
-                "Dict[str, Any]",
-                "Dict[str, Dict[str, int]]",
+                "Text",
+                "Dict[str,Any]",
+                "Dict[str,Dict[str,int]]",
                 "str",
                 "Optional[int]",
-                "set"
+                "Set"
             ],
             "arguments": {}
         }
@@ -945,7 +971,6 @@
             "name": "test_name_is_function_name_by_default",
             "location": 4,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -958,7 +983,6 @@
             "name": "test_if_name_given_then_used",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -979,7 +1003,6 @@
             "name": "example",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1040,8 +1063,8 @@
             "name": "a",
             "location": 48,
             "return": [
-                "typing.Text",
-                "Tuple[int, int]",
+                "Text",
+                "Tuple[int,int]",
                 "float"
             ],
             "arguments": {
@@ -1059,7 +1082,6 @@
             "name": "test_default_scope",
             "location": 15,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1069,8 +1091,7 @@
                 ],
                 "expected_scope": [
                     "str",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -1078,7 +1099,6 @@
             "name": "test_unknown_scope",
             "location": 77,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1148,7 +1168,6 @@
             "name": "items",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1212,9 +1231,8 @@
                     "bool",
                     "str",
                     "aiodine.Store",
-                    "typing.Callable[, ]",
-                    "int",
-                    "Callable"
+                    "Callable",
+                    "int"
                 ]
             }
         }

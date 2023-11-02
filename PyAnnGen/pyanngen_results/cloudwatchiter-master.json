@@ -37,7 +37,6 @@
             "name": "element_count",
             "location": 15,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -45,10 +44,10 @@
                     "str",
                     "bool",
                     "Optional[dict]",
-                    "dict[, ]",
-                    "Optional[Callable[[dict], None]]",
+                    "Dict",
+                    "Optional[Callable[[dict],None]]",
                     "None",
-                    "typing.Callable[dict[, ], None]"
+                    "Callable[dict,None]"
                 ]
             }
         },
@@ -61,7 +60,10 @@
             "arguments": {
                 "self": [],
                 "expression": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Dict[str,List[bytes]]",
+                    "Dict[str,list[bytes]]"
                 ]
             }
         },
@@ -69,14 +71,23 @@
             "name": "validate_type",
             "location": 31,
             "return": [
-                "str"
+                "str",
+                "Type",
+                "Mapping",
+                "bool",
+                "Dict[str,Any]",
+                "Iterator",
+                "int"
             ],
             "arguments": {
                 "cls": [
                     "builtins.type[AbstractExpression]"
                 ],
                 "typestr": [
-                    "str"
+                    "str",
+                    "Type",
+                    "Mapping[Any,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -84,14 +95,24 @@
             "name": "validate_elements",
             "location": 38,
             "return": [
-                "List[str]"
+                "List[str]",
+                "Dict[str, Any]",
+                "list",
+                "bool"
             ],
             "arguments": {
                 "cls": [
                     "builtins.type[AbstractExpression]"
                 ],
                 "elements": [
-                    "List[str]"
+                    "List[str]",
+                    "bytes",
+                    "list",
+                    "List[\"Issue\"]",
+                    "List[T]",
+                    "int",
+                    "bool",
+                    "List[OrderedDict]"
                 ]
             }
         },
@@ -99,15 +120,18 @@
             "name": "get_next",
             "location": 48,
             "return": [
-                "List[_datetime.datetime]"
+                "List[datetime.datetime]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "count": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -115,15 +139,18 @@
             "name": "get_previous",
             "location": 53,
             "return": [
-                "List[_datetime.datetime]"
+                "List[datetime.datetime]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "count": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         }
@@ -133,10 +160,7 @@
             "name": "cloudwatchiter",
             "location": 8,
             "return": [
-                "T",
-                "Cron",
-                "SupportsFloat",
-                "Rate"
+                "Union[(cloudwatchiter.cron.Cron, cloudwatchiter.rate.Rate)]"
             ],
             "arguments": {
                 "expression": [
@@ -150,15 +174,17 @@
             "name": "get_next",
             "location": 17,
             "return": [
-                "List[_datetime.datetime]"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "count": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -166,15 +192,17 @@
             "name": "get_previous",
             "location": 21,
             "return": [
-                "List[_datetime.datetime]"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "count": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -277,15 +305,22 @@
             "name": "get_next",
             "location": 30,
             "return": [
-                "List[_datetime.datetime]"
+                "Optional[str]",
+                "str",
+                "Dict[str, Dict[str, Any]]",
+                "Set[str]",
+                "bool",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "count": [
-                    "int"
+                    "int",
+                    "Optional[int]"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "Optional[int]"
                 ]
             }
         },
@@ -293,15 +328,24 @@
             "name": "get_previous",
             "location": 34,
             "return": [
-                "List[_datetime.datetime]"
+                "Optional[str]",
+                "str",
+                "Dict[str, Dict[str, Any]]",
+                "Set[str]",
+                "bool",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "count": [
-                    "int"
+                    "int",
+                    "Sequence[int]",
+                    "datetime.datetime"
                 ],
                 "start": [
-                    "int"
+                    "int",
+                    "Sequence[int]",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -309,17 +353,17 @@
             "name": "_get_range",
             "location": 38,
             "return": [
-                "List[_datetime.datetime]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "count": [
                     "int",
-                    "Union[float, int]",
+                    "Union[float,int]",
                     "str",
                     "float",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "start": [
                     "int",
@@ -331,8 +375,8 @@
                 "forward": [
                     "bool",
                     "int",
-                    "list",
-                    "set"
+                    "List",
+                    "Set"
                 ]
             }
         },
@@ -345,10 +389,15 @@
             "arguments": {
                 "self": [],
                 "quantity": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ],
                 "forward": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "T",
+                    "Dict"
                 ]
             }
         },
@@ -356,7 +405,8 @@
             "name": "_get_unit_floor",
             "location": 69,
             "return": [
-                "_datetime.datetime"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -415,11 +465,15 @@
             "name": "abc",
             "location": 6,
             "return": [
-                "_T0"
+                "str",
+                "Dict[str,Any]",
+                "bool",
+                "Callable[[str],T]"
             ],
             "arguments": {
                 "cls": [
-                    "_T0"
+                    "str",
+                    "bool"
                 ]
             }
         },

@@ -48,7 +48,7 @@
             "name": "get_clients",
             "location": 22,
             "return": [
-                "MutableMapping[(str, Type[chainedawslambda.base.Task])]"
+                "dict"
             ],
             "arguments": {}
         },
@@ -59,41 +59,31 @@
                 "None"
             ],
             "arguments": {
-                "client_name": [
-                    "str"
-                ],
-                "client_class": [
-                    "Type[chainedawslambda.base.Task]"
-                ]
+                "client_name": [],
+                "client_class": []
             }
         },
         "resolve_class": {
             "name": "resolve_class",
             "location": 30,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "task_class": [
-                    "Type[chainedawslambda.base.Task]"
-                ]
+                "task_class": []
             }
         },
         "schedule_task": {
             "name": "schedule_task",
             "location": 41,
             "return": [
-                "str"
+                "Union[(str, _T2)]"
             ],
             "arguments": {
-                "task_class": [
-                    "Type[chainedawslambda.base.Task[(dict, Any)]]"
-                ],
-                "state": [
-                    "dict"
-                ],
+                "task_class": [],
+                "state": [],
                 "task_id": [
-                    "str"
+                    "_T2@@"
                 ]
             }
         },
@@ -101,15 +91,11 @@
             "name": "parse_payload",
             "location": 84,
             "return": [
-                "Optional[Tuple[(Any, Any, Type[chainedawslambda.base.Task], Any)]]"
+                "Optional[Tuple[(Any, Any, Any, Any)]]"
             ],
             "arguments": {
-                "payload": [
-                    "dict"
-                ],
-                "expected_client_name": [
-                    "str"
-                ]
+                "payload": [],
+                "expected_client_name": []
             }
         },
         "dispatch": {
@@ -131,7 +117,7 @@
             "name": "run_one_unit",
             "location": 10,
             "return": [
-                "Optional[TaskResultType]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -149,7 +135,7 @@
             "name": "get_state",
             "location": 22,
             "return": [
-                "TaskStateType"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -159,7 +145,7 @@
             "name": "get_remaining_time_in_millis",
             "location": 34,
             "return": [
-                "int"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -169,17 +155,13 @@
             "name": "schedule_work",
             "location": 42,
             "return": [
-                "str"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
-                "task_class": [
-                    "Type[Task]"
-                ],
+                "task_class": [],
                 "state": [],
-                "new_task": [
-                    "bool"
-                ]
+                "new_task": []
             }
         },
         "Runtime.work_complete_callback": {
@@ -190,9 +172,7 @@
             ],
             "arguments": {
                 "self": [],
-                "result": [
-                    "RuntimeResultType"
-                ]
+                "result": []
             }
         }
     },
@@ -206,12 +186,8 @@
             ],
             "arguments": {
                 "self": [],
-                "chainedawslambda": [
-                    "chainedawslambda.base.Task[(RunnerStateType, RunnerResultType)]"
-                ],
-                "runtime": [
-                    "chainedawslambda.base.Runtime[(RunnerStateType, RunnerResultType)]"
-                ]
+                "chainedawslambda": [],
+                "runtime": []
             }
         },
         "Runner.run": {
@@ -234,43 +210,29 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "dict"
-                ],
-                "fetch_size": [
-                    "int"
-                ]
+                "state": [],
+                "fetch_size": []
             }
         },
         "S3CopyTask.setup_copy_task": {
             "name": "setup_copy_task",
             "location": 50,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "source_bucket": [
-                    "str"
-                ],
-                "source_key": [
-                    "str"
-                ],
-                "destination_bucket": [
-                    "str"
-                ],
-                "destination_key": [
-                    "str"
-                ],
-                "part_size_calculator": [
-                    "Callable[([int], int)]"
-                ]
+                "source_bucket": [],
+                "source_key": [],
+                "destination_bucket": [],
+                "destination_key": [],
+                "part_size_calculator": []
             }
         },
         "S3CopyTask.get_state": {
             "name": "get_state",
             "location": 86,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -288,7 +250,7 @@
             "name": "run_one_unit",
             "location": 105,
             "return": [
-                "Any"
+                "Optional[bool]"
             ],
             "arguments": {
                 "self": []
@@ -298,7 +260,7 @@
             "name": "calculate_range_for_part",
             "location": 171,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -313,52 +275,32 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "dict"
-                ],
-                "runtime": [
-                    "chainedawslambda.base.Runtime"
-                ],
-                "fetch_size": [
-                    "int"
-                ]
+                "state": [],
+                "runtime": [],
+                "fetch_size": []
             }
         },
         "S3ParallelCopySupervisorTask.setup_copy_task": {
             "name": "setup_copy_task",
             "location": 232,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
-                "source_bucket": [
-                    "str"
-                ],
-                "source_key": [
-                    "str"
-                ],
-                "destination_bucket": [
-                    "str"
-                ],
-                "destination_key": [
-                    "str"
-                ],
-                "part_size_calculator": [
-                    "Callable[([int], int)]"
-                ],
-                "timeout_seconds": [
-                    "int"
-                ],
-                "batch_size": [
-                    "int"
-                ]
+                "source_bucket": [],
+                "source_key": [],
+                "destination_bucket": [],
+                "destination_key": [],
+                "part_size_calculator": [],
+                "timeout_seconds": [],
+                "batch_size": []
             }
         },
         "S3ParallelCopySupervisorTask.get_state": {
             "name": "get_state",
             "location": 275,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -376,7 +318,7 @@
             "name": "run_one_unit",
             "location": 297,
             "return": [
-                "Any"
+                "Optional[Union[(bool, str)]]"
             ],
             "arguments": {
                 "self": []
@@ -390,50 +332,48 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "dict"
-                ]
+                "state": []
             }
         },
         "S3ParallelCopyWorkerTask.setup_copy_task": {
             "name": "setup_copy_task",
             "location": 419,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "source_bucket": [
-                    "str"
+                    "_T0@@"
                 ],
                 "source_key": [
-                    "str"
+                    "_T1@@"
                 ],
                 "source_etag": [
-                    "str"
+                    "_T2@@"
                 ],
                 "destination_bucket": [
-                    "str"
+                    "_T3@@"
                 ],
                 "destination_key": [
-                    "str"
+                    "_T4@@"
                 ],
                 "upload_id": [
-                    "str"
+                    "_T5@@"
                 ],
                 "size": [
-                    "int"
+                    "_T6@@"
                 ],
                 "part_size": [
-                    "int"
+                    "_T7@@"
                 ],
                 "next_part": [
-                    "int"
+                    "_T8@@"
                 ],
                 "last_part": [
-                    "int"
+                    "_T9@@"
                 ],
                 "concurrent_requests": [
-                    "int"
+                    "_T10@@"
                 ]
             }
         },
@@ -441,7 +381,7 @@
             "name": "get_state",
             "location": 456,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -469,7 +409,7 @@
             "name": "calculate_range_for_part",
             "location": 513,
             "return": [
-                "Tuple[(int, int)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -495,19 +435,15 @@
             "arguments": {
                 "self": [],
                 "context": [],
-                "client_name": [
-                    "str"
-                ],
-                "task_id": [
-                    "str"
-                ]
+                "client_name": [],
+                "task_id": []
             }
         },
         "AWSRuntime.get_remaining_time_in_millis": {
             "name": "get_remaining_time_in_millis",
             "location": 19,
             "return": [
-                "int"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -517,19 +453,13 @@
             "name": "schedule_work",
             "location": 22,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "task_class": [
-                    "Type[chainedawslambda.base.Task[(dict, Any)]]"
-                ],
-                "state": [
-                    "dict"
-                ],
-                "new_task": [
-                    "bool"
-                ]
+                "task_class": [],
+                "state": [],
+                "new_task": []
             }
         },
         "AWSRuntime.work_complete_callback": {
@@ -550,15 +480,9 @@
                 "None"
             ],
             "arguments": {
-                "client_key": [
-                    "str"
-                ],
-                "task_id": [
-                    "str"
-                ],
-                "message": [
-                    "str"
-                ]
+                "client_key": [],
+                "task_id": [],
+                "message": []
             }
         }
     },
@@ -570,12 +494,8 @@
                 "bool"
             ],
             "arguments": {
-                "client_name": [
-                    "str"
-                ],
-                "task_id": [
-                    "str"
-                ]
+                "client_name": [],
+                "task_id": []
             }
         },
         "AWSFastTestRuntime.__init__": {
@@ -587,12 +507,8 @@
             "arguments": {
                 "self": [],
                 "context": [],
-                "client_name": [
-                    "str"
-                ],
-                "task_id": [
-                    "str"
-                ]
+                "client_name": [],
+                "task_id": []
             }
         },
         "AWSFastTestRuntime.get_remaining_time_in_millis": {
@@ -613,16 +529,14 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "MutableSequence"
-                ]
+                "state": []
             }
         },
         "AWSFastTestTask.get_state": {
             "name": "get_state",
             "location": 73,
             "return": [
-                "MutableSequence"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -654,12 +568,8 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "dict"
-                ],
-                "runtime": [
-                    "chainedawslambda.base.Runtime"
-                ]
+                "state": [],
+                "runtime": []
             }
         },
         "SupervisorTask.expected_max_one_unit_runtime_millis": {
@@ -674,7 +584,7 @@
             "name": "get_state",
             "location": 101,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -708,12 +618,8 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "dict"
-                ],
-                "runtime": [
-                    "chainedawslambda._awsimpl.AWSRuntime"
-                ]
+                "state": [],
+                "runtime": []
             }
         },
         "AWSSupervisorTask.check_success_marker": {
@@ -743,54 +649,38 @@
             "name": "list",
             "location": 29,
             "return": [
-                "Iterator[str]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "prefix": [
-                    "str"
-                ],
-                "delimiter": [
-                    "str"
-                ]
+                "bucket": [],
+                "prefix": [],
+                "delimiter": []
             }
         },
         "S3BlobStore.generate_presigned_GET_url": {
             "name": "generate_presigned_GET_url",
             "location": 50,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ]
+                "bucket": [],
+                "object_name": []
             }
         },
         "S3BlobStore._generate_presigned_url": {
             "name": "_generate_presigned_url",
             "location": 61,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ],
-                "method": [
-                    "str"
-                ]
+                "bucket": [],
+                "object_name": [],
+                "method": []
             }
         },
         "S3BlobStore.upload_file_handle": {
@@ -801,15 +691,9 @@
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ],
-                "src_file_handle": [
-                    "BinaryIO"
-                ]
+                "bucket": [],
+                "object_name": [],
+                "src_file_handle": []
             }
         },
         "S3BlobStore.delete": {
@@ -820,76 +704,56 @@
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ]
+                "bucket": [],
+                "object_name": []
             }
         },
         "S3BlobStore.get": {
             "name": "get",
             "location": 92,
             "return": [
-                "bytes"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ]
+                "bucket": [],
+                "object_name": []
             }
         },
         "S3BlobStore.get_all_metadata": {
             "name": "get_all_metadata",
             "location": 111,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ]
+                "bucket": [],
+                "object_name": []
             }
         },
         "S3BlobStore.get_cloud_checksum": {
             "name": "get_cloud_checksum",
             "location": 133,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ]
+                "bucket": [],
+                "object_name": []
             }
         },
         "S3BlobStore.get_user_metadata": {
             "name": "get_user_metadata",
             "location": 148,
             "return": [
-                "Dict[(str, str)]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "object_name": [
-                    "str"
-                ]
+                "bucket": [],
+                "object_name": []
             }
         },
         "S3BlobStore.copy": {
@@ -900,46 +764,28 @@
             ],
             "arguments": {
                 "self": [],
-                "src_bucket": [
-                    "str"
-                ],
-                "src_object_name": [
-                    "str"
-                ],
-                "dst_bucket": [
-                    "str"
-                ],
-                "dst_object_name": [
-                    "str"
-                ]
+                "src_bucket": [],
+                "src_object_name": [],
+                "dst_bucket": [],
+                "dst_object_name": []
             }
         },
         "S3BlobStore.find_next_missing_parts": {
             "name": "find_next_missing_parts",
             "location": 200,
             "return": [
-                "Sequence[int]"
+                "builtins.list[_T4]"
             ],
             "arguments": {
                 "self": [],
-                "bucket": [
-                    "str"
-                ],
-                "key": [
-                    "str"
-                ],
-                "upload_id": [
-                    "str"
-                ],
-                "part_count": [
-                    "int"
-                ],
+                "bucket": [],
+                "key": [],
+                "upload_id": [],
+                "part_count": [],
                 "search_start": [
-                    "int"
+                    "_T4@@"
                 ],
-                "return_count": [
-                    "int"
-                ]
+                "return_count": []
             }
         }
     },
@@ -1086,15 +932,9 @@
                 "None"
             ],
             "arguments": {
-                "log_group_name": [
-                    "str"
-                ],
-                "log_stream_name": [
-                    "str"
-                ],
-                "message": [
-                    "str"
-                ]
+                "log_group_name": [],
+                "log_stream_name": [],
+                "message": []
             }
         },
         "log_message.get_sequence_token": {
@@ -1181,22 +1021,12 @@
                 "Tuple[(int, Any)]"
             ],
             "arguments": {
-                "initial_task": [
-                    "Type[chainedawslambda.base.Task]"
-                ],
+                "initial_task": [],
                 "initial_state": [],
-                "runtime_builder": [
-                    "Callable[([Mapping[(str, Any)]], chainedawslambda.base.Runtime)]"
-                ],
-                "task_builder": [
-                    "Callable[([Type[chainedawslambda.base.Task], Any, chainedawslambda.base.Runtime], chainedawslambda.base.Task)]"
-                ],
-                "runtime_result_getter": [
-                    "Callable[([chainedawslambda.base.Runtime], Any)]"
-                ],
-                "runtime_scheduled_getter": [
-                    "Callable[([chainedawslambda.base.Runtime], List[Tuple[(Type[chainedawslambda.base.Task], Any, Optional[str])]])]"
-                ]
+                "runtime_builder": [],
+                "task_builder": [],
+                "runtime_result_getter": [],
+                "runtime_scheduled_getter": []
             }
         },
         "TestStingyRuntime.__init__": {
@@ -1207,19 +1037,15 @@
             ],
             "arguments": {
                 "self": [],
-                "global_results": [
-                    "Mapping[(str, Any)]"
-                ],
-                "seq": [
-                    "Optional[Iterable[int]]"
-                ]
+                "global_results": [],
+                "seq": []
             }
         },
         "TestStingyRuntime.get_remaining_time_in_millis": {
             "name": "get_remaining_time_in_millis",
             "location": 23,
             "return": [
-                "int"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1229,17 +1055,13 @@
             "name": "schedule_work",
             "location": 26,
             "return": [
-                "str"
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
-                "task_class": [
-                    "Type[chainedawslambda.base.Task]"
-                ],
+                "task_class": [],
                 "state": [],
-                "new_task": [
-                    "bool"
-                ]
+                "new_task": []
             }
         },
         "TestStingyRuntime.work_complete_callback": {
@@ -1291,12 +1113,8 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "Tuple[(int, int, int)]"
-                ],
-                "expected_max_one_unit_runtime_millis": [
-                    "int"
-                ]
+                "state": [],
+                "expected_max_one_unit_runtime_millis": []
             }
         },
         "TestChainedAWSLambda.expected_max_one_unit_runtime_millis": {
@@ -1311,7 +1129,7 @@
             "name": "get_state",
             "location": 37,
             "return": [
-                "Any"
+                "Tuple[(Any, Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -1321,7 +1139,7 @@
             "name": "run_one_unit",
             "location": 40,
             "return": [
-                "Optional[Tuple[(int, int)]]"
+                "Optional[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "self": []
@@ -1355,9 +1173,7 @@
             ],
             "arguments": {
                 "self": [],
-                "timeout_seconds": [
-                    "int"
-                ]
+                "timeout_seconds": []
             }
         },
         "TestAWSChainedAWSLambda.test_fast": {
@@ -1388,9 +1204,7 @@
             ],
             "arguments": {
                 "self": [],
-                "state": [
-                    "Tuple[(int, int, int)]"
-                ],
+                "state": [],
                 "runtime": []
             }
         },

@@ -24,14 +24,26 @@
             "name": "get_item",
             "location": 8,
             "return": [
-                "merkle_drop.merkle_tree.Item"
+                "Item",
+                "bool",
+                "List[Callable]",
+                "str",
+                "int"
             ],
             "arguments": {
                 "address": [
-                    "bytes"
+                    "int",
+                    "bytes",
+                    "str",
+                    "bool",
+                    "Dict"
                 ],
                 "airdrop_data": [
-                    "Dict[(bytes, int)]"
+                    "bytes",
+                    "str",
+                    "int",
+                    "bool",
+                    "Dict"
                 ]
             }
         },
@@ -39,11 +51,16 @@
             "name": "to_items",
             "location": 12,
             "return": [
-                "List[merkle_drop.merkle_tree.Item]"
+                "list"
             ],
             "arguments": {
                 "airdrop_data": [
-                    "Dict[(bytes, int)]"
+                    "Dict",
+                    "Dict[str,float]",
+                    "Dict[str,str]",
+                    "Dict[str,Any]",
+                    "bytes",
+                    "Mapping[str,Any]"
                 ]
             }
         },
@@ -51,14 +68,21 @@
             "name": "get_balance",
             "location": 16,
             "return": [
-                "int"
+                "str",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "address": [
-                    "bytes"
+                    "bytes",
+                    "bool",
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "airdrop_data": [
-                    "Dict[(bytes, int)]"
+                    "Dict[str,Any]",
+                    "bytes",
+                    "bool",
+                    "str"
                 ]
             }
         }
@@ -124,9 +148,7 @@
         "main": {
             "name": "main",
             "location": 62,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {}
         },
         "root": {
@@ -244,9 +266,7 @@
         "status": {
             "name": "status",
             "location": 208,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "jsonrpc": [
                     "bool",
@@ -265,9 +285,7 @@
         "check_root": {
             "name": "check_root",
             "location": 284,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "jsonrpc": [
                     "str",
@@ -304,16 +322,13 @@
                 "int",
                 "float",
                 "str",
-                "Callable[[T], bool]"
+                "Callable[[T],bool]"
             ],
             "arguments": {
                 "airdrop_data": [
                     "str",
-                    "list[]",
-                    "list",
-                    "dict[str, typing.Any]",
-                    "list[str]",
-                    "Dict[str, Any]",
+                    "List",
+                    "Dict[str,Any]",
                     "List[str]",
                     "Optional[str]",
                     "Sequence[str]"
@@ -326,7 +341,7 @@
             "name": "load_airdrop_file",
             "location": 7,
             "return": [
-                "Dict[(bytes, int)]"
+                "Dict[(Any, int)]"
             ],
             "arguments": {
                 "airdrop_file": [
@@ -358,7 +373,8 @@
             ],
             "arguments": {
                 "items": [
-                    "List[Item]"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -370,7 +386,9 @@
             ],
             "arguments": {
                 "items": [
-                    "List[Item]"
+                    "Dict[str,Any]",
+                    "int",
+                    "Union[int,slice]"
                 ]
             }
         },
@@ -378,11 +396,13 @@
             "name": "compute_leaf_hash",
             "location": 70,
             "return": [
-                "bytes"
+                "int",
+                "List[Callable]"
             ],
             "arguments": {
                 "item": [
-                    "Item"
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -394,7 +414,9 @@
             ],
             "arguments": {
                 "items": [
-                    "List[Item]"
+                    "Dict[str,Any]",
+                    "List",
+                    "Dict"
                 ]
             }
         },
@@ -402,14 +424,22 @@
             "name": "compute_parent_hash",
             "location": 87,
             "return": [
-                "bytes"
+                "Dict[str, int]",
+                "int",
+                "str"
             ],
             "arguments": {
                 "left_hash": [
-                    "bytes"
+                    "str",
+                    "Dict",
+                    "Dict[str,Set[str]]",
+                    "Dict[str,set[str]]"
                 ],
                 "right_hash": [
-                    "bytes"
+                    "str",
+                    "Dict",
+                    "Dict[str,Set[str]]",
+                    "Dict[str,set[str]]"
                 ]
             }
         },
@@ -417,14 +447,17 @@
             "name": "in_tree",
             "location": 92,
             "return": [
-                "bool"
+                "bool",
+                "Optional[str]"
             ],
             "arguments": {
                 "item": [
-                    "Item"
+                    "Dict",
+                    "float"
                 ],
                 "root": [
-                    "Node"
+                    "Dict",
+                    "float"
                 ]
             }
         },
@@ -432,14 +465,15 @@
             "name": "create_proof",
             "location": 108,
             "return": [
-                "List[bytes]"
+                "list"
             ],
             "arguments": {
                 "item": [
-                    "Item"
+                    "str"
                 ],
                 "tree": [
-                    "Tree"
+                    "bool",
+                    "Dict"
                 ]
             }
         },
@@ -447,17 +481,33 @@
             "name": "validate_proof",
             "location": 139,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "int",
+                "Optional[int]"
             ],
             "arguments": {
                 "item": [
-                    "Item"
+                    "str",
+                    "bytes",
+                    "Callable",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "None"
                 ],
                 "proof": [
-                    "List[bytes]"
+                    "str",
+                    "bool",
+                    "Callable"
                 ],
                 "root_hash": [
-                    "bytes"
+                    "FrozenSet[str]",
+                    "frozenset",
+                    "Callable[...,None]",
+                    "Optional[str]",
+                    "str",
+                    "None",
+                    "Callable"
                 ]
             }
         },
@@ -471,13 +521,15 @@
                 "self": [],
                 "root": [
                     "Optional[str]",
-                    "str",
                     "IO",
-                    "None",
-                    "typing.IO"
+                    "str",
+                    "None"
                 ],
                 "leaves": [
-                    "List[Node]"
+                    "Optional[str]",
+                    "IO",
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -490,7 +542,9 @@
             "arguments": {
                 "self": [],
                 "hash": [
-                    "bytes"
+                    "Callable",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -544,13 +598,33 @@
             ],
             "arguments": {
                 "airdrop_filename": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "Dict",
+                    "None",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ],
                 "decay_start_time_param": [
-                    "int"
+                    "float",
+                    "int",
+                    "str",
+                    "Optional[float]",
+                    "List[str]",
+                    "Optional[int]",
+                    "Optional[List[str]]",
+                    "bool"
                 ],
                 "decay_duration_in_seconds_param": [
-                    "int"
+                    "float",
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "List[str]",
+                    "Optional[List[str]]",
+                    "bool",
+                    "Optional[float]"
                 ]
             }
         },
@@ -558,11 +632,11 @@
             "name": "not_found",
             "location": 64,
             "return": [
-                "tuple[int]",
+                "Tuple[int]",
                 "bool",
                 "str",
-                "Dict[str, Any]",
-                "Tuple[bool, float]"
+                "Dict[str,Any]",
+                "Tuple[bool,float]"
             ],
             "arguments": {
                 "e": [
@@ -575,17 +649,15 @@
             "name": "bad_request",
             "location": 69,
             "return": [
-                "Dict[str, Any]",
-                "tuple[int]"
+                "Dict[str,Any]",
+                "Tuple[int]"
             ],
             "arguments": {
                 "e": [
                     "str",
+                    "Dict[str,Any]",
                     "Exception",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -593,9 +665,9 @@
             "name": "internal_server_error",
             "location": 74,
             "return": [
-                "tuple[int]",
+                "Tuple[int]",
                 "int",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "e": [
@@ -624,11 +696,17 @@
             "name": "decay_tokens",
             "location": 102,
             "return": [
-                "int"
+                "int",
+                "str",
+                "Callable",
+                "List",
+                "List[str]",
+                "bool"
             ],
             "arguments": {
                 "tokens": [
-                    "int"
+                    "dict",
+                    "Optional[Tuple[int, ...]]"
                 ]
             }
         }
@@ -643,14 +721,14 @@
             "arguments": {
                 "web3": [
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ],
                 "contract_address": [
                     "str",
                     "bool",
                     "Optional[Iterable[T]]",
-                    "typing.Iterable[T]",
+                    "Iterable[T]",
                     "None"
                 ]
             }
@@ -662,10 +740,10 @@
             "name": "canonical_addresses",
             "location": 13,
             "return": [
-                "list[]",
+                "List",
                 "List[str]",
                 "Set[str]",
-                "Tuple[float, float]",
+                "Tuple[float,float]",
                 "List[object]"
             ],
             "arguments": {
@@ -679,8 +757,8 @@
             "name": "tree_data",
             "location": 25,
             "return": [
-                "Tuple[int, int]",
-                "list[Item]"
+                "Tuple[int,int]",
+                "List[Item]"
             ],
             "arguments": {
                 "canonical_addresses": [
@@ -693,13 +771,13 @@
             "location": 37,
             "return": [
                 "str",
-                "list[Item]"
+                "List[Item]"
             ],
             "arguments": {
                 "canonical_addresses": [
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -707,8 +785,8 @@
             "name": "other_data",
             "location": 47,
             "return": [
-                "Tuple[int, int]",
-                "list[Item]"
+                "Tuple[int,int]",
+                "List[Item]"
             ],
             "arguments": {
                 "canonical_addresses": [
@@ -721,17 +799,16 @@
             "name": "proofs_for_tree_data",
             "location": 53,
             "return": [
-                "list[]",
+                "List",
                 "bool",
                 "List[Dict]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "bytes"
             ],
             "arguments": {
                 "tree_data": [
-                    "dict[, ]",
-                    "dict",
+                    "Dict",
                     "Mapping"
                 ]
             }
@@ -740,7 +817,7 @@
             "name": "proofs_for_tree_data_small_values",
             "location": 66,
             "return": [
-                "list[]",
+                "List",
                 "bool",
                 "bytes"
             ],
@@ -749,7 +826,7 @@
                     "str",
                     "bool",
                     "Type",
-                    "Mapping[str, str]"
+                    "Mapping[str,str]"
                 ]
             }
         },
@@ -767,7 +844,7 @@
                 "tree_data": [
                     "str",
                     "bytes",
-                    "type",
+                    "Type",
                     "int",
                     "Optional[str]",
                     "T"
@@ -821,12 +898,12 @@
             ],
             "arguments": {
                 "tree_data": [
-                    "List[Dict[str, str]]",
-                    "list[dict[str, str]]",
+                    "List[Dict[str,str]]",
+                    "List[dict[str,str]]",
                     "str",
-                    "Mapping[str, str]",
+                    "Mapping[str,str]",
                     "bool",
-                    "typing.Mapping"
+                    "Mapping"
                 ]
             }
         },
@@ -842,7 +919,7 @@
                     "bool",
                     "str",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ]
             }
@@ -869,7 +946,7 @@
             "return": [
                 "int",
                 "str",
-                "Union[int, float]",
+                "Union[int,float]",
                 "List[int]"
             ],
             "arguments": {}
@@ -892,10 +969,10 @@
             "location": 123,
             "return": [
                 "str",
-                "dict[str, typing.Any]",
+                "Dict[str,Any]",
                 "float",
-                "dict[str, list[str]]",
-                "list[str]"
+                "Dict[str,list[str]]",
+                "List[str]"
             ],
             "arguments": {
                 "deploy_contract": [
@@ -919,7 +996,7 @@
                 "int",
                 "str",
                 "List[str]",
-                "Callable[[Mapping], T]"
+                "Callable[[Mapping],T]"
             ],
             "arguments": {}
         },
@@ -937,7 +1014,7 @@
             "name": "merkle_drop_contract",
             "location": 155,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "int",
                 "bool",
                 "Callable",
@@ -946,45 +1023,39 @@
             "arguments": {
                 "deploy_contract": [
                     "bool",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "root_hash_for_tree_data": [
                     "bool",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "dropped_token_contract": [
                     "bool",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "premint_token_owner": [
                     "bool",
                     "None",
                     "int",
-                    "Optional[Literal[\"only_clustered\", \"include_clustered\"]]"
+                    "Optional[Literal[only_clustered,include_clustered]]"
                 ],
                 "premint_token_value": [
                     "bool",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "decay_start_time": [
                     "bool",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ],
                 "decay_duration": [
                     "bool",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -996,38 +1067,38 @@
                 "bool",
                 "Sequence",
                 "str",
-                "dict[str, typing.Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "deploy_contract": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "None"
                 ],
                 "root_hash_for_tree_data_small_values": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "None"
                 ],
                 "dropped_token_contract": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "None"
                 ],
                 "premint_token_owner": [],
                 "premint_token_small_value": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "None"
                 ],
                 "decay_start_time": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "None"
                 ],
                 "decay_duration": [
                     "Optional[Any]",
-                    "typing.Any",
+                    "Any",
                     "None"
                 ]
             }
@@ -1042,7 +1113,13 @@
             ],
             "arguments": {
                 "value": [
-                    "str"
+                    "str",
+                    "List[float]",
+                    "list",
+                    "int",
+                    "List[str]",
+                    "List[int]",
+                    "List[List[object]]"
                 ]
             }
         },
@@ -1090,19 +1167,18 @@
             "name": "airdrop_data",
             "location": 57,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "int",
                 "List[List[str]]",
                 "List[str]",
-                "List[Dict[str, str]]",
-                "Tuple[int, int]",
+                "List[Dict[str,str]]",
+                "Tuple[int,int]",
                 "Iterable[str]"
             ],
             "arguments": {
                 "tree_data": [
-                    "dict",
-                    "str",
-                    "dict[, ]"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -1161,24 +1237,21 @@
             "name": "funded_merkle_drop_contract",
             "location": 106,
             "return": [
-                "list[str]",
+                "List[str]",
                 "int",
                 "Callable",
                 "str"
             ],
             "arguments": {
                 "premint_token_value": [
-                    "list[str]",
                     "List[str]",
                     "web3.contracContract"
                 ],
                 "unfunded_merkle_drop_contract": [
-                    "list[str]",
                     "List[str]",
                     "web3.contracContract"
                 ],
                 "token_contract": [
-                    "list[str]",
                     "List[str]",
                     "web3.contracContract"
                 ]
@@ -1220,20 +1293,17 @@
             ],
             "arguments": {
                 "airdrop_list_file": [
-                    "Callable[[str], str]",
+                    "Callable[[str],str]",
                     "str",
-                    "typing.Callable[str, str]",
-                    "Iterable[str]",
-                    "typing.Iterable[str]"
+                    "Callable[str,str]",
+                    "Iterable[str]"
                 ],
                 "airdrop_data": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Optional[str]]",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Dict[str,Optional[str]]",
                     "str",
-                    "dict[str, typing.Union[str,None]]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Union[str,None]]"
                 ]
             }
         },
@@ -1241,14 +1311,12 @@
             "name": "test_valid_airdrop_file_validation",
             "location": 151,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "address_value_pairs": [
                     "bool",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -1256,14 +1324,12 @@
             "name": "test_invalid_airdrop_file_validation",
             "location": 168,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "address_value_pairs": [
-                    "list[str]",
-                    "bool",
                     "List[str]",
+                    "bool",
                     "web3.contracContract"
                 ]
             }
@@ -1282,10 +1348,10 @@
                     "str"
                 ],
                 "airdrop_data": [
-                    "dict[str, list[typing.Any]]",
+                    "Dict[str,list[Any]]",
                     "str",
                     "Optional[List[str]]",
-                    "Dict[str, List[Any]]"
+                    "Dict[str,List[Any]]"
                 ]
             }
         },
@@ -1314,11 +1380,9 @@
                 "runner": [],
                 "airdrop_list_file": [],
                 "airdrop_data": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, dict[, ]]",
-                    "Dict[str, dict]",
-                    "Optional[\"TrackingData\"]",
+                    "Dict",
+                    "Dict[str,dict]",
+                    "Optional[TrackingData]",
                     "bool"
                 ]
             }
@@ -1351,13 +1415,13 @@
                     "str",
                     "flask.testing.FlaskClient",
                     "None",
-                    "Optional[\"Game\"]"
+                    "Optional[Game]"
                 ],
                 "airdrop_list_file": [
                     "str",
                     "flask.testing.FlaskClient",
                     "None",
-                    "Optional[\"Game\"]"
+                    "Optional[Game]"
                 ]
             }
         },
@@ -1385,15 +1449,11 @@
             "arguments": {
                 "runner": [
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ],
                 "unfunded_merkle_drop_contract": [
                     "Iterable[Any]",
-                    "typing.Iterable[typing.Any]",
-                    "Sequence[Any]",
-                    "typing.Sequence[typing.Any]"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1406,15 +1466,12 @@
             "arguments": {
                 "runner": [
                     "Callable",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "funded_merkle_drop_contract": [
                     "int",
-                    "typing.Callable[, ]",
-                    "web3.Web3",
-                    "Callable"
+                    "Callable",
+                    "web3.Web3"
                 ],
                 "token_contract": [
                     "str"
@@ -1429,20 +1486,16 @@
             ],
             "arguments": {
                 "runner": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "funded_merkle_drop_contract": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "root_hash_for_tree_data": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "airdrop_list_file": [
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -1454,33 +1507,29 @@
             ],
             "arguments": {
                 "runner": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "int",
-                    "Callable[[int], Tuple]",
+                    "Callable[[int],Tuple]",
                     "None",
                     "Optional[int]",
                     "web3.contracContract"
                 ],
                 "funded_merkle_drop_contract": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "int",
-                    "Callable[[int], Tuple]",
+                    "Callable[[int],Tuple]",
                     "None",
                     "Optional[int]",
                     "web3.contracContract"
                 ],
                 "root_hash_for_tree_data": [
                     "Callable",
-                    "bool",
-                    "typing.Callable[, ]"
+                    "bool"
                 ],
                 "wrong_airdrop_list_file": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "int",
-                    "Callable[[int], Tuple]",
+                    "Callable[[int],Tuple]",
                     "None",
                     "Optional[int]",
                     "web3.contracContract"
@@ -1497,8 +1546,7 @@
             ],
             "arguments": {
                 "web3": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }
@@ -1512,14 +1560,13 @@
                 "bool",
                 "str",
                 "Callable",
-                "list[str]"
+                "List[str]"
             ],
             "arguments": {
                 "merkle_drop_contract": [
                     "bool",
-                    "str",
                     "List[str]",
-                    "list[str]"
+                    "str"
                 ],
                 "dropped_token_contract": [
                     "int",
@@ -1530,28 +1577,25 @@
                     "None"
                 ],
                 "eligible_address_0": [
-                    "list[str]",
+                    "List[str]",
                     "web3.contracContract",
                     "str",
                     "int",
-                    "List[str]",
                     "None",
                     "Optional[str]"
                 ],
                 "eligible_value_0": [
-                    "list[str]",
+                    "List[str]",
                     "web3.contracContract",
                     "str",
                     "int",
-                    "List[str]",
                     "None",
                     "Optional[str]"
                 ],
                 "proof_0": [
                     "bool",
-                    "str",
                     "List[str]",
-                    "list[str]"
+                    "str"
                 ]
             }
         },
@@ -1567,27 +1611,27 @@
             "arguments": {
                 "chain": [
                     "int",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "float",
                     "bool",
                     "T",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ],
                 "decay_start_time": [
                     "int",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "float",
                     "bool",
                     "T",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ],
                 "decay_duration": [
                     "int",
-                    "list[dict[str, typing.Any]]",
+                    "List[dict[str,Any]]",
                     "float",
                     "bool",
                     "T",
-                    "List[Dict[str, Any]]"
+                    "List[Dict[str,Any]]"
                 ]
             }
         },
@@ -1603,28 +1647,22 @@
             "arguments": {
                 "chain": [
                     "float",
+                    "Callable[,Any]",
                     "int",
-                    "typing.Callable[[], typing.Any]",
-                    "Callable[[], Any]",
-                    "list[int]",
                     "List[int]",
                     "bool"
                 ],
                 "decay_start_time": [
                     "float",
+                    "Callable[,Any]",
                     "int",
-                    "typing.Callable[[], typing.Any]",
-                    "Callable[[], Any]",
-                    "list[int]",
                     "List[int]",
                     "bool"
                 ],
                 "decay_duration": [
                     "float",
+                    "Callable[,Any]",
                     "int",
-                    "typing.Callable[[], typing.Any]",
-                    "Callable[[], Any]",
-                    "list[int]",
                     "List[int]",
                     "bool"
                 ]
@@ -1640,26 +1678,24 @@
                 "value": [
                     "float",
                     "str",
-                    "dict",
+                    "Dict",
                     "T"
                 ],
                 "decay_multiplier": [
                     "float",
                     "str",
-                    "dict",
+                    "Dict",
                     "T"
                 ],
                 "round_up": [
                     "str",
-                    "Optional[Tuple[Any, Any]]",
-                    "tuple[typing.Union[typing.Any,typing.Any]]",
                     "Callable",
+                    "Optional[Tuple[Any,Any]]",
+                    "Tuple[Union[Any,Any]]",
+                    "Dict",
                     "bool",
                     "None",
-                    "dict",
-                    "typing.Callable[, ]",
-                    "Iterable[Any]",
-                    "dict[, ]"
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -1671,11 +1707,9 @@
             ],
             "arguments": {
                 "merkle_drop_contract": [
-                    "dict[, ]",
-                    "Union[web3.contracContractFunction, web3.contracContracConstructor]",
-                    "typing.Callable[..., T]",
-                    "dict",
-                    "Callable[..., T]",
+                    "Dict",
+                    "Callable[...,T]",
+                    "Union[web3.contracContractFunction,web3.contracContracConstructor]",
                     "Callable"
                 ],
                 "tree_data": [
@@ -1684,8 +1718,8 @@
                     "str",
                     "Optional[str]",
                     "None",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]"
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "proofs_for_tree_data": [
                     "int",
@@ -1702,27 +1736,24 @@
             ],
             "arguments": {
                 "merkle_drop_contract": [
-                    "dict[, ]",
+                    "Dict",
+                    "Callable[...,T]",
                     "web3.contracContract",
-                    "typing.Callable[..., T]",
-                    "Union[web3.contracContractFunction, web3.contracContracConstructor]",
-                    "dict",
-                    "Callable[..., T]"
+                    "Union[web3.contracContractFunction,web3.contracContracConstructor]"
                 ],
                 "tree_data": [
                     "str",
                     "int",
-                    "tuple[typing.Union[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "Optional[int]",
-                    "Optional[Tuple[int, int]]"
+                    "Optional[Tuple[int,int]]"
                 ],
                 "proofs_for_tree_data": [
                     "str",
-                    "list[str]",
                     "List[str]",
                     "bool",
-                    "Dict[str, str]",
-                    "MutableMapping[str, str]"
+                    "Dict[str,str]",
+                    "MutableMapping[str,str]"
                 ]
             }
         },
@@ -1761,8 +1792,8 @@
                     "str",
                     "Optional[str]",
                     "None",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]"
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]"
                 ],
                 "proofs_for_tree_data": [
                     "int",
@@ -1814,9 +1845,8 @@
             "arguments": {
                 "merkle_drop_contract_already_withdrawn": [
                     "bool",
-                    "web3.contracContract",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "web3.contracContract"
                 ],
                 "other_data": [
                     "web3.contracContract",
@@ -1825,9 +1855,8 @@
                 ],
                 "proof_0": [
                     "bool",
-                    "web3.contracContract",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "web3.contracContract"
                 ]
             }
         },
@@ -1845,14 +1874,12 @@
                 "web3": [
                     "str",
                     "bool",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "eligible_address_0": [
                     "bool",
-                    "web3.contracContract",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "web3.contracContract"
                 ],
                 "eligible_value_0": [
                     "bool",
@@ -1868,7 +1895,6 @@
             "name": "test_entitlement_with_decay",
             "location": 181,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1896,8 +1922,7 @@
                 ],
                 "round_up": [
                     "List[float]",
-                    "int",
-                    "list[float]"
+                    "int"
                 ]
             }
         },
@@ -1905,15 +1930,13 @@
             "name": "test_withdraw_with_decay",
             "location": 198,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "merkle_drop_contract": [
                     "int",
-                    "list[float]",
-                    "T",
-                    "List[float]"
+                    "List[float]",
+                    "T"
                 ],
                 "dropped_token_contract": [
                     "int",
@@ -1926,10 +1949,9 @@
                     "str",
                     "float",
                     "bytes",
+                    "Dict[str,str]",
                     "bool",
-                    "dict[str, str]",
                     "None",
-                    "Dict[str, str]",
                     "Optional[str]"
                 ],
                 "decay_multiplier": [
@@ -1939,22 +1961,21 @@
                     "None"
                 ],
                 "eligible_address_0": [
-                    "dict[str, list[str]]",
+                    "Dict[str,list[str]]",
                     "str",
-                    "Dict[str, List[str]]",
-                    "Dict[str, Any]"
+                    "Dict[str,List[str]]",
+                    "Dict[str,Any]"
                 ],
                 "eligible_value_0": [
-                    "dict[str, list[str]]",
+                    "Dict[str,list[str]]",
                     "str",
-                    "Dict[str, List[str]]",
-                    "Dict[str, Any]"
+                    "Dict[str,List[str]]",
+                    "Dict[str,Any]"
                 ],
                 "proof_0": [
                     "int",
-                    "list[float]",
-                    "T",
-                    "List[float]"
+                    "List[float]",
+                    "T"
                 ]
             }
         },
@@ -2013,7 +2034,6 @@
             "name": "test_burn_unusable_tokens",
             "location": 250,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2035,8 +2055,8 @@
                 "decay_multiplier": [
                     "str",
                     "int",
-                    "Dict[int, Dict[str, float]]",
-                    "dict[int, dict[str, float]]"
+                    "Dict[int,Dict[str,float]]",
+                    "Dict[int,dict[str,float]]"
                 ]
             }
         },
@@ -2059,9 +2079,8 @@
                     "bool",
                     "bytes",
                     "Optional[bool]",
+                    "Dict[str,str]",
                     "None",
-                    "dict[str, str]",
-                    "Dict[str, str]",
                     "web3.contracContract",
                     "int"
                 ]
@@ -2071,7 +2090,6 @@
             "name": "test_withdraw_after_burn",
             "location": 284,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2086,36 +2104,30 @@
                     "str",
                     "float",
                     "bytes",
+                    "Dict[str,str]",
                     "bool",
-                    "dict[str, str]",
                     "None",
-                    "Dict[str, str]",
                     "Optional[str]"
                 ],
                 "decay_multiplier": [
-                    "list",
-                    "list[]"
+                    "List"
                 ],
                 "eligible_address_0": [
                     "str",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "List[str]",
-                    "list[str]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "List[str]"
                 ],
                 "eligible_value_0": [
                     "str",
-                    "dict[str, list[str]]",
-                    "Dict[str, List[str]]",
-                    "Dict[str, Any]"
+                    "Dict[str,list[str]]",
+                    "Dict[str,List[str]]",
+                    "Dict[str,Any]"
                 ],
                 "proof_0": [
                     "int",
-                    "list[float]",
-                    "T",
-                    "List[float]"
+                    "List[float]",
+                    "T"
                 ]
             }
         },
@@ -2152,11 +2164,10 @@
                 "time_travel_chain_to_decay_multiplier": [
                     "str",
                     "bool",
+                    "Dict[str,str]",
                     "Optional[bool]",
                     "float",
                     "None",
-                    "Dict[str, str]",
-                    "dict[str, str]",
                     "int"
                 ]
             }
@@ -2194,12 +2205,10 @@
                 "tree_data": [
                     "Callable",
                     "str",
-                    "typing.Callable[, ]",
                     "int",
+                    "Dict[str,Any]",
                     "Optional[str]",
-                    "None",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "None"
                 ],
                 "proofs_for_tree_data": [
                     "int",
@@ -2214,9 +2223,8 @@
                     "str",
                     "float",
                     "None",
+                    "Dict[str,str]",
                     "bytes",
-                    "Dict[str, str]",
-                    "dict[str, str]",
                     "int",
                     "web3.contracContract"
                 ]
@@ -2230,7 +2238,6 @@
             ],
             "arguments": {
                 "merkle_drop_contract": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "web3.contracContract"
                 ],
@@ -2246,12 +2253,11 @@
                 ],
                 "eligible_value_0": [
                     "bytes",
-                    "Optional[Callable[[Dict], bool]]",
+                    "Dict",
+                    "Optional[Callable[[Dict],bool]]",
                     "bool",
-                    "typing.Callable[dict[, ], bool]",
-                    "dict",
-                    "None",
-                    "dict[, ]"
+                    "Callable[dict,bool]",
+                    "None"
                 ],
                 "proof_0": [
                     "Optional[str]",
@@ -2260,13 +2266,12 @@
                 ],
                 "time_travel_chain_to_decay_multiplier": [
                     "str",
+                    "Dict[str,str]",
                     "Optional[bool]",
                     "bool",
                     "float",
                     "bytes",
-                    "Dict[str, str]",
                     "None",
-                    "dict[str, str]",
                     "int"
                 ],
                 "premint_token_value": [
@@ -2293,11 +2298,10 @@
                 "time_travel_chain_past_decay_multiplier": [
                     "bool",
                     "str",
+                    "List[str]",
                     "int",
-                    "list[tuple[typing.Union[str,str]]]",
-                    "list[str]",
-                    "List[Tuple[str, str]]",
-                    "List[str]"
+                    "List[tuple[Union[str,str]]]",
+                    "List[Tuple[str,str]]"
                 ]
             }
         },
@@ -2321,25 +2325,21 @@
             ],
             "arguments": {
                 "merkle_drop_contract_small_values": [
-                    "list[str]",
-                    "bool",
                     "List[str]",
+                    "bool",
                     "str",
+                    "Sequence[str]",
                     "float",
                     "bytes",
-                    "int",
-                    "typing.Sequence[str]",
-                    "Sequence[str]"
+                    "int"
                 ],
                 "time_travel_chain_to_decay_multiplier": [
                     "bool",
                     "str",
                     "Optional[str]",
-                    "None",
                     "List[dict]",
-                    "list[dict[, ]]",
                     "List[str]",
-                    "list[str]"
+                    "None"
                 ],
                 "dropped_token_contract": [
                     "int",
@@ -2358,9 +2358,8 @@
                 ],
                 "tree_data_small_values": [
                     "str",
-                    "dict[, ]",
-                    "T",
-                    "dict"
+                    "Dict",
+                    "T"
                 ]
             }
         },
@@ -2378,7 +2377,6 @@
             "name": "time_travel",
             "location": 42,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2396,7 +2394,7 @@
             "location": 17,
             "return": [
                 "str",
-                "list[Item]"
+                "List[Item]"
             ],
             "arguments": {}
         },
@@ -2404,9 +2402,9 @@
             "name": "other_data",
             "location": 28,
             "return": [
-                "list[Item]",
+                "List[Item]",
                 "str",
-                "MutableMapping[str, Any]"
+                "MutableMapping[str,Any]"
             ],
             "arguments": {}
         },
@@ -2414,7 +2412,6 @@
             "name": "test_parent_hash",
             "location": 36,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2433,25 +2430,20 @@
             "name": "test_leaf_hash",
             "location": 48,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "item": [
                     "str",
-                    "dict",
-                    "bytes",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "bytes"
                 ],
                 "leaf_hash": [
                     "str",
-                    "dict",
-                    "bytes",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "bytes"
                 ]
             }
         },
@@ -2459,19 +2451,15 @@
             "name": "test_invalid_leaf_hash",
             "location": 61,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "item": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Tuple[str, str]]",
-                    "dict[str, tuple[typing.Union[str,str]]]",
-                    "list",
-                    "list[]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict",
+                    "List",
+                    "Dict[str,Tuple[str,str]]",
+                    "Dict[str,str]",
+                    "Dict[str,tuple[Union[str,str]]]"
                 ]
             }
         },
@@ -2484,9 +2472,7 @@
             "arguments": {
                 "tree_data": [
                     "List[dict]",
-                    "list[dict[, ]]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -2500,18 +2486,16 @@
                 "tree_data": [
                     "str",
                     "bool",
-                    "List[Dict[str, str]]",
-                    "list[dict[str, str]]"
+                    "List[Dict[str,str]]",
+                    "List[dict[str,str]]"
                 ],
                 "other_data": [
-                    "Optional[List[\"DeliveryItem\"]]",
-                    "list[I]",
-                    "list",
+                    "Optional[List[DeliveryItem]]",
+                    "List[I]",
+                    "List",
+                    "Dict",
                     "str",
-                    "None",
-                    "dict",
-                    "list[]",
-                    "dict[, ]"
+                    "None"
                 ]
             }
         },
@@ -2523,10 +2507,8 @@
             ],
             "arguments": {
                 "tree_data": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "Mapping"
                 ]
             }
@@ -2539,14 +2521,12 @@
             ],
             "arguments": {
                 "tree_data": [
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[Tuple[str]]",
-                    "tuple[str]",
-                    "Optional[Tuple[str, str]]",
-                    "None",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "Tuple[str]",
+                    "Optional[Tuple[str,str]]",
+                    "None"
                 ]
             }
         },
@@ -2558,10 +2538,8 @@
             ],
             "arguments": {
                 "tree_data": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2573,14 +2551,11 @@
             ],
             "arguments": {
                 "tree_data": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ],
                 "other_data": [
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         },
@@ -2592,10 +2567,9 @@
             ],
             "arguments": {
                 "tree_data": [
-                    "dict",
-                    "dict[, ]",
-                    "MutableMapping[str, Any]",
-                    "typing.MutableMapping"
+                    "Dict",
+                    "MutableMapping[str,Any]",
+                    "MutableMapping"
                 ],
                 "other_data": [
                     "Mapping[str, int]"
@@ -2610,10 +2584,8 @@
             ],
             "arguments": {
                 "tree_data": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,Any]",
+                    "Dict[str,str]"
                 ]
             }
         }
@@ -2628,45 +2600,35 @@
             "arguments": {
                 "web3": [
                     "str",
-                    "bool",
                     "Sequence[int]",
-                    "typing.Sequence[int]",
-                    "dict",
-                    "dict[, ]"
+                    "bool",
+                    "Dict"
                 ],
                 "merkle_drop_contract": [
                     "Callable",
                     "int",
-                    "typing.Callable[, ]",
                     "str"
                 ],
                 "dropped_token_contract": [
-                    "dict[, ]",
+                    "Dict",
                     "bool",
-                    "dict",
                     "str",
-                    "typing.Sequence[int]",
-                    "int",
-                    "set[str]",
                     "Sequence[int]",
-                    "Set[str]"
+                    "Set[str]",
+                    "int"
                 ],
                 "root_hash_for_tree_data": [
                     "List[str]",
-                    "list[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ],
                 "decay_start_time": [
                     "str",
                     "bytes",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "decay_duration": [
                     "str",
-                    "List[int]",
-                    "list[int]"
+                    "List[int]"
                 ],
                 "premint_token_value": [
                     "int",

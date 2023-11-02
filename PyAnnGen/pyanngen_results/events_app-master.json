@@ -41,7 +41,7 @@
             "name": "get_data",
             "location": 28,
             "return": [
-                "dict"
+                "Dict[(Any, list)]"
             ],
             "arguments": {}
         },
@@ -53,7 +53,11 @@
             ],
             "arguments": {
                 "keys": [
-                    "list"
+                    "str",
+                    "List",
+                    "int",
+                    "bytes",
+                    "KT"
                 ]
             }
         },
@@ -61,11 +65,12 @@
             "name": "upload_services",
             "location": 40,
             "return": [
-                "dict"
+                "Dict[(Any, app.models.WebSource)]"
             ],
             "arguments": {
                 "services_names": [
-                    "dict"
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -77,10 +82,14 @@
             ],
             "arguments": {
                 "data": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,str]"
                 ],
                 "services_objects_map": [
-                    "dict"
+                    "dict",
+                    "helpers.JSONType",
+                    "Dict[str, Any]"
                 ]
             }
         }
@@ -129,7 +138,7 @@
             "name": "page_not_found",
             "location": 7,
             "return": [
-                "tuple[int]",
+                "Tuple[int]",
                 "str",
                 "Type[Any]"
             ],
@@ -138,8 +147,7 @@
                     "Exception",
                     "int",
                     "str",
-                    "typing.Type",
-                    "type",
+                    "Type",
                     "bool"
                 ]
             }
@@ -148,10 +156,10 @@
             "name": "interal_server_error",
             "location": 12,
             "return": [
-                "tuple[int]",
+                "Tuple[int]",
                 "str",
                 "bool",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "e": [
@@ -172,13 +180,12 @@
             "arguments": {
                 "source": [
                     "str",
-                    "Optional[str]",
-                    "None",
                     "Tuple[str]",
-                    "tuple[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "classes": [
-                    "typing.Text",
+                    "Text",
                     "str",
                     "Optional[str]",
                     "Tuple[str]"
@@ -189,7 +196,7 @@
             "name": "link_to_date",
             "location": 14,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "Optional[str]"
             ],
@@ -205,7 +212,7 @@
                 "bool",
                 "multinedb.models.workspace.Workspace",
                 "Optional[int]",
-                "List[Dict[str, str]]"
+                "List[Dict[str,str]]"
             ],
             "arguments": {}
         }
@@ -266,10 +273,11 @@
             "name": "standarize_data",
             "location": 88,
             "return": [
-                "dict"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "raw_data": [
+                    "Dict[str, Any]",
                     "dict"
                 ]
             }
@@ -283,7 +291,12 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bs4.BeautifulSoup"
+                    "Dict[str, Any]",
+                    "bytes",
+                    "Dict[str, str]",
+                    "list",
+                    "str",
+                    "Optional[Dict[str, Any]]"
                 ]
             }
         },
@@ -291,7 +304,6 @@
             "name": "cleaned_raw_data",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -307,7 +319,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bs4.BeautifulSoup"
+                    "bs4.BeautifulSoup",
+                    "int",
+                    "bool",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -328,7 +343,7 @@
             "name": "_prepare_rows",
             "location": 31,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "List[Dict[(str, List[str])]]"
             ],
             "arguments": {
                 "self": []
@@ -359,7 +374,10 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "bs4.BeautifulSoup"
+                    "bs4.BeautifulSoup",
+                    "int",
+                    "bool",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -380,7 +398,7 @@
             "name": "_prepare_rows",
             "location": 58,
             "return": [
-                "List[Dict[(str, Any)]]"
+                "List[Dict[(str, List[str])]]"
             ],
             "arguments": {
                 "self": []
@@ -409,30 +427,31 @@
             "name": "prepare_data_from_each_service",
             "location": 74,
             "return": [
-                "dict"
+                "Dict[(Any, Optional[list])]"
             ],
             "arguments": {
                 "file_path": [
-                    "str"
+                    "str",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "scrapper": [
                     "Scrapper",
                     "str",
                     "List[str]",
                     "int",
-                    "Iterable[Tuple[str, str, str]]"
+                    "Iterable[Tuple[str,str,str]]"
                 ],
                 "globals": [
                     "List[int]",
                     "None",
                     "str",
-                    "list[int]",
-                    "MutableMapping[str, str]",
-                    "Tuple[Any, Any]",
-                    "typing.MutableMapping",
-                    "Dict[bytes, bytes]",
-                    "tuple[typing.Union[typing.Any,typing.Any]]",
-                    "dict[bytes, bytes]"
+                    "Dict[bytes,bytes]",
+                    "MutableMapping[str,str]",
+                    "Tuple[Any,Any]",
+                    "MutableMapping",
+                    "Tuple[Union[Any,Any]]"
                 ]
             }
         },
@@ -445,7 +464,8 @@
             "arguments": {
                 "self": [],
                 "file_path": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -473,7 +493,10 @@
             "arguments": {
                 "self": [],
                 "service_link": [
-                    "str"
+                    "Sequence[str]",
+                    "str",
+                    "Sequence[Sequence[str]]",
+                    "Iterable[str]"
                 ],
                 "http": [
                     "List[str]",
@@ -503,7 +526,7 @@
             "name": "prepare_all_pages",
             "location": 35,
             "return": [
-                "list[]",
+                "List",
                 "str",
                 "int"
             ],
@@ -520,7 +543,13 @@
             "arguments": {
                 "self": [],
                 "raw_data": [
-                    "str"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,Union[str,int]]",
+                    "Dict[str,str]",
+                    "bytes",
+                    "Optional[Dict]",
+                    "None"
                 ],
                 "actual_parser": [
                     "str",
@@ -549,7 +578,9 @@
             "arguments": {
                 "self": [],
                 "service_link": [
-                    "str"
+                    "bool",
+                    "Hashable",
+                    "int"
                 ],
                 "fetcher": [
                     "Fetcher",
@@ -559,12 +590,12 @@
                 ],
                 "parser": [
                     "Parser",
-                    "Optional[Callable[[Dict], Any]]",
+                    "Optional[Callable[[Dict],Any]]",
                     "str",
                     "List[str]",
-                    "dict",
+                    "Dict",
                     "bool",
-                    "Dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -603,7 +634,6 @@
             "name": "process_revision_directives",
             "location": 68,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -861,24 +891,21 @@
                 "self": [],
                 "http_method": [
                     "str",
+                    "Dict[str,str]",
                     "bytes",
-                    "Dict[str, str]",
-                    "bool",
-                    "dict[str, str]"
+                    "bool"
                 ],
                 "link": [
                     "str",
+                    "Dict[str,str]",
                     "bytes",
-                    "Dict[str, str]",
-                    "bool",
-                    "dict[str, str]"
+                    "bool"
                 ],
                 "response": [
                     "str",
+                    "Dict[str,str]",
                     "bytes",
-                    "Dict[str, str]",
-                    "bool",
-                    "dict[str, str]"
+                    "bool"
                 ]
             }
         },
@@ -923,19 +950,16 @@
             "arguments": {
                 "self": [],
                 "raw_data": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[int, Dict]",
-                    "dict[int, dict[, ]]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Union[str, bool]]",
-                    "dict[str, typing.Union[str,bool]]"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[int,Dict]",
+                    "Dict[str,Union[str,bool]]",
+                    "Dict[int,dict]"
                 ],
                 "features": [
                     "int",
                     "Optional[Dict]",
-                    "dict[, ]",
+                    "Dict",
                     "None"
                 ]
             }
@@ -952,10 +976,10 @@
                     "str",
                     "Optional[Callable]",
                     "bool",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "List[List[Any]]",
                     "None",
-                    "list[list[typing.Any]]"
+                    "List[list[Any]]"
                 ]
             }
         },
@@ -978,7 +1002,7 @@
             "name": "prepare_all_pages",
             "location": 44,
             "return": [
-                "list[]",
+                "List",
                 "str",
                 "bool",
                 "Iterable[str]",
@@ -998,12 +1022,10 @@
                 "self": [],
                 "fetched_data": [
                     "bytes",
-                    "Dict[str, str]",
-                    "dict[str, str]",
-                    "Dict[str, dict]",
-                    "dict[str, dict[, ]]",
-                    "Tuple[int, str, bytearray]",
-                    "tuple[typing.Union[int,str,bytearray]]"
+                    "Dict[str,str]",
+                    "Dict[str,dict]",
+                    "Tuple[int,str,bytearray]",
+                    "Tuple[Union[int,str,bytearray]]"
                 ]
             }
         },
@@ -1033,9 +1055,8 @@
                 "self": [],
                 "service_link": [
                     "bool",
-                    "typing.Hashable",
-                    "int",
-                    "Hashable"
+                    "Hashable",
+                    "int"
                 ],
                 "fetcher": [
                     "bool",
@@ -1100,7 +1121,7 @@
             "name": "raw_data",
             "location": 93,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "int",
                 "Generator",
@@ -1119,9 +1140,8 @@
             "arguments": {
                 "self": [],
                 "raw_data": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "Optional[dict]",
                     "None"
                 ]

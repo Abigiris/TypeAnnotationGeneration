@@ -4,7 +4,7 @@
             "name": "map_code_tree",
             "location": 48,
             "return": [
-                "List[Tuple[(pathlib.PurePosixPath, Any)]]"
+                "list"
             ],
             "arguments": {
                 "tree": [
@@ -15,20 +15,22 @@
                     "bool",
                     "List[str]"
                 ],
-                "path": [
-                    "pathlib.PurePosixPath"
-                ]
+                "path": []
             }
         },
         "dedup_paths": {
             "name": "dedup_paths",
             "location": 74,
             "return": [
-                "List[Tuple[(pathlib.PurePosixPath, Any)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "paths": [
-                    "List[Tuple[(pathlib.PurePosixPath, Any)]]"
+                    "str",
+                    "Iterable[pathlib.Path]",
+                    "int",
+                    "List[Tuple[pathlib.PurePosixPath,parso.python.tree.Scope]]",
+                    "List[str]"
                 ]
             }
         },
@@ -40,7 +42,13 @@
             ],
             "arguments": {
                 "paths": [
-                    "List[Tuple[(pathlib.PurePosixPath, Any)]]"
+                    "List[tuple[Union[pathlib.PurePosixPath,parso.python.tree.Scope]]]",
+                    "str",
+                    "List[Tuple[pathlib.PurePosixPath,parso.python.tree.Scope]]",
+                    "bytes",
+                    "Union[str,bytes,int]",
+                    "bool",
+                    "Union[str,pathlib.Path]"
                 ]
             }
         },
@@ -53,12 +61,22 @@
             "arguments": {
                 "self": [],
                 "code_text": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None"
                 ],
                 "include_prefix": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "int",
+                    "Union[int,float]"
                 ],
                 "language_version": [
+                    "str",
+                    "None",
+                    "bool",
                     "Optional[str]"
                 ]
             }
@@ -67,7 +85,7 @@
             "name": "_build_filesystem",
             "location": 157,
             "return": [
-                "List[Tuple[(pathlib.PurePosixPath, Any)]]"
+                "List[Tuple[(Any, Any)]]"
             ],
             "arguments": {
                 "self": []
@@ -77,12 +95,15 @@
             "name": "_get_file_at_path",
             "location": 163,
             "return": [
-                "Tuple[(pathlib.PurePosixPath, Dict[(pathlib.PurePosixPath, Any)])]"
+                "Tuple[(pathlib.PurePosixPath, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "pathlib.Path",
+                    "Union[Literal,str]"
                 ]
             }
         },
@@ -91,19 +112,27 @@
             "location": 186,
             "return": [
                 "Info",
-                "Mapping[str, Any]",
+                "Mapping[str,Any]",
                 "base.ConfigOptions",
                 "str",
-                "Mapping[str, bool]",
-                "Mapping[str, str]"
+                "Mapping[str,bool]",
+                "Mapping[str,str]"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "List[dict]",
+                    "pathlib.Path",
+                    "[str]",
+                    "List[Dict]"
                 ],
                 "namespaces": [
-                    "Optional[Collection[str]]"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "Optional[T]"
                 ]
             }
         },
@@ -116,7 +145,9 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]"
                 ]
             }
         },
@@ -124,25 +155,28 @@
             "name": "makedir",
             "location": 224,
             "return": [
-                "fs.subfs.SubFS[fs.base.FS]",
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "List"
                 ],
                 "permissions": [
                     "str",
                     "None",
                     "bool",
                     "List[str]",
-                    "list",
-                    "list[str]",
-                    "list[]"
+                    "List"
                 ],
                 "recreate": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "List[str]",
+                    "List"
                 ]
             }
         },
@@ -150,18 +184,26 @@
             "name": "openbin",
             "location": 232,
             "return": [
-                "BinaryIO"
+                "io.BytesIO"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "pathlib.Path"
                 ],
                 "mode": [
-                    "str"
+                    "Text",
+                    "int",
+                    "str",
+                    "bool",
+                    "Iterable[Any]"
                 ],
                 "buffering": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool",
+                    "Iterable[Any]"
                 ]
             }
         },
@@ -169,12 +211,14 @@
             "name": "remove",
             "location": 253,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -182,12 +226,14 @@
             "name": "removedir",
             "location": 256,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -195,15 +241,23 @@
             "name": "setinfo",
             "location": 259,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "str"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Iterable[Any]",
+                    "lightbus.transports.base.RpcMessage"
                 ],
                 "info": [
-                    "Mapping[(str, Mapping[(str, object)])]"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Iterable[Any]",
+                    "lightbus.transports.base.RpcMessage"
                 ]
             }
         }
@@ -221,11 +275,15 @@
             "name": "get_scopes",
             "location": 76,
             "return": [
-                "str"
+                "Text",
+                "str",
+                "Iterable[str]"
             ],
             "arguments": {
                 "dotted_name": [
-                    "str"
+                    "str",
+                    "Sequence[str]",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -242,10 +300,17 @@
                     "BinaryIO"
                 ],
                 "scope_path": [
-                    "str"
+                    "str",
+                    "None",
+                    "Optional[str]",
+                    "fs.base.FS"
                 ],
                 "valid_types": [
-                    "Iterable[str]"
+                    "Tuple[Text]",
+                    "Iterable[str]",
+                    "str",
+                    "List[str]",
+                    "bool"
                 ]
             }
         }
@@ -281,7 +346,6 @@
             "name": "quz",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}

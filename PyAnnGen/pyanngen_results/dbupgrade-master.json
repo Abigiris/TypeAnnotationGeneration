@@ -4,14 +4,21 @@
             "name": "apply_files",
             "location": 12,
             "return": [
-                "Tuple[(List[dbupgrade.files.FileInfo], Any)]"
+                "Tuple[(list, Any)]"
             ],
             "arguments": {
                 "db_url": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Tuple[str,str]",
+                    "Tuple[Union[str,str]]"
                 ],
                 "files": [
-                    "Iterable[dbupgrade.files.FileInfo]"
+                    "List[str]",
+                    "str",
+                    "List",
+                    "List[bytearray]"
                 ]
             }
         },
@@ -23,10 +30,16 @@
             ],
             "arguments": {
                 "db_url": [
-                    "str"
+                    "str",
+                    "Dict"
                 ],
                 "file_info": [
-                    "dbupgrade.files.FileInfo"
+                    "str",
+                    "IO",
+                    "dbupgrade.files.FileInfo",
+                    "utils.FileInfo",
+                    "logging.Handler",
+                    "Union[str,IO]"
                 ]
             }
         }
@@ -39,9 +52,7 @@
                 "Arguments"
             ],
             "arguments": {
-                "args": [
-                    "argparse.Namespace"
-                ]
+                "args": []
             }
         },
         "parse_args": {
@@ -52,7 +63,9 @@
             ],
             "arguments": {
                 "argv": [
-                    "typing.Sequence[str]"
+                    "argparse._SubParsersAction",
+                    "argparse.ArgumentParser",
+                    "argparse.Action"
                 ]
             }
         },
@@ -76,7 +89,8 @@
             ],
             "arguments": {
                 "engine": [
-                    "sqlalchemy.engine.base.Engine"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -88,10 +102,14 @@
             ],
             "arguments": {
                 "engine": [
-                    "sqlalchemy.engine.base.Engine"
+                    "str",
+                    "bool",
+                    "sqlalchemy.engine.Engine"
                 ],
                 "query": [
-                    "str"
+                    "str",
+                    "bool",
+                    "sqlalchemy.engine.Engine"
                 ]
             }
         },
@@ -103,7 +121,9 @@
             ],
             "arguments": {
                 "connection": [
-                    "sqlalchemy.engine.base.Connection"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -111,14 +131,20 @@
             "name": "fetch_current_db_versions",
             "location": 65,
             "return": [
-                "Tuple[(int, int)]"
+                "type",
+                "List[int]",
+                "Callable",
+                "bool"
             ],
             "arguments": {
                 "db_url": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "int"
                 ],
                 "schema": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -126,14 +152,22 @@
             "name": "_fetch_or_create_version_info",
             "location": 78,
             "return": [
-                "Tuple[(int, int)]"
+                "str",
+                "int",
+                "List[list[str]]",
+                "List[str]",
+                "Tuple[int]"
             ],
             "arguments": {
                 "engine": [
-                    "sqlalchemy.engine.base.Engine"
+                    "Dict[str,Any]",
+                    "Dict[int,dict]",
+                    "Dict"
                 ],
                 "schema": [
-                    "str"
+                    "str",
+                    "float",
+                    "Sequence[int]"
                 ]
             }
         },
@@ -145,7 +179,12 @@
             ],
             "arguments": {
                 "engine": [
-                    "sqlalchemy.engine.base.Engine"
+                    "int",
+                    "bytes",
+                    "str",
+                    "List",
+                    "Tuple[float,float,float,float]",
+                    "Tuple[Union[float,float,float,float]]"
                 ]
             }
         },
@@ -153,14 +192,21 @@
             "name": "_try_fetching_version_info_for_schema",
             "location": 96,
             "return": [
-                "Optional[Tuple[(int, int)]]"
+                "None",
+                "List[str]",
+                "Optional[Exception]",
+                "str",
+                "Optional[bytes]",
+                "float",
+                "Iterable[T]"
             ],
             "arguments": {
                 "engine": [
-                    "sqlalchemy.engine.base.Engine"
+                    "str"
                 ],
                 "schema": [
-                    "str"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -172,10 +218,14 @@
             ],
             "arguments": {
                 "engine": [
-                    "sqlalchemy.engine.base.Engine"
+                    "Dict[str, Any]",
+                    "Optional[List[str]]",
+                    "float"
                 ],
                 "schema": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "sqlalchemy.orm.scoping.scoped_session"
                 ]
             }
         },
@@ -187,19 +237,41 @@
             ],
             "arguments": {
                 "db_url": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "sql": [
-                    "str"
+                    "int",
+                    "str",
+                    "Dict[str,str]",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "schema": [
-                    "str"
+                    "int",
+                    "str",
+                    "Dict[str,str]",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "version": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,str]",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "api_level": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,str]",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -211,19 +283,33 @@
             ],
             "arguments": {
                 "conn": [
-                    "sqlalchemy.engine.base.Connection"
+                    "str",
+                    "List[int]",
+                    "sqlalchemy.engine.Connection"
                 ],
                 "sql": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "schema": [
-                    "str"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "version": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "api_level": [
-                    "int"
+                    "int",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -235,10 +321,17 @@
             ],
             "arguments": {
                 "conn": [
-                    "sqlalchemy.engine.base.Connection"
+                    "int",
+                    "Callable",
+                    "str"
                 ],
                 "sql": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "List",
+                    "None",
+                    "Iterable[float]",
+                    "Optional[str]"
                 ]
             }
         },
@@ -250,16 +343,20 @@
             ],
             "arguments": {
                 "conn": [
-                    "sqlalchemy.engine.base.Connection"
+                    "str",
+                    "Dict[str, Any]"
                 ],
                 "schema": [
+                    "int",
                     "str"
                 ],
                 "version": [
-                    "int"
+                    "int",
+                    "str"
                 ],
                 "api_level": [
-                    "int"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -272,7 +369,11 @@
             "arguments": {
                 "self": [],
                 "db_url": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "Optional[Tuple[str]]",
+                    "Tuple[str]",
+                    "None"
                 ]
             }
         },
@@ -280,7 +381,9 @@
             "name": "__enter__",
             "location": 51,
             "return": [
-                "sqlalchemy.engine.base.Engine"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -295,27 +398,17 @@
             "arguments": {
                 "self": [],
                 "_": [
-                    "int",
-                    "str",
-                    "typing.Iterable[_]",
-                    "Iterable['Context']",
-                    "dict",
-                    "bool"
+                    "Optional[Type[BaseException]]"
                 ],
                 "__": [
-                    "int",
-                    "str",
-                    "typing.Iterable[_]",
-                    "Iterable['Context']",
-                    "dict",
-                    "bool"
+                    "Optional[BaseException]"
                 ],
                 "___": [
                     "int",
                     "str",
-                    "typing.Iterable[_]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[_]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -326,11 +419,13 @@
             "name": "collect_sql_files",
             "location": 37,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "directory": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "int"
                 ]
             }
         },
@@ -343,19 +438,37 @@
             "arguments": {
                 "self": [],
                 "filename": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "schema": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "dialect": [
-                    "str"
+                    "str",
+                    "int",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "version": [
-                    "int"
+                    "str",
+                    "int",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ],
                 "api_level": [
-                    "int"
+                    "str",
+                    "int",
+                    "None",
+                    "bool",
+                    "Optional[str]"
                 ]
             }
         },
@@ -363,13 +476,14 @@
             "name": "__lt__",
             "location": 22,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "int",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
-                "other": [
-                    "FileInfo"
-                ]
+                "other": []
             }
         },
         "FileInfo.__repr__": {
@@ -388,12 +502,22 @@
             "name": "matches",
             "location": 14,
             "return": [
-                "bool"
+                "bool",
+                "str",
+                "int",
+                "Dict[str,Dict[str,str]]",
+                "defaultdict"
             ],
             "arguments": {
                 "self": [],
                 "file_info": [
-                    "dbupgrade.files.FileInfo"
+                    "MutableMapping[str,Any]",
+                    "Dict",
+                    "MutableMapping",
+                    "Optional[str]",
+                    "str",
+                    "MutableMapping[str,str]",
+                    "None"
                 ]
             }
         }
@@ -414,9 +538,7 @@
                 "None"
             ],
             "arguments": {
-                "args": [
-                    "dbupgrade.args.Arguments"
-                ]
+                "args": []
             }
         },
         "_print_json": {
@@ -427,7 +549,10 @@
             ],
             "arguments": {
                 "result": [
-                    "dbupgrade.result.UpgradeResult"
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -439,7 +564,8 @@
             ],
             "arguments": {
                 "script": [
-                    "dbupgrade.files.FileInfo"
+                    "str",
+                    "int"
                 ]
             }
         }
@@ -462,11 +588,16 @@
             "name": "split_sql",
             "location": 12,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "sql": [
-                    "str"
+                    "Callable[[T],bool]",
+                    "str",
+                    "Callable[T,bool]",
+                    "bool",
+                    "List[Tuple]",
+                    "List[tuple]"
                 ]
             }
         },
@@ -478,7 +609,9 @@
             ],
             "arguments": {
                 "sql": [
-                    "str"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -486,11 +619,15 @@
             "name": "_unescape_delimiters",
             "location": 47,
             "return": [
-                "str"
+                "str",
+                "int",
+                "Callable"
             ],
             "arguments": {
                 "stmt": [
-                    "str"
+                    "str",
+                    "Tuple[str,str]",
+                    "float"
                 ]
             }
         },
@@ -502,7 +639,10 @@
             ],
             "arguments": {
                 "stmt": [
-                    "str"
+                    "int",
+                    "List[List[str]]",
+                    "List[int]",
+                    "Iterator[str]"
                 ]
             }
         },
@@ -510,11 +650,16 @@
             "name": "_remove_comment",
             "location": 57,
             "return": [
-                "str"
+                "str",
+                "float",
+                "Tuple[str]",
+                "Optional[str]",
+                "List[str]"
             ],
             "arguments": {
                 "line": [
-                    "str"
+                    "str",
+                    "Iterable[str]"
                 ]
             }
         }
@@ -524,11 +669,14 @@
             "name": "parse_sql_files",
             "location": 13,
             "return": [
-                "List[dbupgrade.files.FileInfo]"
+                "list"
             ],
             "arguments": {
                 "files": [
-                    "Sequence[str]"
+                    "List[str]",
+                    "Sequence[str]",
+                    "IO[str]",
+                    "IO[Any]"
                 ]
             }
         },
@@ -540,7 +688,8 @@
             ],
             "arguments": {
                 "filename": [
-                    "str"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -552,10 +701,19 @@
             ],
             "arguments": {
                 "stream": [
-                    "Iterable[str]"
+                    "str",
+                    "bool",
+                    "List[str]",
+                    "Callable[str,bool]",
+                    "Callable[[str],bool]",
+                    "int"
                 ],
                 "filename": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "Dict[str,str]",
+                    "float"
                 ]
             }
         },
@@ -567,7 +725,10 @@
             ],
             "arguments": {
                 "stream": [
-                    "Iterable[str]"
+                    "str",
+                    "bool",
+                    "Iterable[str]",
+                    "Tuple"
                 ]
             }
         },
@@ -579,10 +740,12 @@
             ],
             "arguments": {
                 "headers": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Dict[str,str]"
                 ],
                 "header_name": [
-                    "str"
+                    "str",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -594,7 +757,8 @@
             ],
             "arguments": {
                 "headers": [
-                    "Dict[(str, str)]"
+                    "str",
+                    "Dict[str,str]"
                 ],
                 "header_name": [
                     "str"
@@ -611,16 +775,19 @@
             ],
             "arguments": {
                 "schema": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "db_url": [
                     "str"
                 ],
                 "script_path": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "version_info": [
-                    "dbupgrade.version.VersionInfo"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -628,17 +795,22 @@
             "name": "create_filter",
             "location": 41,
             "return": [
-                "Tuple[(int, int, dbupgrade.filter.Filter)]"
+                "Tuple[(Any, Any, dbupgrade.filter.Filter)]"
             ],
             "arguments": {
                 "schema": [
-                    "str"
+                    "bool",
+                    "str",
+                    "List"
                 ],
                 "db_url": [
                     "str"
                 ],
                 "version_info": [
-                    "dbupgrade.version.VersionInfo"
+                    "bool",
+                    "Dict",
+                    "Dict[str,Tuple[Any,Any,Any]]",
+                    "Dict[str,tuple[Union[Any,Any,Any]]]"
                 ]
             }
         },
@@ -646,13 +818,17 @@
             "name": "read_files_to_apply",
             "location": 55,
             "return": [
-                "List[dbupgrade.files.FileInfo]"
+                "bool",
+                "List[str]"
             ],
             "arguments": {
                 "script_path": [
-                    "str"
+                    "str",
+                    "List[Union[Any,Any]]",
+                    "List"
                 ],
                 "filter_": [
+                    "str",
                     "dbupgrade.filter.Filter"
                 ]
             }
@@ -661,14 +837,22 @@
             "name": "filter_files",
             "location": 60,
             "return": [
-                "List[dbupgrade.files.FileInfo]"
+                "list"
             ],
             "arguments": {
                 "files": [
-                    "Sequence[dbupgrade.files.FileInfo]"
+                    "str",
+                    "List",
+                    "Tuple",
+                    "Sequence[str]",
+                    "Optional[Node]"
                 ],
                 "filter_": [
-                    "dbupgrade.filter.Filter"
+                    "str",
+                    "Sequence[str]",
+                    "list",
+                    "Optional[\"Node\"]",
+                    "tuple"
                 ]
             }
         }
@@ -678,7 +862,8 @@
             "name": "dialect_from_url",
             "location": 1,
             "return": [
-                "str"
+                "str",
+                "Optional[str]"
             ],
             "arguments": {
                 "url": [
@@ -695,9 +880,7 @@
                 "VersionInfo"
             ],
             "arguments": {
-                "args": [
-                    "dbupgrade.args.Arguments"
-                ]
+                "args": []
             }
         },
         "create_version_matcher": {
@@ -708,13 +891,32 @@
             ],
             "arguments": {
                 "info": [
-                    "VersionInfo"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]",
+                    "Type",
+                    "Optional[Type[Exception]]",
+                    "float",
+                    "Optional[float]"
                 ],
                 "min_version": [
-                    "int"
+                    "bool",
+                    "str",
+                    "Optional[Callable]",
+                    "List[str]",
+                    "Callable",
+                    "None"
                 ],
                 "api_level": [
-                    "int"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None",
+                    "Optional[bool]",
+                    "Type",
+                    "Optional[Type[Exception]]"
                 ]
             }
         },
@@ -727,13 +929,21 @@
             "arguments": {
                 "self": [],
                 "min_version": [
-                    "int"
+                    "int",
+                    "float",
+                    "Optional[float]"
                 ],
                 "max_version": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "target_api_level": [
-                    "int"
+                    "int",
+                    "bytes",
+                    "Dict[str,Any]",
+                    "Tuple",
+                    "Callable",
+                    "bool"
                 ]
             }
         },
@@ -746,7 +956,9 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "object"
+                    "Tuple[Union[int,int]]",
+                    "Tuple[int,int]",
+                    "T"
                 ]
             }
         },
@@ -754,13 +966,12 @@
             "name": "matches",
             "location": 51,
             "return": [
-                "bool"
+                "bool",
+                "Tuple[int,int]"
             ],
             "arguments": {
                 "self": [],
-                "file_info": [
-                    "dbupgrade.files.FileInfo"
-                ]
+                "file_info": []
             }
         }
     },
@@ -792,9 +1003,7 @@
             ],
             "arguments": {
                 "self": [],
-                "apply": [
-                    "unittest.mock.Mock"
-                ]
+                "apply": []
             }
         },
         "TestApplyFiles.test_apply_multiple_success": {
@@ -806,7 +1015,7 @@
             "arguments": {
                 "self": [],
                 "apply": [
-                    "unittest.mock.Mock"
+                    "pytest_mock.MockFixture"
                 ]
             }
         },
@@ -819,7 +1028,8 @@
             "arguments": {
                 "self": [],
                 "apply": [
-                    "unittest.mock.Mock"
+                    "unittesmock.Mock",
+                    "float"
                 ]
             }
         },
@@ -884,7 +1094,8 @@
             "arguments": {
                 "self": [],
                 "logging": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -897,10 +1108,12 @@
             "arguments": {
                 "self": [],
                 "open": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Optional[str]"
                 ],
                 "update_sql": [
-                    "unittest.mock.Mock"
+                    "pytest_mock.MockFixture",
+                    "Callable"
                 ]
             }
         },
@@ -913,11 +1126,10 @@
             "arguments": {
                 "self": [],
                 "open": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Optional[str]"
                 ],
-                "update_sql": [
-                    "unittest.mock.Mock"
-                ]
+                "update_sql": []
             }
         },
         "TestApplyFiles.test_apply_multiple_fail.apply_impl": {
@@ -1076,10 +1288,15 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "int",
+                    "bool"
                 ],
                 "expected_query": [
-                    "str"
+                    "str",
+                    "int",
+                    "bytearray",
+                    "Union[bytes,bytearray]",
+                    "bytes"
                 ]
             }
         },
@@ -1092,10 +1309,15 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "int",
+                    "bool"
                 ],
                 "expected_queries": [
-                    "Sequence"
+                    "List",
+                    "List[str]",
+                    "str",
+                    "bool",
+                    "int"
                 ]
             }
         },
@@ -1108,7 +1330,9 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "unittesmock.Mock",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1121,7 +1345,12 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "int",
+                    "Iterable[str]",
+                    "Type",
+                    "str",
+                    "Type[Any]",
+                    "unittesmock.Mock"
                 ]
             }
         },
@@ -1134,7 +1363,9 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "int",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1147,7 +1378,8 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "unittesmock.MagicMock",
+                    "unittesmock.Mock"
                 ]
             }
         },
@@ -1160,7 +1392,10 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "int",
+                    "Dict[str,Any]",
+                    "str",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -1173,7 +1408,8 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "unittesmock.MagicMock"
                 ]
             }
         },
@@ -1210,9 +1446,8 @@
                 "create_engine": [
                     "str",
                     "int",
-                    "dict[str, typing.Any]",
-                    "bool",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "bool"
                 ]
             }
         },
@@ -1225,9 +1460,8 @@
             "arguments": {
                 "self": [],
                 "engine": [
-                    "typing.Iterable[str]",
-                    "int",
                     "Iterable[str]",
+                    "int",
                     "List[str]",
                     "unittesmock.Mock"
                 ]
@@ -1242,10 +1476,16 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "Dict[str,Any]",
+                    "int",
+                    "bool",
+                    "unittesmock.MagicMock"
                 ],
                 "paramstyle": [
-                    "str"
+                    "Dict[str,Any]",
+                    "int",
+                    "bool",
+                    "unittesmock.MagicMock"
                 ]
             }
         },
@@ -1258,10 +1498,20 @@
             "arguments": {
                 "self": [],
                 "execute_mock": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "bytes",
+                    "List[str]",
+                    "Tuple[Union[str,M]]",
+                    "pytest_mock.MockFixture",
+                    "Tuple[str,mock.Mock]"
                 ],
                 "expected_queries": [
-                    "Sequence"
+                    "str",
+                    "bytes",
+                    "List[str]",
+                    "Tuple[Union[str,M]]",
+                    "pytest_mock.MockFixture",
+                    "Tuple[str,mock.Mock]"
                 ]
             }
         },
@@ -1274,10 +1524,14 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "unittesmock.Mock",
+                    "List[str]",
+                    "Iterable[Tuple[int, int]]"
                 ],
                 "engine": [
-                    "unittest.mock.Mock"
+                    "List[str]",
+                    "unittesmock.Mock",
+                    "Iterable[Tuple[int,int]]"
                 ]
             }
         },
@@ -1290,10 +1544,10 @@
             "arguments": {
                 "self": [],
                 "engine": [
-                    "unittest.mock.Mock"
+                    "unittesmock.MagicMock"
                 ],
                 "connection": [
-                    "unittest.mock.Mock"
+                    "unittesmock.Mock"
                 ]
             }
         },
@@ -1306,10 +1560,15 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "List[str]",
+                    "unittesmock.Mock",
+                    "Iterable[Tuple[int, int]]"
                 ],
                 "connection": [
-                    "unittest.mock.Mock"
+                    "Union[int,float]",
+                    "str",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -1322,7 +1581,9 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "List[str]",
+                    "unittesmock.Mock",
+                    "Iterable[Tuple[int, int]]"
                 ]
             }
         },
@@ -1335,10 +1596,16 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "int",
+                    "str",
+                    "bytes"
                 ],
                 "connection": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Protocol",
+                    "bytes",
+                    "Coroutine",
+                    "collections.abc.Coroutine"
                 ]
             }
         },
@@ -1351,10 +1618,16 @@
             "arguments": {
                 "self": [],
                 "create_engine": [
-                    "unittest.mock.Mock"
+                    "int",
+                    "str",
+                    "bytes"
                 ],
                 "connection": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Protocol",
+                    "bytes",
+                    "Coroutine",
+                    "collections.abc.Coroutine"
                 ]
             }
         },
@@ -1612,7 +1885,7 @@
             "arguments": {
                 "self": [],
                 "db_upgrade": [
-                    "unittest.mock.Mock"
+                    "str"
                 ]
             }
         },
@@ -1625,7 +1898,7 @@
             "arguments": {
                 "self": [],
                 "db_upgrade": [
-                    "unittest.mock.Mock"
+                    "str"
                 ]
             }
         },
@@ -1638,10 +1911,13 @@
             "arguments": {
                 "self": [],
                 "logging": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "None"
                 ],
                 "parse_args": [
-                    "unittest.mock.Mock"
+                    "str"
                 ]
             }
         },
@@ -1654,10 +1930,12 @@
             "arguments": {
                 "self": [],
                 "logging": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "parse_args": [
-                    "unittest.mock.Mock"
+                    "unittesmock.Mock"
                 ]
             }
         },
@@ -1670,11 +1948,10 @@
             "arguments": {
                 "self": [],
                 "logging": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "bool"
                 ],
-                "parse_args": [
-                    "unittest.mock.Mock"
-                ]
+                "parse_args": []
             }
         },
         "TestMain.test_no_json_output": {
@@ -1686,14 +1963,13 @@
             "arguments": {
                 "self": [],
                 "parse_args": [
-                    "unittest.mock.Mock"
+                    "pytest_mock.MockFixture"
                 ],
                 "capsys": [
-                    "typing.Callable[, ]",
-                    "_pytescapture.CaptureFixture",
-                    "tuple[typing.Union[str,typing.Any]]",
                     "Callable",
-                    "Tuple[str, Any]"
+                    "_pytescapture.CaptureFixture",
+                    "Tuple[Union[str,Any]]",
+                    "Tuple[str,Any]"
                 ]
             }
         },
@@ -1706,19 +1982,17 @@
             "arguments": {
                 "self": [],
                 "parse_args": [
-                    "unittest.mock.Mock"
+                    "pytest_mock.MockFixture"
                 ],
                 "db_upgrade": [
-                    "unittest.mock.Mock"
+                    "str"
                 ],
                 "capsys": [
                     "str",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "Optional[\"Game\"]",
-                    "None",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "Optional[Game]",
+                    "None"
                 ]
             }
         },
@@ -1731,16 +2005,14 @@
             "arguments": {
                 "self": [],
                 "parse_args": [
-                    "unittest.mock.Mock"
+                    "pytest_mock.MockFixture"
                 ],
                 "db_upgrade": [
-                    "unittest.mock.Mock"
+                    "str"
                 ],
                 "capsys": [
                     "Callable",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ]
             }
         }
@@ -1750,7 +2022,7 @@
             "name": "_call_string",
             "location": 7,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
@@ -2148,16 +2420,23 @@
             "arguments": {
                 "self": [],
                 "fetch_current_db_versions": [
-                    "unittest.mock.Mock"
+                    "Dict[str, str]",
+                    "List[str]",
+                    "int",
+                    "Dict[str, Any]"
                 ],
                 "collect_sql_files": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Optional[str]"
                 ],
                 "parse_sql_files": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Optional[str]",
+                    "bytes"
                 ],
                 "apply_files": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -2170,13 +2449,16 @@
             "arguments": {
                 "self": [],
                 "fetch_current_db_versions": [
-                    "unittest.mock.Mock"
+                    "bool",
+                    "Sequence[str]",
+                    "Dict"
                 ],
                 "parse_sql_files": [
-                    "unittest.mock.Mock"
+                    "unittesmock.Mock"
                 ],
                 "apply_files": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -2189,10 +2471,11 @@
             "arguments": {
                 "self": [],
                 "parse_sql_files": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "Dict[str,Sequence[str]]"
                 ],
                 "apply_files": [
-                    "unittest.mock.Mock"
+                    "str"
                 ]
             }
         },
@@ -2205,10 +2488,13 @@
             "arguments": {
                 "self": [],
                 "logging": [
-                    "unittest.mock.Mock"
+                    "str"
                 ],
                 "fetch_current_db_versions": [
-                    "unittest.mock.Mock"
+                    "Callable[,str]",
+                    "Optional[bool]",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -2221,10 +2507,15 @@
             "arguments": {
                 "self": [],
                 "fetch_current_db_versions": [
-                    "unittest.mock.Mock"
+                    "bool",
+                    "str"
                 ],
                 "apply_files": [
-                    "unittest.mock.Mock"
+                    "str",
+                    "bool",
+                    "None",
+                    "Optional[str]",
+                    "unittesmock.Mock"
                 ]
             }
         },
@@ -2237,10 +2528,12 @@
             "arguments": {
                 "self": [],
                 "fetch_current_db_versions": [
-                    "unittest.mock.Mock"
+                    "bool",
+                    "str"
                 ],
                 "apply_files": [
-                    "unittest.mock.Mock"
+                    "Callable",
+                    "unittesmock.Mock"
                 ]
             }
         },
@@ -2253,10 +2546,11 @@
             "arguments": {
                 "self": [],
                 "fetch_current_db_versions": [
-                    "unittest.mock.Mock"
+                    "bool",
+                    "str"
                 ],
                 "apply_files": [
-                    "unittest.mock.Mock"
+                    "unittesmock.Mock"
                 ]
             }
         }

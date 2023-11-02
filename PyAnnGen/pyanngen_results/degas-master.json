@@ -8,10 +8,17 @@
             ],
             "arguments": {
                 "input_filepath": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "Sequence[str]",
+                    "List",
+                    "List[Tuple[Any,Any]]",
+                    "List[tuple[Union[Any,Any]]]"
                 ],
                 "output_filepath": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -25,14 +32,19 @@
             ],
             "arguments": {
                 "dataframes": [
-                    "list"
+                    "Optional[int]",
+                    "int",
+                    "Callable",
+                    "str",
+                    "None",
+                    "Optional[str]"
                 ],
                 "dga": [
                     "bool",
                     "int",
                     "str",
-                    "Iterable['Context']",
-                    "dict"
+                    "Iterable[Context]",
+                    "Dict"
                 ]
             }
         },
@@ -78,7 +90,9 @@
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Path"
                 ]
             }
         },
@@ -122,7 +136,9 @@
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Path"
                 ]
             }
         },
@@ -164,10 +180,14 @@
             ],
             "arguments": {
                 "base": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "pathlib.Path"
                 ],
                 "filename": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "pathlib.Path"
                 ]
             }
         }
@@ -177,7 +197,6 @@
             "name": "cli",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -186,21 +205,18 @@
             "name": "download_data",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "url": [
                     "str",
-                    "AnyStr",
-                    "typing.AnyStr"
+                    "AnyStr"
                 ],
                 "output_filepath": [
                     "str",
                     "pathlib.Path",
-                    "dict[, ]",
+                    "Dict",
                     "None",
-                    "dict",
                     "Optional[str]"
                 ]
             }
@@ -214,7 +230,7 @@
             "arguments": {
                 "input_filepath": [
                     "str",
-                    "Union[pathlib.Path, str]",
+                    "Union[pathlib.Path,str]",
                     "Optional[int]",
                     "float",
                     "int",
@@ -222,7 +238,7 @@
                 ],
                 "output_filepath": [
                     "str",
-                    "Union[pathlib.Path, str]",
+                    "Union[pathlib.Path,str]",
                     "Optional[int]",
                     "float",
                     "int",
@@ -239,31 +255,27 @@
             "arguments": {
                 "input_filepath": [
                     "int",
-                    "Union[int, float]",
-                    "float",
                     "Type",
-                    "typing.Type",
-                    "Tuple[float, float]",
-                    "tuple[typing.Union[float,float]]",
-                    "type",
+                    "Union[int,float]",
+                    "float",
+                    "Tuple[float,float]",
+                    "Tuple[Union[float,float]]",
                     "str",
                     "Optional[str]",
                     "None"
                 ],
                 "epochs": [
                     "int",
-                    "Union[int, float]",
                     "Type",
-                    "Tuple[float, float]",
-                    "type",
+                    "Union[int,float]",
+                    "Tuple[float,float]",
                     "Optional[str]"
                 ],
                 "kfold_splits": [
                     "int",
-                    "Union[int, float]",
                     "Type",
-                    "Tuple[float, float]",
-                    "type",
+                    "Union[int,float]",
+                    "Tuple[float,float]",
                     "Optional[str]"
                 ]
             }
@@ -272,7 +284,6 @@
             "name": "run_server",
             "location": 64,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -291,11 +302,13 @@
             "name": "domain_to_ints",
             "location": 33,
             "return": [
-                "List[int]"
+                "List[Optional[int]]"
             ],
             "arguments": {
                 "domain": [
-                    "str"
+                    "str",
+                    "Dict[str, Any]",
+                    "list"
                 ]
             }
         },
@@ -303,7 +316,7 @@
             "name": "prep_dataframe",
             "location": 45,
             "return": [
-                "Tuple[(np.ndarray, np.ndarray)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "data": [
@@ -326,11 +339,16 @@
             "name": "prep_data",
             "location": 53,
             "return": [
-                "np.ndarray"
+                "str",
+                "bytearray",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "data": [
-                    "np.ndarray"
+                    "numpy.ndarray",
+                    "bytes",
+                    "int",
+                    "Dict[str, Any]"
                 ],
                 "max_length": [
                     "numpy.ndarray",
@@ -357,14 +375,14 @@
             "name": "print_metrics",
             "location": 76,
             "return": [
-                "Tuple[(np.ndarray, Any, Any, Any)]"
+                "Tuple[(Any, Any, Any, Any)]"
             ],
             "arguments": {
                 "val_y": [
-                    "np.ndarray"
+                    "str"
                 ],
                 "predict_y": [
-                    "np.ndarray"
+                    "str"
                 ]
             }
         },
@@ -387,7 +405,7 @@
             "name": "model_versions",
             "location": 10,
             "return": [
-                "List[int]"
+                "List[str]"
             ],
             "arguments": {}
         },
@@ -397,7 +415,7 @@
             "return": [
                 "str",
                 "model.Model",
-                "list[M]",
+                "List[M]",
                 "GPy.models.GPRegression",
                 "base.Model",
                 "allennlp.models.model.Model"
@@ -414,7 +432,10 @@
             "name": "predict",
             "location": 37,
             "return": [
-                "np.ndarray"
+                "str",
+                "int",
+                "Callable",
+                "models.Question"
             ],
             "arguments": {
                 "model": [
@@ -424,7 +445,10 @@
                     "bool"
                 ],
                 "domains": [
-                    "np.ndarray"
+                    "str",
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -465,12 +489,12 @@
         "fit_and_evaluate": {
             "name": "fit_and_evaluate",
             "location": 70,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "model": [],
-                "model_filename": [
-                    "str"
-                ],
+                "model_filename": [],
                 "t_x": [],
                 "val_x": [],
                 "t_y": [],
@@ -496,7 +520,9 @@
         "run": {
             "name": "run",
             "location": 99,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "data": [],
                 "num_epochs": [
@@ -539,9 +565,7 @@
                 "None"
             ],
             "arguments": {
-                "input_filepath": [
-                    "str"
-                ],
+                "input_filepath": [],
                 "epochs": [
                     "int"
                 ],
@@ -565,7 +589,7 @@
             "name": "hello",
             "location": 14,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "Callable",
                 "str"
@@ -576,7 +600,7 @@
             "name": "model_status",
             "location": 20,
             "return": [
-                "dict[, ]",
+                "Dict",
                 "str",
                 "Optional[str]",
                 "IO[Any]",
@@ -588,9 +612,9 @@
             "name": "models_status",
             "location": 25,
             "return": [
-                "dict[typing.Text, typing.Union[typing.Text,int]]",
+                "Dict[Text,Union[Text,int]]",
                 "str",
-                "type"
+                "Type"
             ],
             "arguments": {}
         },
@@ -598,7 +622,6 @@
             "name": "predict",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

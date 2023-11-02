@@ -29,20 +29,19 @@
                 "directory": [
                     "str",
                     "pathlib.Path",
-                    "Union[str, pathlib.Path]"
+                    "Union[str,pathlib.Path]"
                 ],
                 "archive": [
                     "str",
-                    "pathlib.Path",
-                    "list[]",
-                    "list"
+                    "List",
+                    "pathlib.Path"
                 ],
                 "duplicates": [
                     "float",
                     "bytes",
                     "str",
-                    "Tuple[int, int]",
-                    "tuple[typing.Union[int,int]]"
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -72,11 +71,13 @@
             "name": "getSubmissionFilesOldestToNewest",
             "location": 167,
             "return": [
-                "Iterable[SubmissionFile]"
+                "str",
+                "pathlib.Path"
             ],
             "arguments": {
                 "project": [
-                    "Project"
+                    "Dict[str, Any]",
+                    "str"
                 ]
             }
         },
@@ -84,11 +85,13 @@
             "name": "getSubmissionFilesNewestToOldest",
             "location": 171,
             "return": [
-                "Iterable[SubmissionFile]"
+                "pathlib.Path",
+                "str"
             ],
             "arguments": {
                 "project": [
-                    "Project"
+                    "Dict[str, Any]",
+                    "str"
                 ]
             }
         },
@@ -100,7 +103,9 @@
             ],
             "arguments": {
                 "file": [
-                    "SubmissionFile"
+                    "IO",
+                    "pathlib.Path",
+                    "IO[str]"
                 ]
             }
         },
@@ -112,7 +117,14 @@
             ],
             "arguments": {
                 "file": [
-                    "SubmissionFile"
+                    "str",
+                    "List[pathlib.Path]",
+                    "IO[str]",
+                    "List[str]",
+                    "IO",
+                    "BinaryIO",
+                    "bool",
+                    "List"
                 ]
             }
         },
@@ -120,11 +132,16 @@
             "name": "getDatetimeFromSubmissionFile",
             "location": 251,
             "return": [
-                "datetime.datetime"
+                "Optional[str]",
+                "str",
+                "bool",
+                "Tuple[str, bool]"
             ],
             "arguments": {
                 "file": [
-                    "SubmissionFile"
+                    "IO[str]",
+                    "str",
+                    "IO"
                 ]
             }
         },
@@ -136,7 +153,9 @@
             ],
             "arguments": {
                 "s": [
-                    "str"
+                    "str",
+                    "datetime.datetime",
+                    "bytes"
                 ]
             }
         },
@@ -144,10 +163,16 @@
             "name": "calculateTotalSeconds",
             "location": 264,
             "return": [
-                "float"
+                "str",
+                "datetime.datetime",
+                "bool",
+                "int",
+                "Optional[datetime.tzinfo]"
             ],
             "arguments": {
                 "dt": [
+                    "str",
+                    "int",
                     "datetime.datetime"
                 ]
             }
@@ -164,11 +189,17 @@
             "name": "append_number_to_make_unique",
             "location": 272,
             "return": [
+                "str",
+                "Tuple[str, str]",
+                "TextIO",
+                "BinaryIO",
                 "pathlib.Path"
             ],
             "arguments": {
                 "file": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "TextIO",
+                    "str"
                 ]
             }
         },
@@ -181,7 +212,10 @@
             "arguments": {
                 "self": [],
                 "root": [
-                    "pathlib.Path"
+                    "Optional[str]",
+                    "IO",
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -194,10 +228,15 @@
             "arguments": {
                 "self": [],
                 "archive": [
-                    "pathlib.Path"
+                    "str",
+                    "Sequence[str]",
+                    "bool"
                 ],
                 "importer": [
-                    "SubmissionImporter"
+                    "str",
+                    "int",
+                    "bool",
+                    "list"
                 ]
             }
         },
@@ -230,7 +269,10 @@
             "arguments": {
                 "self": [],
                 "external_archive": [
-                    "pathlib.Path"
+                    "str",
+                    "None",
+                    "Union[str,pathlib.Path]",
+                    "Optional[pathlib.Path]"
                 ]
             }
         },
@@ -243,7 +285,8 @@
             "arguments": {
                 "self": [],
                 "archive": [
-                    "pathlib.Path"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -301,7 +344,7 @@
             "name": "getSubmissionFilesOldestToNewest",
             "location": 86,
             "return": [
-                "List[SubmissionFile]"
+                "List[nothing]"
             ],
             "arguments": {
                 "self": []
@@ -311,7 +354,7 @@
             "name": "getSubmissionFilesNewestToOldest",
             "location": 89,
             "return": [
-                "Iterator[SubmissionFile]"
+                "reversed[nothing]"
             ],
             "arguments": {
                 "self": []
@@ -386,10 +429,22 @@
             "arguments": {
                 "self": [],
                 "getSubmissionFiles": [
-                    "Callable[([Project], Iterable[SubmissionFile])]"
+                    "bool",
+                    "Optional[pathlib.Path]",
+                    "None",
+                    "Union[bool,List,Tuple]",
+                    "List",
+                    "Optional[IO[str]]",
+                    "Tuple",
+                    "IO"
                 ],
                 "shouldImport": [
-                    "Callable[([SubmissionFile], bool)]"
+                    "bool",
+                    "str",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -402,7 +457,8 @@
             "arguments": {
                 "self": [],
                 "project": [
-                    "Project"
+                    "str",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -415,10 +471,16 @@
             "arguments": {
                 "self": [],
                 "project": [
-                    "Project"
+                    "bool",
+                    "Dict",
+                    "MutableMapping[str,str]",
+                    "MutableMapping"
                 ],
                 "path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Union[pathlib.Path,str]",
+                    "pathlib.PurePosixPath"
                 ]
             }
         },
@@ -431,7 +493,8 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Set[str]"
                 ]
             }
         },
@@ -449,7 +512,11 @@
             "name": "getPathUnderSubmissionsDir",
             "location": 219,
             "return": [
-                "pathlib.Path"
+                "str",
+                "pathlib.Path",
+                "bool",
+                "List[int]",
+                "Union[pathlib.Path, str]"
             ],
             "arguments": {
                 "self": []
@@ -484,7 +551,9 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "pathlib.Path"
+                    "str",
+                    "AnyStr",
+                    "int"
                 ]
             }
         },
@@ -497,7 +566,7 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "pathlib.Path"
+                    "str"
                 ]
             }
         },
@@ -510,7 +579,11 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "int",
+                    "None",
+                    "Optional[pathlib.Path]"
                 ]
             }
         },
@@ -518,7 +591,7 @@
             "name": "importIntoProject",
             "location": 245,
             "return": [
-                "Tuple[(pathlib.Path, pathlib.Path)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -532,8 +605,8 @@
             "name": "temp_path",
             "location": 9,
             "return": [
-                "typing.Generator[pathlib.Path, None, None]",
-                "typing.Generator[]"
+                "Generator[pathlib.Path,None,None]",
+                "Generator"
             ],
             "arguments": {}
         },
@@ -547,9 +620,8 @@
             "arguments": {
                 "temp_path": [
                     "str",
-                    "typing.Iterable[str]",
-                    "pathlib.Path",
                     "Iterable[str]",
+                    "pathlib.Path",
                     "List[int]"
                 ]
             }
@@ -558,17 +630,27 @@
             "name": "generate_homework_archive",
             "location": 32,
             "return": [
-                "pathlib.Path"
+                "int",
+                "str",
+                "Callable",
+                "Dict[int,list[int]]"
             ],
             "arguments": {
                 "temp_path": [
+                    "str",
+                    "Optional[str]",
                     "pathlib.Path"
                 ],
                 "target_name_str": [
-                    "str"
+                    "bool",
+                    "str",
+                    "pathlib.Path"
                 ],
                 "submission_descs": [
-                    "List[Tuple[(str, str, str)]]"
+                    "List[tuple[Union[str,str,str]]]",
+                    "List[Tuple[str,str,str]]",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -576,13 +658,17 @@
             "name": "mk_archive_submission",
             "location": 48,
             "return": [
-                "pathlib.Path"
+                "str",
+                "pathlib.Path",
+                "List[str]"
             ],
             "arguments": {
                 "temp_path": [
+                    "str",
                     "pathlib.Path"
                 ],
                 "target_path": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -591,10 +677,12 @@
             "name": "mkdir",
             "location": 62,
             "return": [
+                "str",
                 "pathlib.Path"
             ],
             "arguments": {
                 "path": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -603,10 +691,12 @@
             "name": "mkfile",
             "location": 67,
             "return": [
+                "str",
                 "pathlib.Path"
             ],
             "arguments": {
                 "path": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -615,7 +705,9 @@
             "name": "mkarchive",
             "location": 72,
             "return": [
-                "pathlib.Path"
+                "str",
+                "pathlib.Path",
+                "Optional[str]"
             ],
             "arguments": {
                 "dest_path": [
@@ -634,6 +726,7 @@
             ],
             "arguments": {
                 "path": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -648,16 +741,29 @@
             ],
             "arguments": {
                 "temp_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "Union[str, pathlib.Path]",
+                    "Optional[pathlib.Path]"
                 ],
                 "archive_file": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "None",
+                    "Union[str,pathlib.Path]",
+                    "Optional[pathlib.Path]"
                 ],
                 "target_dir": [
-                    "str"
+                    "pathlib.Path",
+                    "str",
+                    "Union[str, pathlib.Path]",
+                    "Optional[pathlib.Path]"
                 ],
                 "duplicates": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -669,10 +775,14 @@
             ],
             "arguments": {
                 "temp_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "BinaryIO"
                 ],
                 "target_dir": [
-                    "str"
+                    "pathlib.Path",
+                    "str",
+                    "BinaryIO"
                 ]
             }
         },
@@ -684,11 +794,8 @@
             ],
             "arguments": {
                 "result": [
-                    "dict[, ]",
+                    "Dict",
                     "click.testing.Result",
-                    "typing.Type",
-                    "dict",
-                    "typing.Mapping",
                     "Type",
                     "Mapping"
                 ]
@@ -704,9 +811,11 @@
             ],
             "arguments": {
                 "temp_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "tests.e2e.Helper"
                 ],
                 "archive_file": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -754,6 +863,7 @@
                     "pathlib.Path"
                 ],
                 "archive_file": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -766,9 +876,11 @@
             ],
             "arguments": {
                 "temp_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "pathlib.PosixPath"
                 ],
                 "archive_file": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -781,9 +893,11 @@
             ],
             "arguments": {
                 "temp_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "pathlib.PosixPath"
                 ],
                 "archive_file": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -792,11 +906,13 @@
             "name": "listdir",
             "location": 54,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "List[pathlib.Path]"
                 ]
             }
         }

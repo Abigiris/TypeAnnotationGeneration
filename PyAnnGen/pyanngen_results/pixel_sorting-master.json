@@ -15,7 +15,7 @@
             "name": "get_all_sorters",
             "location": 30,
             "return": [
-                "List[pixel_sorting.sorters.basic.PixelSorter]"
+                "List[Union[(pixel_sorting.sorters.basic.BasicSorter, pixel_sorting.sorters.basic.Inverter, pixel_sorting.sorters.checker_board.CheckerBoardSorter, pixel_sorting.sorters.circle.CircleSorter, pixel_sorting.sorters.column.AlternatingColumnSorter, pixel_sorting.sorters.diamond.DiamondSorter, pixel_sorting.sorters.row.AlternatingRowSorter)]]"
             ],
             "arguments": {}
         },
@@ -27,7 +27,8 @@
             ],
             "arguments": {
                 "path_to_dir": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -51,10 +52,20 @@
             ],
             "arguments": {
                 "path_to_dir": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "sorters_to_use": [
-                    "list"
+                    "str",
+                    "Optional[str]",
+                    "bool",
+                    "Dict",
+                    "None",
+                    "Dict[str,Optional[str]]",
+                    "Dict[str,Union[str,None]]",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ]
             }
         },
@@ -66,10 +77,14 @@
             ],
             "arguments": {
                 "batch": [
-                    "List[pixel_sorting.helper.SortingImage]"
+                    "int",
+                    "str",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
                 ],
                 "pipe": [
-                    "multiprocessing.dummy.connection.Connection"
+                    "str"
                 ]
             }
         },
@@ -77,17 +92,30 @@
             "name": "create_batch_queue",
             "location": 133,
             "return": [
-                "queue.Queue"
+                "queue.Queue[nothing]"
             ],
             "arguments": {
                 "images": [
-                    "List[pixel_sorting.helper.PixelImage]"
+                    "List[pixel_sorting.helper.PixelImage]",
+                    "Dict",
+                    "List",
+                    "bool",
+                    "Optional[int]",
+                    "Optional[dict]",
+                    "Optional[List]"
                 ],
                 "sorters_to_use": [
-                    "List[pixel_sorting.sorters.basic.PixelSorter]"
+                    "List[pixel_sorting.helper.PixelImage]",
+                    "Dict",
+                    "List",
+                    "bool",
+                    "Optional[int]",
+                    "Optional[dict]",
+                    "Optional[List]"
                 ],
                 "max_batch_size": [
-                    "int"
+                    "int",
+                    "bool"
                 ]
             }
         }
@@ -139,16 +167,16 @@
                 "pixels": [
                     "str",
                     "float",
-                    "Callable[[int, int], None]",
+                    "Callable[[int,int],None]",
                     "int",
-                    "typing.Callable[int,int, None]"
+                    "Callable[int,int,None]"
                 ],
                 "filename": [
                     "str",
                     "float",
-                    "Callable[[int, int], None]",
+                    "Callable[[int,int],None]",
                     "int",
-                    "typing.Callable[int,int, None]"
+                    "Callable[int,int,None]"
                 ]
             }
         },
@@ -192,11 +220,13 @@
             "name": "get_images",
             "location": 138,
             "return": [
-                "List[PixelImage]"
+                "List[nothing]"
             ],
             "arguments": {
                 "path_to_dir": [
-                    "str"
+                    "str",
+                    "Sequence[str]",
+                    "List[str]"
                 ]
             }
         },
@@ -208,7 +238,9 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "Dict[int,Set[str]]",
+                    "Dict[int,set[str]]"
                 ]
             }
         },
@@ -221,13 +253,21 @@
             "arguments": {
                 "self": [],
                 "width": [
-                    "int"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "height": [
-                    "int"
+                    "bool",
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "file_path": [
-                    "str"
+                    "bool",
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -251,10 +291,9 @@
                 "self": [],
                 "other": [
                     "int",
-                    "str",
                     "List[int]",
-                    "float",
-                    "list[int]"
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -262,7 +301,9 @@
             "name": "load_pixels",
             "location": 31,
             "return": [
-                "list"
+                "int",
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -272,7 +313,14 @@
             "name": "get_extension",
             "location": 37,
             "return": [
-                "str"
+                "str",
+                "Dict[str,Any]",
+                "List[str]",
+                "List[Tuple[str,str]]",
+                "List[Optional[str]]",
+                "Dict",
+                "int",
+                "Tuple[str,str]"
             ],
             "arguments": {
                 "self": []
@@ -297,13 +345,24 @@
             "arguments": {
                 "self": [],
                 "pixel_image": [
-                    "PixelImage"
+                    "str",
+                    "float",
+                    "bytes",
+                    "numpy.ndarray"
                 ],
                 "sorter": [
-                    "pixel_sorting.sorters.basic.PixelSorter"
+                    "int",
+                    "bytes",
+                    "str",
+                    "List",
+                    "bool"
                 ],
                 "criteria": [
-                    "str"
+                    "int",
+                    "bytes",
+                    "str",
+                    "List",
+                    "bool"
                 ]
             }
         },
@@ -327,7 +386,7 @@
                 "self": [],
                 "other": [
                     "AbstractSet[T]",
-                    "typing.AbstractSet",
+                    "AbstractSet",
                     "Optional[numpy.ndarray]",
                     "None"
                 ]
@@ -372,10 +431,16 @@
             "arguments": {
                 "self": [],
                 "logger": [
-                    "logging.Logger"
+                    "str",
+                    "List[str]",
+                    "None",
+                    "Optional[logging.Logger]",
+                    "nucypher.utilities.logging.Logger"
                 ],
                 "name": [
-                    "str"
+                    "List[str]",
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -405,7 +470,7 @@
                 ],
                 "exc_tb": [
                     "Optional[Type[BaseException]]",
-                    "typing.Type",
+                    "Type",
                     "str",
                     "BaseException",
                     "None",
@@ -497,21 +562,17 @@
             "arguments": {
                 "criteria": [
                     "bool",
-                    "typing.Iterable[T]",
-                    "float",
-                    "int",
-                    "typing.Sequence[str]",
                     "Iterable[T]",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "float",
+                    "int"
                 ],
                 "num": [
                     "bool",
-                    "typing.Iterable[T]",
-                    "float",
-                    "int",
-                    "typing.Sequence[str]",
                     "Iterable[T]",
-                    "Sequence[str]"
+                    "Sequence[str]",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -542,11 +603,11 @@
             "name": "ret_lambda",
             "location": 64,
             "return": [
-                "tuple[]",
+                "Tuple",
                 "bool",
                 "List[int]",
                 "int",
-                "Union[str, bool, None]",
+                "Union[str,bool,None]",
                 "Optional[bool]"
             ],
             "arguments": {
@@ -577,20 +638,18 @@
                 "img_height": [
                     "int",
                     "bool",
+                    "Tuple",
                     "str",
-                    "Union[str, float]",
-                    "float",
-                    "tuple",
-                    "tuple[]"
+                    "Union[str,float]",
+                    "float"
                 ],
                 "x": [
                     "int",
                     "bool",
+                    "Tuple",
                     "str",
-                    "Union[str, float]",
-                    "float",
-                    "tuple",
-                    "tuple[]"
+                    "Union[str,float]",
+                    "float"
                 ],
                 "y": [
                     "int",
@@ -623,23 +682,21 @@
                 "self": [],
                 "pixels": [
                     "str",
-                    "typing.IO",
                     "IO",
                     "bool",
                     "None",
                     "T",
-                    "list[str]",
+                    "List[str]",
                     "Optional[str]",
                     "Optional[List[str]]"
                 ],
                 "rect_pixels": [
                     "str",
-                    "typing.IO",
                     "IO",
                     "bool",
                     "None",
                     "T",
-                    "list[str]",
+                    "List[str]",
                     "Optional[str]",
                     "Optional[List[str]]"
                 ]
@@ -656,47 +713,43 @@
                 "img_width": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "img_height": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "x": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "y": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "width": [
                     "int",
                     "float",
                     "Optional[List[Any]]",
-                    "list[typing.Any]",
+                    "List[Any]",
                     "None"
                 ],
                 "height": [
                     "int",
                     "float",
                     "Optional[List[Any]]",
-                    "list[typing.Any]",
+                    "List[Any]",
                     "None"
                 ]
             }
@@ -711,10 +764,9 @@
                 "self": [],
                 "pixels": [
                     "float",
-                    "List[List[int]]",
-                    "list[list[int]]",
                     "List[int]",
-                    "list[int]"
+                    "List[List[int]]",
+                    "List[list[int]]"
                 ]
             }
         },
@@ -722,12 +774,21 @@
             "name": "put_in_pixels",
             "location": 43,
             "return": [
-                "_T0"
+                "int",
+                "bool",
+                "float",
+                "List[int]",
+                "str",
+                "Tuple[int,int]",
+                "zulipterminal.helper.Message"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "_T0"
+                    "int",
+                    "float",
+                    "List[int]",
+                    "bool"
                 ],
                 "rect_pixels": [
                     "List[int]",
@@ -747,40 +808,36 @@
                 "img_width": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "img_height": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "x": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "y": [
                     "int",
                     "str",
-                    "float",
-                    "typing.Mapping",
                     "Mapping",
+                    "float",
                     "bool"
                 ],
                 "radius": [
                     "int",
                     "float",
                     "Optional[List[Any]]",
-                    "list[typing.Any]",
+                    "List[Any]",
                     "None"
                 ]
             }
@@ -795,10 +852,9 @@
                 "self": [],
                 "pixels": [
                     "float",
-                    "List[List[int]]",
-                    "list[list[int]]",
                     "List[int]",
-                    "list[int]"
+                    "List[List[int]]",
+                    "List[list[int]]"
                 ]
             }
         },
@@ -806,19 +862,27 @@
             "name": "put_in_pixels",
             "location": 81,
             "return": [
-                "_T0"
+                "int",
+                "bool",
+                "float",
+                "List[int]",
+                "str",
+                "Tuple[int,int]",
+                "zulipterminal.helper.Message"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "_T0"
-                ],
-                "rect_pixels": [
-                    "list[int]",
                     "int",
                     "float",
-                    "bool",
-                    "List[int]"
+                    "List[int]",
+                    "bool"
+                ],
+                "rect_pixels": [
+                    "List[int]",
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         }
@@ -839,18 +903,24 @@
             "name": "sort_pixels",
             "location": 10,
             "return": [
-                "list"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "criteria": [
                     "int",
@@ -873,18 +943,24 @@
             "name": "sort_pixels",
             "location": 18,
             "return": [
-                "list"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "criteria": [
                     "int",
@@ -905,12 +981,9 @@
                 "self": [],
                 "name": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "List[str]",
-                    "list[str]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "reverse": [
                     "bool",
@@ -937,18 +1010,27 @@
             "name": "sort_pixels",
             "location": 20,
             "return": [
-                "list"
+                "int",
+                "List",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "criteria": [
                     "int",
@@ -967,8 +1049,8 @@
                 "self": [],
                 "reverse": [
                     "bool",
-                    "Dict[str, Any]",
-                    "Callable[[Any, Any], bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]"
                 ]
             }
         },
@@ -976,18 +1058,30 @@
             "name": "sort_pixels",
             "location": 36,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "List",
+                "str",
+                "Dict",
+                "Sequence[Union[str,Any]]"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "List",
+                    "Dict",
+                    "Sequence[Union[str,Any]]"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "criteria": [
                     "int",
@@ -1011,18 +1105,26 @@
             "name": "sort_pixels",
             "location": 50,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "list",
+                    "Sequence[int]"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "criteria": [
                     "int",
@@ -1044,24 +1146,24 @@
                 "reverse": [
                     "bool",
                     "int",
-                    "Tuple[str, int]"
+                    "Tuple[str,int]"
                 ],
                 "sorter": [
                     "BasicSorter",
                     "int",
                     "bool",
-                    "Tuple[str, int]"
+                    "Tuple[str,int]"
                 ],
                 "width": [
                     "int",
                     "str",
-                    "Tuple[str, int]",
+                    "Tuple[str,int]",
                     "Optional[str]"
                 ],
                 "height": [
                     "int",
                     "str",
-                    "Tuple[str, int]",
+                    "Tuple[str,int]",
                     "bool"
                 ]
             }
@@ -1070,18 +1172,29 @@
             "name": "sort_pixels",
             "location": 14,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "str",
+                "Dict",
+                "List[int]",
+                "List[list[int]]",
+                "float"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "img_width": [
                     "int"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "str",
+                    "Sequence",
+                    "bool"
                 ],
                 "criteria": [
                     "bool",
@@ -1114,13 +1227,11 @@
                     "None",
                     "Optional[int]",
                     "int",
-                    "Union[float, int]",
-                    "float",
                     "List[float]",
-                    "list[float]",
-                    "tuple[]",
-                    "bool",
-                    "tuple"
+                    "Union[float,int]",
+                    "Tuple",
+                    "float",
+                    "bool"
                 ],
                 "width": [
                     "int",
@@ -1136,18 +1247,26 @@
             "name": "sort_pixels",
             "location": 46,
             "return": [
-                "list"
+                "int",
+                "str",
+                "Callable",
+                "float"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "img_width": [
                     "int"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "str",
+                    "Sequence",
+                    "bool"
                 ],
                 "criteria": [
                     "float",
@@ -1170,8 +1289,8 @@
                 "self": [],
                 "reverse": [
                     "bool",
-                    "Dict[str, Any]",
-                    "Callable[[Any, Any], bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]"
                 ]
             }
         },
@@ -1184,13 +1303,13 @@
             "arguments": {
                 "width": [
                     "int",
-                    "Union[int, str]",
+                    "Union[int,str]",
                     "Iterator[int]"
                 ],
                 "height": [
                     "int",
                     "float",
-                    "Union[int, str]",
+                    "Union[int,str]",
                     "str",
                     "bool"
                 ]
@@ -1221,14 +1340,14 @@
                 "img_width": [
                     "int",
                     "float",
-                    "Union[float, List[float]]"
+                    "Union[float,List[float]]"
                 ],
                 "img_height": [
                     "int",
                     "float",
-                    "Union[float, List[float]]",
+                    "Union[float,List[float]]",
                     "str",
-                    "list[float]"
+                    "List[float]"
                 ],
                 "x": [
                     "bool",
@@ -1249,67 +1368,57 @@
                 "self": [],
                 "pixels": [
                     "int",
-                    "tuple",
-                    "tuple[]",
-                    "list",
-                    "list[]",
-                    "Union[float, List[float]]",
+                    "Tuple",
+                    "List",
+                    "Union[float,List[float]]",
                     "float",
-                    "list[float]"
+                    "List[float]"
                 ],
                 "temp_pixels": [
                     "int",
-                    "tuple",
-                    "tuple[]",
-                    "list",
-                    "list[]",
-                    "Union[float, List[float]]",
+                    "Tuple",
+                    "List",
+                    "Union[float,List[float]]",
                     "float",
-                    "list[float]"
+                    "List[float]"
                 ],
                 "index": [
                     "int",
-                    "tuple",
-                    "tuple[]",
-                    "list",
-                    "list[]",
-                    "Union[float, List[float]]",
+                    "Tuple",
+                    "List",
+                    "Union[float,List[float]]",
                     "float",
-                    "list[float]"
+                    "List[float]"
                 ],
                 "img_width": [
                     "int",
-                    "tuple",
-                    "tuple[]",
-                    "list",
-                    "list[]",
-                    "Union[float, List[float]]",
+                    "Tuple",
+                    "List",
+                    "Union[float,List[float]]",
                     "float",
-                    "list[float]"
+                    "List[float]"
                 ],
                 "img_height": [
                     "int",
-                    "tuple",
-                    "tuple[]",
-                    "list",
-                    "list[]",
-                    "Union[float, List[float]]",
+                    "Tuple",
+                    "List",
+                    "Union[float,List[float]]",
                     "float",
-                    "list[float]"
+                    "List[float]"
                 ],
                 "x": [
                     "int",
                     "float",
-                    "tuple",
-                    "list",
-                    "Union[float, List[float]]"
+                    "Tuple",
+                    "List",
+                    "Union[float,List[float]]"
                 ],
                 "y": [
                     "int",
                     "float",
-                    "tuple",
-                    "list",
-                    "Union[float, List[float]]"
+                    "Tuple",
+                    "List",
+                    "Union[float,List[float]]"
                 ]
             }
         },
@@ -1320,22 +1429,22 @@
                 "int",
                 "Callable",
                 "str",
-                "typing.Mapping",
-                "list[tuple[typing.Union[str,typing.Any]]]",
-                "list[]",
-                "list[int]"
+                "Mapping",
+                "List[tuple[Union[str,Any]]]",
+                "List",
+                "List[int]"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
                     "int",
-                    "Mapping[str, Tuple[float, float, float]]",
-                    "typing.Mapping"
+                    "Mapping[str,Tuple[float,float,float]]",
+                    "Mapping"
                 ],
                 "temp_pixels": [
                     "int",
-                    "Mapping[str, Tuple[float, float, float]]",
-                    "typing.Mapping"
+                    "Mapping[str,Tuple[float,float,float]]",
+                    "Mapping"
                 ],
                 "pixel_set": [
                     "List[int]",
@@ -1346,18 +1455,18 @@
                 ],
                 "index": [
                     "int",
-                    "Mapping[str, Tuple[float, float, float]]",
-                    "typing.Mapping"
+                    "Mapping[str,Tuple[float,float,float]]",
+                    "Mapping"
                 ],
                 "img_width": [
                     "int",
-                    "Mapping[str, Tuple[float, float, float]]",
-                    "typing.Mapping"
+                    "Mapping[str,Tuple[float,float,float]]",
+                    "Mapping"
                 ],
                 "img_height": [
                     "int",
-                    "Mapping[str, Tuple[float, float, float]]",
-                    "typing.Mapping"
+                    "Mapping[str,Tuple[float,float,float]]",
+                    "Mapping"
                 ],
                 "radius": [
                     "int",
@@ -1372,18 +1481,35 @@
             "name": "sort_pixels",
             "location": 67,
             "return": [
-                "list"
+                "List",
+                "int",
+                "List[tuple[Union[Any,Any]]]",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "List",
+                    "List[tuple[Union[Any,Any]]]",
+                    "Union[int,float]",
+                    "Sequence[Union[str,Any]]",
+                    "List[Tuple[Any,Any]]",
+                    "List[tuple]",
+                    "int",
+                    "Sequence[T]"
                 ],
                 "img_width": [
-                    "int"
+                    "bool",
+                    "str",
+                    "int",
+                    "Union[int, float]"
                 ],
                 "img_height": [
-                    "int"
+                    "bool",
+                    "str",
+                    "int",
+                    "Union[int, float]"
                 ],
                 "criteria": [
                     "int",
@@ -1407,9 +1533,8 @@
                     "int",
                     "str",
                     "float",
-                    "Union[str, float]",
-                    "list[str]",
-                    "List[str]"
+                    "List[str]",
+                    "Union[str,float]"
                 ],
                 "reverse": [
                     "bool",
@@ -1417,7 +1542,7 @@
                     "Sequence[str]",
                     "float",
                     "int",
-                    "Union[Sequence[Any], Tuple[float, float]]"
+                    "Union[Sequence[Any],Tuple[float,float]]"
                 ]
             }
         },
@@ -1425,18 +1550,33 @@
             "name": "sort_pixels",
             "location": 11,
             "return": [
-                "list"
+                "int",
+                "List",
+                "str",
+                "Callable",
+                "Sequence[int]",
+                "List[int]"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "List",
+                    "int",
+                    "str",
+                    "Sequence[int]",
+                    "List[int]"
                 ],
                 "img_width": [
-                    "int"
+                    "List",
+                    "int",
+                    "str",
+                    "Sequence[int]",
+                    "List[int]"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "Union[int,float]",
+                    "float"
                 ],
                 "criteria": [
                     "int",
@@ -1467,18 +1607,32 @@
             "name": "sort_pixels",
             "location": 30,
             "return": [
-                "list"
+                "int",
+                "str",
+                "Callable",
+                "List",
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "List",
+                    "str",
+                    "List[str]",
+                    "bool"
                 ],
                 "img_width": [
+                    "bool",
+                    "str",
                     "int"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "str",
+                    "List[str]",
+                    "bool"
                 ],
                 "criteria": [
                     "int",
@@ -1501,8 +1655,8 @@
                 "self": [],
                 "reverse": [
                     "bool",
-                    "Dict[str, Any]",
-                    "Callable[[Any, Any], bool]"
+                    "Dict[str,Any]",
+                    "Callable[[Any,Any],bool]"
                 ]
             }
         },
@@ -1523,18 +1677,28 @@
             "name": "sort_pixels",
             "location": 36,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "list",
+                    "Sequence[Union[str, Any]]",
+                    "List[int]",
+                    "int"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "List[int]",
+                    "List",
+                    "Tuple[int,int]",
+                    "List[str]"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "float"
                 ],
                 "criteria": [
                     "int",
@@ -1555,13 +1719,11 @@
             "arguments": {
                 "self": [],
                 "row": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
+                    "Dict[str,int]",
                     "int",
-                    "Dict[str, int]",
-                    "dict[str, int]",
-                    "Dict[str, Dict[str, Any]]",
-                    "dict[str, dict[str, typing.Any]]",
+                    "Dict[str,Dict[str,Any]]",
+                    "Dict[str,dict[str,Any]]",
                     "Optional[int]",
                     "None"
                 ],
@@ -1569,7 +1731,7 @@
                     "bool",
                     "int",
                     "str",
-                    "Union[str, int]"
+                    "Union[str,int]"
                 ]
             }
         },
@@ -1577,18 +1739,27 @@
             "name": "sort_pixels",
             "location": 10,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "List[int]",
+                "str",
+                "List"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "List[int]",
+                    "List"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "Sequence[Any]"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "bool"
                 ],
                 "criteria": [
                     "int",
@@ -1619,18 +1790,28 @@
             "name": "sort_pixels",
             "location": 29,
             "return": [
-                "list"
+                "int",
+                "Callable",
+                "List",
+                "str",
+                "List[int]"
             ],
             "arguments": {
                 "self": [],
                 "pixels": [
-                    "list"
+                    "int",
+                    "List",
+                    "List[int]"
                 ],
                 "img_width": [
-                    "int"
+                    "int",
+                    "List",
+                    "List[int]"
                 ],
                 "img_height": [
-                    "int"
+                    "int",
+                    "List",
+                    "Sequence"
                 ],
                 "criteria": [
                     "int",
@@ -1651,16 +1832,26 @@
             "arguments": {
                 "self": [],
                 "tester": [
-                    "unittest.case.TestCase"
+                    "int",
+                    "Callable",
+                    "Union[float,Tuple[float,float]]",
+                    "float",
+                    "Tuple[Union[float,float]]"
                 ],
                 "skipped": [
-                    "int"
+                    "int",
+                    "Union[float,Tuple[float,float]]",
+                    "Callable"
                 ],
                 "processed": [
-                    "int"
+                    "int",
+                    "Union[float,Tuple[float,float]]",
+                    "Callable"
                 ],
                 "errors": [
-                    "int"
+                    "int",
+                    "Union[float,Tuple[float,float]]",
+                    "Callable"
                 ]
             }
         },
@@ -1674,9 +1865,8 @@
                 "self": [],
                 "obj": [
                     "str",
+                    "List",
                     "Optional[str]",
-                    "list[]",
-                    "list",
                     "int"
                 ]
             }
@@ -1727,7 +1917,7 @@
             "return": [
                 "SortingImage",
                 "str",
-                "tuple",
+                "Tuple",
                 "float",
                 "bool"
             ],
@@ -1784,23 +1974,19 @@
                 "expected_result": [
                     "bool",
                     "str",
-                    "List[Tuple[Any, Any]]",
-                    "list[tuple[typing.Union[typing.Any,typing.Any]]]",
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, bool]",
-                    "dict[str, bool]",
+                    "Dict",
+                    "Dict[str,bool]",
+                    "List[Tuple[Any,Any]]",
                     "List[str]",
-                    "list[str]"
+                    "List[tuple[Union[Any,Any]]]"
                 ],
                 "radius": [],
                 "circle_pixels": [
-                    "set[str]",
+                    "Set[str]",
                     "bool",
                     "float",
                     "numpy.array",
-                    "int",
-                    "Set[str]"
+                    "int"
                 ],
                 "pixel_source": []
             }
@@ -1813,10 +1999,15 @@
             ],
             "arguments": {
                 "path": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "test_pixels": [
-                    "list"
+                    "List[str]",
+                    "bool",
+                    "List",
+                    "int"
                 ]
             }
         },
@@ -1890,13 +2081,13 @@
                 "self": [],
                 "file_path": [
                     "str",
-                    "typing.Text"
+                    "Text"
                 ],
                 "pixels": [
                     "Optional[Set[int]]",
                     "str",
                     "None",
-                    "set[int]"
+                    "Set[int]"
                 ]
             }
         },
@@ -2075,7 +2266,6 @@
             "name": "info",
             "location": 113,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

@@ -110,11 +110,15 @@
             "name": "feed_to_trips",
             "location": 49,
             "return": [
-                "Iterator[Trip]"
+                "Generator[(Trip, Any, Optional[List[nothing]])]"
             ],
             "arguments": {
                 "feed": [
-                    "Iterator[travelfootprint.insta.types.FeedItem]"
+                    "bytes",
+                    "int",
+                    "IO",
+                    "List[str]",
+                    "str"
                 ]
             }
         },
@@ -243,9 +247,9 @@
                 "fn": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -287,10 +291,9 @@
             ],
             "arguments": {
                 "item": [
-                    "list[]",
+                    "List",
                     "str",
-                    "dict",
-                    "list",
+                    "Dict",
                     "int",
                     "T"
                 ]
@@ -305,9 +308,9 @@
             "arguments": {
                 "user_info": [
                     "str",
-                    "dict",
+                    "Dict",
                     "bool",
-                    "Callable[[], str]"
+                    "Callable[,str]"
                 ]
             }
         },
@@ -315,11 +318,19 @@
             "name": "get_profile",
             "location": 105,
             "return": [
-                "travelfootprint.insta.types.Profile"
+                "Optional[str]",
+                "int",
+                "str",
+                "bytes",
+                "tuple",
+                "bool",
+                "dict"
             ],
             "arguments": {
                 "username": [
-                    "str"
+                    "str",
+                    "Callable",
+                    "List[str]"
                 ]
             }
         },
@@ -327,11 +338,16 @@
             "name": "get_feed",
             "location": 110,
             "return": [
-                "Iterator[travelfootprint.insta.types.FeedItem]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "profile": [
-                    "travelfootprint.insta.types.Profile"
+                    "str",
+                    "Dict[str,Any]",
+                    "int",
+                    "None",
+                    "Optional[str]",
+                    "core.types.UserRole"
                 ]
             }
         },
@@ -339,11 +355,18 @@
             "name": "get_full_location",
             "location": 115,
             "return": [
-                "travelfootprint.insta.types.FullLocation"
+                "str",
+                "bool",
+                "Union[int, float, complex]",
+                "Optional[List[str]]"
             ],
             "arguments": {
                 "location": [
-                    "travelfootprint.insta.types.BasicLocation"
+                    "str",
+                    "int",
+                    "Dict[str,Any]",
+                    "List[str]",
+                    "bool"
                 ]
             }
         },
@@ -351,11 +374,19 @@
             "name": "get_media_location",
             "location": 120,
             "return": [
-                "Optional[travelfootprint.insta.types.BasicLocation]"
+                "None",
+                "Optional[int]",
+                "Optional[str]",
+                "List[Dict[str,Any]]",
+                "Optional[mypy.types.Type]",
+                "bool",
+                "types.CommandCoroutine"
             ],
             "arguments": {
                 "media": [
-                    "travelfootprint.insta.types.FeedItem"
+                    "Dict",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -367,7 +398,11 @@
             ],
             "arguments": {
                 "feeditem": [
-                    "travelfootprint.insta.types.FeedItem"
+                    "List",
+                    "Dict",
+                    "NamedTuple",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -375,20 +410,18 @@
             "name": "_populate_location",
             "location": 134,
             "return": [
-                "typing.Union[travelfootprint.insta.types.NoLocation, travelfootprint.insta.types.BasicLocation, travelfootprint.insta.types.FullLocation]",
+                "Union[travelfootprint.insta.types.NoLocation,travelfootprint.insta.types.BasicLocation,travelfootprint.insta.types.FullLocation]",
                 "None"
             ],
             "arguments": {
                 "location": [
-                    "list[dict[, ]]",
-                    "str",
                     "List[dict]",
+                    "str",
                     "travelfootprininsta.types.FeedItem"
                 ],
                 "media": [
-                    "list[dict[, ]]",
-                    "str",
                     "List[dict]",
+                    "str",
                     "travelfootprininsta.types.FeedItem"
                 ]
             }
@@ -400,22 +433,22 @@
                 "NoLocation",
                 "str",
                 "float",
-                "Dict[str, str]"
+                "Dict[str,str]"
             ],
             "arguments": {
                 "location": [
                     "int",
                     "travelfootprininsta.types.FeedItem",
-                    "list[dict[str, str]]",
+                    "List[dict[str,str]]",
                     "bool",
-                    "List[Dict[str, str]]"
+                    "List[Dict[str,str]]"
                 ],
                 "media": [
                     "int",
                     "travelfootprininsta.types.FeedItem",
-                    "list[dict[str, str]]",
+                    "List[dict[str,str]]",
                     "bool",
-                    "List[Dict[str, str]]"
+                    "List[Dict[str,str]]"
                 ]
             }
         },
@@ -430,12 +463,10 @@
             "arguments": {
                 "location": [
                     "str",
+                    "Dict[str,Any]",
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "float",
                     "List[str]",
-                    "list[str]"
+                    "float"
                 ],
                 "media": [
                     "str",
@@ -466,20 +497,18 @@
             "return": [
                 "str",
                 "Optional[str]",
-                "dict[str, typing.Any]",
+                "Dict[str,Any]",
                 "bool",
-                "list[str]",
+                "List[str]",
                 "float"
             ],
             "arguments": {
                 "location": [
                     "str",
+                    "Dict[str,Any]",
                     "bool",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "float",
                     "List[str]",
-                    "list[str]"
+                    "float"
                 ]
             }
         },
@@ -487,11 +516,15 @@
             "name": "location_populated_feed",
             "location": 163,
             "return": [
-                "Iterator[concurrent.futures._base.Future]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "feed": [
-                    "Iterator[travelfootprint.insta.types.FeedItem]"
+                    "str",
+                    "bytes",
+                    "Iterator[travelfootprininsta.types.FeedItem]",
+                    "int",
+                    "types.PILVideo"
                 ]
             }
         },
@@ -499,11 +532,16 @@
             "name": "filter_feed_for_locations",
             "location": 168,
             "return": [
-                "Iterator[travelfootprint.insta.types.FeedItem]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "feed": [
-                    "Iterator[travelfootprint.insta.types.FeedItem]"
+                    "Iterator[travelfootprininsta.types.FeedItem]",
+                    "str",
+                    "Iterator",
+                    "bool",
+                    "Tuple[int,int,int]",
+                    "Tuple[Union[int,int,int]]"
                 ]
             }
         },
@@ -517,9 +555,9 @@
                 "html": [
                     "int",
                     "str",
-                    "typing.Iterable[C]",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }

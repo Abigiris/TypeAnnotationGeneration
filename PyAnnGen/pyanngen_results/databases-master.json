@@ -45,7 +45,9 @@
             "arguments": {
                 "self": [],
                 "url": [
-                    "Union[(DatabaseURL, str)]"
+                    "str",
+                    "Dict[str, str]",
+                    "dict"
                 ]
             }
         },
@@ -53,7 +55,8 @@
             "name": "connection",
             "location": 178,
             "return": [
-                "Connection"
+                "str",
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -83,7 +86,8 @@
             "name": "_get_backend",
             "location": 203,
             "return": [
-                "str"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -98,7 +102,11 @@
             "arguments": {
                 "self": [],
                 "backend": [
-                    "databases.interfaces.DatabaseBackend"
+                    "int",
+                    "apistar.interfaces.Router",
+                    "bool",
+                    "apistar.types.RouteConfig",
+                    "float"
                 ]
             }
         },
@@ -128,14 +136,25 @@
             "name": "_build_query",
             "location": 305,
             "return": [
-                "sqlalchemy.sql.elements.ClauseElement"
+                "Optional[int]",
+                "bool",
+                "Optional[List[Any]]",
+                "int",
+                "Optional[bool]"
             ],
             "arguments": {
                 "query": [
-                    "Union[(str, sqlalchemy.sql.elements.ClauseElement)]"
+                    "dict",
+                    "int",
+                    "Union[sqlalchemy.sql.ClauseElement, str]",
+                    "str",
+                    "Optional[Dict[str, Any]]"
                 ],
                 "values": [
-                    "dict"
+                    "dict",
+                    "Optional[Awaitable[None]]",
+                    "Optional[Sequence[Any]]",
+                    "Union[None, str]"
                 ]
             }
         },
@@ -148,10 +167,17 @@
             "arguments": {
                 "self": [],
                 "connection_callable": [
-                    "Callable[([], Connection)]"
+                    "str",
+                    "bytes",
+                    "asyncio.AbstractEventLoop",
+                    "Dict[str, Any]"
                 ],
                 "force_rollback": [
-                    "bool"
+                    "int",
+                    "apistar.interfaces.Router",
+                    "bool",
+                    "apistar.types.RouteConfig",
+                    "float"
                 ]
             }
         },
@@ -159,7 +185,7 @@
             "name": "__await__",
             "location": 353,
             "return": [
-                "Generator[(None, None, Transaction)]"
+                "Generator[(Any, None, Transaction)]"
             ],
             "arguments": {
                 "self": []
@@ -169,12 +195,12 @@
             "name": "__call__",
             "location": 359,
             "return": [
-                "_CallableType"
+                "Callable"
             ],
             "arguments": {
                 "self": [],
                 "func": [
-                    "_CallableType"
+                    "Callable"
                 ]
             }
         },
@@ -197,7 +223,10 @@
             "arguments": {
                 "self": [],
                 "url": [
-                    "Union[(DatabaseURL, str)]"
+                    "str",
+                    "Mapping[str, str]",
+                    "Callable",
+                    "Optional[Dict[str, Any]]"
                 ]
             }
         },
@@ -359,7 +388,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TDatabaseURL"
+                    "_TDatabaseURL@@DatabaseURL@@"
                 ]
             }
         },
@@ -445,7 +474,7 @@
             "name": "connection",
             "location": 14,
             "return": [
-                "ConnectionBackend"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -455,7 +484,7 @@
             "name": "transaction",
             "location": 51,
             "return": [
-                "TransactionBackend"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -465,7 +494,7 @@
             "name": "raw_connection",
             "location": 55,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
@@ -476,7 +505,7 @@
             "name": "_mapping",
             "location": 74,
             "return": [
-                "typing.Mapping",
+                "Mapping",
                 "None"
             ],
             "arguments": {
@@ -495,7 +524,10 @@
             "arguments": {
                 "self": [],
                 "database_url": [
-                    "Union[(str, databases.core.DatabaseURL)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -503,7 +535,10 @@
             "name": "_get_dialect",
             "location": 36,
             "return": [
-                "sqlalchemy.engine.interfaces.Dialect"
+                "PGDialect_psycopg2",
+                "str",
+                "bool",
+                "pyspark.sql.SparkSession"
             ],
             "arguments": {
                 "self": []
@@ -513,7 +548,7 @@
             "name": "_get_connection_kwargs",
             "location": 51,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -538,7 +573,10 @@
             "arguments": {
                 "self": [],
                 "context": [
-                    "sqlalchemy.engine.interfaces.ExecutionContext"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -551,10 +589,16 @@
             "arguments": {
                 "self": [],
                 "database": [
-                    "AiopgBackend"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ],
                 "dialect": [
-                    "sqlalchemy.engine.interfaces.Dialect"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -562,7 +606,7 @@
             "name": "transaction",
             "location": 201,
             "return": [
-                "databases.interfaces.TransactionBackend"
+                "AiopgTransaction"
             ],
             "arguments": {
                 "self": []
@@ -572,12 +616,14 @@
             "name": "_compile",
             "location": 204,
             "return": [
-                "Tuple[(str, dict, CompilationContext)]"
+                "Tuple[(Any, Any, CompilationContext)]"
             ],
             "arguments": {
                 "self": [],
                 "query": [
-                    "sqlalchemy.sql.elements.ClauseElement"
+                    "str",
+                    "List[str]",
+                    "sqlalchemy.orm.session.Session"
                 ]
             }
         },
@@ -602,7 +648,10 @@
             "arguments": {
                 "self": [],
                 "connection": [
-                    "AiopgConnection"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         }
@@ -617,7 +666,10 @@
             "arguments": {
                 "self": [],
                 "database_url": [
-                    "Union[(str, databases.core.DatabaseURL)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -625,7 +677,7 @@
             "name": "_get_connection_kwargs",
             "location": 35,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -650,7 +702,10 @@
             "arguments": {
                 "self": [],
                 "context": [
-                    "sqlalchemy.engine.interfaces.ExecutionContext"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -663,10 +718,16 @@
             "arguments": {
                 "self": [],
                 "database": [
-                    "AsyncMyBackend"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ],
                 "dialect": [
-                    "sqlalchemy.engine.interfaces.Dialect"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -674,7 +735,7 @@
             "name": "transaction",
             "location": 191,
             "return": [
-                "databases.interfaces.TransactionBackend"
+                "AsyncMyTransaction"
             ],
             "arguments": {
                 "self": []
@@ -684,12 +745,14 @@
             "name": "_compile",
             "location": 194,
             "return": [
-                "Tuple[(str, dict, CompilationContext)]"
+                "Tuple[(Any, Any, CompilationContext)]"
             ],
             "arguments": {
                 "self": [],
                 "query": [
-                    "sqlalchemy.sql.elements.ClauseElement"
+                    "str",
+                    "List[str]",
+                    "sqlalchemy.orm.session.Session"
                 ]
             }
         },
@@ -714,7 +777,10 @@
             "arguments": {
                 "self": [],
                 "connection": [
-                    "AsyncMyConnection"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         }
@@ -729,7 +795,10 @@
             "arguments": {
                 "self": [],
                 "database_url": [
-                    "Union[(str, databases.core.DatabaseURL)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -737,7 +806,7 @@
             "name": "_get_connection_kwargs",
             "location": 35,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -762,7 +831,10 @@
             "arguments": {
                 "self": [],
                 "context": [
-                    "sqlalchemy.engine.interfaces.ExecutionContext"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -775,10 +847,16 @@
             "arguments": {
                 "self": [],
                 "database": [
-                    "MySQLBackend"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ],
                 "dialect": [
-                    "sqlalchemy.engine.interfaces.Dialect"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -786,7 +864,7 @@
             "name": "transaction",
             "location": 191,
             "return": [
-                "databases.interfaces.TransactionBackend"
+                "MySQLTransaction"
             ],
             "arguments": {
                 "self": []
@@ -796,12 +874,14 @@
             "name": "_compile",
             "location": 194,
             "return": [
-                "Tuple[(str, dict, CompilationContext)]"
+                "Tuple[(Any, Any, CompilationContext)]"
             ],
             "arguments": {
                 "self": [],
                 "query": [
-                    "sqlalchemy.sql.elements.ClauseElement"
+                    "str",
+                    "List[str]",
+                    "sqlalchemy.orm.session.Session"
                 ]
             }
         },
@@ -826,7 +906,10 @@
             "arguments": {
                 "self": [],
                 "connection": [
-                    "MySQLConnection"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         }
@@ -841,7 +924,10 @@
             "arguments": {
                 "self": [],
                 "database_url": [
-                    "Union[(str, databases.core.DatabaseURL)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -849,7 +935,9 @@
             "name": "_get_dialect",
             "location": 32,
             "return": [
-                "sqlalchemy.engine.interfaces.Dialect"
+                "str",
+                "bool",
+                "pyspark.sql.SparkSession"
             ],
             "arguments": {
                 "self": []
@@ -859,7 +947,7 @@
             "name": "_get_connection_kwargs",
             "location": 45,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -887,13 +975,24 @@
                     "int"
                 ],
                 "result_columns": [
-                    "tuple"
+                    "int",
+                    "str",
+                    "Tuple[int,int]",
+                    "List[int]",
+                    "Tuple[Union[int,int]]",
+                    "List[str]"
                 ],
                 "dialect": [
-                    "sqlalchemy.engine.interfaces.Dialect"
+                    "int",
+                    "str",
+                    "Tuple[int,int]",
+                    "List[int]",
+                    "Tuple[Union[int,int]]",
+                    "List[str]"
                 ],
                 "column_maps": [
-                    "Tuple[(Mapping[(Any, Tuple[(int, sqlalchemy.sql.type_api.TypeEngine)])], Mapping[(int, Tuple[(int, sqlalchemy.sql.type_api.TypeEngine)])], Mapping[(str, Tuple[(int, sqlalchemy.sql.type_api.TypeEngine)])])]"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -915,7 +1014,13 @@
             "name": "keys",
             "location": 115,
             "return": [
-                "KeysView"
+                "Dict[str, str]",
+                "Mapping",
+                "Union[str, bytes]",
+                "Dict[str, Any]",
+                "Mapping[starfish.types.Coordinates, Tuple[starfish.types.Number, starfish.types.Number]]",
+                "Mapping[starfish.core.types.Coordinates, starfish.core.types.ArrayLike[starfish.core.types.Number]]",
+                "List[Dict[str, Any]]"
             ],
             "arguments": {
                 "self": []
@@ -925,7 +1030,10 @@
             "name": "values",
             "location": 125,
             "return": [
-                "ValuesView"
+                "str",
+                "bool",
+                "type",
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -946,11 +1054,11 @@
                 "key": [
                     "int",
                     "str",
-                    "typing.Callable[T, T]",
-                    "Union[int, slice]",
+                    "Callable[T,T]",
+                    "Union[int,slice]",
                     "slice",
                     "static_frame.core.util.GetItemKeyType",
-                    "Callable[[T], T]"
+                    "Callable[[T],T]"
                 ]
             }
         },
@@ -958,7 +1066,11 @@
             "name": "__iter__",
             "location": 151,
             "return": [
-                "Iterator"
+                "Iterator[str]",
+                "Iterator[Any]",
+                "Iterator",
+                "Iterator[T]",
+                "Iterator[int]"
             ],
             "arguments": {
                 "self": []
@@ -987,7 +1099,8 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "apistar.types.ParamName"
                 ]
             }
         },
@@ -1000,10 +1113,18 @@
             "arguments": {
                 "self": [],
                 "database": [
-                    "PostgresBackend"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ],
                 "dialect": [
-                    "sqlalchemy.engine.interfaces.Dialect"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ]
             }
         },
@@ -1011,7 +1132,7 @@
             "name": "transaction",
             "location": 237,
             "return": [
-                "databases.interfaces.TransactionBackend"
+                "PostgresTransaction"
             ],
             "arguments": {
                 "self": []
@@ -1021,12 +1142,14 @@
             "name": "_compile",
             "location": 240,
             "return": [
-                "Tuple[(str, list, tuple)]"
+                "Tuple[(Any, list, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "query": [
-                    "sqlalchemy.sql.elements.ClauseElement"
+                    "str",
+                    "List[str]",
+                    "sqlalchemy.orm.session.Session"
                 ]
             }
         },
@@ -1034,11 +1157,15 @@
             "name": "_create_column_maps",
             "location": 272,
             "return": [
-                "Tuple[(Mapping[(Any, Tuple[(int, sqlalchemy.sql.type_api.TypeEngine)])], Mapping[(int, Tuple[(int, sqlalchemy.sql.type_api.TypeEngine)])], Mapping[(str, Tuple[(int, sqlalchemy.sql.type_api.TypeEngine)])])]"
+                "Tuple[(Dict[(Any, Tuple[(int, Any)])], Dict[(int, Tuple[(int, Any)])], Dict[(str, Tuple[(int, Any)])])]"
             ],
             "arguments": {
                 "result_columns": [
-                    "tuple"
+                    "Tuple",
+                    "List[int]",
+                    "str",
+                    "int",
+                    "Union[str,float]"
                 ]
             }
         },
@@ -1063,7 +1190,11 @@
             "arguments": {
                 "self": [],
                 "connection": [
-                    "PostgresConnection"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ]
             }
         }
@@ -1078,7 +1209,10 @@
             "arguments": {
                 "self": [],
                 "database_url": [
-                    "Union[(str, databases.core.DatabaseURL)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "Mapping[str,str]",
+                    "Mapping"
                 ]
             }
         },
@@ -1101,7 +1235,9 @@
             "arguments": {
                 "self": [],
                 "url": [
-                    "databases.core.DatabaseURL"
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -1114,7 +1250,10 @@
             "arguments": {
                 "self": [],
                 "context": [
-                    "sqlalchemy.engine.interfaces.ExecutionContext"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -1127,10 +1266,16 @@
             "arguments": {
                 "self": [],
                 "pool": [
-                    "SQLitePool"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ],
                 "dialect": [
-                    "sqlalchemy.engine.interfaces.Dialect"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         },
@@ -1138,7 +1283,7 @@
             "name": "transaction",
             "location": 159,
             "return": [
-                "databases.interfaces.TransactionBackend"
+                "SQLiteTransaction"
             ],
             "arguments": {
                 "self": []
@@ -1148,12 +1293,14 @@
             "name": "_compile",
             "location": 162,
             "return": [
-                "Tuple[(str, list, CompilationContext)]"
+                "Tuple[(Any, list, CompilationContext)]"
             ],
             "arguments": {
                 "self": [],
                 "query": [
-                    "sqlalchemy.sql.elements.ClauseElement"
+                    "str",
+                    "List[str]",
+                    "sqlalchemy.orm.session.Session"
                 ]
             }
         },
@@ -1178,7 +1325,10 @@
             "arguments": {
                 "self": [],
                 "connection": [
-                    "SQLiteConnection"
+                    "int",
+                    "float",
+                    "apistar.interfaces.Router",
+                    "bool"
                 ]
             }
         }
@@ -1237,7 +1387,6 @@
             "name": "test_mysql_pool_size",
             "location": 74,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1246,7 +1395,6 @@
             "name": "test_mysql_explicit_pool_size",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1255,7 +1403,6 @@
             "name": "test_mysql_ssl",
             "location": 88,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1264,7 +1411,6 @@
             "name": "test_mysql_explicit_ssl",
             "location": 95,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1273,7 +1419,6 @@
             "name": "test_mysql_pool_recycle",
             "location": 102,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1282,7 +1427,6 @@
             "name": "test_asyncmy_pool_size",
             "location": 109,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1291,7 +1435,6 @@
             "name": "test_asyncmy_explicit_pool_size",
             "location": 118,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1300,7 +1443,6 @@
             "name": "test_asyncmy_ssl",
             "location": 125,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1309,7 +1451,6 @@
             "name": "test_asyncmy_explicit_ssl",
             "location": 132,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1318,7 +1459,6 @@
             "name": "test_asyncmy_pool_recycle",
             "location": 139,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1359,7 +1499,7 @@
             "name": "gen_password",
             "location": 62,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "str"
             ],
@@ -1377,13 +1517,10 @@
                 "wrapped_func": [
                     "bool",
                     "Exception",
-                    "str",
                     "List[str]",
-                    "list[str]",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "dict[, ]"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -1391,7 +1528,6 @@
             "name": "create_test_database",
             "location": 100,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -1404,10 +1540,9 @@
             ],
             "arguments": {
                 "wrapped_func": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "bool",
-                    "Callable[..., Dict]",
+                    "Callable[...,Dict]",
                     "None",
                     "Optional[asyncio.AbstractEventLoop]"
                 ]
@@ -1417,7 +1552,6 @@
             "name": "test_global_connection_is_initialized_lazily",
             "location": 1023,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1461,10 +1595,9 @@
                 "dialect": [
                     "int",
                     "complex",
-                    "Tuple[str, int]",
-                    "tuple[typing.Union[str,int]]",
-                    "list",
-                    "list[]"
+                    "Tuple[str,int]",
+                    "List",
+                    "Tuple[Union[str,int]]"
                 ]
             }
         },
@@ -1483,14 +1616,12 @@
                 ],
                 "dialect": [
                     "str",
-                    "tuple[typing.Union[typing.Any,typing.Any]]",
-                    "sqlalchemy.engine.interfaces.Dialect",
-                    "None",
-                    "Optional[Tuple[Any, Any]]",
-                    "typing.Callable[, ]",
+                    "Tuple[Union[Any,Any]]",
                     "Callable",
-                    "dict[, ]",
-                    "dict",
+                    "sqlalchemy.engine.interfaces.Dialect",
+                    "Dict",
+                    "None",
+                    "Optional[Tuple[Any,Any]]",
                     "Iterable[Any]"
                 ]
             }
@@ -1511,7 +1642,6 @@
             "name": "insert_independently",
             "location": 526,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1520,7 +1650,6 @@
             "name": "delete_independently",
             "location": 533,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -1623,7 +1752,6 @@
             "name": "create_test_database",
             "location": 22,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -1639,9 +1767,8 @@
                 "database_url": [
                     "str",
                     "List[str]",
-                    "list[str]",
-                    "Callable[[str], str]",
-                    "typing.Callable[str, str]"
+                    "Callable[[str],str]",
+                    "Callable[str,str]"
                 ]
             }
         },
@@ -1649,17 +1776,16 @@
             "name": "test_integration",
             "location": 88,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "database_url": [
                     "str",
                     "Optional[List[str]]",
-                    "list[str]",
-                    "Optional[Dict[str, Any]]",
+                    "List[str]",
+                    "Optional[Dict[str,Any]]",
                     "None",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         }

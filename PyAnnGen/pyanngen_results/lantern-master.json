@@ -10,14 +10,25 @@
             "name": "shift_bytes",
             "location": 7,
             "return": [
-                "int"
+                "str",
+                "bool",
+                "dict",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "key": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str, str]",
+                    "Union[float, None, int]",
+                    "bool"
                 ],
                 "byte": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str, str]",
+                    "Union[float, None, int]",
+                    "bool"
                 ]
             }
         }
@@ -27,14 +38,23 @@
             "name": "shift_encrypt",
             "location": 8,
             "return": [
-                "int"
+                "int",
+                "str",
+                "Dict[str,str]",
+                "Optional[str]"
             ],
             "arguments": {
                 "key": [
-                    "int"
+                    "int",
+                    "str",
+                    "float",
+                    "Dict[str, str]"
                 ],
                 "byte": [
-                    "int"
+                    "int",
+                    "str",
+                    "float",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -42,14 +62,23 @@
             "name": "shift_decrypt",
             "location": 12,
             "return": [
-                "int"
+                "int",
+                "str",
+                "Dict[str,str]",
+                "Optional[str]"
             ],
             "arguments": {
                 "key": [
-                    "int"
+                    "int",
+                    "str",
+                    "float",
+                    "Dict[str, str]"
                 ],
                 "byte": [
-                    "int"
+                    "int",
+                    "str",
+                    "float",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -61,7 +90,12 @@
             ],
             "arguments": {
                 "value": [
-                    "Iterable"
+                    "float",
+                    "bool",
+                    "str",
+                    "Union[str, int]",
+                    "T",
+                    "Union[str, bytes]"
                 ]
             }
         }
@@ -212,9 +246,9 @@
                     "T"
                 ],
                 "decorator": [
-                    "typing.Callable",
-                    "Dict[str, Any]",
-                    "list",
+                    "Callable",
+                    "Dict[str,Any]",
+                    "List",
                     "str",
                     "List[int]"
                 ]
@@ -236,7 +270,7 @@
             "return": [
                 "int",
                 "str",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "frequency_map": [
@@ -257,7 +291,7 @@
                 "int",
                 "deoplete.util.UserContext",
                 "bool",
-                "Optional[Union[str, Any]]"
+                "Optional[Union[str,Any]]"
             ],
             "arguments": {
                 "source_frequency": [
@@ -465,7 +499,8 @@
             "name": "decrypt",
             "location": 12,
             "return": [
-                "Iterable"
+                "str",
+                "List[int]"
             ],
             "arguments": {
                 "ciphertext": [
@@ -477,7 +512,8 @@
             "name": "encrypt",
             "location": 28,
             "return": [
-                "Iterable"
+                "str",
+                "List[int]"
             ],
             "arguments": {
                 "plaintext": [
@@ -491,14 +527,19 @@
             "name": "make_shift_function",
             "location": 17,
             "return": [
-                "Callable[([int, Any], Any)]"
+                "Callable[([Any, Any], Any)]"
             ],
             "arguments": {
                 "alphabet": [
-                    "Iterable"
+                    "str",
+                    "Iterable",
+                    "bool"
                 ],
                 "operator": [
-                    "Callable[([int, int], int)]"
+                    "Callable",
+                    "str",
+                    "Iterable",
+                    "bool"
                 ]
             }
         },
@@ -510,7 +551,11 @@
             ],
             "arguments": {
                 "ciphertext": [
-                    "Iterable"
+                    "float",
+                    "Optional[set]",
+                    "bool",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -518,17 +563,26 @@
             "name": "decrypt",
             "location": 98,
             "return": [
-                "Iterable"
+                "list"
             ],
             "arguments": {
                 "key": [
-                    "int"
+                    "int",
+                    "Iterable",
+                    "str",
+                    "dict"
                 ],
                 "ciphertext": [
-                    "Iterable"
+                    "int",
+                    "Iterable",
+                    "str",
+                    "dict"
                 ],
                 "shift_function": [
-                    "Callable[([int, object], object)]"
+                    "int",
+                    "Iterable",
+                    "str",
+                    "dict"
                 ]
             }
         },
@@ -536,17 +590,32 @@
             "name": "encrypt",
             "location": 119,
             "return": [
-                "Iterable"
+                "list"
             ],
             "arguments": {
                 "key": [
-                    "int"
+                    "int",
+                    "Iterable",
+                    "str",
+                    "Dict[str, str]",
+                    "Callable",
+                    "Union[Type, Tuple[Type, ...]]"
                 ],
                 "plaintext": [
-                    "Iterable"
+                    "int",
+                    "Iterable",
+                    "str",
+                    "Dict[str, str]",
+                    "Callable",
+                    "Union[Type, Tuple[Type, ...]]"
                 ],
                 "shift_function": [
-                    "Callable[([int, object], object)]"
+                    "int",
+                    "Iterable",
+                    "str",
+                    "Dict[str, str]",
+                    "Callable",
+                    "Union[Type, Tuple[Type, ...]]"
                 ]
             }
         },
@@ -602,10 +671,15 @@
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Iterable[Hashable]",
+                    "List[str]"
                 ],
                 "ciphertext": [
-                    "str"
+                    "str",
+                    "KT",
+                    "T"
                 ]
             }
         },
@@ -617,10 +691,15 @@
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Iterable[Hashable]",
+                    "List[str]"
                 ],
                 "plaintext": [
-                    "str"
+                    "str",
+                    "KT",
+                    "T"
                 ]
             }
         },
@@ -628,7 +707,7 @@
             "name": "next_node_inner_climb",
             "location": 45,
             "return": [
-                "tuple[Decryption]",
+                "Tuple[Decryption]",
                 "str",
                 "bool",
                 "Iterable[str]"
@@ -646,7 +725,7 @@
             "name": "next_node_outer_climb",
             "location": 54,
             "return": [
-                "tuple",
+                "Tuple",
                 "str",
                 "Optional[str]"
             ],
@@ -740,7 +819,6 @@
             "name": "__init__",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -789,13 +867,12 @@
             "name": "__init__",
             "location": 23,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "builders": [
-                    "dict",
+                    "Dict",
                     "Optional[List[int]]",
                     "int",
                     "Optional[str]"
@@ -1109,7 +1186,7 @@
             "name": "get_next_node",
             "location": 10,
             "return": [
-                "tuple[typing.Optional[int]]",
+                "Tuple[Optional[int]]",
                 "Optional[str]",
                 "str",
                 "Optional[int]",

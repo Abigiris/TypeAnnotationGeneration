@@ -12,7 +12,6 @@
             "name": "injection_config",
             "location": 61,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -74,9 +73,7 @@
                 "None"
             ],
             "arguments": {
-                "c": [
-                    "invoke.context.Context"
-                ]
+                "c": []
             }
         },
         "mypy": {
@@ -263,10 +260,9 @@
                 ],
                 "info": [
                     "str",
-                    "tuple[int]",
-                    "type",
-                    "T",
-                    "Tuple[int]"
+                    "Tuple[int]",
+                    "Type",
+                    "T"
                 ]
             }
         }
@@ -285,17 +281,26 @@
                 "arg": [
                     "str",
                     "bool",
-                    "Callable[[Any], bool]",
-                    "typing.Callable[typing.Any, bool]",
-                    "float",
-                    "dict",
-                    "dict[, ]"
+                    "Callable[[Any],bool]",
+                    "Dict",
+                    "Callable[Any,bool]",
+                    "float"
                 ],
                 "description": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Callable[[Any],bool]",
+                    "Dict",
+                    "Callable[Any,bool]",
+                    "float"
                 ],
                 "predicate": [
-                    "Callable[([Any], bool)]"
+                    "str",
+                    "bool",
+                    "Callable[[Any],bool]",
+                    "Dict",
+                    "Callable[Any,bool]",
+                    "float"
                 ]
             }
         },
@@ -303,20 +308,19 @@
             "name": "set_contracts",
             "location": 45,
             "return": [
-                "List[Tuple[str, str]]",
-                "typing.Callable[, ]",
+                "List[Tuple[str,str]]",
+                "Callable",
                 "int",
                 "str",
                 "List[Dict]",
                 "Exception",
-                "dict[str, str]",
-                "typing.Type"
+                "Dict[str,str]",
+                "Type"
             ],
             "arguments": {
                 "func": [
                     "Callable",
-                    "Exception",
-                    "typing.Callable[, ]"
+                    "Exception"
                 ]
             }
         },
@@ -363,12 +367,10 @@
                 ],
                 "value": [
                     "str",
-                    "set",
-                    "set[]",
+                    "Set",
+                    "List",
                     "Optional[str]",
-                    "None",
-                    "list",
-                    "list[]"
+                    "None"
                 ]
             }
         },
@@ -387,7 +389,7 @@
             "location": 39,
             "return": [
                 "bool",
-                "Dict[str, int]",
+                "Dict[str,int]",
                 "int"
             ],
             "arguments": {
@@ -422,7 +424,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TMaterial"
+                    "_TMaterial@@Material@@"
                 ],
                 "other": []
             }
@@ -435,7 +437,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TMaterial"
+                    "_TMaterial@@Material@@"
                 ],
                 "other": []
             }
@@ -481,24 +483,19 @@
                 "self": [],
                 "name": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "List[str]",
-                    "list[str]"
+                    "Dict[str,Any]",
+                    "List[str]"
                 ],
                 "count": [
                     "str",
                     "List[str]",
-                    "list[str]",
                     "Optional[List[str]]",
                     "None"
                 ],
                 "category": [
                     "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "List[str]",
-                    "list[str]"
+                    "Dict[str,Any]",
+                    "List[str]"
                 ]
             }
         },
@@ -515,27 +512,22 @@
                 "name": [
                     "str",
                     "List[str]",
-                    "list[str]",
-                    "Optional[str]",
-                    "None",
                     "Set[str]",
-                    "set[str]"
+                    "Optional[str]",
+                    "None"
                 ],
                 "count": [
                     "str",
                     "List[str]",
-                    "list[str]",
                     "Optional[List[str]]",
                     "None"
                 ],
                 "category": [
                     "str",
                     "List[str]",
-                    "list[str]",
-                    "Optional[str]",
-                    "None",
                     "Set[str]",
-                    "set[str]"
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -593,10 +585,14 @@
             "name": "process_event",
             "location": 52,
             "return": [
-                "Event"
+                "Mapping[str, str]",
+                "cmk.utils.type_defs.HostAddress"
             ],
             "arguments": {
                 "event_line": [
+                    "Dict[str, Any]",
+                    "Mapping[str, Any]",
+                    "dict",
                     "str"
                 ]
             }
@@ -610,7 +606,8 @@
             "arguments": {
                 "self": [],
                 "base_dir": [
-                    "pathlib.Path"
+                    "str",
+                    "norfs.fs.base.Path"
                 ]
             }
         },
@@ -618,7 +615,10 @@
             "name": "get_latest_file",
             "location": 85,
             "return": [
-                "Optional[pathlib.Path]"
+                "str",
+                "bool",
+                "IO",
+                "Union[pathlib.Path, str, None]"
             ],
             "arguments": {
                 "self": []
@@ -628,7 +628,7 @@
             "name": "read_all_file_events",
             "location": 95,
             "return": [
-                "Iterator[Event]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "path": [
@@ -640,7 +640,7 @@
             "name": "get_latest_file_events",
             "location": 111,
             "return": [
-                "List[Event]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -650,12 +650,17 @@
             "name": "_get_file_event",
             "location": 132,
             "return": [
-                "Optional[Event]"
+                "str",
+                "bool",
+                "Optional[List[Any]]"
             ],
             "arguments": {
                 "self": [],
                 "path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "path.Path",
+                    "cerulean.Path"
                 ]
             }
         },
@@ -663,12 +668,12 @@
             "name": "_filter_file_event",
             "location": 154,
             "return": [
-                "Optional[Event]"
+                "Optional[_T0]"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "Event"
+                    "str"
                 ]
             }
         },
@@ -676,11 +681,17 @@
             "name": "_get_file_event_filtered",
             "location": 170,
             "return": [
-                "Optional[Event]"
+                "dict",
+                "int",
+                "type",
+                "\"Step\"",
+                "Mapping[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "path": [
+                    "str",
+                    "norfs.fs.base.Path",
                     "pathlib.Path"
                 ]
             }
@@ -689,7 +700,12 @@
             "name": "get_status_file_event",
             "location": 179,
             "return": [
-                "Optional[Event]"
+                "str",
+                "Dict[str, Any]",
+                "Optional[cmk.utils.type_defs.HostAddress]",
+                "dict",
+                "bool",
+                "cmk.utils.type_defs.HostName"
             ],
             "arguments": {
                 "self": []
@@ -699,7 +715,8 @@
             "name": "get_cargo_file_event",
             "location": 185,
             "return": [
-                "Optional[Event]"
+                "str",
+                "Optional[Dict[str, Any]]"
             ],
             "arguments": {
                 "self": []
@@ -709,7 +726,8 @@
             "name": "get_market_file_event",
             "location": 191,
             "return": [
-                "Optional[Event]"
+                "str",
+                "Optional[Dict[str, Any]]"
             ],
             "arguments": {
                 "self": []
@@ -719,7 +737,8 @@
             "name": "get_modules_info_file_event",
             "location": 197,
             "return": [
-                "Optional[Event]"
+                "Dict[str, Any]",
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -729,7 +748,8 @@
             "name": "get_outfitting_file_event",
             "location": 203,
             "return": [
-                "Optional[Event]"
+                "str",
+                "Optional[Dict[str, Any]]"
             ],
             "arguments": {
                 "self": []
@@ -739,7 +759,10 @@
             "name": "get_game_version_info",
             "location": 209,
             "return": [
-                "Optional[VersionInfo]"
+                "str",
+                "bool",
+                "Optional[str]",
+                "tuple"
             ],
             "arguments": {
                 "self": []
@@ -754,7 +777,9 @@
             "arguments": {
                 "self": [],
                 "journal_reader": [
-                    "JournalReader"
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -797,10 +822,12 @@
             "arguments": {
                 "self": [],
                 "filename": [
-                    "pathlib.Path"
+                    "str"
                 ],
                 "pos": [
-                    "int"
+                    "int",
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -813,7 +840,10 @@
             "arguments": {
                 "self": [],
                 "line": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[cmk.utils.type_defs.ServiceName]",
+                    "cmk.utils.type_defs.SourceType"
                 ]
             }
         }
@@ -827,7 +857,10 @@
             ],
             "arguments": {
                 "enable_sentry": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "revlibs.connections.config.Config",
+                    "qutebrowser.config.config.Config"
                 ]
             }
         }
@@ -849,11 +882,13 @@
             "name": "get_marked_methods",
             "location": 52,
             "return": [
-                "Iterator[Tuple[(Callable, FunctionMark)]]"
+                "Generator[(Tuple[(Any, Any)], Any, None)]"
             ],
             "arguments": {
                 "mark": [
-                    "str"
+                    "str",
+                    "list[str]",
+                    "int"
                 ],
                 "obj": [
                     "str"
@@ -864,11 +899,14 @@
             "name": "get_function_marks",
             "location": 65,
             "return": [
-                "List[FunctionMark]"
+                "Any"
             ],
             "arguments": {
                 "func": [
-                    "Callable"
+                    "typing.Callable[, ]",
+                    "bytes",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -880,7 +918,7 @@
             ],
             "arguments": {
                 "interval": [
-                    "float"
+                    "int"
                 ],
                 "plugin_enabled": [
                     "bool"
@@ -906,7 +944,8 @@
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "str",
+                    "dict[str, pathlib.Path]"
                 ]
             }
         },
@@ -914,11 +953,12 @@
             "name": "_get_plugin_classes_from_module",
             "location": 136,
             "return": [
-                "Iterator[Type[BasePlugin]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "module": [
-                    "module"
+                    "typing.Type",
+                    "str"
                 ]
             }
         },
@@ -926,24 +966,20 @@
             "name": "get_plugins_cls_from_dir",
             "location": 146,
             "return": [
-                "Iterator[Type[BasePlugin]]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
-                "path": [
-                    "pathlib.Path"
-                ]
+                "path": []
             }
         },
         "get_plugins_cls_from_path": {
             "name": "get_plugins_cls_from_path",
             "location": 160,
             "return": [
-                "Iterator[Type[BasePlugin]]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
-                "path": [
-                    "pathlib.Path"
-                ]
+                "path": []
             }
         },
         "is_plugin_package": {
@@ -954,7 +990,7 @@
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "typing.Iterable[str]"
                 ]
             }
         },
@@ -962,23 +998,23 @@
             "name": "get_plugins_cls_from_file",
             "location": 183,
             "return": [
-                "Iterator[Type[BasePlugin]]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
-                "path": [
-                    "pathlib.Path"
-                ]
+                "path": []
             }
         },
         "get_plugins_cls_from_package": {
             "name": "get_plugins_cls_from_package",
             "location": 197,
             "return": [
-                "Iterator[Type[BasePlugin]]"
+                "NoReturn"
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "bool",
+                    "str",
+                    "typing.Sequence[str]"
                 ]
             }
         },
@@ -1004,7 +1040,7 @@
             "name": "get_settings_widget",
             "location": 116,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1019,7 +1055,9 @@
             "arguments": {
                 "self": [],
                 "plugins": [
-                    "List[BasePlugin]"
+                    "dict[str, typing.Any]",
+                    "dict[, ]",
+                    "str"
                 ]
             }
         },
@@ -1027,12 +1065,16 @@
             "name": "get_plugin",
             "location": 220,
             "return": [
-                "Optional[BasePlugin]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "plugin_cls": [
-                    "Type[BasePlugin]"
+                    "int",
+                    "Exception",
+                    "dict[str, dict[str, str]]",
+                    "list[dict[, ]]",
+                    "str"
                 ]
             }
         },
@@ -1040,12 +1082,16 @@
             "name": "get_marked_methods",
             "location": 226,
             "return": [
-                "Iterator[MarkedMethodType]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "int",
+                    "float",
+                    "typing.Callable[str, str]",
+                    "typing.IO"
                 ]
             }
         },
@@ -1053,7 +1099,7 @@
             "name": "get_scheduled_methods_threads",
             "location": 236,
             "return": [
-                "Iterator[edp.thread.IntervalRunnerThread]"
+                "Generator[(edp.thread.IntervalRunnerThread, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -1078,13 +1124,13 @@
             "arguments": {
                 "self": [],
                 "func": [
-                    "Callable"
+                    "typing.Callable[, ]"
                 ],
                 "plugin": [
-                    "BasePlugin"
+                    "typing.Callable[, ]"
                 ],
                 "plugin_enabled": [
-                    "bool"
+                    "typing.Callable[, ]"
                 ]
             }
         },
@@ -1102,7 +1148,7 @@
             "name": "get_settings_widgets",
             "location": 282,
             "return": [
-                "Iterator"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -1117,7 +1163,7 @@
             "arguments": {
                 "self": [],
                 "plugin_manager": [
-                    "PluginManager"
+                    "int"
                 ]
             }
         },
@@ -1125,13 +1171,11 @@
             "name": "get_plugin",
             "location": 305,
             "return": [
-                "Optional[BasePlugin]"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "plugin_cls": [
-                    "Type[BasePlugin]"
-                ]
+                "plugin_cls": []
             }
         },
         "PluginLoader.__init__": {
@@ -1143,7 +1187,8 @@
             "arguments": {
                 "self": [],
                 "plugin_dir": [
-                    "pathlib.Path"
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -1151,7 +1196,7 @@
             "name": "get_plugins",
             "location": 321,
             "return": [
-                "List[BasePlugin]"
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -1166,7 +1211,10 @@
             "arguments": {
                 "self": [],
                 "plugin_cls": [
-                    "Type[BasePlugin]"
+                    "str",
+                    "list[str]",
+                    "int",
+                    "bytes"
                 ]
             }
         },
@@ -1184,12 +1232,13 @@
             "name": "_init_plugin_cls",
             "location": 349,
             "return": [
-                "BasePlugin"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "plugin_cls": [
-                    "Type[BasePlugin]"
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -1211,7 +1260,9 @@
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -1224,7 +1275,10 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "pathlib.Path"
+                    "Dict[str,P]",
+                    "pathlib.Path",
+                    "Dict[str,cerulean.Path]",
+                    "ulauncher.utils.Path.Path"
                 ]
             }
         },
@@ -1232,17 +1286,16 @@
             "name": "get_insance",
             "location": 75,
             "return": [
-                "str",
-                "list"
+                "BaseSettings"
             ],
             "arguments": {
                 "cls": [
-                    "str",
-                    "Optional[str]",
-                    "None"
+                    "Type[_TBaseSettings]"
                 ],
                 "name": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "cmk.utils.type_defs.SectionName"
                 ]
             }
         },
@@ -1281,19 +1334,16 @@
                 "item": [
                     "int",
                     "str",
-                    "typing.Type",
+                    "Type",
                     "T",
-                    "utils.mssql_counters.Section",
-                    "Type"
+                    "utils.mssql_counters.Section"
                 ]
             }
         },
         "EDPSettings.journal_dir": {
             "name": "journal_dir",
             "location": 114,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "value": [
@@ -1315,10 +1365,16 @@
             ],
             "arguments": {
                 "func": [
+                    "List[str]",
+                    "tuple",
+                    "Dict[str, float]",
                     "Callable"
                 ],
                 "signature": [
-                    "Dict[(str, type)]"
+                    "List[str]",
+                    "tuple",
+                    "Dict[str, float]",
+                    "Callable"
                 ]
             }
         },
@@ -1326,11 +1382,14 @@
             "name": "get_data_signature",
             "location": 27,
             "return": [
-                "Dict[(str, type)]"
+                "dict"
             ],
             "arguments": {
                 "data": [
-                    "dict"
+                    "dict",
+                    "Dict[str, Any]",
+                    "bytes",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -1342,7 +1401,10 @@
             ],
             "arguments": {
                 "signal_item": [
-                    "SignalExecutionItem"
+                    "Iterable[T]",
+                    "bool",
+                    "T",
+                    "list"
                 ]
             }
         },
@@ -1355,7 +1417,9 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "Optional[Sequence[Any]]"
                 ]
             }
         },
@@ -1363,12 +1427,20 @@
             "name": "bind_nonstrict",
             "location": 51,
             "return": [
-                "Callable"
+                "mypy.types.Type",
+                "Dict[str, Dict[str, int]]",
+                "Dict[str, Any]",
+                "types.Resolver",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "func": [
-                    "Callable"
+                    "int",
+                    "Callable",
+                    "Callable[[], T]",
+                    "list",
+                    "deque"
                 ]
             }
         },
@@ -1376,12 +1448,21 @@
             "name": "bind",
             "location": 61,
             "return": [
-                "Callable"
+                "mypy.types.Type",
+                "Dict[str, Dict[str, int]]",
+                "Dict[str, Any]",
+                "types.Resolver",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "func": [
-                    "Callable"
+                    "Mapping[Any, Any]",
+                    "dict",
+                    "starlette.types.Send",
+                    "Dict[str, Any]",
+                    "Callable[[int], bool]",
+                    "Iterable[int]"
                 ]
             }
         },
@@ -1414,7 +1495,10 @@
             "arguments": {
                 "self": [],
                 "func_or_data": [
-                    "Union[(dict, Callable)]"
+                    "Callable",
+                    "Dict[str, Any]",
+                    "Optional[Dict]",
+                    "str"
                 ]
             }
         },
@@ -1427,7 +1511,9 @@
             "arguments": {
                 "self": [],
                 "signal_queue": [
-                    "queue.Queue"
+                    "bool",
+                    "int",
+                    "Dict[str, str]"
                 ]
             }
         },
@@ -1470,7 +1556,9 @@
             "arguments": {
                 "self": [],
                 "signal": [
-                    "Signal"
+                    "Set[int]",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -1483,7 +1571,9 @@
             "arguments": {
                 "self": [],
                 "signal": [
-                    "Signal"
+                    "Set[int]",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         }
@@ -1517,7 +1607,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TStoppableThread"
+                    "_TStoppableThread@@StoppableThread@@"
                 ]
             }
         },
@@ -1537,7 +1627,7 @@
                 ],
                 "exc_tb": [
                     "Optional[Type[BaseException]]",
-                    "typing.Type",
+                    "Type",
                     "str",
                     "BaseException",
                     "None",
@@ -1566,7 +1656,9 @@
             "arguments": {
                 "self": [],
                 "interval": [
-                    "float"
+                    "float",
+                    "bool",
+                    "List[int]"
                 ]
             }
         },
@@ -1579,13 +1671,19 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "Callable"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "interval": [
+                    "int",
+                    "bool",
                     "float"
                 ],
                 "skipfirst": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -1618,11 +1716,10 @@
             "arguments": {
                 "self": [],
                 "func": [
-                    "Callable"
+                    "Dict[str,Any]"
                 ],
                 "interval": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -1635,7 +1732,10 @@
             "arguments": {
                 "self": [],
                 "thread": [
-                    "StoppableThread"
+                    "int",
+                    "list",
+                    "Optional[list]",
+                    "List[int]"
                 ]
             }
         },
@@ -1695,7 +1795,7 @@
                 ],
                 "exc_tb": [
                     "Optional[Type[BaseException]]",
-                    "typing.Type",
+                    "Type",
                     "str",
                     "BaseException",
                     "None",
@@ -1710,20 +1810,25 @@
         "build_authorization_url": {
             "name": "build_authorization_url",
             "location": 78,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "client_id": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "redirect_url": [
                     "str",
                     "int"
                 ],
                 "state": [
-                    "str"
+                    "str",
+                    "int"
                 ],
                 "challenge": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1731,15 +1836,15 @@
             "name": "from_data",
             "location": 69,
             "return": [
-                "okenInfo"
+                "Any"
             ],
             "arguments": {
                 "cls": [
-                    "Type[_TTokenInfo]"
+                    "dict[, ]",
+                    "dict[str, typing.Any]",
+                    "int"
                 ],
-                "data": [
-                    "dict"
-                ]
+                "data": []
             }
         },
         "CapiAuthWindow.__init__": {
@@ -1796,7 +1901,8 @@
             "arguments": {
                 "self": [],
                 "manager": [
-                    "CapiManager"
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -1916,7 +2022,9 @@
             "arguments": {
                 "self": [],
                 "token": [
-                    "TokenInfo"
+                    "dict[, ]",
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -1954,7 +2062,7 @@
             "name": "_exchange_code",
             "location": 300,
             "return": [
-                "Optional[TokenInfo]"
+                "None"
             ],
             "arguments": {
                 "self": [],
@@ -1967,7 +2075,7 @@
             "name": "_refresh_token",
             "location": 322,
             "return": [
-                "Optional[TokenInfo]"
+                "None"
             ],
             "arguments": {
                 "self": [],
@@ -2000,12 +2108,13 @@
             "name": "do_query",
             "location": 381,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "endpoint": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -2013,12 +2122,12 @@
             "name": "_do_query",
             "location": 426,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": [],
                 "endpoint": [
-                    "str"
+                    "bool"
                 ]
             }
         },
@@ -2026,7 +2135,7 @@
             "name": "get_profile",
             "location": 440,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -2036,7 +2145,7 @@
             "name": "get_market",
             "location": 444,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -2046,7 +2155,7 @@
             "name": "get_shipyard",
             "location": 448,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -2056,7 +2165,7 @@
             "name": "get_communitygoals",
             "location": 452,
             "return": [
-                "dict"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -2075,7 +2184,9 @@
         "CapiPlugin.is_enalbed": {
             "name": "is_enalbed",
             "location": 470,
-            "return": [],
+            "return": [
+                "bool"
+            ],
             "arguments": {
                 "self": []
             }
@@ -2165,8 +2276,7 @@
             "name": "is_enalbed",
             "location": 54,
             "return": [
-                "str",
-                "int"
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -2181,7 +2291,11 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "DRPState"
+                    "int",
+                    "str",
+                    "datetime.datetime",
+                    "Tuple",
+                    "raiden.utils.Balance"
                 ]
             }
         },
@@ -2189,15 +2303,13 @@
             "name": "on_game_state_changed",
             "location": 63,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "edp.contrib.gamestate.GameStateData",
-                    "list[typing.Callable[, ]]",
                     "List[Callable]",
+                    "edp.contrib.gamestate.GameStateData",
                     "int",
                     "bytes",
                     "Optional[bytes]",
@@ -2211,7 +2323,7 @@
             "return": [
                 "None",
                 "int",
-                "list",
+                "List",
                 "str",
                 "cmk.utils.type_defs.HostName",
                 "cmk.utils.type_defs.ServiceName"
@@ -2229,7 +2341,9 @@
             "arguments": {
                 "self": [],
                 "state": [
-                    "DRPState"
+                    "Dict",
+                    "str",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2247,7 +2361,6 @@
             "name": "on_exit",
             "location": 128,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -2292,7 +2405,7 @@
             "name": "to_dict",
             "location": 53,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -2321,7 +2434,9 @@
         "EDDNPlugin.is_enalbed": {
             "name": "is_enalbed",
             "location": 159,
-            "return": [],
+            "return": [
+                "bool"
+            ],
             "arguments": {
                 "self": []
             }
@@ -2335,7 +2450,8 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "dict[str, typing.Any]",
+                    "typing.Callable[, ]"
                 ]
             }
         },
@@ -2359,7 +2475,8 @@
             "arguments": {
                 "self": [],
                 "events": [
-                    "List[journal.Event]"
+                    "list[edp.journal.Event]",
+                    "str"
                 ]
             }
         },
@@ -2372,10 +2489,12 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "dict[, ]"
                 ],
                 "state": [
-                    "edp.contrib.gamestate.GameStateData"
+                    "dict[, ]",
+                    "dict[str, typing.Union[str,int]]",
+                    "str"
                 ]
             }
         },
@@ -2388,7 +2507,7 @@
             "arguments": {
                 "self": [],
                 "payload": [
-                    "dict"
+                    "str"
                 ]
             }
         },
@@ -2455,11 +2574,13 @@
             "name": "cache",
             "location": 106,
             "return": [
-                "T"
+                "functools._lru_cache_wrapper"
             ],
             "arguments": {
                 "func": [
-                    "Callable[(..., T)]"
+                    "Callable",
+                    "float",
+                    "Callable[[T],bool]"
                 ]
             }
         },
@@ -2482,10 +2603,22 @@
             "arguments": {
                 "self": [],
                 "api_key": [
-                    "Optional[str]"
+                    "List[str]",
+                    "None",
+                    "bool",
+                    "List[cmk.gui.type_defs.InfoName]",
+                    "Dict[str,str]",
+                    "Dict[str,List[Any]]",
+                    "Set[Tuple[int,int]]",
+                    "Dict[str,list[Any]]",
+                    "Set[tuple[Union[int,int]]]"
                 ],
                 "commander_name": [
-                    "Optional[str]"
+                    "str",
+                    "None",
+                    "Callable",
+                    "List[str]",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2500,7 +2633,9 @@
                     "Type[_TEDSMApi]"
                 ],
                 "settings": [
-                    "EDSMSettings"
+                    "str",
+                    "Dict[str,Any]",
+                    "Dict"
                 ]
             }
         },
@@ -2584,16 +2719,13 @@
             "name": "on_game_state_set",
             "location": 124,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2631,7 +2763,11 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "Mapping[str,Any]",
+                    "Type",
+                    "Mapping",
+                    "Callable",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -2644,7 +2780,8 @@
             "arguments": {
                 "self": [],
                 "events": [
-                    "List[journal.Event]"
+                    "Dict",
+                    "List[dict]"
                 ]
             }
         },
@@ -2652,15 +2789,21 @@
             "name": "patch_event",
             "location": 173,
             "return": [
-                "dict"
+                "dict",
+                "int",
+                "sideeye.config.ASCParsingConfig"
             ],
             "arguments": {
                 "self": [],
                 "event_line": [
-                    "str"
+                    "edp.journal.Event",
+                    "GameStateData"
                 ],
                 "state": [
-                    "edp.contrib.gamestate.GameStateData"
+                    "Dict[str,Any]",
+                    "raiden.utils.Address",
+                    "edp.journal.Event",
+                    "GameStateData"
                 ]
             }
         },
@@ -2680,7 +2823,7 @@
             "name": "get_gamestate",
             "location": 117,
             "return": [
-                "GameStateData"
+                "Any"
             ],
             "arguments": {}
         },
@@ -3046,7 +3189,9 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "edp.journal.Event"
+                    "dict[str, typing.Any]",
+                    "int",
+                    "bytes"
                 ]
             }
         },
@@ -3069,7 +3214,9 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "edp.journal.Event"
+                    "typing.Mapping",
+                    "dict[, ]",
+                    "dict[str, str]"
                 ]
             }
         }
@@ -3079,7 +3226,7 @@
             "name": "_qbytearray_to_str",
             "location": 46,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "value": [
@@ -3378,7 +3525,12 @@
             "arguments": {
                 "self": [],
                 "cookies": [
-                    "dict"
+                    "dict[, ]",
+                    "bytes",
+                    "dict[str, dict[str, str]]",
+                    "dict[str, str]",
+                    "None",
+                    "dict[str, typing.Union[int,str]]"
                 ]
             }
         },
@@ -3402,7 +3554,9 @@
         "InaraApi.send": {
             "name": "send",
             "location": 122,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -3481,7 +3635,9 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "dict[, ]",
+                    "str",
+                    "float"
                 ]
             }
         },
@@ -3494,7 +3650,8 @@
             "arguments": {
                 "self": [],
                 "events": [
-                    "List[journal.Event]"
+                    "list[edp.journal.Event]",
+                    "str"
                 ]
             }
         },
@@ -3502,12 +3659,14 @@
             "name": "process_event",
             "location": 221,
             "return": [
-                "List[InaraEvent]"
+                "List[nothing]"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "dict[, ]",
+                    "int",
+                    "dict[str, str]"
                 ]
             }
         }
@@ -3547,7 +3706,6 @@
             "name": "on_app_created",
             "location": 34,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3571,9 +3729,9 @@
             "location": 27,
             "return": [
                 "None",
-                "Dict[str, Dict[str, int]]",
+                "Dict[str,Dict[str,int]]",
                 "int",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
@@ -3584,7 +3742,11 @@
             "name": "check_for_updates",
             "location": 38,
             "return": [
-                "Optional[dict]"
+                "Text",
+                "Optional[str]",
+                "None",
+                "Optional[bool]",
+                "int"
             ],
             "arguments": {
                 "self": []
@@ -3599,7 +3761,12 @@
             "arguments": {
                 "self": [],
                 "release": [
-                    "dict"
+                    "int",
+                    "str",
+                    "Optional[Any]",
+                    "Any",
+                    "bool",
+                    "None"
                 ]
             }
         },
@@ -3607,12 +3774,7 @@
             "name": "get_settings_widget",
             "location": 67,
             "return": [
-                "None",
-                "Optional[int]",
-                "Optional[str]",
-                "bool",
-                "str",
-                "dict"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -3666,9 +3828,8 @@
                 "self": [],
                 "Form": [
                     "str",
-                    "bool",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "bool"
                 ]
             }
         }
@@ -3804,9 +3965,8 @@
                 "self": [],
                 "Form": [
                     "str",
-                    "bool",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]",
+                    "bool"
                 ]
             }
         }
@@ -3827,7 +3987,6 @@
             "name": "on_journal_event_signal",
             "location": 32,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -3847,7 +4006,9 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "List[edp.journal.Event]",
+                    "bool",
+                    "str"
                 ]
             }
         }
@@ -3862,11 +4023,10 @@
             "arguments": {
                 "self": [],
                 "window": [
-                    "typing.Type",
+                    "Type",
+                    "Dict[str,Any]",
                     "cmk.base.config.HostConfig",
-                    "dict[str, typing.Any]",
-                    "Type[Any]",
-                    "Dict[str, Any]"
+                    "Type[Any]"
                 ]
             }
         },
@@ -3879,7 +4039,8 @@
             "arguments": {
                 "self": [],
                 "component_cls": [
-                    "Type[edp.gui.components.base.BaseMainWindowSection]"
+                    "Exception",
+                    "bool"
                 ],
                 "section": [
                     "bool",
@@ -3888,8 +4049,8 @@
                 "enabled": [
                     "bool",
                     "str",
-                    "type",
-                    "Dict[str, Any]"
+                    "Type",
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -3912,7 +4073,8 @@
             "arguments": {
                 "self": [],
                 "component": [
-                    "edp.gui.components.base.BaseMainWindowSection"
+                    "bytes",
+                    "bool"
                 ]
             }
         },
@@ -3927,7 +4089,6 @@
                 "i": [
                     "int",
                     "List[int]",
-                    "list[int]",
                     "FrozenSet[int]",
                     "frozenset"
                 ]
@@ -3942,7 +4103,9 @@
             "arguments": {
                 "self": [],
                 "component": [
-                    "edp.gui.components.base.BaseMainWindowSection"
+                    "int",
+                    "str",
+                    "Optional[int]"
                 ]
             }
         },
@@ -3955,15 +4118,19 @@
             "arguments": {
                 "self": [],
                 "toggled": [
-                    "bool"
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "None"
                 ],
                 "action": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "component": [
-                    "edp.gui.components.base.BaseMainWindowSection"
+                    "bool",
+                    "Callable"
                 ]
             }
         }
@@ -3988,7 +4155,8 @@
             "arguments": {
                 "self": [],
                 "material": [
-                    "entities.Material"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -4027,8 +4195,7 @@
                     "None",
                     "int",
                     "bytes",
-                    "set",
-                    "set[]"
+                    "Set"
                 ]
             }
         },
@@ -4062,8 +4229,7 @@
                 "self": [],
                 "section": [
                     "bool",
-                    "Any",
-                    "typing.Any"
+                    "Any"
                 ],
                 "orientation": [
                     "str",
@@ -4100,7 +4266,10 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "Dict[str,bool]",
+                    "edp.journal.Event"
                 ]
             }
         }
@@ -4125,7 +4294,8 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "Dict",
+                    "str"
                 ]
             }
         }
@@ -4145,16 +4315,14 @@
             "name": "on_set_game_state_signal",
             "location": 56,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "state": [
-                    "list",
-                    "list[]",
+                    "List",
                     "Type[T]",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         }
@@ -4166,7 +4334,6 @@
             "name": "__init__",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4177,8 +4344,7 @@
             "name": "result_labels",
             "location": 36,
             "return": [
-                "typing.Iterator[PyQt5.QtWidgets.QLabel]",
-                "typing.Generator[]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -4188,7 +4354,6 @@
             "name": "hide_result_labels",
             "location": 43,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4199,7 +4364,6 @@
             "name": "show_result_labels",
             "location": 48,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4211,7 +4375,7 @@
             "location": 54,
             "return": [
                 "None",
-                "Union[tuple, list]",
+                "Union[tuple,list]",
                 "Set[str]",
                 "Iterator[object]"
             ],
@@ -4225,11 +4389,19 @@
             "name": "register",
             "location": 14,
             "return": [
-                "Type[edp.gui.components.overlay_widgets.base.BaseOverlayWidget]"
+                "str",
+                "List[str]",
+                "Pattern",
+                "float",
+                "int",
+                "OrderedDict"
             ],
             "arguments": {
                 "widget_cls": [
-                    "Type[edp.gui.components.overlay_widgets.base.BaseOverlayWidget]"
+                    "str",
+                    "List[str]",
+                    "float",
+                    "Iterable[int]"
                 ]
             }
         },
@@ -4237,7 +4409,7 @@
             "name": "get_registered_widgets",
             "location": 20,
             "return": [
-                "Iterator[edp.gui.components.overlay_widgets.base.BaseOverlayWidget]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {}
         },
@@ -4245,11 +4417,16 @@
             "name": "get_widget_instance",
             "location": 29,
             "return": [
-                "edp.gui.components.overlay_widgets.base.BaseOverlayWidget"
+                "str",
+                "bool"
             ],
             "arguments": {
                 "widget_cls": [
-                    "Type[edp.gui.components.overlay_widgets.base.BaseOverlayWidget]"
+                    "Type",
+                    "Callable",
+                    "None",
+                    "Optional[type]",
+                    "Callable[,None]"
                 ]
             }
         }
@@ -4259,7 +4436,6 @@
             "name": "__init__",
             "location": 19,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -4270,17 +4446,13 @@
             "name": "on_journal_event",
             "location": 25,
             "return": [
-                "None",
-                "Iterator[Dict[str, str]]",
-                "int"
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
+                    "Dict",
+                    "Dict[str,Any]",
                     "edp.journal.Event"
                 ]
             }
@@ -4297,7 +4469,9 @@
             "arguments": {
                 "self": [],
                 "plugin_manager": [
-                    "edp.plugins.PluginManager"
+                    "str",
+                    "bool",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -4327,7 +4501,7 @@
             "name": "get_ed_window_handler",
             "location": 60,
             "return": [
-                "Optional[WindowHandler]"
+                "None"
             ],
             "arguments": {}
         },
@@ -4339,7 +4513,11 @@
             ],
             "arguments": {
                 "handler": [
-                    "WindowHandler"
+                    "int",
+                    "str",
+                    "typing.Callable[, ]",
+                    "None",
+                    "dict[str, typing.Any]"
                 ]
             }
         },
@@ -4363,10 +4541,13 @@
             "arguments": {
                 "self": [],
                 "layouts": [
-                    "Mapping[(str, Any)]"
+                    "int",
+                    "float"
                 ],
                 "widgets": [
-                    "Iterator[edp.gui.components.overlay_widgets.base.BaseOverlayWidget]"
+                    "dict[str, dict[str, int]]",
+                    "dict[str, int]",
+                    "dict[str, float]"
                 ]
             }
         },
@@ -4393,7 +4574,9 @@
         "OverlayWidgetSelector._create_widget_selector": {
             "name": "_create_widget_selector",
             "location": 139,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "self": []
             }
@@ -4477,7 +4660,9 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "dict[str, typing.Any]",
+                    "None",
+                    "dict[, ]"
                 ]
             }
         },
@@ -4528,20 +4713,17 @@
                 "settings": [
                     "str",
                     "int",
-                    "Type[T]",
-                    "typing.Type",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "Type[T]",
+                    "Type"
                 ],
                 "field": [
-                    "typing.Type",
+                    "Type",
                     "str",
                     "Type[Any]",
-                    "dict[, ]",
-                    "dict",
-                    "Type['Model']"
+                    "Dict",
+                    "Type[Model]"
                 ],
                 "label": [
                     "str",
@@ -4574,21 +4756,20 @@
                 "field": [
                     "Type[Any]",
                     "str",
-                    "typing.Type",
-                    "dict",
-                    "dict[, ]",
-                    "Tuple[Type]",
-                    "tuple[typing.Type]"
+                    "Type",
+                    "Dict",
+                    "Tuple[Type]"
                 ],
                 "label": [
-                    "Union[float, int, str]",
+                    "Union[float,int,str]",
                     "str",
                     "None",
                     "float",
                     "int"
                 ],
                 "settype": [
-                    "Union[(Callable[([str], Any)], type)]"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -4604,34 +4785,28 @@
                 "self": [],
                 "settings": [
                     "str",
-                    "bool",
-                    "typing.Iterable[str]",
                     "Iterable[str]",
-                    "typing.Sequence[str]",
+                    "bool",
+                    "Sequence[str]",
                     "List[List[str]]",
-                    "Iterable",
-                    "Sequence[str]"
+                    "Iterable"
                 ],
                 "field": [
                     "str",
-                    "bool",
-                    "typing.Iterable[str]",
                     "Iterable[str]",
-                    "typing.Sequence[str]",
+                    "bool",
+                    "Sequence[str]",
                     "List[List[str]]",
-                    "Iterable",
-                    "Sequence[str]"
+                    "Iterable"
                 ],
                 "label_text": [
                     "str",
                     "None",
-                    "bool",
                     "Iterable[str]",
-                    "typing.Iterable[str]",
+                    "bool",
+                    "Sequence[str]",
                     "List[List[str]]",
-                    "typing.Sequence[str]",
-                    "Iterable",
-                    "Sequence[str]"
+                    "Iterable"
                 ]
             }
         },
@@ -4639,7 +4814,7 @@
             "name": "get_settings_links",
             "location": 76,
             "return": [
-                "Iterator"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -4673,9 +4848,7 @@
             ],
             "arguments": {
                 "self": [],
-                "plugin_manager": [
-                    "edp.plugins.PluginManager"
-                ]
+                "plugin_manager": []
             }
         },
         "SettingsWindow.add_tab_widget": {
@@ -4687,7 +4860,8 @@
             "arguments": {
                 "self": [],
                 "tab_widget": [
-                    "BaseTab"
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -4696,9 +4870,9 @@
             "location": 62,
             "return": [
                 "None",
-                "Union[tuple, list]",
+                "Union[tuple,list]",
                 "List[int]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {}
@@ -4709,11 +4883,18 @@
             "name": "get_default_installer",
             "location": 63,
             "return": [
-                "dict"
+                "str",
+                "Tuple[int, int]",
+                "int"
             ],
             "arguments": {
                 "asset_list": [
-                    "List[dict]"
+                    "bool",
+                    "List[Dict[str, Any]]",
+                    "List[List[str]]",
+                    "List[Tuple[str, str]]",
+                    "Sequence[dict]",
+                    "list"
                 ]
             }
         },
@@ -4726,7 +4907,8 @@
             "arguments": {
                 "self": [],
                 "asset_info": [
-                    "dict"
+                    "dict",
+                    "Dict[str, Tuple[Any, Any, Any]]"
                 ]
             }
         },
@@ -4749,7 +4931,8 @@
             "arguments": {
                 "self": [],
                 "path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str"
                 ]
             }
         },
@@ -4765,7 +4948,9 @@
                     "str"
                 ],
                 "path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "Optional[pathlib.Path]",
+                    "str"
                 ]
             }
         },
@@ -4778,16 +4963,17 @@
             "arguments": {
                 "self": [],
                 "release_info": [
-                    "dict"
+                    "dict",
+                    "str",
+                    "Dict[str, str]",
+                    "Dict[str, Any]"
                 ]
             }
         },
         "UpdaterWindow.on_download_progress": {
             "name": "on_download_progress",
             "location": 99,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": [],
                 "progress": [
@@ -4799,9 +4985,7 @@
         "UpdaterWindow.on_download_finished": {
             "name": "on_download_finished",
             "location": 104,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -4809,9 +4993,7 @@
         "UpdaterWindow.on_install_finished": {
             "name": "on_install_finished",
             "location": 113,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -4819,9 +5001,7 @@
         "UpdaterWindow.install_button_clicked": {
             "name": "install_button_clicked",
             "location": 121,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "self": []
             }
@@ -4838,7 +5018,10 @@
             "arguments": {
                 "self": [],
                 "client_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -4857,9 +5040,9 @@
             "location": 44,
             "return": [
                 "str",
-                "list",
+                "List",
                 "int",
-                "list[str]",
+                "List[str]",
                 "None"
             ],
             "arguments": {
@@ -4875,10 +5058,17 @@
             "arguments": {
                 "self": [],
                 "data": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "List[str]"
                 ],
                 "op": [
-                    "RPC_OP"
+                    "Sequence[int]",
+                    "List['cirq.Circuit']",
+                    "raiden.utils.List[str]",
+                    "Sequence[T]",
+                    "bytes",
+                    "bytearray"
                 ]
             }
         },
@@ -4891,7 +5081,10 @@
             "arguments": {
                 "self": [],
                 "size": [
-                    "int"
+                    "int",
+                    "float",
+                    "Tuple",
+                    "Tuple[float,float]"
                 ]
             }
         },
@@ -4899,7 +5092,7 @@
             "name": "_receive",
             "location": 89,
             "return": [
-                "Tuple[(RPC_OP, dict)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -4919,15 +5112,24 @@
             "name": "request",
             "location": 110,
             "return": [
-                "Tuple[(RPC_OP, dict)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
                 "data": [
-                    "dict"
+                    "str",
+                    "T",
+                    "Dict",
+                    "float",
+                    "Mapping",
+                    "Union[Mapping,str]"
                 ],
                 "op": [
-                    "RPC_OP"
+                    "T",
+                    "str",
+                    "dict",
+                    "Union[Mapping, str]",
+                    "float"
                 ]
             }
         },
@@ -4945,12 +5147,20 @@
             "name": "set_activity",
             "location": 125,
             "return": [
-                "dict"
+                "int",
+                "dict",
+                "bytes",
+                "Dict[str, Union[str, int]]",
+                "Optional[bytes]"
             ],
             "arguments": {
                 "self": [],
                 "activity": [
-                    "dict"
+                    "Dict",
+                    "str",
+                    "bool",
+                    "Tuple[str,int]",
+                    "Tuple[Union[str,int]]"
                 ]
             }
         }
@@ -4965,7 +5175,8 @@
             "arguments": {
                 "self": [],
                 "api_token": [
-                    "Optional[str]"
+                    "str",
+                    "Optional[Mapping[str, Any]]"
                 ]
             }
         },
@@ -4973,7 +5184,9 @@
             "name": "get_releases",
             "location": 23,
             "return": [
-                "List[dict]"
+                "int",
+                "List[str]",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "self": [],
@@ -4989,7 +5202,9 @@
             "name": "get_releases_latest",
             "location": 28,
             "return": [
-                "dict"
+                "int",
+                "List[str]",
+                "Dict[str, str]"
             ],
             "arguments": {
                 "self": [],
@@ -5005,30 +5220,48 @@
             "name": "create_release",
             "location": 34,
             "return": [
-                "dict"
+                "Dict[str, Any]",
+                "Optional[Dict[str, Any]]",
+                "bool",
+                "Dict[str, str]",
+                "bytes"
             ],
             "arguments": {
                 "self": [],
                 "owner": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Optional[str]"
                 ],
                 "repo": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Optional[str]"
                 ],
                 "tag_name": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Optional[str]"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Optional[str]"
                 ],
                 "body": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Optional[str]"
                 ],
                 "draft": [
-                    "bool"
+                    "str",
+                    "dict",
+                    "Optional[str]"
                 ],
                 "prerelease": [
-                    "bool"
+                    "str",
+                    "dict",
+                    "Optional[str]"
                 ]
             }
         },
@@ -5036,6 +5269,9 @@
             "name": "upload_asset",
             "location": 50,
             "return": [
+                "int",
+                "str",
+                "Dict[str, Union[str, int]]",
                 "dict"
             ],
             "arguments": {
@@ -5047,16 +5283,24 @@
                     "int"
                 ],
                 "filename": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "Union[str, pathlib.Path]"
                 ],
                 "content_type": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "bool",
+                    "int"
                 ],
                 "name": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "List[str]"
                 ],
                 "label": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "Optional[bool]"
                 ]
             }
         }
@@ -5066,14 +5310,13 @@
             "name": "make_event",
             "location": 19,
             "return": [
-                "journal.Event"
+                "Mapping[str, Any]"
             ],
             "arguments": {
                 "_name": [
                     "str",
                     "bool",
-                    "Sequence[str]",
-                    "typing.Sequence[str]"
+                    "Sequence[str]"
                 ],
                 "timestamp": [
                     "str",
@@ -5086,14 +5329,15 @@
             "name": "event_strategy",
             "location": 33,
             "return": [
-                "Callable"
+                "str",
+                "int",
+                "Dict[str, Dict[str, int]]"
             ],
             "arguments": {
                 "event_name": [
                     "str",
                     "bool",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -5120,16 +5364,16 @@
             "name": "MaterialsEvent",
             "location": 63,
             "return": [
-                "Callable"
+                "dict",
+                "int",
+                "\"Step\""
             ],
             "arguments": {
                 "material": [
-                    "dict",
-                    "dict[, ]",
-                    "Dict[Hashable, Any]",
-                    "dict[typing.Hashable, typing.Any]",
-                    "Mapping[Any, Any]",
-                    "typing.Mapping"
+                    "Dict",
+                    "Dict[Hashable,Any]",
+                    "Mapping[Any,Any]",
+                    "Mapping"
                 ],
                 "Raw": [
                     "bool",
@@ -5209,14 +5453,12 @@
                 "strategy": [
                     "bool",
                     "str",
-                    "dict[str, typing.Any]",
-                    "Dict[str, Any]",
-                    "dict[, ]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "purplship.providers.ups.utils.Settings",
-                    "list[dict[str, typing.Any]]",
-                    "dict",
+                    "List[dict[str,Any]]",
                     "None",
-                    "List[Dict[str, Any]]",
+                    "List[Dict[str,Any]]",
                     "Optional[int]"
                 ]
             }
@@ -5233,7 +5475,9 @@
             ],
             "arguments": {
                 "argspec": [
-                    "Union[(str, Tuple[str])]"
+                    "int",
+                    "float",
+                    "str"
                 ],
                 "strategy": [
                     "int",
@@ -5300,7 +5544,10 @@
             "arguments": {
                 "self": [],
                 "event": [
-                    "journal.Event"
+                    "bool",
+                    "edp.journal.Event",
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -5309,19 +5556,17 @@
             "location": 31,
             "return": [
                 "None",
-                "Iterable[Mapping[str, Any]]",
+                "Iterable[Mapping[str,Any]]",
                 "Optional[bool]",
                 "bytes"
             ],
             "arguments": {
                 "self": [],
                 "event": [
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]",
-                    "Mapping[str, Any]",
-                    "typing.Mapping",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -5330,9 +5575,9 @@
             "location": 43,
             "return": [
                 "None",
-                "Union[tuple, list]",
+                "Union[tuple,list]",
                 "List[int]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
@@ -5348,7 +5593,9 @@
             "arguments": {
                 "self": [],
                 "events": [
-                    "List[journal.Event]"
+                    "List[edp.journal.Event]",
+                    "bool",
+                    "str"
                 ]
             }
         },
@@ -5356,7 +5603,6 @@
             "name": "exit_callback",
             "location": 65,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5377,7 +5623,7 @@
             "name": "register",
             "location": 95,
             "return": [
-                "Optional[Callable[([CT], Any)]]"
+                "Optional[Callable[([Any], Any)]]"
             ],
             "arguments": {
                 "self": []
@@ -5387,7 +5633,7 @@
             "name": "execute",
             "location": 119,
             "return": [
-                "Iterator[RT]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": [],
@@ -5400,12 +5646,13 @@
             "name": "execute_silently",
             "location": 134,
             "return": [
-                "Iterator[RT]"
+                "Generator[(nothing, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "routing_key": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -5431,12 +5678,10 @@
             "name": "signal_emit_action",
             "location": 30,
             "return": [
-                "Callable[([], None)]"
+                "Callable[([], Any)]"
             ],
             "arguments": {
-                "signal": [
-                    "signalslib.Signal"
-                ]
+                "signal": []
             }
         },
         "signal_emit_action.wrapper": {
@@ -5455,9 +5700,7 @@
             ],
             "arguments": {
                 "self": [],
-                "hotkey_list": [
-                    "List[HotkeyInfo]"
-                ]
+                "hotkey_list": []
             }
         },
         "KeyMessageDispatchThread.run": {
@@ -5488,10 +5731,16 @@
             ],
             "arguments": {
                 "known_folder_uid": [
-                    "uuid.UUID"
+                    "str",
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "user_handle": [
-                    "ctypes.c_void_p"
+                    "Optional[str]",
+                    "str",
+                    "List[str]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -5504,7 +5753,13 @@
             "arguments": {
                 "self": [],
                 "uid": [
-                    "uuid.UUID"
+                    "str",
+                    "Dict[str,Any]",
+                    "bool",
+                    "Dict[str,str]",
+                    "Dict",
+                    "Callable[[str],bool]",
+                    "Callable[str,bool]"
                 ]
             }
         }
@@ -5518,10 +5773,17 @@
             ],
             "arguments": {
                 "source": [
-                    "dict"
+                    "dict",
+                    "Callable",
+                    "Dict[str, Any]",
+                    "Protocol",
+                    "Type"
                 ],
                 "subset": [
-                    "dict"
+                    "dict",
+                    "int",
+                    "Optional[str]",
+                    "str"
                 ]
             }
         },
@@ -5541,9 +5803,8 @@
             ],
             "arguments": {
                 "func": [
-                    "typing.Callable[, ]",
                     "Callable",
-                    "Callable[..., None]"
+                    "Callable[...,None]"
                 ]
             }
         },
@@ -5551,11 +5812,16 @@
             "name": "dict_subset",
             "location": 49,
             "return": [
-                "dict"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "d": [
-                    "Mapping"
+                    "str",
+                    "Mapping",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "KT",
+                    "Union[Callable[[Dict],Hashable],str]"
                 ]
             }
         },
@@ -5563,14 +5829,20 @@
             "name": "chunked",
             "location": 72,
             "return": [
-                "Iterator[Sequence[T]]"
+                "Generator[(Any, Any, None)]"
             ],
             "arguments": {
                 "l": [
-                    "Sequence[T]"
+                    "int",
+                    "Union[float, int]",
+                    "Sequence[T]",
+                    "bool"
                 ],
                 "size": [
-                    "int"
+                    "int",
+                    "Union[float,int]",
+                    "Sequence[T]",
+                    "bool"
                 ]
             }
         },
@@ -5582,7 +5854,12 @@
             ],
             "arguments": {
                 "d": [
-                    "dict"
+                    "Dict",
+                    "Dict[str,Any]",
+                    "str",
+                    "Set",
+                    "bool",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -5594,7 +5871,9 @@
             ],
             "arguments": {
                 "d": [
-                    "dict"
+                    "Dict",
+                    "str",
+                    "tests.utils.Strategy[paradigm.hints.Domain]"
                 ]
             }
         },
@@ -5606,10 +5885,18 @@
             ],
             "arguments": {
                 "d": [
-                    "Dict[(str, Any)]"
+                    "Dict[str,Any]",
+                    "Mapping",
+                    "Dict",
+                    "str",
+                    "bool"
                 ],
                 "strict": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "bytes",
+                    "List[Dict]",
+                    "float"
                 ]
             }
         },
@@ -5617,11 +5904,14 @@
             "name": "to_ed_timestamp",
             "location": 107,
             "return": [
-                "str"
+                "Set[str]",
+                "str",
+                "int"
             ],
             "arguments": {
                 "dt": [
-                    "datetime.datetime"
+                    "datetime.datetime",
+                    "str"
                 ]
             }
         },
@@ -5633,7 +5923,10 @@
             ],
             "arguments": {
                 "timestamp": [
-                    "str"
+                    "str",
+                    "float",
+                    "datetime.timedelta",
+                    "datetime.datetime"
                 ]
             }
         },
@@ -5662,11 +5955,12 @@
             "name": "version_bits",
             "location": 132,
             "return": [
-                "Tuple[(int, int, int)]"
+                "Tuple[(Any, Any, Any)]"
             ],
             "arguments": {
                 "version": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -5678,10 +5972,14 @@
             ],
             "arguments": {
                 "v1": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "float"
                 ],
                 "v2": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "float"
                 ]
             }
         },
@@ -5693,7 +5991,8 @@
             ],
             "arguments": {
                 "material_category": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -5734,7 +6033,6 @@
             "name": "tempdir",
             "location": 26,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -5743,16 +6041,14 @@
             "name": "atexit_clear",
             "location": 32,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "tempdir": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -5761,7 +6057,6 @@
             "name": "patch_settings_dir",
             "location": 38,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -5778,7 +6073,6 @@
             "name": "clear_settings_instances",
             "location": 44,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -5786,16 +6080,14 @@
                     "bool",
                     "str",
                     "List[pathlib.Path]",
-                    "list[pathlib.Path]",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes"
                 ],
                 "tempdir": [
                     "bool",
                     "str",
                     "List[pathlib.Path]",
-                    "list[pathlib.Path]",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes"
                 ]
             }
@@ -5804,7 +6096,6 @@
             "name": "qapp",
             "location": 53,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -5813,19 +6104,17 @@
             "name": "process_events",
             "location": 60,
             "return": [
-                "typing.Callable[, ]",
+                "Callable",
                 "Optional[str]",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "qapp": [
-                    "list[dict[, ]]",
-                    "int",
                     "List[dict]",
+                    "int",
                     "str",
-                    "typing.Callable[, ]",
-                    "bool",
-                    "Callable"
+                    "Callable",
+                    "bool"
                 ]
             }
         }
@@ -5835,7 +6124,6 @@
             "name": "buffered_events_mixin",
             "location": 10,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -5921,9 +6209,8 @@
             ],
             "arguments": {
                 "class_mock": [
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "bool",
-                    "Dict[str, str]",
                     "mock.Mock"
                 ]
             }
@@ -5932,7 +6219,6 @@
             "name": "test_auth_window_show",
             "location": 23,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5940,11 +6226,9 @@
                     "dict"
                 ],
                 "url": [
-                    "Dict[Any, int]",
-                    "dict[typing.Any, int]",
-                    "str",
-                    "dict",
-                    "dict[, ]"
+                    "Dict[Any,int]",
+                    "Dict",
+                    "str"
                 ]
             }
         },
@@ -5957,11 +6241,10 @@
             "arguments": {
                 "auth_window": [
                     "str",
-                    "dict[, ]",
-                    "dict",
-                    "dict[str, dict[str, str]]",
-                    "Dict[str, Dict[str, str]]",
-                    "Dict[str, Any]"
+                    "Dict",
+                    "Dict[str,dict[str,str]]",
+                    "Dict[str,Dict[str,str]]",
+                    "Dict[str,Any]"
                 ],
                 "process_events": []
             }
@@ -5970,7 +6253,6 @@
             "name": "test_auth_window_on_url_changed_is_redirect",
             "location": 48,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -5988,7 +6270,6 @@
             "name": "capi_plugin",
             "location": 61,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -6019,9 +6300,8 @@
             "arguments": {
                 "capi_plugin": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         },
@@ -6044,14 +6324,12 @@
             "arguments": {
                 "capi_plugin": [],
                 "settings_widget": [
-                    "Dict[str, Any]",
-                    "str",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "process_events": [
-                    "Callable[[], int]",
-                    "bool",
-                    "typing.Callable[[], int]"
+                    "Callable[,int]",
+                    "bool"
                 ]
             }
         },
@@ -6059,7 +6337,6 @@
             "name": "test_update_status_label",
             "location": 99,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6081,26 +6358,23 @@
             "name": "test_initial_capi_state",
             "location": 116,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "at": [
                     "Callable",
                     "float",
-                    "typing.Callable[, ]",
                     "str"
                 ],
                 "rt": [
                     "str",
                     "Optional[bool]",
                     "bool",
-                    "Union[str, float]",
-                    "None",
                     "List[int]",
+                    "Union[str,float]",
+                    "None",
                     "float",
-                    "int",
-                    "list[int]"
+                    "int"
                 ],
                 "expected_state": [
                     "str"
@@ -6111,7 +6385,6 @@
             "name": "test_manager_access_token_expired",
             "location": 132,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6123,11 +6396,10 @@
                 ],
                 "expired": [
                     "bool",
-                    "list[str]",
-                    "str",
                     "List[str]",
-                    "list[tuple[typing.Union[str,typing.Any]]]",
-                    "List[Tuple[str, Any]]",
+                    "str",
+                    "List[tuple[Union[str,Any]]]",
+                    "List[Tuple[str,Any]]",
                     "int"
                 ],
                 "request": [
@@ -6151,7 +6423,6 @@
             "name": "discord_plugin",
             "location": 14,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -6166,7 +6437,6 @@
             "name": "test_plugin_enabled",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6308,7 +6578,6 @@
             "name": "test_event_filtered",
             "location": 60,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6321,16 +6590,14 @@
                 "event_name": [
                     "str",
                     "int",
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "datetime.datetime",
-                    "Dict[str, Any]",
                     "cmk.utils.type_defs.UserId"
                 ],
                 "filtered": [
                     "str",
                     "int",
-                    "Dict[str, object]",
-                    "dict[str, object]"
+                    "Dict[str,object]"
                 ]
             }
         },
@@ -6338,7 +6605,6 @@
             "name": "test_process_buffered_events",
             "location": 70,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6352,7 +6618,6 @@
             "name": "test_process_event",
             "location": 81,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6360,9 +6625,8 @@
                 "event": [],
                 "commander_name": [
                     "str",
-                    "int",
                     "List[str]",
-                    "list[str]"
+                    "int"
                 ]
             }
         }
@@ -6436,7 +6700,6 @@
             "name": "test_material_storage_add_material",
             "location": 111,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6458,7 +6721,6 @@
             "name": "test_material_storage_add_material_failed_preconditions",
             "location": 119,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6480,18 +6742,14 @@
             "name": "test_material_storage_remove_material",
             "location": 133,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "existing": [
                     "str",
                     "Set[str]",
-                    "set[str]",
                     "List[str]",
-                    "list[str]",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ],
                 "remove": [
                     "str"
@@ -6515,7 +6773,6 @@
             "name": "test_material_storage_shortcut_access",
             "location": 140,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6605,7 +6862,6 @@
             "name": "mutation",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6638,7 +6894,6 @@
             "name": "test_commander_event",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6650,13 +6905,11 @@
             "name": "test_materials_event",
             "location": 24,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "request": [],
                 "event": [
-                    "typing.Callable[, ]",
                     "Callable",
                     "raiden.utils.PaymentNetworkID"
                 ]
@@ -6684,7 +6937,6 @@
             "name": "api",
             "location": 22,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -6693,7 +6945,6 @@
             "name": "test_get_releases",
             "location": 31,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6711,7 +6962,6 @@
             "name": "test_get_releases_latest",
             "location": 39,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6736,14 +6986,13 @@
             "name": "test_upload_asset",
             "location": 57,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "api": [
                     "None",
-                    "Optional[\"Game\"]",
-                    "typing.Mapping",
+                    "Optional[Game]",
+                    "Mapping",
                     "cmk.utils.structured_data.StructuredDataTree",
                     "Optional[Mapping]"
                 ],
@@ -6753,9 +7002,9 @@
                 "label": [
                     "Container[T]",
                     "str",
-                    "typing.Container",
+                    "Container",
                     "Optional[Callable]",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "Optional[str]",
                     "None"
                 ]
@@ -6787,7 +7036,6 @@
             "name": "test_is_enabled",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -6795,7 +7043,7 @@
                     "str",
                     "bytes",
                     "Optional[Callable]",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "None"
                 ],
                 "enabled": [
@@ -6803,21 +7051,21 @@
                     "float",
                     "List[List[str]]",
                     "int",
-                    "list[list[str]]"
+                    "List[list[str]]"
                 ],
                 "result": [
                     "str",
                     "float",
                     "List[List[str]]",
                     "int",
-                    "list[list[str]]"
+                    "List[list[str]]"
                 ],
                 "inara_plugin": [
                     "str",
                     "float",
                     "List[List[str]]",
                     "int",
-                    "list[list[str]]"
+                    "List[list[str]]"
                 ]
             }
         },
@@ -6825,16 +7073,14 @@
             "name": "mock_callback",
             "location": 30,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
                 "inara_plugin": [
                     "str",
+                    "Dict[str,BinaryIO]",
                     "bool",
-                    "Dict[str, BinaryIO]",
-                    "float",
-                    "dict[str, typing.BinaryIO]"
+                    "float"
                 ]
             }
         },
@@ -6842,7 +7088,6 @@
             "name": "mock_api",
             "location": 38,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -6851,7 +7096,6 @@
             "name": "mock_gamestate",
             "location": 44,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -6950,8 +7194,8 @@
                 ],
                 "mock_gamestate": [
                     "bool",
-                    "Generator[None, Any, None]",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                    "Generator[None,Any,None]",
+                    "Generator[Union[None,Any,None]]"
                 ]
             }
         },
@@ -6972,8 +7216,8 @@
                 ],
                 "mock_gamestate": [
                     "bool",
-                    "Generator[None, Any, None]",
-                    "typing.Generator[typing.Union[None,typing.Any,None]]"
+                    "Generator[None,Any,None]",
+                    "Generator[Union[None,Any,None]]"
                 ]
             }
         },
@@ -6981,32 +7225,27 @@
             "name": "test_old_event_not_processed",
             "location": 110,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "delta": [
                     "str",
-                    "typing.Iterable[typing.Pattern]",
-                    "datetime.datetime",
-                    "Iterable[Pattern]"
+                    "Iterable[Pattern]",
+                    "datetime.datetime"
                 ],
                 "result": [
                     "bool",
-                    "set",
-                    "set[]"
+                    "Set"
                 ],
                 "inara_plugin": [
                     "bool",
-                    "set",
-                    "set[]"
+                    "Set"
                 ],
                 "event": [
                     "str",
                     "int",
-                    "dict[str, typing.Any]",
-                    "datetime.datetime",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "datetime.datetime"
                 ]
             }
         }
@@ -7020,7 +7259,9 @@
             ],
             "arguments": {
                 "dt": [
-                    "datetime.datetime"
+                    "datetime.datetime",
+                    "Callable[[], None]",
+                    "int"
                 ]
             }
         },
@@ -7028,11 +7269,12 @@
             "name": "serialize_event",
             "location": 41,
             "return": [
-                "str"
+                "Union[(str, _T0)]"
             ],
             "arguments": {
                 "event": [
-                    "Union[(dict, str)]"
+                    "Union[Dict, str]",
+                    "dict"
                 ]
             }
         },
@@ -7044,7 +7286,9 @@
             ],
             "arguments": {
                 "events": [
-                    "List[dict]"
+                    "List[dict]",
+                    "Optional[Tuple]",
+                    "Event"
                 ]
             }
         },
@@ -7056,10 +7300,13 @@
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "Optional[pathlib.Path]",
+                    "Union[pathlib.Path, str]"
                 ],
                 "line": [
-                    "str"
+                    "str",
+                    "IO[bytes]"
                 ]
             }
         },
@@ -7096,9 +7343,7 @@
         "journal_event_signal_mock": {
             "name": "journal_event_signal_mock",
             "location": 69,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {}
         },
         "test_get_latest_file": {
@@ -7393,9 +7638,7 @@
         "test_get_game_version_info_no_event": {
             "name": "test_get_game_version_info_no_event",
             "location": 286,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "journal_reader": [],
                 "events_list": [
@@ -7407,9 +7650,7 @@
         "test_get_game_version_info": {
             "name": "test_get_game_version_info",
             "location": 294,
-            "return": [
-                ""
-            ],
+            "return": [],
             "arguments": {
                 "journal_reader": [],
                 "fields": [
@@ -7560,7 +7801,6 @@
             "name": "test_scheduled_decorator",
             "location": 139,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7578,14 +7818,13 @@
             "name": "test_scheduled_decorator_bad_interval",
             "location": 151,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "interval": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -7609,7 +7848,6 @@
             "name": "test_plugin_manager_get_plugin",
             "location": 180,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7720,7 +7958,6 @@
             "name": "foo",
             "location": 53,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7739,7 +7976,6 @@
             "name": "foo",
             "location": 172,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -7758,7 +7994,6 @@
             "name": "test_method",
             "location": 205,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7769,7 +8004,6 @@
             "name": "method",
             "location": 256,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7790,7 +8024,6 @@
             "name": "edsm_api",
             "location": 21,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -7811,7 +8044,6 @@
             "name": "test_journal_event",
             "location": 39,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7821,19 +8053,18 @@
                 "events": [
                     "int",
                     "Optional[int]",
+                    "Iterable[str]",
                     "None",
                     "str",
                     "bool",
-                    "typing.Iterable[str]",
-                    "Iterable[str]",
                     "datetime.timedelta"
                 ],
                 "status_code": [
                     "int",
                     "Optional[int]",
                     "None",
-                    "List[Dict[str, Any]]",
-                    "list[dict[str, typing.Any]]"
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -7859,17 +8090,15 @@
                 "atexit_clear": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ],
                 "tempdir": [
                     "int",
                     "str",
-                    "typing.Iterable['Context']",
-                    "Iterable['Context']",
-                    "dict",
+                    "Iterable[Context]",
+                    "Dict",
                     "bool"
                 ]
             }
@@ -7878,7 +8107,6 @@
             "name": "test_plugin_enabled",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7896,15 +8124,14 @@
                     "bytes",
                     "int",
                     "Type[Any]",
-                    "typing.Type"
+                    "Type"
                 ],
                 "enabled": [
                     "bool",
-                    "typing.Mapping",
-                    "Mapping[str, Any]",
-                    "dict[, ]",
-                    "int",
-                    "dict"
+                    "Dict",
+                    "Mapping",
+                    "Mapping[str,Any]",
+                    "int"
                 ]
             }
         },
@@ -7946,7 +8173,6 @@
             "name": "mock_api",
             "location": 105,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -7955,7 +8181,6 @@
             "name": "test_journal_event_discarded",
             "location": 116,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -7965,10 +8190,8 @@
                 ],
                 "is_discarded": [
                     "List[int]",
-                    "list[int]",
-                    "str",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "str"
                 ],
                 "plugin": [
                     "List[List[Any]]"
@@ -7991,7 +8214,6 @@
             "name": "test_patch_event",
             "location": 139,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8153,7 +8375,7 @@
             "name": "test_settings_saved",
             "location": 15,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {}
         },
@@ -8187,7 +8409,6 @@
             "name": "test_check_signature_no_args",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8203,7 +8424,6 @@
             "name": "test_check_signature_arg_no_annotation",
             "location": 25,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8219,7 +8439,6 @@
             "name": "test_check_signature_some_args",
             "location": 39,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8235,13 +8454,12 @@
             "name": "test_signal_bind_func_no_args",
             "location": 49,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "signature": [
-                    "Tuple[str, str]",
-                    "tuple[typing.Union[str,str]]"
+                    "Tuple[str,str]",
+                    "Tuple[Union[str,str]]"
                 ],
                 "result": []
             }
@@ -8250,15 +8468,14 @@
             "name": "test_signal_bind_func_arg_no_annotation",
             "location": 71,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "signature": [
-                    "Tuple[str, str]",
-                    "tuple[typing.Union[str,str]]",
-                    "Optional[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
+                    "Tuple[str,str]",
+                    "Tuple[Union[str,str]]",
+                    "Optional[Dict[str,Any]]",
+                    "Dict[str,Any]",
                     "None"
                 ],
                 "result": [
@@ -8270,20 +8487,17 @@
             "name": "test_signal_bind_func_some_args",
             "location": 95,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "signature": [
-                    "tuple[typing.Union[str,str]]",
+                    "Tuple[Union[str,str]]",
                     "int",
-                    "Tuple[str, str]",
+                    "Tuple[str,str]",
                     "str",
-                    "bool",
-                    "list[str]",
-                    "typing.TextIO",
                     "List[str]",
-                    "TextIO"
+                    "TextIO",
+                    "bool"
                 ],
                 "result": [
                     "str"
@@ -8310,16 +8524,13 @@
             "name": "test_signal_emit_unmatching_data_signature",
             "location": 136,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "data": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -8435,7 +8646,6 @@
             "name": "foo",
             "location": 137,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8459,7 +8669,6 @@
             "name": "test_func",
             "location": 162,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8503,14 +8712,13 @@
             "name": "test_stoppable_thread_sleep",
             "location": 56,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "interval": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -8630,23 +8838,22 @@
             "name": "test_is_dict_subset",
             "location": 17,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "source": [
                     "str",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes"
                 ],
                 "subset": [
                     "str",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes"
                 ],
                 "result": [
                     "str",
-                    "Union[str, bytes]",
+                    "Union[str,bytes]",
                     "bytes"
                 ]
             }
@@ -8663,7 +8870,6 @@
             "name": "test_subset",
             "location": 37,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8682,30 +8888,24 @@
             "name": "test_subset_strict",
             "location": 47,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "d": [
                     "bool",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "k": [
                     "bool",
                     "Callable",
-                    "typing.Callable[, ]",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "result": [
                     "Callable",
                     "int",
-                    "typing.Callable[, ]",
-                    "Optional[Tuple[int, int]]",
-                    "tuple[typing.Union[int,int]]",
+                    "Optional[Tuple[int,int]]",
+                    "Tuple[Union[int,int]]",
                     "None"
                 ],
                 "raises": [
@@ -8718,7 +8918,6 @@
             "name": "test_has_keys",
             "location": 61,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8743,7 +8942,6 @@
             "name": "test_map_keys",
             "location": 72,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8765,7 +8963,6 @@
             "name": "test_map_keys_strict",
             "location": 80,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8783,25 +8980,20 @@
             "name": "test_version_bits",
             "location": 93,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "version_string": [
                     "str",
                     "int",
-                    "dict[, ]",
-                    "dict",
-                    "list[str]",
+                    "Dict",
                     "List[str]",
                     "bool"
                 ],
                 "version": [
                     "str",
                     "int",
-                    "dict[, ]",
-                    "dict",
-                    "list[str]",
+                    "Dict",
                     "List[str]",
                     "bool"
                 ]
@@ -8811,36 +9003,26 @@
             "name": "test_is_version_newer",
             "location": 105,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "v1": [
                     "str",
-                    "set",
-                    "set[]",
+                    "Set",
                     "Sequence[Hashable]",
-                    "typing.Sequence[typing.Hashable]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "v2": [
                     "str",
-                    "set",
-                    "set[]",
+                    "Set",
                     "Sequence[Hashable]",
-                    "typing.Sequence[typing.Hashable]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "newer": [
                     "str",
-                    "set",
-                    "set[]",
+                    "Set",
                     "Sequence[Hashable]",
-                    "typing.Sequence[typing.Hashable]",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ]
             }
         },
@@ -8848,7 +9030,6 @@
             "name": "test_space_distance",
             "location": 112,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -8865,28 +9046,24 @@
             "name": "test_chunked",
             "location": 124,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "seq": [
                     "float",
                     "int",
-                    "list[int]",
                     "List[int]",
                     "raiden.utils.TokenAmount"
                 ],
                 "size": [
                     "float",
                     "int",
-                    "list[int]",
                     "List[int]",
                     "raiden.utils.TokenAmount"
                 ],
                 "result": [
                     "float",
                     "int",
-                    "list[int]",
                     "List[int]",
                     "raiden.utils.TokenAmount"
                 ]
@@ -8896,24 +9073,23 @@
             "name": "test_drop_keys",
             "location": 136,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "d": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "keys": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "result": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ]
             }
         },
@@ -8921,7 +9097,6 @@
             "name": "test_infer_category",
             "location": 154,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

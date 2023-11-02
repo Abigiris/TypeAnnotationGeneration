@@ -6,11 +6,16 @@
             "name": "pluralize",
             "location": 135,
             "return": [
-                "str"
+                "str",
+                "Text",
+                "Dict[str,str]",
+                "Mapping",
+                "Dict"
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "str",
+                    "Union[float,int]"
                 ]
             }
         },
@@ -18,11 +23,17 @@
             "name": "singularize",
             "location": 145,
             "return": [
-                "str"
+                "str",
+                "Text",
+                "int",
+                "Mapping"
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "str",
+                    "Iterable[Hashable]",
+                    "List[str]",
+                    "Optional[str]"
                 ]
             }
         }
@@ -37,7 +48,9 @@
             "arguments": {
                 "self": [],
                 "text": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Mapping[str,List[str]]"
                 ]
             }
         },
@@ -60,7 +73,11 @@
             "arguments": {
                 "self": [],
                 "length": [
-                    "int"
+                    "int",
+                    "List[int]",
+                    "Sequence[int]",
+                    "List",
+                    "List[float]"
                 ]
             }
         },
@@ -73,7 +90,9 @@
             "arguments": {
                 "self": [],
                 "length": [
-                    "int"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -91,7 +110,7 @@
             "name": "scan",
             "location": 59,
             "return": [
-                "Tuple[(tokens.Token, ...)]"
+                "tuple"
             ],
             "arguments": {
                 "self": []
@@ -105,7 +124,11 @@
             ],
             "arguments": {
                 "string": [
-                    "str"
+                    "str",
+                    "Type[T]",
+                    "Type",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -206,9 +229,7 @@
             ],
             "arguments": {
                 "self": [],
-                "stream": [
-                    "Sequence[tokens.Token]"
-                ]
+                "stream": []
             }
         },
         "Parser.jump_to_index": {
@@ -219,16 +240,14 @@
             ],
             "arguments": {
                 "self": [],
-                "index": [
-                    "int"
-                ]
+                "index": []
             }
         },
         "Parser.peek": {
             "name": "peek",
             "location": 122,
             "return": [
-                "tokens.Token"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -242,16 +261,14 @@
             ],
             "arguments": {
                 "self": [],
-                "length": [
-                    "int"
-                ]
+                "length": []
             }
         },
         "Parser.consume": {
             "name": "consume",
             "location": 135,
             "return": [
-                "tokens.Token"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -261,7 +278,7 @@
             "name": "consume_token_value",
             "location": 140,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -311,7 +328,7 @@
             "name": "parse_block",
             "location": 265,
             "return": [
-                "Optional[tree.BlockNode]"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -353,7 +370,7 @@
             "name": "parse_list",
             "location": 432,
             "return": [
-                "Optional[tree.ListNode]"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -389,7 +406,11 @@
             ],
             "arguments": {
                 "sequence": [
-                    "list"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -412,10 +433,16 @@
             "arguments": {
                 "self": [],
                 "target": [
-                    "dict"
+                    "dict",
+                    "Dict[str, Any]",
+                    "Dict[str, float]"
                 ],
                 "update": [
-                    "dict"
+                    "dict",
+                    "Dict[str, str]",
+                    "Dict[str, Any]",
+                    "Dict[str, List[Any]]",
+                    "Dict[str, bool]"
                 ]
             }
         },
@@ -423,12 +450,12 @@
             "name": "visit",
             "location": 113,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "self": [],
                 "document": [
-                    "lkml.tree.DocumentNode"
+                    "Dict"
                 ]
             }
         },
@@ -436,12 +463,12 @@
             "name": "visit_container",
             "location": 116,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.ContainerNode"
+                    "Dict"
                 ]
             }
         },
@@ -449,39 +476,33 @@
             "name": "visit_block",
             "location": 126,
             "return": [
-                "Dict[(str, dict)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "lkml.tree.BlockNode"
-                ]
+                "node": []
             }
         },
         "DictVisitor.visit_list": {
             "name": "visit_list",
             "location": 133,
             "return": [
-                "Dict[(str, list)]"
+                "Dict[(Any, list)]"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "lkml.tree.ListNode"
-                ]
+                "node": []
             }
         },
         "DictVisitor.visit_pair": {
             "name": "visit_pair",
             "location": 137,
             "return": [
-                "Dict[(str, str)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "lkml.tree.PairNode"
-                ]
+                "node": []
             }
         },
         "DictVisitor.visit_token": {
@@ -493,7 +514,12 @@
             "arguments": {
                 "self": [],
                 "token": [
-                    "lkml.tree.SyntaxToken"
+                    "str",
+                    "Optional[str]",
+                    "Tuple[object]",
+                    "Callable",
+                    "None",
+                    "int"
                 ]
             }
         },
@@ -531,7 +557,7 @@
             "name": "indent",
             "location": 181,
             "return": [
-                "typing.Text",
+                "Text",
                 "str",
                 "List[int]"
             ],
@@ -554,7 +580,7 @@
             "name": "prefix",
             "location": 194,
             "return": [
-                "typing.Text",
+                "Text",
                 "int",
                 "str"
             ],
@@ -571,7 +597,12 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "bytes",
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[Callable]",
+                    "Callable",
+                    "None"
                 ]
             }
         },
@@ -579,12 +610,18 @@
             "name": "resolve_filters",
             "location": 231,
             "return": [
-                "Union[(lkml.tree.ListNode, List[lkml.tree.BlockNode])]"
+                "Union[(list, lkml.tree.ListNode)]"
             ],
             "arguments": {
                 "self": [],
                 "values": [
-                    "List[dict]"
+                    "bytes",
+                    "str",
+                    "Dict",
+                    "Optional[int]",
+                    "Union[str,bytes]",
+                    "Optional[bool]",
+                    "Union[int,float]"
                 ]
             }
         },
@@ -597,7 +634,10 @@
             "arguments": {
                 "self": [],
                 "obj": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Iterable[str]",
+                    "Dict[str, Any]",
+                    "dict"
                 ]
             }
         },
@@ -605,15 +645,22 @@
             "name": "expand_list",
             "location": 269,
             "return": [
-                "List[Union[(lkml.tree.BlockNode, lkml.tree.ListNode, lkml.tree.PairNode)]]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "bytes",
+                    "Optional[Callable]",
+                    "Callable",
+                    "None"
                 ],
                 "values": [
-                    "Sequence"
+                    "str",
+                    "Dict",
+                    "List"
                 ]
             }
         },
@@ -621,7 +668,9 @@
             "name": "parse_any",
             "location": 291,
             "return": [
-                "Union[(lkml.tree.BlockNode, lkml.tree.ListNode, lkml.tree.PairNode, List[Union[(lkml.tree.BlockNode, lkml.tree.ListNode, lkml.tree.PairNode)]])]"
+                "int",
+                "dict",
+                "bool"
             ],
             "arguments": {
                 "self": [],
@@ -629,7 +678,13 @@
                     "str"
                 ],
                 "value": [
-                    "Union[(dict, list, str, tuple)]"
+                    "str",
+                    "bool",
+                    "Dict[str,Any]",
+                    "int",
+                    "Tuple",
+                    "Union[tuple,list]",
+                    "List"
                 ]
             }
         },
@@ -642,13 +697,20 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "Dict",
+                    "str",
+                    "Iterable"
                 ],
                 "items": [
-                    "Dict[(str, Any)]"
+                    "Dict",
+                    "str"
                 ],
                 "name": [
-                    "Optional[str]"
+                    "str",
+                    "Sequence[str]",
+                    "None",
+                    "Sequence[List[Any]]",
+                    "Sequence[list[Any]]"
                 ]
             }
         },
@@ -661,10 +723,17 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "Iterable[str]",
+                    "bool",
+                    "Optional[Callable[[str],Any]]",
+                    "Callable[str,Any]",
+                    "Dict",
+                    "None"
                 ],
                 "values": [
-                    "Sequence[Union[(dict, str)]]"
+                    "str",
+                    "Union[str, int]"
                 ]
             }
         },
@@ -677,10 +746,15 @@
             "arguments": {
                 "self": [],
                 "key": [
-                    "str"
+                    "str",
+                    "Hashable",
+                    "Dict[str,Union[str,int,bool]]"
                 ],
                 "value": [
-                    "str"
+                    "str",
+                    "Type",
+                    "bytes",
+                    "SupportsFloat"
                 ]
             }
         },
@@ -692,19 +766,34 @@
             ],
             "arguments": {
                 "key": [
-                    "str"
+                    "str",
+                    "KT",
+                    "Callable",
+                    "Optional[Callable]",
+                    "None"
                 ],
                 "value": [
-                    "str"
+                    "str",
+                    "bytes",
+                    "int"
                 ],
                 "force_quote": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Dict[str,Any]",
+                    "bytes"
                 ],
                 "prefix": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bytes",
+                    "int"
                 ],
                 "suffix": [
-                    "str"
+                    "Text",
+                    "str",
+                    "bytes",
+                    "int"
                 ]
             }
         }
@@ -719,7 +808,9 @@
             "arguments": {
                 "self": [],
                 "line_number": [
-                    "int"
+                    "List[int]",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -732,12 +823,11 @@
             "arguments": {
                 "self": [],
                 "other": [
-                    "Union[str, \"Date\"]",
+                    "Union[str,Date]",
                     "str",
-                    "Tuple[float, float]",
-                    "tuple[typing.Union[float,float]]",
                     "Type",
-                    "typing.Type"
+                    "Tuple[float,float]",
+                    "Tuple[Union[float,float]]"
                 ]
             }
         },
@@ -760,10 +850,15 @@
             "arguments": {
                 "self": [],
                 "value": [
-                    "str"
+                    "str",
+                    "Exception",
+                    "Union[int,str]",
+                    "int"
                 ],
                 "line_number": [
-                    "int"
+                    "int",
+                    "List[Tuple[int,int]]",
+                    "List[tuple[Union[int,int]]]"
                 ]
             }
         },
@@ -771,13 +866,14 @@
             "name": "__eq__",
             "location": 61,
             "return": [
-                "bool"
+                "bool",
+                "Dict[str,str]",
+                "Dict"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "Type",
-                    "typing.Type"
+                    "Type"
                 ]
             }
         },
@@ -805,7 +901,9 @@
             "name": "format_value",
             "location": 38,
             "return": [
-                "str"
+                "str",
+                "bool",
+                "list"
             ],
             "arguments": {
                 "self": []
@@ -820,7 +918,9 @@
             "arguments": {
                 "self": [],
                 "visitor": [
-                    "Visitor"
+                    "bool",
+                    "T",
+                    "List[str]"
                 ]
             }
         },
@@ -828,12 +928,16 @@
             "name": "__eq__",
             "location": 46,
             "return": [
-                "bool"
+                "bool",
+                "Dict[str,Any]",
+                "bytes",
+                "Mapping",
+                "Dict[str,Dict[str,Any]]"
             ],
             "arguments": {
                 "self": [],
                 "other": [
-                    "Union[int, float]",
+                    "Union[int,float]",
                     "int",
                     "float"
                 ]
@@ -873,7 +977,7 @@
             "name": "children",
             "location": 115,
             "return": [
-                "typing.Optional[typing.Tuple[SyntaxNode, ...]]",
+                "Optional[Tuple[SyntaxNode,...]]",
                 "None"
             ],
             "arguments": {
@@ -884,7 +988,8 @@
             "name": "line_number",
             "location": 121,
             "return": [
-                "Optional[int]"
+                "Optional[int]",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -894,13 +999,18 @@
             "name": "accept",
             "location": 126,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "visitor": [
-                    "Visitor"
+                    "int",
+                    "str",
+                    "Iterable[C]",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -931,7 +1041,7 @@
             "name": "line_number",
             "location": 163,
             "return": [
-                "Optional[int]"
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -947,7 +1057,9 @@
             "arguments": {
                 "self": [],
                 "visitor": [
-                    "Visitor"
+                    "bool",
+                    "T",
+                    "List[str]"
                 ]
             }
         },
@@ -975,10 +1087,10 @@
             "name": "children",
             "location": 201,
             "return": [
-                "tuple[]",
-                "Dict[str, int]",
+                "Tuple",
+                "Dict[str,int]",
                 "int",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "self": []
@@ -988,7 +1100,7 @@
             "name": "line_number",
             "location": 209,
             "return": [
-                "Optional[int]"
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -1004,7 +1116,9 @@
             "arguments": {
                 "self": [],
                 "visitor": [
-                    "Visitor"
+                    "bool",
+                    "T",
+                    "List[str]"
                 ]
             }
         },
@@ -1053,7 +1167,10 @@
             "name": "line_number",
             "location": 260,
             "return": [
-                "Optional[int]"
+                "None",
+                "Optional[str]",
+                "bool",
+                "Optional[float]"
             ],
             "arguments": {
                 "self": []
@@ -1068,7 +1185,9 @@
             "arguments": {
                 "self": [],
                 "visitor": [
-                    "Visitor"
+                    "bool",
+                    "T",
+                    "List[str]"
                 ]
             }
         },
@@ -1106,7 +1225,7 @@
             "name": "line_number",
             "location": 309,
             "return": [
-                "Optional[int]"
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -1121,7 +1240,8 @@
             "arguments": {
                 "self": [],
                 "visitor": [
-                    "Visitor"
+                    "bool",
+                    "dict"
                 ]
             }
         },
@@ -1140,7 +1260,7 @@
             "location": 340,
             "return": [
                 "str",
-                "tuple[]"
+                "Tuple"
             ],
             "arguments": {
                 "self": []
@@ -1150,7 +1270,9 @@
             "name": "line_number",
             "location": 344,
             "return": [
-                "Optional[int]"
+                "int",
+                "float",
+                "Set"
             ],
             "arguments": {
                 "self": []
@@ -1166,7 +1288,9 @@
             "arguments": {
                 "self": [],
                 "visitor": [
-                    "Visitor"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1184,13 +1308,13 @@
             "name": "visit",
             "location": 359,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "document": [
-                    "DocumentNode"
+                    "Dict"
                 ]
             }
         },
@@ -1198,69 +1322,61 @@
             "name": "visit_container",
             "location": 363,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "ContainerNode"
-                ]
+                "node": []
             }
         },
         "Visitor.visit_block": {
             "name": "visit_block",
             "location": 367,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "BlockNode"
-                ]
+                "node": []
             }
         },
         "Visitor.visit_list": {
             "name": "visit_list",
             "location": 371,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "ListNode"
-                ]
+                "node": []
             }
         },
         "Visitor.visit_pair": {
             "name": "visit_pair",
             "location": 375,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "PairNode"
-                ]
+                "node": []
             }
         },
         "Visitor.visit_token": {
             "name": "visit_token",
             "location": 379,
             "return": [
-                "typing.Any",
+                "Any",
                 "None"
             ],
             "arguments": {
                 "self": [],
                 "token": [
-                    "SyntaxToken"
+                    "Iterable[str]"
                 ]
             }
         }
@@ -1270,11 +1386,13 @@
             "name": "strip",
             "location": 4,
             "return": [
-                "Tuple[(str, str, str)]"
+                "Tuple[(Any, Any, Any)]"
             ],
             "arguments": {
                 "s": [
-                    "str"
+                    "str",
+                    "Union[str, bytes]",
+                    "bytes"
                 ]
             }
         }
@@ -1288,9 +1406,7 @@
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "Union[(lkml.tree.SyntaxNode, lkml.tree.SyntaxToken)]"
-                ]
+                "node": []
             }
         },
         "BasicVisitor.visit": {
@@ -1302,7 +1418,7 @@
             "arguments": {
                 "self": [],
                 "document": [
-                    "lkml.tree.DocumentNode"
+                    "Dict"
                 ]
             }
         },
@@ -1315,7 +1431,7 @@
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.ContainerNode"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1328,7 +1444,7 @@
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.BlockNode"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1341,7 +1457,7 @@
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.ListNode"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1354,7 +1470,7 @@
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.PairNode"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1367,7 +1483,12 @@
             "arguments": {
                 "self": [],
                 "token": [
-                    "lkml.tree.SyntaxToken"
+                    "str",
+                    "float",
+                    "Optional[str]",
+                    "Dict",
+                    "None",
+                    "Tuple[str]"
                 ]
             }
         },
@@ -1379,7 +1500,7 @@
             ],
             "arguments": {
                 "node": [
-                    "Union[(lkml.tree.SyntaxNode, lkml.tree.SyntaxToken)]"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1387,25 +1508,30 @@
             "name": "_visit_items",
             "location": 75,
             "return": [
-                "lkml.tree.ListNode"
+                "None",
+                "Optional[List[custom_index]]",
+                "Optional[str]",
+                "str"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "lkml.tree.ListNode"
-                ]
+                "node": []
             }
         },
         "BasicTransformer._visit_container": {
             "name": "_visit_container",
             "location": 91,
             "return": [
-                "lkml.tree.DocumentNode"
+                "None",
+                "Tuple[str]",
+                "bool",
+                "bytes",
+                "Set[int]"
             ],
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.DocumentNode"
+                    "str"
                 ]
             }
         },
@@ -1413,25 +1539,25 @@
             "name": "visit",
             "location": 99,
             "return": [
-                "lkml.tree.DocumentNode"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "lkml.tree.DocumentNode"
-                ]
+                "node": []
             }
         },
         "BasicTransformer.visit_container": {
             "name": "visit_container",
             "location": 102,
             "return": [
-                "lkml.tree.ContainerNode"
+                "Set[str]",
+                "List[str]",
+                "set"
             ],
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.ContainerNode"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1439,12 +1565,12 @@
             "name": "visit_list",
             "location": 105,
             "return": [
-                "lkml.tree.ListNode"
+                "set"
             ],
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.ListNode"
+                    "Sequence[Any]"
                 ]
             }
         },
@@ -1452,25 +1578,23 @@
             "name": "visit_block",
             "location": 108,
             "return": [
-                "lkml.tree.BlockNode"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "node": [
-                    "lkml.tree.BlockNode"
-                ]
+                "node": []
             }
         },
         "BasicTransformer.visit_pair": {
             "name": "visit_pair",
             "location": 111,
             "return": [
-                "lkml.tree.PairNode"
+                "_T0@@"
             ],
             "arguments": {
                 "self": [],
                 "node": [
-                    "lkml.tree.PairNode"
+                    "_T0@@"
                 ]
             }
         },
@@ -1478,12 +1602,14 @@
             "name": "visit_token",
             "location": 114,
             "return": [
-                "lkml.tree.SyntaxToken"
+                "Iterable[str]",
+                "str",
+                "T"
             ],
             "arguments": {
                 "self": [],
                 "token": [
-                    "lkml.tree.SyntaxToken"
+                    "Iterable[str]"
                 ]
             }
         }
@@ -1505,11 +1631,16 @@
             "name": "load",
             "location": 33,
             "return": [
-                "dict"
+                "Dict[(nothing, nothing)]"
             ],
             "arguments": {
                 "stream": [
-                    "Union[(str, IO)]"
+                    "str",
+                    "IO",
+                    "Union[str,IO]",
+                    "TextIO",
+                    "int",
+                    "IO[bytes]"
                 ]
             }
         },
@@ -1521,10 +1652,17 @@
             ],
             "arguments": {
                 "obj": [
-                    "dict"
+                    "str",
+                    "AsyncGenerator",
+                    "collections.abc.AsyncGenerator",
+                    "Coroutine",
+                    "collections.abc.Coroutine"
                 ],
                 "file_object": [
-                    "IO"
+                    "IO",
+                    "str",
+                    "Optional[str]",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -1535,9 +1673,7 @@
                 "argparse.Namespace"
             ],
             "arguments": {
-                "args": [
-                    "Sequence"
-                ]
+                "args": []
             }
         },
         "cli": {
@@ -1570,7 +1706,6 @@
             "arguments": {
                 "lookml_path": [
                     "str",
-                    "tuple[pathlib.Path]",
                     "Tuple[pathlib.Path]",
                     "pathlib.Path"
                 ]
@@ -1585,7 +1720,6 @@
             "arguments": {
                 "lookml_path": [
                     "str",
-                    "list[str]",
                     "List[str]",
                     "pathlib.Path"
                 ]
@@ -1595,7 +1729,6 @@
             "name": "test_run_cli",
             "location": 30,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1724,7 +1857,6 @@
             "name": "lookml",
             "location": 20,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -1735,7 +1867,6 @@
             "name": "test_round_trip_should_work",
             "location": 27,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -1844,22 +1975,20 @@
             "name": "test_scan_all_simple_tokens",
             "location": 73,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "text": [
                     "bool",
                     "str",
-                    "Union[str, int]"
+                    "Union[str,int]"
                 ],
                 "expected": [
                     "str",
                     "int",
-                    "Callable[..., Awaitable]",
-                    "typing.Callable[..., collections.abc.Awaitable[]]",
-                    "dict",
-                    "dict[, ]"
+                    "Callable[...,Awaitable]",
+                    "Dict",
+                    "Callable[...,collections.abc.Awaitable]"
                 ]
             }
         },
@@ -1985,8 +2114,7 @@
             ],
             "arguments": {
                 "parser": [
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -1998,8 +2126,7 @@
             ],
             "arguments": {
                 "parser": [
-                    "Dict[str, Sequence[str]]",
-                    "dict[str, typing.Sequence[str]]"
+                    "Dict[str,Sequence[str]]"
                 ]
             }
         },
@@ -2126,7 +2253,6 @@
             "arguments": {
                 "parser": [
                     "List[str]",
-                    "list[str]",
                     "str",
                     "Optional[str]",
                     "None"
@@ -2424,8 +2550,8 @@
             "location": 6,
             "return": [
                 "DictParser",
-                "dict",
-                "Dict[str, Any]",
+                "Dict",
+                "Dict[str,Any]",
                 "List[str]",
                 "int",
                 "str"
@@ -2734,7 +2860,6 @@
             "name": "test_syntax_token_str_should_return_formatted",
             "location": 21,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {

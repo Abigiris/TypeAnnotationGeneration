@@ -21,10 +21,10 @@
             "arguments": {
                 "filename": [
                     "str",
-                    "dict[str, dict[str, str]]",
-                    "Dict[str, Dict[str, str]]",
+                    "Dict[str,dict[str,str]]",
+                    "Dict[str,Dict[str,str]]",
                     "None",
-                    "Dict[str, Any]",
+                    "Dict[str,Any]",
                     "Optional[str]"
                 ]
             }
@@ -53,8 +53,7 @@
                 "marks": [
                     "str",
                     "bytes",
-                    "List[str]",
-                    "list[str]"
+                    "List[str]"
                 ]
             }
         },
@@ -92,7 +91,10 @@
             "arguments": {
                 "self": [],
                 "connector": [
-                    "aiosonic.connectors.TCPConnector"
+                    "int",
+                    "float",
+                    "bool",
+                    "apistar.types.RouteConfig"
                 ]
             }
         },
@@ -135,7 +137,9 @@
             "arguments": {
                 "self": [],
                 "check_closing": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -158,10 +162,16 @@
             "arguments": {
                 "self": [],
                 "pool_size": [
-                    "int"
+                    "int",
+                    "bool",
+                    "float",
+                    "Callable"
                 ],
                 "timeouts": [
-                    "aiosonic.timeout.Timeouts"
+                    "str",
+                    "List[int]",
+                    "Optional[int]",
+                    "int"
                 ],
                 "connection_cls": [
                     "bool",
@@ -203,7 +213,8 @@
             "arguments": {
                 "self": [],
                 "connection": [
-                    "aiosonic.connection.Connection"
+                    "Iterable[T]",
+                    "Dict[str,Callable]"
                 ]
             }
         },
@@ -257,7 +268,6 @@
             "name": "chunks",
             "location": 157,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {
@@ -299,12 +309,10 @@
             "name": "headers_iterator",
             "location": 35,
             "return": [
-                "Generator[(Tuple[(nothing, nothing)], Any, None)]"
+                "Generator[(Tuple[(Any, Any)], Any, None)]"
             ],
             "arguments": {
-                "headers": [
-                    "Union[(aiosonic.HttpHeaders, Dict[(str, str)], List[Tuple[(str, str)]])]"
-                ]
+                "headers": []
             }
         },
         "add_header": {
@@ -315,13 +323,23 @@
             ],
             "arguments": {
                 "headers": [
-                    "Union[(aiosonic.HttpHeaders, Dict[(str, str)], List[Tuple[(str, str)]])]"
+                    "dict"
                 ],
                 "key": [
-                    "str"
+                    "str",
+                    "dict",
+                    "Dict[str, Any]",
+                    "MutableMapping"
                 ],
                 "value": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "dict",
+                    "Callable[[str], str]",
+                    "list",
+                    "tuple",
+                    "Set[str]",
+                    "int"
                 ],
                 "replace": [
                     "str",
@@ -340,10 +358,16 @@
             ],
             "arguments": {
                 "headers": [
-                    "Union[(aiosonic.HttpHeaders, Dict[(str, str)], List[Tuple[(str, str)]])]"
+                    "Dict[str, Any]",
+                    "Dict[str, str]",
+                    "Dict[str, Union[str, Any]]",
+                    "str"
                 ],
                 "headers_to_add": [
-                    "Union[(aiosonic.HttpHeaders, Dict[(str, str)], List[Tuple[(str, str)]])]"
+                    "str",
+                    "Optional[str]",
+                    "bytes",
+                    "int"
                 ]
             }
         },
@@ -351,14 +375,19 @@
             "name": "setup_body_request",
             "location": 60,
             "return": [
-                "Union[(bytes, AsyncIterator[bytes], Iterator[bytes])]"
+                "str",
+                "Dict[str, Any]",
+                "int",
+                "starfish.core.types.SpotFindingResults"
             ],
             "arguments": {
                 "data": [
-                    "Union[(bytes, dict, str, tuple, AsyncIterator[bytes], Iterator[bytes])]"
+                    "Dict[str, Any]",
+                    "dict",
+                    "str"
                 ],
                 "headers": [
-                    "Union[(aiosonic.HttpHeaders, Dict[(str, str)], List[Tuple[(str, str)]])]"
+                    "dict"
                 ]
             }
         }
@@ -375,14 +404,12 @@
                 "connector": [
                     "bool",
                     "str",
+                    "List",
                     "None",
-                    "list[]",
+                    "List[str]",
                     "asyncio.AbstractEventLoop",
-                    "list[str]",
                     "int",
-                    "Optional[int]",
-                    "list",
-                    "List[str]"
+                    "Optional[int]"
                 ],
                 "pool_size": [
                     "int",
@@ -394,14 +421,12 @@
                 "connection_cls": [
                     "bool",
                     "str",
+                    "List",
                     "None",
-                    "list[]",
+                    "List[str]",
                     "asyncio.AbstractEventLoop",
-                    "list[str]",
                     "int",
-                    "Optional[int]",
-                    "list",
-                    "List[str]"
+                    "Optional[int]"
                 ]
             }
         },
@@ -438,13 +463,11 @@
                 "self": [],
                 "connector": [
                     "bool",
-                    "list[str]",
-                    "list[]",
-                    "int",
                     "List[str]",
+                    "List",
+                    "int",
                     "Iterable[str]",
-                    "asyncio.futures.Future[bool]",
-                    "list"
+                    "asyncio.futures.Future[bool]"
                 ],
                 "pool_size": [
                     "int",
@@ -455,13 +478,11 @@
                 ],
                 "connection_cls": [
                     "bool",
-                    "list[str]",
-                    "list[]",
-                    "int",
                     "List[str]",
+                    "List",
+                    "int",
                     "Iterable[str]",
-                    "asyncio.futures.Future[bool]",
-                    "list"
+                    "asyncio.futures.Future[bool]"
                 ]
             }
         },
@@ -496,7 +517,7 @@
             "return": [
                 "bool",
                 "int",
-                "Dict[Tuple[str, str], Tuple[float, float]]"
+                "Dict[Tuple[str,str],Tuple[float,float]]"
             ],
             "arguments": {
                 "self": []
@@ -513,10 +534,18 @@
             "arguments": {
                 "self": [],
                 "host": [
-                    "str"
+                    "bool",
+                    "Callable",
+                    "int"
                 ],
                 "auth": [
-                    "str"
+                    "str",
+                    "Optional[bool]",
+                    "Optional[float]",
+                    "Optional[Any]",
+                    "Dict",
+                    "Optional[Iterable[str]]",
+                    "Optional[str]"
                 ]
             }
         }
@@ -547,7 +576,7 @@
                 "int",
                 "str",
                 "Callable",
-                "list[str]",
+                "List[str]",
                 "float"
             ],
             "arguments": {
@@ -574,9 +603,15 @@
             ],
             "arguments": {
                 "sock": [
-                    "socket.socket"
+                    "Union[bytes,str]",
+                    "bool",
+                    "bytes",
+                    "str"
                 ],
                 "value": [
+                    "int",
+                    "float",
+                    "str",
                     "bool"
                 ]
             }
@@ -589,7 +624,11 @@
             ],
             "arguments": {
                 "sock": [
-                    "socket.socket"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -612,16 +651,27 @@
             "arguments": {
                 "self": [],
                 "sock_connect": [
-                    "Optional[float]"
+                    "int",
+                    "bool",
+                    "float"
                 ],
                 "sock_read": [
-                    "Optional[float]"
+                    "int",
+                    "float",
+                    "Type",
+                    "bool"
                 ],
                 "pool_acquire": [
-                    "Optional[float]"
+                    "bool",
+                    "float",
+                    "None"
                 ],
                 "request_timeout": [
-                    "Optional[float]"
+                    "int",
+                    "bool",
+                    "Optional[Union[int,float]]",
+                    "float",
+                    "Tuple[int]"
                 ]
             }
         }
@@ -646,7 +696,9 @@
         "_get_hostname": {
             "name": "_get_hostname",
             "location": 234,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "hostname_arg": [],
                 "port": []
@@ -656,48 +708,28 @@
             "name": "_get_path",
             "location": 242,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "url": [
-                    "urllib.parse.ParseResult"
-                ],
-                "proxy": [
-                    "aiosonic.proxy.Proxy"
-                ]
+                "url": [],
+                "proxy": []
             }
         },
         "_prepare_request_headers": {
             "name": "_prepare_request_headers",
             "location": 249,
             "return": [
-                "Union[(HttpHeaders, bytes, Dict[(str, str)], List[Tuple[(str, str)]])]"
+                "Union[(bytes, List[nothing])]"
             ],
             "arguments": {
-                "url": [
-                    "urllib.parse.ParseResult"
-                ],
-                "connection": [
-                    "aiosonic.connection.Connection"
-                ],
-                "method": [
-                    "str"
-                ],
-                "headers": [
-                    "Union[(HttpHeaders, Dict[(str, str)], List[Tuple[(str, str)]])]"
-                ],
-                "params": [
-                    "Union[(Dict[(str, str)], Sequence[Tuple[(str, str)]])]"
-                ],
-                "multipart": [
-                    "bool"
-                ],
-                "boundary": [
-                    "str"
-                ],
-                "proxy": [
-                    "aiosonic.proxy.Proxy"
-                ]
+                "url": [],
+                "connection": [],
+                "method": [],
+                "headers": [],
+                "params": [],
+                "multipart": [],
+                "boundary": [],
+                "proxy": []
             }
         },
         "_handle_chunk": {
@@ -707,24 +739,18 @@
                 "None"
             ],
             "arguments": {
-                "chunk": [
-                    "bytes"
-                ],
-                "connection": [
-                    "aiosonic.connection.Connection"
-                ]
+                "chunk": [],
+                "connection": []
             }
         },
         "HttpHeaders._clear_line": {
             "name": "_clear_line",
             "location": 70,
             "return": [
-                "List[str]"
+                "Any"
             ],
             "arguments": {
-                "line": [
-                    "bytes"
-                ]
+                "line": []
             }
         },
         "HttpResponse.__init__": {
@@ -745,9 +771,7 @@
             ],
             "arguments": {
                 "self": [],
-                "data": [
-                    "bytes"
-                ]
+                "data": []
             }
         },
         "HttpResponse._set_header": {
@@ -758,12 +782,8 @@
             ],
             "arguments": {
                 "self": [],
-                "key": [
-                    "str"
-                ],
-                "val": [
-                    "str"
-                ]
+                "key": [],
+                "val": []
             }
         },
         "HttpResponse._update_cookies": {
@@ -785,9 +805,7 @@
             ],
             "arguments": {
                 "self": [],
-                "connection": [
-                    "aiosonic.connection.Connection"
-                ]
+                "connection": []
             }
         },
         "HttpResponse.status_code": {
@@ -813,7 +831,7 @@
             "name": "_get_encoding",
             "location": 162,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -837,9 +855,7 @@
             ],
             "arguments": {
                 "self": [],
-                "urlparsed": [
-                    "urllib.parse.ParseResult"
-                ]
+                "urlparsed": []
             }
         },
         "HTTPClient.__init__": {
@@ -850,14 +866,10 @@
             ],
             "arguments": {
                 "self": [],
-                "connector": [
-                    "aiosonic.connectors.TCPConnector"
-                ],
+                "connector": [],
                 "handle_cookies": [],
                 "verify_ssl": [],
-                "proxy": [
-                    "aiosonic.proxy.Proxy"
-                ]
+                "proxy": []
             }
         },
         "HTTPClient._add_cookies_to_request": {
@@ -868,12 +880,8 @@
             ],
             "arguments": {
                 "self": [],
-                "host": [
-                    "str"
-                ],
-                "headers": [
-                    "Union[(HttpHeaders, Dict[(str, str)], List[Tuple[(str, str)]])]"
-                ]
+                "host": [],
+                "headers": []
             }
         },
         "HTTPClient._save_new_cookies": {
@@ -884,12 +892,8 @@
             ],
             "arguments": {
                 "self": [],
-                "host": [
-                    "str"
-                ],
-                "response": [
-                    "HttpResponse"
-                ]
+                "host": [],
+                "response": []
             }
         },
         "HttpResponse._set_response_headers.logparse": {
@@ -1021,7 +1025,7 @@
             ],
             "arguments": {
                 "self": [
-                    "_TCaseInsensitiveDict"
+                    "_TCaseInsensitiveDict@@CaseInsensitiveDict@@"
                 ]
             }
         },
@@ -1056,13 +1060,12 @@
             "return": [
                 "HttpResponse",
                 "str",
-                "dict"
+                "Dict"
             ],
             "arguments": {
                 "request": [
-                    "dict[str, typing.Any]",
-                    "django.http.HttpRequest",
-                    "Dict[str, Any]"
+                    "Dict[str,Any]",
+                    "django.http.HttpRequest"
                 ]
             }
         }
@@ -1103,7 +1106,6 @@
             "name": "http2_serv",
             "location": 164,
             "return": [
-                "",
                 "typing.Generator[typing.Text]"
             ],
             "arguments": {}
@@ -1112,7 +1114,6 @@
             "name": "http_serv",
             "location": 177,
             "return": [
-                "",
                 "typing.Generator[typing.Text]"
             ],
             "arguments": {}
@@ -1121,7 +1122,6 @@
             "name": "proxy_serv",
             "location": 190,
             "return": [
-                "",
                 "typing.Generator[tuple[typing.Union[typing.Text,typing.Text]]]"
             ],
             "arguments": {}
@@ -1153,27 +1153,23 @@
             ],
             "arguments": {
                 "_from": [
-                    "list[int]",
-                    "int",
                     "List[int]",
+                    "int",
+                    "List[str]",
                     "None",
                     "Optional[int]",
-                    "typing.Any",
-                    "Optional[Union[Any, Any]]",
-                    "list[str]",
-                    "List[str]",
+                    "Any",
+                    "Optional[Union[Any,Any]]",
                     "Optional[List[Any]]"
                 ],
                 "to": [
-                    "list[int]",
-                    "int",
                     "List[int]",
+                    "int",
+                    "List[str]",
                     "None",
                     "Optional[int]",
-                    "typing.Any",
-                    "Optional[Union[Any, Any]]",
-                    "list[str]",
-                    "List[str]",
+                    "Any",
+                    "Optional[Union[Any,Any]]",
                     "Optional[List[Any]]"
                 ]
             }
@@ -1187,19 +1183,18 @@
             "arguments": {
                 "port": [
                     "int",
-                    "dict",
-                    "dict[, ]",
+                    "Dict",
                     "Optional[int]",
                     "None",
-                    "Union[str, int]",
+                    "Union[str,int]",
                     "str"
                 ],
                 "hostname": [
-                    "typing.Text",
+                    "Text",
                     "int",
                     "float",
                     "str",
-                    "list"
+                    "List"
                 ],
                 "timeout_seconds": [
                     "int",
@@ -1222,8 +1217,8 @@
             "arguments": {
                 "name": [
                     "str",
-                    "Union[str, Tuple[str, ...]]",
-                    "tuple[typing.Union[str,...]]"
+                    "Union[str,Tuple[str,...]]",
+                    "Tuple[Union[str,...]]"
                 ]
             }
         },
@@ -1236,15 +1231,13 @@
             "arguments": {
                 "url": [
                     "str",
-                    "bool",
-                    "dict",
-                    "dict[, ]"
+                    "Dict",
+                    "bool"
                 ],
                 "concurrency": [
                     "str",
                     "int",
-                    "dict",
-                    "dict[, ]"
+                    "Dict"
                 ],
                 "repeat": [
                     "int",
@@ -1266,7 +1259,7 @@
                 "url": [
                     "str",
                     "Optional[List[str]]",
-                    "list[str]",
+                    "List[str]",
                     "None"
                 ]
             }
@@ -1280,8 +1273,7 @@
             "arguments": {
                 "port": [
                     "str",
-                    "TextIO",
-                    "typing.TextIO"
+                    "TextIO"
                 ]
             }
         },
@@ -1441,8 +1433,7 @@
             ],
             "arguments": {
                 "mocker": [
-                    "Dict[str, Sequence[str]]",
-                    "dict[str, typing.Sequence[str]]"
+                    "Dict[str,Sequence[str]]"
                 ]
             }
         },

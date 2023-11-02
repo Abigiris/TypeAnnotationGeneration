@@ -17,14 +17,18 @@
             "name": "_parse_output",
             "location": 31,
             "return": [
-                "Dict[(str, List[int])]"
+                "collections.defaultdict[(str, list)]"
             ],
             "arguments": {
                 "path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "Iterable[str]"
                 ],
                 "task_names": [
-                    "List[str]"
+                    "str",
+                    "Dict[str, Any]",
+                    "dict",
+                    "Callable[[str], str]"
                 ]
             }
         },
@@ -32,11 +36,15 @@
             "name": "_parse_metadata",
             "location": 54,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "path": [
-                    "Optional[pathlib.Path]"
+                    "Optional[pathlib.Path]",
+                    "str",
+                    "int",
+                    "Optional[str]",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -109,7 +117,9 @@
             "arguments": {
                 "self": [],
                 "fields": [
-                    "List[formatml.data.fields.field.Field]"
+                    "Dict[str,Any]",
+                    "str",
+                    "Optional[Dict[str,Any]]"
                 ]
             }
         },
@@ -131,17 +141,17 @@
             "name": "tensorize",
             "location": 39,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "inputs": [
                     "int",
                     "str",
-                    "tuple[typing.Union[str,str]]",
+                    "Tuple[Union[str,str]]",
                     "bool",
-                    "tuple[typing.Type]",
-                    "Tuple[str, str]",
+                    "Tuple[Type]",
+                    "Tuple[str,str]",
                     "Tuple[type]"
                 ]
             }
@@ -150,12 +160,17 @@
             "name": "collate",
             "location": 51,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "List[Dict[(str, Any)]]"
+                    "List[dict[str,Any]]",
+                    "Dict",
+                    "List[Dict[str,Any]]",
+                    "int",
+                    "Type",
+                    "float"
                 ]
             }
         },
@@ -163,24 +178,27 @@
             "name": "to",
             "location": 63,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "tensor": [
-                    "Dict[(str, Any)]"
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Type",
+                    "torch.device",
+                    "str"
                 ],
                 "device": [
-                    "list[dict[str, typing.Any]]",
-                    "List[Dict[str, Any]]",
-                    "dict[str, typing.Any]",
+                    "List[dict[str,Any]]",
+                    "List[Dict[str,Any]]",
+                    "Dict[str,Any]",
+                    "Dict",
+                    "Type",
                     "torch.device",
-                    "str",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "typing.Type",
-                    "dict",
-                    "type"
+                    "str"
                 ]
             }
         },
@@ -193,7 +211,9 @@
             "arguments": {
                 "self": [],
                 "file_path": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "Union[str,pathlib.Path]"
                 ]
             }
         },
@@ -201,12 +221,16 @@
             "name": "get_field_by_type",
             "location": 72,
             "return": [
-                "formatml.data.fields.field.Field"
+                "Mapping[str, Any]",
+                "rflx.model.Field",
+                "type",
+                "Type[T]"
             ],
             "arguments": {
                 "self": [],
                 "field_type": [
-                    "str"
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -214,12 +238,13 @@
             "name": "get_fields_by_type",
             "location": 75,
             "return": [
-                "List[formatml.data.fields.field.Field]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "field_type": [
-                    "str"
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -228,27 +253,28 @@
             "location": 78,
             "return": [
                 "str",
-                "list",
+                "List",
                 "ValueError",
                 "List[str]",
                 "int",
                 "float",
-                "dict[str, str]",
-                "tuple[]"
+                "Dict[str,str]",
+                "Tuple"
             ],
             "arguments": {
                 "self": [],
                 "field": [
-                    "formatml.data.fields.field.Field"
+                    "Callable",
+                    "str",
+                    "int"
                 ],
                 "inputs": [
                     "str",
                     "ValueError",
                     "int",
-                    "dict[str, str]",
+                    "Dict[str,str]",
                     "rflx.model.Field",
                     "Field",
-                    "Dict[str, str]",
                     "dataclasses.Field[Any]"
                 ]
             }
@@ -257,12 +283,15 @@
             "name": "__getitem__",
             "location": 89,
             "return": [
-                "formatml.data.fields.field.Field"
+                "str",
+                "Dict[str, Any]",
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "field_name": [
-                    "str"
+                    "str",
+                    "cmk.gui.plugins.views.utils.Command"
                 ]
             }
         }
@@ -277,10 +306,16 @@
             "arguments": {
                 "self": [],
                 "unknown": [
-                    "Optional[_T]"
+                    "Dict",
+                    "None",
+                    "bool",
+                    "Optional[bool]"
                 ],
                 "initial_words": [
-                    "Tuple[(_T, ...)]"
+                    "Tuple",
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -293,7 +328,8 @@
             "arguments": {
                 "self": [],
                 "item": [
-                    "_T"
+                    "str",
+                    "T"
                 ]
             }
         },
@@ -306,7 +342,9 @@
             "arguments": {
                 "self": [],
                 "items": [
-                    "Iterable[_T]"
+                    "str",
+                    "Iterable[T]",
+                    "Dict"
                 ]
             }
         },
@@ -319,7 +357,11 @@
             "arguments": {
                 "self": [],
                 "item": [
-                    "_T"
+                    "str",
+                    "bool",
+                    "Sequence[str]",
+                    "Tuple[str,str]",
+                    "Tuple[Union[str,str]]"
                 ]
             }
         },
@@ -327,12 +369,17 @@
             "name": "get_indexes",
             "location": 61,
             "return": [
-                "List[int]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "items": [
-                    "Iterable[_T]"
+                    "str",
+                    "Iterable[T]",
+                    "Type[object]",
+                    "List",
+                    "Dict",
+                    "Union[int,slice]"
                 ]
             }
         },
@@ -340,12 +387,19 @@
             "name": "get_item",
             "location": 70,
             "return": [
-                "_T"
+                "int",
+                "Dict[str, str]",
+                "dict",
+                "Optional[Dict[str, Any]]",
+                "Exception"
             ],
             "arguments": {
                 "self": [],
                 "index": [
-                    "int"
+                    "int",
+                    "Tuple[bytes]",
+                    "Dict[str,Any]",
+                    "str"
                 ]
             }
         },
@@ -353,12 +407,13 @@
             "name": "get_items",
             "location": 79,
             "return": [
-                "List[_T]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "indexes": [
-                    "Iterable[int]"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -400,7 +455,7 @@
             "arguments": {
                 "self": [],
                 "inputs": [
-                    "formatml.data.types.codrep_label.CodRepLabel"
+                    "str"
                 ]
             }
         },
@@ -418,7 +473,11 @@
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable"
+                    "str",
+                    "int",
+                    "Sequence[str]",
+                    "Iterable[str]",
+                    "Sequence[T]"
                 ]
             }
         },
@@ -456,10 +515,18 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Dict[str,Any]",
+                    "Type[T]",
+                    "Type",
+                    "Optional[str]",
+                    "None"
                 ],
                 "type": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Type",
+                    "int"
                 ]
             }
         },
@@ -472,7 +539,11 @@
             "arguments": {
                 "self": [],
                 "sample": [
-                    "Inputs"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -480,12 +551,16 @@
             "name": "tensorize",
             "location": 27,
             "return": [
-                "Outputs"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
-                    "Inputs"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -493,12 +568,16 @@
             "name": "collate",
             "location": 36,
             "return": [
-                "Outputs"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable[_TOutputs]"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -506,23 +585,26 @@
             "name": "to",
             "location": 45,
             "return": [
-                "Outputs"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "tensor": [
-                    "Outputs"
+                    "Dict",
+                    "IO",
+                    "List[str]",
+                    "int",
+                    "Iterator",
+                    "Iterator[Dict[str,str]]",
+                    "torch.device"
                 ],
                 "device": [
-                    "dict[, ]",
-                    "dict",
-                    "typing.IO",
-                    "int",
+                    "Dict",
                     "IO",
-                    "list[str]",
                     "List[str]",
-                    "typing.Iterator",
-                    "Iterator[Dict[str, str]]",
+                    "int",
+                    "Iterator",
+                    "Iterator[Dict[str,str]]",
                     "torch.device"
                 ]
             }
@@ -559,12 +641,10 @@
                 "self": [],
                 "tensors": [
                     "str",
-                    "list[int]",
-                    "set[str]",
-                    "int",
-                    "Sequence[str]",
                     "List[int]",
-                    "Set[str]"
+                    "Set[str]",
+                    "int",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -576,7 +656,7 @@
                 "str",
                 "bytes",
                 "int",
-                "Union[str, bytes]"
+                "Union[str,bytes]"
             ],
             "arguments": {
                 "self": [],
@@ -617,7 +697,9 @@
             "arguments": {
                 "self": [],
                 "sample": [
-                    "formatml.parsing.parser.Nodes"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -630,7 +712,10 @@
             "arguments": {
                 "self": [],
                 "sample": [
-                    "formatml.parsing.parser.Nodes"
+                    "AbstractSet",
+                    "Type",
+                    "AbstractSet[str]",
+                    "Type[Frame]"
                 ]
             }
         },
@@ -647,7 +732,9 @@
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable"
+                    "str",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -701,7 +788,9 @@
             "arguments": {
                 "self": [],
                 "sample": [
-                    "formatml.parsing.parser.Nodes"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -709,11 +798,16 @@
             "name": "tensorize",
             "location": 36,
             "return": [
-                "LabelFieldOutput"
+                "LabelFieldOutput",
+                "str",
+                "List[int]",
+                "int",
+                "Iterable[str]"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
+                    "int",
                     "formatml.parsing.parser.Nodes"
                 ]
             }
@@ -722,12 +816,20 @@
             "name": "collate",
             "location": 62,
             "return": [
-                "LabelFieldOutput"
+                "LabelFieldOutput",
+                "str",
+                "List[int]",
+                "int",
+                "Iterable[str]"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable[LabelFieldOutput]"
+                    "str",
+                    "int",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         },
@@ -735,12 +837,15 @@
             "name": "to",
             "location": 82,
             "return": [
-                "LabelFieldOutput"
+                "LabelFieldOutput",
+                "str",
+                "Union[str,bytes]"
             ],
             "arguments": {
                 "self": [],
                 "tensor": [
-                    "LabelFieldOutput"
+                    "int",
+                    "torch.device"
                 ],
                 "device": [
                     "int",
@@ -775,7 +880,7 @@
             "arguments": {
                 "self": [],
                 "sample": [
-                    "formatml.parsing.parser.Nodes"
+                    "str"
                 ]
             }
         },
@@ -793,7 +898,9 @@
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable"
+                    "str",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -824,12 +931,15 @@
             "name": "_length",
             "location": 32,
             "return": [
-                "int"
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "node": [
-                    "formatml.parsing.parser.Node"
+                    "None",
+                    "Optional[Node]",
+                    "src.evalg.encoding.BinaryTree.Node"
                 ]
             }
         }
@@ -849,12 +959,17 @@
             "name": "tensorize",
             "location": 13,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
-                    "Tuple[(str, formatml.parsing.parser.Nodes)]"
+                    "Callable[[None],None]",
+                    "str",
+                    "Callable[None,None]",
+                    "int",
+                    "Tuple[int,int]",
+                    "Tuple[Union[int,int]]"
                 ]
             }
         },
@@ -862,12 +977,14 @@
             "name": "collate",
             "location": 17,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable[List[str]]"
+                    "str",
+                    "int",
+                    "Callable"
                 ]
             }
         },
@@ -875,23 +992,32 @@
             "name": "to",
             "location": 20,
             "return": [
-                "List[str]"
+                "Dict",
+                "float",
+                "int",
+                "IO",
+                "str",
+                "List[str]",
+                "Iterator"
             ],
             "arguments": {
                 "self": [],
                 "tensor": [
-                    "List[str]"
+                    "Dict",
+                    "IO",
+                    "List[str]",
+                    "int",
+                    "Iterator",
+                    "Iterator[Dict[str,str]]",
+                    "torch.device"
                 ],
                 "device": [
-                    "dict[, ]",
-                    "dict",
-                    "typing.IO",
-                    "int",
+                    "Dict",
                     "IO",
-                    "list[str]",
                     "List[str]",
-                    "typing.Iterator",
-                    "Iterator[Dict[str, str]]",
+                    "int",
+                    "Iterator",
+                    "Iterator[Dict[str,str]]",
                     "torch.device"
                 ]
             }
@@ -923,7 +1049,9 @@
             "arguments": {
                 "self": [],
                 "sample": [
-                    "formatml.parsing.parser.Nodes"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -931,12 +1059,17 @@
             "name": "tensorize",
             "location": 26,
             "return": [
-                "RolesFieldOutput"
+                "RolesFieldOutput",
+                "List[str]",
+                "str",
+                "Awaitable"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
-                    "formatml.parsing.parser.Nodes"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -944,12 +1077,17 @@
             "name": "collate",
             "location": 37,
             "return": [
-                "RolesFieldOutput"
+                "RolesFieldOutput",
+                "str",
+                "int",
+                "List"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable[RolesFieldOutput]"
+                    "str",
+                    "Callable[,None]",
+                    "int"
                 ]
             }
         },
@@ -957,12 +1095,19 @@
             "name": "to",
             "location": 49,
             "return": [
-                "RolesFieldOutput"
+                "RolesFieldOutput",
+                "str",
+                "bytes",
+                "int",
+                "Union[str,bytes]"
             ],
             "arguments": {
                 "self": [],
                 "tensor": [
-                    "RolesFieldOutput"
+                    "Optional[int]",
+                    "int",
+                    "gluonts.model.common.Tensor",
+                    "None"
                 ],
                 "device": [
                     "Optional[int]",
@@ -983,12 +1128,15 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "Callable"
                 ],
                 "type": [
-                    "str"
+                    "str",
+                    "Callable"
                 ],
                 "edge_types": [
+                    "str",
                     "List[str]"
                 ]
             }
@@ -997,12 +1145,19 @@
             "name": "tensorize",
             "location": 25,
             "return": [
-                "TypedDGLGraphFieldOutput"
+                "TypedDGLGraphFieldOutput",
+                "Dict[str,Any]",
+                "bool",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
-                    "formatml.parsing.parser.Nodes"
+                    "bool",
+                    "str",
+                    "formatml.parsing.parser.Nodes",
+                    "int",
+                    "tensorflow.Tensor"
                 ]
             }
         },
@@ -1010,12 +1165,19 @@
             "name": "collate",
             "location": 61,
             "return": [
-                "TypedDGLGraphFieldOutput"
+                "TypedDGLGraphFieldOutput",
+                "Dict[str,Any]",
+                "bool",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "Iterable[TypedDGLGraphFieldOutput]"
+                    "str",
+                    "Dict",
+                    "T",
+                    "Union[Callable,Coroutine]",
+                    "Callable"
                 ]
             }
         },
@@ -1023,12 +1185,17 @@
             "name": "to",
             "location": 70,
             "return": [
-                "TypedDGLGraphFieldOutput"
+                "TypedDGLGraphFieldOutput",
+                "bool",
+                "List[Dict[str,Any]]",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "self": [],
                 "tensor": [
-                    "TypedDGLGraphFieldOutput"
+                    "bool",
+                    "float",
+                    "torch.device"
                 ],
                 "device": [
                     "bool",
@@ -1068,7 +1235,11 @@
             ],
             "arguments": {
                 "edge_types": [
-                    "List[str]"
+                    "List[str]",
+                    "str",
+                    "Dict[str,str]",
+                    "Dict[int,str]",
+                    "int"
                 ]
             }
         },
@@ -1080,7 +1251,12 @@
             ],
             "arguments": {
                 "nodes": [
-                    "formatml.parsing.parser.Nodes"
+                    "float",
+                    "int",
+                    "str",
+                    "Sequence[float]",
+                    "List[int]",
+                    "bool"
                 ]
             }
         },
@@ -1092,7 +1268,13 @@
             ],
             "arguments": {
                 "nodes": [
-                    "formatml.parsing.parser.Nodes"
+                    "int",
+                    "float",
+                    "List",
+                    "List[allennlp.data.fields.production_rule_field.ProductionRule]",
+                    "str",
+                    "Callable",
+                    "bool"
                 ]
             }
         },
@@ -1104,7 +1286,9 @@
             ],
             "arguments": {
                 "nodes": [
-                    "formatml.parsing.parser.Nodes"
+                    "Callable",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1116,10 +1300,16 @@
             ],
             "arguments": {
                 "nodes": [
-                    "formatml.parsing.parser.Nodes"
+                    "bool",
+                    "str",
+                    "Hashable",
+                    "Union[str,int]"
                 ],
                 "other_nodes": [
-                    "formatml.parsing.parser.Nodes"
+                    "bool",
+                    "str",
+                    "Hashable",
+                    "Union[str,int]"
                 ]
             }
         }
@@ -1130,7 +1320,7 @@
             "name": "to_tree",
             "location": 8,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -1140,11 +1330,18 @@
             "name": "from_tree",
             "location": 14,
             "return": [
-                "CodRepLabel"
+                "CodRepLabel",
+                "Optional[Dict[str,str]]",
+                "Dict",
+                "int",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "tree": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict[str,Any]",
+                    "List",
+                    "List[str]"
                 ]
             }
         }
@@ -1165,11 +1362,17 @@
             "name": "__getitem__",
             "location": 14,
             "return": [
-                "Dict[(str, Any)]"
+                "int",
+                "bool",
+                "Optional[float]",
+                "Dict[str, str]",
+                "dict",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "index": [
+                    "str",
                     "int"
                 ]
             }
@@ -1190,7 +1393,7 @@
             "name": "download",
             "location": 7,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1200,7 +1403,7 @@
             "name": "pre_tensorize",
             "location": 10,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1210,7 +1413,7 @@
             "name": "tensorize",
             "location": 13,
             "return": [
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1220,12 +1423,16 @@
             "name": "collate",
             "location": 16,
             "return": [
-                "Dict[(str, Any)]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "List[Dict[(str, Any)]]"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -1240,34 +1447,77 @@
             "arguments": {
                 "self": [],
                 "download_dir": [
-                    "str"
+                    "str",
+                    "int",
+                    "Callable",
+                    "List[Tuple[str,str,str]]",
+                    "List[tuple[Union[str,str,str]]]"
                 ],
                 "parse_dir": [
-                    "str"
+                    "str",
+                    "int",
+                    "Callable",
+                    "List[Tuple[str,str,str]]",
+                    "List[tuple[Union[str,str,str]]]"
                 ],
                 "tensor_dir": [
-                    "str"
+                    "str",
+                    "int",
+                    "Callable",
+                    "List[Tuple[str,str,str]]",
+                    "List[tuple[Union[str,str,str]]]"
                 ],
                 "repositories": [
-                    "List[Tuple[(str, str, str)]]"
+                    "str",
+                    "List[tuple[Union[str,str,str]]]",
+                    "int",
+                    "List[Tuple[str,str,str]]",
+                    "Callable"
                 ],
                 "instance": [
-                    "formatml.data.instance.Instance"
+                    "str",
+                    "int",
+                    "formatml.data.instance.Instance",
+                    "List[tuple[Union[str,str,str]]]",
+                    "List[Tuple[str,str,str]]"
                 ],
                 "parser": [
-                    "formatml.parsing.parser.Parser"
+                    "str",
+                    "int",
+                    "Callable",
+                    "List[Tuple[str,str,str]]",
+                    "List[tuple[Union[str,str,str]]]"
                 ],
                 "parallel_downloads": [
-                    "int"
-                ],
-                "bblfsh_endpoint": [
+                    "int",
+                    "Optional[str]",
+                    "Optional[Dict[str,Any]]",
+                    "Container[str]",
+                    "bool",
+                    "Optional[List[Any]]",
+                    "Iterable[str]",
                     "str"
                 ],
+                "bblfsh_endpoint": [
+                    "Text",
+                    "str",
+                    "int",
+                    "List[Tuple[str,str,str]]",
+                    "Callable"
+                ],
                 "n_workers": [
-                    "int"
+                    "str",
+                    "bool",
+                    "Callable",
+                    "None",
+                    "int",
+                    "Optional[str]"
                 ],
                 "pickle_protocol": [
-                    "int"
+                    "int",
+                    "str",
+                    "List[Tuple[str,str,str]]",
+                    "Callable"
                 ]
             }
         },
@@ -1305,12 +1555,16 @@
             "name": "collate",
             "location": 66,
             "return": [
-                "Dict[(str, Any)]"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "List[Dict[(str, Any)]]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1318,12 +1572,19 @@
             "name": "__getitem__",
             "location": 69,
             "return": [
-                "Dict[(str, Any)]"
+                "str",
+                "float",
+                "int"
             ],
             "arguments": {
                 "self": [],
                 "idx": [
-                    "int"
+                    "int",
+                    "Sequence[float]",
+                    "str",
+                    "List[int]",
+                    "List",
+                    "List[float]"
                 ]
             }
         },
@@ -1331,7 +1592,9 @@
             "name": "__len__",
             "location": 83,
             "return": [
-                "int"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []
@@ -1345,7 +1608,11 @@
             ],
             "arguments": {
                 "sequences": [
-                    "Iterable[Sized]"
+                    "int",
+                    "str",
+                    "Iterable['Context']",
+                    "dict",
+                    "bool"
                 ]
             }
         },
@@ -1357,7 +1624,9 @@
             ],
             "arguments": {
                 "repository": [
-                    "formatml.datasets.repository_dataset.RepositoryDataset"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         }
@@ -1407,12 +1676,14 @@
             "name": "collate",
             "location": 147,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "tensors": [
-                    "List[Dict[(str, Any)]]"
+                    "int",
+                    "Callable",
+                    "str"
                 ]
             }
         },
@@ -1420,11 +1691,15 @@
             "name": "__getitem__",
             "location": 150,
             "return": [
-                "Dict[(str, Any)]"
+                "int",
+                "List[List[int]]",
+                "List[str]",
+                "Set[str]"
             ],
             "arguments": {
                 "self": [],
                 "index": [
+                    "str",
                     "int"
                 ]
             }
@@ -1448,6 +1723,7 @@
             "arguments": {
                 "self": [],
                 "file_path": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -1465,36 +1741,44 @@
                 "self": [],
                 "graph_embedder": [
                     "bool",
-                    "float",
                     "Sequence[Sequence[float]]",
-                    "typing.Sequence[typing.Sequence[float]]",
-                    "str",
+                    "float",
                     "Hashable",
-                    "typing.Hashable"
+                    "str"
                 ],
                 "graph_encoder": [
-                    "formatml.modules.graph_encoders.graph_encoder.GraphEncoder"
+                    "bool",
+                    "Sequence[Sequence[float]]",
+                    "float",
+                    "Hashable",
+                    "str"
                 ],
                 "class_projection": [
                     "bool",
-                    "float",
                     "Sequence[Sequence[float]]",
-                    "typing.Sequence[typing.Sequence[float]]",
-                    "str",
+                    "float",
                     "Hashable",
-                    "typing.Hashable"
+                    "str"
                 ],
                 "graph_field_name": [
-                    "str"
+                    "bool",
+                    "str",
+                    "int"
                 ],
                 "feature_field_names": [
-                    "List[str]"
+                    "bool",
+                    "str",
+                    "int"
                 ],
                 "indexes_field_name": [
-                    "str"
+                    "bool",
+                    "str",
+                    "int"
                 ],
                 "label_field_name": [
-                    "str"
+                    "bool",
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1502,12 +1786,16 @@
             "name": "forward",
             "location": 45,
             "return": [
-                "Dict[(str, Any)]"
+                "int",
+                "Callable",
+                "models.Question",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "Dict"
                 ]
             }
         },
@@ -1525,7 +1813,7 @@
             "name": "build_metadata",
             "location": 101,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -1549,25 +1837,62 @@
                     "Optional[str]"
                 ],
                 "graph_encoder": [
-                    "formatml.modules.graph_encoders.graph_encoder.GraphEncoder"
+                    "bool",
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "output_embedder": [
-                    "formatml.modules.misc.packed_embedding.PackedEmbedding"
+                    "int",
+                    "Dict[str,Any]",
+                    "Tuple",
+                    "Callable",
+                    "List[AnyStr]"
                 ],
                 "decoder": [
-                    "formatml.modules.decoders.decoder.Decoder"
+                    "bool",
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "class_projection": [
-                    "formatml.modules.misc.vocabulary_linear.VocabularyLinear"
+                    "bool",
+                    "str",
+                    "int",
+                    "None",
+                    "Optional[str]"
                 ],
                 "graph_field_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Dict]",
+                    "Dict",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ],
                 "feature_field_names": [
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Dict]",
+                    "Dict",
+                    "Optional[List[str]]",
                     "List[str]"
                 ],
                 "label_field_name": [
-                    "str"
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "None",
+                    "Optional[Dict]",
+                    "Dict",
+                    "Optional[List[str]]",
+                    "List[str]"
                 ]
             }
         },
@@ -1575,12 +1900,15 @@
             "name": "forward",
             "location": 46,
             "return": [
-                "Dict[(str, Any)]"
+                "int",
+                "Callable",
+                "models.Question",
+                "str"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
-                    "Dict[(str, Any)]"
+                    "Type"
                 ]
             }
         }
@@ -1590,12 +1918,16 @@
             "name": "forward",
             "location": 9,
             "return": [
-                "Dict[(str, Any)]"
+                "NoReturn"
             ],
             "arguments": {
                 "self": [],
                 "sample": [
-                    "Dict[(str, Any)]"
+                    "int",
+                    "str",
+                    "Iterable[Context]",
+                    "Dict",
+                    "bool"
                 ]
             }
         }
@@ -1634,8 +1966,8 @@
                 ],
                 "conditions": [
                     "int",
-                    "Tuple[float, float]",
-                    "tuple[typing.Union[float,float]]"
+                    "Tuple[float,float]",
+                    "Tuple[Union[float,float]]"
                 ]
             }
         }
@@ -1652,19 +1984,29 @@
             "arguments": {
                 "self": [],
                 "in_feats": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "out_feats": [
-                    "int"
+                    "int",
+                    "float",
+                    "Sequence"
                 ],
                 "n_steps": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ],
                 "n_etypes": [
-                    "int"
+                    "int",
+                    "Optional[int]",
+                    "None"
                 ],
                 "bias": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -1696,7 +2038,10 @@
             "arguments": {
                 "self": [],
                 "edge_type": [
-                    "int"
+                    "str",
+                    "bool",
+                    "ForwardRef",
+                    "torch.Tensor"
                 ],
                 "edge_batch": [
                     "str",
@@ -1716,9 +2061,9 @@
                 "self": [],
                 "node_batch": [
                     "str",
-                    "typing.Callable[T, None]",
+                    "Callable[T,None]",
                     "tensorflow.Tensor",
-                    "Callable[[T], None]"
+                    "Callable[[T],None]"
                 ]
             }
         }
@@ -1728,8 +2073,7 @@
             "name": "forward",
             "location": 9,
             "return": [
-                "dgl.DGLGraph",
-                "None"
+                "NoReturn"
             ],
             "arguments": {
                 "self": []
@@ -1766,30 +2110,28 @@
                 "Callable",
                 "str",
                 "float",
-                "typing.Callable[g, collections.abc.Awaitable[typing.Any]]",
+                "Callable[g,collections.abc.Awaitable[Any]]",
                 "bool",
-                "tuple[typing.Union[float,float,float]]",
-                "list[]"
+                "Tuple[Union[float,float,float]]",
+                "List"
             ],
             "arguments": {
                 "self": [],
                 "graph": [
                     "float",
                     "str",
-                    "typing.Callable[g, collections.abc.Awaitable[typing.Any]]",
-                    "Callable[..., Awaitable[Any]]",
+                    "Callable[g,collections.abc.Awaitable[Any]]",
+                    "Callable[...,Awaitable[Any]]",
                     "bool",
+                    "List",
                     "dgl.DGLGraph",
-                    "tuple[typing.Union[float,float,float]]",
-                    "list[]",
-                    "Tuple[float, float, float]",
-                    "list"
+                    "Tuple[Union[float,float,float]]",
+                    "Tuple[float,float,float]"
                 ],
                 "features": [
                     "bool",
-                    "list[torch.Tensor]",
-                    "dgl.DGLGraph",
-                    "List[torch.Tensor]"
+                    "List[torch.Tensor]",
+                    "dgl.DGLGraph"
                 ]
             }
         },
@@ -1803,9 +2145,8 @@
                 "self": [],
                 "example_features": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         }
@@ -1820,7 +2161,9 @@
             "arguments": {
                 "self": [],
                 "index": [
-                    "int"
+                    "int",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1836,9 +2179,8 @@
                 "self": [],
                 "tensor": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         }
@@ -1853,10 +2195,14 @@
             "arguments": {
                 "self": [],
                 "dimension": [
-                    "int"
+                    "List[int]",
+                    "int",
+                    "str"
                 ],
                 "vocabulary": [
-                    "formatml.data.vocabulary.Vocabulary"
+                    "List[int]",
+                    "int",
+                    "str"
                 ]
             }
         },
@@ -1902,7 +2248,10 @@
             "arguments": {
                 "self": [],
                 "dim": [
-                    "Optional[int]"
+                    "int",
+                    "None",
+                    "float",
+                    "bool"
                 ]
             }
         },
@@ -1934,7 +2283,9 @@
             "arguments": {
                 "self": [],
                 "dim": [
-                    "int"
+                    "int",
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -1950,9 +2301,8 @@
                 "self": [],
                 "tensor": [
                     "int",
-                    "str",
                     "Callable",
-                    "typing.Callable[, ]"
+                    "str"
                 ]
             }
         }
@@ -1976,13 +2326,14 @@
             "name": "_remove_children",
             "location": 114,
             "return": [
-                "None"
+                "Dict",
+                "float",
+                "str"
             ],
             "arguments": {
                 "bblfsh_node": [
-                    "dict[, ]",
-                    "bblfsh.Node",
-                    "dict"
+                    "Dict",
+                    "bblfsh.Node"
                 ]
             }
         },
@@ -1990,13 +2341,12 @@
             "name": "_exclude_if_empty",
             "location": 122,
             "return": [
-                "None"
+                "Optional[_T0]"
             ],
             "arguments": {
                 "bblfsh_node": [
-                    "dict[, ]",
-                    "bblfsh.Node",
-                    "dict"
+                    "Dict",
+                    "bblfsh.Node"
                 ]
             }
         }
@@ -2026,37 +2376,31 @@
             "name": "to_tree",
             "location": 72,
             "return": [
-                "Dict[(str, Any)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
-                "file_content": [
-                    "str"
-                ]
+                "file_content": []
             }
         },
         "Nodes.from_token_nodes": {
             "name": "from_token_nodes",
             "location": 108,
             "return": [
-                "Nodes"
+                "Any"
             ],
             "arguments": {
-                "token_nodes": [
-                    "List[Node]"
-                ]
+                "token_nodes": []
             }
         },
         "Nodes.from_tree": {
             "name": "from_tree",
             "location": 135,
             "return": [
-                "Nodes"
+                "Any"
             ],
             "arguments": {
-                "tree": [
-                    "Dict[(str, Any)]"
-                ]
+                "tree": []
             }
         },
         "BblfshNodeConverter.__init__": {
@@ -2067,12 +2411,8 @@
             ],
             "arguments": {
                 "self": [],
-                "file_content": [
-                    "str"
-                ],
-                "convert_to_utf8": [
-                    "bool"
-                ]
+                "file_content": [],
+                "convert_to_utf8": []
             }
         },
         "BblfshNodeConverter.bblfsh_node_to_node": {
@@ -2084,9 +2424,7 @@
             "arguments": {
                 "self": [],
                 "bblfsh_node": [],
-                "parent": [
-                    "Optional[Node]"
-                ]
+                "parent": []
             }
         },
         "Parser.__init_subclass__": {
@@ -2097,18 +2435,10 @@
             ],
             "arguments": {
                 "cls": [],
-                "bblfsh_language": [
-                    "str"
-                ],
-                "reserved": [
-                    "List[str]"
-                ],
-                "uast_fixers": [
-                    "Optional[Dict[(str, Callable[([Any], None)])]]"
-                ],
-                "convert_to_utf8": [
-                    "bool"
-                ]
+                "bblfsh_language": [],
+                "reserved": [],
+                "uast_fixers": [],
+                "convert_to_utf8": []
             }
         },
         "Parser.__init__": {
@@ -2119,12 +2449,8 @@
             ],
             "arguments": {
                 "self": [],
-                "bblfshd_endpoint": [
-                    "str"
-                ],
-                "split_formatting": [
-                    "bool"
-                ]
+                "bblfshd_endpoint": [],
+                "split_formatting": []
             }
         },
         "Parser.split_formatting": {
@@ -2139,60 +2465,46 @@
             "name": "parse",
             "location": 268,
             "return": [
-                "Nodes"
+                "Any"
             ],
             "arguments": {
                 "self": [],
-                "repository_path": [
-                    "pathlib.Path"
-                ],
-                "file_path": [
-                    "pathlib.Path"
-                ]
+                "repository_path": [],
+                "file_path": []
             }
         },
         "Parser._augment_tokens": {
             "name": "_augment_tokens",
             "location": 405,
             "return": [
-                "List[Node]"
+                "list"
             ],
             "arguments": {
                 "self": [],
-                "tokens": [
-                    "List[Node]"
-                ]
+                "tokens": []
             }
         },
         "Parser._find_parent": {
             "name": "_find_parent",
             "location": 456,
             "return": [
-                "Optional[Node]"
+                "Any"
             ],
             "arguments": {
-                "node_index": [
-                    "int"
-                ],
-                "nodes": [
-                    "List[Node]"
-                ],
-                "closest_left_node": [
-                    "Optional[Node]"
-                ]
+                "node_index": [],
+                "nodes": [],
+                "closest_left_node": []
             }
         },
         "Parser._perform_split_formatting": {
             "name": "_perform_split_formatting",
             "location": 487,
             "return": [
-                "List[Node]"
+                "list"
             ],
             "arguments": {
                 "self": [],
-                "nodes": [
-                    "List[Node]"
-                ]
+                "nodes": []
             }
         },
         "Parser.__del__": {
@@ -2212,17 +2524,29 @@
             "name": "register_step",
             "location": 18,
             "return": [
-                "Callable[([Callable], Callable)]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "pipeline_name": [
-                    "str"
+                    "bool",
+                    "str",
+                    "Callable[[argparse.ArgumentParser], None]",
+                    "list",
+                    "Sequence[str]"
                 ],
                 "parser_definer": [
-                    "Callable[([argparse.ArgumentParser], None)]"
+                    "bool",
+                    "str",
+                    "Callable[[argparse.ArgumentParser], None]",
+                    "list",
+                    "Sequence[str]"
                 ],
                 "graceful_keyboard_interruption": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "Callable[[argparse.ArgumentParser],None]",
+                    "List",
+                    "Sequence[str]"
                 ]
             }
         },
@@ -2238,7 +2562,7 @@
             "name": "parse_args",
             "location": 64,
             "return": [
-                "Tuple[(Callable, Dict[(str, Any)], bool)]"
+                "Tuple[(Any, Dict[(str, Any)], Any)]"
             ],
             "arguments": {}
         },
@@ -2270,6 +2594,7 @@
             "arguments": {
                 "self": [],
                 "parser": [
+                    "str",
                     "argparse.ArgumentParser"
                 ]
             }
@@ -2356,7 +2681,8 @@
             ],
             "arguments": {
                 "parser": [
-                    "argparse.ArgumentParser"
+                    "argparse.ArgumentParser",
+                    "str"
                 ]
             }
         },
@@ -2420,21 +2746,28 @@
             ],
             "arguments": {
                 "file_path": [
-                    "pathlib.Path"
+                    "str"
                 ],
                 "instance": [
-                    "formatml.data.instance.Instance"
+                    "float"
                 ],
                 "logger": [
-                    "logging.Logger"
+                    "str",
+                    "Optional[str]"
                 ],
                 "uasts_dir_path": [
+                    "str",
+                    "bool",
                     "pathlib.Path"
                 ],
                 "output_dir_path": [
-                    "pathlib.Path"
+                    "str"
                 ],
                 "pickle_protocol": [
+                    "str",
+                    "bool",
+                    "Optional[str]",
+                    "Optional[int]",
                     "int"
                 ]
             }
@@ -2469,19 +2802,28 @@
             ],
             "arguments": {
                 "instance": [
-                    "formatml.data.instance.Instance"
+                    "str",
+                    "float",
+                    "type",
+                    "raiden.utils.ChainID",
+                    "bool"
                 ],
                 "model_encoder_iterations": [
-                    "int"
+                    "int",
+                    "str"
                 ],
                 "model_encoder_output_dim": [
-                    "int"
+                    "int",
+                    "Union[int, None]"
                 ],
                 "model_encoder_message_dim": [
-                    "int"
+                    "int",
+                    "bool",
+                    "Callable"
                 ],
                 "model_decoder_type": [
-                    "str"
+                    "str",
+                    "Optional[str]"
                 ]
             }
         }
@@ -2497,6 +2839,10 @@
             "arguments": {
                 "self": [],
                 "cache_dir": [
+                    "None",
+                    "str",
+                    "pathlib.Path",
+                    "Optional[str]",
                     "Optional[pathlib.Path]"
                 ]
             }
@@ -2565,12 +2911,17 @@
             "name": "_name_cache_path",
             "location": 63,
             "return": [
-                "pathlib.Path"
+                "str",
+                "pypi2nix.path.Path",
+                "Dict[str, pathlib.Path]"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "BinaryIO",
+                    "norfs.fs.base.Path",
+                    "Union[str, pathlib.Path]"
                 ]
             }
         },
@@ -2578,7 +2929,10 @@
             "name": "_resource_cache_path",
             "location": 66,
             "return": [
-                "pathlib.Path"
+                "str",
+                "pathlib.Path",
+                "dict",
+                "Optional[str]"
             ],
             "arguments": {
                 "self": [],
@@ -2595,18 +2949,22 @@
             "name": "register_metric",
             "location": 35,
             "return": [
-                "Callable[([Callable[([Dict[(str, Any)]], float)]], Callable[([Dict[(str, Any)]], float)])]"
+                "Callable[([Any], Any)]"
             ],
             "arguments": {
                 "name": [
-                    "str"
+                    "str",
+                    "typing.Iterable[str]",
+                    "bool"
                 ]
             }
         },
         "_cross_entropy": {
             "name": "_cross_entropy",
             "location": 44,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "sample": []
             }
@@ -2634,7 +2992,9 @@
         "_accuracy_max_decoding": {
             "name": "_accuracy_max_decoding",
             "location": 79,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "sample": []
             }
@@ -2656,14 +3016,18 @@
             "arguments": {
                 "self": [],
                 "dataset": [
-                    "formatml.datasets.dataset.Dataset"
+                    "str",
+                    "list[list[str]]",
+                    "bool",
+                    "float"
                 ],
                 "instance": [
-                    "formatml.data.instance.Instance"
+                    "str",
+                    "list[list[str]]",
+                    "bool",
+                    "float"
                 ],
-                "model": [
-                    "formatml.models.model.Model"
-                ],
+                "model": [],
                 "optimizer": [
                     "str",
                     "list[list[str]]",
@@ -2677,34 +3041,59 @@
                     "float"
                 ],
                 "epochs": [
-                    "int"
+                    "str",
+                    "int",
+                    "None"
                 ],
                 "batch_size": [
-                    "int"
+                    "int",
+                    "tuple[typing.Union[float,float]]",
+                    "tuple[typing.Union[int,int,int]]",
+                    "str"
                 ],
                 "run_dir_path": [
-                    "pathlib.Path"
-                ],
-                "eval_every": [
                     "int"
                 ],
+                "eval_every": [
+                    "str",
+                    "list[list[str]]",
+                    "bool",
+                    "float"
+                ],
                 "limit_epochs_at": [
-                    "Optional[int]"
+                    "str",
+                    "bool",
+                    "None",
+                    "dict[str, str]"
                 ],
                 "train_eval_split": [
+                    "str",
+                    "list[list[str]]",
+                    "bool",
                     "float"
                 ],
                 "metric_names": [
-                    "List[str]"
+                    "list[]",
+                    "dict[, ]",
+                    "list[str]"
                 ],
                 "selection_metric": [
-                    "str"
+                    "str",
+                    "list[list[str]]",
+                    "bool",
+                    "float"
                 ],
                 "kept_checkpoints": [
-                    "int"
+                    "str",
+                    "list[list[str]]",
+                    "bool",
+                    "float"
                 ],
                 "cuda_device": [
-                    "Optional[int]"
+                    "str",
+                    "None",
+                    "bool",
+                    "list[str]"
                 ]
             }
         },
@@ -2735,7 +3124,7 @@
             "name": "_eval_epoch",
             "location": 213,
             "return": [
-                "float"
+                "Any"
             ],
             "arguments": {
                 "self": [],
@@ -2753,13 +3142,23 @@
             "arguments": {
                 "self": [],
                 "epoch": [
-                    "int"
+                    "bool",
+                    "dict[, ]",
+                    "str",
+                    "tuple[tuple[typing.Union[str,...]]]"
                 ],
                 "score": [
-                    "float"
+                    "str",
+                    "bool",
+                    "typing.BinaryIO",
+                    "bytes"
                 ],
                 "iteration": [
-                    "Optional[int]"
+                    "None",
+                    "bool",
+                    "dict[, ]",
+                    "str",
+                    "tuple[tuple[typing.Union[str,...]]]"
                 ]
             }
         },
@@ -2772,22 +3171,34 @@
             "arguments": {
                 "self": [],
                 "sample": [
-                    "Dict[(str, Any)]"
+                    "bool",
+                    "str",
+                    "dict[str, int]"
                 ],
                 "data_type": [
-                    "DataType"
+                    "bool",
+                    "str",
+                    "dict[str, int]"
                 ],
                 "accumulate": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "dict[str, int]"
                 ],
                 "send_event": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "dict[str, int]"
                 ],
                 "epoch": [
-                    "int"
+                    "bool",
+                    "str",
+                    "dict[str, int]"
                 ],
                 "iteration": [
-                    "int"
+                    "bool",
+                    "str",
+                    "dict[str, int]"
                 ]
             }
         },
@@ -2795,21 +3206,23 @@
             "name": "_log_accumulated_metrics",
             "location": 293,
             "return": [
-                "Dict[(str, float)]"
+                "dict"
             ],
             "arguments": {
                 "self": [],
                 "data_type": [
-                    "DataType"
+                    "int",
+                    "None",
+                    "str"
                 ],
                 "send_event": [
-                    "bool"
+                    "str"
                 ],
                 "epoch": [
-                    "int"
+                    "str"
                 ],
                 "iteration": [
-                    "int"
+                    "str"
                 ],
                 "dont_reset_accumulated": [
                     "bool"
@@ -2830,12 +3243,11 @@
             "name": "_average",
             "location": 354,
             "return": [
-                "Optional[float]"
+                "float",
+                "None"
             ],
             "arguments": {
-                "values": [
-                    "List[float]"
-                ]
+                "values": []
             }
         },
         "Trainer._reset_accumulated": {
@@ -2847,7 +3259,10 @@
             "arguments": {
                 "self": [],
                 "data_type": [
-                    "DataType"
+                    "str",
+                    "typing.Type",
+                    "bool",
+                    "list[list[str]]"
                 ]
             }
         },
@@ -2903,13 +3318,19 @@
             ],
             "arguments": {
                 "arguments": [
-                    "Dict[(str, Any)]"
+                    "bool",
+                    "Optional[bool]",
+                    "List[dict]"
                 ],
                 "data_arguments": [
-                    "Iterable[str]"
+                    "Iterable[str]",
+                    "bool",
+                    "dict"
                 ],
                 "config_argument": [
-                    "str"
+                    "Dict[str, Any]",
+                    "Optional[str]",
+                    "Dict[Any, pathlib.Path]"
                 ]
             }
         },
@@ -2921,7 +3342,8 @@
             ],
             "arguments": {
                 "json_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "Union[pathlib.Path, str]"
                 ]
             }
         }
@@ -2938,7 +3360,8 @@
                     "str"
                 ],
                 "log_level": [
-                    "str"
+                    "str",
+                    "List[str]"
                 ]
             }
         },
@@ -2946,11 +3369,14 @@
             "name": "get_sha_and_dirtiness",
             "location": 30,
             "return": [
-                "Optional[Tuple[(str, bool)]]"
+                "Optional[Tuple[(Any, bool)]]"
             ],
             "arguments": {
                 "prompt_on_dirty": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "T",
+                    "Dict"
                 ]
             }
         },
@@ -2962,7 +3388,10 @@
             ],
             "arguments": {
                 "date_template": [
-                    "str"
+                    "str",
+                    "datetime.timezone",
+                    "datetime.datetime",
+                    "datetime.date"
                 ]
             }
         },
@@ -2974,10 +3403,14 @@
             ],
             "arguments": {
                 "cls": [
-                    "type"
+                    "Type[Any]",
+                    "List",
+                    "Type"
                 ],
                 "subclass": [
-                    "type"
+                    "Type[Any]",
+                    "int",
+                    "Type"
                 ]
             }
         },
@@ -2985,6 +3418,7 @@
             "name": "istypevar",
             "location": 113,
             "return": [
+                "Tuple",
                 "bool"
             ],
             "arguments": {
@@ -3003,7 +3437,11 @@
             "arguments": {
                 "self": [],
                 "record": [
-                    "logging.LogRecord"
+                    "List[pathlib.Path]",
+                    "str",
+                    "logging.LogRecord",
+                    "int",
+                    "pathlib.Path"
                 ]
             }
         },
@@ -3045,9 +3483,9 @@
             "arguments": {
                 "packed_sequence": [
                     "int",
-                    "list[tuple[typing.Union[float,typing.Any]]]",
+                    "List[tuple[Union[float,Any]]]",
                     "torch.nn.utils.rnn.PackedSequence",
-                    "List[Tuple[float, Any]]",
+                    "List[Tuple[float,Any]]",
                     "bool"
                 ]
             }
@@ -3062,8 +3500,8 @@
                 "Optional[float]",
                 "IO[bytes]",
                 "bool",
-                "dict",
-                "Optional[Dict[str, Any]]"
+                "Dict",
+                "Optional[Dict[str,Any]]"
             ],
             "arguments": {
                 "input": [
@@ -3079,19 +3517,26 @@
             ],
             "arguments": {
                 "named_parameters": [
-                    "Iterator[Tuple[(str, Any)]]"
+                    "str",
+                    "Set[str]",
+                    "Optional[dict]",
+                    "Dict"
                 ],
                 "writer": [
                     "int",
                     "str",
+                    "Dict[str,Any]",
                     "Optional[List[str]]",
-                    "list[str]",
-                    "Dict[str, Any]",
-                    "None",
-                    "dict[str, typing.Any]"
+                    "List[str]",
+                    "None"
                 ],
                 "iteration": [
-                    "int"
+                    "int",
+                    "str",
+                    "Dict[str,Any]",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "None"
                 ]
             }
         }

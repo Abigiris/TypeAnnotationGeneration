@@ -9,7 +9,14 @@
             ],
             "arguments": {
                 "channel_id": [
-                    "str"
+                    "Optional[bytes]",
+                    "bytes",
+                    "str",
+                    "Dict[str,int]",
+                    "None",
+                    "Dict",
+                    "List[int]",
+                    "int"
                 ]
             }
         },
@@ -17,11 +24,13 @@
             "name": "print_stats",
             "location": 84,
             "return": [
-                "Tuple[(bool, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "stats": [
-                    "ChannelStats"
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -33,7 +42,8 @@
             ],
             "arguments": {
                 "stats": [
-                    "ChannelStats"
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -45,7 +55,11 @@
             ],
             "arguments": {
                 "stats": [
-                    "ChannelStats"
+                    "str",
+                    "Dict[str,Any]",
+                    "bytes",
+                    "Dict",
+                    "int"
                 ]
             }
         },
@@ -53,8 +67,8 @@
             "name": "full_id",
             "location": 33,
             "return": [
-                "typing.Text",
-                "Dict[str, Any]",
+                "Text",
+                "Dict[str,Any]",
                 "bool",
                 "str",
                 "int",
@@ -135,9 +149,7 @@
                 "Optional[Lock]"
             ],
             "arguments": {
-                "channel_id": [
-                    "str"
-                ],
+                "channel_id": [],
                 "has_prefix": [
                     "bool"
                 ]
@@ -150,9 +162,7 @@
                 "bool"
             ],
             "arguments": {
-                "lock": [
-                    "Lock"
-                ]
+                "lock": []
             }
         },
         "remove_lock": {
@@ -162,9 +172,7 @@
                 "None"
             ],
             "arguments": {
-                "lock": [
-                    "Lock"
-                ]
+                "lock": []
             }
         },
         "mark_user_notified": {
@@ -174,9 +182,7 @@
                 "None"
             ],
             "arguments": {
-                "lock": [
-                    "Lock"
-                ]
+                "lock": []
             }
         },
         "Lock.remaining": {
@@ -247,16 +253,14 @@
             ],
             "arguments": {
                 "self": [],
-                "message_id": [
-                    "str"
-                ]
+                "message_id": []
             }
         },
         "Lock.get_subscribers": {
             "name": "get_subscribers",
             "location": 62,
             "return": [
-                "list"
+                "List[str]"
             ],
             "arguments": {
                 "self": [],
@@ -274,7 +278,7 @@
             "arguments": {
                 "self": [],
                 "extra_msg": [
-                    "str"
+                    "typing.Text"
                 ]
             }
         },
@@ -292,7 +296,7 @@
             "name": "update_lock_message",
             "location": 89,
             "return": [
-                "Tuple[(bool, Optional[str])]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "self": [],
@@ -309,9 +313,7 @@
             ],
             "arguments": {
                 "self": [],
-                "ping_user": [
-                    "str"
-                ]
+                "ping_user": []
             }
         }
     },
@@ -324,7 +326,12 @@
             ],
             "arguments": {
                 "lock": [
-                    "rlock.lock.Lock"
+                    "str",
+                    "Sequence[int]",
+                    "Optional[float]",
+                    "bool",
+                    "float",
+                    "None"
                 ]
             }
         },
@@ -336,13 +343,19 @@
             ],
             "arguments": {
                 "lock": [
-                    "rlock.lock.Lock"
+                    "str",
+                    "int",
+                    "lock.Lock"
                 ],
                 "message_id": [
-                    "str"
+                    "str",
+                    "int",
+                    "lock.Lock"
                 ],
                 "reaction": [
-                    "str"
+                    "str",
+                    "int",
+                    "lock.Lock"
                 ]
             }
         },
@@ -350,20 +363,30 @@
             "name": "channel_message",
             "location": 35,
             "return": [
-                "Tuple[(bool, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "channel_id": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "message": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None"
                 ],
                 "init_lock": [
-                    "bool"
+                    "bool",
+                    "int",
+                    "Dict",
+                    "str",
+                    "Optional[int]"
                 ],
                 "user": [
-                    "Optional[str]"
+                    "Optional[str]",
+                    "str",
+                    "None"
                 ]
             }
         },
@@ -371,17 +394,20 @@
             "name": "update_channel_message",
             "location": 89,
             "return": [
-                "Tuple[(bool, Optional[str])]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "lock": [
-                    "rlock.lock.Lock"
+                    "str",
+                    "lock.Lock"
                 ],
                 "message": [
-                    "str"
+                    "str",
+                    "lock.Lock"
                 ],
                 "unlock": [
-                    "bool"
+                    "bool",
+                    "str"
                 ]
             }
         }
@@ -391,7 +417,6 @@
             "name": "check_daily_stats",
             "location": 13,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -400,7 +425,6 @@
             "name": "check_expirations",
             "location": 20,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {}
@@ -410,8 +434,8 @@
             "location": 27,
             "return": [
                 "None",
-                "Union[tuple, list]",
-                "Dict[str, Any]",
+                "Union[tuple,list]",
+                "Dict[str,Any]",
                 "str"
             ],
             "arguments": {
@@ -425,14 +449,13 @@
             "name": "check_channel_stats",
             "location": 44,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "channel_key": [
                     "str",
-                    "tuple[typing.Union[list[str],list[str]]]",
-                    "Tuple[List[str], List[str]]",
+                    "Tuple[Union[list[str],list[str]]]",
+                    "Tuple[List[str],List[str]]",
                     "Awaitable[T]"
                 ]
             }
@@ -443,12 +466,10 @@
             "name": "get_request_duration",
             "location": 20,
             "return": [
-                "int"
+                "Any"
             ],
             "arguments": {
-                "params": [
-                    "list"
-                ]
+                "params": []
             }
         },
         "get_request_message": {
@@ -458,24 +479,18 @@
                 "str"
             ],
             "arguments": {
-                "params": [
-                    "list"
-                ]
+                "params": []
             }
         },
         "try_respond": {
             "name": "try_respond",
             "location": 49,
             "return": [
-                "Tuple[(Any, str)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
-                "lock": [
-                    "rlock.lock.Lock"
-                ],
-                "message": [
-                    "str"
-                ],
+                "lock": [],
+                "message": [],
                 "init_lock": [
                     "bool"
                 ]
@@ -485,12 +500,10 @@
             "name": "extract_request",
             "location": 69,
             "return": [
-                "Tuple[(rlock.lock.Lock, list)]"
+                "Tuple[(rlock.lock.Lock, Any)]"
             ],
             "arguments": {
-                "data": [
-                    "dict"
-                ]
+                "data": []
             }
         },
         "do_lock": {
@@ -500,11 +513,9 @@
                 "PlainTextResponse"
             ],
             "arguments": {
-                "new_lock": [
-                    "rlock.lock.Lock"
-                ],
+                "new_lock": [],
                 "lock_time": [
-                    "Optional[int]"
+                    "None"
                 ]
             }
         },
@@ -515,23 +526,19 @@
                 "PlainTextResponse"
             ],
             "arguments": {
-                "lock": [
-                    "rlock.lock.Lock"
-                ]
+                "lock": []
             }
         },
         "get_extension_timestamp": {
             "name": "get_extension_timestamp",
             "location": 222,
             "return": [
-                "int"
+                "Any"
             ],
             "arguments": {
-                "current_lock": [
-                    "rlock.lock.Lock"
-                ],
+                "current_lock": [],
                 "lock_time": [
-                    "Optional[int]"
+                    "None"
                 ]
             }
         }
@@ -551,7 +558,7 @@
             "name": "req_data",
             "location": 21,
             "return": [
-                "dict[typing.Text, list[typing.Text]]",
+                "Dict[Text,list[Text]]",
                 "str",
                 "Optional[str]",
                 "int"
@@ -562,10 +569,10 @@
             "name": "dialock_data",
             "location": 37,
             "return": [
-                "dict[typing.Text, typing.Union[typing.Text,list[dict[typing.Text, typing.Text]],bool,dict[typing.Text, typing.Union[typing.Text,list[dict[typing.Text, typing.Union[typing.Text,int,list[dict[typing.Text, typing.Text]]]]]]]]]",
-                "Mapping[str, Any]",
-                "Dict[str, Any]",
-                "dict",
+                "Dict[Text,Union[Text,list[dict[Text,Text]],bool,dict[Text,Union[Text,list[dict[Text,Union[Text,int,list[dict[Text,Text]]]]]]]]]",
+                "Mapping[str,Any]",
+                "Dict[str,Any]",
+                "Dict",
                 "int"
             ],
             "arguments": {}
@@ -574,7 +581,6 @@
             "name": "owned_lock",
             "location": 89,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -583,7 +589,6 @@
             "name": "nonowned_lock",
             "location": 94,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -592,7 +597,6 @@
             "name": "clean_redis",
             "location": 99,
             "return": [
-                "",
                 "typing.Generator[]"
             ],
             "arguments": {}
@@ -601,21 +605,18 @@
             "name": "owned_redis",
             "location": 106,
             "return": [
-                "",
                 "typing.Generator[typing.Union[int,dict[, ]]]"
             ],
             "arguments": {
                 "clean_redis": [
                     "int",
-                    "Lock",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "Lock"
                 ],
                 "owned_lock": [
                     "int",
-                    "Lock",
-                    "dict[, ]",
-                    "dict"
+                    "Dict",
+                    "Lock"
                 ]
             }
         },
@@ -623,25 +624,20 @@
             "name": "nonowned_redis",
             "location": 112,
             "return": [
-                "",
                 "typing.Generator[typing.Union[list[str],dict[, ],str]]"
             ],
             "arguments": {
                 "clean_redis": [
-                    "list[str]",
                     "List[str]",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "Lock",
-                    "dict"
+                    "Lock"
                 ],
                 "nonowned_lock": [
-                    "list[str]",
                     "List[str]",
+                    "Dict",
                     "str",
-                    "dict[, ]",
-                    "Lock",
-                    "dict"
+                    "Lock"
                 ]
             }
         }
@@ -651,15 +647,12 @@
             "name": "no_requests",
             "location": 12,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "monkeypatch": [
                     "Sequence[str]",
-                    "typing.Sequence[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -878,7 +871,7 @@
             "name": "test_marking",
             "location": 6,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         },
@@ -886,7 +879,7 @@
             "name": "test_date_match",
             "location": 22,
             "return": [
-                "NoReturn"
+                "None"
             ],
             "arguments": {}
         }
@@ -896,15 +889,12 @@
             "name": "no_requests",
             "location": 7,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "monkeypatch": [
                     "Sequence[str]",
-                    "typing.Sequence[str]",
-                    "Dict[str, Any]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]"
                 ]
             }
         },
@@ -917,8 +907,8 @@
             "arguments": {
                 "owned_redis": [
                     "str",
-                    "Mapping[str, Any]",
-                    "typing.Mapping"
+                    "Mapping[str,Any]",
+                    "Mapping"
                 ],
                 "owned_lock": [],
                 "mocker": [

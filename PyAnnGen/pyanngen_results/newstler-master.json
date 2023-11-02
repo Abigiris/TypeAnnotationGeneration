@@ -103,10 +103,16 @@
                     "Optional[django.http.HttpRequest]"
                 ],
                 "email": [
-                    "str"
+                    "str",
+                    "Dict[str,str]",
+                    "None"
                 ],
                 "password": [
-                    "str"
+                    "str",
+                    "None",
+                    "List[str]",
+                    "Optional[str]",
+                    "annofabapi.models.InputData"
                 ]
             }
         }
@@ -144,7 +150,8 @@
             ],
             "arguments": {
                 "func": [
-                    "Callable"
+                    "Callable",
+                    "Callable[...,None]"
                 ]
             }
         },
@@ -176,16 +183,15 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "django.http.HttpRequest",
                     "None",
                     "bool",
-                    "list[dict[str, typing.Any]]",
-                    "Optional[Dict[str, Any]]",
+                    "List[dict[str,Any]]",
+                    "Optional[Dict[str,Any]]",
                     "Optional[users.models.JustfixUser]",
                     "zerver.models.UserProfile",
-                    "List[Dict[str, Any]]",
-                    "Dict[str, Any]"
+                    "List[Dict[str,Any]]"
                 ],
                 "template_name": [
                     "str",
@@ -228,9 +234,8 @@
             "arguments": {
                 "self": [],
                 "request": [
-                    "typing.Callable[, ]",
-                    "django.http.HttpRequest",
-                    "Callable"
+                    "Callable",
+                    "django.http.HttpRequest"
                 ]
             }
         },
@@ -268,7 +273,7 @@
                 "HttpResponse",
                 "str",
                 "Optional[str]",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "self": [],
@@ -280,8 +285,7 @@
                 ],
                 "template_name": [
                     "str",
-                    "Dict[str, str]",
-                    "dict[str, str]"
+                    "Dict[str,str]"
                 ]
             }
         },
@@ -291,9 +295,9 @@
             "return": [
                 "HttpResponse",
                 "List[str]",
-                "Dict[str, Any]",
-                "raiden.utils.Dict[str, raiden.utils.Any]",
-                "Dict[str, dict]",
+                "Dict[str,Any]",
+                "raiden.utils.Dict[str,raiden.utils.Any]",
+                "Dict[str,dict]",
                 "str",
                 "bool"
             ],
@@ -314,7 +318,8 @@
             "name": "authorization_endpoint",
             "location": 19,
             "return": [
-                "Tuple[(uuid.UUID, Any)]"
+                "Tuple[uuid.UUID,yarl.URL]",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -324,12 +329,17 @@
             "name": "get_access_token",
             "location": 23,
             "return": [
-                "AccessTokenResponse"
+                "AccessTokenResponse",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "auth_code": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "None"
                 ]
             }
         },
@@ -337,7 +347,8 @@
             "name": "get_user_data",
             "location": 27,
             "return": [
-                "Optional[UserData]"
+                "Optional[UserData]",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -347,12 +358,15 @@
             "name": "session",
             "location": 31,
             "return": [
-                "ContextManager[LinkedInClient]"
+                "ContextManager[LinkedInClient]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "access_token": [
-                    "str"
+                    "str",
+                    "Iterable[Tuple[int,int]]",
+                    "Iterable[tuple[Union[int,int]]]"
                 ]
             }
         },
@@ -360,7 +374,7 @@
             "name": "authorization_endpoint",
             "location": 40,
             "return": [
-                "Tuple[(str, Any)]"
+                "Tuple[(uuid.UUID, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -375,7 +389,11 @@
             "arguments": {
                 "self": [],
                 "auth_code": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[List[str]]",
+                    "List[str]",
+                    "None"
                 ]
             }
         },
@@ -383,7 +401,7 @@
             "name": "get_user_data",
             "location": 46,
             "return": [
-                "Optional[UserData]"
+                "UserData"
             ],
             "arguments": {
                 "self": []
@@ -393,12 +411,15 @@
             "name": "session",
             "location": 50,
             "return": [
-                "ContextManager[LinkedInClient]"
+                "ContextManager[LinkedInClient]",
+                "Generator[FakeLinkedInClient]"
             ],
             "arguments": {
                 "self": [],
                 "access_token": [
-                    "str"
+                    "str",
+                    "Iterable[Tuple[int,int]]",
+                    "Iterable[tuple[Union[int,int]]]"
                 ]
             }
         },
@@ -411,7 +432,9 @@
             "arguments": {
                 "self": [],
                 "error": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -429,11 +452,11 @@
             "name": "authorization_endpoint",
             "location": 74,
             "return": [
-                "tuple[typing.Union[dict[str, str],str,None,dict[str, bool]]]",
+                "Tuple[Union[dict[str,str],str,None,dict[str,bool]]]",
                 "Optional[str]",
-                "Dict[str, str]",
+                "Dict[str,str]",
                 "List[str]",
-                "Dict[str, Any]",
+                "Dict[str,Any]",
                 "str",
                 "int"
             ],
@@ -445,25 +468,20 @@
             "name": "__validate_response",
             "location": 84,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
                 "response": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
                     "requests.Response",
-                    "dict[, ]",
-                    "Dict[str, Any]",
+                    "Dict",
                     "None",
-                    "dict",
                     "Optional[requests.Response]"
                 ],
                 "expected_codes": [
-                    "dict[str, typing.Any]",
+                    "Dict[str,Any]",
+                    "Dict",
                     "requests.Response",
-                    "dict[, ]",
-                    "Dict[str, Any]",
-                    "dict",
                     "Optional[requests.Response]"
                 ]
             }
@@ -477,7 +495,8 @@
             "arguments": {
                 "self": [],
                 "auth_code": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -485,12 +504,16 @@
             "name": "session",
             "location": 103,
             "return": [
-                "ContextManager[LinkedInClient]"
+                "ContextManager[LinkedInClient]",
+                "Generator"
             ],
             "arguments": {
                 "self": [],
                 "access_token": [
-                    "str"
+                    "str",
+                    "Dict[str,object]",
+                    "Optional[str]",
+                    "None"
                 ]
             }
         },
@@ -510,12 +533,18 @@
             "name": "get_news_by_user_data",
             "location": 21,
             "return": [
-                "Iterable[NewsArticle]"
+                "Iterable[NewsArticle]",
+                "None"
             ],
             "arguments": {
                 "self": [],
                 "user_data": [
-                    "newstler_site.external_services.linkedin_client.UserData"
+                    "Dict[str,Any]",
+                    "newstler_site.external_services.linkedin_clienUserData",
+                    "Dict",
+                    "str",
+                    "Callable[str,List,None]",
+                    "Callable[[str,List],None]"
                 ]
             }
         },
@@ -523,12 +552,17 @@
             "name": "get_news_by_user_data",
             "location": 26,
             "return": [
-                "Iterable[NewsArticle]"
+                "List[NewsArticle]"
             ],
             "arguments": {
                 "self": [],
                 "user_data": [
-                    "newstler_site.external_services.linkedin_client.UserData"
+                    "Dict[str,Any]",
+                    "newstler_site.external_services.linkedin_clienUserData",
+                    "Dict",
+                    "str",
+                    "Callable[str,List,None]",
+                    "Callable[[str,List],None]"
                 ]
             }
         },
@@ -536,12 +570,22 @@
             "name": "get_news_by_user_data",
             "location": 31,
             "return": [
-                "Iterable[NewsArticle]"
+                "Generator[(NewsArticle, Any, None)]"
             ],
             "arguments": {
                 "self": [],
                 "user_data": [
-                    "newstler_site.external_services.linkedin_client.UserData"
+                    "Dict",
+                    "AnyStr",
+                    "Type[T]",
+                    "Type",
+                    "Callable[,None]",
+                    "Union[str,int]",
+                    "str",
+                    "Optional[Dict]",
+                    "int",
+                    "Union[dict,str]",
+                    "None"
                 ]
             }
         }
@@ -551,11 +595,17 @@
             "name": "get",
             "location": 26,
             "return": [
-                "ServiceRegistry"
+                "str",
+                "bool",
+                "pricemonitor.config.Coin"
             ],
             "arguments": {
                 "cls": [
-                    "Type[_TServiceRegistry]"
+                    "bool",
+                    "Type",
+                    "str",
+                    "Optional[int]",
+                    "None"
                 ]
             }
         },
@@ -567,16 +617,15 @@
             ],
             "arguments": {
                 "cls": [
-                    "typing.Type",
+                    "Type",
                     "int",
-                    "type",
                     "complex",
                     "bytes",
-                    "bool",
-                    "Type"
+                    "bool"
                 ],
                 "configured": [
-                    "ServiceRegistry"
+                    "Type",
+                    "float"
                 ]
             }
         },
@@ -584,7 +633,8 @@
             "name": "linkedin",
             "location": 50,
             "return": [
-                "newstler_site.external_services.linkedin_client.LinkedInClient"
+                "newstler_site.external_services.linkedin_client.LinkedInClient",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -594,7 +644,8 @@
             "name": "news_storage",
             "location": 54,
             "return": [
-                "newstler_site.external_services.news_storage.NewsStorage"
+                "newstler_site.external_services.news_storage.NewsStorage",
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -609,7 +660,12 @@
             "arguments": {
                 "self": [],
                 "options": [
-                    "configparser.ConfigParser"
+                    "str",
+                    "bool",
+                    "Set[str]",
+                    "float",
+                    "Optional[bool]",
+                    "None"
                 ]
             }
         },
@@ -617,7 +673,9 @@
             "name": "linkedin",
             "location": 64,
             "return": [
-                "newstler_site.external_services.linkedin_client.LinkedInClient"
+                "int",
+                "Callable",
+                "str"
             ],
             "arguments": {
                 "self": []

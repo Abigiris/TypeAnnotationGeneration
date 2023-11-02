@@ -4,7 +4,9 @@
         "validate": {
             "name": "validate",
             "location": 30,
-            "return": [],
+            "return": [
+                "datetime.datetime"
+            ],
             "arguments": {
                 "value": [
                     "str"
@@ -124,10 +126,14 @@
             ],
             "arguments": {
                 "output_dir": [
-                    "pathlib.Path"
+                    "str",
+                    "list[str]",
+                    "None"
                 ],
                 "cfg": [
-                    "config.Config"
+                    "str",
+                    "list[str]",
+                    "None"
                 ],
                 "dry_run": [
                     "bool"
@@ -166,10 +172,11 @@
             "name": "compress_image",
             "location": 11,
             "return": [
-                "Dict[(state.Size, pathlib.Path)]"
+                "Dict[(Any, pathlib.Path)]"
             ],
             "arguments": {
                 "local_filename": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -207,7 +214,10 @@
             ],
             "arguments": {
                 "cfg": [
-                    "Config"
+                    "int",
+                    "dict",
+                    "Dict[str, Any]",
+                    "str"
                 ]
             }
         },
@@ -219,6 +229,7 @@
             ],
             "arguments": {
                 "clean_config": [
+                    "Dict",
                     "bool"
                 ]
             }
@@ -235,7 +246,7 @@
             "name": "to_json",
             "location": 26,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []
@@ -252,7 +263,8 @@
                     "Type[_TConfig]"
                 ],
                 "json": [
-                    "Dict[(str, Any)]"
+                    "dict",
+                    "Dict[str, Any]"
                 ]
             }
         }
@@ -266,13 +278,19 @@
             ],
             "arguments": {
                 "overview": [
-                    "state.Overview"
+                    "TextIO"
                 ],
                 "output_dir": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str"
                 ],
                 "template_dir": [
-                    "pathlib.Path"
+                    "str",
+                    "pathlib.Path",
+                    "cerulean.Path",
+                    "bool",
+                    "Dict[str, bytes]",
+                    "Dict[str, 'LabwareDefinition']"
                 ],
                 "bucket_puburl": [
                     "str"
@@ -285,10 +303,15 @@
         "load_template": {
             "name": "load_template",
             "location": 61,
-            "return": [],
+            "return": [
+                "Any"
+            ],
             "arguments": {
                 "template_file": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "Union[str, pathlib.Path]",
+                    "paradigm.catalog.Path",
+                    "str"
                 ]
             }
         },
@@ -300,7 +323,10 @@
             ],
             "arguments": {
                 "dir_path": [
-                    "pathlib.Path"
+                    "pathlib.Path",
+                    "str",
+                    "Type[pathlib.PurePath]",
+                    "bool"
                 ]
             }
         }
@@ -310,11 +336,14 @@
             "name": "filter_optionals",
             "location": 194,
             "return": [
-                "List[T]"
+                "list"
             ],
             "arguments": {
                 "elems": [
-                    "List[Optional[T]]"
+                    "str",
+                    "Optional[str]",
+                    "int",
+                    "float"
                 ]
             }
         },
@@ -323,13 +352,13 @@
             "location": 18,
             "return": [
                 "str",
-                "tuple[typing.Union[int,str]]",
-                "tuple[typing.Union[int,int]]",
-                "Mapping[int, str]",
-                "Dict[str, Any]",
+                "Tuple[Union[int,str]]",
+                "Tuple[Union[int,int]]",
+                "Mapping[int,str]",
+                "Dict[str,Any]",
                 "List[int]",
-                "dict",
-                "Dict[int, str]"
+                "Dict",
+                "Dict[int,str]"
             ],
             "arguments": {
                 "self": []
@@ -343,8 +372,8 @@
                 "str",
                 "float",
                 "Sequence[int]",
-                "list",
-                "List[Dict[str, Any]]"
+                "List",
+                "List[Dict[str,Any]]"
             ],
             "arguments": {
                 "self": []
@@ -361,14 +390,14 @@
                     "Optional[Exception]",
                     "Exception",
                     "str",
-                    "None",
                     "Sequence[int]",
-                    "Dict[str, Any]",
-                    "typing.Sequence[int]",
-                    "dict[str, typing.Any]"
+                    "Dict[str,Any]",
+                    "None"
                 ],
                 "json": [
-                    "Dict[(str, Any)]"
+                    "Dict[str, Any]",
+                    "dict",
+                    "Exception"
                 ]
             }
         },
@@ -386,7 +415,8 @@
             "name": "get_name",
             "location": 63,
             "return": [
-                "str"
+                "str",
+                "Text"
             ],
             "arguments": {
                 "self": [],
@@ -401,11 +431,11 @@
             "return": [
                 "bool",
                 "int",
-                "Union[int, float, complex]",
-                "list[]",
+                "Union[int,float,complex]",
+                "List",
                 "Optional[str]",
                 "float",
-                "dict[, ]"
+                "Dict"
             ],
             "arguments": {
                 "self": []
@@ -419,9 +449,8 @@
             ],
             "arguments": {
                 "cls": [
-                    "dict",
+                    "Dict",
                     "str",
-                    "dict[, ]",
                     "bool",
                     "Optional[str]",
                     "None"
@@ -449,10 +478,14 @@
             ],
             "arguments": {
                 "self": [
-                    "_TAlbum"
+                    "_TAlbum@@Album@@"
                 ],
                 "image": [
-                    "Image"
+                    "bool",
+                    "Callable",
+                    "Optional[BaseException]",
+                    "BaseException",
+                    "None"
                 ]
             }
         },
@@ -465,8 +498,7 @@
             "arguments": {
                 "cls": [
                     "str",
-                    "Callable",
-                    "typing.Callable[, ]"
+                    "Callable"
                 ],
                 "json": [
                     "Dict[str, Any]",
@@ -478,7 +510,7 @@
             "name": "to_json",
             "location": 153,
             "return": [
-                "Dict[(str, Any)]"
+                "Dict[(str, list)]"
             ],
             "arguments": {
                 "self": []
@@ -492,10 +524,10 @@
             ],
             "arguments": {
                 "self": [
-                    "_TOverview"
+                    "_TOverview@@Overview@@"
                 ],
                 "new_album": [
-                    "Album"
+                    "int"
                 ]
             }
         },
@@ -503,7 +535,11 @@
             "name": "get_album_by_name",
             "location": 164,
             "return": [
-                "Optional[Album]"
+                "None",
+                "Optional[str]",
+                "bool",
+                "Dict",
+                "List"
             ],
             "arguments": {
                 "self": [],
@@ -520,13 +556,13 @@
             ],
             "arguments": {
                 "self": [
-                    "_TOverview"
+                    "_TOverview@@Overview@@"
                 ],
                 "old_album": [
-                    "Album"
+                    "Callable"
                 ],
                 "new_album": [
-                    "Album"
+                    "Callable"
                 ]
             }
         },
@@ -538,10 +574,12 @@
             ],
             "arguments": {
                 "self": [
-                    "_TOverview"
+                    "_TOverview@@Overview@@"
                 ],
                 "album_to_remove": [
-                    "Album"
+                    "Sequence[cirq.Qid]",
+                    "float",
+                    "int"
                 ]
             }
         },
@@ -563,14 +601,13 @@
             "name": "client",
             "location": 58,
             "return": [
-                "typing.Iterator[Client]",
-                "typing.Generator[Client]"
+                "Iterator[Client]",
+                "Generator[Client]"
             ],
             "arguments": {
                 "cfg": [
-                    "dict[, ]",
+                    "Dict",
                     "int",
-                    "dict",
                     "config.ConfigFile"
                 ]
             }
@@ -583,10 +620,16 @@
             ],
             "arguments": {
                 "client": [
-                    "Client"
+                    "str",
+                    "pathlib.Path",
+                    "None",
+                    "Optional[str]"
                 ],
                 "local_filename": [
-                    "pathlib.Path"
+                    "str",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ]
             }
         },
@@ -598,13 +641,22 @@
             ],
             "arguments": {
                 "client": [
-                    "Client"
+                    "str",
+                    "None",
+                    "pathlib.Path",
+                    "Optional[str]"
                 ],
                 "local_filename": [
-                    "pathlib.Path"
+                    "str",
+                    "List[str]",
+                    "pathlib.Path",
+                    "Union[str,List[str]]"
                 ],
                 "object_name": [
-                    "str"
+                    "str",
+                    "List[str]",
+                    "pathlib.Path",
+                    "Union[str,List[str]]"
                 ]
             }
         },
@@ -619,7 +671,7 @@
             ],
             "arguments": {
                 "client": [
-                    "Client"
+                    "str"
                 ],
                 "object_name": [
                     "str"
@@ -634,13 +686,28 @@
             ],
             "arguments": {
                 "client": [
-                    "Client"
+                    "str",
+                    "Dict",
+                    "int",
+                    "List",
+                    "Type",
+                    "bool"
                 ],
                 "contents": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "int",
+                    "List",
+                    "Type",
+                    "bool"
                 ],
                 "object_name": [
-                    "str"
+                    "str",
+                    "Dict",
+                    "int",
+                    "List",
+                    "Type",
+                    "bool"
                 ]
             }
         },
@@ -648,10 +715,16 @@
             "name": "get_normalized_extension",
             "location": 156,
             "return": [
-                "str"
+                "str",
+                "Text",
+                "bool",
+                "pricemonitor.config.Coin",
+                "List[str]",
+                "float"
             ],
             "arguments": {
                 "filename": [
+                    "str",
                     "pathlib.Path"
                 ]
             }
@@ -664,7 +737,7 @@
             ],
             "arguments": {
                 "client": [
-                    "Client"
+                    "str"
                 ],
                 "filename": [
                     "str"
@@ -682,7 +755,17 @@
                     "Type[_TLock]"
                 ],
                 "json": [
-                    "Dict[(str, Any)]"
+                    "str",
+                    "List[C]",
+                    "Dict[str,Any]",
+                    "List[S]",
+                    "int",
+                    "Optional[str]",
+                    "List[recidiviz.persistence.entity.state.entities.StateSupervisionContact]",
+                    "List[recidiviz.persistence.entity.state.entities.StateIncarcerationSentence]",
+                    "List[recidiviz.persistence.entity.state.entities.StateAssessment]",
+                    "List[recidiviz.persistence.entity.state.entities.StateSupervisionViolation.Response]",
+                    "datetime.date"
                 ]
             }
         },
@@ -690,7 +773,7 @@
             "name": "to_json",
             "location": 41,
             "return": [
-                "Dict[(str, str)]"
+                "Dict[(str, Any)]"
             ],
             "arguments": {
                 "self": []

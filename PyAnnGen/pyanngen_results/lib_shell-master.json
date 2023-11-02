@@ -12,7 +12,7 @@
                     "bool",
                     "Exception",
                     "Optional[Callable]",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "None"
                 ],
                 "repository": [
@@ -20,7 +20,7 @@
                     "bool",
                     "Exception",
                     "Optional[Callable]",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "None"
                 ],
                 "repository_dashed": [
@@ -28,7 +28,7 @@
                     "bool",
                     "Exception",
                     "Optional[Callable]",
-                    "typing.Callable[, ]",
+                    "Callable",
                     "None"
                 ]
             }
@@ -37,9 +37,7 @@
             "name": "parse_args",
             "location": 32,
             "return": [
-                "tuple[]",
-                "bool",
-                "Dict[str, Union[str, int]]"
+                "Tuple[(argparse.Namespace, argparse.ArgumentParser)]"
             ],
             "arguments": {
                 "cmd_args": [
@@ -83,7 +81,12 @@
             ],
             "arguments": {
                 "dist_directory": [
-                    "str"
+                    "int",
+                    "pathlib.Path",
+                    "str",
+                    "None",
+                    "Union[str,pathlib.Path]",
+                    "Optional[pathlib.Path]"
                 ]
             }
         },
@@ -99,11 +102,13 @@
             "name": "strip_links_from_required",
             "location": 39,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "l_required": [
-                    "List[str]"
+                    "List[str]",
+                    "List",
+                    "int"
                 ]
             }
         }
@@ -117,7 +122,10 @@
             ],
             "arguments": {
                 "sudo_command": [
-                    "str"
+                    "Text",
+                    "str",
+                    "List[str]",
+                    "int"
                 ]
             }
         },
@@ -153,12 +161,10 @@
             "name": "run_shell_command",
             "location": 40,
             "return": [
-                "ShellCommandResponse"
+                "Any"
             ],
             "arguments": {
-                "command": [
-                    "str"
-                ],
+                "command": [],
                 "shell": [
                     "bool"
                 ],
@@ -178,14 +184,12 @@
                 "start_new_session": [
                     "bool"
                 ],
-                "retries": [
-                    "int"
-                ],
+                "retries": [],
                 "use_sudo": [
                     "bool"
                 ],
                 "run_as_user": [
-                    "str"
+                    "typing.Text"
                 ],
                 "quiet": [
                     "bool"
@@ -199,9 +203,7 @@
                 "ShellCommandResponse"
             ],
             "arguments": {
-                "ls_command": [
-                    "List[str]"
-                ],
+                "ls_command": [],
                 "shell": [
                     "bool"
                 ],
@@ -221,14 +223,12 @@
                 "start_new_session": [
                     "bool"
                 ],
-                "retries": [
-                    "int"
-                ],
+                "retries": [],
                 "use_sudo": [
                     "bool"
                 ],
                 "run_as_user": [
-                    "str"
+                    "typing.Text"
                 ],
                 "quiet": [
                     "bool"
@@ -242,9 +242,7 @@
                 "ShellCommandResponse"
             ],
             "arguments": {
-                "ls_command": [
-                    "List[str]"
-                ],
+                "ls_command": [],
                 "shell": [
                     "bool"
                 ],
@@ -268,7 +266,7 @@
                     "bool"
                 ],
                 "run_as_user": [
-                    "str"
+                    "typing.Text"
                 ],
                 "quiet": [
                     "bool"
@@ -282,9 +280,7 @@
                 "None"
             ],
             "arguments": {
-                "start_new_session": [
-                    "bool"
-                ]
+                "start_new_session": []
             }
         },
         "get_pipes": {
@@ -294,30 +290,20 @@
                 "Tuple[(Optional[int], Optional[int], Optional[int])]"
             ],
             "arguments": {
-                "start_new_session": [
-                    "bool"
-                ]
+                "start_new_session": []
             }
         },
         "prepend_sudo_and_run_as_user": {
             "name": "prepend_sudo_and_run_as_user",
             "location": 402,
             "return": [
-                "List[str]"
+                "list[str]"
             ],
             "arguments": {
-                "ls_command": [
-                    "List[str]"
-                ],
-                "shell": [
-                    "bool"
-                ],
-                "run_as_user": [
-                    "str"
-                ],
-                "use_sudo": [
-                    "bool"
-                ]
+                "ls_command": [],
+                "shell": [],
+                "run_as_user": [],
+                "use_sudo": []
             }
         },
         "ShellCommandResponse.__init__": {
@@ -336,19 +322,17 @@
             "name": "get_l_commandline_from_pid",
             "location": 24,
             "return": [
-                "List[str]"
+                "Any"
             ],
             "arguments": {
-                "pid": [
-                    "int"
-                ]
+                "pid": []
             }
         },
         "get_l_commandline_from_psutil_process": {
             "name": "get_l_commandline_from_psutil_process",
             "location": 47,
             "return": [
-                "List[str]"
+                "Any"
             ],
             "arguments": {
                 "process": []
@@ -361,9 +345,7 @@
                 "str"
             ],
             "arguments": {
-                "s_command": [
-                    "Union[(str, pathlib.Path)]"
-                ],
+                "s_command": [],
                 "process": []
             }
         },
@@ -374,9 +356,7 @@
                 "str"
             ],
             "arguments": {
-                "unquoted_string": [
-                    "str"
-                ]
+                "unquoted_string": []
             }
         },
         "get_is_absolute_path": {
@@ -386,33 +366,27 @@
                 "bool"
             ],
             "arguments": {
-                "s_command": [
-                    "str"
-                ]
+                "s_command": []
             }
         },
         "get_l_command_variations": {
             "name": "get_l_command_variations",
             "location": 221,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
-                "s_command": [
-                    "str"
-                ]
+                "s_command": []
             }
         },
         "get_executable_file": {
             "name": "get_executable_file",
             "location": 232,
             "return": [
-                "str"
+                "Any"
             ],
             "arguments": {
-                "l_command_variations": [
-                    "List[str]"
-                ],
+                "l_command_variations": [],
                 "process": []
             }
         }
@@ -422,11 +396,11 @@
             "name": "prepend_sudo_command",
             "location": 18,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "l_command": [
-                    "List[str]"
+                    "int"
                 ]
             }
         },
@@ -434,14 +408,17 @@
             "name": "prepend_run_as_user_command",
             "location": 32,
             "return": [
-                "List[str]"
+                "Union[(list, _T0)]"
             ],
             "arguments": {
                 "l_command": [
-                    "List[str]"
+                    "str",
+                    "bool"
                 ],
                 "user": [
-                    "str"
+                    "Text",
+                    "str",
+                    "Optional[dict]"
                 ]
             }
         },
@@ -459,13 +436,22 @@
             "name": "set_log_settings_returncode_zero_to_level",
             "location": 21,
             "return": [
-                "RunShellCommandLogSettings"
+                "RunShellCommandLogSettings",
+                "int",
+                "List",
+                "str",
+                "float",
+                "Dict[str,Any]",
+                "Tuple",
+                "Callable[...,None]",
+                "Dict"
             ],
             "arguments": {
                 "level": [
                     "int"
                 ],
                 "log_settings": [
+                    "int",
                     "RunShellCommandLogSettings"
                 ]
             }
@@ -474,14 +460,25 @@
             "name": "set_log_settings_returncode_not_zero_to_level",
             "location": 39,
             "return": [
-                "RunShellCommandLogSettings"
+                "RunShellCommandLogSettings",
+                "int",
+                "List",
+                "str",
+                "float",
+                "Dict[str,Any]",
+                "Tuple"
             ],
             "arguments": {
                 "level": [
-                    "int"
+                    "int",
+                    "Dict",
+                    "Hashable"
                 ],
                 "log_settings": [
-                    "RunShellCommandLogSettings"
+                    "RunShellCommandLogSettings",
+                    "int",
+                    "Dict",
+                    "Hashable"
                 ]
             }
         },
@@ -489,14 +486,20 @@
             "name": "set_log_settings_to_level",
             "location": 57,
             "return": [
-                "RunShellCommandLogSettings"
+                "Dict",
+                "int",
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "level": [
-                    "int"
+                    "int",
+                    "MutableMapping[str,Any]",
+                    "MutableMapping"
                 ],
                 "log_settings": [
-                    "RunShellCommandLogSettings"
+                    "RunShellCommandLogSettings",
+                    "int",
+                    "MutableMapping[str,Any]"
                 ]
             }
         },
@@ -508,22 +511,36 @@
             ],
             "arguments": {
                 "s_command": [
-                    "str"
-                ],
-                "stdout": [
-                    "str"
-                ],
-                "stderr": [
-                    "str"
-                ],
-                "returncode": [
-                    "int"
-                ],
-                "wait_finish": [
+                    "int",
+                    "str",
+                    "logging.Logger",
                     "bool"
                 ],
+                "stdout": [
+                    "int",
+                    "str",
+                    "bool"
+                ],
+                "stderr": [
+                    "int",
+                    "str",
+                    "Union[None,int]",
+                    "None"
+                ],
+                "returncode": [
+                    "int",
+                    "str"
+                ],
+                "wait_finish": [
+                    "bool",
+                    "str"
+                ],
                 "log_settings": [
-                    "RunShellCommandLogSettings"
+                    "int",
+                    "bytes",
+                    "Optional[Any]",
+                    "Any",
+                    "None"
                 ]
             }
         },
@@ -555,14 +572,15 @@
             "name": "pass_stdout_stderr_to_sys",
             "location": 23,
             "return": [
-                "Tuple[(bytes, bytes)]"
+                "Tuple[(Any, Any)]"
             ],
             "arguments": {
                 "process": [
                     "subprocess.Popen"
                 ],
                 "encoding": [
-                    "str"
+                    "str",
+                    "bytes"
                 ]
             }
         },
@@ -574,10 +592,15 @@
             ],
             "arguments": {
                 "process": [
-                    "Union[(subprocess.CompletedProcess, subprocess.Popen)]"
+                    "str",
+                    "int",
+                    "bool"
                 ],
                 "pipe_name": [
-                    "str"
+                    "str",
+                    "Type",
+                    "List[Dict[str,Any]]",
+                    "List[dict[str,Any]]"
                 ]
             }
         },
@@ -592,7 +615,10 @@
                     "str"
                 ],
                 "message_queue": [
-                    "queue.Queue[bytes]"
+                    "str",
+                    "int",
+                    "bytes",
+                    "Dict"
                 ]
             }
         },
@@ -604,7 +630,7 @@
             ],
             "arguments": {
                 "msg_queue": [
-                    "queue.Queue[bytes]"
+                    "float"
                 ],
                 "target_pipe": [
                     "str",
@@ -612,10 +638,17 @@
                     "Optional[str]"
                 ],
                 "msg_list": [
-                    "List[bytes]"
+                    "List[bytes]",
+                    "str",
+                    "int",
+                    "Callable",
+                    "List",
+                    "Tuple"
                 ],
                 "encoding": [
-                    "str"
+                    "bool",
+                    "float",
+                    "int"
                 ]
             }
         }
@@ -625,14 +658,24 @@
             "name": "shlex_split_multi_platform",
             "location": 11,
             "return": [
-                "List[str]"
+                "list"
             ],
             "arguments": {
                 "s_commandline": [
-                    "str"
+                    "str",
+                    "Optional[str]",
+                    "None",
+                    "Optional[int]",
+                    "int"
                 ],
                 "is_platform_windows": [
-                    "bool"
+                    "str",
+                    "None",
+                    "Optional[int]",
+                    "Optional[float]",
+                    "int",
+                    "Optional[str]",
+                    "float"
                 ]
             }
         }

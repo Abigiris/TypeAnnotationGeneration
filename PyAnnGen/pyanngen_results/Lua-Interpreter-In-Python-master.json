@@ -14,7 +14,6 @@
             "name": "run",
             "location": 14,
             "return": [
-                "",
                 "None"
             ],
             "arguments": {
@@ -63,7 +62,7 @@
             "name": "to_code",
             "location": 20,
             "return": [
-                "str"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -73,7 +72,9 @@
             "name": "to_code",
             "location": 28,
             "return": [
-                "str"
+                "str",
+                "int",
+                "Type[T]"
             ],
             "arguments": {
                 "self": []
@@ -113,7 +114,11 @@
             "name": "to_code",
             "location": 69,
             "return": [
-                "str"
+                "Text",
+                "Dict[str,Any]",
+                "Dict[str,int]",
+                "List[Dict[str,Any]]",
+                "bool"
             ],
             "arguments": {
                 "self": []
@@ -225,11 +230,15 @@
             "name": "register",
             "location": 10,
             "return": [
-                "_T0"
+                "str",
+                "Optional[str]",
+                "int"
             ],
             "arguments": {
                 "store": [
-                    "_T0"
+                    "str",
+                    "List[str]",
+                    "Tuple[str, str]"
                 ],
                 "name": [
                     "str",
@@ -247,7 +256,7 @@
             "name": "builtin_type",
             "location": 15,
             "return": [
-                "obj.Obj"
+                "Union[(obj.Error, obj.Null, obj.String)]"
             ],
             "arguments": {}
         },
@@ -255,7 +264,7 @@
             "name": "builtin_print",
             "location": 40,
             "return": [
-                "obj.Obj"
+                "obj.Null"
             ],
             "arguments": {}
         }
@@ -272,10 +281,11 @@
             ],
             "arguments": {
                 "node": [
-                    "ast.Node"
+                    "obj.Environment"
                 ],
                 "env": [
-                    "obj.Environment"
+                    "obj.Environment",
+                    "List[obj.Obj]"
                 ]
             }
         },
@@ -283,14 +293,20 @@
             "name": "evaluate_index_expression",
             "location": 136,
             "return": [
-                "obj.Obj"
+                "bool",
+                "Type[object]",
+                "int"
             ],
             "arguments": {
                 "left": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "dict",
+                    "Callable[[str], str]"
                 ],
                 "index": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "dict",
+                    "Callable[[str], str]"
                 ]
             }
         },
@@ -298,14 +314,20 @@
             "name": "evaluate_table_index_expression",
             "location": 149,
             "return": [
-                "obj.Obj"
+                "bool",
+                "Tuple[str]",
+                "str"
             ],
             "arguments": {
                 "table": [
-                    "obj.Table"
+                    "obj.Integer",
+                    "str",
+                    "Iterable[str]"
                 ],
                 "index": [
-                    "obj.Integer"
+                    "obj.Integer",
+                    "str",
+                    "Iterable[str]"
                 ]
             }
         },
@@ -313,14 +335,20 @@
             "name": "evaluate_table_key_expression",
             "location": 158,
             "return": [
-                "obj.Obj"
+                "bool"
             ],
             "arguments": {
                 "table": [
-                    "obj.Table"
+                    "obj.Integer",
+                    "Iterable[str]",
+                    "type",
+                    "str"
                 ],
                 "index": [
-                    "obj.String"
+                    "obj.String",
+                    "str",
+                    "bool",
+                    "dict"
                 ]
             }
         },
@@ -328,17 +356,18 @@
             "name": "apply_function",
             "location": 168,
             "return": [
-                "obj.Obj"
+                "float"
             ],
             "arguments": {
                 "fn": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "Callable"
                 ],
-                "args": [
-                    "List[obj.Obj]"
-                ],
+                "args": [],
                 "env": [
-                    "obj.Environment"
+                    "Dict[str, str]",
+                    "Iterable[str]",
+                    "bool"
                 ]
             }
         },
@@ -346,11 +375,16 @@
             "name": "unwrap_return_value",
             "location": 184,
             "return": [
-                "obj.Obj"
+                "obj_@_ReturnValue",
+                "str",
+                "Optional[str]"
             ],
             "arguments": {
                 "value": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "str",
+                    "int",
+                    "bool"
                 ]
             }
         },
@@ -362,23 +396,19 @@
             ],
             "arguments": {
                 "fn": [
-                    "obj.Function"
+                    "str"
                 ],
-                "args": [
-                    "List[obj.Obj]"
-                ]
+                "args": []
             }
         },
         "evaluate_expressions": {
             "name": "evaluate_expressions",
             "location": 202,
             "return": [
-                "List[obj.Obj]"
+                "list"
             ],
             "arguments": {
-                "expressions": [
-                    "List[ast.Expression]"
-                ],
+                "expressions": [],
                 "env": [
                     "obj.Environment"
                 ]
@@ -388,14 +418,13 @@
             "name": "evaluate_expression_pairs",
             "location": 217,
             "return": [
-                "Dict[(obj.Obj, obj.Obj)]"
+                "dict"
             ],
             "arguments": {
-                "expressions": [
-                    "List[Tuple[(ast.Expression, ast.Expression)]]"
-                ],
+                "expressions": [],
                 "env": [
-                    "obj.Environment"
+                    "obj.Environment",
+                    "Type"
                 ]
             }
         },
@@ -403,14 +432,21 @@
             "name": "evaluate_identifier",
             "location": 230,
             "return": [
-                "obj.Obj"
+                "int",
+                "str",
+                "List[int]",
+                "Dict[str, Any]",
+                "tuple"
             ],
             "arguments": {
                 "identifier": [
-                    "ast.Identifier"
+                    "Callable",
+                    "Exception"
                 ],
                 "env": [
-                    "obj.Environment"
+                    "obj.Environment",
+                    "dict",
+                    "str"
                 ]
             }
         },
@@ -419,7 +455,7 @@
             "location": 243,
             "return": [
                 "obj_@_Error",
-                "tuple",
+                "Tuple",
                 "obj_@_ReturnValue",
                 "None",
                 "int",
@@ -429,11 +465,13 @@
                 "bool"
             ],
             "arguments": {
-                "program": [
-                    "ast.Program"
-                ],
+                "program": [],
                 "env": [
-                    "obj.Environment"
+                    "obj.Environment",
+                    "Dict[str, Set[str]]",
+                    "bool",
+                    "Dict[str, Any]",
+                    "List[Dict[str, Any]]"
                 ]
             }
         },
@@ -450,10 +488,13 @@
             ],
             "arguments": {
                 "block_statement": [
-                    "ast.BlockStatement"
+                    "List[Union[str, \"SqlFile\"]]"
                 ],
                 "env": [
-                    "obj.Environment"
+                    "obj.Environment",
+                    "dict",
+                    "bool",
+                    "Type[T]"
                 ]
             }
         },
@@ -467,10 +508,16 @@
             ],
             "arguments": {
                 "if_exp": [
-                    "ast.IfExpression"
+                    "bool",
+                    "dict",
+                    "Optional[str]",
+                    "str"
                 ],
                 "env": [
-                    "obj.Environment"
+                    "bool",
+                    "dict",
+                    "Optional[str]",
+                    "str"
                 ]
             }
         },
@@ -482,7 +529,12 @@
             ],
             "arguments": {
                 "obj": [
-                    "obj.Obj"
+                    "obj.Object",
+                    "obj.Obj",
+                    "Callable[..., None]",
+                    "bool",
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -491,11 +543,11 @@
             "location": 294,
             "return": [
                 "obj_@_ReturnValue",
-                "Optional[Dict[str, str]]",
+                "Optional[Dict[str,str]]",
                 "None",
-                "Callable[..., None]",
+                "Callable[...,None]",
                 "str",
-                "Dict[str, Any]"
+                "Dict[str,Any]"
             ],
             "arguments": {
                 "statements": [
@@ -504,7 +556,9 @@
                     "str"
                 ],
                 "env": [
-                    "obj.Environment"
+                    "obj.Environment",
+                    "bool",
+                    "Optional[dict]"
                 ]
             }
         },
@@ -512,14 +566,18 @@
             "name": "evaluate_prefix_expression",
             "location": 306,
             "return": [
-                "obj.Obj"
+                "Union[(obj.Boolean, obj.Error, obj.Integer, obj.Null)]"
             ],
             "arguments": {
                 "operator": [
-                    "str"
+                    "str",
+                    "Exception",
+                    "int"
                 ],
                 "right": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "Dict[str, Any]",
+                    "str"
                 ]
             }
         },
@@ -531,7 +589,10 @@
             ],
             "arguments": {
                 "right": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "obj.Object",
+                    "int",
+                    "Optional[bool]"
                 ]
             }
         },
@@ -539,11 +600,12 @@
             "name": "evaluate_minus_operator_expression",
             "location": 329,
             "return": [
-                "obj.Obj"
+                "Union[(obj.Error, obj.Integer, obj.Null)]"
             ],
             "arguments": {
                 "right": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "int"
                 ]
             }
         },
@@ -551,11 +613,12 @@
             "name": "evaluate_length_operator_expression",
             "location": 342,
             "return": [
-                "obj.Obj"
+                "Union[(obj.Integer, obj.Null)]"
             ],
             "arguments": {
                 "right": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "Optional[str]"
                 ]
             }
         },
@@ -563,17 +626,24 @@
             "name": "evaluate_infix_expression",
             "location": 358,
             "return": [
-                "obj.Obj"
+                "tuple"
             ],
             "arguments": {
                 "operator": [
-                    "str"
+                    "str",
+                    "Dict[str, Any]"
                 ],
                 "left": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "Optional[int]",
+                    "obj.Object",
+                    "Dict[str, Any]"
                 ],
                 "right": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "Optional[int]",
+                    "obj.Object",
+                    "Dict[str, Any]"
                 ]
             }
         },
@@ -581,7 +651,7 @@
             "name": "evaluate_infix_string_expression",
             "location": 398,
             "return": [
-                "obj.Obj"
+                "Union[(obj.Null, obj.String)]"
             ],
             "arguments": {
                 "operator": [
@@ -591,10 +661,12 @@
                     "List[str]"
                 ],
                 "left": [
-                    "obj.String"
+                    "obj.String",
+                    "dict"
                 ],
                 "right": [
-                    "obj.String"
+                    "obj.String",
+                    "dict"
                 ]
             }
         },
@@ -602,7 +674,7 @@
             "name": "evaluate_infix_integer_expression",
             "location": 406,
             "return": [
-                "obj.Obj"
+                "Union[(obj.Boolean, obj.Float, obj.Integer, obj.Null)]"
             ],
             "arguments": {
                 "operator": [
@@ -610,10 +682,12 @@
                     "Iterable[\"DefTypeMember\"]"
                 ],
                 "left": [
-                    "obj.Integer"
+                    "obj.Integer",
+                    "bool"
                 ],
                 "right": [
-                    "obj.Integer"
+                    "obj.Integer",
+                    "bool"
                 ]
             }
         },
@@ -625,7 +699,11 @@
             ],
             "arguments": {
                 "value": [
-                    "bool"
+                    "bool",
+                    "str",
+                    "dict",
+                    "list",
+                    "Union[bytes, str]"
                 ]
             }
         },
@@ -633,11 +711,17 @@
             "name": "is_error",
             "location": 449,
             "return": [
-                "bool"
+                "bool",
+                "int",
+                "Optional[str]"
             ],
             "arguments": {
                 "instance": [
-                    "obj.Obj"
+                    "obj.Obj",
+                    "Callable",
+                    "Optional[AbstractSet[str]]",
+                    "Callable[[], object]",
+                    "str"
                 ]
             }
         }
@@ -676,7 +760,11 @@
             "arguments": {
                 "self": [],
                 "source": [
-                    "io.StringIO"
+                    "str",
+                    "io.StringIO",
+                    "Match[str]",
+                    "int",
+                    "Optional[str]"
                 ]
             }
         },
@@ -694,12 +782,16 @@
             "name": "peek_ahead",
             "location": 29,
             "return": [
-                "str"
+                "Text",
+                "str",
+                "int",
+                "io.BytesIO"
             ],
             "arguments": {
                 "self": [],
                 "steps": [
-                    "int"
+                    "int",
+                    "IO[str]"
                 ]
             }
         },
@@ -707,12 +799,16 @@
             "name": "peek_behind",
             "location": 34,
             "return": [
-                "str"
+                "Text",
+                "str",
+                "int",
+                "io.BytesIO"
             ],
             "arguments": {
                 "self": [],
                 "steps": [
-                    "int"
+                    "int",
+                    "IO[str]"
                 ]
             }
         },
@@ -730,7 +826,7 @@
             "name": "tokens",
             "location": 43,
             "return": [
-                "Iterator[luatopy.token.Token]"
+                "Generator[(luatopy.token.Token, Any, None)]"
             ],
             "arguments": {
                 "self": []
@@ -770,12 +866,17 @@
             "name": "read_string",
             "location": 279,
             "return": [
-                "str"
+                "str",
+                "Set[str]",
+                "Sequence[str]",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": [],
                 "indicator": [
-                    "str"
+                    "Text",
+                    "int",
+                    "bytearray"
                 ]
             }
         },
@@ -805,7 +906,7 @@
             "name": "type",
             "location": 23,
             "return": [
-                "ObjType"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -815,7 +916,7 @@
             "name": "inspect",
             "location": 26,
             "return": [
-                "str"
+                "None"
             ],
             "arguments": {
                 "self": []
@@ -830,7 +931,9 @@
             "arguments": {
                 "self": [],
                 "outer": [
-                    "Optional[Environment]"
+                    "None",
+                    "Optional[Environment]",
+                    "Optional[int]"
                 ]
             }
         },
@@ -838,15 +941,23 @@
             "name": "get",
             "location": 35,
             "return": [
-                "Tuple[(Obj, bool)]"
+                "Tuple",
+                "str",
+                "Union[str,Pattern]",
+                "Optional[Dict[str,Any]]",
+                "bool",
+                "Set[str]"
             ],
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "int",
+                    "Optional[List[str]]"
                 ],
                 "default": [
-                    "Obj"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -859,7 +970,8 @@
             "arguments": {
                 "self": [],
                 "name": [
-                    "str"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -867,7 +979,8 @@
             "name": "set",
             "location": 47,
             "return": [
-                "Obj"
+                "str",
+                "int"
             ],
             "arguments": {
                 "self": [],
@@ -875,7 +988,7 @@
                     "str"
                 ],
                 "value": [
-                    "Obj"
+                    "str"
                 ]
             }
         },
@@ -897,7 +1010,8 @@
             ],
             "arguments": {
                 "outer": [
-                    "Environment"
+                    "bool",
+                    "float"
                 ]
             }
         },
@@ -905,7 +1019,7 @@
             "name": "type",
             "location": 66,
             "return": [
-                "ObjType"
+                "Callable[[T], T]"
             ],
             "arguments": {
                 "self": []
@@ -935,7 +1049,7 @@
             "name": "type",
             "location": 80,
             "return": [
-                "ObjType"
+                "Callable[[T], T]"
             ],
             "arguments": {
                 "self": []
@@ -955,7 +1069,7 @@
             "name": "type",
             "location": 91,
             "return": [
-                "ObjType"
+                "Callable[[T], T]"
             ],
             "arguments": {
                 "self": []
@@ -975,7 +1089,7 @@
             "name": "type",
             "location": 99,
             "return": [
-                "ObjType"
+                "Callable[[T], T]"
             ],
             "arguments": {
                 "self": []
@@ -995,7 +1109,7 @@
             "name": "type",
             "location": 110,
             "return": [
-                "ObjType"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1005,7 +1119,9 @@
             "name": "inspect",
             "location": 113,
             "return": [
-                "str"
+                "str",
+                "int",
+                "Dict[str, Any]"
             ],
             "arguments": {
                 "self": []
@@ -1029,7 +1145,7 @@
             "name": "type",
             "location": 125,
             "return": [
-                "ObjType"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1049,7 +1165,7 @@
             "name": "type",
             "location": 138,
             "return": [
-                "ObjType"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1069,7 +1185,8 @@
             "name": "type",
             "location": 155,
             "return": [
-                "ObjType"
+                "str",
+                "Callable[..., T]"
             ],
             "arguments": {
                 "self": []
@@ -1099,7 +1216,7 @@
             "name": "type",
             "location": 174,
             "return": [
-                "ObjType"
+                "Callable[[T], T]"
             ],
             "arguments": {
                 "self": []
@@ -1119,7 +1236,7 @@
             "name": "type",
             "location": 185,
             "return": [
-                "ObjType"
+                "Any"
             ],
             "arguments": {
                 "self": []
@@ -1146,7 +1263,8 @@
             "arguments": {
                 "self": [],
                 "lexer": [
-                    "luatopy.lexer.Lexer"
+                    "str",
+                    "int"
                 ]
             }
         },
@@ -1174,7 +1292,7 @@
             "name": "parse_statement",
             "location": 123,
             "return": [
-                "ast.Node"
+                "Union[(ast.AssignStatement, ast.ExpressionStatement, ast.ReturnStatement)]"
             ],
             "arguments": {
                 "self": []
@@ -1238,9 +1356,7 @@
             ],
             "arguments": {
                 "self": [],
-                "precedence": [
-                    "Precedence"
-                ]
+                "precedence": []
             }
         },
         "Parser.parse_identifier": {
@@ -1297,7 +1413,7 @@
             "name": "parse_function_parameters",
             "location": 279,
             "return": [
-                "Optional[list]"
+                "Optional[List[ast.Identifier]]"
             ],
             "arguments": {
                 "self": []
@@ -1307,7 +1423,7 @@
             "name": "cur_precedence",
             "location": 306,
             "return": [
-                "Precedence"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -1317,7 +1433,7 @@
             "name": "peek_precedence",
             "location": 309,
             "return": [
-                "Precedence"
+                "dict"
             ],
             "arguments": {
                 "self": []
@@ -1342,7 +1458,13 @@
             "arguments": {
                 "self": [],
                 "left": [
-                    "ast.Node"
+                    "str",
+                    "Optional[Union[str, Any]]",
+                    "Set[int]",
+                    "int",
+                    "float",
+                    "List[str]",
+                    "Optional[List[str]]"
                 ]
             }
         },
@@ -1355,7 +1477,9 @@
             "arguments": {
                 "self": [],
                 "function": [
-                    "ast.Node"
+                    "float",
+                    "str",
+                    "Type"
                 ]
             }
         },
@@ -1373,7 +1497,7 @@
             "name": "parse_grouped_expression",
             "location": 367,
             "return": [
-                "type",
+                "Type",
                 "None"
             ],
             "arguments": {
@@ -1389,7 +1513,8 @@
             "arguments": {
                 "self": [],
                 "token_type": [
-                    "luatopy.token.TokenType"
+                    "str",
+                    "bool"
                 ]
             }
         },
@@ -1407,7 +1532,7 @@
             "name": "parse_table_expression_list",
             "location": 394,
             "return": [
-                "Optional[List[Tuple[(Union[(ast.Expression, ast.IntegerLiteral, ast.StringLiteral)], Any)]]]"
+                "Optional[List[Tuple[(ast.IntegerLiteral, Any)]]]"
             ],
             "arguments": {
                 "self": []
@@ -1452,7 +1577,7 @@
             "arguments": {
                 "self": [],
                 "left": [
-                    "ast.Node"
+                    "bool"
                 ]
             }
         }
@@ -1464,7 +1589,8 @@
             "name": "source_to_eval",
             "location": 338,
             "return": [
-                "obj.Obj"
+                "str",
+                "Iterable[int]"
             ],
             "arguments": {
                 "source": [

@@ -19,12 +19,12 @@ Run this command to evaluate the tool-generated results:
 
     python3 evaluate_annotations.py <tool_results_dir> <ground_truth_dir> <output_path>
 
-For example, to evaluate the effectiveness of Pytype (the default is Top-1):
+For example, to evaluate the effectiveness of Pytype (the default is Top-1 with all type categories):
 
     python3 evaluate_annotations.py pytype_results/ ground_truth/ pytype_top1.json
 
 There are two settings in *evaluation_annotations.py* can be modified to complete different categories of evaluation:
 
     TOP_N = 1
-	TYPE_LIMIT = (TypeCategory.Elementary, TypeCategory.Parametric, TypeCategory.Union,
-             	 TypeCategory.Dynamic, TypeCategory.Variable, TypeCategory.UserDefined)
+	TYPE_LIMIT = [TypeCategory.Elementary, TypeCategory.Parametric, TypeCategory.Union,
+             	 TypeCategory.Dynamic, TypeCategory.Variable, TypeCategory.UserDefined]

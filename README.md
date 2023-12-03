@@ -4,12 +4,13 @@ This repository stores the source codes and results of our type annotation gener
 
 ### Contents
 
-- Data: Our dataset.
-- Evaluation: Our effectiveness evaluation experiments, including evaluation approaches and preprocessed data to be evaluated.
-- PyAnnGen: Our implementation of the type annotation generation tool.
-- Results: Detailed results of all the research questions in our study.
+- Data: the complete dataset (carefully-cleaned ManyTypes4Py)
+- Evaluation: the effectiveness evaluation experiments, including evaluation approaches and preprocessed data to be evaluated
+- PyAnnGen: the implementation of our type annotation generation tool (PyAnnGen)
+- Results: more detailed results of our study
 
 
 ### Requirements
 
-    Python 3.5+
+    Python 3.8
+	astunparse==1.6.3 

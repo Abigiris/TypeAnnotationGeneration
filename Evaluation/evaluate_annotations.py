@@ -27,8 +27,8 @@ class TypeCategory:
 
 
 TOP_N = 1
-TYPE_LIMIT = (TypeCategory.Elementary, TypeCategory.Parametric, TypeCategory.Union,
-              TypeCategory.Dynamic, TypeCategory.Variable, TypeCategory.UserDefined)
+TYPE_LIMIT = [TypeCategory.Elementary, TypeCategory.Parametric, TypeCategory.Union,
+              TypeCategory.Dynamic, TypeCategory.Variable, TypeCategory.UserDefined]
 
 category_results = {
     'ret': {

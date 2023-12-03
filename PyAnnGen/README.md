@@ -13,4 +13,4 @@ For example, to reproduce our results (as we provide in pyanngen_results/):
     python3 PyAnnGen.py pytype_results/ type4py_results/ hityper_results/ output_results/
 
 
-**Attention：** Keep all the inputs in the same format. Notice the order of the tools on the command line, which has a big impact on the results. You can also adapt the tool to your own data based on the algorithms in the *PyAnnGen.py*.
+**Attention：** Keep all the inputs in the same format. Notice the order of the tools on the command line, which has a critical impact on the results. You can also adapt the tool to your own data based on the algorithms in the *PyAnnGen.py*.

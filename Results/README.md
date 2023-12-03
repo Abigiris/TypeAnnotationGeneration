@@ -1,6 +1,6 @@
 # Study Results
 
-The complete results for our research questions.
+The complete results for our study.
 
 ### RQ1
 
@@ -14,9 +14,17 @@ The complete results for our research questions.
 
 ### RQ3
 
-Same as RQ1.
+- .json: same as RQ1
+- .xlsx: same as RQ1
 
 ### RQ4
 
 - Tasks/: the source code, selected program points, and type recommendations of four tasks
 - .xlsx: the detailed results in this controlled experiment
+
+### Discussion
+
+- TinyTypes4Py: the source code of the small-scale dataset
+- .json: same as RQ1
+- .xlsx: same as RQ1
+
